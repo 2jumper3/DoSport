@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A189916C417114A643406C3 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED130427424E2AEEF396846 /* Pods_DoSport.framework */; };
+		6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529500B258D6EE2002AA621 /* UIColor+inits.swift */; };
 		65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F0258D04E60037D2B5 /* Icons.swift */; };
 		65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F3258D04F10037D2B5 /* Fonts.swift */; };
 		65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F6258D04FD0037D2B5 /* Texts.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6529500B258D6EE2002AA621 /* UIColor+inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+inits.swift"; sourceTree = "<group>"; };
 		65AF25F0258D04E60037D2B5 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		65AF25F3258D04F10037D2B5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		65AF25F6258D04FD0037D2B5 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */,
 				CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */,
 				CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */,
+				6529500B258D6EE2002AA621 /* UIColor+inits.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
+				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				CEDEB88B258CE83C007B2BCA /* UIFontExtension.swift in Sources */,
 				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
