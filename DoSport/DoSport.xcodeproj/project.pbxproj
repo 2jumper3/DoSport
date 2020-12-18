@@ -3,17 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A189916C417114A643406C3 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED130427424E2AEEF396846 /* Pods_DoSport.framework */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
 		CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */; };
-		CEDEB781258CB404007B2BCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB780258CB404007B2BCA /* ViewController.swift */; };
+		CEDEB781258CB404007B2BCA /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB780258CB404007B2BCA /* Rules.swift */; };
 		CEDEB786258CB40A007B2BCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB785258CB40A007B2BCA /* Assets.xcassets */; };
 		CEDEB789258CB40A007B2BCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */; };
 		CEDEB794258CB40B007B2BCA /* DoSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB793258CB40B007B2BCA /* DoSportTests.swift */; };
 		CEDEB79F258CB40B007B2BCA /* DoSportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB79E258CB40B007B2BCA /* DoSportUITests.swift */; };
+		CEDEB841258CE146007B2BCA /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB840258CE146007B2BCA /* AbstractRequestFactory.swift */; };
+		CEDEB849258CE182007B2BCA /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB848258CE182007B2BCA /* RequestFactory.swift */; };
+		CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB84D258CE194007B2BCA /* ErrorParser.swift */; };
+		CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB852258CE1A5007B2BCA /* RequestRouter.swift */; };
+		CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB85B258CE1C7007B2BCA /* AuthRequest.swift */; };
+		CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
+		CEDEB869258CE1EB007B2BCA /* EditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB868258CE1EB007B2BCA /* EditUserInfo.swift */; };
+		CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB86D258CE208007B2BCA /* EditPasswordRequest.swift */; };
+		CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
+		CEDEB879258CE240007B2BCA /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB878258CE240007B2BCA /* Responses.swift */; };
+		CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB87E258CE2EA007B2BCA /* Security.swift */; };
+		CEDEB88B258CE83C007B2BCA /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB88A258CE83C007B2BCA /* UIFontExtension.swift */; };
+		CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */; };
+		CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */; };
+		CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AED130427424E2AEEF396846 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDEB779258CB404007B2BCA /* DoSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDEB77C258CB404007B2BCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEDEB780258CB404007B2BCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEDEB780258CB404007B2BCA /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		CEDEB785258CB40A007B2BCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDEB788258CB40A007B2BCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDEB78A258CB40A007B2BCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +64,24 @@
 		CEDEB79A258CB40B007B2BCA /* DoSportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoSportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDEB79E258CB40B007B2BCA /* DoSportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoSportUITests.swift; sourceTree = "<group>"; };
 		CEDEB7A0258CB40B007B2BCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEDEB840258CE146007B2BCA /* AbstractRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRequestFactory.swift; sourceTree = "<group>"; };
+		CEDEB848258CE182007B2BCA /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		CEDEB84D258CE194007B2BCA /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
+		CEDEB852258CE1A5007B2BCA /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
+		CEDEB85B258CE1C7007B2BCA /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
+		CEDEB868258CE1EB007B2BCA /* EditUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfo.swift; sourceTree = "<group>"; };
+		CEDEB86D258CE208007B2BCA /* EditPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordRequest.swift; sourceTree = "<group>"; };
+		CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		CEDEB878258CE240007B2BCA /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
+		CEDEB87E258CE2EA007B2BCA /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
+		CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		CEDEB88A258CE83C007B2BCA /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		D51EE22CF44F5B29B2793A8C /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
+		DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A189916C417114A643406C3 /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +110,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B575704A7CC7F421F6A9B8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D51EE22CF44F5B29B2793A8C /* Pods-DoSport.debug.xcconfig */,
+				DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8764389EC8CF290CF630E1B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AED130427424E2AEEF396846 /* Pods_DoSport.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CEDEB770258CB404007B2BCA = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +134,8 @@
 				CEDEB792258CB40B007B2BCA /* DoSportTests */,
 				CEDEB79D258CB40B007B2BCA /* DoSportUITests */,
 				CEDEB77A258CB404007B2BCA /* Products */,
+				1B575704A7CC7F421F6A9B8A /* Pods */,
+				8764389EC8CF290CF630E1B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +152,12 @@
 		CEDEB77B258CB404007B2BCA /* DoSport */ = {
 			isa = PBXGroup;
 			children = (
-				CEDEB77C258CB404007B2BCA /* AppDelegate.swift */,
-				CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */,
-				CEDEB780258CB404007B2BCA /* ViewController.swift */,
-				CEDEB785258CB40A007B2BCA /* Assets.xcassets */,
-				CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */,
-				CEDEB78A258CB40A007B2BCA /* Info.plist */,
+				CEDEB7BB258CDC4D007B2BCA /* Application */,
+				CEDEB780258CB404007B2BCA /* Rules.swift */,
+				CEDEB8DF258CF94C007B2BCA /* Flow */,
+				CEDEB83B258CE0EF007B2BCA /* Service */,
+				CEDEB887258CE793007B2BCA /* Helpers */,
+				CEDEB886258CE77C007B2BCA /* Resourses */,
 			);
 			path = DoSport;
 			sourceTree = "<group>";
@@ -125,6 +180,110 @@
 			path = DoSportUITests;
 			sourceTree = "<group>";
 		};
+		CEDEB7BB258CDC4D007B2BCA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB77C258CB404007B2BCA /* AppDelegate.swift */,
+				CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CEDEB83B258CE0EF007B2BCA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB83C258CE0FE007B2BCA /* Network */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CEDEB83C258CE0FE007B2BCA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB85A258CE1BD007B2BCA /* RequestList */,
+				CEDEB840258CE146007B2BCA /* AbstractRequestFactory.swift */,
+				CEDEB848258CE182007B2BCA /* RequestFactory.swift */,
+				CEDEB84D258CE194007B2BCA /* ErrorParser.swift */,
+				CEDEB852258CE1A5007B2BCA /* RequestRouter.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CEDEB85A258CE1BD007B2BCA /* RequestList */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB87D258CE2D9007B2BCA /* Security */,
+				CEDEB877258CE22A007B2BCA /* ResponseEntity */,
+				CEDEB85B258CE1C7007B2BCA /* AuthRequest.swift */,
+				CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */,
+				CEDEB868258CE1EB007B2BCA /* EditUserInfo.swift */,
+				CEDEB86D258CE208007B2BCA /* EditPasswordRequest.swift */,
+				CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */,
+			);
+			path = RequestList;
+			sourceTree = "<group>";
+		};
+		CEDEB877258CE22A007B2BCA /* ResponseEntity */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB878258CE240007B2BCA /* Responses.swift */,
+			);
+			path = ResponseEntity;
+			sourceTree = "<group>";
+		};
+		CEDEB87D258CE2D9007B2BCA /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB87E258CE2EA007B2BCA /* Security.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		CEDEB886258CE77C007B2BCA /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB785258CB40A007B2BCA /* Assets.xcassets */,
+				CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */,
+				CEDEB78A258CB40A007B2BCA /* Info.plist */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		CEDEB887258CE793007B2BCA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB895258CEC2F007B2BCA /* Extensions */,
+				CEDEB888258CE7AC007B2BCA /* Fonts */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CEDEB888258CE7AC007B2BCA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB88A258CE83C007B2BCA /* UIFontExtension.swift */,
+				CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CEDEB895258CEC2F007B2BCA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */,
+				CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */,
+				CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEDEB8DF258CF94C007B2BCA /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +291,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDEB7A3258CB40B007B2BCA /* Build configuration list for PBXNativeTarget "DoSport" */;
 			buildPhases = (
+				C904505308A6C69E46A5BCEC /* [CP] Check Pods Manifest.lock */,
 				CEDEB775258CB404007B2BCA /* Sources */,
 				CEDEB776258CB404007B2BCA /* Frameworks */,
 				CEDEB777258CB404007B2BCA /* Resources */,
+				BB409A4C5FD3D11426325938 /* [CP] Embed Pods Frameworks */,
+				22774913ECC54F2697B8651F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,14 +411,88 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22774913ECC54F2697B8651F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB409A4C5FD3D11426325938 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C904505308A6C69E46A5BCEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoSport-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CEDEB775258CB404007B2BCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDEB781258CB404007B2BCA /* ViewController.swift in Sources */,
+				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
+				CEDEB88B258CE83C007B2BCA /* UIFontExtension.swift in Sources */,
+				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
+				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
+				CEDEB869258CE1EB007B2BCA /* EditUserInfo.swift in Sources */,
+				CEDEB841258CE146007B2BCA /* AbstractRequestFactory.swift in Sources */,
+				CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */,
+				CEDEB849258CE182007B2BCA /* RequestFactory.swift in Sources */,
+				CEDEB781258CB404007B2BCA /* Rules.swift in Sources */,
+				CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */,
+				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
+				CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
+				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
+				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
+				CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */,
+				CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +590,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -409,7 +645,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -421,12 +657,13 @@
 		};
 		CEDEB7A4258CB40B007B2BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D51EE22CF44F5B29B2793A8C /* Pods-DoSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R79A6C4N5;
-				INFOPLIST_FILE = DoSport/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,18 +671,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SergeyU.DoSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CEDEB7A5258CB40B007B2BCA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4R79A6C4N5;
-				INFOPLIST_FILE = DoSport/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,7 +691,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SergeyU.DoSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
