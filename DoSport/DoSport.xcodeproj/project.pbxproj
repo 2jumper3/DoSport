@@ -31,7 +31,6 @@
 		CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
 		CEDEB879258CE240007B2BCA /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB878258CE240007B2BCA /* Responses.swift */; };
 		CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB87E258CE2EA007B2BCA /* Security.swift */; };
-		CEDEB88B258CE83C007B2BCA /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB88A258CE83C007B2BCA /* UIFontExtension.swift */; };
 		CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */; };
 		CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */; };
 		CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */; };
@@ -86,7 +85,6 @@
 		CEDEB878258CE240007B2BCA /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
 		CEDEB87E258CE2EA007B2BCA /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
 		CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
-		CEDEB88A258CE83C007B2BCA /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -142,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				65AF25F3258D04F10037D2B5 /* Fonts.swift */,
+				CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -291,18 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				CEDEB895258CEC2F007B2BCA /* Extensions */,
-				CEDEB888258CE7AC007B2BCA /* Fonts */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		CEDEB888258CE7AC007B2BCA /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				CEDEB88A258CE83C007B2BCA /* UIFontExtension.swift */,
-				CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CEDEB895258CEC2F007B2BCA /* Extensions */ = {
@@ -517,7 +506,6 @@
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
-				CEDEB88B258CE83C007B2BCA /* UIFontExtension.swift in Sources */,
 				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
 				CEDEB869258CE1EB007B2BCA /* EditUserInfo.swift in Sources */,
