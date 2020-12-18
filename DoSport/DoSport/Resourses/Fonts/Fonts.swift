@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 public enum Fonts {
-    
+    static func sfProNormal(size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProDisplay-Regular", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+    }
 }

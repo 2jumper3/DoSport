@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .dirtyBlue
+        self.view.backgroundColor = Colors.darkBlue
     }
     //Please add new UIControllers in \Flow\
     //all appColors in \helpers\extensions\colors
