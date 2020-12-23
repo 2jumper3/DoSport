@@ -5,4 +5,11 @@
 //  Created by Komolbek Ibragimov on 22/12/2020.
 //
 
-import Foundation
+import UIKit
+
+protocol Assembly {
+    associatedtype ViewController: UIViewController
+    
+    func makeModule() -> ViewController
+}
+
