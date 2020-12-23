@@ -16,7 +16,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                 // do only pure app launch stuff, not interface stuff
             } else {
                 self.window = UIWindow()
-                let vc = ViewController()
+                let vc = OnBoardingViewController()
                 self.window!.rootViewController = vc
                 self.window!.makeKeyAndVisible()
                 self.window!.backgroundColor = .red

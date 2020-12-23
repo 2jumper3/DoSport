@@ -32,7 +32,7 @@ class OnBoardingViewCell: UICollectionViewCell {
 
     private let headerLabel: UILabel = {
         let label = UILabel()
-        label.font = Fonts.sfProNormal(size: 32)
+        label.font = Fonts.sfProRegular(size: 32)
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -41,7 +41,7 @@ class OnBoardingViewCell: UICollectionViewCell {
     
     private let descriptionLabel: UITextView = {
         let textView = UITextView()
-        textView.font = Fonts.sfProNormal(size: 16)
+        textView.font = Fonts.sfProRegular(size: 16)
         textView.textColor = .white
         textView.backgroundColor = .clear
         textView.adjustsFontForContentSizeCategory = true
