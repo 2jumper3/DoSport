@@ -10,11 +10,11 @@ import UIKit
 final class AuthViewController: UIViewController {
     
     var coordinator: AuthCoordinator?
-    private let viewModel: PhoneAddViewModel
+    private let viewModel: AuthViewModel
     
     // MARK: - Init
     
-    init(viewModel: PhoneAddViewModel) {
+    init(viewModel: AuthViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -27,6 +27,6 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        
     }
 }

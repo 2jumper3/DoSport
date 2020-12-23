@@ -9,9 +9,9 @@ import UIKit
 
 final class AuthAssembly: Assembly {
     
-    func makeModule() -> PhoneAddViewController {
-        let viewModel = PhoneAddViewModel()
-        let viewController = PhoneAddViewController(viewModel: viewModel)
+    func makeModule() -> AuthViewController {
+        let viewModel = AuthViewModel()
+        let viewController = AuthViewController(viewModel: viewModel)
         return viewController
     }
 }
