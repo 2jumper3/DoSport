@@ -147,7 +147,6 @@ final class AuthView: UIView {
                 $0.bottom.equalToSuperview().offset(-16)
                 $0.width.centerX.height.equalTo(phoneNumberAddView)
             }
-            
         }
     }
     
