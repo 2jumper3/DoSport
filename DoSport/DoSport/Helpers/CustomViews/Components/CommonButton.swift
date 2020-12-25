@@ -16,11 +16,11 @@ final class CommonButton: UIButton {
     weak var delegate: CommonButtonDelegate?
     
     enum State {
-        case disabled(title: String? = "")
-        case normal(title: String? = "")
+        case disabled
+        case normal
     }
     
-    private var commonState: State = .normal() {
+    private var commonState: State = .normal {
         didSet {
             setState()
         }
@@ -28,9 +28,10 @@ final class CommonButton: UIButton {
     
     //MARK: - Init
     
-    init() {
+    init(title: String = "", state: State = .normal) {
         super.init(frame: .zero)
         layer.cornerRadius = 8
+        bind(title: title, state: state)
     }
     
     @available(*, unavailable)
@@ -40,7 +41,9 @@ final class CommonButton: UIButton {
     
     //MARK: - Bind
     
-    func bind(state: State) {
+    func bind(title: String = "", state: State) {
+        setTitle(title, for: .normal)
+        setTitleColor(.white, for: .normal)
         commonState = state
     }
     
@@ -54,13 +57,11 @@ final class CommonButton: UIButton {
     
     private func setState() {
         switch commonState {
-        case .disabled(let title):
-            setTitle(title, for: .disabled)
-            setTitleColor(.white, for: .disabled)
+        case .disabled:
+            isUserInteractionEnabled = false
             backgroundColor = Colors.dirtyBlue
-        case .normal(let title):
-            setTitle(title, for: .normal)
-            setTitleColor(.white, for: .normal)
+        case .normal:
+            isUserInteractionEnabled = true
             backgroundColor = Colors.lightBlue
         }
     }

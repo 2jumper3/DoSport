@@ -8,7 +8,9 @@
 import UIKit.UIImage
 
 public enum Icons {
-    
+    enum Auth {
+        static var logo = image(named: "logo_image")
+    }
 }
 
 extension Icons {

@@ -25,8 +25,28 @@ final class AuthViewController: UIViewController {
     
     // MARK: - Life Cycle
     
+    override func loadView() {
+        let view = AuthView()
+        view.delegate = self
+        self.view = view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
+extension AuthViewController: AuthViewDelegate {
+    func regionSelectionButtonTapped() {
+        print(111)
+    }
+    
+    func submitButtonTapped() {
+        print(222)
     }
 }
