@@ -9,6 +9,23 @@
 /* Begin PBXBuildFile section */
 		0A189916C417114A643406C3 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED130427424E2AEEF396846 /* Pods_DoSport.framework */; };
 		6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529500B258D6EE2002AA621 /* UIColor+inits.swift */; };
+		65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870507259209ED00EFF7C7 /* AuthViewController.swift */; };
+		65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870512259209F700EFF7C7 /* AuthViewModel.swift */; };
+		6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051725920A0100EFF7C7 /* AuthCoordinator.swift */; };
+		6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
+		6587052C25920EC800EFF7C7 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587052B25920EC800EFF7C7 /* CommonButton.swift */; };
+		65870536259216AA00EFF7C7 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870535259216AA00EFF7C7 /* Assembly.swift */; };
+		6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587053D2592493400EFF7C7 /* Coordinator.swift */; };
+		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
+		658705512592540D00EFF7C7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* AuthView.swift */; };
+		659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */; };
+		659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* RegistrationViewController.swift */; };
+		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
+		659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61A42593DB3F00C33D05 /* RegistrationCoordinator.swift */; };
+		659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61AC2593DB5A00C33D05 /* RegistrationView.swift */; };
+		659C61B42593DE0C00C33D05 /* PhoneNumberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */; };
+		659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
+		659C61C92593E15700C33D05 /* UserRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserRegion.swift */; };
 		65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F0258D04E60037D2B5 /* Icons.swift */; };
 		65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F3258D04F10037D2B5 /* Fonts.swift */; };
 		65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F6258D04FD0037D2B5 /* Texts.swift */; };
@@ -55,6 +72,23 @@
 
 /* Begin PBXFileReference section */
 		6529500B258D6EE2002AA621 /* UIColor+inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+inits.swift"; sourceTree = "<group>"; };
+		65870507259209ED00EFF7C7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		65870512259209F700EFF7C7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		6587051725920A0100EFF7C7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
+		6587052B25920EC800EFF7C7 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		65870535259216AA00EFF7C7 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		6587053D2592493400EFF7C7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		6587054B25924C3200EFF7C7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		658705502592540D00EFF7C7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
+		659C619A2593DB2700C33D05 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		659C61A42593DB3F00C33D05 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		659C61AC2593DB5A00C33D05 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberAddView.swift; sourceTree = "<group>"; };
+		659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
+		659C61C82593E15700C33D05 /* UserRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegion.swift; sourceTree = "<group>"; };
 		65AF25F0258D04E60037D2B5 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		65AF25F3258D04F10037D2B5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		65AF25F6258D04FD0037D2B5 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
@@ -125,6 +159,120 @@
 				DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		65870505259209A700EFF7C7 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */,
+				659C61A42593DB3F00C33D05 /* RegistrationCoordinator.swift */,
+				659C61AC2593DB5A00C33D05 /* RegistrationView.swift */,
+				659C619A2593DB2700C33D05 /* RegistrationViewController.swift */,
+				659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */,
+				659C61722593D16100C33D05 /* Submodules */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		6587052825920D0A00EFF7C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				659C61C82593E15700C33D05 /* UserRegion.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6587052925920D9800EFF7C7 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				6587052A25920DA300EFF7C7 /* Components */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		6587052A25920DA300EFF7C7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
+				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		658705332592169D00EFF7C7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				658705342592169F00EFF7C7 /* Protocols */,
+				6587053D2592493400EFF7C7 /* Coordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		658705342592169F00EFF7C7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				65870535259216AA00EFF7C7 /* Assembly.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		659C61722593D16100C33D05 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				659C61B12593DB6600C33D05 /* CodeEntry */,
+				659C61B22593DB7100C33D05 /* InterestsSelection */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		659C61732593D3F700C33D05 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */,
+				6587051725920A0100EFF7C7 /* AuthCoordinator.swift */,
+				658705502592540D00EFF7C7 /* AuthView.swift */,
+				65870507259209ED00EFF7C7 /* AuthViewController.swift */,
+				65870512259209F700EFF7C7 /* AuthViewModel.swift */,
+				659C61942593DAC700C33D05 /* Submodules */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		659C61922593DA5100C33D05 /* CountryList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CountryList;
+			sourceTree = "<group>";
+		};
+		659C61932593DA6600C33D05 /* PasswordEntry */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PasswordEntry;
+			sourceTree = "<group>";
+		};
+		659C61942593DAC700C33D05 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				659C61922593DA5100C33D05 /* CountryList */,
+				659C61932593DA6600C33D05 /* PasswordEntry */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		659C61B12593DB6600C33D05 /* CodeEntry */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CodeEntry;
+			sourceTree = "<group>";
+		};
+		659C61B22593DB7100C33D05 /* InterestsSelection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InterestsSelection;
 			sourceTree = "<group>";
 		};
 		65AF25EF258D04DF0037D2B5 /* Icons */ = {
@@ -219,6 +367,7 @@
 			children = (
 				CEDEB77C258CB404007B2BCA /* AppDelegate.swift */,
 				CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */,
+				6587054B25924C3200EFF7C7 /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -289,6 +438,9 @@
 		CEDEB887258CE793007B2BCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				658705332592169D00EFF7C7 /* Base */,
+				6587052925920D9800EFF7C7 /* CustomViews */,
+				6587052825920D0A00EFF7C7 /* Models */,
 				CEDEB895258CEC2F007B2BCA /* Extensions */,
 			);
 			path = Helpers;
@@ -301,6 +453,7 @@
 				CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */,
 				CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */,
 				6529500B258D6EE2002AA621 /* UIColor+inits.swift */,
+				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +461,8 @@
 		CEDEB8DF258CF94C007B2BCA /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				659C61732593D3F700C33D05 /* Auth */,
+				65870505259209A700EFF7C7 /* Registration */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -504,22 +659,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
+				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
+				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
+				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
+				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
+				659C61C92593E15700C33D05 /* UserRegion.swift in Sources */,
 				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
+				659C61B42593DE0C00C33D05 /* PhoneNumberAddView.swift in Sources */,
 				CEDEB869258CE1EB007B2BCA /* EditUserInfo.swift in Sources */,
 				CEDEB841258CE146007B2BCA /* AbstractRequestFactory.swift in Sources */,
+				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */,
+				6587052C25920EC800EFF7C7 /* CommonButton.swift in Sources */,
 				CEDEB849258CE182007B2BCA /* RequestFactory.swift in Sources */,
+				6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */,
+				659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */,
 				CEDEB781258CB404007B2BCA /* Rules.swift in Sources */,
 				CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */,
+				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
+				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
+				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
+				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
+				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
+				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
+				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
