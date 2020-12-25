@@ -7,6 +7,21 @@
 
 import UIKit
 
+/**
+  Usage:
+  You have to confirm `CommonButtonDelegate` from your ViewController where you want to handle this button click
+  
+  Sample:
+  ```
+  extension SomViewController: CommonButtonDelegate {
+  
+         func commonButtonTapped(_ sender: CommonButton, tappedWithState: CommonButton.State) {
+             ```you click handle code goes here ```
+         }
+  
+     }
+  */
+
 protocol CommonButtonDelegate: AnyObject {
     func commonButtonTapped(_ commonButton: CommonButton, tappedWithState: CommonButton.State)
 }
