@@ -4,25 +4,26 @@
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
 //
+
 import UIKit
 
 /**
- Usage:
- You have to confirm `CommonButtonDelegate` from your ViewController where you want to handle this button click
- 
- Sample:
- ```
- extension SomViewController: CommonButtonDelegate {
- 
-        func commonButtonTapped(_ sender: CommonButton, tappedWithState: CommonButton.State) {
-            ```you click handle code goes here ```
-        }
- 
-    }
- */
+  Usage:
+  You have to confirm `CommonButtonDelegate` from your ViewController where you want to handle this button click
+  
+  Sample:
+  ```
+  extension SomViewController: CommonButtonDelegate {
+  
+         func commonButtonTapped(_ sender: CommonButton, tappedWithState: CommonButton.State) {
+             ```you click handle code goes here ```
+         }
+  
+     }
+  */
 
 protocol CommonButtonDelegate: AnyObject {
-    func commonButtonTapped(_ sender: CommonButton, tappedWithState: CommonButton.State)
+    func commonButtonTapped(_ commonButton: CommonButton, tappedWithState: CommonButton.State)
 }
 
 final class CommonButton: UIButton {
@@ -30,11 +31,11 @@ final class CommonButton: UIButton {
     weak var delegate: CommonButtonDelegate?
     
     enum State {
-        case disabled(title: String? = "")
-        case normal(title: String? = "")
+        case disabled
+        case normal
     }
     
-    private var commonState: State = .normal() {
+    private var commonState: State = .normal {
         didSet {
             setState()
         }
@@ -42,9 +43,10 @@ final class CommonButton: UIButton {
     
     //MARK: - Init
     
-    init() {
+    init(title: String = "", state: State = .normal) {
         super.init(frame: .zero)
         layer.cornerRadius = 8
+        bind(title: title, state: state)
     }
     
     @available(*, unavailable)
@@ -54,7 +56,9 @@ final class CommonButton: UIButton {
     
     //MARK: - Bind
     
-    func bind(state: State) {
+    func bind(title: String = "", state: State) {
+        setTitle(title, for: .normal)
+        setTitleColor(.white, for: .normal)
         commonState = state
     }
     
@@ -68,13 +72,11 @@ final class CommonButton: UIButton {
     
     private func setState() {
         switch commonState {
-        case .disabled(let title):
-            setTitle(title, for: .disabled)
-            setTitleColor(.white, for: .disabled)
+        case .disabled:
+            isUserInteractionEnabled = false
             backgroundColor = Colors.dirtyBlue
-        case .normal(let title):
-            setTitle(title, for: .normal)
-            setTitleColor(.white, for: .normal)
+        case .normal:
+            isUserInteractionEnabled = true
             backgroundColor = Colors.lightBlue
         }
     }
