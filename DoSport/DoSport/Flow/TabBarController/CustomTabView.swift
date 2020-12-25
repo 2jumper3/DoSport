@@ -13,16 +13,9 @@ class CustomTabView: UIView {
     var activeItem: Int = 0
 
     // MARK: - Init
-    override init(frame: CGRect) {
+
+     init(menuItems: [TabBarItem], frame: CGRect) {
         super.init(frame: frame)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    convenience init(menuItems: [TabBarItem], frame: CGRect) {
-        self.init(frame: frame)
         self.isUserInteractionEnabled = true
 
         for item in 0..<menuItems.count {
@@ -33,18 +26,22 @@ class CustomTabView: UIView {
             self.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
 
-            NSLayoutConstraint.activate([
-                    itemView.heightAnchor.constraint(equalTo: self.heightAnchor),
-                    itemView.widthAnchor.constraint(equalToConstant: itemWidth),
-                    itemView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leadingAnchor),
-                    itemView.topAnchor.constraint(equalTo: self.topAnchor)
-                ])
+            itemView.snp.makeConstraints { (make) in
+                make.height.equalTo(snp.height)
+                make.width.equalTo(itemWidth)
+                make.leading.equalTo(snp.leading).offset(leadingAnchor)
+                make.top.equalTo(snp.top)
+            }
         }
         self.setNeedsLayout()
         self.layoutIfNeeded()
         self.activateTab(tab: 0)
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Setup UI tabitem
     func createTabItem(item: TabBarItem) -> UIView {
         let tabBarItem = UIView()
@@ -64,18 +61,19 @@ class CustomTabView: UIView {
 
         tabBarItem.addSubview(itemView)
         itemView.addSubview(itemIconView)
-
-        NSLayoutConstraint.activate([
-            itemView.topAnchor.constraint(equalTo: tabBarItem.topAnchor),
-            itemView.bottomAnchor.constraint(equalTo: tabBarItem.bottomAnchor),
-            itemView.leadingAnchor.constraint(equalTo: tabBarItem.leadingAnchor),
-            itemView.trailingAnchor.constraint(equalTo: tabBarItem.trailingAnchor),
-
-            itemIconView.heightAnchor.constraint(equalToConstant: 24),
-            itemIconView.widthAnchor.constraint(equalToConstant: 24),
-            itemIconView.topAnchor.constraint(equalTo: itemView.topAnchor, constant: 20),
-            itemIconView.centerXAnchor.constraint(equalTo: itemView.centerXAnchor)
-        ])
+        
+        itemView.snp.makeConstraints { (make) in
+            make.top.equalTo(tabBarItem.snp.top)
+            make.bottom.equalTo(tabBarItem.snp.bottom)
+            make.leading.equalTo(tabBarItem.snp.leading)
+            make.trailing.equalTo(tabBarItem.snp.trailing)
+        }
+        itemIconView.snp.makeConstraints { (make) in
+            make.height.equalTo(24)
+            make.width.equalTo(24)
+            make.top.equalTo(itemView.snp.top).offset(20)
+            make.centerX.equalTo(itemView.snp.centerX)
+        }
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
         tabBarItem.addGestureRecognizer(tapGesture)

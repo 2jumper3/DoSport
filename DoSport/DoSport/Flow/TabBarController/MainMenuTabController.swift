@@ -49,16 +49,15 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
         self.customTabBar = CustomTabView(menuItems: items, frame: frame)
         self.customTabBar.translatesAutoresizingMaskIntoConstraints = false
         self.customTabBar.itemTapped = self.changeTab
-
         self.view.addSubview(customTabBar)
 
-        NSLayoutConstraint.activate([
-            self.customTabBar.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor),
-            self.customTabBar.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor),
-            self.customTabBar.widthAnchor.constraint(equalToConstant: tabBar.frame.width),
-            self.customTabBar.heightAnchor.constraint(equalToConstant: tabBarHeight),
-            self.customTabBar.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor)
-        ])
+        customTabBar.snp.makeConstraints { (make) in
+            make.leading.equalTo(tabBar.snp.leading)
+            make.trailing.equalTo(tabBar.snp.trailing)
+            make.width.equalTo(tabBar.snp.width)
+            make.height.equalTo(tabBarHeight)
+            make.bottom.equalTo(tabBar.snp.bottom)
+        }
 
         for item in 0 ..< items.count {
             controllers.append(items[item].viewController)
