@@ -10,6 +10,19 @@ import UIKit.UIImage
 public enum Icons {
     enum Auth {
         static var logo = image(named: "logo_image")
+    enum OnboardingIcons {
+        static var firstIcon: UIImage {
+            return Icons.image(named: "firstPlayer")
+        }
+        static var secondIcon: UIImage {
+            return Icons.image(named: "secondPlayer")
+        }
+        static var thirdIcon: UIImage {
+            return Icons.image(named: "thirdPlayer")
+        }
+        static var fourthIcon: UIImage {
+            return Icons.image(named: "fourPNG")
+        }
     }
 }
 
