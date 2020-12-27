@@ -7,6 +7,19 @@
 
 import Foundation
 
+//MARK: - Auth Screen
+extension Texts {
+    enum Auth {
+        static let submit = "Отправить SMS"
+        static let phoneNumberPlaceholder = "Номер телефона"
+        static let enter = "Вход"
+        static let description = "Ваш номер телефона будет использоваться для входа в приложение"
+        enum Regulations {
+            static let upper = "Нажимая «Отправить SMS», ты принимаешь "
+            static let bottom = "Правила пользования и Защиты информации"
+}
+}
+}
 public enum Texts {
     enum OnBoardingText {
         enum headers {
