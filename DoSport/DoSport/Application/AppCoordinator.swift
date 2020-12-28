@@ -27,7 +27,7 @@ final class AppCoordinator: Coordinator {
         } else {
             let myCoordinator = AuthCoordinator()
             myCoordinator.start()
-            window.rootViewController = myCoordinator.rootViewController
+            window.rootViewController = myCoordinator.navigationController
         }
     }
 }

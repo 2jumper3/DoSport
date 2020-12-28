@@ -39,11 +39,23 @@ final class AuthViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    /// Hide navigation bar before this ViewController will appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    /// Show navigation bar after this ViewController did disappear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }
 
 extension AuthViewController: AuthViewDelegate {
     func regionSelectionButtonTapped() {
-        print(111)
+        coordinator?.goToCountryListModule()
     }
     
     func submitButtonTapped() {

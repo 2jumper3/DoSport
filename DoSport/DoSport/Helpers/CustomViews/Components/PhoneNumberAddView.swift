@@ -23,7 +23,7 @@ final class PhoneNumberAddView: UIView {
     private lazy var button: UIButton = {
         $0.titleLabel?.font = Fonts.sfProRegular(size: 12)
         $0.setTitleColor(.white, for: .normal)
-        $0.setTitle(("+\(RegionCode.c_994.rawValue)"), for: .normal)
+        $0.setTitle(("+7"), for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.titleLabel?.textAlignment = .center
         return $0
