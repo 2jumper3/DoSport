@@ -180,3 +180,12 @@ final class AuthView: UIView {
     }
 }
 
+//MARK: - Public Methods
+
+extension AuthView {
+    func bind(callingCode: String) {
+        phoneNumberAddView.bind(callingCode: callingCode)
+        layoutIfNeeded()
+    }
+}
+

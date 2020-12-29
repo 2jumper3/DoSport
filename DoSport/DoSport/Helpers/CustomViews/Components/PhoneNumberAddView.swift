@@ -85,6 +85,15 @@ final class PhoneNumberAddView: UIView {
             $0.right.equalToSuperview().offset(-5)
         }
     }
+}
+
+//MARK: - Public Methods
+ 
+extension PhoneNumberAddView {
+    func bind(callingCode: String) {
+        self.button.setTitle(callingCode, for: .normal)
+        layoutIfNeeded()
+    }
     
     func addButtonTarget(_ target: Any?, action: Selector) {
         button.addTarget(target, action: action, for: .touchUpInside)

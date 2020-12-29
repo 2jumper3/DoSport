@@ -12,6 +12,8 @@ final class AuthViewController: UIViewController {
     var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
     
+    private lazy var authView = self.view as! AuthView
+
     // MARK: - Init
     
     init(viewModel: AuthViewModel) {
@@ -55,7 +57,9 @@ final class AuthViewController: UIViewController {
 
 extension AuthViewController: AuthViewDelegate {
     func regionSelectionButtonTapped() {
-        coordinator?.goToCountryListModule()
+        coordinator?.goToCountryListModule { callingCode in
+            self.authView.bind(callingCode: callingCode)
+        }
     }
     
     func submitButtonTapped() {

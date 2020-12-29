@@ -9,7 +9,8 @@ import Foundation
 
 final class CountryListAssembly: Assembly {
     func makeModule() -> CountryListViewController {
-        let vc = CountryListViewController()
+        let viewModel = CountryListViewModel()
+        let vc = CountryListViewController(viewModel: viewModel)
         return vc
     }
 }

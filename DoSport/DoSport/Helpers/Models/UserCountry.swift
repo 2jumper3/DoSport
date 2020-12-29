@@ -16,9 +16,9 @@ struct Country: Codable {
     let callingCode: String?
     let code: String?
     
-    enum Keys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name = "name"
-        case collingCode = "dual_code"
+        case callingCode = "dial_code"
         case code = "code"
     }
 }
