@@ -25,6 +25,9 @@ public enum Icons {
             return Icons.image(named: "fourPNG")
         }
     }
+    enum FilterIcon {
+        static var filter = image(named: "Filter")
+    }
 }
 
 extension Icons {

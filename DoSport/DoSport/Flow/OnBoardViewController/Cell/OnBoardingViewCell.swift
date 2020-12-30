@@ -63,7 +63,6 @@ class OnBoardingViewCell: UICollectionViewCell {
     // MARK: - Helpers functions
     func layoutSubview() {
         contentView.addSubview(imageView)
-//        addSubview(imageView)
         imageView.contentMode = .center
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.snp.makeConstraints { (make) in

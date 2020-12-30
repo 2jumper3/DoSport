@@ -17,9 +17,10 @@ extension Texts {
         enum Regulations {
             static let upper = "Нажимая «Отправить SMS», ты принимаешь "
             static let bottom = "Правила пользования и Защиты информации"
+        }
+    }
 }
-}
-}
+//MARK: - OnBoardingTexts
 public enum Texts {
     enum OnBoardingText {
         enum headers {
