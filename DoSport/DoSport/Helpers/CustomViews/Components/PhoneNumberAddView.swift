@@ -17,7 +17,13 @@ final class PhoneNumberAddView: UIView {
     weak var delegate: PhoneNumberAddViewDelegate?
     
     var text: String {
-        return textField.text ?? ""
+        guard
+            let regionText = button.titleLabel?.text,
+            let phoneNumber = textField.text
+        else {
+            return ""
+        }
+        return regionText + " " + phoneNumber
     }
     
     private lazy var button: UIButton = {

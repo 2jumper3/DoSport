@@ -9,12 +9,11 @@ import UIKit
 
 final class DSBarBackButton: UIButton {
     
-    init(target: Any?, action: Selector) {
+    init() {
         super.init(frame: .zero)
         setImage(Icons.CountryList.backButton, for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
         contentMode = .scaleToFill
-        addTarget(target, action: action, for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {

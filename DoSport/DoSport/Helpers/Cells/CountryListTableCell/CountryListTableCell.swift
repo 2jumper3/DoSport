@@ -47,7 +47,7 @@ final class CountryListTableCell: UITableViewCell {
         }
         
         callingCodeLabel.snp.makeConstraints {
-            $0.right.equalToSuperview().offset(-10)
+            $0.right.equalToSuperview().offset(-20)
             $0.top.bottom.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.2)
         }

@@ -26,6 +26,9 @@
 		6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587053D2592493400EFF7C7 /* Coordinator.swift */; };
 		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
 		658705512592540D00EFF7C7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* AuthView.swift */; };
+		6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */; };
+		6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */; };
+		6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */; };
 		659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */; };
 		659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* RegistrationViewController.swift */; };
 		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
@@ -116,6 +119,9 @@
 		6587053D2592493400EFF7C7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6587054B25924C3200EFF7C7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		658705502592540D00EFF7C7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavigationController.swift; sourceTree = "<group>"; };
+		6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCellSectionModel.swift; sourceTree = "<group>"; };
+		6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCellHeaderView.swift; sourceTree = "<group>"; };
 		659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
 		659C619A2593DB2700C33D05 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -273,6 +279,7 @@
 		6587052925920D9800EFF7C7 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */,
 				6587052A25920DA300EFF7C7 /* Components */,
 				653408AD259A86680072542D /* NavBar */,
 			);
@@ -345,10 +352,20 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		65ECB2BD259BAC7100BF8CEE /* Cells */ = {
+		65CE01C925A88B8000556C7B /* CountryListTableCell */ = {
 			isa = PBXGroup;
 			children = (
 				65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */,
+				6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */,
+				6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */,
+			);
+			path = CountryListTableCell;
+			sourceTree = "<group>";
+		};
+		65ECB2BD259BAC7100BF8CEE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				65CE01C925A88B8000556C7B /* CountryListTableCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -778,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65340899259A77280072542D /* EditUserInfo.swift in Sources */,
+				6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */,
 				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
 				653408AF259A86D40072542D /* DSNavBar.swift in Sources */,
 				65FF8F002595DCFB0082A80E /* CommonButton.swift in Sources */,
@@ -808,6 +826,7 @@
 				6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */,
 				659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */,
 				CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */,
+				6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */,
 				656CC248259A4F8700DEC84C /* CountryListView.swift in Sources */,
 				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
 				65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */,
@@ -822,6 +841,7 @@
 				656CC23B259A4F7100DEC84C /* CountryListViewController.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
+				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,

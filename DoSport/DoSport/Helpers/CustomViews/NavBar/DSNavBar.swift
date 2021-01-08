@@ -25,11 +25,9 @@ final class DSNavBar: UIView {
         set { titleLabel.text = newValue}
     }
     
-    var searchBarDelegate: Any? = nil {
-        didSet {
-            
-        }
-    }
+    var onSearchButtonDidPress: ((String) -> Swift.Void)?
+    
+    private var leftConstraint: NSLayoutConstraint?
     
     private let titleLabel: UILabel = { // ToDo: Make text bold 500
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +49,7 @@ final class DSNavBar: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         translatesAutoresizingMaskIntoConstraints = false
+        searchBar.delegate = self
         
         addSubviews(titleLabel, searchBar)
     }
@@ -65,18 +64,22 @@ final class DSNavBar: UIView {
         titleLabel.snp.makeConstraints {
             $0.height.centerY.equalToSuperview()
             $0.centerX.equalToSuperview().offset(-5)
-            $0.width.equalToSuperview().multipliedBy(0.7)
+            $0.width.equalToSuperview().multipliedBy(0.8)
         }
         
-        searchBar.snp.makeConstraints {
-            $0.right.centerY.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.8)
-            $0.width.equalTo(searchBar.snp.height)
-        }
+        NSLayoutConstraint.activate([
+            searchBar.centerYAnchor.constraint(equalTo: centerYAnchor),
+            searchBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
+            searchBar.rightAnchor.constraint(equalTo: rightAnchor),
+        ])
+        
+        leftConstraint = searchBar.leftAnchor.constraint(equalTo: titleLabel.rightAnchor)
+        leftConstraint?.isActive = true
     }
 }
 
 //MARK: - Public methods
+
 extension DSNavBar {
     func bind(state: State) {
         self.state = state
@@ -84,14 +87,60 @@ extension DSNavBar {
 }
 
 //MARK: - Private Methods
+
 private extension DSNavBar {
     func setState() {
         switch self.state {
         case .active:
-            print(state)
+            performExpandAnimation()
         case .notActive:
-            print(state)
+            print(#function)
+//            performShrinkAnimation()
         }
+    }
+    
+    func performExpandAnimation() {
+        leftConstraint?.constant -= bounds.width - (bounds.height * 1.4)
+        setNeedsUpdateConstraints()
+        
+        UIView.animate(withDuration: 0.3) { [self] in
+            titleLabel.alpha = 0.0
+            layoutIfNeeded()
+        }
+    }
+    // FIXME
+//    func performShrinkAnimation() {
+//        searchBar.resignFirstResponder()
+//        leftConstraint?.constant += 150
+//        setNeedsUpdateConstraints()
+//
+//        UIView.animate(withDuration: 0.3) { [self] in
+//            titleLabel.alpha = 1.0
+//            searchBar.transform = CGAffineTransform(scaleX: 1.4, y: 1.0)
+//            layoutIfNeeded()
+//        }
+//    }
+}
+
+//MARK: - UISearchBarDelegate
+
+extension DSNavBar: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        if state == .notActive {
+            bind(state: .active)
+        }
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        searchBar.resignFirstResponder()
+        onSearchButtonDidPress?(text)
+        searchBar.text = ""
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print(11123971289427190)
     }
 }
 

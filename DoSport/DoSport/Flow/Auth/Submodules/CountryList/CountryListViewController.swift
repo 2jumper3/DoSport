@@ -13,11 +13,7 @@ final class CountryListViewController: UIViewController {
     let viewModel: CountryListViewModel
     
     private lazy var countryView = self.view as! CountryListView
-    
-    private lazy var navBar: DSNavBar = {
-        $0.searchBarDelegate = self
-        return $0
-    }(DSNavBar())
+    private lazy var navBar = DSNavBar()
     
     private lazy var tableManager: CountryListDataSource = {
         $0.onCountryDidSelect = { [weak self] country in
@@ -27,7 +23,10 @@ final class CountryListViewController: UIViewController {
     }(CountryListDataSource())
 
     
-    private lazy var goBackButton = DSBarBackButton(target: self, action: #selector(handleGoBackButton))
+    private lazy var goBackButton: DSBarBackButton = {
+        $0.addTarget(self, action: #selector(handleGoBackButton), for: .touchUpInside)
+        return $0
+    }(DSBarBackButton())
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -56,7 +55,14 @@ final class CountryListViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavBar()
-        loadCountries()
+        setupViewModel()
+        
+        viewModel.loadCountries()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
     }
 }
 
@@ -65,15 +71,22 @@ private extension CountryListViewController {
     func setupNavBar() {
         navBar.title = Texts.CountryList.title
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: goBackButton)
+        
+        navBar.onSearchButtonDidPress = { [weak self] text in
+            self?.viewModel.prepareCountriesToSearch(by: text)
+        }
     }
     
-    func loadCountries() {
-        viewModel.onCountriesDidLoad = { [weak self] countries in
-            self?.tableManager.viewModels = countries
+    func setupViewModel() {
+//        viewModel.onCountriesDidLoad = { [weak self] countries in
+//            self?.tableManager.viewModels = countries
+//            self?.updateView()
+//        }
+        
+        viewModel.onSectionsDidSet = { [weak self] sections in
+            self?.tableManager.viewModels = sections
             self?.updateView()
         }
-        
-        viewModel.loadCountries()
     }
     
     func updateView() {

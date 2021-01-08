@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol AuthViewDelegate: AnyObject {
-    func submitButtonTapped()
+    func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
 }
 
@@ -151,9 +151,10 @@ final class AuthView: UIView {
     }
     
     //MARK: - Actions
-    
+
     @objc private func handleSubmitButton() {
-        delegate?.submitButtonTapped()
+        let text = phoneNumberAddView.text
+        delegate?.submitButtonTapped(with: text)
     }
     
     @objc private func handleRegionSelectionButton() {
@@ -185,6 +186,7 @@ final class AuthView: UIView {
 extension AuthView {
     func bind(callingCode: String) {
         phoneNumberAddView.bind(callingCode: callingCode)
+        submitButton.bind(state: .normal) // for test purposes, can be removed
         layoutIfNeeded()
     }
 }

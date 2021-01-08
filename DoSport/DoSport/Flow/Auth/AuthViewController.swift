@@ -37,7 +37,7 @@ final class AuthViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -45,6 +45,7 @@ final class AuthViewController: UIViewController {
     /// Hide navigation bar before this ViewController will appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -61,8 +62,8 @@ extension AuthViewController: AuthViewDelegate {
             self.authView.bind(callingCode: callingCode)
         }
     }
-    
-    func submitButtonTapped() {
-        print(222)
+   
+    func submitButtonTapped(with text: String) {
+        print(text)
     }
 }

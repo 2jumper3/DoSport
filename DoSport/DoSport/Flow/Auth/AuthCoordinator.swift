@@ -17,7 +17,7 @@ final class AuthCoordinator: Coordinator {
     init() {
         let assembly = AuthAssembly()
         self.rootViewController = assembly.makeModule()
-        self.navigationController = UINavigationController()
+        self.navigationController = DSNavigationController()
         self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
         self.navigationController?.navigationBar.isTranslucent = false
     }

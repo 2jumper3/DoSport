@@ -11,9 +11,9 @@ final class CountryListDataSource: NSObject {
     
     var onCountryDidSelect: ((Country) -> Swift.Void)?
     
-    var viewModels: [Country]
+    var viewModels: [CountryListTableCellSectionModel]
     
-    init(viewModels: [Country] = []) {
+    init(viewModels: [CountryListTableCellSectionModel] = []) {
         self.viewModels = viewModels
         super.init()
     }
@@ -23,15 +23,27 @@ final class CountryListDataSource: NSObject {
 //MARK: - UITableViewDataSource
 
 extension CountryListDataSource: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         viewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModels[section].countries.count
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        viewModels.map { $0.letter }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return CountryListTableCellHeaderView(title: viewModels[section].letter)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CountryListTableCell = tableView.cell(forRowAt: indexPath)
         cell.updateConstraintsIfNeeded()
         
-        let viewModel = viewModels[indexPath.row]
+        let viewModel = viewModels[indexPath.section].countries[indexPath.row]
         cell.bind(country: viewModel)
         
         return cell
@@ -42,7 +54,7 @@ extension CountryListDataSource: UITableViewDataSource {
 
 extension CountryListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewModel = viewModels[indexPath.row]
+        let viewModel = viewModels[indexPath.section].countries[indexPath.row]
         onCountryDidSelect?(viewModel)
     }
     

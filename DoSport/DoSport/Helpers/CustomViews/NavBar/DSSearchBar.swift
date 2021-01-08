@@ -26,6 +26,7 @@ final class DSSearchBar: UISearchBar {
         layer.cornerRadius = 8
         layer.borderWidth = 1.5
         layer.borderColor = Colors.mainBlue.cgColor
+        translatesAutoresizingMaskIntoConstraints = false
         
         if let textFieldInsideSearchBar = self.value(forKey: "searchField") as? UITextField {
             textFieldInsideSearchBar.textColor = .white
@@ -46,6 +47,7 @@ final class DSSearchBar: UISearchBar {
 }
 
 //MARK: - Public methods
+
 extension DSSearchBar {
     func bind(state: State) {
         self.state = state
@@ -53,6 +55,7 @@ extension DSSearchBar {
 }
 
 //MARK: - Private methods
+
 private extension DSSearchBar {
     func setState() {
         switch self.state {
@@ -62,9 +65,4 @@ private extension DSSearchBar {
             placeholder = ""
         }
     }
-}
-
-//MARK: - UISearchBarDelegate
-extension DSSearchBar: UISearchBarDelegate {
-    
 }
