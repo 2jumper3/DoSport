@@ -38,6 +38,7 @@
 		659C61C92593E15700C33D05 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */; };
 		65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */; };
+		65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587052B25920EC800EFF7C7 /* CommonButton.swift */; };
 		65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F0258D04E60037D2B5 /* Icons.swift */; };
 		65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F3258D04F10037D2B5 /* Fonts.swift */; };
 		65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F6258D04FD0037D2B5 /* Texts.swift */; };
@@ -49,7 +50,6 @@
 		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
 		65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C8259BAD1300BF8CEE /* Reusable.swift */; };
 		65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */; };
-		65FF8F002595DCFB0082A80E /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8EFF2595DCFB0082A80E /* CommonButton.swift */; };
 		7BF396CFD1C28B5915E7ED3A /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0107261957BEB8CDB3A46B6B /* Pods_DoSport.framework */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
@@ -144,7 +144,6 @@
 		65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellForRow.swift"; sourceTree = "<group>"; };
 		65ECB2C8259BAD1300BF8CEE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
-		65FF8EFF2595DCFB0082A80E /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		8710B000866633E1CFF6A5C8 /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -376,22 +375,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		65FF8EFD2595DCE90082A80E /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				65FF8EFE2595DCEF0082A80E /* Components */,
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		65FF8EFE2595DCEF0082A80E /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				65FF8EFF2595DCFB0082A80E /* CommonButton.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		A3E05DD1930B2B68A638B73F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,7 +534,6 @@
 				658705332592169D00EFF7C7 /* Base */,
 				65ECB2BD259BAC7100BF8CEE /* Cells */,
 				6587052925920D9800EFF7C7 /* CustomViews */,
-				65FF8EFD2595DCE90082A80E /* CustomViews */,
 				CEDEB895258CEC2F007B2BCA /* Extensions */,
 				6587052825920D0A00EFF7C7 /* Models */,
 				656CC268259A51FB00DEC84C /* Utils */,
@@ -800,12 +782,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				65340899259A77280072542D /* EditUserInfo.swift in Sources */,
 				6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
 				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
 				653408AF259A86D40072542D /* DSNavBar.swift in Sources */,
-				65FF8F002595DCFB0082A80E /* CommonButton.swift in Sources */,
 				6534089B259A77280072542D /* UIImage.swift in Sources */,
 				CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */,
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
