@@ -25,6 +25,9 @@ final class AppCoordinator: Coordinator {
         if isAuthorised {
             // open main module.. code
         } else {
+//            let vc = OnBoardingViewController()
+//            window.rootViewController = vc
+            
             let myCoordinator = AuthCoordinator()
             myCoordinator.start()
             window.rootViewController = myCoordinator.navigationController
