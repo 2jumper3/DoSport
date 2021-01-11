@@ -10,6 +10,10 @@ import SnapKit
 
 final class DSNavBar: UIView {
     
+    var onSearchButtonDidTap: ((String) -> Swift.Void)?
+    var onSeachBarDidChageText: ((String) -> Swift.Void)?
+    var onBackButtonDidTap: (() -> Swift.Void)?
+    
     enum State {
         case active, notActive
     }
@@ -25,9 +29,13 @@ final class DSNavBar: UIView {
         set { titleLabel.text = newValue}
     }
     
-    var onSearchButtonDidPress: ((String) -> Swift.Void)?
-    
     private var leftConstraint: NSLayoutConstraint?
+    
+    private lazy var backButton: DSBarBackButton = {
+        $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        return $0
+    }(DSBarBackButton())
+
     
     private let titleLabel: UILabel = { // ToDo: Make text bold 500
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +59,7 @@ final class DSNavBar: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         searchBar.delegate = self
         
-        addSubviews(titleLabel, searchBar)
+        addSubviews(backButton, titleLabel, searchBar)
     }
     
     required init?(coder: NSCoder) {
@@ -67,13 +75,19 @@ final class DSNavBar: UIView {
             $0.width.equalToSuperview().multipliedBy(0.8)
         }
         
+        backButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(0)
+            $0.height.centerY.equalToSuperview()
+            $0.width.equalTo(snp.height).multipliedBy(1.2)
+        }
+        
         NSLayoutConstraint.activate([
             searchBar.centerYAnchor.constraint(equalTo: centerYAnchor),
             searchBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
             searchBar.rightAnchor.constraint(equalTo: rightAnchor),
         ])
         
-        leftConstraint = searchBar.leftAnchor.constraint(equalTo: titleLabel.rightAnchor)
+        leftConstraint = searchBar.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: -5)
         leftConstraint?.isActive = true
     }
 }
@@ -83,6 +97,21 @@ final class DSNavBar: UIView {
 extension DSNavBar {
     func bind(state: State) {
         self.state = state
+    }
+    
+    func getSeachBar() -> UISearchBar {
+        return self.searchBar
+    }
+}
+
+//MARK: - Actions
+
+@objc
+extension DSNavBar {
+    func handleBackButton() {
+        hideKeyboard(for: searchBar) {
+            self.onBackButtonDidTap?()
+        }
     }
 }
 
@@ -100,7 +129,7 @@ private extension DSNavBar {
     }
     
     func performExpandAnimation() {
-        leftConstraint?.constant -= bounds.width - (bounds.height * 1.4)
+        leftConstraint?.constant -= bounds.width - (bounds.height * 1.4) - (backButton.frame.width - 10)
         setNeedsUpdateConstraints()
         
         UIView.animate(withDuration: 0.3) { [self] in
@@ -132,11 +161,15 @@ extension DSNavBar: UISearchBarDelegate {
         return true
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        onSeachBarDidChageText?(searchText)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        searchBar.resignFirstResponder()
-        onSearchButtonDidPress?(text)
-        searchBar.text = ""
+        hideKeyboard(for: searchBar) {
+            self.onSearchButtonDidTap?(text)
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

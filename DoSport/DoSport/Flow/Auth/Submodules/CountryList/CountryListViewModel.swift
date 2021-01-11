@@ -9,8 +9,8 @@ import Foundation
 
 final class CountryListViewModel {
     
-    var onCountriesDidLoad: (([Country]) -> Swift.Void)?
     var onSectionsDidSet: (([CountryListTableCellSectionModel]) -> Swift.Void)?
+    var onCountryDidNotMatch: (() -> Swift.Void)?
     
     var countries: [Country]? {
         didSet {
@@ -20,8 +20,11 @@ final class CountryListViewModel {
     
     var sections: [CountryListTableCellSectionModel]? {
         didSet {
-            guard let sections = sections else { return }
-            onSectionsDidSet?(sections)
+            if let sections = sections, sections.count != 0 {
+                onSectionsDidSet?(sections)
+            } else {
+                onCountryDidNotMatch?()
+            }
         }
     }
     
@@ -35,7 +38,7 @@ final class CountryListViewModel {
     
     func prepareCountriesToSearch(by preffix: String) {
         let newCountryList = countries?.compactMap { country -> Country? in
-            if country.name?.hasPrefix(preffix) == true {
+            if country.name?.lowercased().hasPrefix(preffix.lowercased()) == true {
                 return country
             } else {
                 return nil

@@ -30,7 +30,8 @@ final class DSSearchBar: UISearchBar {
         
         if let textFieldInsideSearchBar = self.value(forKey: "searchField") as? UITextField {
             textFieldInsideSearchBar.textColor = .white
-
+            textFieldInsideSearchBar.backgroundColor = Colors.darkBlue
+            
             let textFieldInsideSearchBarLabel = textFieldInsideSearchBar.value(forKey: "placeholderLabel") as? UILabel
             textFieldInsideSearchBarLabel?.textColor = Colors.mainBlue
             

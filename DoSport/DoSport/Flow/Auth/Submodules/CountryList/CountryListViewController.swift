@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CountryListViewController: UIViewController {
+final class CountryListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var coordinator: CountryListCoordinator?
     let viewModel: CountryListViewModel
@@ -17,16 +17,13 @@ final class CountryListViewController: UIViewController {
     
     private lazy var tableManager: CountryListDataSource = {
         $0.onCountryDidSelect = { [weak self] country in
-            self?.coordinator?.goBack(with: country)
+            guard self != nil else { return }
+            hideKeyboard(for: self!.navBar.getSeachBar()) {
+                self!.coordinator?.goBack(with: country)
+            }
         }
         return $0
     }(CountryListDataSource())
-
-    
-    private lazy var goBackButton: DSBarBackButton = {
-        $0.addTarget(self, action: #selector(handleGoBackButton), for: .touchUpInside)
-        return $0
-    }(DSBarBackButton())
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -54,6 +51,8 @@ final class CountryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.interactivePopGestureRecognizer?.delegate = self;
+        
         setupNavBar()
         setupViewModel()
         
@@ -67,25 +66,33 @@ final class CountryListViewController: UIViewController {
 }
 
 //MARK: - Private methods
+
 private extension CountryListViewController {
     func setupNavBar() {
         navBar.title = Texts.CountryList.title
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: goBackButton)
+        navigationItem.setHidesBackButton(true, animated: true)
         
-        navBar.onSearchButtonDidPress = { [weak self] text in
+        navBar.onSearchButtonDidTap = { [weak self] text in
             self?.viewModel.prepareCountriesToSearch(by: text)
+        }
+        
+        navBar.onSeachBarDidChageText = { [weak self] text in
+            self?.viewModel.prepareCountriesToSearch(by: text)
+        }
+        
+        navBar.onBackButtonDidTap = { [weak self] in
+            self?.coordinator?.goBack()
         }
     }
     
     func setupViewModel() {
-//        viewModel.onCountriesDidLoad = { [weak self] countries in
-//            self?.tableManager.viewModels = countries
-//            self?.updateView()
-//        }
-        
         viewModel.onSectionsDidSet = { [weak self] sections in
             self?.tableManager.viewModels = sections
             self?.updateView()
+        }
+        
+        viewModel.onCountryDidNotMatch = { [weak self] in
+            self?.countryView.updateView()
         }
     }
     

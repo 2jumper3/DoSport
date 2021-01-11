@@ -65,5 +65,6 @@ extension Texts {
     enum CountryList {
         static let title = "Регион"
         static let search = "Поиск"
+        static let noResults = "По вашему запросу ничего не найдено"
     }
 }

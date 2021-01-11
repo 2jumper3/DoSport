@@ -18,10 +18,15 @@ final class CountryListView: UIView {
     private lazy var tableView: UITableView = {
         $0.registerClass(CountryListTableCell.self)
         $0.backgroundColor = Colors.darkBlue
-        $0.separatorStyle = .singleLine
+        $0.separatorStyle = .none
+        $0.keyboardDismissMode = .onDrag
         return $0
     }(UITableView())
-
+    
+    private let emptyView: DSEmptyView = {
+        $0.isHidden = true
+        return $0
+    }(DSEmptyView())
     
     //MARK: - Init
     
@@ -29,7 +34,7 @@ final class CountryListView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(navBarSeparatorView, tableView)
+        addSubviews(navBarSeparatorView, tableView, emptyView)
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +54,10 @@ final class CountryListView: UIView {
             $0.top.equalTo(navBarSeparatorView.snp.bottom)
             $0.width.centerX.bottom.equalToSuperview()
         }
+        
+        emptyView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -56,8 +65,17 @@ final class CountryListView: UIView {
 
 extension CountryListView {
     func updateTableViewData(dataSource: (UITableViewDelegate & UITableViewDataSource)) {
+        if !emptyView.isHidden || tableView.isHidden {
+            emptyView.isHidden = true
+            tableView.isHidden = false
+        }
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         tableView.reloadData()
+    }
+    
+    func updateView() {
+        tableView.isHidden = true
+        emptyView.isHidden = false
     }
 }
