@@ -37,6 +37,12 @@ final class CountryListTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = ""
+        callingCodeLabel.text = ""
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
