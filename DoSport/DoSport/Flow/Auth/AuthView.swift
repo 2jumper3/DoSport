@@ -47,21 +47,9 @@ final class AuthView: UIView {
     }(PhoneNumberAddView())
     
     private let regulationsLabel: UILabel = {
-        let upperTextAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: Colors.dirtyBlue]
-        let bottomTextAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: Colors.mainBlue]
-
-        let text = NSMutableAttributedString(
-            string: Texts.Auth.Regulations.upper,
-            attributes: upperTextAttrs
-        )
-        let bottomText = NSMutableAttributedString(
-            string: Texts.Auth.Regulations.bottom, attributes: bottomTextAttrs
-        )
-
-        text.append(bottomText)
+        $0.makeAttributedText(with: Texts.Auth.Regulations.upper, and: Texts.Auth.Regulations.bottom)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.numberOfLines = 3
-        $0.attributedText = text
         $0.textAlignment = .center
         $0.font = Fonts.sfProRegular(size: 14)
         return $0
