@@ -46,7 +46,10 @@ final class CommonButton: UIButton {
     init(title: String = "", state: State = .normal) {
         super.init(frame: .zero)
         layer.cornerRadius = 8
-        bind(title: title, state: state)
+        setTitle(title, for: .normal)
+        setTitleColor(.white, for: .normal)
+        setTitleColor(.gray, for: .highlighted)
+        bind(state: state)
     }
     
     @available(*, unavailable)
@@ -56,9 +59,7 @@ final class CommonButton: UIButton {
     
     //MARK: - Bind
     
-    func bind(title: String = "", state: State) {
-        setTitle(title, for: .normal)
-        setTitleColor(.white, for: .normal)
+    func bind(state: State) {
         commonState = state
     }
     

@@ -10,7 +10,12 @@ import UIKit.UIImage
 public enum Icons {
     enum Auth {
         static var logo = image(named: "logo_image")
-     }
+    }
+    
+    enum CountryList {
+        static let backButton = image(named: "back_button")
+    }
+    
     enum OnboardingIcons {
         static var firstIcon: UIImage {
             return Icons.image(named: "firstPlayer")

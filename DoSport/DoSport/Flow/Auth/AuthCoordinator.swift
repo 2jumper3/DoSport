@@ -17,11 +17,18 @@ final class AuthCoordinator: Coordinator {
     init() {
         let assembly = AuthAssembly()
         self.rootViewController = assembly.makeModule()
-        self.navigationController = UINavigationController()
+        self.navigationController = DSNavigationController()
+        self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     func start() {
         rootViewController.coordinator = self
-        navigationController?.viewControllers = [rootViewController]
+        navigationController?.setViewControllers([rootViewController], animated: true)
+    }
+    
+    func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
+        let coordinator = CountryListCoordinator(navController: navigationController, compilation: compilation)
+        coordinator.start()
     }
 }

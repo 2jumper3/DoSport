@@ -12,6 +12,8 @@ final class AuthViewController: UIViewController {
     var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
     
+    private lazy var authView = self.view as! AuthView
+
     // MARK: - Init
     
     init(viewModel: AuthViewModel) {
@@ -35,18 +37,33 @@ final class AuthViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    /// Hide navigation bar before this ViewController will appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    /// Show navigation bar after this ViewController did disappear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
 extension AuthViewController: AuthViewDelegate {
     func regionSelectionButtonTapped() {
-        print(111)
+        coordinator?.goToCountryListModule { callingCode in
+            self.authView.bind(callingCode: callingCode)
+        }
     }
-    
-    func submitButtonTapped() {
-        print(222)
+   
+    func submitButtonTapped(with text: String) {
+        print(text)
     }
 }
