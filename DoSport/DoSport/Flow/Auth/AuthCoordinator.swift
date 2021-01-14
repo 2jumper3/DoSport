@@ -27,8 +27,8 @@ final class AuthCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
-    func goToCodeEntryModule() {
-        let coordiator = CodeEntryCoordinator(navController: navigationController)
+    func goToCodeEntryModule(_ phoneNumber: String) {
+        let coordiator = CodeEntryCoordinator(navController: navigationController, phoneNumber)
         coordiator.start()
     }
     

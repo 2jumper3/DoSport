@@ -92,6 +92,10 @@ final class CodeLabelStackView: UIView {
 
 extension CodeLabelStackView {
     func bind() {
+        
+    }
+    
+    func becomeTextFieldResponder() {
         textField1.isUserInteractionEnabled = true
         textField1.becomeFirstResponder()
     }

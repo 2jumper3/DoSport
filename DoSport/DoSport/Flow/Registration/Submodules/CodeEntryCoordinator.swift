@@ -14,8 +14,8 @@ final class CodeEntryCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?) {
-        let assembly = CodeEntryAssembly()
+    init(navController: UINavigationController?, _ phoneNumber: String) {
+        let assembly = CodeEntryAssembly(phoneNumber)
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
     }

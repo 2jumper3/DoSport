@@ -17,6 +17,8 @@ final class CodeEntryView: UIView {
     
     weak var delegate: CodeEntryViewDelegate?
     
+    private let phoneNumber: String
+    
     private lazy var goBackButton: DSBarBackButton = {
         $0.addTarget(self, action: #selector(handleGoBackButton), for: .touchUpInside)
         return $0
@@ -46,8 +48,8 @@ final class CodeEntryView: UIView {
     
     private lazy var codeLabelsStackView = CodeLabelStackView()
     
-    private let codeSentToNumberLabel: UILabel = {
-        $0.text = Texts.CodeEntry.codeSentToNumber
+    private lazy var codeSentToNumberLabel: UILabel = {
+        $0.text = Texts.CodeEntry.codeSentToNumber + " " + self.phoneNumber
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textAlignment = .center
         $0.textColor = .white
@@ -65,7 +67,8 @@ final class CodeEntryView: UIView {
     
     // MARK: - Init
     
-    init() {
+    init(_ phoneNumber: String) {
+        self.phoneNumber = phoneNumber
         super.init(frame: .zero)
         
         backgroundColor = Colors.darkBlue
@@ -138,7 +141,11 @@ final class CodeEntryView: UIView {
 
 extension CodeEntryView {
     func bind() {
-        codeLabelsStackView.bind()
+        
+    }
+    
+    func becomeResponder() {
+        codeLabelsStackView.becomeTextFieldResponder()
     }
 }
  

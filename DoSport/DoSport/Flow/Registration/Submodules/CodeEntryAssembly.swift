@@ -8,9 +8,16 @@
 import UIKit
 
 final class CodeEntryAssembly: Assembly {
+    
+    private let phoneNumber: String
+    
+    init(_ phoneNumber: String) {
+        self.phoneNumber = phoneNumber
+    }
+    
     func makeModule() -> CodeEntryViewController {
         let viewModel = CodeEntryViewModel()
-        let viewController = CodeEntryViewController(viewModel: viewModel)
+        let viewController = CodeEntryViewController(viewModel: viewModel, phoneNumber: phoneNumber)
         return viewController
     }
 }

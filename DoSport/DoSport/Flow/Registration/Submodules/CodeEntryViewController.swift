@@ -11,6 +11,7 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
     
     var coordinator: CodeEntryCoordinator?
     private let viewModel: CodeEntryViewModel
+    private let phoneNumber: String
     
     private lazy var codeEntryView = self.view as! CodeEntryView
     
@@ -20,8 +21,9 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
     
     //MARK: - Life cycle
     
-    init(viewModel: CodeEntryViewModel) {
+    init(viewModel: CodeEntryViewModel, phoneNumber: String) {
         self.viewModel = viewModel
+        self.phoneNumber = phoneNumber
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,7 +32,7 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
     }
     
     override func loadView() {
-        let view = CodeEntryView()
+        let view = CodeEntryView(phoneNumber)
         view.delegate = self
         self.view = view
     }
@@ -50,7 +52,7 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        codeEntryView.bind()
+        codeEntryView.becomeResponder()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
