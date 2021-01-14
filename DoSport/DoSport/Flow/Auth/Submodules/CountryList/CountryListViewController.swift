@@ -62,6 +62,7 @@ final class CountryListViewController: UIViewController, UIGestureRecognizerDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 

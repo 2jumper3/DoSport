@@ -30,32 +30,32 @@ final class CodeLabelStackView: UIView {
     private lazy var textField1: UITextField = {
         $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return $0
-    }(UITextField.makeCodeEntryTextField(delegate: self))
+    }(UITextField.makeCodeEntryTextField())
     
     private lazy var textField2: UITextField = {
         $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return $0
-    }(UITextField.makeCodeEntryTextField(delegate: self))
+    }(UITextField.makeCodeEntryTextField())
     
     private lazy var textField3: UITextField = {
         $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return $0
-    }(UITextField.makeCodeEntryTextField(delegate: self))
+    }(UITextField.makeCodeEntryTextField())
     
     private lazy var textField4: UITextField = {
         $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return $0
-    }(UITextField.makeCodeEntryTextField(delegate: self))
+    }(UITextField.makeCodeEntryTextField())
     
     private lazy var textField5: UITextField = {
         $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return $0
-    }(UITextField.makeCodeEntryTextField(delegate: self))
+    }(UITextField.makeCodeEntryTextField())
     
     private lazy var textField6: UITextField = {
         $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return $0
-    }(UITextField.makeCodeEntryTextField(delegate: self))
+    }(UITextField.makeCodeEntryTextField())
     
     //MARK: - Init
 
@@ -101,63 +101,81 @@ extension CodeLabelStackView {
 
 @objc extension CodeLabelStackView {
     func handleTextField(_ textField: UITextField) {
-        if textField == textField1 && code.count == 0 {
-            guard let text = textField.text else { return }
+        if var text = textField.text, text != "" {
+            if text.first == " " {
+                text.removeFirst()
+            }
             code += text
+            handleTextDidAdded(in: textField)
+        } else {
+            code.removeLast()
+            handleTextDidRemoved(in: textField)
+        }
+    }
+}
+
+//MARK: - Private methods
+
+private extension CodeLabelStackView {
+    func handleTextDidAdded(in textField: UITextField) {
+        if textField == textField1 {
             textField2.isUserInteractionEnabled = true
+            textField2.text = " "
             textField2.becomeFirstResponder()
             textField1.isUserInteractionEnabled = false
-        } else if textField == textField2 && code.count == 1 {
-            guard let text = textField.text else { return }
-            code += text
+        } else if textField == textField2 {
             textField3.isUserInteractionEnabled = true
+            textField3.text = " "
             textField3.becomeFirstResponder()
             textField2.isUserInteractionEnabled = false
-        } else if textField == textField3 && code.count == 2 {
-            guard let text = textField.text else { return }
-            code += text
+        } else if textField == textField3 {
             textField4.isUserInteractionEnabled = true
+            textField4.text = " "
             textField4.becomeFirstResponder()
             textField3.isUserInteractionEnabled = false
-        } else if textField == textField4 && code.count == 3 {
-            guard let text = textField.text else { return }
-            code += text
+        } else if textField == textField4 {
             textField5.isUserInteractionEnabled = true
+            textField5.text = " "
             textField5.becomeFirstResponder()
             textField4.isUserInteractionEnabled = false
-        } else if textField == textField5 && code.count == 4 {
-            guard let text = textField.text else { return }
-            code += text
+        } else if textField == textField5 {
             textField6.isUserInteractionEnabled = true
+            textField6.text = " "
             textField6.becomeFirstResponder()
             textField5.isUserInteractionEnabled = false
-        } else if textField == textField6 && code.count == 5 {
-            guard let text = textField.text else { return }
-            code += text
+        } else if textField == textField6 {
             textField6.resignFirstResponder()
             textField6.isUserInteractionEnabled = false
             delegate?.didEnterCode(code)
         }
     }
-}
-
-//MARK: - UITextFieldDelegate
-
-extension CodeLabelStackView: UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print(#function)
-        print(textField.text ?? "")
-        return true
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        print(#function)
-        print(textField.text ?? "")
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(#function)
-        print(textField.text ?? "")
+    func handleTextDidRemoved(in textField: UITextField) {
+        if textField == textField2 {
+            textField1.isUserInteractionEnabled = true
+            textField1.becomeFirstResponder()
+            textField1.text = ""
+            textField2.isUserInteractionEnabled = false
+        } else if textField == textField3 {
+            textField2.isUserInteractionEnabled = true
+            textField2.becomeFirstResponder()
+            textField2.text = " "
+            textField3.isUserInteractionEnabled = false
+        } else if textField == textField4 {
+            textField3.isUserInteractionEnabled = true
+            textField3.becomeFirstResponder()
+            textField3.text = " "
+            textField4.isUserInteractionEnabled = false
+        } else if textField == textField5 {
+            textField4.isUserInteractionEnabled = true
+            textField4.becomeFirstResponder()
+            textField4.text = " "
+            textField5.isUserInteractionEnabled = false
+        }  else if textField == textField6 {
+            textField5.isUserInteractionEnabled = true
+            textField5.becomeFirstResponder()
+            textField5.text = " "
+            textField6.isUserInteractionEnabled = false
+        }
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class AuthCoordinator: Coordinator {
     
-    var rootViewController: AuthViewController
+    let rootViewController: AuthViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?

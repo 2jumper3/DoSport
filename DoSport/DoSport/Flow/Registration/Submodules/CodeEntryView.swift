@@ -89,10 +89,10 @@ final class CodeEntryView: UIView {
         super.layoutSubviews()
         
         goBackButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaInsets.top).offset(40)
-            $0.left.equalToSuperview().offset(17)
-            $0.width.equalTo(10)
-            $0.height.equalTo(18)
+            $0.top.equalTo(self.safeAreaInsets.top).offset(45)
+            $0.left.equalToSuperview().offset(13)
+            $0.width.equalTo(50)
+            $0.height.equalTo(30)
         }
         
         logoImageView.snp.makeConstraints {
@@ -116,7 +116,7 @@ final class CodeEntryView: UIView {
         codeLabelsStackView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.87)
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-50)
+            $0.centerY.equalToSuperview().offset(-40)
             $0.height.equalTo(50)
         }
         

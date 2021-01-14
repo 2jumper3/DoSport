@@ -8,12 +8,11 @@
 import UIKit
 
 extension UITextField {
-    static func makeCodeEntryTextField(delegate: UITextFieldDelegate?) -> UITextField {
+    static func makeCodeEntryTextField() -> UITextField {
         let textField = UITextField()
         textField.isUserInteractionEnabled = false
         textField.font = Fonts.sfProRegular(size: 32)
         textField.textAlignment = .center
-        textField.delegate = delegate
         textField.keyboardType = .numberPad
         textField.textColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false

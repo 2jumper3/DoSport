@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CodeEntryViewController: UIViewController {
+final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var coordinator: CodeEntryCoordinator?
     private let viewModel: CodeEntryViewModel
@@ -37,7 +37,8 @@ final class CodeEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
+        navigationController?.interactivePopGestureRecognizer?.delegate = self;
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +55,7 @@ final class CodeEntryViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        codeEntryView.endEditing(true)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

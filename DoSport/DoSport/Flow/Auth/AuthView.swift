@@ -116,7 +116,8 @@ final class AuthView: UIView {
         }
         
         phoneNumberAddView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-40)
             $0.width.equalToSuperview().multipliedBy(0.87)
             $0.height.equalTo(48)
         }
@@ -176,6 +177,14 @@ extension AuthView {
         phoneNumberAddView.bind(callingCode: callingCode)
         submitButton.bind(state: .normal) // for test purposes, can be removed
         layoutIfNeeded()
+    }
+    
+    func becomeTextFieldResponder() {
+        phoneNumberAddView.becomeResponder()
+    }
+    
+    func removeTextFieldResponder() {
+        phoneNumberAddView.removeFirstResponder()
     }
 }
 

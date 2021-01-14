@@ -108,6 +108,10 @@ extension PhoneNumberAddView {
     func removeFirstResponder() {
         textField.resignFirstResponder()
     }
+    
+    func becomeResponder() {
+        textField.becomeFirstResponder()
+    }
 }
 
 extension PhoneNumberAddView: UITextFieldDelegate {
