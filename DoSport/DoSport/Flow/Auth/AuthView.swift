@@ -58,7 +58,7 @@ final class AuthView: UIView {
     private lazy var submitButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSubmitButton), for: .touchUpInside)
         return $0
-    }(CommonButton(title: Texts.Auth.submit, state: .disabled))
+    }(CommonButton(title: Texts.Auth.submit, state: .normal))
     
     //MARK: - Init
     

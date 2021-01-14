@@ -65,5 +65,6 @@ extension AuthViewController: AuthViewDelegate {
    
     func submitButtonTapped(with text: String) {
         print(text)
+        coordinator?.goToCodeEntryModule()
     }
 }

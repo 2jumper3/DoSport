@@ -27,6 +27,11 @@ final class AuthCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
+    func goToCodeEntryModule() {
+        let coordiator = CodeEntryCoordinator(navController: navigationController)
+        coordiator.start()
+    }
+    
     func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
         let coordinator = CountryListCoordinator(navController: navigationController, compilation: compilation)
         coordinator.start()
