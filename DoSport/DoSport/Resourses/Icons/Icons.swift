@@ -30,6 +30,12 @@ public enum Icons {
             return Icons.image(named: "fourPNG")
         }
     }
+    
+    enum Registration {
+        static var avatarDefault: UIImage {
+            return Icons.image(named: "firstPlayer")
+        }
+    }
 }
 
 extension Icons {
