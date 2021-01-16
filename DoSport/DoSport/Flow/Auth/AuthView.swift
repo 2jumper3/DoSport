@@ -58,7 +58,7 @@ final class AuthView: UIView {
     private lazy var submitButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSubmitButton), for: .touchUpInside)
         return $0
-    }(CommonButton(title: Texts.Auth.submit, state: .disabled))
+    }(CommonButton(title: Texts.Auth.submit, state: .normal))
     
     //MARK: - Init
     
@@ -116,7 +116,8 @@ final class AuthView: UIView {
         }
         
         phoneNumberAddView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-40)
             $0.width.equalToSuperview().multipliedBy(0.87)
             $0.height.equalTo(48)
         }
@@ -176,6 +177,14 @@ extension AuthView {
         phoneNumberAddView.bind(callingCode: callingCode)
         submitButton.bind(state: .normal) // for test purposes, can be removed
         layoutIfNeeded()
+    }
+    
+    func becomeTextFieldResponder() {
+        phoneNumberAddView.becomeResponder()
+    }
+    
+    func removeTextFieldResponder() {
+        phoneNumberAddView.removeFirstResponder()
     }
 }
 

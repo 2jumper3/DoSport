@@ -9,7 +9,7 @@ import UIKit
 
 final class AuthCoordinator: Coordinator {
     
-    var rootViewController: AuthViewController
+    let rootViewController: AuthViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
@@ -25,6 +25,11 @@ final class AuthCoordinator: Coordinator {
     func start() {
         rootViewController.coordinator = self
         navigationController?.setViewControllers([rootViewController], animated: true)
+    }
+    
+    func goToCodeEntryModule(_ phoneNumber: String) {
+        let coordiator = CodeEntryCoordinator(navController: navigationController, phoneNumber)
+        coordiator.start()
     }
     
     func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {

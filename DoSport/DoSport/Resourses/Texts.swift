@@ -69,6 +69,15 @@ extension Texts {
     }
 }
 
+//MARK: - CodeEntry Screen
+extension Texts {
+    enum CodeEntry {
+        static let title = "Вход"
+        static let confirmation = "Код подтверждения, который мы прислали"
+        static let codeSentToNumber = "Код был отправлен на номер"
+        static let codeResend = "Повторно отправить SMS"
+    }
+}
 //MARK: - Registration Screen
 extension Texts {
     enum Registration {
