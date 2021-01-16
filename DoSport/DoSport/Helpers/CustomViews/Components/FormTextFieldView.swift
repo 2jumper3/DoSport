@@ -18,15 +18,19 @@ final class FormTextFieldView: UIView {
         case userName, password, dob
     }
     
-    var state: State = .normal {
+    private var state: State = .normal {
         didSet {
             handleDidSetState()
         }
     }
     
+    var text: String? {
+        get { textField.text }
+    }
+    
     private let type: TextFieldType
     
-    private lazy var textField = DSTextField(type: self.type)
+    private(set) lazy var textField = DSTextField(type: self.type)
     
     private lazy var errorLabel: UILabel = {
         if self.type == .userName {
@@ -74,14 +78,14 @@ final class FormTextFieldView: UIView {
 //MARK: - Public methods
 
 extension FormTextFieldView {
-    func bind() {
+    func bind(compilation: (State) -> ()) {
         switch state {
         case .normal:
             self.state = .error
         case .error:
             self.state = .normal
         }
-        
+        compilation(self.state)
     }
 }
 

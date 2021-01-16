@@ -9,50 +9,49 @@ import UIKit
 import SnapKit
 
 protocol RegistrationViewDelegate: class {
-    func didTapSave()
-    func didTapMale()
-    func didTapFemale()
+    func didTapSaveButton(username: String?, password: String?, dob: String?, gender: String?)
+    func didTapAvatarChangeButton()
 }
 
 final class RegistrationView: UIView {
     
     weak var delegate: RegistrationViewDelegate?
     
-    private var passwordYAnchor: NSLayoutConstraint??
+    var avatarImage: UIImage? {
+        get { avatarImageView.image }
+        set { avatarImageView.image = newValue }
+    }
     
-    private lazy var avatarImageView: UIImageView = {
-        $0.layer.borderColor = Colors.dirtyBlue.cgColor
-        $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 8
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = Icons.Registration.avatarDefault
-        return $0
-    }(UIImageView())
+    private lazy var avatarImageView = (AvatartImageView(image: Icons.Registration.avatarDefault))
     
     private lazy var addAvatarButton: UIButton = {
-        $0.titleLabel?.textColor = Colors.mainBlue
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle(Texts.Registration.addAvatar, for: .normal)
-        $0.titleLabel?.font = Fonts.sfProRegular(size: 16)
-        $0.titleLabel?.textAlignment = .center
         $0.addTarget(self, action: #selector(handleAddAvatarButton), for: .touchUpInside)
         return $0
-    }(UIButton(type: .system))
+    }(UIButton.makeButton(title: Texts.Registration.addAvatar, titleColor: Colors.mainBlue))
     
     private lazy var userNameTextField = FormTextFieldView(type: .userName)
     private lazy var passwordTextField = FormTextFieldView(type: .password)
     private lazy var dobTextField = FormTextFieldView(type: .dob)
     
+    private lazy var datePicker: UIDatePicker = {
+        $0.datePickerMode = .date
+        $0.backgroundColor = Colors.darkBlue
+        $0.setValue(UIColor.white, forKey:"textColor")
+        $0.addTarget(self, action: #selector(dateChanged), for: .allEvents)
+        return $0
+    }(UIDatePicker())
+    
+    private var gender: String?
+    
     private lazy var maleButton: DSButton = {
         $0.addTarget(self, action: #selector(handleMaleButton), for: .touchUpInside)
         return $0
-    }(DSButton())
+    }(DSButton(title: Texts.Registration.Gender.male))
     
     private lazy var femaleButton: DSButton = {
         $0.addTarget(self, action: #selector(handleFemaleButton), for: .touchUpInside)
         return $0
-    }(DSButton())
-    
+    }(DSButton(title: Texts.Registration.Gender.female))
     
     private lazy var saveButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
@@ -63,8 +62,46 @@ final class RegistrationView: UIView {
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = Colors.darkBlue
         
-        addSubviews(avatarImageView, addAvatarButton, userNameTextField, passwordTextField, dobTextField, saveButton)
+        userNameTextField.textField.delegate = self
+        passwordTextField.textField.delegate = self
+        dobTextField.textField.delegate = self
+        
+        let doneButton = UIBarButtonItem.init(
+            title: "Готово",
+            style: .done,
+            target: self,
+            action: #selector(datePickerDone)
+        )
+        
+        let toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 44))
+        toolBar.isTranslucent = false
+        toolBar.barTintColor = Colors.dirtyBlue
+        
+        toolBar.setItems([UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+            target: nil, action: nil
+        ),doneButton], animated: true)
+        
+        dobTextField.textField.inputView = datePicker
+        dobTextField.textField.inputAccessoryView = toolBar
+        
+        addSubviews(avatarImageView,addAvatarButton,userNameTextField,passwordTextField,dobTextField,saveButton,maleButton,femaleButton)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -74,39 +111,52 @@ final class RegistrationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        NSLayoutConstraint.activate([
-            passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 73),
-            passwordTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.87),
-            
-            userNameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            userNameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 10),
-            userNameTextField.heightAnchor.constraint(equalToConstant: 73),
-            userNameTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.87),
-            
-            addAvatarButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addAvatarButton.bottomAnchor.constraint(equalTo: userNameTextField.topAnchor, constant: -20),
-            addAvatarButton.heightAnchor.constraint(equalToConstant: 24),
-            addAvatarButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
-            
-            avatarImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            avatarImageView.bottomAnchor.constraint(equalTo: addAvatarButton.topAnchor, constant: -10),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
-            avatarImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.28),
-            
-            dobTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            dobTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: -10),
-            dobTextField.heightAnchor.constraint(equalToConstant: 73),
-            dobTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.87),
-            
-            saveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            saveButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            saveButton.heightAnchor.constraint(equalToConstant: 48),
-            saveButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.87),
-        ])
+        passwordTextField.snp.makeConstraints { $0.centerY.equalToSuperview() }
         
-        passwordYAnchor = passwordTextField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20)
-        passwordYAnchor??.isActive = true
+        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(passwordTextField.snp.top).offset(10) }
+        
+        addAvatarButton.snp.makeConstraints {
+            $0.bottom.equalTo(userNameTextField.snp.top).offset(-20)
+            $0.height.equalTo(24)
+            $0.width.equalToSuperview().multipliedBy(0.5)
+        }
+        
+        avatarImageView.snp.makeConstraints {
+            $0.bottom.equalTo(addAvatarButton.snp.top).offset(-10)
+            $0.height.equalTo(avatarImageView.snp.width)
+            $0.width.equalToSuperview().multipliedBy(0.28)
+        }
+        
+        dobTextField.snp.makeConstraints { $0.top.equalTo(passwordTextField.snp.bottom).offset(-10) }
+        
+        saveButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-10)
+            $0.height.equalTo(48)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+        }
+        
+        maleButton.snp.makeConstraints {
+            $0.top.equalTo(dobTextField.snp.bottom).offset(-10)
+            $0.left.equalTo(dobTextField.snp.left)
+            $0.height.equalTo(48)
+            $0.width.equalTo(dobTextField.snp.width).multipliedBy(0.48)
+        }
+        
+        femaleButton.snp.makeConstraints {
+            $0.right.equalTo(dobTextField.snp.right)
+            $0.height.width.centerY.equalTo(maleButton)
+        }
+        
+        [passwordTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
+            $0.snp.makeConstraints { $0.centerX.equalToSuperview() }
+        }
+        
+        [passwordTextField, userNameTextField, dobTextField].forEach {
+            $0.snp.makeConstraints {
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(73)
+            }
+        }
     }
 }
 
@@ -114,12 +164,11 @@ final class RegistrationView: UIView {
 
 extension RegistrationView {
     func updateView() {
-        userNameTextField.bind()
-        switch userNameTextField.state {
-        case .normal:
-            animateToIdentity()
-        case .error:
-            animate()
+        userNameTextField.bind() { state in
+            switch state {
+            case .normal: performErrorAnimationToIdentity()
+            case .error: performErrorAnimation()
+            }
         }
     }
 }
@@ -127,19 +176,21 @@ extension RegistrationView {
 //MARK: - Private methods
 
 private extension RegistrationView {
-    func animate() {
-        UIView.animate(withDuration: 0.3) {
-            self.passwordTextField.transform = CGAffineTransform(translationX: 0, y: 14)
-            self.dobTextField.transform = CGAffineTransform(translationX: 0, y: 14)
-            self.layoutIfNeeded()
+    func performErrorAnimation() {
+        UIView.animate(withDuration: 0.3) { [self] in
+            [passwordTextField, dobTextField, maleButton, femaleButton].forEach {
+                $0.transform = CGAffineTransform(translationX: 0, y: 16)
+            }
+            layoutIfNeeded()
         }
     }
     
-    func animateToIdentity() {
-        UIView.animate(withDuration: 0.3) {
-            self.passwordTextField.transform = .identity
-            self.dobTextField.transform = .identity
-            self.layoutIfNeeded()
+    func performErrorAnimationToIdentity() {
+        UIView.animate(withDuration: 0.3) { [self] in
+            [passwordTextField, dobTextField, maleButton, femaleButton].forEach {
+                $0.transform = .identity
+            }
+            layoutIfNeeded()
         }
     }
 }
@@ -148,21 +199,80 @@ private extension RegistrationView {
 
 @objc extension RegistrationView {
     func handleAddAvatarButton() {
-        
+        delegate?.didTapAvatarChangeButton()
     }
     
     func handleSaveButton() {
-        updateView()
-        delegate?.didTapSave()
+        delegate?.didTapSaveButton(
+            username: userNameTextField.text,
+            password: passwordTextField.text,
+            dob: dobTextField.text,
+            gender: gender
+        )
     }
     
     func handleMaleButton() {
-        maleButton.bind()
-        delegate?.didTapMale()
+        maleButton.bind(state: .seleted)
+        femaleButton.bind(state: .normal)
+        gender = maleButton.titleLabel?.text
     }
     
     func handleFemaleButton() {
-        femaleButton.bind()
-        delegate?.didTapFemale()
+        maleButton.bind(state: .normal)
+        femaleButton.bind(state: .seleted)
+        gender = maleButton.titleLabel?.text
+    }
+    
+    func datePickerDone() {
+        dobTextField.textField.resignFirstResponder()
+    }
+    
+    func dateChanged() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd / MM / yyyy"
+        
+        dobTextField.textField.text = "\(dateFormatter.string(from: datePicker.date))"
+    }
+    
+    func handleKeybordWillShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardFrame = (
+                userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+            )?.cgRectValue
+        else { return }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height * 0.5)
+        }
+    }
+    
+    func handleKeybordWillHide() {
+        UIView.animate(withDuration: 0.3) {
+            self.transform = .identity
+        }
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension RegistrationView: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == dobTextField.textField {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd / MM / yyyy"
+            
+            textField.text = "\(dateFormatter.string(from: datePicker.date))"
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameTextField.textField {
+            passwordTextField.textField.becomeFirstResponder()
+        } else if textField == passwordTextField.textField {
+            dobTextField.textField.becomeFirstResponder()
+        }
+        return true
     }
 }

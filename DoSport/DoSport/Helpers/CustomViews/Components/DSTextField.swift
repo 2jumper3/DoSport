@@ -20,6 +20,7 @@ final class DSTextField: UITextField {
             placeholderText = Texts.Registration.userName
         case .password:
             placeholderText = Texts.Registration.password
+            isSecureTextEntry = true
         case .dob:
             placeholderText = Texts.Registration.dob
         }

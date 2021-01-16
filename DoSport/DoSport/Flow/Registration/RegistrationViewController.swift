@@ -14,6 +14,11 @@ final class RegistrationViewController: UIViewController {
     
     private lazy var registrationView = self.view as! RegistrationView
     
+    private lazy var imagePicker: ImagePicker = {
+        $0.delegate = self
+        return $0
+    }(ImagePicker())
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -33,6 +38,7 @@ final class RegistrationViewController: UIViewController {
     
     override func loadView() {
         let view = RegistrationView()
+        view.delegate = self
         self.view = view
     }
     
@@ -49,20 +55,43 @@ final class RegistrationViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        registrationView.endEditing(true)
+    }
 }
 
 //MARK: - RegistrationViewDelegate
 
 extension RegistrationViewController: RegistrationViewDelegate {
-    func didTapSave() {
+    func didTapSaveButton(username: String?, password: String?, dob: String?, gender: String?) {
+        //создать модель с этими данными или передать данные в vm и создать модель там
         viewModel.createUser()
     }
     
-    func didTapMale() {
-        print(#function)
+    func didTapAvatarChangeButton() {
+        imagePicker.photoGalleryAsscessRequest()
+    }
+}
+
+//MARK: - ImagePickerDelegate
+
+extension RegistrationViewController: ImagePickerDelegate {
+    func imagePicker(_ imagePicker: ImagePicker, didSelect image: UIImage) {
+        registrationView.avatarImage = image
+        imagePicker.dismiss()
     }
     
-    func didTapFemale() {
-        print(#function)
+    func cancelButtonDidClick(on imageView: ImagePicker) {
+        imagePicker.dismiss()
+    }
+    
+    func imagePicker(
+        _ imagePicker: ImagePicker,
+        grantedAccess: Bool,
+        to sourceType: UIImagePickerController.SourceType
+    ) {
+        guard grantedAccess else { return }
+        imagePicker.present(parent: self, sourceType: sourceType)
     }
 }

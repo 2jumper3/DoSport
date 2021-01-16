@@ -21,9 +21,10 @@ final class DSButton: UIButton {
     
     //MARK: - Init
     
-    init() {
+    init(title: String) {
         super.init(frame: .zero)
         
+        setTitle(title, for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
         layer.borderColor = Colors.dirtyBlue.cgColor
         layer.borderWidth = 1
@@ -42,13 +43,8 @@ final class DSButton: UIButton {
 //MARK: - Public methods
 
 extension DSButton {
-    func bind() {
-        switch buttonState {
-        case .normal:
-            buttonState = .seleted
-        case .seleted:
-            buttonState = .normal
-        }
+    func bind(state: State) {
+        buttonState = state
     }
 }
 
@@ -60,7 +56,7 @@ private extension DSButton {
         case .normal:
             backgroundColor = Colors.darkBlue
         case .seleted:
-            backgroundColor = Colors.mainBlue
+            backgroundColor = Colors.lightBlue
         }
     }
 }
