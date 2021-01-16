@@ -6,7 +6,16 @@
 //
 
 import Foundation
+import CoreLocation
 
-struct MapModel {
-    let pointCoordinate = ""
+final class MapViewModel {
+    var coordinates: [MapModel]? {
+        didSet {
+            
+        }
+    }
+    
+    func loadCoordinates() -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: 59.945933, longitude: 30.320045)
+    }
 }

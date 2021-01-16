@@ -11,6 +11,9 @@ import CoreLocation
 
 class MapViewController: UIViewController {
     // MARK: - Outlets
+    
+    let viewModel: MapViewModel
+    
     private let mapView: YMKMapView = {
         let view = YMKMapView()
         return view
@@ -21,7 +24,15 @@ class MapViewController: UIViewController {
     
     private let targetLocation = YMKPoint(latitude: 59.945933, longitude: 30.320045)
     private let locationManager = CLLocationManager()
-
+    // MARK: - Init
+    init(viewModel: MapViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
