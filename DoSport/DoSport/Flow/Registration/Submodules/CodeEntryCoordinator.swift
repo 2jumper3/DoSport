@@ -28,4 +28,9 @@ final class CodeEntryCoordinator: Coordinator {
     func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func goToRegistrationModule() {
+        let coordinator = RegistrationCoordinator(navController: navigationController)
+        coordinator.start()
+    }
 }
