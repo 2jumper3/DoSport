@@ -28,10 +28,7 @@ final class AuthCoordinator: Coordinator {
     }
     
     func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
-//        let coordinator = CountryListCoordinator(navController: navigationController, compilation: compilation)
-//        coordinator.start()
-        
-        let coordinator = RegistrationCoordinator(navController: navigationController)
+        let coordinator = CountryListCoordinator(navController: navigationController, compilation: compilation)
         coordinator.start()
     }
 }
