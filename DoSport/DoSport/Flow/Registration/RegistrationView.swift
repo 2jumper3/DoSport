@@ -11,6 +11,7 @@ import SnapKit
 protocol RegistrationViewDelegate: class {
     func didTapSaveButton(username: String?, password: String?, dob: String?, gender: String?)
     func didTapAvatarChangeButton()
+    func didChangeDatePickerValue(_ datePicker: UIDatePicker)
 }
 
 final class RegistrationView: UIView {
@@ -33,13 +34,14 @@ final class RegistrationView: UIView {
     private lazy var passwordTextField = FormTextFieldView(type: .password)
     private lazy var dobTextField = FormTextFieldView(type: .dob)
     
-    private lazy var datePicker: UIDatePicker = {
-        $0.datePickerMode = .date
-        $0.backgroundColor = Colors.darkBlue
-        $0.setValue(UIColor.white, forKey:"textColor")
-        $0.addTarget(self, action: #selector(dateChanged), for: .allEvents)
+    private lazy var datePicker: DSDatePicker = {
+        $0.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        $0.setTextField(dobTextField.textField)
+        $0.onDoneButtonTap = { [weak self ] in
+            self?.dobTextField.textField.resignFirstResponder()
+        }
         return $0
-    }(UIDatePicker())
+    }(DSDatePicker())
     
     private var gender: String?
     
@@ -67,25 +69,6 @@ final class RegistrationView: UIView {
         userNameTextField.textField.delegate = self
         passwordTextField.textField.delegate = self
         dobTextField.textField.delegate = self
-        
-        let doneButton = UIBarButtonItem.init(
-            title: "Готово",
-            style: .done,
-            target: self,
-            action: #selector(datePickerDone)
-        )
-        
-        let toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 44))
-        toolBar.isTranslucent = false
-        toolBar.barTintColor = Colors.dirtyBlue
-        
-        toolBar.setItems([UIBarButtonItem(
-            barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
-            target: nil, action: nil
-        ),doneButton], animated: true)
-        
-        dobTextField.textField.inputView = datePicker
-        dobTextField.textField.inputAccessoryView = toolBar
         
         addSubviews(avatarImageView,addAvatarButton,userNameTextField,passwordTextField,dobTextField,saveButton,maleButton,femaleButton)
         
@@ -171,6 +154,10 @@ extension RegistrationView {
             }
         }
     }
+    
+    func setDateOfBirth(_ text: String) {
+        dobTextField.textField.text = text
+    }
 }
 
 //MARK: - Private methods
@@ -223,15 +210,8 @@ private extension RegistrationView {
         gender = maleButton.titleLabel?.text
     }
     
-    func datePickerDone() {
-        dobTextField.textField.resignFirstResponder()
-    }
-    
     func dateChanged() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd / MM / yyyy"
-        
-        dobTextField.textField.text = "\(dateFormatter.string(from: datePicker.date))"
+        delegate?.didChangeDatePickerValue(self.datePicker)
     }
     
     func handleKeybordWillShow(_ notification: Notification) {
@@ -259,10 +239,7 @@ private extension RegistrationView {
 extension RegistrationView: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == dobTextField.textField {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd / MM / yyyy"
-            
-            textField.text = "\(dateFormatter.string(from: datePicker.date))"
+            delegate?.didChangeDatePickerValue(datePicker)
         }
         return true
     }

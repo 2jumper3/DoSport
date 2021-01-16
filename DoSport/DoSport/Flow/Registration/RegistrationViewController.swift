@@ -64,6 +64,14 @@ final class RegistrationViewController: UIViewController {
 //MARK: - RegistrationViewDelegate
 
 extension RegistrationViewController: RegistrationViewDelegate {
+    func didChangeDatePickerValue(_ datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd / MM / yyyy"
+        
+        let text = dateFormatter.string(from: datePicker.date)
+        registrationView.setDateOfBirth(text)
+    }
+    
     func didTapSaveButton(username: String?, password: String?, dob: String?, gender: String?) {
         //создать модель с этими данными или передать данные в vm и создать модель там
         viewModel.createUser()
@@ -72,6 +80,8 @@ extension RegistrationViewController: RegistrationViewDelegate {
     func didTapAvatarChangeButton() {
         imagePicker.photoGalleryAsscessRequest()
     }
+    
+    
 }
 
 //MARK: - ImagePickerDelegate
