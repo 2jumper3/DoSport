@@ -52,7 +52,14 @@ final class AuthViewController: UIViewController {
     /// Show navigation bar after this ViewController did disappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        authView.removeTextFieldResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        authView.becomeTextFieldResponder()
     }
 }
 
@@ -64,6 +71,6 @@ extension AuthViewController: AuthViewDelegate {
     }
    
     func submitButtonTapped(with text: String) {
-        print(text)
+        coordinator?.goToCodeEntryModule(text)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class CountryListCoordinator: Coordinator { //Todo: remove coordinator from CountryList module.
     
-    var rootViewController: CountryListViewController
+    let rootViewController: CountryListViewController
     
     var compilation: ((String) -> Swift.Void)?
     

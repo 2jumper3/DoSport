@@ -68,3 +68,13 @@ extension Texts {
         static let noResults = "По вашему запросу ничего не найдено"
     }
 }
+
+//MARK: - CodeEntry Screen
+extension Texts {
+    enum CodeEntry {
+        static let title = "Вход"
+        static let confirmation = "Код подтверждения, который мы прислали"
+        static let codeSentToNumber = "Код был отправлен на номер"
+        static let codeResend = "Повторно отправить SMS"
+    }
+}
