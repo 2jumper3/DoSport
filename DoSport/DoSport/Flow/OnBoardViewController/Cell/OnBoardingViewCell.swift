@@ -52,7 +52,7 @@ class OnBoardingViewCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .blue
+        backgroundColor = Colors.lightBlue
         layoutSubview()
     }
 
@@ -63,7 +63,6 @@ class OnBoardingViewCell: UICollectionViewCell {
     // MARK: - Helpers functions
     func layoutSubview() {
         contentView.addSubview(imageView)
-//        addSubview(imageView)
         imageView.contentMode = .center
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.snp.makeConstraints { (make) in

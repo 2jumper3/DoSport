@@ -28,7 +28,7 @@ final class AppCoordinator: Coordinator {
 //            let vc = OnBoardingViewController()
 //            window.rootViewController = vc
             
-            let myCoordinator = AuthCoordinator()
+            let myCoordinator = OnBoardingCoordinator()
             myCoordinator.start()
             window.rootViewController = myCoordinator.navigationController
         }
