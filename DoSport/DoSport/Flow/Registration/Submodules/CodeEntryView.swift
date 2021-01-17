@@ -11,6 +11,7 @@ import SnapKit
 protocol CodeEntryViewDelegate: class {
     func didTapCodeResentButton()
     func didTapGoBackButton()
+    func didAddCode(_ code: String)
 }
 
 final class CodeEntryView: UIView {
@@ -72,6 +73,7 @@ final class CodeEntryView: UIView {
         super.init(frame: .zero)
         
         backgroundColor = Colors.darkBlue
+        codeLabelsStackView.delegate = self
         
         addSubviews(
             goBackButton,
@@ -158,5 +160,13 @@ extension CodeEntryView {
     
     func handleGoBackButton() {
         delegate?.didTapGoBackButton()
+    }
+}
+
+//MARK: - Public methods
+
+extension CodeEntryView: CodeLabelStackViewDelegate {
+    func didEnterCode(_ code: String) {
+        delegate?.didAddCode(code)
     }
 }

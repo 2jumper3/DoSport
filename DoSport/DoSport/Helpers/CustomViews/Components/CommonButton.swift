@@ -49,6 +49,7 @@ final class CommonButton: UIButton {
         setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
         setTitleColor(.gray, for: .highlighted)
+        translatesAutoresizingMaskIntoConstraints = false
         bind(state: state)
     }
     

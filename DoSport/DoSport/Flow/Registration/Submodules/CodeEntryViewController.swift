@@ -72,4 +72,9 @@ extension CodeEntryViewController: CodeEntryViewDelegate {
     func didTapGoBackButton() {
         coordinator?.goBack()
     }
+    
+    func didAddCode(_ code: String) {
+        print(code)
+        coordinator?.goToRegistrationModule()
+    }
 }

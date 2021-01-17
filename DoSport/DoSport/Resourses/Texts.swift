@@ -78,3 +78,26 @@ extension Texts {
         static let codeResend = "Повторно отправить SMS"
     }
 }
+//MARK: - Registration Screen
+extension Texts {
+    enum Registration {
+        static let navTitle = "Регистрация"
+        
+        static let addAvatar = "Загузить фото"
+        static let save = "Сохранить"
+        
+        static let userName = "Никнейм"
+        static let userNameError = "Никнейм занят"
+        
+        static let password = "Пароль"
+        static let passwordError = "Неверный формат пароля"
+        
+        static let dob = "Дата рождения"
+        static let dobError = "Неверный формат Даты рождения"
+        
+        enum Gender {
+            static let male = "Мужчина"
+            static let female = "Женщина"
+        }
+    }
+}
