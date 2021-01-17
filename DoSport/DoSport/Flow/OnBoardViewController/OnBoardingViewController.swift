@@ -46,7 +46,6 @@ class OnBoardingViewController: UIViewController {
 
     @objc func confirmButtonTapped() {
         coordinator?.goToAuthView()
-        print(self.coordinator)
     }
 }
 
@@ -130,7 +129,7 @@ extension OnBoardingViewController {
     }
 
     private func setupBottomControls() {
-        pageControl.center = CGPoint(x: view.center.x, y: view.frame.maxY - 208)
+        pageControl.center = CGPoint(x: view.center.x, y: view.frame.maxY - view.frame.maxY / 4)
         view.addSubview(pageControl)
     }
 }
