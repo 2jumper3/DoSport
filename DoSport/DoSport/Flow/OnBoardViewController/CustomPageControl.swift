@@ -407,7 +407,6 @@ private class ItemView: UIView {
                 height: dotSize * smallSizeRatio
             )
         case .None:
-//            _size = CGSize.zero
             _size = CGSize(
                 width: dotSize * smallSizeRatio,
                 height: dotSize * smallSizeRatio

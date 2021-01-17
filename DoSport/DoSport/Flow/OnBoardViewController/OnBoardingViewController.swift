@@ -9,6 +9,8 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
     
+    var coordinator: OnBoardingCoordinator?
+
     // MARK: - Properties
     var pages: [OnBoardingModel] = [
         OnBoardingModel(image:Icons.OnboardingIcons.firstIcon, textHeader: Texts.OnBoardingText.headers.firstSlideText, textDescription: Texts.OnBoardingText.Description.firstSlideText),
@@ -20,6 +22,13 @@ class OnBoardingViewController: UIViewController {
     // MARK: - Outlets
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var pageControl = FlexiblePageControl()
+    
+    //MARK: - UI
+    private lazy var confirmButton: CommonButton = {
+        $0.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        $0.backgroundColor = Colors.darkBlue
+        return $0
+    }(CommonButton(title: "OK", state: .normal))
 
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -30,9 +39,13 @@ class OnBoardingViewController: UIViewController {
         pageControlSetup()
     }
 
-    
     func pageControlSetup() {
         pageControl.numberOfPages = pages.count
+    }
+    //MARK: - Actions
+
+    @objc func confirmButtonTapped() {
+        coordinator?.goToAuthView()
     }
 }
 
@@ -49,10 +62,8 @@ extension OnBoardingViewController: UICollectionViewDelegate, UICollectionViewDa
             for: indexPath) as? OnBoardingViewCell else {
             return UICollectionViewCell()
         }
-
         let page = pages[indexPath.row]
         cell.page = page
-
         return cell
     }
 }
@@ -74,7 +85,13 @@ extension OnBoardingViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        pageControl.setProgress(contentOffsetX: collectionView.contentOffset.x, pageWidth: collectionView.bounds.width)
+        let currentPage = Int(targetContentOffset.pointee.x / view.frame.width)
+        if currentPage == 3 {
+            confirmButton.isHidden = false
+        } else {
+            confirmButton.isHidden = true
+        }
+        pageControl.setCurrentPage(at: Int(currentPage))
     }
 }
 
@@ -94,16 +111,25 @@ extension OnBoardingViewController {
     }
 
     private func setupUI() {
-        view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = Colors.lightBlue
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
+        view.addSubview(confirmButton)
+        confirmButton.isHidden = true
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        confirmButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(view.snp.bottom).offset(-58)
+            make.right.equalTo(view.snp.right).offset(-24)
+            make.left.equalTo(view.snp.left).offset(24)
+            make.height.equalTo(48)
+        }
     }
 
     private func setupBottomControls() {
-        pageControl.center = CGPoint(x: view.center.x, y: view.frame.maxY - 208)
+        pageControl.center = CGPoint(x: view.center.x, y: view.frame.maxY - view.frame.maxY / 4)
         view.addSubview(pageControl)
-
     }
 }
