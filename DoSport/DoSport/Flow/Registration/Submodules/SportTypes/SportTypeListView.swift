@@ -67,7 +67,7 @@ final class SportTypeListView: UIView {
 //MARK: - Public methods
 
 extension SportTypeListView {
-    func updateCollectionDataSouce(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
+    func updateCollectionDataSource(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
         collectionView.delegate = dateSource
         collectionView.dataSource = dateSource
         collectionView.reloadData()
