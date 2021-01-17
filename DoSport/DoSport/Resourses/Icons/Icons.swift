@@ -36,6 +36,16 @@ public enum Icons {
             return Icons.image(named: "firstPlayer")
         }
     }
+    
+    enum PasswordEntry {
+        static var hiddenEye: UIImage {
+            return Icons.image(named: "hidden_eye_icon")
+        }
+        
+        static var showedEye: UIImage {
+            return Icons.image(named: "showed_eye_icon")
+        }
+    }
 }
 
 extension Icons {
