@@ -36,11 +36,10 @@ final class SportTypeListViewModel {
         for (i, existedSport) in selectedSports.enumerated() {
             if existedSport == sport {
                 selectedSports.remove(at: i)
-                return
             } else {
                 selectedSports.append(sport)
-                return
             }
+            return
         }
     }
     
