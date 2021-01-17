@@ -14,12 +14,10 @@ final class AuthCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init() {
+    init(navController: UINavigationController) {
         let assembly = AuthAssembly()
         self.rootViewController = assembly.makeModule()
-        self.navigationController = DSNavigationController()
-        self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController = navController
     }
     
     func start() {
