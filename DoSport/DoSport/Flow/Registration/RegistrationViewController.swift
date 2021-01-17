@@ -80,8 +80,6 @@ extension RegistrationViewController: RegistrationViewDelegate {
     func didTapAvatarChangeButton() {
         imagePicker.photoGalleryAsscessRequest()
     }
-    
-    
 }
 
 //MARK: - ImagePickerDelegate

@@ -23,7 +23,7 @@ final class RegistrationView: UIView {
         set { avatarImageView.image = newValue }
     }
     
-    private lazy var avatarImageView = (AvatartImageView(image: Icons.Registration.avatarDefault))
+    private lazy var avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
     
     private lazy var addAvatarButton: UIButton = {
         $0.addTarget(self, action: #selector(handleAddAvatarButton), for: .touchUpInside)
@@ -37,7 +37,7 @@ final class RegistrationView: UIView {
     private lazy var datePicker: DSDatePicker = {
         $0.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
         $0.setTextField(dobTextField.textField)
-        $0.onDoneButtonTap = { [weak self ] in
+        $0.onDoneButtonTap = { [weak self] in
             self?.dobTextField.textField.resignFirstResponder()
         }
         return $0
