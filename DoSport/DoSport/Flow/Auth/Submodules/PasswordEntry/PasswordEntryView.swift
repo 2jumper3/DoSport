@@ -9,7 +9,9 @@ import UIKit
 import SnapKit
 
 protocol PasswordEntryViewDelegate: class {
-    
+    func didTapGoBackButton()
+    func didTapEnterButton()
+    func didTapPasswordForgotButton()
 }
 
 final class PasswordEntryView: UIView {
@@ -35,18 +37,24 @@ final class PasswordEntryView: UIView {
         return $0
     }(UILabel())
     
+    private lazy var backButton: DSBarBackButton = {
+        $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        return $0
+    }(DSBarBackButton())
+
+    
     private lazy var avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
     
     private let userNameLabel: UILabel = {
         $0.textAlignment = .center
-        $0.textColor = Colors.dirtyBlue
+        $0.textColor = Colors.mainBlue
         $0.text = "SomeUserName"
         $0.font = Fonts.sfProRegular(size: 18)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
     
-    private lazy var passwordTextView: DSPasswordTextView = {
+    private(set) lazy var passwordTextView: DSPasswordTextView = {
         $0.addButtonTarget(target: self, action: #selector(handleShowHideButton))
         return $0
     }(DSPasswordTextView())
@@ -54,7 +62,7 @@ final class PasswordEntryView: UIView {
     private lazy var forgorPasswordButton: UIButton = {
         $0.addTarget(self, action: #selector(handleForgotPasswordButton), for: .touchUpInside)
         return $0
-    }(UIButton.makeButton(title: Texts.PasswordEntry.forgotPassword,titleColor: Colors.dirtyBlue))
+    }(UIButton.makeButton(title: Texts.PasswordEntry.forgotPassword,titleColor: Colors.mainBlue))
 
     private lazy var enterButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleEnterButton), for: .touchUpInside)
@@ -67,7 +75,21 @@ final class PasswordEntryView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(titleLabel, avatarImageView, userNameLabel, passwordTextView, forgorPasswordButton, enterButton)
+        addSubviews(backButton, titleLabel, avatarImageView, userNameLabel, passwordTextView, forgorPasswordButton, enterButton)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -76,6 +98,13 @@ final class PasswordEntryView: UIView {
     
     override func layoutSubviews() {
         superview?.layoutSubviews()
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaInsets.top).offset(45)
+            $0.left.equalToSuperview().offset(13)
+            $0.width.equalTo(50)
+            $0.height.equalTo(30)
+        }
         
         passwordTextView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -118,6 +147,14 @@ final class PasswordEntryView: UIView {
     }
 }
 
+//MARK: - Public methods
+
+extension PasswordEntryView {
+    func updateEnterButtonState(state: CommonButton.State) {
+        enterButton.bind(state: state)
+    }
+}
+
 //MARK: - Actions
 
 @objc
@@ -127,10 +164,26 @@ private extension PasswordEntryView {
     }
     
     func handleForgotPasswordButton() {
-        
+        delegate?.didTapPasswordForgotButton()
     }
     
     func handleEnterButton() {
-        
+        delegate?.didTapEnterButton()
+    }
+    
+    func handleBackButton() {
+        delegate?.didTapGoBackButton()
+    }
+    
+    func handleKeybordWillShow(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.enterButton.transform = CGAffineTransform(translationX: 0, y: -30)
+        }
+    }
+    
+    func handleKeybordWillHide() {
+        UIView.animate(withDuration: 0.3) {
+            self.enterButton.transform = .identity
+        }
     }
 }

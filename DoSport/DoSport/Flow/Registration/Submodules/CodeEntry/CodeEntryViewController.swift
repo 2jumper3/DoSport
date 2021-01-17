@@ -40,7 +40,7 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        navigationController?.interactivePopGestureRecognizer?.delegate = self;
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

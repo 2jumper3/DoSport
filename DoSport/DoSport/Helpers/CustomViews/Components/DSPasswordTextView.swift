@@ -20,12 +20,12 @@ final class DSPasswordTextView: UIView {
         }
     }
     
-    private lazy var textField = DSTextField(type: .password)
+    private(set) lazy var textField = DSTextField(type: .password)
     
     private lazy var hideShowButton: UIButton = {
         let icon: UIImage = textViewState == .normal ? Icons.PasswordEntry.showedEye : Icons.PasswordEntry.hiddenEye
         $0.setImage(icon, for: .normal)
-        $0.tintColor = Colors.dirtyBlue
+        $0.tintColor = Colors.mainBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIButton(type: .system))
