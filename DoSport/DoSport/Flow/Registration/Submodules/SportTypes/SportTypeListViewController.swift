@@ -75,7 +75,7 @@ private extension SportTypeListViewController {
     }
     
     func updateView() {
-        self.sportTypeListView.updateCollectionDataSouce(dateSource: self.collectionManager)
+        self.sportTypeListView.updateCollectionDataSource(dateSource: self.collectionManager)
     }
 }
 
