@@ -109,3 +109,12 @@ extension Texts {
         static let save = "Сохранить"
     }
 }
+
+//MARK: - PasswordEntry Screen
+extension Texts {
+    enum PasswordEntry {
+        static let title = "Вход"
+        static let forgotPassword = "Забыли пароль?"
+        static let enter = "Войти"
+    }
+}

@@ -34,4 +34,9 @@ final class AuthCoordinator: Coordinator {
         let coordinator = CountryListCoordinator(navController: navigationController, compilation: compilation)
         coordinator.start()
     }
+    
+    func goToPasswordEntryModule() {
+        let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
+        coordinator.start()
+    }
 }
