@@ -14,9 +14,7 @@ final class SportTypeListViewController: UIViewController {
     
     private lazy var sportTypeListView = self.view as! SportTypeListView
     
-    private lazy var collectionManager: SportTypeListDataSource = {
-        return $0
-    }(SportTypeListDataSource())
+    private lazy var collectionManager = SportTypeListDataSource()
     
     private lazy var backBarButton: DSBarBackButton = {
         $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
