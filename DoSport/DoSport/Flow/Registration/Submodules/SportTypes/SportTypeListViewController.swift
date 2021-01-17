@@ -46,7 +46,7 @@ final class SportTypeListViewController: UIViewController {
         super.viewDidLoad()
         title = Texts.SportTypeList.title
         
-        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(customView: backBarButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
         
         setupCollectionManagerBiding()
         setupViewModelBiding()
