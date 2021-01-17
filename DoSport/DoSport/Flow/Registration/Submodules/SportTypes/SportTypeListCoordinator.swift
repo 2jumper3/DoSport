@@ -1,21 +1,21 @@
 //
-//  RegistrationCoordinator.swift
+//  SportTypeListCoordinator.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 23/12/2020.
+//  Created by Komolbek Ibragimov on 17/01/2021.
 //
 
 import UIKit
 
-final class RegistrationCoordinator: Coordinator {
+final class SportTypeListCoordinator: Coordinator {
     
-    var rootViewController: RegistrationViewController
+    var rootViewController: SportTypeListViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = RegistrationAssembly()
+        let assembly = SportTypeListAssembly()
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
     }
@@ -25,9 +25,7 @@ final class RegistrationCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
-    func goToSportTypeListModule() {
-        let coordinator = SportTypeListCoordinator(navController: self.navigationController)
-        coordinator.start()
+    func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
-

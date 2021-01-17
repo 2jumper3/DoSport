@@ -101,3 +101,11 @@ extension Texts {
         }
     }
 }
+
+//MARK: - SportTypeList Screen
+extension Texts {
+    enum SportTypeList {
+        static let title = "Что тебе интересно?"
+        static let save = "Сохранить"
+    }
+}

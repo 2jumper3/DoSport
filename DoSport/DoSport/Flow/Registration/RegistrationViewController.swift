@@ -54,6 +54,7 @@ final class RegistrationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,7 +75,9 @@ extension RegistrationViewController: RegistrationViewDelegate {
     
     func didTapSaveButton(username: String?, password: String?, dob: String?, gender: String?) {
         //создать модель с этими данными или передать данные в vm и создать модель там
-        viewModel.createUser()
+        viewModel.createUser() { [weak self] in
+            self?.coordinator?.goToSportTypeListModule()
+        }
     }
     
     func didTapAvatarChangeButton() {

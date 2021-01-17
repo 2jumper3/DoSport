@@ -58,7 +58,7 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         codeEntryView.endEditing(true)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 

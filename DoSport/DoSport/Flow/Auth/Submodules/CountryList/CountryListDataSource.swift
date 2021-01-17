@@ -19,7 +19,6 @@ final class CountryListDataSource: NSObject {
     }
 }
 
-
 //MARK: - UITableViewDataSource
 
 extension CountryListDataSource: UITableViewDataSource {
