@@ -118,3 +118,10 @@ extension Texts {
         static let enter = "Войти"
     }
 }
+
+//MARK: - Home screen
+extension Texts {
+    enum Home {
+        static let title = "Создать тренировку"
+    }
+}

@@ -11,7 +11,7 @@ final class HomeViewModel {
     
     private let requestFactory: RequestFactory
     
-    var onDidPrepareEvents: (([Event]) -> Void)?
+    var onDidPrepareEventsData: (([Event]) -> Void)?
     
     private var events: [Event] = []
     

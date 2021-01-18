@@ -25,6 +25,6 @@ final class AuthViewModel {
     
     func checkIfNumberExists(compilation: (AuthResult) -> Void) {
         // TODO: some networking logic when back-end is ready
-        compilation(.notRegistred)
+        compilation(.registred)
     }
 }

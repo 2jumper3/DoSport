@@ -46,6 +46,12 @@ public enum Icons {
             return Icons.image(named: "showed_eye_icon")
         }
     }
+    
+    enum Home {
+        static var plus: UIImage {
+            return Icons.image(named: "plus")
+        }
+    }
 }
 
 extension Icons {

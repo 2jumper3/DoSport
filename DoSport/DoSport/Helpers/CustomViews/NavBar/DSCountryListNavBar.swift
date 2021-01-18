@@ -1,5 +1,5 @@
 //
-//  DSNavBar.swift
+//  DSCountryListNavBar.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 28/12/2020.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class DSNavBar: UIView {
+final class DSCountryListNavBar: UIView {
     
     var onSearchButtonDidTap: ((String) -> Swift.Void)?
     var onSeachBarDidChageText: ((String) -> Swift.Void)?
@@ -94,7 +94,7 @@ final class DSNavBar: UIView {
 
 //MARK: - Public methods
 
-extension DSNavBar {
+extension DSCountryListNavBar {
     func bind(state: State) {
         self.state = state
     }
@@ -107,7 +107,7 @@ extension DSNavBar {
 //MARK: - Actions
 
 @objc
-extension DSNavBar {
+extension DSCountryListNavBar {
     func handleBackButton() {
         hideKeyboard(for: searchBar) {
             self.onBackButtonDidTap?()
@@ -117,7 +117,7 @@ extension DSNavBar {
 
 //MARK: - Private Methods
 
-private extension DSNavBar {
+private extension DSCountryListNavBar {
     func setState() {
         switch self.state {
         case .active:
@@ -153,7 +153,7 @@ private extension DSNavBar {
 
 //MARK: - UISearchBarDelegate
 
-extension DSNavBar: UISearchBarDelegate {
+extension DSCountryListNavBar: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         if state == .notActive {
             bind(state: .active)

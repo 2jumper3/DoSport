@@ -13,6 +13,8 @@ final class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
     
     private lazy var homeView = self.view as! HomeView
+    
+    private let navBar = DSHomeNavBar()
 
     // MARK: - Init
     
@@ -31,12 +33,21 @@ final class HomeViewController: UIViewController {
         let view = HomeView()
         view.delegate = self
         self.view = view
+        
+        navigationItem.titleView = navBar
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Home"
+        navigationItem.setHidesBackButton(true, animated: true)
+        
+        navBar.createEventButton.addTarget(
+            self,
+            action: #selector(handleCreateButton),
+            for: .touchUpInside
+        )
         
         viewModel.prepareEventsData()
     }
@@ -59,6 +70,15 @@ final class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+    }
+}
+
+//MARK: - Actions
+
+@objc
+private extension HomeViewController {
+    func handleCreateButton() {
         
     }
 }
