@@ -11,11 +11,17 @@ import CoreLocation
 final class MapViewModel {
     var coordinates: [MapModel]? {
         didSet {
-            
+//            self.coordinates = loadCoordinates()
         }
     }
     
-    func loadCoordinates() -> CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: 59.945933, longitude: 30.320045)
+    func loadCoordinates() {
+        let first = MapModel(latitude: 55.847695, longitude: 37.361076)
+        let second = MapModel(latitude: 55.849125, longitude: 37.361724)
+        self.coordinates = [first,second]
+    }
+    
+    func placemarkTapped() {
+        
     }
 }

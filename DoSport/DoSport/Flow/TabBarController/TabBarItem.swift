@@ -20,7 +20,9 @@ enum TabBarItem: String, CaseIterable {
         case .home:
             return UINavigationController(rootViewController: MainViewController())
         case .map:
-            return MapAssembly()
+            let assembly = MapAssembly()
+            let viewController = assembly.makeModule()
+            return viewController
         case .list:
             return MainViewController()
         case .chat:
