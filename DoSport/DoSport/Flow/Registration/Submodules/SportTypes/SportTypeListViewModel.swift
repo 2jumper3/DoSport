@@ -43,7 +43,7 @@ final class SportTypeListViewModel {
         }
     }
     
-    func saveData() {
-        print("Selected: \(selectedSports)")
+    func saveData(compilation: () -> Void) {
+        compilation()
     }
 }

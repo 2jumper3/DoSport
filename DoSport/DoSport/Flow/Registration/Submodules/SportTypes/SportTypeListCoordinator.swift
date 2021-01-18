@@ -28,4 +28,9 @@ final class SportTypeListCoordinator: Coordinator {
     func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func goToHomeModule() {
+        let coordinator = HomeCoordinator(navController: navigationController)
+        coordinator.start()
+    }
 }

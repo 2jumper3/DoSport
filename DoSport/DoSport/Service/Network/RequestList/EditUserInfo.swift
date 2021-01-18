@@ -9,7 +9,10 @@ import Foundation
 import Alamofire
 
 protocol EditInfoRequestFactory {
-    func editInfo(token: String, completionHandler: @escaping (AFDataResponse<UserInfoResult>) -> Void)
+    func editInfo(
+        token: String,
+        completionHandler: @escaping (AFDataResponse<UserInfoResult>) -> Void
+    )
 }
 
 class EditInfoRequest: AbstractRequestFactory {
@@ -17,10 +20,12 @@ class EditInfoRequest: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue?
     let baseUrl = URL(string: "https://dosport-ru.herokuapp.com/api/v1/")!
+    
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
-        queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
+        queue: DispatchQueue? = DispatchQueue.global(qos: .utility)
+    ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
@@ -28,10 +33,14 @@ class EditInfoRequest: AbstractRequestFactory {
 }
 
 extension EditInfoRequest: EditInfoRequestFactory {
-    func editInfo(token: String, completionHandler: @escaping (AFDataResponse<UserInfoResult>) -> Void) {
+    func editInfo(
+        token: String,
+        completionHandler: @escaping (AFDataResponse<UserInfoResult>) -> Void
+    ) {
         let header = HTTPHeader(name: "Authorization", value: token)
         let headers = HTTPHeaders([header])
         let requestModel = EditInfo(headers: headers, baseUrl: baseUrl)
+        
         self.request(request: requestModel, completionHandler: completionHandler)
         print("requestmodel printng \(requestModel)")
     }

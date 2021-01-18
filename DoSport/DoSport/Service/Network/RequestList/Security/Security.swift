@@ -6,14 +6,18 @@
 //
 
 import Foundation
+
 //MARK:- Временное решение
-class Token {
+
+final class Token {
+    
     func saveToken(token: String) {
-        UserDefaults.standard.setValue("Bearer_"+token+"", forKey: "token")
+        UserDefaults.standard.setValue("Bearer_" + token + "", forKey: "token")
     }
+    
     func loadToken() -> String {
         if let token = UserDefaults.standard.object(forKey: "token") as? String {
-        return token
+            return token
         } else {
             return ""
         }

@@ -83,7 +83,9 @@ private extension SportTypeListViewController {
 
 extension SportTypeListViewController: SportTypeListViewDelegate {
     func didTapSaveButton() {
-        viewModel.saveData()
+        viewModel.saveData() { [weak self] in
+            self?.coordinator?.goToHomeModule()
+        }
     }
 }
 
