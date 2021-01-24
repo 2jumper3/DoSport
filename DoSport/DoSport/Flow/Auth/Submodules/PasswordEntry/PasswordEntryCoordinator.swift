@@ -1,21 +1,21 @@
 //
-//  RegistrationCoordinator.swift
+//  PasswordEntryCoordinator.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 23/12/2020.
+//  Created by Komolbek Ibragimov on 17/01/2021.
 //
 
 import UIKit
 
-final class RegistrationCoordinator: Coordinator {
+final class PasswordEntryCoordinator: Coordinator {
     
-    var rootViewController: RegistrationViewController
+    let rootViewController: PasswordEntryViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = RegistrationAssembly()
+        let assembly = PasswordEntryAssembly()
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
     }
@@ -25,9 +25,7 @@ final class RegistrationCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
-    func goToSportTypeListModule() {
-        let coordinator = SportTypeListCoordinator(navController: self.navigationController)
-        coordinator.start()
+    func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
-

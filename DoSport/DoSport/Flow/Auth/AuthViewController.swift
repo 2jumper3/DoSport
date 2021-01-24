@@ -71,6 +71,14 @@ extension AuthViewController: AuthViewDelegate {
     }
    
     func submitButtonTapped(with text: String) {
-        coordinator?.goToCodeEntryModule(text)
+        viewModel.checkIfNumberExists { [weak self] authResult in
+            switch authResult {
+            case .registred:
+                // TODO: when back-end is ready, provide registred `User` here for further use
+                self?.coordinator?.goToPasswordEntryModule()
+            case .notRegistred:
+                self?.coordinator?.goToCodeEntryModule(text)
+            }
+        }
     }
 }

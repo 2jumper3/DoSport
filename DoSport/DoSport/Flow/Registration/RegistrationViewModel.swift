@@ -15,7 +15,8 @@ final class RegistrationViewModel {
         
     }
     
-    func createUser() {
+    func createUser(compilation: (() -> Void)) {
         print(#function)
+        compilation()
     }
 }

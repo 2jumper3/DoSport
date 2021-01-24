@@ -30,7 +30,7 @@ final class CountryListTableCell: UITableViewCell {
         
         backgroundColor = Colors.darkBlue
         selectionStyle = .none
-        addSubviews(nameLabel, callingCodeLabel)
+        contentView.addSubviews(nameLabel, callingCodeLabel)
     }
     
     required init?(coder: NSCoder) {

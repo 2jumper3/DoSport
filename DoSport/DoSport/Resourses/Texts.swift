@@ -101,3 +101,20 @@ extension Texts {
         }
     }
 }
+
+//MARK: - SportTypeList Screen
+extension Texts {
+    enum SportTypeList {
+        static let title = "Что тебе интересно?"
+        static let save = "Сохранить"
+    }
+}
+
+//MARK: - PasswordEntry Screen
+extension Texts {
+    enum PasswordEntry {
+        static let title = "Вход"
+        static let forgotPassword = "Забыли пароль?"
+        static let enter = "Войти"
+    }
+}
