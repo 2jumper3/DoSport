@@ -35,3 +35,15 @@ extension Icons {
         UIImage(named: name) ?? UIImage()
     }
 }
+
+extension Icons {
+    enum MapIcons {
+        static var placeMark = image(named: "customPoint")
+        static var tappedPlaceMark = image(named: "tappedPoint")
+    }
+    enum PlacemarkTapped {
+        static var price = image(named: "Rub")
+        static var location = image(named: "Location")
+        static var metro = image(named: "Metro")
+    }
+}

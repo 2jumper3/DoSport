@@ -44,6 +44,13 @@
 		CEBA638D259A68A6006A7F80 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */; };
 		CEBA6393259A8C6F006A7F80 /* MapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */; };
 		CEBA6398259BD3C1006A7F80 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA6397259BD3C0006A7F80 /* FilterButton.swift */; };
+		CEBF0EFD25B9F0D500DB1E19 /* MapMarkIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0EFC25B9F0D500DB1E19 /* MapMarkIcon.swift */; };
+		CEBF0F0325BB348400DB1E19 /* PreviewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */; };
+		CEBF0F0B25BB5A5B00DB1E19 /* PreviewIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */; };
+		CEBF0F1B25BBF25C00DB1E19 /* CardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0F1A25BBF25C00DB1E19 /* CardPresentationController.swift */; };
+		CEBF0F2325BBF26700DB1E19 /* CardTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0F2225BBF26700DB1E19 /* CardTransitioningDelegate.swift */; };
+		CEBF0F2825BBF26F00DB1E19 /* CardPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0F2725BBF26F00DB1E19 /* CardPresentationAnimator.swift */; };
+		CEBF0F2D25BBF27A00DB1E19 /* CardDismissionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0F2C25BBF27A00DB1E19 /* CardDismissionAnimator.swift */; };
 		CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBC9DF25B08139002EB9BF /* MapAssembly.swift */; };
 		CECBC9E525B0818C002EB9BF /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBC9E425B0818C002EB9BF /* MapModel.swift */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
@@ -127,6 +134,13 @@
 		CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewController.swift; sourceTree = "<group>"; };
 		CEBA6397259BD3C0006A7F80 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		CEBF0EFC25B9F0D500DB1E19 /* MapMarkIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkIcon.swift; sourceTree = "<group>"; };
+		CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocation.swift; sourceTree = "<group>"; };
+		CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewIcons.xcassets; sourceTree = "<group>"; };
+		CEBF0F1A25BBF25C00DB1E19 /* CardPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationController.swift; sourceTree = "<group>"; };
+		CEBF0F2225BBF26700DB1E19 /* CardTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransitioningDelegate.swift; sourceTree = "<group>"; };
+		CEBF0F2725BBF26F00DB1E19 /* CardPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationAnimator.swift; sourceTree = "<group>"; };
+		CEBF0F2C25BBF27A00DB1E19 /* CardDismissionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDismissionAnimator.swift; sourceTree = "<group>"; };
 		CECBC9DF25B08139002EB9BF /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
 		CECBC9E425B0818C002EB9BF /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		CEDEB779258CB404007B2BCA /* DoSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +249,7 @@
 				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
 				CEBA6397259BD3C0006A7F80 /* FilterButton.swift */,
 				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
+				CEBF0EFC25B9F0D500DB1E19 /* MapMarkIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -387,6 +402,7 @@
 		CEBA637925988F87006A7F80 /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CEBF0F0125BB347900DB1E19 /* Helpers */,
 				CEBA637A25993838006A7F80 /* MapViewController.swift */,
 				CEBA6387259A6007006A7F80 /* MapViewModel.swift */,
 				CECBC9E425B0818C002EB9BF /* MapModel.swift */,
@@ -403,6 +419,27 @@
 				CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */,
 			);
 			path = MapFilter;
+			sourceTree = "<group>";
+		};
+		CEBF0F0125BB347900DB1E19 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEBF0F1925BBF23A00DB1E19 /* PreviewLocationCard */,
+				CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */,
+				CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CEBF0F1925BBF23A00DB1E19 /* PreviewLocationCard */ = {
+			isa = PBXGroup;
+			children = (
+				CEBF0F1A25BBF25C00DB1E19 /* CardPresentationController.swift */,
+				CEBF0F2225BBF26700DB1E19 /* CardTransitioningDelegate.swift */,
+				CEBF0F2725BBF26F00DB1E19 /* CardPresentationAnimator.swift */,
+				CEBF0F2C25BBF27A00DB1E19 /* CardDismissionAnimator.swift */,
+			);
+			path = PreviewLocationCard;
 			sourceTree = "<group>";
 		};
 		CEDEB770258CB404007B2BCA = {
@@ -700,6 +737,7 @@
 				CEDEB786258CB40A007B2BCA /* Icons.xcassets in Resources */,
 				CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */,
 				CEBA62EB2593F350006A7F80 /* TabBarIcons.xcassets in Resources */,
+				CEBF0F0B25BB5A5B00DB1E19 /* PreviewIcons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +825,7 @@
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
 				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
+				CEBF0F2D25BBF27A00DB1E19 /* CardDismissionAnimator.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
@@ -797,6 +836,7 @@
 				65FF8F002595DCFB0082A80E /* CommonButton.swift in Sources */,
 				CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
+				CEBF0F0325BB348400DB1E19 /* PreviewLocation.swift in Sources */,
 				CECBC9E525B0818C002EB9BF /* MapModel.swift in Sources */,
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				CEDEB841258CE146007B2BCA /* AbstractRequestFactory.swift in Sources */,
@@ -821,8 +861,10 @@
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
 				CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */,
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
+				CEBF0EFD25B9F0D500DB1E19 /* MapMarkIcon.swift in Sources */,
 				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
+				CEBF0F2825BBF26F00DB1E19 /* CardPresentationAnimator.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */,
@@ -831,11 +873,13 @@
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
+				CEBF0F1B25BBF25C00DB1E19 /* CardPresentationController.swift in Sources */,
 				CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
 				CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
+				CEBF0F2325BBF26700DB1E19 /* CardTransitioningDelegate.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */,
@@ -1018,7 +1062,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SergeyU.DoSport;
+				PRODUCT_BUNDLE_IDENTIFIER = SergeyU1.DoSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1040,7 +1084,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SergeyU.DoSport;
+				PRODUCT_BUNDLE_IDENTIFIER = SergeyU1.DoSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

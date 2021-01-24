@@ -18,7 +18,8 @@ final class MapViewModel {
     func loadCoordinates() {
         let first = MapModel(latitude: 55.847695, longitude: 37.361076)
         let second = MapModel(latitude: 55.849125, longitude: 37.361724)
-        self.coordinates = [first,second]
+        let third = MapModel(latitude: 55.850682, longitude: 37.357555)
+        self.coordinates = [first,second,third]
     }
     
     func placemarkTapped() {
