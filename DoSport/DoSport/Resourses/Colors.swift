@@ -27,4 +27,8 @@ public enum Colors {
     static var textError: UIColor {
         return .init(hex: 0xFF6A3C)
     }
+
+    static var backgroundBlue: UIColor {
+        return .init(hex: 0x28269E)
+    }
 }

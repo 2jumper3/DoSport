@@ -20,7 +20,7 @@ enum TabBarItem: String, CaseIterable {
         case .home:
             return DSNavigationController(rootViewController: TypeSportsListController())
         case .map:
-            return TypeSportsListController()
+            return DSNavigationController(rootViewController: TypeSportsListController())
         case .list:
             return TypeSportsListController()
         case .chat:

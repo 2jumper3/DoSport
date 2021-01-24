@@ -37,6 +37,11 @@ final class TypeSportsListController: UIViewController, UISearchBarDelegate {
         configureTapGesture()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
@@ -48,7 +53,7 @@ final class TypeSportsListController: UIViewController, UISearchBarDelegate {
     }
 }
 
-// MARK: - MainViewController
+// MARK: - UITextFieldDelegate
 extension TypeSportsListController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -89,7 +94,11 @@ extension TypeSportsListController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension TypeSportsListController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        let controller = TypeSportPlacesController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -116,7 +125,6 @@ extension TypeSportsListController {
     private func configureUI() {
         view.backgroundColor = Colors.darkBlue
         collectionView.backgroundColor = Colors.darkBlue
-        navigationController?.navigationBar.isHidden = true
 
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { (make) in
@@ -149,5 +157,6 @@ extension TypeSportsListController {
     private func configureTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         view.addGestureRecognizer(tapGestureRecognizer)
+        tapGestureRecognizer.cancelsTouchesInView = false
     }
 }
