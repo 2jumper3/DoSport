@@ -13,7 +13,7 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
 
     
     // MARK: - Outlets
-    let cardTransitioningDelegate = CardTransitioningDelegate()
+    private let transition = PanelTransition()
     var coordinator: MapCoordinator?
     let viewModel: MapViewModel
     private var placemarkMapObjectTapListener: PlacemarkMapObjectTapListener!
@@ -24,10 +24,18 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
         return view
     }()
     private var button: FilterButton = {
-        return FilterButton(state: .notActivated)
+        let btn = FilterButton(state: .notActivated)
+        btn.addTarget(self, action: #selector(push), for: .touchUpInside)
+        return btn
     }()
     
-
+    @objc func push()  {
+        let child = PreviewLocation(id: 111, name: "Планетарная", range: 222, price: 333, location: "Площадь Ильича")
+        child.transitioningDelegate = transition
+        child.modalPresentationStyle = .custom
+        
+        present(child, animated: true)
+    }
     private let locationManager = CLLocationManager()
     // MARK: - Init
     init(viewModel: MapViewModel) {
@@ -75,14 +83,14 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
                 alert.view.layer.cornerRadius = 15;
 
 //                controller?.present(alert, animated: true);
-                
-                controller?.present(view, animated: true, completion: nil)
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    let view = PreviewLocation(frame: .zero, id: 12, name: "name", range: 12, price: 12, location: "location")
-                    view.transitioningDelegate = cardTransitioningDelegate
-                    view.modalPresentationStyle = .custom
-                }
+//                
+//                controller?.present(view, animated: true, completion: nil)
+//                
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//                    let view = PreviewLocation(frame: .zero, id: 12, name: "name", range: 12, price: 12, location: "location")
+//                    view.transitioningDelegate = cardTransitioningDelegate
+//                    view.modalPresentationStyle = .custom
+//                }
             }
             }
             return true;
@@ -126,7 +134,7 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
         for places in allPlacemarks {
             let point = YMKPoint(latitude: places.latitude, longitude: places.longitude)
             let placemark = mapObjects.addPlacemark(with: point)
-            placemark.userData = PlaceMarkUserData(id: 32, name: "123", range: 32, price: 32, location: "321")
+            placemark.userData = PlaceMarkUserData(id: 777, name: "123", range: 111, price: 222, location: "321")
             placemarkMapObjectTapListener = PlacemarkMapObjectTapListener(controller: self);
             placemark.addTapListener(with: placemarkMapObjectTapListener)
             placemark.setIconWith(Icons.MapIcons.placeMark)

@@ -8,15 +8,12 @@
 import UIKit
 
 class PreviewLocation: UIViewController   {
-    let cardTransitioningDelegate = CardTransitioningDelegate()
-
-    
     let id: Int
     let name: String
     let range: Int
     let price: Int
     let location: String
-    init(frame: CGRect, id: Int, name: String, range: Int, price: Int, location: String) {
+    init(id: Int, name: String, range: Int, price: Int, location: String) {
         self.id = id
         self.name = name
         self.range = range
@@ -98,11 +95,11 @@ class PreviewLocation: UIViewController   {
             make.right.equalTo(background.snp.right).offset(background.bounds.width / 28.5)
         }
         priceIcon.snp.makeConstraints { (make) in
-            make.right.equalTo(priceLabel.snp.left).offset(6)
+            make.right.equalTo(priceLabel.snp.left).offset(-6) //changed
             make.bottom.equalTo(priceLabel.snp.bottom)
         }
         rangeLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(background.snp.left).offset(background.bounds.width / 28.5)
+            make.right.equalTo(background.snp.right).offset(background.bounds.width / 28.5)
             make.bottom.equalTo(priceLabel.snp.top)
         }
         locationIcon.snp.makeConstraints { (make) in
