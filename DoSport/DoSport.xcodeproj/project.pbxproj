@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180824487F51C8754BAA5D0C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		180824487F51C8754BAA5D0C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		4379F31B6E4E2F098C20B209 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC743662EDA699145080D1E /* Pods_DoSport.framework */; };
 		65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */; };
 		65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1925B4D013000263FA /* PasswordEntryViewController.swift */; };
 		65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1E25B4D01B000263FA /* PasswordEntryView.swift */; };
@@ -134,6 +135,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FC743662EDA699145080D1E /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryAssembly.swift; sourceTree = "<group>"; };
 		65014F1925B4D013000263FA /* PasswordEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewController.swift; sourceTree = "<group>"; };
 		65014F1E25B4D01B000263FA /* PasswordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryView.swift; sourceTree = "<group>"; };
@@ -255,7 +257,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				180824487F51C8754BAA5D0C /* (null) in Frameworks */,
+				180824487F51C8754BAA5D0C /* BuildFile in Frameworks */,
+				4379F31B6E4E2F098C20B209 /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +514,7 @@
 		AAE0692D4F4755F576D4845F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FC743662EDA699145080D1E /* Pods_DoSport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1187,7 +1191,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DFZ8N2CQSG;
+				DEVELOPMENT_TEAM = 4R79A6C4N5;
 				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1208,7 +1212,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DFZ8N2CQSG;
+				DEVELOPMENT_TEAM = 4R79A6C4N5;
 				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
