@@ -35,7 +35,7 @@ class CustomTabView: UIView {
         }
         self.setNeedsLayout()
         self.layoutIfNeeded()
-        self.activateTab(tab: 0)
+        self.activateTab(tab: 1)
     }
     
     required init?(coder: NSCoder) {

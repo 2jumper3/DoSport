@@ -24,21 +24,17 @@ class PresentationController: UIPresentationController {
     
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
-        
         containerView?.addSubview(presentedView!)
-        
     }
     
     override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
-        
         presentedView?.frame = frameOfPresentedViewInContainerView
     }
     
     var driver: TransitionDriver!
     override func presentationTransitionDidEnd(_ completed: Bool) {
         super.presentationTransitionDidEnd(completed)
-        
         if completed {
             driver.direction = .dismiss
         }

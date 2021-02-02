@@ -39,8 +39,9 @@
 		CE83AADA25BDBDBE00A2C6E1 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAD925BDBDBE00A2C6E1 /* PresentAnimation.swift */; };
 		CE83AAE225BDBDD500A2C6E1 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAE125BDBDD500A2C6E1 /* DismissAnimation.swift */; };
 		CE83AAE725BDBED800A2C6E1 /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAE625BDBED800A2C6E1 /* DimmPresentationController.swift */; };
-		CE83AAEC25BDC0A700A2C6E1 /* CGPoint+Velocity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAEB25BDC0A700A2C6E1 /* CGPoint+Velocity.swift */; };
+		CE83AAEC25BDC0A700A2C6E1 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAEB25BDC0A700A2C6E1 /* CGPoint.swift */; };
 		CE83AAF125BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAF025BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift */; };
+		CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */; };
 		CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92157925B48B4E003BF78E /* MapCoordinator.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
@@ -135,8 +136,9 @@
 		CE83AAD925BDBDBE00A2C6E1 /* PresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
 		CE83AAE125BDBDD500A2C6E1 /* DismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
 		CE83AAE625BDBED800A2C6E1 /* DimmPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmPresentationController.swift; sourceTree = "<group>"; };
-		CE83AAEB25BDC0A700A2C6E1 /* CGPoint+Velocity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Velocity.swift"; sourceTree = "<group>"; };
+		CE83AAEB25BDC0A700A2C6E1 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		CE83AAF025BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantPanGestureRecognizer.swift; sourceTree = "<group>"; };
+		CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkMapObjectTapListener.swift; sourceTree = "<group>"; };
 		CE92157925B48B4E003BF78E /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -399,6 +401,14 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		CE83AB0325C42C6500A2C6E1 /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */,
+			);
+			path = YandexMapKit;
+			sourceTree = "<group>";
+		};
 		CEBA62DA2593F278006A7F80 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,11 +453,12 @@
 		CEBF0F0125BB347900DB1E19 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE83AB0325C42C6500A2C6E1 /* YandexMapKit */,
 				CE83AAD825BDBDB300A2C6E1 /* Animations */,
 				CEBF0F1925BBF23A00DB1E19 /* PreviewLocationCard */,
 				CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */,
 				CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */,
-				CE83AAEB25BDC0A700A2C6E1 /* CGPoint+Velocity.swift */,
+				CE83AAEB25BDC0A700A2C6E1 /* CGPoint.swift */,
 				CE83AAF025BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift */,
 			);
 			path = Helpers;
@@ -874,7 +885,7 @@
 				CEDEB914258D4C75007B2BCA /* UIImage.swift in Sources */,
 				CEDEB869258CE1EB007B2BCA /* EditUserInfo.swift in Sources */,
 				CEBA637B25993838006A7F80 /* MapViewController.swift in Sources */,
-				CE83AAEC25BDC0A700A2C6E1 /* CGPoint+Velocity.swift in Sources */,
+				CE83AAEC25BDC0A700A2C6E1 /* CGPoint.swift in Sources */,
 				CEDEB841258CE146007B2BCA /* AbstractRequestFactory.swift in Sources */,
 				CEBA62F12593F3FB006A7F80 /* MainViewController.swift in Sources */,
 				CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */,
@@ -901,6 +912,7 @@
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
+				CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  CGPoint+Velocity.swift
+//  CGPoint.swift
 //  DoSport
 //
 //  Created by Sergey on 24.01.2021.
@@ -23,7 +23,7 @@ extension CGPoint {
     }
 }
 
-extension CGFloat { // Velocity value
+extension CGFloat { //  value
     func projectedOffset(decelerationRate: UIScrollView.DecelerationRate) -> CGFloat {
         // Magic formula from WWDC
         let multiplier = 1 / (1 - decelerationRate.rawValue) / 1000

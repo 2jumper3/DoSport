@@ -34,27 +34,36 @@ class PreviewLocation: UIViewController   {
     //MARK: - UI
     private lazy var background : UIView = {
         let view = UIView()
+        view.layer.cornerRadius = 12
         view.backgroundColor = Colors.lightBlue
         return view
     }()
     private lazy var adressLabel: UILabel = {
         let label = UILabel()
+        label.font = Fonts.sfProRegular(size: 14)
+        label.textColor = .white
         label.text = location
         return label
     }()
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
+        label.font = Fonts.sfProRegular(size: 14)
+        label.textColor = .white
         label.text = String(price)
         return label
     }()
     private lazy var rangeLabel: UILabel = {
         let label = UILabel()
-        label.text = String(range)
+        label.font = Fonts.sfProRegular(size: 14)
+        label.textColor = .white
+        label.text = String("\(range) км")
         return label
     }()
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = name
+        label.font = Fonts.sfProRegular(size: 24)
+        label.textColor = .white
         return label
     }()
     private lazy var metroIcon: UIImageView = {
@@ -78,9 +87,8 @@ class PreviewLocation: UIViewController   {
             make.right.bottom.equalTo(view).offset(-view.bounds.width / 23.4)
         }
         nameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(background.snp.left).offset(background.bounds.width / 28.5)
-            make.top.equalTo(background.snp.centerY)
-            make.height.equalTo(background.bounds.height / 10)
+            make.left.equalTo(background.snp.left).offset(10)
+            make.centerY.equalTo(background.snp.centerY)
         }
         metroIcon.snp.makeConstraints { (make) in
             make.left.equalTo(nameLabel.snp.left)
@@ -88,23 +96,26 @@ class PreviewLocation: UIViewController   {
         }
         adressLabel.snp.makeConstraints { (make) in
             make.left.equalTo(metroIcon.snp.right).offset(4)
-            make.top.equalTo(metroIcon.snp.top)
+            make.centerY.equalTo(metroIcon.snp.centerY)
+            make.height.equalTo(22)
         }
         priceLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(adressLabel.snp.bottom)
-            make.right.equalTo(background.snp.right).offset(background.bounds.width / 28.5)
+            make.centerY.equalTo(adressLabel.snp.centerY)
+            make.right.equalTo(background.snp.right).offset(-10)
+            make.height.equalTo(22)
         }
         priceIcon.snp.makeConstraints { (make) in
-            make.right.equalTo(priceLabel.snp.left).offset(-6) //changed
-            make.bottom.equalTo(priceLabel.snp.bottom)
+            make.right.equalTo(priceLabel.snp.left).offset(-6)
+            make.centerY.equalTo(priceLabel.snp.centerY)
         }
         rangeLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(background.snp.right).offset(background.bounds.width / 28.5)
+            make.right.equalTo(background.snp.right).offset(-10)
             make.bottom.equalTo(priceLabel.snp.top)
+            make.height.equalTo(22)
         }
         locationIcon.snp.makeConstraints { (make) in
-            make.right.equalTo(rangeLabel.snp.left).offset(5)
-            make.centerX.equalTo(rangeLabel.snp.centerX)
+            make.right.equalTo(rangeLabel.snp.left).offset(-6)
+            make.centerY.equalTo(rangeLabel.snp.centerY)
         }
     }
 }

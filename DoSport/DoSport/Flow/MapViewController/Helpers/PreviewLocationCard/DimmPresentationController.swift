@@ -12,10 +12,7 @@ class DimmPresentationController: PresentationController {
     
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
-        
-        containerView?.insertSubview(dimmView, at: 0)
-        
-        
+//        containerView?.insertSubview(dimmView, at: 0)
         performAlongsideTransitionIfPossible { [unowned self] in
             self.dimmView.alpha = 1
         }
@@ -23,13 +20,11 @@ class DimmPresentationController: PresentationController {
     
     override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
-        
-        dimmView.frame = containerView!.frame
+        dimmView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     }
     
     override func presentationTransitionDidEnd(_ completed: Bool) {
         super.presentationTransitionDidEnd(completed)
-        
         if !completed {
             self.dimmView.removeFromSuperview()
         }
@@ -37,7 +32,6 @@ class DimmPresentationController: PresentationController {
     
     override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
-        
         performAlongsideTransitionIfPossible { [unowned self] in
             self.dimmView.alpha = 0
         }
@@ -45,7 +39,6 @@ class DimmPresentationController: PresentationController {
     
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         super.dismissalTransitionDidEnd(completed)
-        
         if completed {
             self.dimmView.removeFromSuperview()
         }
@@ -64,7 +57,7 @@ class DimmPresentationController: PresentationController {
     
     private lazy var dimmView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         view.alpha = 0
         return view
     }()

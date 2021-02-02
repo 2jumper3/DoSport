@@ -10,4 +10,9 @@ import Foundation
 struct MapModel {
     let latitude: Double
     let longitude: Double
+    let id: Int
+    let name: String
+    let range: Int
+    let price: Int
+    let location: String
 }

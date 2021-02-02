@@ -16,9 +16,9 @@ final class MapViewModel {
     }
     
     func loadCoordinates() {
-        let first = MapModel(latitude: 55.847695, longitude: 37.361076)
-        let second = MapModel(latitude: 55.849125, longitude: 37.361724)
-        let third = MapModel(latitude: 55.850682, longitude: 37.357555)
+        let first = MapModel(latitude: 55.847695, longitude: 37.361076, id: 1, name: "First", range: 22, price: 10000, location: "Peter")
+        let second = MapModel(latitude: 55.849125, longitude: 37.361724, id: 2, name: "Second", range: 22, price: 10000, location: "Moscow")
+        let third = MapModel(latitude: 55.850682, longitude: 37.357555, id: 3, name: "Third", range: 22, price: 10000, location: "Novosib")
         self.coordinates = [first,second,third]
     }
     
