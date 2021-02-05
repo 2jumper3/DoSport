@@ -9,4 +9,11 @@ import Foundation
 
 final class PasswordEntryViewModel {
     
+    init() {
+        
+    }
+    
+    func checkPassword(compilation: () -> Void) {
+        compilation()
+    }
 }

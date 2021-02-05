@@ -28,4 +28,9 @@ final class SportTypeListCoordinator: Coordinator {
     func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func goToFeedModule() {
+        let coordinator = FeedCoordinator(navController: navigationController)
+        coordinator.start()
+    }
 }

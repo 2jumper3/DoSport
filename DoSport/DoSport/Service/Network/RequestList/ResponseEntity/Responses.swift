@@ -4,13 +4,16 @@
 //
 //  Created by Sergey on 18.12.2020.
 //
+
 import Foundation
 
 //Structs for parsing
 
 // MARK: - LoginResult
 struct LoginResult: Codable {
+    
     let token: String
+    
     enum CodingKeys: String, CodingKey {
         case token
     }
@@ -21,6 +24,7 @@ struct RegisterResult: Codable {
     let idResult: Int
     let username: String
 }
+
 // MARK: - UserInfoResult
 struct UserInfoResult: Codable {
     let birthdayDate: String?

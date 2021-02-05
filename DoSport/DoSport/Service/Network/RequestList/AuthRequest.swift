@@ -9,18 +9,25 @@ import Foundation
 import Alamofire
 
 protocol AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
+    func login(
+        userName: String,
+        password: String,
+        completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void
+    )
 }
 
 class AuthRequest: AbstractRequestFactory {
+
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
     let baseUrl = URL(string: "https://dosport-ru.herokuapp.com/api/v1/")!
+
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
-        queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
+        queue: DispatchQueue? = DispatchQueue.global(qos: .utility)
+    ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
@@ -28,10 +35,19 @@ class AuthRequest: AbstractRequestFactory {
 }
 
 extension AuthRequest: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(headers: HTTPHeaders([]), baseUrl: baseUrl, login: userName, password: password)
+    func login(
+        userName: String,
+        password: String,
+        completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void
+    ) {
+        let requestModel = Login(
+            headers: HTTPHeaders([]),
+            baseUrl: baseUrl,
+            login: userName,
+            password: password
+        )
+        
         self.request(request: requestModel, completionHandler: completionHandler)
-
     }
 }
 

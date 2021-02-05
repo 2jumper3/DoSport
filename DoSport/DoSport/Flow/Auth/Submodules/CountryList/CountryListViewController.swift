@@ -13,7 +13,7 @@ final class CountryListViewController: UIViewController, UIGestureRecognizerDele
     let viewModel: CountryListViewModel
     
     private lazy var countryView = self.view as! CountryListView
-    private lazy var navBar = DSNavBar()
+    private lazy var navBar = DSCountryListNavBar()
     
     private lazy var tableManager: CountryListDataSource = {
         $0.onCountryDidSelect = { [weak self] country in

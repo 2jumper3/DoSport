@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Sport {
+struct Sport: Codable {
     
     var title: String?
     var icon: String?
     
-    var type: SportType
+    var type: SportType?
     
     init(type: SportType) {
         self.type = type
@@ -72,6 +72,8 @@ struct Sport {
         case other = "Другое"
     }
 }
+
+extension Sport.SportType: Codable { }
 
 //MARK: - Equatable
 
