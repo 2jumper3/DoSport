@@ -59,7 +59,7 @@ struct Sport: Codable {
         case hockey = "Хоккей"
         case volleyball = "Волейбол"
         case tennis = "Теннис"
-        case workout = "Воркоут"
+        case workout = "Воркаут"
         case run = "Бег"
         case gym = "Треножерный зал"
         case yoga = "Йога"
