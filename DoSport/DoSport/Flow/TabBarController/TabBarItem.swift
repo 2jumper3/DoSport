@@ -11,7 +11,6 @@ enum TabBarItem: String, CaseIterable {
 
     case home = "Home"
     case map = "Map"
-    case list = "Main"
     case chat = "Chat"
     case user = "User"
 //Need to add newControllers when it will be finished
@@ -20,8 +19,6 @@ enum TabBarItem: String, CaseIterable {
         case .home:
             return UINavigationController(rootViewController: MainViewController())
         case .map:
-            return MainViewController()
-        case .list:
             return MainViewController()
         case .chat:
             return MainViewController()
@@ -36,8 +33,6 @@ enum TabBarItem: String, CaseIterable {
             return UIImage(named: "homeInactive")!
         case .map:
             return UIImage(named: "mapInactive")!
-        case .list:
-            return UIImage(named: "listInative")!
         case .chat:
             return UIImage(named: "chatInactive")!
         case .user:
