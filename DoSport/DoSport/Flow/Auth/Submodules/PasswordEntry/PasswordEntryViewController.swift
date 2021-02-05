@@ -74,7 +74,7 @@ extension PasswordEntryViewController: PasswordEntryViewDelegate {
     
     func didTapEnterButton() {
         viewModel.checkPassword { [weak self] in
-            self?.coordinator?.goToHomeModule()
+            self?.coordinator?.goToFeedModule()
         }
     }
     

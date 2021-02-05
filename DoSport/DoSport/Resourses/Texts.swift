@@ -119,9 +119,17 @@ extension Texts {
     }
 }
 
-//MARK: - Home screen
+//MARK: - Feed screen
 extension Texts {
-    enum Home {
+    enum Feed {
         static let title = "Создать тренировку"
+        static let feedTitle = "Лента"
+        
+        static let all = "Все"
+        static let subscribes = "Подписки"
+        static let subscribers = "Подписчики"
+        
+        static let free = "Бесплатно"
+        static let km3 = "3 км"
     }
 }

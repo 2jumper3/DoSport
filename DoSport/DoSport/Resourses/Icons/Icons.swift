@@ -47,9 +47,41 @@ public enum Icons {
         }
     }
     
-    enum Home {
+    enum Feed {
         static var plus: UIImage {
             return Icons.image(named: "plus")
+        }
+        
+        static var options: UIImage {
+            return Icons.image(named: "options")
+        }
+        
+        static var subway: UIImage {
+            return Icons.image(named: "subway")
+        }
+        
+        static var location: UIImage {
+            return Icons.image(named: "location")
+        }
+        
+        static var currency: UIImage {
+            return Icons.image(named: "currency")
+        }
+        
+        static var defaultAvatar: UIImage {
+            return Icons.image(named: "event_organiser_default_avatar")
+        }
+        
+        static var clock: UIImage {
+            return Icons.image(named: "clock")
+        }
+        
+        static var chat: UIImage {
+            return Icons.image(named: "chat")
+        }
+        
+        static var user: UIImage {
+            return Icons.image(named: "user")
         }
     }
 }

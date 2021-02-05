@@ -1,0 +1,70 @@
+//
+//  FeedDataSource.swift
+//  DoSport
+//
+//  Created by Komolbek Ibragimov on 17/01/2021.
+//
+
+import UIKit
+
+final class FeedDataSource: NSObject {
+    
+    var onDidSelectEvent: ((Event) -> Void)?
+    
+    var viewModels: [Event]
+    
+    init(viewModels: [Event] = []) {
+        self.viewModels = viewModels
+        super.init()
+    }
+}
+
+//MARK: - UITableViewDataSource
+
+extension FeedDataSource: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModels.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell: EventCollectionViewCell = collectionView.cell(forRowAt: indexPath)
+
+//        let viewModel = viewModels[indexPath.row]
+
+        
+        return cell
+    }
+}
+
+//MARK: - UITableViewDelegate
+
+extension FeedDataSource: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewModel = viewModels[indexPath.row]
+        
+//        guard let cell: EventCollectionViewCell = collectionView.cellForItem(at: indexPath) as? EventCollectionViewCell
+//        else { return }
+        
+//        cell.bind()
+        onDidSelectEvent?(viewModel)
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension FeedDataSource: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(
+            width: collectionView.bounds.width,
+            height: UIScreen.main.bounds.height * 0.34
+        )
+    }
+}
+

@@ -13,7 +13,7 @@ final class DSHomeNavBar: UIView {
     // to create new event
     
     private(set) lazy var createEventButton: UIButton = {
-        $0.setImage(Icons.Home.plus, for: .normal)
+        $0.setImage(Icons.Feed.plus, for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = .white
         return $0
@@ -22,7 +22,7 @@ final class DSHomeNavBar: UIView {
     // home screen navBar title
     
     private let titleLabel: UILabel = {
-        $0.text = Texts.Home.title
+        $0.text = Texts.Feed.title
         $0.textColor = .white
         $0.textAlignment = .left
         $0.font = Fonts.sfProRegular(size: 18)
@@ -54,14 +54,14 @@ final class DSHomeNavBar: UIView {
         
         titleLabel.snp.makeConstraints {
             $0.height.centerY.equalToSuperview()
-            $0.left.equalToSuperview().offset(25)
+            $0.left.equalTo(createEventButton.snp.right)
             $0.width.equalToSuperview().multipliedBy(0.8)
         }
         
         createEventButton.snp.makeConstraints {
             $0.left.equalToSuperview().offset(0)
             $0.height.centerY.equalToSuperview()
-            $0.width.equalTo(snp.height).multipliedBy(1.2)
+            $0.width.equalTo(snp.height).multipliedBy(1.4)
         }
     }
 }

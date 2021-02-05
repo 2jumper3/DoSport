@@ -8,6 +8,7 @@
 import Foundation
 
 struct Event: Codable {
+    
     var eventID: Int64?
     var eventDate: Date?
     var eventEndTime: Date?

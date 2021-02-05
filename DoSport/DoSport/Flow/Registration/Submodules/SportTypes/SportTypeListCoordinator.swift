@@ -29,8 +29,8 @@ final class SportTypeListCoordinator: Coordinator {
         navigationController?.popViewController(animated: true)
     }
     
-    func goToHomeModule() {
-        let coordinator = HomeCoordinator(navController: navigationController)
+    func goToFeedModule() {
+        let coordinator = FeedCoordinator(navController: navigationController)
         coordinator.start()
     }
 }

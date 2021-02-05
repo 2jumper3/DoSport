@@ -1,5 +1,5 @@
 //
-//  HomeCoordinator.swift
+//  FeedCoordinator.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class HomeCoordinator: Coordinator {
+final class FeedCoordinator: Coordinator {
     
-    let rootViewController: HomeViewController
+    let rootViewController: FeedViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = HomeAssembly()
+        let assembly = FeedAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
     }
@@ -23,5 +23,10 @@ final class HomeCoordinator: Coordinator {
     func start() {
         rootViewController.coordinator = self
         navigationController?.setViewControllers([rootViewController], animated: true)
+    }
+    
+    func goToEventModule(withSelected event: Event) {
+        let coordinator = EventViewCoordinator(navController: navigationController, event: event)
+        coordinator.start()
     }
 }

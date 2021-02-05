@@ -1,24 +1,22 @@
 //
-//  HomeViewController.swift
+//  EventViewController.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 17/01/2021.
+//  Created by Komolbek Ibragimov on 05/02/2021.
 //
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class EventViewController: UIViewController {
     
-    var coordinator: HomeCoordinator?
-    private let viewModel: HomeViewModel
+    var coordinator: EventViewCoordinator?
+    private(set) var viewModel: EventViewModel
     
-    private lazy var homeView = self.view as! HomeView
-    
-    private let navBar = DSHomeNavBar()
+    private lazy var eventView = self.view as! EventView
 
     // MARK: - Init
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: EventViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,26 +28,16 @@ final class HomeViewController: UIViewController {
     // MARK: - Life Cycle
     
     override func loadView() {
-        let view = HomeView()
-        view.delegate = self
+        let view = EventView()
         self.view = view
-        
-        navigationItem.titleView = navBar
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Home"
-        navigationItem.setHidesBackButton(true, animated: true)
+        title = ""
         
-        navBar.createEventButton.addTarget(
-            self,
-            action: #selector(handleCreateButton),
-            for: .touchUpInside
-        )
-        
-        viewModel.prepareEventsData()
+        setupViewModelBindings()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -66,25 +54,24 @@ final class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
 
     }
+}
+
+//MARK: - Private methods
+
+private extension EventViewController {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
+    func setupViewModelBindings() {
+        viewModel.onDidPrepareEventData = { [weak self] event in
+            print(event)
+        }
     }
 }
 
 //MARK: - Actions
 
 @objc
-private extension HomeViewController {
+private extension EventViewController {
     func handleCreateButton() {
         
     }
-}
-
-//MARK: - HomeViewDelegate
-
-extension HomeViewController: HomeViewDelegate {
-
 }
