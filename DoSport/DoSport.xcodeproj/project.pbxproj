@@ -42,6 +42,11 @@
 		CE83AAEC25BDC0A700A2C6E1 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAEB25BDC0A700A2C6E1 /* CGPoint.swift */; };
 		CE83AAF125BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AAF025BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift */; };
 		CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */; };
+		CE83AB2925C9C9BF00A2C6E1 /* CardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB2825C9C9BF00A2C6E1 /* CardPresentationController.swift */; };
+		CE83AB3125C9C9CC00A2C6E1 /* CardTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3025C9C9CC00A2C6E1 /* CardTransitioningDelegate.swift */; };
+		CE83AB3625C9C9E800A2C6E1 /* CardPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3525C9C9E800A2C6E1 /* CardPresentationAnimator.swift */; };
+		CE83AB3B25C9C9F700A2C6E1 /* CardDismissionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3A25C9C9F700A2C6E1 /* CardDismissionAnimator.swift */; };
+		CE83AB4025C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3F25C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift */; };
 		CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92157925B48B4E003BF78E /* MapCoordinator.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
@@ -139,6 +144,11 @@
 		CE83AAEB25BDC0A700A2C6E1 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		CE83AAF025BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkMapObjectTapListener.swift; sourceTree = "<group>"; };
+		CE83AB2825C9C9BF00A2C6E1 /* CardPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationController.swift; sourceTree = "<group>"; };
+		CE83AB3025C9C9CC00A2C6E1 /* CardTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransitioningDelegate.swift; sourceTree = "<group>"; };
+		CE83AB3525C9C9E800A2C6E1 /* CardPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationAnimator.swift; sourceTree = "<group>"; };
+		CE83AB3A25C9C9F700A2C6E1 /* CardDismissionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDismissionAnimator.swift; sourceTree = "<group>"; };
+		CE83AB3F25C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPDFTouchForwardingView.swift; sourceTree = "<group>"; };
 		CE92157925B48B4E003BF78E /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -409,6 +419,18 @@
 			path = YandexMapKit;
 			sourceTree = "<group>";
 		};
+		CE83AB2725C9C96500A2C6E1 /* SecondTry */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AB2825C9C9BF00A2C6E1 /* CardPresentationController.swift */,
+				CE83AB3025C9C9CC00A2C6E1 /* CardTransitioningDelegate.swift */,
+				CE83AB3525C9C9E800A2C6E1 /* CardPresentationAnimator.swift */,
+				CE83AB3A25C9C9F700A2C6E1 /* CardDismissionAnimator.swift */,
+				CE83AB3F25C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift */,
+			);
+			path = SecondTry;
+			sourceTree = "<group>";
+		};
 		CEBA62DA2593F278006A7F80 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +475,7 @@
 		CEBF0F0125BB347900DB1E19 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE83AB2725C9C96500A2C6E1 /* SecondTry */,
 				CE83AB0325C42C6500A2C6E1 /* YandexMapKit */,
 				CE83AAD825BDBDB300A2C6E1 /* Animations */,
 				CEBF0F1925BBF23A00DB1E19 /* PreviewLocationCard */,
@@ -862,6 +885,7 @@
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
+				CE83AB2925C9C9BF00A2C6E1 /* CardPresentationController.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				CE83AAF125BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift in Sources */,
@@ -870,6 +894,7 @@
 				659C61C92593E15700C33D05 /* UserRegion.swift in Sources */,
 				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
 				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
+				CE83AB3B25C9C9F700A2C6E1 /* CardDismissionAnimator.swift in Sources */,
 				CE83AAE225BDBDD500A2C6E1 /* DismissAnimation.swift in Sources */,
 				65FF8F002595DCFB0082A80E /* CommonButton.swift in Sources */,
 				CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */,
@@ -913,6 +938,7 @@
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */,
+				CE83AB3625C9C9E800A2C6E1 /* CardPresentationAnimator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */,
@@ -920,12 +946,14 @@
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
 				CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
+				CE83AB3125C9C9CC00A2C6E1 /* CardTransitioningDelegate.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */,
 				CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */,
 				CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */,
 				CEBA6398259BD3C1006A7F80 /* FilterButton.swift in Sources */,
+				CE83AB4025C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

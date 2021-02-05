@@ -15,9 +15,11 @@ class PanelTransition: NSObject, UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         driver.link(to: presented)
         
-        let presentationController = DimmPresentationController(presentedViewController: presented,
-                                                                presenting: presenting ?? source)
-        presentationController.driver = driver
+//        let presentationController = DimmPresentationController(presentedViewController: presented,
+//                                                                presenting: presenting ?? source)
+        let presentationController = CardPresentationController(presentedViewController: presented,
+                                                                presenting: presenting)
+//        presentationController.driver = driver
         return presentationController
     }
     

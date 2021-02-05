@@ -78,14 +78,23 @@ class PreviewLocation: UIViewController   {
         let imageView = UIImageView(image: Icons.PlacemarkTapped.price)
         return imageView
     }()
-    
+    private lazy var customBlueBorder: UIView = {
+        let view = UIView()
+        view.backgroundColor = Colors.dirtyBlue
+        return view
+    }()
     func setupUI() {
         view.backgroundColor = Colors.darkBlue
-        view.addSubviews(background,adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon)
+        view.addSubviews(background,customBlueBorder,adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon)
         background.snp.makeConstraints { (make) in
             make.left.top.equalTo(view).offset(view.bounds.width / 23.4)
             make.right.bottom.equalTo(view).offset(-view.bounds.width / 23.4)
         }
+//        background.snp.makeConstraints { (make) in
+//            make.left.right.equalTo(customBlueBorder)
+//            make.top.equalTo(customBlueBorder.snp.top).offset(5)
+//            make.bottom.equalTo(customBlueBorder.snp.bottom).offset(-5)
+//        }
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(background.snp.left).offset(10)
             make.centerY.equalTo(background.snp.centerY)
