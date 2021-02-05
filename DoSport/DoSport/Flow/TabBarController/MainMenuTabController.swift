@@ -29,7 +29,7 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
 
     // MARK: - Setup custom tabbar
     private func loadTabBar() {
-        let tabItems: [TabBarItem] = [.home, .map, .list, .chat, .user]
+        let tabItems: [TabBarItem] = [.home, .map, .chat, .user]
         self.setupCustomTabBar(tabItems) { (controllers) in
             self.viewControllers = controllers
             let navControllers = controllers[0] as? UINavigationController
