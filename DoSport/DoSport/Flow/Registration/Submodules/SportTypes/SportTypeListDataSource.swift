@@ -30,7 +30,7 @@ extension SportTypeListDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell: SportTypeCollectionCell = collectionView.cell(forRowAt: indexPath)
+        let cell: CollectionViewSportTypeCell = collectionView.cell(forRowAt: indexPath)
         
         let viewModel = viewModels[indexPath.row]
         cell.text = viewModel.title
@@ -45,7 +45,7 @@ extension SportTypeListDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         
-        guard let cell: SportTypeCollectionCell = collectionView.cellForItem(at: indexPath) as? SportTypeCollectionCell else { return }
+        guard let cell: CollectionViewSportTypeCell = collectionView.cellForItem(at: indexPath) as? CollectionViewSportTypeCell else { return }
         
         cell.bind()
         onDidSelectSport?(viewModel)

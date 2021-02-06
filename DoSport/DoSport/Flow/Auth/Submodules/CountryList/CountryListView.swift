@@ -16,7 +16,7 @@ final class CountryListView: UIView {
     }(UIView())
     
     private lazy var tableView: UITableView = {
-        $0.registerClass(CountryListTableCell.self)
+        $0.registerClass(TableViewCountryCell.self)
         $0.backgroundColor = Colors.darkBlue
         $0.separatorStyle = .none
         $0.keyboardDismissMode = .onDrag

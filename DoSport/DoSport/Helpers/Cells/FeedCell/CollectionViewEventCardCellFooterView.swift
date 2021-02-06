@@ -1,5 +1,5 @@
 //
-//  EventCollectionViewCellFooterView.swift
+//  CollectionViewEventCardCellFooterView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 05/02/2021.
@@ -10,7 +10,7 @@ import SnapKit
 
 // Footer part views of EventCollectioViewCell
 
-final class EventCollectionViewCellFooterView: UIView {
+final class CollectionViewEventCardCellFooterView: UIView {
     
     private(set) lazy var userImageView: UIImageView = {
         $0.image = Icons.Feed.user

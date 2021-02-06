@@ -1,5 +1,5 @@
 //
-//  EventCollectionViewCell.swift
+//  CollectionViewEventCardCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/01/2021.
@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-final class EventCollectionViewCell: UICollectionViewCell {
+final class CollectionViewEventCardCell: UICollectionViewCell {
     
-    private(set) lazy var headerView = EventCollectionViewCellHeaderView()
-    private(set) lazy var bodyView = EventCollectionViewCellBodyView()
-    private(set) lazy var footerView = EventCollectionViewCellFooterView()
+    private(set) lazy var headerView = CollectionViewEventCardCellHeaderView()
+    private(set) lazy var bodyView = CollectionViewEventCardCellBodyView()
+    private(set) lazy var footerView = CollectionViewEventCardCellFooterView()
     
     //MARK: - Init
     
@@ -51,7 +51,7 @@ final class EventCollectionViewCell: UICollectionViewCell {
         
         footerView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(snp.bottom).offset(-14)
+            $0.bottom.equalTo(snp.bottom).offset(-8)
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.height.equalTo(snp.height).multipliedBy(0.11)
         }

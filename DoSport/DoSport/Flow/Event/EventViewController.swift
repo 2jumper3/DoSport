@@ -9,10 +9,14 @@ import UIKit
 
 final class EventViewController: UIViewController {
     
-    var coordinator: EventViewCoordinator?
+    var coordinator: EventCoordinator?
     private(set) var viewModel: EventViewModel
     
-    private lazy var eventView = self.view as! EventView
+    private lazy var eventView = view as! EventView
+    
+    var event: Event?
+    
+    private lazy var eventCollectionManager = EventDataSource()
 
     // MARK: - Init
     
@@ -38,6 +42,9 @@ final class EventViewController: UIViewController {
         title = ""
         
         setupViewModelBindings()
+        setupCollectionManagerBindings()
+        
+        viewModel.prepareEventData(event: self.event)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -49,11 +56,6 @@ final class EventViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-    }
 }
 
 //MARK: - Private methods
@@ -62,7 +64,26 @@ private extension EventViewController {
     
     func setupViewModelBindings() {
         viewModel.onDidPrepareEventData = { [weak self] event in
-            print(event)
+            self?.eventCollectionManager.viewModel = event
+            self?.updateView()
+        }
+    }
+    
+    func updateView() {
+        eventView.updateCollectionDataSource(dateSource: self.eventCollectionManager)
+    }
+    
+    func setupCollectionManagerBindings() {
+        eventCollectionManager.onDidTapInviteButton = { button in
+            print(#function)
+        }
+        
+        eventCollectionManager.onDidTapParticipateButton = {
+            print(#function)
+        }
+        
+        eventCollectionManager.onDidTapReplyButton = {
+            print(#function)
         }
     }
 }

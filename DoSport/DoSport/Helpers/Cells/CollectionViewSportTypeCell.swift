@@ -1,5 +1,5 @@
 //
-//  SportTypeCollectionCell.swift
+//  CollectionViewSportTypeCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SportTypeCollectionCell: UICollectionViewCell {
+final class CollectionViewSportTypeCell: UICollectionViewCell {
     
     enum State {
         case normal, selected
@@ -59,7 +59,7 @@ final class SportTypeCollectionCell: UICollectionViewCell {
 
 //MARK: - Public methods
 
-extension SportTypeCollectionCell {
+extension CollectionViewSportTypeCell {
     func bind() {
         switch cellState {
         case .normal:
@@ -72,7 +72,7 @@ extension SportTypeCollectionCell {
 
 //MARK: - Private methods
 
-private extension SportTypeCollectionCell {
+private extension CollectionViewSportTypeCell {
     func handleStateChange() {
         switch cellState {
         case .normal:

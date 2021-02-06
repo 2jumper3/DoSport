@@ -1,5 +1,5 @@
 //
-//  EventCollectionViewCellBodyView.swift
+//  CollectionViewEventCardCellBodyView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 05/02/2021.
@@ -10,7 +10,7 @@ import SnapKit
 
 // Body part views of EventCollectioViewCell
 
-final class EventCollectionViewCellBodyView: UIView {
+final class CollectionViewEventCardCellBodyView: UIView {
     
     private(set) var eventShortDescriptionLabel: UILabel = { // TODO: make bold font
         $0.font = Fonts.sfProRegular(size: 16)

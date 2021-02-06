@@ -14,7 +14,7 @@ struct Event: Codable {
     var eventEndTime: Date?
     var eventStartTime: Date?
     var organiserID: Int64?
-    var chatID: Int64?
+    var chatID: Chat?
     var members: [Member]?
     var sportGroundID: Int64?
     var sportType: Sport? 

@@ -133,3 +133,14 @@ extension Texts {
         static let km3 = "3 км"
     }
 }
+
+//MARK: - Event screen
+extension Texts {
+    enum Event {
+        static let invite = "Пригласить"
+        static let participate = "Учавствовать"
+        static let participating = "Ты в игре!"
+        
+        static let reply = "Ответить"
+    }
+}

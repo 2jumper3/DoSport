@@ -1,5 +1,5 @@
 //
-//  EventCollectionViewCellHeaderView.swift
+//  CollectionViewEventCardCellHeaderView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 05/02/2021.
@@ -10,7 +10,7 @@ import SnapKit
 
 // Header part views of EventCollectioViewCell
 
-final class EventCollectionViewCellHeaderView: UIView {
+final class CollectionViewEventCardCellHeaderView: UIView {
     
     private(set) lazy var organiserImageView: UIImageView = {
         $0.layer.cornerRadius = 8

@@ -22,7 +22,7 @@ final class SportTypeListView: UIView {
         layout.minimumInteritemSpacing = 13
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.registerClass(SportTypeCollectionCell.self)
+        collectionView.registerClass(CollectionViewSportTypeCell.self)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView

@@ -1,5 +1,5 @@
 //
-//  CountryListTableCellHeaderView.swift
+//  TableViewCellsHeaderView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 08/01/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CountryListTableCellHeaderView: UIView {
+final class TableViewCellsHeaderView: UIView {
     
     private lazy var titleLabel: UILabel = {
         $0.textColor = Colors.mainBlue

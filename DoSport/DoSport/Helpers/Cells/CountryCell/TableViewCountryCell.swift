@@ -1,5 +1,5 @@
 //
-//  CountryListTableCell.swift
+//  TableViewCountryCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 29/12/2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CountryListTableCell: UITableViewCell {
+final class TableViewCountryCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         $0.textAlignment = .left
@@ -62,7 +62,7 @@ final class CountryListTableCell: UITableViewCell {
 
 //MARK: - Public Methods
 
-extension CountryListTableCell {
+extension TableViewCountryCell {
     func bind(country: Country) {
         self.nameLabel.text = country.name
         self.callingCodeLabel.text = country.callingCode

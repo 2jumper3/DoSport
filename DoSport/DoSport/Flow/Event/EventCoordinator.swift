@@ -1,5 +1,5 @@
 //
-//  EventViewCoordinator.swift
+//  EventCoordinator.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 05/02/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EventViewCoordinator: Coordinator {
+final class EventCoordinator: Coordinator {
     
     let rootViewController: EventViewController
     
@@ -15,10 +15,10 @@ final class EventViewCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?, event: Event) {
-        let assembly = EventViewAssembly()
+        let assembly = EventAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
-        rootViewController.viewModel.event = event
+        rootViewController.event = event
     }
     
     func start() {

@@ -9,7 +9,7 @@ import Foundation
 
 final class CountryListViewModel {
     
-    var onSectionsDidSet: (([CountryListTableCellSectionModel]) -> Swift.Void)?
+    var onSectionsDidSet: (([CountryListTableViewSectionModel]) -> Swift.Void)?
     var onCountryDidNotMatch: (() -> Swift.Void)?
     
     var countries: [Country]? {
@@ -18,7 +18,7 @@ final class CountryListViewModel {
         }
     }
     
-    var sections: [CountryListTableCellSectionModel]? {
+    var sections: [CountryListTableViewSectionModel]? {
         didSet {
             if let sections = sections, sections.count != 0 {
                 onSectionsDidSet?(sections)
@@ -57,7 +57,7 @@ final class CountryListViewModel {
         
         let keys = groupedDictionary.keys.sorted()
         
-        sections = keys.compactMap { CountryListTableCellSectionModel(
+        sections = keys.compactMap { CountryListTableViewSectionModel(
             letter: $0,
             countries: groupedDictionary[$0]!.sorted(by: { $0.name ?? "" > $1.name ?? "" })
         )}

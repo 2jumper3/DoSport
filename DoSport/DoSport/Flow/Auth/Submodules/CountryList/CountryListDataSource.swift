@@ -11,9 +11,9 @@ final class CountryListDataSource: NSObject {
     
     var onCountryDidSelect: ((Country) -> Swift.Void)?
     
-    var viewModels: [CountryListTableCellSectionModel]
+    var viewModels: [CountryListTableViewSectionModel]
     
-    init(viewModels: [CountryListTableCellSectionModel] = []) {
+    init(viewModels: [CountryListTableViewSectionModel] = []) {
         self.viewModels = viewModels
         super.init()
     }
@@ -35,11 +35,11 @@ extension CountryListDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return CountryListTableCellHeaderView(title: viewModels[section].letter)
+        return TableViewCellsHeaderView(title: viewModels[section].letter)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CountryListTableCell = tableView.cell(forRowAt: indexPath)
+        let cell: TableViewCountryCell = tableView.cell(forRowAt: indexPath)
         cell.updateConstraintsIfNeeded()
         
         let viewModel = viewModels[indexPath.section].countries[indexPath.row]

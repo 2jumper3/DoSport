@@ -1,5 +1,5 @@
 //
-//  EventViewAssembly.swift
+//  EventAssembly.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 05/02/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class EventViewAssembly: Assembly {
+final class EventAssembly: Assembly {
     
     func makeModule() -> EventViewController {
         let viewModel = EventViewModel()

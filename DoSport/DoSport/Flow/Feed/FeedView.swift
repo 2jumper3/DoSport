@@ -24,7 +24,7 @@ final class FeedView: UIView {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.registerClass(EventCollectionViewCell.self)
+        collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.layer.cornerRadius = 12
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false

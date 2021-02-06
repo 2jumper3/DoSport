@@ -26,7 +26,7 @@ final class FeedCoordinator: Coordinator {
     }
     
     func goToEventModule(withSelected event: Event) {
-        let coordinator = EventViewCoordinator(navController: navigationController, event: event)
+        let coordinator = EventCoordinator(navController: navigationController, event: event)
         coordinator.start()
     }
 }

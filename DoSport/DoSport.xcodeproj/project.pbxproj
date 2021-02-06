@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180824487F51C8754BAA5D0C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		4379F31B6E4E2F098C20B209 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC743662EDA699145080D1E /* Pods_DoSport.framework */; };
 		65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */; };
 		65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1925B4D013000263FA /* PasswordEntryViewController.swift */; };
 		65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1E25B4D01B000263FA /* PasswordEntryView.swift */; };
@@ -37,6 +35,8 @@
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
+		656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656418F625CE3CE2008DFAE0 /* Chat.swift */; };
+		6564195A25CE63E7008DFAE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564195925CE63E6008DFAE0 /* User.swift */; };
 		6568F8DE25B4F97100225043 /* FeedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8DD25B4F97100225043 /* FeedAssembly.swift */; };
 		6568F8E325B4F97800225043 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8E225B4F97800225043 /* FeedViewController.swift */; };
 		6568F8E825B4F97D00225043 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8E725B4F97D00225043 /* FeedViewModel.swift */; };
@@ -61,8 +61,8 @@
 		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
 		658705512592540D00EFF7C7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* AuthView.swift */; };
 		6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */; };
-		6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */; };
-		6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */; };
+		6595195425A8704300CC15E0 /* CountryListTableViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195325A8704300CC15E0 /* CountryListTableViewSectionModel.swift */; };
+		6595195925A87C0100CC15E0 /* TableViewCellsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195825A87C0100CC15E0 /* TableViewCellsHeaderView.swift */; };
 		659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */; };
 		659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* RegistrationViewController.swift */; };
 		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
@@ -78,6 +78,13 @@
 		65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F6258D04FD0037D2B5 /* Texts.swift */; };
 		65AF25F9258D05020037D2B5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F8258D05020037D2B5 /* Colors.swift */; };
 		65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */; };
+		65CEF5DB25CD9E5900EB0B34 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF5DA25CD9E5900EB0B34 /* MessageInputView.swift */; };
+		65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */; };
+		65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */; };
+		65CEF62325CDB34700EB0B34 /* CollectionViewMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF62225CDB34700EB0B34 /* CollectionViewMessageCell.swift */; };
+		65CEF63325CDB37000EB0B34 /* CollectionViewToogleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF63225CDB37000EB0B34 /* CollectionViewToogleCell.swift */; };
+		65CEF63B25CDBADC00EB0B34 /* CollectionViewMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */; };
+		65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF65025CDC1ED00EB0B34 /* Message.swift */; };
 		65D973F325B4730E00769653 /* SportTypeListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973F225B4730E00769653 /* SportTypeListAssembly.swift */; };
 		65D973FB25B4731800769653 /* SportTypeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FA25B4731800769653 /* SportTypeListViewController.swift */; };
 		65D9740025B4731D00769653 /* SportTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FF25B4731D00769653 /* SportTypeListView.swift */; };
@@ -85,27 +92,28 @@
 		65D9740A25B4733D00769653 /* SportTypeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9740925B4733D00769653 /* SportTypeListCoordinator.swift */; };
 		65D9741225B4760F00769653 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741125B4760F00769653 /* Sport.swift */; };
 		65D9741E25B47FAF00769653 /* SportTypeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741D25B47FAF00769653 /* SportTypeListDataSource.swift */; };
-		65D9742325B4807F00769653 /* SportTypeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* SportTypeCollectionCell.swift */; };
+		65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */; };
 		65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */; };
-		65DDC09F25B6503B00228FC7 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC09E25B6503B00228FC7 /* EventCollectionViewCell.swift */; };
+		65DDC09F25B6503B00228FC7 /* CollectionViewEventCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC09E25B6503B00228FC7 /* CollectionViewEventCardCell.swift */; };
 		65DDC0A425B6510500228FC7 /* DSHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC0A325B6510500228FC7 /* DSHomeNavBar.swift */; };
 		65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 656CC24C259A50A200DEC84C /* CountryList.json */; };
-		65EAAA7D25CD3FF2005E0131 /* EventCollectionViewCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA7C25CD3FF2005E0131 /* EventCollectionViewCellHeaderView.swift */; };
-		65EAAA8525CD3FFF005E0131 /* EventCollectionViewCellBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA8425CD3FFF005E0131 /* EventCollectionViewCellBodyView.swift */; };
-		65EAAA8A25CD4010005E0131 /* EventCollectionViewCellFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA8925CD4010005E0131 /* EventCollectionViewCellFooterView.swift */; };
+		65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA7C25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift */; };
+		65EAAA8525CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA8425CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift */; };
+		65EAAA8A25CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA8925CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift */; };
 		65EAAA9625CD59CE005E0131 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA9525CD59CD005E0131 /* EventViewController.swift */; };
 		65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA9D25CD59D3005E0131 /* EventView.swift */; };
 		65EAAAA325CD59DA005E0131 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAA225CD59DA005E0131 /* EventViewModel.swift */; };
-		65EAAAA825CD59E6005E0131 /* EventViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAA725CD59E6005E0131 /* EventViewCoordinator.swift */; };
-		65EAAAAD25CD59EE005E0131 /* EventViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAAC25CD59EE005E0131 /* EventViewAssembly.swift */; };
+		65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */; };
+		65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */; };
 		65EAAAC525CD6024005E0131 /* FeedFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAC425CD6024005E0131 /* FeedFilterButton.swift */; };
 		65ECB2B6259BAA6600BF8CEE /* CountryListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2B5259BAA6600BF8CEE /* CountryListDataSource.swift */; };
-		65ECB2BF259BAC8E00BF8CEE /* CountryListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */; };
+		65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */; };
 		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
 		65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C8259BAD1300BF8CEE /* Reusable.swift */; };
 		65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */; };
 		65EEE91425B622A90023168D /* GetEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91325B622A90023168D /* GetEventsRequest.swift */; };
 		65EEE91925B626290023168D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91825B626290023168D /* AppConfiguration.swift */; };
+		C4D8EC50C71D66A0E055FCFB /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C943292FF55D79B2CF1425 /* Pods_DoSport.framework */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
@@ -158,7 +166,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2FC743662EDA699145080D1E /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31C943292FF55D79B2CF1425 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryAssembly.swift; sourceTree = "<group>"; };
 		65014F1925B4D013000263FA /* PasswordEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewController.swift; sourceTree = "<group>"; };
 		65014F1E25B4D01B000263FA /* PasswordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryView.swift; sourceTree = "<group>"; };
@@ -184,6 +192,8 @@
 		654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		654210DA25AF8837004078C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+attributedString.swift"; sourceTree = "<group>"; };
+		656418F625CE3CE2008DFAE0 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		6564195925CE63E6008DFAE0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6568F8DD25B4F97100225043 /* FeedAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAssembly.swift; sourceTree = "<group>"; };
 		6568F8E225B4F97800225043 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		6568F8E725B4F97D00225043 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -210,8 +220,8 @@
 		6587054B25924C3200EFF7C7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		658705502592540D00EFF7C7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavigationController.swift; sourceTree = "<group>"; };
-		6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCellSectionModel.swift; sourceTree = "<group>"; };
-		6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCellHeaderView.swift; sourceTree = "<group>"; };
+		6595195325A8704300CC15E0 /* CountryListTableViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewSectionModel.swift; sourceTree = "<group>"; };
+		6595195825A87C0100CC15E0 /* TableViewCellsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsHeaderView.swift; sourceTree = "<group>"; };
 		659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
 		659C619A2593DB2700C33D05 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -227,6 +237,13 @@
 		65AF25F6258D04FD0037D2B5 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		65AF25F8258D05020037D2B5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSBarBackButton.swift; sourceTree = "<group>"; };
+		65CEF5DA25CD9E5900EB0B34 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
+		65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
+		65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewActionCell.swift; sourceTree = "<group>"; };
+		65CEF62225CDB34700EB0B34 /* CollectionViewMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMessageCell.swift; sourceTree = "<group>"; };
+		65CEF63225CDB37000EB0B34 /* CollectionViewToogleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewToogleCell.swift; sourceTree = "<group>"; };
+		65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMemberCell.swift; sourceTree = "<group>"; };
+		65CEF65025CDC1ED00EB0B34 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		65D973F225B4730E00769653 /* SportTypeListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListAssembly.swift; sourceTree = "<group>"; };
 		65D973FA25B4731800769653 /* SportTypeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListViewController.swift; sourceTree = "<group>"; };
 		65D973FF25B4731D00769653 /* SportTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListView.swift; sourceTree = "<group>"; };
@@ -234,27 +251,28 @@
 		65D9740925B4733D00769653 /* SportTypeListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListCoordinator.swift; sourceTree = "<group>"; };
 		65D9741125B4760F00769653 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		65D9741D25B47FAF00769653 /* SportTypeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListDataSource.swift; sourceTree = "<group>"; };
-		65D9742225B4807F00769653 /* SportTypeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeCollectionCell.swift; sourceTree = "<group>"; };
+		65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSportTypeCell.swift; sourceTree = "<group>"; };
 		65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+cellForRow.swift"; sourceTree = "<group>"; };
-		65DDC09E25B6503B00228FC7 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		65DDC09E25B6503B00228FC7 /* CollectionViewEventCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCell.swift; sourceTree = "<group>"; };
 		65DDC0A325B6510500228FC7 /* DSHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSHomeNavBar.swift; sourceTree = "<group>"; };
-		65EAAA7C25CD3FF2005E0131 /* EventCollectionViewCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCellHeaderView.swift; sourceTree = "<group>"; };
-		65EAAA8425CD3FFF005E0131 /* EventCollectionViewCellBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCellBodyView.swift; sourceTree = "<group>"; };
-		65EAAA8925CD4010005E0131 /* EventCollectionViewCellFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCellFooterView.swift; sourceTree = "<group>"; };
+		65EAAA7C25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellHeaderView.swift; sourceTree = "<group>"; };
+		65EAAA8425CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellBodyView.swift; sourceTree = "<group>"; };
+		65EAAA8925CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellFooterView.swift; sourceTree = "<group>"; };
 		65EAAA9525CD59CD005E0131 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		65EAAA9D25CD59D3005E0131 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		65EAAAA225CD59DA005E0131 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
-		65EAAAA725CD59E6005E0131 /* EventViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewCoordinator.swift; sourceTree = "<group>"; };
-		65EAAAAC25CD59EE005E0131 /* EventViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewAssembly.swift; sourceTree = "<group>"; };
+		65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
+		65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssembly.swift; sourceTree = "<group>"; };
 		65EAAAC425CD6024005E0131 /* FeedFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterButton.swift; sourceTree = "<group>"; };
 		65ECB2B5259BAA6600BF8CEE /* CountryListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListDataSource.swift; sourceTree = "<group>"; };
-		65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCell.swift; sourceTree = "<group>"; };
+		65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCountryCell.swift; sourceTree = "<group>"; };
 		65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellForRow.swift"; sourceTree = "<group>"; };
 		65ECB2C8259BAD1300BF8CEE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
 		65EEE91325B622A90023168D /* GetEventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsRequest.swift; sourceTree = "<group>"; };
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		9BB02212611ED6E60ECD5C19 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
+		A27A2F408BA57497A9D1195F /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
+		A6CE4B70843FEC8BC9EF5DCC /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -295,7 +313,6 @@
 		CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewCell.swift; sourceTree = "<group>"; };
 		CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		CEDEB913258D4C75007B2BCA /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		D70D66C4A4F2B76E7CA0A71A /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,8 +320,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				180824487F51C8754BAA5D0C /* BuildFile in Frameworks */,
-				4379F31B6E4E2F098C20B209 /* Pods_DoSport.framework in Frameworks */,
+				C4D8EC50C71D66A0E055FCFB /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,8 +344,8 @@
 		1B575704A7CC7F421F6A9B8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D70D66C4A4F2B76E7CA0A71A /* Pods-DoSport.debug.xcconfig */,
-				9BB02212611ED6E60ECD5C19 /* Pods-DoSport.release.xcconfig */,
+				A27A2F408BA57497A9D1195F /* Pods-DoSport.debug.xcconfig */,
+				A6CE4B70843FEC8BC9EF5DCC /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -435,11 +451,14 @@
 		6587052825920D0A00EFF7C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				659C61C82593E15700C33D05 /* UserCountry.swift */,
-				65D9741125B4760F00769653 /* Sport.swift */,
+				656418F625CE3CE2008DFAE0 /* Chat.swift */,
 				6503F4E225B5CDD60002BC27 /* Event.swift */,
 				6503F4E725B5D56A0002BC27 /* LocalTime.swift */,
 				6503F4EC25B5D67C0002BC27 /* Member.swift */,
+				65CEF65025CDC1ED00EB0B34 /* Message.swift */,
+				65D9741125B4760F00769653 /* Sport.swift */,
+				659C61C82593E15700C33D05 /* UserCountry.swift */,
+				6564195925CE63E6008DFAE0 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,6 +472,7 @@
 				6587052A25920DA300EFF7C7 /* Components */,
 				653DA7DC25B364D2000263C9 /* Factory */,
 				65EAAAC325CD600B005E0131 /* FeedFilter */,
+				65CEF5D925CD9E3F00EB0B34 /* MessageInput */,
 				653408AD259A86680072542D /* NavBar */,
 			);
 			path = CustomViews;
@@ -531,14 +551,33 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		65CE01C925A88B8000556C7B /* CountryListTableCell */ = {
+		65CE01C925A88B8000556C7B /* CountryCell */ = {
 			isa = PBXGroup;
 			children = (
-				65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */,
-				6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */,
-				6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */,
+				6595195325A8704300CC15E0 /* CountryListTableViewSectionModel.swift */,
+				6595195825A87C0100CC15E0 /* TableViewCellsHeaderView.swift */,
+				65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */,
 			);
-			path = CountryListTableCell;
+			path = CountryCell;
+			sourceTree = "<group>";
+		};
+		65CEF5D925CD9E3F00EB0B34 /* MessageInput */ = {
+			isa = PBXGroup;
+			children = (
+				65CEF5DA25CD9E5900EB0B34 /* MessageInputView.swift */,
+			);
+			path = MessageInput;
+			sourceTree = "<group>";
+		};
+		65CEF60025CDA8BE00EB0B34 /* EventCells */ = {
+			isa = PBXGroup;
+			children = (
+				65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */,
+				65CEF63225CDB37000EB0B34 /* CollectionViewToogleCell.swift */,
+				65CEF62225CDB34700EB0B34 /* CollectionViewMessageCell.swift */,
+				65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */,
+			);
+			path = EventCells;
 			sourceTree = "<group>";
 		};
 		65D973F125B472C800769653 /* SportTypes */ = {
@@ -566,24 +605,25 @@
 			path = CodeEntry;
 			sourceTree = "<group>";
 		};
-		65EAAA7B25CD3FC0005E0131 /* EventCollectionViewCell */ = {
+		65EAAA7B25CD3FC0005E0131 /* FeedCell */ = {
 			isa = PBXGroup;
 			children = (
-				65DDC09E25B6503B00228FC7 /* EventCollectionViewCell.swift */,
-				65EAAA8425CD3FFF005E0131 /* EventCollectionViewCellBodyView.swift */,
-				65EAAA8925CD4010005E0131 /* EventCollectionViewCellFooterView.swift */,
-				65EAAA7C25CD3FF2005E0131 /* EventCollectionViewCellHeaderView.swift */,
+				65DDC09E25B6503B00228FC7 /* CollectionViewEventCardCell.swift */,
+				65EAAA8425CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift */,
+				65EAAA8925CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift */,
+				65EAAA7C25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift */,
 			);
-			path = EventCollectionViewCell;
+			path = FeedCell;
 			sourceTree = "<group>";
 		};
 		65EAAA9425CD59A9005E0131 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */,
+				65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */,
+				65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */,
 				65EAAA9D25CD59D3005E0131 /* EventView.swift */,
-				65EAAAAC25CD59EE005E0131 /* EventViewAssembly.swift */,
 				65EAAA9525CD59CD005E0131 /* EventViewController.swift */,
-				65EAAAA725CD59E6005E0131 /* EventViewCoordinator.swift */,
 				65EAAAA225CD59DA005E0131 /* EventViewModel.swift */,
 			);
 			path = Event;
@@ -601,17 +641,18 @@
 		65ECB2BD259BAC7100BF8CEE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				65D9742225B4807F00769653 /* SportTypeCollectionCell.swift */,
-				65CE01C925A88B8000556C7B /* CountryListTableCell */,
-				65EAAA7B25CD3FC0005E0131 /* EventCollectionViewCell */,
+				65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */,
+				65CE01C925A88B8000556C7B /* CountryCell */,
+				65CEF60025CDA8BE00EB0B34 /* EventCells */,
+				65EAAA7B25CD3FC0005E0131 /* FeedCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		AAE0692D4F4755F576D4845F /* Frameworks */ = {
+		B4A1E048D7E7E11F558A14AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2FC743662EDA699145080D1E /* Pods_DoSport.framework */,
+				31C943292FF55D79B2CF1425 /* Pods_DoSport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -643,7 +684,7 @@
 				CEDEB79D258CB40B007B2BCA /* DoSportUITests */,
 				CEDEB77A258CB404007B2BCA /* Products */,
 				1B575704A7CC7F421F6A9B8A /* Pods */,
-				AAE0692D4F4755F576D4845F /* Frameworks */,
+				B4A1E048D7E7E11F558A14AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -836,12 +877,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDEB7A3258CB40B007B2BCA /* Build configuration list for PBXNativeTarget "DoSport" */;
 			buildPhases = (
-				F7722D1DAE2E60C3B7596319 /* [CP] Check Pods Manifest.lock */,
+				822C391F147357166BC49A22 /* [CP] Check Pods Manifest.lock */,
 				CEDEB775258CB404007B2BCA /* Sources */,
 				CEDEB776258CB404007B2BCA /* Frameworks */,
 				CEDEB777258CB404007B2BCA /* Resources */,
-				48D9262AAC771A1423E0DF93 /* [CP] Embed Pods Frameworks */,
-				7C5915D87079D1BAB3A9A543 /* [CP] Copy Pods Resources */,
+				7983A575F6BD72B44B0E9DDA /* [CP] Embed Pods Frameworks */,
+				8C55C6DEABC5C09F89050EAD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -961,7 +1002,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48D9262AAC771A1423E0DF93 /* [CP] Embed Pods Frameworks */ = {
+		7983A575F6BD72B44B0E9DDA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -978,24 +1019,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C5915D87079D1BAB3A9A543 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7722D1DAE2E60C3B7596319 /* [CP] Check Pods Manifest.lock */ = {
+		822C391F147357166BC49A22 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1017,6 +1041,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8C55C6DEABC5C09F89050EAD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1027,7 +1068,7 @@
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				65340899259A77280072542D /* EditUserInfo.swift in Sources */,
 				65014F2425B4D023000263FA /* PasswordEntryCoordinator.swift in Sources */,
-				6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */,
+				6595195425A8704300CC15E0 /* CountryListTableViewSectionModel.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
 				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
 				653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */,
@@ -1037,6 +1078,7 @@
 				6527303425C1B15B00550ED1 /* FeedFilterButtonsView.swift in Sources */,
 				657C063C25AF2D30000DBD9B /* CodeEntryViewController.swift in Sources */,
 				6568F8F725B4F99000225043 /* FeedDataSource.swift in Sources */,
+				656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */,
 				654210DB25AF8837004078C4 /* TextField.swift in Sources */,
 				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
@@ -1045,16 +1087,18 @@
 				6568F8E825B4F97D00225043 /* FeedViewModel.swift in Sources */,
 				65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */,
 				6503F4E325B5CDD60002BC27 /* Event.swift in Sources */,
-				65EAAA8A25CD4010005E0131 /* EventCollectionViewCellFooterView.swift in Sources */,
+				65EAAA8A25CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift in Sources */,
 				65D973FB25B4731800769653 /* SportTypeListViewController.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
 				65D9740525B4732400769653 /* SportTypeListViewModel.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
+				65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */,
 				659C61C92593E15700C33D05 /* UserCountry.swift in Sources */,
 				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
 				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
+				65CEF62325CDB34700EB0B34 /* CollectionViewMessageCell.swift in Sources */,
 				65D9741E25B47FAF00769653 /* SportTypeListDataSource.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
@@ -1083,10 +1127,11 @@
 				659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */,
 				CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */,
 				6568F8F225B4F98900225043 /* FeedCoordinator.swift in Sources */,
-				6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */,
+				6595195925A87C0100CC15E0 /* TableViewCellsHeaderView.swift in Sources */,
 				656CC248259A4F8700DEC84C /* CountryListView.swift in Sources */,
 				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
 				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
+				65CEF63B25CDBADC00EB0B34 /* CollectionViewMemberCell.swift in Sources */,
 				65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */,
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
 				653DA7DE25B364DB000263C9 /* Button.swift in Sources */,
@@ -1097,10 +1142,12 @@
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
 				65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */,
-				65EAAA8525CD3FFF005E0131 /* EventCollectionViewCellBodyView.swift in Sources */,
+				65CEF5DB25CD9E5900EB0B34 /* MessageInputView.swift in Sources */,
+				6564195A25CE63E7008DFAE0 /* User.swift in Sources */,
+				65EAAA8525CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift in Sources */,
 				654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */,
 				65D9740025B4731D00769653 /* SportTypeListView.swift in Sources */,
-				65DDC09F25B6503B00228FC7 /* EventCollectionViewCell.swift in Sources */,
+				65DDC09F25B6503B00228FC7 /* CollectionViewEventCardCell.swift in Sources */,
 				65D973F325B4730E00769653 /* SportTypeListAssembly.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */,
@@ -1109,7 +1156,7 @@
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
 				657C063725AF2D2A000DBD9B /* CodeEntryCoordinator.swift in Sources */,
-				65EAAAA825CD59E6005E0131 /* EventViewCoordinator.swift in Sources */,
+				65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */,
 				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
@@ -1117,8 +1164,11 @@
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
 				65D9740A25B4733D00769653 /* SportTypeListCoordinator.swift in Sources */,
-				65ECB2BF259BAC8E00BF8CEE /* CountryListTableCell.swift in Sources */,
+				65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */,
 				CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */,
+				65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */,
+				65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */,
+				65CEF63325CDB37000EB0B34 /* CollectionViewToogleCell.swift in Sources */,
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,
 				CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
@@ -1127,11 +1177,11 @@
 				CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
 				65ECB2B6259BAA6600BF8CEE /* CountryListDataSource.swift in Sources */,
-				65EAAAAD25CD59EE005E0131 /* EventViewAssembly.swift in Sources */,
+				65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				65EEE91925B626290023168D /* AppConfiguration.swift in Sources */,
-				65EAAA7D25CD3FF2005E0131 /* EventCollectionViewCellHeaderView.swift in Sources */,
+				65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */,
 				CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */,
 				656CC243259A4F7C00DEC84C /* CountryListAssembly.swift in Sources */,
 				6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */,
@@ -1140,7 +1190,7 @@
 				CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */,
 				65DDC0A425B6510500228FC7 /* DSHomeNavBar.swift in Sources */,
 				65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */,
-				65D9742325B4807F00769653 /* SportTypeCollectionCell.swift in Sources */,
+				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65014F2925B4D02B000263FA /* PasswordEntryViewModel.swift in Sources */,
 				657C064625AF2D5A000DBD9B /* CodeEntryViewModel.swift in Sources */,
 				65EEE91425B622A90023168D /* GetEventsRequest.swift in Sources */,
@@ -1309,13 +1359,13 @@
 		};
 		CEDEB7A4258CB40B007B2BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D70D66C4A4F2B76E7CA0A71A /* Pods-DoSport.debug.xcconfig */;
+			baseConfigurationReference = A27A2F408BA57497A9D1195F /* Pods-DoSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4R79A6C4N5;
+				DEVELOPMENT_TEAM = DFZ8N2CQSG;
 				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1331,13 +1381,13 @@
 		};
 		CEDEB7A5258CB40B007B2BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BB02212611ED6E60ECD5C19 /* Pods-DoSport.release.xcconfig */;
+			baseConfigurationReference = A6CE4B70843FEC8BC9EF5DCC /* Pods-DoSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4R79A6C4N5;
+				DEVELOPMENT_TEAM = DFZ8N2CQSG;
 				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
