@@ -1,5 +1,5 @@
 //
-//  SportTypeListViewController.swift
+//  SportTypeGridViewController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class SportTypeListViewController: UIViewController {
+final class SportTypeGridViewController: UIViewController {
     
-    var coordinator: SportTypeListCoordinator?
-    private let viewModel: SportTypeListViewModel
+    var coordinator: SportTypeGridCoordinator?
+    private let viewModel: SportTypeGridViewModel
     
-    private lazy var sportTypeListView = self.view as! SportTypeListView
+    private lazy var sportTypeListView = self.view as! SportTypeGridView
     
-    private lazy var collectionManager = SportTypeListDataSource()
+    private lazy var collectionManager = SportTypeGridDataSource()
     
     private lazy var backBarButton: DSBarBackButton = {
         $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
@@ -25,7 +25,7 @@ final class SportTypeListViewController: UIViewController {
         return .lightContent
     }
     
-    init(viewModel: SportTypeListViewModel) {
+    init(viewModel: SportTypeGridViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,7 +35,7 @@ final class SportTypeListViewController: UIViewController {
     }
     
     override func loadView() {
-        let view = SportTypeListView()
+        let view = SportTypeGridView()
         view.delegate = self
         self.view = view
     }
@@ -60,7 +60,7 @@ final class SportTypeListViewController: UIViewController {
 
 //MARK: - Private methods
 
-private extension SportTypeListViewController {
+private extension SportTypeGridViewController {
     func setupCollectionManagerBiding() {
         collectionManager.onDidSelectSport = { [weak self] sport in
             self?.viewModel.handleDataSelection(sport)
@@ -81,7 +81,7 @@ private extension SportTypeListViewController {
 
 //MARK: - SportTypeListViewDelegate
 
-extension SportTypeListViewController: SportTypeListViewDelegate {
+extension SportTypeGridViewController: SportTypeListViewDelegate {
     func didTapSaveButton() {
         viewModel.saveData() { [weak self] in
             self?.coordinator?.goToFeedModule()
@@ -92,7 +92,7 @@ extension SportTypeListViewController: SportTypeListViewDelegate {
 //MARK: - Actions
 
 @objc
-private extension SportTypeListViewController {
+private extension SportTypeGridViewController {
     func handleBackButton() {
         coordinator?.goBack()
     }

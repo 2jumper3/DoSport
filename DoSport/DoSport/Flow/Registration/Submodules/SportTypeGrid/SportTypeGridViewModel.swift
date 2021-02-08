@@ -1,5 +1,5 @@
 //
-//  SportTypeListViewModel.swift
+//  SportTypeGridViewModel.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SportTypeListViewModel {
+final class SportTypeGridViewModel {
     
     var onDataDidPrepare: (([Sport]) -> Void)?
     

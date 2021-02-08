@@ -1,5 +1,5 @@
 //
-//  CountryListDataSource.swift
+//  CountryCodeListDataSource.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 29/12/2020.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class CountryListDataSource: NSObject {
+final class CountryCodeListDataSource: NSObject {
     
     var onCountryDidSelect: ((Country) -> Swift.Void)?
     
-    var viewModels: [CountryListTableViewSectionModel]
+    var viewModels: [CountryCodeListSectionModel]
     
-    init(viewModels: [CountryListTableViewSectionModel] = []) {
+    init(viewModels: [CountryCodeListSectionModel] = []) {
         self.viewModels = viewModels
         super.init()
     }
@@ -21,7 +21,7 @@ final class CountryListDataSource: NSObject {
 
 //MARK: - UITableViewDataSource
 
-extension CountryListDataSource: UITableViewDataSource {
+extension CountryCodeListDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModels.count
     }
@@ -51,7 +51,7 @@ extension CountryListDataSource: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 
-extension CountryListDataSource: UITableViewDelegate {
+extension CountryCodeListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.section].countries[indexPath.row]
         onCountryDidSelect?(viewModel)

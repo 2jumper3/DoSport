@@ -1,5 +1,5 @@
 //
-//  SportTypeListCoordinator.swift
+//  SportTypeGridCoordinator.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class SportTypeListCoordinator: Coordinator {
+final class SportTypeGridCoordinator: Coordinator {
     
-    var rootViewController: SportTypeListViewController
+    var rootViewController: SportTypeGridViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = SportTypeListAssembly()
+        let assembly = SportTypeGridAssembly()
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
     }

@@ -8,6 +8,7 @@
 import UIKit
 
 extension UITextField {
+    
     static func makeCodeEntryTextField() -> UITextField {
         let textField = UITextField()
         textField.isUserInteractionEnabled = false

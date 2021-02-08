@@ -1,5 +1,5 @@
 //
-//  CountryListViewModel.swift
+//  CountryCodeListViewModel.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 29/12/2020.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class CountryListViewModel {
+final class CountryCodeListViewModel {
     
-    var onSectionsDidSet: (([CountryListTableViewSectionModel]) -> Swift.Void)?
+    var onSectionsDidSet: (([CountryCodeListSectionModel]) -> Swift.Void)?
     var onCountryDidNotMatch: (() -> Swift.Void)?
     
     var countries: [Country]? {
@@ -18,7 +18,7 @@ final class CountryListViewModel {
         }
     }
     
-    var sections: [CountryListTableViewSectionModel]? {
+    var sections: [CountryCodeListSectionModel]? {
         didSet {
             if let sections = sections, sections.count != 0 {
                 onSectionsDidSet?(sections)
@@ -57,7 +57,7 @@ final class CountryListViewModel {
         
         let keys = groupedDictionary.keys.sorted()
         
-        sections = keys.compactMap { CountryListTableViewSectionModel(
+        sections = keys.compactMap { CountryCodeListSectionModel(
             letter: $0,
             countries: groupedDictionary[$0]!.sorted(by: { $0.name ?? "" > $1.name ?? "" })
         )}

@@ -1,5 +1,5 @@
 //
-//  CountryListViewController.swift
+//  CountryCodeListViewController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 28/12/2020.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class CountryListViewController: UIViewController, UIGestureRecognizerDelegate {
+final class CountryCodeListViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var coordinator: CountryListCoordinator?
-    let viewModel: CountryListViewModel
+    var coordinator: CountryCodeListCoordinator?
+    let viewModel: CountryCodeListViewModel
     
-    private lazy var countryView = self.view as! CountryListView
+    private lazy var countryView = self.view as! CountryCodeListView
     private lazy var navBar = DSCountryListNavBar()
     
-    private lazy var tableManager: CountryListDataSource = {
+    private lazy var tableManager: CountryCodeListDataSource = {
         $0.onCountryDidSelect = { [weak self] country in
             guard self != nil else { return }
             hideKeyboard(for: self!.navBar.getSeachBar()) {
@@ -23,7 +23,7 @@ final class CountryListViewController: UIViewController, UIGestureRecognizerDele
             }
         }
         return $0
-    }(CountryListDataSource())
+    }(CountryCodeListDataSource())
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -31,7 +31,7 @@ final class CountryListViewController: UIViewController, UIGestureRecognizerDele
     
     //MARK: - Init
     
-    init(viewModel: CountryListViewModel) {
+    init(viewModel: CountryCodeListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,7 +43,7 @@ final class CountryListViewController: UIViewController, UIGestureRecognizerDele
     //MARK: - Life cicle
     
     override func loadView() {
-        let view = CountryListView()
+        let view = CountryCodeListView()
         self.view = view
         navigationItem.titleView = navBar
     }
@@ -68,7 +68,7 @@ final class CountryListViewController: UIViewController, UIGestureRecognizerDele
 
 //MARK: - Private methods
 
-private extension CountryListViewController {
+private extension CountryCodeListViewController {
     func setupNavBar() {
         navBar.title = Texts.CountryList.title
         navigationItem.setHidesBackButton(true, animated: true)
@@ -103,7 +103,7 @@ private extension CountryListViewController {
 }
 
 //MARK: - Actions
-@objc extension CountryListViewController {
+@objc extension CountryCodeListViewController {
     private func handleGoBackButton() {
         coordinator?.goBack()
     }

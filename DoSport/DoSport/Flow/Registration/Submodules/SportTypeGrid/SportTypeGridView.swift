@@ -1,5 +1,5 @@
 //
-//  SportTypeListView.swift
+//  SportTypeGridView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -12,7 +12,7 @@ protocol SportTypeListViewDelegate: class {
     func didTapSaveButton()
 }
 
-final class SportTypeListView: UIView {
+final class SportTypeGridView: UIView {
     
     weak var delegate: SportTypeListViewDelegate?
     
@@ -66,7 +66,7 @@ final class SportTypeListView: UIView {
 
 //MARK: - Public methods
 
-extension SportTypeListView {
+extension SportTypeGridView {
     func updateCollectionDataSource(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
         collectionView.delegate = dateSource
         collectionView.dataSource = dateSource
@@ -78,7 +78,7 @@ extension SportTypeListView {
 //MARK: - Actions
 
 @objc
-private extension SportTypeListView {
+private extension SportTypeGridView {
     func handleSaveButton() {
         delegate?.didTapSaveButton()
     }

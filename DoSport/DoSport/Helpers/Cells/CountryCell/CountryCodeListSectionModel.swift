@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CountryListTableViewSectionModel {
+struct CountryCodeListSectionModel {
     let letter: String
     let countries: [Country]
 }

@@ -1,5 +1,5 @@
 //
-//  CountryListCoordinator.swift
+//  CountryCodeListCoordinator.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 28/12/2020.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CountryListCoordinator: Coordinator { //Todo: remove coordinator from CountryList module.
+final class CountryCodeListCoordinator: Coordinator { //Todo: remove coordinator from CountryList module.
     
-    let rootViewController: CountryListViewController
+    let rootViewController: CountryCodeListViewController
     
     var compilation: ((String) -> Swift.Void)?
     
@@ -17,7 +17,7 @@ final class CountryListCoordinator: Coordinator { //Todo: remove coordinator fro
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?, compilation: ((String) -> Swift.Void)?) {
-        let assembly = CountryListAssembly()
+        let assembly = CountryCodeListAssembly()
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
         self.compilation = compilation

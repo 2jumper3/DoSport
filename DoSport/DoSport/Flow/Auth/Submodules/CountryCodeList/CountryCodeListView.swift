@@ -1,5 +1,5 @@
 //
-//  CountryListView.swift
+//  CountryCodeListView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 28/12/2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CountryListView: UIView {
+final class CountryCodeListView: UIView {
     
     private let navBarSeparatorView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ final class CountryListView: UIView {
 
 //MARK: - Public methods
 
-extension CountryListView {
+extension CountryCodeListView {
     func updateTableViewData(dataSource: (UITableViewDelegate & UITableViewDataSource)) {
         if !emptyView.isHidden || tableView.isHidden {
             emptyView.isHidden = true

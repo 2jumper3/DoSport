@@ -1,5 +1,5 @@
 //
-//  SportTypeListDataSource.swift
+//  SportTypeGridDataSource.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 17/01/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SportTypeListDataSource: NSObject {
+final class SportTypeGridDataSource: NSObject {
     
     var onDidSelectSport: ((Sport) -> Void)?
     
@@ -21,7 +21,7 @@ final class SportTypeListDataSource: NSObject {
 
 //MARK: - UITableViewDataSource
 
-extension SportTypeListDataSource: UICollectionViewDataSource {
+extension SportTypeGridDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModels.count
     }
@@ -41,7 +41,7 @@ extension SportTypeListDataSource: UICollectionViewDataSource {
 
 //MARK: - UITableViewDelegate
 
-extension SportTypeListDataSource: UICollectionViewDelegate {
+extension SportTypeGridDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         
@@ -54,7 +54,7 @@ extension SportTypeListDataSource: UICollectionViewDelegate {
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension SportTypeListDataSource: UICollectionViewDelegateFlowLayout {
+extension SportTypeGridDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
