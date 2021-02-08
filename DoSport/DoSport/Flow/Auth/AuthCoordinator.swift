@@ -41,6 +41,6 @@ final class AuthCoordinator: Coordinator {
     }
     
     func go() {
-        
+        let _ = 10
     }
 }
