@@ -39,4 +39,8 @@ final class AuthCoordinator: Coordinator {
         let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
         coordinator.start()
     }
+    
+    func go() {
+        let _ = 10
+    }
 }
