@@ -38,7 +38,6 @@ final class EventDataSource: NSObject {
             guard let messages = viewModel?.chatID?.messages else {
                 return
             }
-            
 //            guard let members = viewModel?.members else {
 //                return
 //            }
