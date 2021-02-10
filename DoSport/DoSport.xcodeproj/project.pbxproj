@@ -47,6 +47,7 @@
 		CE83AB3625C9C9E800A2C6E1 /* CardPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3525C9C9E800A2C6E1 /* CardPresentationAnimator.swift */; };
 		CE83AB3B25C9C9F700A2C6E1 /* CardDismissionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3A25C9C9F700A2C6E1 /* CardDismissionAnimator.swift */; };
 		CE83AB4025C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB3F25C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift */; };
+		CE83AB5125CFCD7800A2C6E1 /* PreviewLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */; };
 		CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92157925B48B4E003BF78E /* MapCoordinator.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
@@ -149,6 +150,7 @@
 		CE83AB3525C9C9E800A2C6E1 /* CardPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationAnimator.swift; sourceTree = "<group>"; };
 		CE83AB3A25C9C9F700A2C6E1 /* CardDismissionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDismissionAnimator.swift; sourceTree = "<group>"; };
 		CE83AB3F25C9CA0600A2C6E1 /* PSPDFTouchForwardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPDFTouchForwardingView.swift; sourceTree = "<group>"; };
+		CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationView.swift; sourceTree = "<group>"; };
 		CE92157925B48B4E003BF78E /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				CE83AAD825BDBDB300A2C6E1 /* Animations */,
 				CEBF0F1925BBF23A00DB1E19 /* PreviewLocationCard */,
 				CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */,
+				CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */,
 				CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */,
 				CE83AAEB25BDC0A700A2C6E1 /* CGPoint.swift */,
 				CE83AAF025BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift */,
@@ -891,6 +894,7 @@
 				CE83AAF125BDC0BE00A2C6E1 /* InstantPanGestureRecognizer.swift in Sources */,
 				CE83AAD425BDBCCA00A2C6E1 /* PresentationController.swift in Sources */,
 				CE83AADA25BDBDBE00A2C6E1 /* PresentAnimation.swift in Sources */,
+				CE83AB5125CFCD7800A2C6E1 /* PreviewLocationView.swift in Sources */,
 				659C61C92593E15700C33D05 /* UserRegion.swift in Sources */,
 				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
 				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,

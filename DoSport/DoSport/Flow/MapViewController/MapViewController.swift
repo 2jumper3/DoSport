@@ -9,6 +9,10 @@ import UIKit
 import YandexMapsMobile
 import CoreLocation
 
+protocol MapViewControllerDelegate {
+    func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String)
+}
+
 class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMapInputListener {
 
     
@@ -32,6 +36,11 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
         let btn = FilterButton(state: .notActivated)
         btn.addTarget(self, action: #selector(push), for: .touchUpInside)
         return btn
+    }()
+    var popUpView: PreviewLocationView = {
+//        let view = PreviewLocationView(frame: CGRect(x: 0, y: 0, width: 200, height: 200), id: 123, name: "123123", range: 123, price: 123, location: "Moscow")
+        let view2 = PreviewLocationView()
+        return view2
     }()
     
     @objc func push()  {
@@ -61,6 +70,7 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     override func viewWillLayoutSubviews() {
         navigationController?.navigationBar.isHidden = true
         self.view.addSubview(mapView)
+        self.view.addSubview(popUpView)
         mapView.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(view)
         }
@@ -69,7 +79,12 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
             make.width.height.equalTo(40)
             make.top.equalTo(view.snp.top).offset(53)
             make.right.equalTo(view.snp.right).offset(-16)
-            
+        }
+        popUpView.snp.makeConstraints { (make) in
+            make.top.equalTo(mapView.snp.bottom).offset(-88)
+            make.left.equalTo(mapView.snp.left)
+            make.right.equalTo(mapView.snp.right)
+            make.height.equalTo(100)
         }
     }
 
@@ -85,6 +100,8 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.clear()
         placemarkMapObjectTapListener = PlacemarkMapObjectTapListener(controller: self)
+        placemarkMapObjectTapListener.delegate = self
+        placemarkMapObjectTapListener.child = popUpView
         viewModel.loadCoordinates()
         guard let allPlacemarks = viewModel.coordinates else { return }
         for places in allPlacemarks {
@@ -97,14 +114,30 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }
     
     func onObjectTap(with: YMKGeoObjectTapEvent) -> Bool {
-        print("tapped from xz")
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
+            self.popUpView.frame = self.popUpView.frame.offsetBy(dx: 0, dy: 100)
+        }
+        animator.startAnimation()
         return true
     }
     func onMapTap(with map: YMKMap, point: YMKPoint) {
-//        mapView.mapWindow.map.mapObjects.
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
+            self.popUpView.frame = self.popUpView.frame.offsetBy(dx: 0, dy: 100)
+        }
+        animator.startAnimation()
     }
     func onMapLongTap(with map: YMKMap, point: YMKPoint) {
         
     }
+}
 
+extension MapViewController: MapViewControllerDelegate {
+
+    func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String) {
+        self.popUpView.textAdding(id: id, name: name, range: range, price: price, location: location) 
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
+            self.popUpView.frame = self.popUpView.frame.offsetBy(dx: 0, dy: -100)
+        }
+        animator.startAnimation()
+    }
 }
