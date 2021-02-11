@@ -62,6 +62,11 @@
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
+		655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B513325D5BD9A004FE90F /* EventCreateDataSource.swift */; };
+		655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B513C25D5BFFC004FE90F /* TextViewCell.swift */; };
+		655B514225D5C007004FE90F /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B514125D5C007004FE90F /* SelectionCell.swift */; };
+		655B515125D5C021004FE90F /* MembersCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B515025D5C021004FE90F /* MembersCountCell.swift */; };
+		655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B515525D5C02A004FE90F /* EventTypeCell.swift */; };
 		656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656418F625CE3CE2008DFAE0 /* Chat.swift */; };
 		6564195A25CE63E7008DFAE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564195925CE63E6008DFAE0 /* User.swift */; };
 		6568F8DE25B4F97100225043 /* FeedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8DD25B4F97100225043 /* FeedAssembly.swift */; };
@@ -109,9 +114,6 @@
 		65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E5925D5510800ABC58B /* DSMessageSendButton.swift */; };
 		65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E5E25D552D000ABC58B /* DSSearchBar.swift */; };
 		65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E6625D557C600ABC58B /* DSSeparatorView.swift */; };
-		65C67E8B25D57A1200ABC58B /* DSActionStackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E8A25D57A1200ABC58B /* DSActionStackItem.swift */; };
-		65C67E9025D57A3900ABC58B /* DSMemberCountStackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E8F25D57A3900ABC58B /* DSMemberCountStackItem.swift */; };
-		65C67E9525D57A6900ABC58B /* DSEventTypeStackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E9425D57A6900ABC58B /* DSEventTypeStackItem.swift */; };
 		65C67E9D25D57FB900ABC58B /* DSCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */; };
 		65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */; };
 		65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */; };
@@ -250,6 +252,11 @@
 		654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		654210DA25AF8837004078C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+attributedString.swift"; sourceTree = "<group>"; };
+		655B513325D5BD9A004FE90F /* EventCreateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateDataSource.swift; sourceTree = "<group>"; };
+		655B513C25D5BFFC004FE90F /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
+		655B514125D5C007004FE90F /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
+		655B515025D5C021004FE90F /* MembersCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersCountCell.swift; sourceTree = "<group>"; };
+		655B515525D5C02A004FE90F /* EventTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
 		656418F625CE3CE2008DFAE0 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6564195925CE63E6008DFAE0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6568F8DD25B4F97100225043 /* FeedAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAssembly.swift; sourceTree = "<group>"; };
@@ -299,9 +306,6 @@
 		65C67E5925D5510800ABC58B /* DSMessageSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSMessageSendButton.swift; sourceTree = "<group>"; };
 		65C67E5E25D552D000ABC58B /* DSSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSearchBar.swift; sourceTree = "<group>"; };
 		65C67E6625D557C600ABC58B /* DSSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSeparatorView.swift; sourceTree = "<group>"; };
-		65C67E8A25D57A1200ABC58B /* DSActionStackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSActionStackItem.swift; sourceTree = "<group>"; };
-		65C67E8F25D57A3900ABC58B /* DSMemberCountStackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSMemberCountStackItem.swift; sourceTree = "<group>"; };
-		65C67E9425D57A6900ABC58B /* DSEventTypeStackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEventTypeStackItem.swift; sourceTree = "<group>"; };
 		65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSCheckboxButton.swift; sourceTree = "<group>"; };
 		65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
 		65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewActionCell.swift; sourceTree = "<group>"; };
@@ -429,6 +433,7 @@
 			children = (
 				6531793225D10E26001DBA4B /* EventCreateAssembly.swift */,
 				6531792D25D10E20001DBA4B /* EventCreateCoordinator.swift */,
+				655B513325D5BD9A004FE90F /* EventCreateDataSource.swift */,
 				6531791E25D10E09001DBA4B /* EventCreateView.swift */,
 				6531792325D10E10001DBA4B /* EventCreateViewController.swift */,
 				6531792825D10E19001DBA4B /* EventCreateViewModel.swift */,
@@ -505,6 +510,17 @@
 				654210DA25AF8837004078C4 /* TextField.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		655B513B25D5BFC5004FE90F /* EventCreateCells */ = {
+			isa = PBXGroup;
+			children = (
+				655B515525D5C02A004FE90F /* EventTypeCell.swift */,
+				655B515025D5C021004FE90F /* MembersCountCell.swift */,
+				655B514125D5C007004FE90F /* SelectionCell.swift */,
+				655B513C25D5BFFC004FE90F /* TextViewCell.swift */,
+			);
+			path = EventCreateCells;
 			sourceTree = "<group>";
 		};
 		6568F8DC25B4F85C00225043 /* Feed */ = {
@@ -595,7 +611,7 @@
 				6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */,
 				653DA7CF25B3590A000263C9 /* ImagePicker.swift */,
 				6587052A25920DA300EFF7C7 /* Components */,
-				65C67E8925D579B500ABC58B /* EventCreateStackItems */,
+				65C67E8925D579B500ABC58B /* EventCreate */,
 				653DA7DC25B364D2000263C9 /* Factory */,
 				65EAAAC325CD600B005E0131 /* FeedFilter */,
 				65CEF5D925CD9E3F00EB0B34 /* MessageInput */,
@@ -678,15 +694,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		65C67E8925D579B500ABC58B /* EventCreateStackItems */ = {
+		65C67E8925D579B500ABC58B /* EventCreate */ = {
 			isa = PBXGroup;
 			children = (
 				65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */,
-				65C67E9425D57A6900ABC58B /* DSEventTypeStackItem.swift */,
-				65C67E8F25D57A3900ABC58B /* DSMemberCountStackItem.swift */,
-				65C67E8A25D57A1200ABC58B /* DSActionStackItem.swift */,
 			);
-			path = EventCreateStackItems;
+			path = EventCreate;
 			sourceTree = "<group>";
 		};
 		65CE01C925A88B8000556C7B /* CountryCell */ = {
@@ -783,6 +796,7 @@
 				65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */,
 				65CE01C925A88B8000556C7B /* CountryCell */,
 				65CEF60025CDA8BE00EB0B34 /* EventCells */,
+				655B513B25D5BFC5004FE90F /* EventCreateCells */,
 				65EAAA7B25CD3FC0005E0131 /* FeedCell */,
 			);
 			path = Cells;
@@ -1237,7 +1251,6 @@
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
 				65D9740525B4732400769653 /* SportTypeGridViewModel.swift in Sources */,
-				65C67E9025D57A3900ABC58B /* DSMemberCountStackItem.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */,
@@ -1248,6 +1261,7 @@
 				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
 				65C67E9D25D57FB900ABC58B /* DSCheckboxButton.swift in Sources */,
+				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */,
@@ -1269,6 +1283,7 @@
 				65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */,
 				6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */,
 				6503F4ED25B5D67C0002BC27 /* Member.swift in Sources */,
+				655B514225D5C007004FE90F /* SelectionCell.swift in Sources */,
 				65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */,
 				6531799925D111FE001DBA4B /* RegionListViewModel.swift in Sources */,
 				65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */,
@@ -1282,6 +1297,7 @@
 				656CC248259A4F8700DEC84C /* CountryCodeListView.swift in Sources */,
 				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
 				653179F125D112E1001DBA4B /* DateSelectionDataSource.swift in Sources */,
+				655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */,
 				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
 				65CEF63B25CDBADC00EB0B34 /* CollectionViewMemberCell.swift in Sources */,
 				65ECB2D6259BBB9800BF8CEE /* CountryCodeListViewModel.swift in Sources */,
@@ -1298,7 +1314,6 @@
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
 				653179E725D112D4001DBA4B /* DateSelectionAssembly.swift in Sources */,
 				65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */,
-				65C67E8B25D57A1200ABC58B /* DSActionStackItem.swift in Sources */,
 				653179EC25D112DA001DBA4B /* DateSelectionCoordinator.swift in Sources */,
 				653179E225D112CD001DBA4B /* DateSelectionViewModel.swift in Sources */,
 				6564195A25CE63E7008DFAE0 /* User.swift in Sources */,
@@ -1309,7 +1324,6 @@
 				65D973F325B4730E00769653 /* SportTypeGridAssembly.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				65D9741225B4760F00769653 /* Sport.swift in Sources */,
-				65C67E9525D57A6900ABC58B /* DSEventTypeStackItem.swift in Sources */,
 				656CC23B259A4F7100DEC84C /* CountryCodeListViewController.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
@@ -1317,8 +1331,10 @@
 				65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */,
 				653179DD25D112C7001DBA4B /* DateSelectionViewController.swift in Sources */,
 				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
+				655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
+				655B515125D5C021004FE90F /* MembersCountCell.swift in Sources */,
 				6531798F25D111F0001DBA4B /* RegionListView.swift in Sources */,
 				6568F8E325B4F97800225043 /* FeedViewController.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,

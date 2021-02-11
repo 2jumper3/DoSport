@@ -28,4 +28,18 @@ final class EventCreateCoordinator: Coordinator {
     func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func goToSportTypeListModule() {
+        let coordinator = SportTypeListCoordinator(navController: self.navigationController)
+        coordinator.start()
+    }
+    
+    func goToPlaygroundListModule() {
+        print(#function)
+    }
+    
+    func goToDateSelectionModule() {
+        let coordinator = DateSelectionCoordinator(navController: self.navigationController)
+        coordinator.start()
+    }
 }

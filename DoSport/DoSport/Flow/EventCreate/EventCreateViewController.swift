@@ -14,6 +14,8 @@ final class EventCreateViewController: UIViewController {
     
     private lazy var eventCreateView = view as! EventCreateView
     
+    private var tableManager = EventCreateDataSource()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -40,6 +42,9 @@ final class EventCreateViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavBar()
+        setupTableManagerBindings()
+        
+        eventCreateView.updateTableDataSource(dataSource: self.tableManager)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +61,8 @@ private extension EventCreateViewController {
     func setupNavBar() {
         title = Texts.EventCreate.navTitle
         
+        navigationItem.setHidesBackButton(true, animated: true)
+        
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white
         ]
@@ -66,6 +73,20 @@ private extension EventCreateViewController {
             target: self,
             action: #selector(handleCancelButton)
         )
+    }
+    
+    func setupTableManagerBindings() {
+        tableManager.onDidTapSportTypeCell = { [weak self] in
+            self?.coordinator?.goToSportTypeListModule()
+        }
+        
+        tableManager.onDidTapPlaygroundCell = { [weak self] in
+            self?.coordinator?.goToPlaygroundListModule()
+        }
+        
+        tableManager.onDidTapDateCell = { [weak self] in
+            self?.coordinator?.goToDateSelectionModule()
+        }
     }
 }
 

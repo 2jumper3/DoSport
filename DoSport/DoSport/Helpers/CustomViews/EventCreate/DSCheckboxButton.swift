@@ -26,7 +26,7 @@ final class DSCheckboxButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor = Colors.darkBlue
+        backgroundColor = Colors.lightBlue
         setImage(Icons.EventCreate.checkMark, for: .normal)
         setTitleColor(.gray, for: .highlighted)
         layer.cornerRadius = 8

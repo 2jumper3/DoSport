@@ -1,16 +1,13 @@
 //
-//  DSMemberCountStackItem.swift
+//  MembersCountCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 11/02/2021.
 //
 
 import UIKit
-import SnapKit
 
-final class DSMemberCountStackItem: UIView {
-    
-    private let topSeperatorView = DSSeparatorView()
+final class MembersCountCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +17,7 @@ final class DSMemberCountStackItem: UIView {
         return $0
     }(UILabel())
     
-    private  let fromRangeLabel: UILabel = {
+    private let fromRangeLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "от 0"
         $0.layer.borderWidth = 1
@@ -31,7 +28,7 @@ final class DSMemberCountStackItem: UIView {
         return $0
     }(UILabel())
     
-    private  let toRangeLabel: UILabel = {
+    private let toRangeLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "до 300"
         $0.textColor = .white
@@ -43,6 +40,7 @@ final class DSMemberCountStackItem: UIView {
     }(UILabel())
     
     private lazy var rangeSlide: UISlider = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UISlider())
     
@@ -58,13 +56,10 @@ final class DSMemberCountStackItem: UIView {
 
     //MARK: - Init
     
-    init() {
-        super.init(frame: .zero)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubviews(
-            topSeperatorView,
+        contentView.addSubviews(
             titleLabel,
             fromRangeLabel,
             toRangeLabel,
@@ -81,11 +76,6 @@ final class DSMemberCountStackItem: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        topSeperatorView.snp.makeConstraints {
-            $0.top.width.centerX.equalToSuperview()
-            $0.height.equalTo(1)
-        }
-        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.left.equalToSuperview().offset(16)
@@ -93,17 +83,19 @@ final class DSMemberCountStackItem: UIView {
         }
         
         fromRangeLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
             $0.left.equalTo(titleLabel.snp.left)
-            $0.height.equalToSuperview().multipliedBy(0.26)
-            $0.width.equalToSuperview().multipliedBy(0.43)
         }
         
         toRangeLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
             $0.right.equalToSuperview().offset(-16)
-            $0.height.equalToSuperview().multipliedBy(0.26)
-            $0.width.equalToSuperview().multipliedBy(0.43)
+        }
+        
+        [fromRangeLabel, toRangeLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+                $0.height.equalToSuperview().multipliedBy(0.23)
+                $0.width.equalToSuperview().multipliedBy(0.43)
+            }
         }
         
         rangeSlide.snp.makeConstraints {
@@ -114,7 +106,7 @@ final class DSMemberCountStackItem: UIView {
         }
         
         checkboxButton.snp.makeConstraints {
-            $0.top.equalTo(rangeSlide.snp.bottom).offset(25)
+            $0.top.equalTo(rangeSlide.snp.bottom).offset(18)
             $0.left.equalToSuperview().offset(16)
             $0.height.equalToSuperview().multipliedBy(0.156)
             $0.width.equalTo(checkboxButton.snp.height)
