@@ -10,11 +10,7 @@ import SnapKit
 
 final class FeedView: UIView {
     
-    private let navBarSeparatorView: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = Colors.dirtyBlue
-        return $0
-    }(UIView())
+    private let navBarSeparatorView = DSSeparatorView()
     
     private(set) lazy var filterButtonsView = FeedFilterButtonsView()
     
@@ -24,7 +20,7 @@ final class FeedView: UIView {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.registerClass(EventCollectionViewCell.self)
+        collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.layer.cornerRadius = 12
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false

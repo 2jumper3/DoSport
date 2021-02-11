@@ -78,6 +78,7 @@ final class FormTextFieldView: UIView {
 //MARK: - Public methods
 
 extension FormTextFieldView {
+    
     func bind(compilation: (State) -> ()) {
         switch state {
         case .normal:
@@ -92,6 +93,7 @@ extension FormTextFieldView {
 //MARK: - Private methods
 
 private extension FormTextFieldView {
+    
     func handleDidSetState() {
         switch state {
         case .normal:

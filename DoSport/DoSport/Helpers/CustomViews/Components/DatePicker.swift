@@ -47,6 +47,7 @@ final class DSDatePicker: UIDatePicker {
 //MARK: - Public methods
 
 extension DSDatePicker {
+    
     func setTextField(_ textField: UITextField) {
         textField.inputView = self
         textField.inputAccessoryView = self.toolBar
@@ -57,6 +58,7 @@ extension DSDatePicker {
 
 @objc
 private extension DSDatePicker {
+    
     func handleDoneButton() {
         onDoneButtonTap?()
     }

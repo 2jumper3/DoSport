@@ -69,6 +69,7 @@ final class DSPasswordTextView: UIView {
 //MARK: - Public methods
 
 extension DSPasswordTextView {
+    
     func bind() {
         switch textViewState {
         case .normal:
@@ -86,6 +87,7 @@ extension DSPasswordTextView {
 //MARK: - Private methods
 
 extension DSPasswordTextView {
+    
     func handleStateChagne() {
         switch textViewState {
         case .normal:

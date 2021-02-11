@@ -8,6 +8,7 @@
 import UIKit
 
 extension UILabel {
+    
     func makeAttributedText(with text1: String, and text2: String) {
         let upperTextAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: Colors.dirtyBlue]
         let bottomTextAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: Colors.mainBlue]

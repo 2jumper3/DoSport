@@ -8,13 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol PhoneNumberAddViewDelegate: AnyObject {
-    func textFieldTapped()
-}
-
 final class PhoneNumberAddView: UIView {
-    
-    weak var delegate: PhoneNumberAddViewDelegate?
     
     var text: String {
         guard
@@ -96,6 +90,7 @@ final class PhoneNumberAddView: UIView {
 //MARK: - Public Methods
  
 extension PhoneNumberAddView {
+    
     func bind(callingCode: String) {
         self.button.setTitle(callingCode, for: .normal)
         layoutIfNeeded()
@@ -115,6 +110,7 @@ extension PhoneNumberAddView {
 }
 
 extension PhoneNumberAddView: UITextFieldDelegate {
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print(9)
     }
