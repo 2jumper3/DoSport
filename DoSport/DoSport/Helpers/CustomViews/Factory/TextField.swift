@@ -28,6 +28,10 @@ extension UITextField {
         textField.placeholder = placeholder
         textField.font = Fonts.sfProRegular(size: 16)
         textField.textColor = .white
+        textField.attributedPlaceholder = NSAttributedString(
+            string: Texts.Auth.phoneNumberPlaceholder,
+            attributes: [NSAttributedString.Key.foregroundColor: Colors.dirtyBlue]
+        )
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.borderWidth = 1
         textField.layer.borderColor = Colors.dirtyBlue.cgColor
