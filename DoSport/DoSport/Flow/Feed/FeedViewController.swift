@@ -14,11 +14,9 @@ final class FeedViewController: UIViewController {
     
     private lazy var feedView = self.view as! FeedView
     
-    private let navBar = DSHomeNavBar()
+    private let navBar = DSFeedNavBar()
     
-    private lazy var collectionViewManager: FeedDataSource = {
-        return $0
-    }(FeedDataSource())
+    private lazy var collectionViewManager = FeedDataSource()
 
     // MARK: - Init
     

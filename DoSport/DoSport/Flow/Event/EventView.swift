@@ -33,7 +33,6 @@ final class EventView: UIView {
         return collectionView
     }()
     
-    
     //MARK: - Init
     
     init() {

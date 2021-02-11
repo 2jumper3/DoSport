@@ -123,7 +123,7 @@
 		65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */; };
 		65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */; };
 		65DDC09F25B6503B00228FC7 /* CollectionViewEventCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC09E25B6503B00228FC7 /* CollectionViewEventCardCell.swift */; };
-		65DDC0A425B6510500228FC7 /* DSHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC0A325B6510500228FC7 /* DSHomeNavBar.swift */; };
+		65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC0A325B6510500228FC7 /* DSFeedNavBar.swift */; };
 		65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 656CC24C259A50A200DEC84C /* CountryList.json */; };
 		65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA7C25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift */; };
 		65EAAA8525CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAA8425CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift */; };
@@ -307,7 +307,7 @@
 		65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSportTypeCell.swift; sourceTree = "<group>"; };
 		65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+cellForRow.swift"; sourceTree = "<group>"; };
 		65DDC09E25B6503B00228FC7 /* CollectionViewEventCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCell.swift; sourceTree = "<group>"; };
-		65DDC0A325B6510500228FC7 /* DSHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSHomeNavBar.swift; sourceTree = "<group>"; };
+		65DDC0A325B6510500228FC7 /* DSFeedNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFeedNavBar.swift; sourceTree = "<group>"; };
 		65EAAA7C25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellHeaderView.swift; sourceTree = "<group>"; };
 		65EAAA8425CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellBodyView.swift; sourceTree = "<group>"; };
 		65EAAA8925CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellFooterView.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */,
-				65DDC0A325B6510500228FC7 /* DSHomeNavBar.swift */,
+				65DDC0A325B6510500228FC7 /* DSFeedNavBar.swift */,
 				653408AE259A86D40072542D /* DSCountryListNavBar.swift */,
 				653408B3259A88BD0072542D /* DSSearchBar.swift */,
 			);
@@ -1326,7 +1326,7 @@
 				65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */,
 				CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */,
 				CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */,
-				65DDC0A425B6510500228FC7 /* DSHomeNavBar.swift in Sources */,
+				65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */,
 				6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */,
 				65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */,
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,

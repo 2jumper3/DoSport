@@ -1,5 +1,5 @@
 //
-//  DSHomeNavBar.swift
+//  DSFeedNavBar.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/01/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class DSHomeNavBar: UIView {
+final class DSFeedNavBar: UIView {
     
     // to create new event
     
