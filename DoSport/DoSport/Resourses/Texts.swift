@@ -142,5 +142,7 @@ extension Texts {
         static let participating = "Ты в игре!"
         
         static let reply = "Ответить"
+        
+        static let messages = "Сообщения"
     }
 }

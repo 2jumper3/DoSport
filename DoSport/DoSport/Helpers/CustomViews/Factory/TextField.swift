@@ -22,4 +22,16 @@ extension UITextField {
         textField.layer.cornerRadius = 8
         return textField
     }
+    
+    static func makeTextFieldWith(placeholder: String) -> UITextField {
+        let textField = UITextField()
+        textField.placeholder = placeholder
+        textField.font = Fonts.sfProRegular(size: 16)
+        textField.textColor = .white
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = Colors.dirtyBlue.cgColor
+        textField.layer.cornerRadius = 8
+        return textField
+    }
 }

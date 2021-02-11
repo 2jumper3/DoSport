@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (5.2.2)
+  - SDWebImage (5.9.1):
+    - SDWebImage/Core (= 5.9.1)
+  - SDWebImage/Core (5.9.1)
+  - SnapKit (5.0.1)
+  - SwiftLint (0.40.3)
+  - YandexMapsMobile (4.0.0-full)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - SDWebImage (~> 5.0)
+  - SnapKit (~> 5.0.0)
+  - SwiftLint
+  - YandexMapsMobile (= 4.0.0-full)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SDWebImage
+    - SnapKit
+    - SwiftLint
+    - YandexMapsMobile
+
+SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
+  YandexMapsMobile: 0f3d8c92fad685dc33d07f83eed4eb0166089743
+
+PODFILE CHECKSUM: 5c9e0a153d83bcfeb7cec2e26d161a58dab8aa20
+
+COCOAPODS: 1.10.0.rc.1

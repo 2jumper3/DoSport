@@ -8,13 +8,20 @@
 import UIKit.UIImage
 
 public enum Icons {
+    
+    //MARK: - Auth screen
+    
     enum Auth {
         static var logo = image(named: "logo_image")
     }
     
+    //MARK: - CountryList screen
+    
     enum CountryList {
         static let backButton = image(named: "back_button")
     }
+    
+    //MARK: - OnboardingIcons screen
     
     enum OnboardingIcons {
         static var firstIcon: UIImage {
@@ -31,11 +38,15 @@ public enum Icons {
         }
     }
     
+    //MARK: - Registration screen
+    
     enum Registration {
         static var avatarDefault: UIImage {
             return Icons.image(named: "firstPlayer")
         }
     }
+    
+    //MARK: - PasswordEntry screen
     
     enum PasswordEntry {
         static var hiddenEye: UIImage {
@@ -46,6 +57,8 @@ public enum Icons {
             return Icons.image(named: "showed_eye_icon")
         }
     }
+    
+    //MARK: - Feed screen
     
     enum Feed {
         static var plus: UIImage {
@@ -82,6 +95,14 @@ public enum Icons {
         
         static var user: UIImage {
             return Icons.image(named: "user")
+        }
+    }
+    
+    //MARK: - Event screen
+    
+    enum Event {
+        static var messageSend: UIImage {
+            return Icons.image(named: "message_send_button")
         }
     }
 }

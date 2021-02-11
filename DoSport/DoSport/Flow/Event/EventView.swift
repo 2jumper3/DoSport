@@ -10,11 +10,7 @@ import SnapKit
 
 final class EventView: UIView {
     
-    private let navBarSeparatorView: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = Colors.dirtyBlue
-        return $0
-    }(UIView())
+    private let navBarSeparatorView = DSSeparatorView()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,13 +29,15 @@ final class EventView: UIView {
         return collectionView
     }()
     
+    private lazy var messageInputView = DSMessageInputView()
+
     //MARK: - Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(navBarSeparatorView, collectionView)
+        addSubviews(navBarSeparatorView, collectionView, messageInputView)
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +56,13 @@ final class EventView: UIView {
         collectionView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.top.equalTo(safeAreaInsets.top).offset(26)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(messageInputView.snp.top).offset(-6)
+        }
+        
+        messageInputView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.08)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-16)
         }

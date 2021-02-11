@@ -48,7 +48,6 @@ final class DSSearchBar: UISearchBar {
 }
 
 //MARK: - Public methods
-
 extension DSSearchBar {
     
     func bind(state: State) {
@@ -57,7 +56,6 @@ extension DSSearchBar {
 }
 
 //MARK: - Private methods
-
 private extension DSSearchBar {
     
     func setState() {

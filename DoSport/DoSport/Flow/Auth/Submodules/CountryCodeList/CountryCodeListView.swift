@@ -9,11 +9,7 @@ import UIKit
 
 final class CountryCodeListView: UIView {
     
-    private let navBarSeparatorView: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = Colors.dirtyBlue
-        return $0
-    }(UIView())
+    private let navBarSeparatorView = DSSeparatorView()
     
     private lazy var tableView: UITableView = {
         $0.registerClass(TableViewCountryCell.self)

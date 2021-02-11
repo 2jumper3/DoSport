@@ -10,11 +10,7 @@ import SnapKit
 
 final class FeedView: UIView {
     
-    private let navBarSeparatorView: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = Colors.dirtyBlue
-        return $0
-    }(UIView())
+    private let navBarSeparatorView = DSSeparatorView()
     
     private(set) lazy var filterButtonsView = FeedFilterButtonsView()
     
