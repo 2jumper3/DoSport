@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+final class EventCreateAssembly: Assembly {
+    
+    func makeModule() -> EventCreateViewController {
+        let viewModel = EventCreateViewModel()
+        let viewController = EventCreateViewController(viewModel: viewModel)
+        return viewController
+    }
+}

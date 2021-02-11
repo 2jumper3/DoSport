@@ -87,12 +87,3 @@ private extension EventViewController {
         }
     }
 }
-
-//MARK: - Actions
-
-@objc
-private extension EventViewController {
-    func handleCreateButton() {
-        
-    }
-}

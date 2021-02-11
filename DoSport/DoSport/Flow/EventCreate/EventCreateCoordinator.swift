@@ -5,4 +5,27 @@
 //  Created by Komolbek Ibragimov on 08/02/2021.
 //
 
-import Foundation
+import UIKit
+
+final class EventCreateCoordinator: Coordinator {
+    
+    let rootViewController: EventCreateViewController
+    
+    var childCoordinators: [Coordinator] = []
+    var navigationController: UINavigationController?
+    
+    init(navController: UINavigationController?) {
+        let assembly = EventCreateAssembly()
+        self.rootViewController = assembly.makeModule()
+        self.navigationController = navController
+    }
+    
+    func start() {
+        rootViewController.coordinator = self
+        navigationController?.pushViewController(rootViewController, animated: true)
+    }
+    
+    func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+}
