@@ -100,15 +100,13 @@ final class SelectionCell: UITableViewCell {
 extension SelectionCell {
     
     func bind(_ text: String) {
-        if text == Texts.EventCreate.date ||
-           text == Texts.EventCreate.sportTypes ||
-           text == Texts.EventCreate.playground {
-            textLabel?.text = text
-        } else {
-            textLabel?.text = text
+        myTitleLabel.text = text
+        
+        if text != Texts.EventCreate.date &&
+           text != Texts.EventCreate.sportTypes &&
+           text != Texts.EventCreate.playground {
             cellState = .dataSelected
         }
-        textLabel?.text = text
     }
     
     func getState() -> CellState {

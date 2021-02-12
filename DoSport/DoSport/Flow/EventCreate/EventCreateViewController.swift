@@ -66,7 +66,7 @@ final class EventCreateViewController: UIViewController {
 private extension EventCreateViewController {
     
     func handleCellStateCounterChange() {
-        if cellStateCounter == 3 {
+        if cellStateCounter == 1 {
             eventCreateView.createButton.bind(state: .normal)
         } else {
             eventCreateView.createButton.bind(state: .disabled)
@@ -95,16 +95,16 @@ private extension EventCreateViewController {
     }
     
     func setupTableManagerBindings() {
-        tableManager.onDidTapSportTypeCell = { [weak self] in
-            self?.coordinator?.goToSportTypeListModule()
+        tableManager.onDidTapSportTypeCell = { [weak self] cell in
+            self?.coordinator?.goToSportTypeListModule(with: cell)
         }
         
-        tableManager.onDidTapPlaygroundCell = { [weak self] in
-            self?.coordinator?.goToPlaygroundListModule()
+        tableManager.onDidTapPlaygroundCell = { [weak self] cell in
+            self?.coordinator?.goToPlaygroundListModule(with: cell)
         }
         
-        tableManager.onDidTapDateCell = { [weak self] in
-            self?.coordinator?.goToDateSelectionModule()
+        tableManager.onDidTapDateCell = { [weak self] cell in
+            self?.coordinator?.goToDateSelectionModule(with: cell)
         }
         
         tableManager.onDidTapCheckboxButton = { button in

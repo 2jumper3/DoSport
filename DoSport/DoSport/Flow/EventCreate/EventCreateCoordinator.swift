@@ -29,17 +29,17 @@ final class EventCreateCoordinator: Coordinator {
         navigationController?.popViewController(animated: true)
     }
     
-    func goToSportTypeListModule() {
-        let coordinator = SportTypeListCoordinator(navController: self.navigationController)
+    func goToSportTypeListModule(with cell: UITableViewCell) {
+        let coordinator = SportTypeListCoordinator(navController: self.navigationController, cell: cell)
         coordinator.start()
     }
     
-    func goToPlaygroundListModule() {
+    func goToPlaygroundListModule(with cell: UITableViewCell) {
         print(#function)
     }
     
-    func goToDateSelectionModule() {
-        let coordinator = DateSelectionCoordinator(navController: self.navigationController)
+    func goToDateSelectionModule(with cell: UITableViewCell) {
+        let coordinator = DateSelectionCoordinator(navController: self.navigationController, cell: cell)
         coordinator.start()
     }
 }

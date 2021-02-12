@@ -9,9 +9,9 @@ import UIKit
 
 final class EventCreateDataSource: NSObject {
     
-    var onDidTapSportTypeCell: (() -> Void)?
-    var onDidTapPlaygroundCell: (() -> Void)?
-    var onDidTapDateCell: (() -> Void)?
+    var onDidTapSportTypeCell: ((UITableViewCell) -> Void)?
+    var onDidTapPlaygroundCell: ((UITableViewCell) -> Void)?
+    var onDidTapDateCell: ((UITableViewCell) -> Void)?
     var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
     var onDidTapDoneButton: ((UITextView) -> Void)?
     
@@ -105,11 +105,12 @@ extension EventCreateDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType: CellType = cells[indexPath.row]
+        let cell = tableView.visibleCells[indexPath.row]
         
         switch cellType {
-        case .sportTypeSelection: onDidTapSportTypeCell?()
-        case .playgroundSelection: onDidTapPlaygroundCell?()
-        case .dateSelection: onDidTapDateCell?()
+        case .sportTypeSelection: onDidTapSportTypeCell?(cell)
+        case .playgroundSelection: onDidTapPlaygroundCell?(cell)
+        case .dateSelection: onDidTapDateCell?(cell)
         default: break
         }
     }

@@ -14,7 +14,7 @@ final class DateSelectionCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?) {
+    init(navController: UINavigationController?, cell: UITableViewCell) {
         let assembly = DateSelectionAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController

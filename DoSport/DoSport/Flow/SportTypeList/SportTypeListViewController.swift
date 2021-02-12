@@ -14,6 +14,8 @@ final class SportTypeListViewController: UIViewController {
     
     private lazy var eventCreateView = view as! SportTypeListView
     
+    var cell: UITableViewCell?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -40,6 +42,10 @@ final class SportTypeListViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Виды спорта"
+        
+        if let cell = cell as? SelectionCell {
+            cell.bind("Football")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

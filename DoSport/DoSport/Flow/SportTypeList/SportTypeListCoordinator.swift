@@ -14,14 +14,18 @@ final class SportTypeListCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?) {
+    private let cell: UITableViewCell
+    
+    init(navController: UINavigationController?, cell: UITableViewCell) {
         let assembly = SportTypeListAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
+        self.cell = cell
     }
     
     func start() {
         rootViewController.coordinator = self
+        rootViewController.cell = cell
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
