@@ -18,4 +18,11 @@ final class DSNavigationController: UINavigationController {
 
         return .default
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationBar.isTranslucent = false
+        navigationBar.barTintColor = Colors.darkBlue
+    }
 }

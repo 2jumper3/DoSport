@@ -16,9 +16,11 @@ final class FeedViewController: UIViewController {
     
     private let navBar = DSHomeNavBar()
     
-    private lazy var collectionViewManager: FeedDataSource = {
-        return $0
-    }(FeedDataSource())
+    private lazy var collectionViewManager = FeedDataSource()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - Init
     
@@ -44,7 +46,6 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         title = Texts.Feed.feedTitle
-        navigationItem.setHidesBackButton(true, animated: true)
         
         navBar.createEventButton.addTarget(
             self,
@@ -58,15 +59,10 @@ final class FeedViewController: UIViewController {
         
         viewModel.prepareEventsData()
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
