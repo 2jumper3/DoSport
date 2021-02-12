@@ -9,7 +9,20 @@ import UIKit
 
 final class SelectionCell: UITableViewCell {
     
-    private(set) var myTitleLabel: UILabel = {
+    var onDidChangeState: ((CellState) -> Void)?
+    
+    enum CellState {
+        case dataSelected, dataNotSelected
+    }
+    
+    private var cellState: CellState = .dataNotSelected {
+        didSet {
+            contentView.backgroundColor = .yellow
+            onDidChangeState?(cellState)
+        }
+    }
+    
+    private var myTitleLabel: UILabel = {
         $0.textColor = Colors.dirtyBlue
         $0.font = Fonts.sfProRegular(size: 18)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +92,27 @@ final class SelectionCell: UITableViewCell {
             contentView.backgroundColor = Colors.darkBlue
             myTitleLabel.textColor = Colors.dirtyBlue
         }.startAnimation()
+    }
+}
+
+//MARK: - Public methods
+
+extension SelectionCell {
+    
+    func bind(_ text: String) {
+        if text == Texts.EventCreate.date ||
+           text == Texts.EventCreate.sportTypes ||
+           text == Texts.EventCreate.playground {
+            textLabel?.text = text
+        } else {
+            textLabel?.text = text
+            cellState = .dataSelected
+        }
+        textLabel?.text = text
+    }
+    
+    func getState() -> CellState {
+        return cellState
     }
 }
 

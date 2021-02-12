@@ -22,7 +22,7 @@ final class EventCreateView: UIView {
         return tableView
     }()
 
-    private lazy var createButton = CommonButton(title: Texts.EventCreate.create, state: .disabled)
+    private(set) lazy var createButton = CommonButton(title: Texts.EventCreate.create, state: .disabled)
 
     //MARK: - Init
     

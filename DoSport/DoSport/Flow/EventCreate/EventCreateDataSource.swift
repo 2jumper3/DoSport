@@ -15,6 +15,10 @@ final class EventCreateDataSource: NSObject {
     var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
     var onDidTapDoneButton: ((UITextView) -> Void)?
     
+    var onSportTypeCellDidChangeState:((SelectionCell.CellState) -> Void)?
+    var onPlaygroundCellDidChangeState:((SelectionCell.CellState) -> Void)?
+    var onDateSelecteCellDidChangeState:((SelectionCell.CellState) -> Void)?
+    
     private enum CellType: String, CaseIterable {
         case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
     }
@@ -49,6 +53,7 @@ extension EventCreateDataSource: UITableViewDataSource {
         switch cellType {
         case .textView:
             let textViewCell: TextViewCell = tableView.cell(forRowAt: indexPath)
+            // почему unowned? хз. изучить какие ссылки между ячейками и датаСурс
             textViewCell.onDidTapDoneButton = { [unowned self] textView in
                 self.onDidTapDoneButton?(textView)
             }
@@ -56,17 +61,26 @@ extension EventCreateDataSource: UITableViewDataSource {
             cell = textViewCell
         case .sportTypeSelection:
             let sportSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
-            sportSelectionCell.myTitleLabel.text = Texts.EventCreate.sportTypes
+            sportSelectionCell.bind(Texts.EventCreate.sportTypes)
+            sportSelectionCell.onDidChangeState = { [unowned self] state in
+                self.onSportTypeCellDidChangeState?(state)
+            }
             
             cell = sportSelectionCell
         case .playgroundSelection:
             let playgroundSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
-            playgroundSelectionCell.myTitleLabel.text = Texts.EventCreate.playground
+            playgroundSelectionCell.bind(Texts.EventCreate.playground)
+            playgroundSelectionCell.onDidChangeState = { [unowned self] state in
+                self.onPlaygroundCellDidChangeState?(state)
+            }
             
             cell = playgroundSelectionCell
         case .dateSelection:
             let dateSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
-            dateSelectionCell.myTitleLabel.text = Texts.EventCreate.date
+            dateSelectionCell.bind(Texts.EventCreate.date)
+            dateSelectionCell.onDidChangeState = { [unowned self] state in
+                self.onDateSelecteCellDidChangeState?(state)
+            }
             
             cell = dateSelectionCell
         case .membersCount:

@@ -16,6 +16,12 @@ final class EventCreateViewController: UIViewController {
     
     private var tableManager = EventCreateDataSource()
     
+    private var cellStateCounter: Int = 0 {
+        didSet {
+            handleCellStateCounterChange()
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -42,6 +48,7 @@ final class EventCreateViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavBar()
+        setupButtonTargets()
         setupTableManagerBindings()
         
         eventCreateView.updateTableDataSource(dataSource: self.tableManager)
@@ -58,6 +65,14 @@ final class EventCreateViewController: UIViewController {
 
 private extension EventCreateViewController {
     
+    func handleCellStateCounterChange() {
+        if cellStateCounter == 3 {
+            eventCreateView.createButton.bind(state: .normal)
+        } else {
+            eventCreateView.createButton.bind(state: .disabled)
+        }
+    }
+    
     func setupNavBar() {
         title = Texts.EventCreate.navTitle
         
@@ -73,6 +88,10 @@ private extension EventCreateViewController {
             target: self,
             action: #selector(handleCancelButton)
         )
+    }
+    
+    func setupButtonTargets() {
+        eventCreateView.createButton.addTarget(self, action: #selector(handleEventCreateButton), for: .touchUpInside)
     }
     
     func setupTableManagerBindings() {
@@ -95,6 +114,27 @@ private extension EventCreateViewController {
         tableManager.onDidTapDoneButton = { textView in
             textView.resignFirstResponder()
         }
+        
+        tableManager.onSportTypeCellDidChangeState = { [unowned self] state in
+            switch state {
+            case .dataSelected: self.cellStateCounter += 1
+            case .dataNotSelected: self.cellStateCounter -= 1
+            }
+        }
+        
+        tableManager.onPlaygroundCellDidChangeState = { [unowned self] state in
+            switch state {
+            case .dataSelected: self.cellStateCounter += 1
+            case .dataNotSelected: self.cellStateCounter -= 1
+            }
+        }
+        
+        tableManager.onDateSelecteCellDidChangeState = { [unowned self] state in
+            switch state {
+            case .dataSelected: self.cellStateCounter += 1
+            case .dataNotSelected: self.cellStateCounter -= 1
+            }
+        }
     }
 }
 
@@ -105,6 +145,10 @@ private extension EventCreateViewController {
     
     func handleCancelButton() {
         coordinator?.goBack()
+    }
+    
+    func handleEventCreateButton(_ button: CommonButton) {
+        print(#function)
     }
 }
 
