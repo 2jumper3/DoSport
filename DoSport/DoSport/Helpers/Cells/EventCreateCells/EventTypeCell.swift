@@ -25,6 +25,9 @@ final class EventTypeCell: UITableViewCell {
     
     private(set) lazy var typeSwitch: UISwitch = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = Colors.darkBlue
+        $0.tintColor = Colors.dirtyBlue
+        $0.onTintColor = Colors.lightBlue
         return $0
     }(UISwitch())
     

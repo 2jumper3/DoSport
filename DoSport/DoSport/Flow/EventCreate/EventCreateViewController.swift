@@ -79,15 +79,15 @@ private extension EventCreateViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         
         navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: Colors.mainBlue
         ]
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: Icons.EventCreate.cancel,
-            style: .plain,
-            target: self,
-            action: #selector(handleCancelButton)
-        )
+        let button = UIButton(type: .system)
+        button.setImage(Icons.EventCreate.cancel, for: .normal)
+        button.tintColor = Colors.mainBlue
+        button.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     func setupButtonTargets() {

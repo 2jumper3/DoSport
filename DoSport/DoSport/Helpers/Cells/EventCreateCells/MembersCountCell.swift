@@ -77,7 +77,7 @@ final class MembersCountCell: UITableViewCell {
         super.layoutSubviews()
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.top.equalToSuperview().offset(10)
             $0.left.equalToSuperview().offset(16)
             $0.height.equalTo(25)
         }
