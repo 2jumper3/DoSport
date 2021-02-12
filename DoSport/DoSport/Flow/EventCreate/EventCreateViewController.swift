@@ -66,7 +66,7 @@ final class EventCreateViewController: UIViewController {
 private extension EventCreateViewController {
     
     func handleCellStateCounterChange() {
-        if cellStateCounter == 1 {
+        if cellStateCounter == 3 {
             eventCreateView.createButton.bind(state: .normal)
         } else {
             eventCreateView.createButton.bind(state: .disabled)
@@ -116,23 +116,20 @@ private extension EventCreateViewController {
         }
         
         tableManager.onSportTypeCellDidChangeState = { [unowned self] state in
-            switch state {
-            case .dataSelected: self.cellStateCounter += 1
-            case .dataNotSelected: self.cellStateCounter -= 1
+            if state == .dataSelected {
+                self.cellStateCounter += 1
             }
         }
         
         tableManager.onPlaygroundCellDidChangeState = { [unowned self] state in
-            switch state {
-            case .dataSelected: self.cellStateCounter += 1
-            case .dataNotSelected: self.cellStateCounter -= 1
+            if state == .dataSelected {
+                self.cellStateCounter += 1
             }
         }
         
         tableManager.onDateSelecteCellDidChangeState = { [unowned self] state in
-            switch state {
-            case .dataSelected: self.cellStateCounter += 1
-            case .dataNotSelected: self.cellStateCounter -= 1
+            if state == .dataSelected {
+                self.cellStateCounter += 1
             }
         }
     }

@@ -17,13 +17,12 @@ final class SelectionCell: UITableViewCell {
     
     private var cellState: CellState = .dataNotSelected {
         didSet {
-            contentView.backgroundColor = .yellow
             onDidChangeState?(cellState)
         }
     }
     
-    private var myTitleLabel: UILabel = {
-        $0.textColor = Colors.dirtyBlue
+    private lazy var myTitleLabel: UILabel = {
+        $0.textColor = cellState == .dataNotSelected ? Colors.dirtyBlue : .white
         $0.font = Fonts.sfProRegular(size: 18)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -63,36 +62,6 @@ final class SelectionCell: UITableViewCell {
             $0.width.equalTo(myImageView.snp.height).multipliedBy(0.7)
         }
     }
-    
-    // Immitate cell selection when user did tap cell
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-        UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [self] in
-            contentView.backgroundColor = Colors.dirtyBlue
-            myTitleLabel.textColor = .white
-        }.startAnimation()
-    }
-    
-    // Immitate cell deselection when user did untap cell
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        
-        UIViewPropertyAnimator(duration: 0.35, curve: .linear) { [self] in
-            contentView.backgroundColor = Colors.darkBlue
-            myTitleLabel.textColor = Colors.dirtyBlue
-        }.startAnimation()
-    }
-    
-    // Immitate cell deselection when user did untap cell after move
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        
-        UIViewPropertyAnimator(duration: 0.35, curve: .linear) { [self] in
-            contentView.backgroundColor = Colors.darkBlue
-            myTitleLabel.textColor = Colors.dirtyBlue
-        }.startAnimation()
-    }
 }
 
 //MARK: - Public methods
@@ -105,7 +74,11 @@ extension SelectionCell {
         if text != Texts.EventCreate.date &&
            text != Texts.EventCreate.sportTypes &&
            text != Texts.EventCreate.playground {
-            cellState = .dataSelected
+            
+            if cellState == .dataNotSelected {
+                myTitleLabel.textColor = .white
+                cellState = .dataSelected
+            }
         }
     }
     
