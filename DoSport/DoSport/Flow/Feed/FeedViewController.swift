@@ -17,6 +17,10 @@ final class FeedViewController: UIViewController {
     private let navBar = DSFeedNavBar()
     
     private lazy var collectionViewManager = FeedDataSource()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - Init
     
@@ -55,10 +59,6 @@ final class FeedViewController: UIViewController {
         setupViewModelBinding()
         
         viewModel.prepareEventsData()
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {

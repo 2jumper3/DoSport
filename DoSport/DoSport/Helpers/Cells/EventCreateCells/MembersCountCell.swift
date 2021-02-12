@@ -44,7 +44,7 @@ final class MembersCountCell: UITableViewCell {
         return $0
     }(UISlider())
     
-    private lazy var checkboxButton = DSCheckboxButton()
+    private(set) lazy var checkboxButton = DSCheckboxButton()
 
     private let checkboxInfoLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false

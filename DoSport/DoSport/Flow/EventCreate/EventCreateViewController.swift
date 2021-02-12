@@ -87,6 +87,10 @@ private extension EventCreateViewController {
         tableManager.onDidTapDateCell = { [weak self] in
             self?.coordinator?.goToDateSelectionModule()
         }
+        
+        tableManager.onDidTapCheckboxButton = { button in
+            button.bind()
+        }
     }
 }
 

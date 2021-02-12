@@ -12,6 +12,7 @@ final class EventCreateDataSource: NSObject {
     var onDidTapSportTypeCell: (() -> Void)?
     var onDidTapPlaygroundCell: (() -> Void)?
     var onDidTapDateCell: (() -> Void)?
+    var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
     
     private enum CellType: String, CaseIterable {
         case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
@@ -27,7 +28,12 @@ extension EventCreateDataSource { }
 //MARK: - Actions
 
 @objc
-private extension EventCreateDataSource { }
+private extension EventCreateDataSource {
+    
+    func handleCheckboxButton(_ button: DSCheckboxButton) {
+        onDidTapCheckboxButton?(button)
+    }
+}
 
 //MARK: - UITableViewDataSource
 
@@ -46,17 +52,22 @@ extension EventCreateDataSource: UITableViewDataSource {
         case .sportTypeSelection:
             let sportSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             sportSelectionCell.myTitleLabel.text = Texts.EventCreate.sportTypes
+            
             cell = sportSelectionCell
         case .playgroundSelection:
             let playgroundSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             playgroundSelectionCell.myTitleLabel.text = Texts.EventCreate.playground
+            
             cell = playgroundSelectionCell
         case .dateSelection:
             let dateSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             dateSelectionCell.myTitleLabel.text = Texts.EventCreate.date
+            
             cell = dateSelectionCell
         case .membersCount:
             let membersCountCell: MembersCountCell = tableView.cell(forRowAt: indexPath)
+            membersCountCell.checkboxButton.addTarget(self, action: #selector(handleCheckboxButton), for: .touchUpInside)
+            
             cell = membersCountCell
         case .eventType:
             let eventTypeCell: EventTypeCell = tableView.cell(forRowAt: indexPath)

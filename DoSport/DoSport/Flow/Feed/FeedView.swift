@@ -22,6 +22,7 @@ final class FeedView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.layer.cornerRadius = 12
+        collectionView.backgroundColor = Colors.darkBlue
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
