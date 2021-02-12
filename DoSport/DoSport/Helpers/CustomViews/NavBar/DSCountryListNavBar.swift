@@ -171,9 +171,5 @@ extension DSCountryListNavBar: UISearchBarDelegate {
             self.onSearchButtonDidTap?(text)
         }
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print(11123971289427190)
-    }
 }
 

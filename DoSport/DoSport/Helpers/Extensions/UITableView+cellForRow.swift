@@ -8,6 +8,7 @@
 import UIKit
 
 extension UITableView {
+    
     func registerClass<T: UITableViewCell>(_ cellClass: T.Type) {
         register(cellClass.self, forCellReuseIdentifier: cellClass.cellIdentifier)
     }
@@ -21,9 +22,10 @@ extension UITableView {
     }
 }
 
-extension UITableViewCell: ReusableCellIdentifiable {}
+extension UITableViewCell: ReusableCellIdentifiable { }
 
 extension ReusableCellIdentifiable where Self: UITableViewCell {
+    
     static var cellIdentifier: String {
         return String(describing: self)
     }

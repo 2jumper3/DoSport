@@ -31,12 +31,16 @@ final class AuthCoordinator: Coordinator {
     }
     
     func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
-        let coordinator = CountryListCoordinator(navController: navigationController, compilation: compilation)
+        let coordinator = CountryCodeListCoordinator(navController: navigationController, compilation: compilation)
         coordinator.start()
     }
     
     func goToPasswordEntryModule() {
         let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
         coordinator.start()
+    }
+    
+    func go() {
+        let _ = 10
     }
 }

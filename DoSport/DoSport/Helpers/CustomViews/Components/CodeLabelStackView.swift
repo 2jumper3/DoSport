@@ -91,6 +91,7 @@ final class CodeLabelStackView: UIView {
 //MARK: - Public methods
 
 extension CodeLabelStackView {
+    
     func bind() {
         
     }
@@ -104,6 +105,7 @@ extension CodeLabelStackView {
 //MARK: - Actions
 
 @objc extension CodeLabelStackView {
+    
     func handleTextField(_ textField: UITextField) {
         if var text = textField.text, text != "" {
             if text.first == " " {
@@ -121,6 +123,7 @@ extension CodeLabelStackView {
 //MARK: - Private methods
 
 private extension CodeLabelStackView {
+    
     func handleTextDidAdded(in textField: UITextField) {
         if textField == textField1 {
             textField2.isUserInteractionEnabled = true

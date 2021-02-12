@@ -43,6 +43,7 @@ final class DSButton: UIButton {
 //MARK: - Public methods
 
 extension DSButton {
+    
     func bind(state: State) {
         buttonState = state
     }
@@ -51,6 +52,7 @@ extension DSButton {
 //MARK: - Private methods
 
 private extension DSButton {
+    
     func handleButtonDidSelected() {
         switch buttonState {
         case .normal:

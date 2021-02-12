@@ -16,6 +16,10 @@ public enum Colors {
         return .init(hex: 0x3E3AF4)
     }
     
+    static var lightBlue_02: UIColor {
+        return .init(hex: 0x2E2BD0)
+    }
+    
     static var dirtyBlue: UIColor {
         return .init(hex: 0x324385)
     }

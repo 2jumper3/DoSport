@@ -27,4 +27,7 @@ final class EventViewModel {
 
 extension EventViewModel {
     
+    func prepareEventData(event: Event?) {
+        self.event = event
+    }
 }

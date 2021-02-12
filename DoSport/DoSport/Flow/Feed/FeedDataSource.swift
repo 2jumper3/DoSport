@@ -22,6 +22,7 @@ final class FeedDataSource: NSObject {
 //MARK: - UITableViewDataSource
 
 extension FeedDataSource: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModels.count
     }
@@ -30,10 +31,11 @@ extension FeedDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell: EventCollectionViewCell = collectionView.cell(forRowAt: indexPath)
+        let cell: CollectionViewEventCardCell = collectionView.cell(forRowAt: indexPath)
 
-//        let viewModel = viewModels[indexPath.row]
-
+        let viewModel = viewModels[indexPath.row]
+        cell.footerView.chatMessagesCountLabel.text = String(describing: viewModel.chatID?.messages?.count ?? 0)
+        cell.footerView.userCountLabel.text = String(describing: viewModel.members?.count ?? 0)
         
         return cell
     }
@@ -42,6 +44,7 @@ extension FeedDataSource: UICollectionViewDataSource {
 //MARK: - UITableViewDelegate
 
 extension FeedDataSource: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         
@@ -56,6 +59,7 @@ extension FeedDataSource: UICollectionViewDelegate {
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension FeedDataSource: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -63,7 +67,7 @@ extension FeedDataSource: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         return CGSize(
             width: collectionView.bounds.width,
-            height: UIScreen.main.bounds.height * 0.34
+            height: UIScreen.main.bounds.height * 0.3
         )
     }
 }

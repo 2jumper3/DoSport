@@ -163,7 +163,7 @@ extension CodeEntryView {
     }
 }
 
-//MARK: - Public methods
+//MARK: - CodeLabelStackViewDelegate
 
 extension CodeEntryView: CodeLabelStackViewDelegate {
     func didEnterCode(_ code: String) {
