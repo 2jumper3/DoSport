@@ -91,6 +91,10 @@ private extension EventCreateViewController {
         tableManager.onDidTapCheckboxButton = { button in
             button.bind()
         }
+        
+        tableManager.onDidTapDoneButton = { textView in
+            textView.resignFirstResponder()
+        }
     }
 }
 
@@ -103,4 +107,5 @@ private extension EventCreateViewController {
         coordinator?.goBack()
     }
 }
+
 

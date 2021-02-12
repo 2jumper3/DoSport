@@ -15,6 +15,7 @@ final class EventCreateView: UIView {
         tableView.registerClass(EventTypeCell.self)
         tableView.registerClass(SelectionCell.self)
         tableView.registerClass(MembersCountCell.self)
+        tableView.keyboardDismissMode = .onDrag
         tableView.separatorColor = Colors.dirtyBlue
         tableView.backgroundColor = Colors.darkBlue
         tableView.translatesAutoresizingMaskIntoConstraints = false

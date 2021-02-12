@@ -13,6 +13,7 @@ final class EventCreateDataSource: NSObject {
     var onDidTapPlaygroundCell: (() -> Void)?
     var onDidTapDateCell: (() -> Void)?
     var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
+    var onDidTapDoneButton: ((UITextView) -> Void)?
     
     private enum CellType: String, CaseIterable {
         case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
@@ -48,6 +49,10 @@ extension EventCreateDataSource: UITableViewDataSource {
         switch cellType {
         case .textView:
             let textViewCell: TextViewCell = tableView.cell(forRowAt: indexPath)
+            textViewCell.onDidTapDoneButton = { [unowned self] textView in
+                self.onDidTapDoneButton?(textView)
+            }
+            
             cell = textViewCell
         case .sportTypeSelection:
             let sportSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
