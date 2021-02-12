@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class CustomTabView: UIView {
+final class CustomTabView: UIView {
 
     // MARK: - Properties
     
@@ -14,7 +14,7 @@ class CustomTabView: UIView {
     var activeItem: Int = 0
 
     // MARK: - Init
-
+    
      init(menuItems: [TabBarItem], frame: CGRect) {
         super.init(frame: frame)
         
@@ -53,7 +53,7 @@ class CustomTabView: UIView {
         let itemIconView = UIImageView()
 
         itemIconView.tag = 11
-        itemIconView.image = item.icon!
+        itemIconView.image = item.icon
         itemIconView.contentMode = .scaleAspectFit
         itemIconView.translatesAutoresizingMaskIntoConstraints = false
         itemIconView.clipsToBounds = true
@@ -85,7 +85,6 @@ class CustomTabView: UIView {
 
     func activateTab(tab: Int) {
         let tabToActivate = subviews[tab]
-        tabToActivate.viewWithTag(10)?.backgroundColor = Colors.darkBlue
         
         if let view: UIImageView = tabToActivate.viewWithTag(11) as? UIImageView {
             view.setImageColor(color: .white)
@@ -97,7 +96,6 @@ class CustomTabView: UIView {
 
     func deActivateTab(tab: Int) {
         let inactiveTab = subviews[tab]
-        inactiveTab.viewWithTag(10)?.backgroundColor = Colors.darkBlue
         
         if let view: UIImageView = inactiveTab.viewWithTag(11) as? UIImageView {
             view.setImageColor(color: Colors.mainBlue)
