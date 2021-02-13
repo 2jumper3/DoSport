@@ -30,7 +30,6 @@ final class PasswordEntryCoordinator: Coordinator {
     }
     
     func goToFeedModule() {
-        let coordinator = FeedCoordinator(navController: navigationController)
-        coordinator.start()
+        navigationController?.viewControllers = [MainMenuTabController()]
     }
 }

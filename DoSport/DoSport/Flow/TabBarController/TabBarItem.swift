@@ -13,11 +13,18 @@ enum TabBarItem: String, CaseIterable {
     case map = "Map"
     case chat = "Chat"
     case user = "User"
+    
 //Need to add newControllers when it will be finished
     var viewController: UIViewController {
         switch self {
         case .home:
-            return UINavigationController(rootViewController: MainViewController())
+            let navigationController = DSNavigationController()
+            let coordinator = FeedCoordinator(navController: navigationController)
+            coordinator.start()
+            
+            guard let navController = coordinator.navigationController else { return UIViewController() }
+            
+            return navController
         case .map:
             return MainViewController()
         case .chat:
@@ -27,16 +34,16 @@ enum TabBarItem: String, CaseIterable {
         }
     }
 
-    var icon: UIImage? {
+    var icon: UIImage {
         switch self {
         case .home:
-            return UIImage(named: "homeInactive")!
+            return UIImage(named: "homeInactive") ?? UIImage()
         case .map:
-            return UIImage(named: "mapInactive")!
+            return UIImage(named: "mapInactive") ?? UIImage()
         case .chat:
-            return UIImage(named: "chatInactive")!
+            return UIImage(named: "chatInactive") ?? UIImage()
         case .user:
-            return UIImage(named: "userInactive")!
+            return UIImage(named: "userInactive") ?? UIImage()
         }
     }
 

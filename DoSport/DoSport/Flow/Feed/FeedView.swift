@@ -21,6 +21,7 @@ final class FeedView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.registerClass(CollectionViewEventCardCell.self)
+        collectionView.backgroundColor = Colors.darkBlue
         collectionView.layer.cornerRadius = 12
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +63,7 @@ final class FeedView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.top.equalTo(filterButtonsView.snp.bottom).offset(24)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-16)
+            $0.bottom.equalTo(self.safeAreaInsets.bottom)
         }
     }
 }

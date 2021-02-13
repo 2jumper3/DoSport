@@ -6,36 +6,40 @@
 //
 import UIKit
 
-class CustomTabView: UIView {
+final class CustomTabView: UIView {
 
     // MARK: - Properties
+    
     var itemTapped: ((_ tab: Int) -> Void)?
     var activeItem: Int = 0
 
     // MARK: - Init
-
+    
      init(menuItems: [TabBarItem], frame: CGRect) {
         super.init(frame: frame)
-        self.isUserInteractionEnabled = true
+        
+        isUserInteractionEnabled = true
+        backgroundColor = Colors.darkBlue
 
         for item in 0..<menuItems.count {
             let itemWidth = self.frame.width / CGFloat(menuItems.count)
             let leadingAnchor = itemWidth * CGFloat(item)
             let itemView = self.createTabItem(item: menuItems[item])
             itemView.tag = item
-            self.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
+            
+            addSubview(itemView)
 
             itemView.snp.makeConstraints { (make) in
-                make.height.equalTo(snp.height)
+                make.height.top.equalToSuperview()
                 make.width.equalTo(itemWidth)
                 make.leading.equalTo(snp.leading).offset(leadingAnchor)
-                make.top.equalTo(snp.top)
             }
         }
-        self.setNeedsLayout()
-        self.layoutIfNeeded()
-        self.activateTab(tab: 0)
+        
+        setNeedsLayout()
+        layoutIfNeeded()
+        activateTab(tab: 0)
     }
     
     required init?(coder: NSCoder) {
@@ -43,46 +47,35 @@ class CustomTabView: UIView {
     }
     
     // MARK: - Setup UI tabitem
+    
     func createTabItem(item: TabBarItem) -> UIView {
         let tabBarItem = UIView()
-        let itemView = UIView()
         let itemIconView = UIImageView()
 
         itemIconView.tag = 11
-        itemIconView.image = item.icon!
+        itemIconView.image = item.icon
         itemIconView.contentMode = .scaleAspectFit
         itemIconView.translatesAutoresizingMaskIntoConstraints = false
         itemIconView.clipsToBounds = true
 
-        itemView.tag = 10
-        itemView.translatesAutoresizingMaskIntoConstraints = false
-        itemView.layer.backgroundColor = Colors.darkBlue.cgColor
-        itemView.clipsToBounds = true
+        tabBarItem.addSubview(itemIconView)
 
-        tabBarItem.addSubview(itemView)
-        itemView.addSubview(itemIconView)
         
-        itemView.snp.makeConstraints { (make) in
-            make.top.equalTo(tabBarItem.snp.top)
-            make.bottom.equalTo(tabBarItem.snp.bottom)
-            make.leading.equalTo(tabBarItem.snp.leading)
-            make.trailing.equalTo(tabBarItem.snp.trailing)
-        }
         itemIconView.snp.makeConstraints { (make) in
             make.height.equalTo(24)
             make.width.equalTo(24)
-            make.top.equalTo(itemView.snp.top).offset(20)
-            make.centerX.equalTo(itemView.snp.centerX)
+            make.centerX.centerY.equalTo(tabBarItem)
         }
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tabBarItem.addGestureRecognizer(tapGesture)
         return tabBarItem
     }
 
     // MARK: - Actions
+    
     @objc func handleTap(_ sender: UIGestureRecognizer) {
-        self.switchTab(from: self.activeItem, too: sender.view!.tag)
+        switchTab(from: activeItem, too: sender.view!.tag)
     }
 
     func switchTab(from: Int, too: Int) {
@@ -91,18 +84,19 @@ class CustomTabView: UIView {
     }
 
     func activateTab(tab: Int) {
-        let tabToActivate = self.subviews[tab]
-        tabToActivate.viewWithTag(10)?.backgroundColor = Colors.darkBlue
+        let tabToActivate = subviews[tab]
+        
         if let view: UIImageView = tabToActivate.viewWithTag(11) as? UIImageView {
             view.setImageColor(color: .white)
         }
-        self.itemTapped?(tab)
-        self.activeItem = tab
+        
+        itemTapped?(tab)
+        activeItem = tab
     }
 
     func deActivateTab(tab: Int) {
-        let inactiveTab = self.subviews[tab]
-        inactiveTab.viewWithTag(10)?.backgroundColor = Colors.darkBlue
+        let inactiveTab = subviews[tab]
+        
         if let view: UIImageView = inactiveTab.viewWithTag(11) as? UIImageView {
             view.setImageColor(color: Colors.mainBlue)
         }
