@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol SportGroundViewModelProtocol: class {
+protocol PlaygroundViewModelProtocol: class {
     func returnCountOfSportsGround() -> Int
     func configureCell(indexPath: IndexPath) -> SportGroundModel
 }
 
-final class SportGroundViewModel: SportGroundViewModelProtocol  {
+final class PlaygroundViewModel: PlaygroundViewModelProtocol  {
 
     // MARK: - Properties
     private var countSportsGround: [SportGroundModel] = []

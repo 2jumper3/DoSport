@@ -7,13 +7,14 @@
 
 import UIKit
 
-final class SportGroundController: UIViewController {
+final class PlaygroundController: UIViewController {
 
     // MARK: - Outlets
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     // MARK: - Properties
-    private var viewModel: SportGroundViewModelProtocol = SportGroundViewModel()
+    private var viewModel: PlaygroundViewModelProtocol = PlaygroundViewModel()
+    var typeSportPlacesController: PlaygroundListController?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ final class SportGroundController: UIViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension SportGroundController: UICollectionViewDataSource {
+extension PlaygroundController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.returnCountOfSportsGround()
     }
@@ -36,12 +37,14 @@ extension SportGroundController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension SportGroundController: UICollectionViewDelegate {
-
+extension PlaygroundController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        typeSportPlacesController?.pushNavigationController(indexToSelect: indexPath.item)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension SportGroundController: UICollectionViewDelegateFlowLayout {
+extension PlaygroundController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width - 32, height: 110)
     }
@@ -51,7 +54,7 @@ extension SportGroundController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Configure UI
-extension SportGroundController {
+extension PlaygroundController {
 
     private func configureUI() {
         view.addSubview(collectionView)

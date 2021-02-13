@@ -14,7 +14,7 @@ class MenuBarViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = Colors.mainBlue
-        label.font = Fonts.sfProRegular(size: 18)
+        label.font = Fonts.sfProRegular(size: 16)
         return label
     }()
 

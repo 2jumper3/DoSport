@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TypeSportPlacesControllerCell: UICollectionViewCell {
+class PlaygroundListControllerCell: UICollectionViewCell {
 
     static let reuseId = "TypeSportPlacesControllerCell"
-    let controller: SportGroundController = {
-        let controller = SportGroundController()
+    var controller: PlaygroundController = {
+        let controller = PlaygroundController()
         return controller
     }()
     

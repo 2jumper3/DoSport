@@ -7,14 +7,13 @@
 
 import UIKit
 
-final class TypeSportPlacesController: UIViewController {
+final class PlaygroundListController: UIViewController {
 
     // MARK: - Outlets
     private lazy var menuBar: MenuBarView = {
         let menu = MenuBarView()
         menu.typeSportPlacesController = self
         menu.backgroundColor = Colors.darkBlue
-        menu.translatesAutoresizingMaskIntoConstraints = false
         return menu
     }()
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -74,10 +73,14 @@ final class TypeSportPlacesController: UIViewController {
         collectionView.scrollToItem(at: indePath as IndexPath, at: UICollectionView.ScrollPosition(), animated: true)
         collectionView.isPagingEnabled = true // Проблемы использования на IOS 14, поэтому 2 раза
     }
+    func pushNavigationController(indexToSelect: Int) {
+        let contoller = SportGroudDescriptionController()
+        navigationController?.pushViewController(contoller, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
-extension TypeSportPlacesController: UICollectionViewDelegate {
+extension PlaygroundListController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalConstraint?.constant = scrollView.contentOffset.x / CGFloat(HorizontalMenuName.allCases.count)
     }
@@ -90,7 +93,7 @@ extension TypeSportPlacesController: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension TypeSportPlacesController: UICollectionViewDataSource {
+extension PlaygroundListController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return HorizontalMenuName.allCases.count
     }
@@ -98,27 +101,30 @@ extension TypeSportPlacesController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.item {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeSportPlacesControllerCell.reuseId, for: indexPath) as! TypeSportPlacesControllerCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaygroundListControllerCell.reuseId, for: indexPath) as! PlaygroundListControllerCell
+            cell.controller.typeSportPlacesController = self
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeSportPlacesControllerCell.reuseId", for: indexPath)
             cell.backgroundColor = Colors.darkBlue
             return cell
         default:
-            return UICollectionViewCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeSportPlacesControllerCell.reuseId", for: indexPath)
+            cell.backgroundColor = Colors.darkBlue
+            return cell
         }
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension TypeSportPlacesController: UICollectionViewDelegateFlowLayout {
+extension PlaygroundListController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
 
 // MARK: - Configure UI
-extension TypeSportPlacesController {
+extension PlaygroundListController {
     private func configureUI() {
         view.backgroundColor = Colors.darkBlue
         view.addSubview(menuBar)
@@ -127,7 +133,6 @@ extension TypeSportPlacesController {
         menuBar.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(40)
         }
 
         collectionView.snp.makeConstraints { (make) in
@@ -148,7 +153,7 @@ extension TypeSportPlacesController {
         collectionView.backgroundColor = Colors.darkBlue
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(TypeSportPlacesControllerCell.self, forCellWithReuseIdentifier: TypeSportPlacesControllerCell.reuseId)
+        collectionView.register(PlaygroundListControllerCell.self, forCellWithReuseIdentifier: PlaygroundListControllerCell.reuseId)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TypeSportPlacesControllerCell.reuseId")
     }
 

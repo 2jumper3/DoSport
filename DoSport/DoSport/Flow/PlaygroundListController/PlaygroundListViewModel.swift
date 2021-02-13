@@ -7,10 +7,10 @@
 
 import Foundation
 
-protocol TypeSportPlacesViewModelProtocol {
+protocol PlaygroundListProtocol {
 
 }
 
-final class TypeSportPlacesViewModel: TypeSportPlacesViewModelProtocol {
+final class PlaygroundListViewModel: PlaygroundListProtocol {
     
 }

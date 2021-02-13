@@ -96,7 +96,7 @@ extension TypeSportsListController: UICollectionViewDataSource {
 extension TypeSportsListController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
-        let controller = TypeSportPlacesController()
+        let controller = PlaygroundListController()
         navigationController?.pushViewController(controller, animated: true)
     }
 }

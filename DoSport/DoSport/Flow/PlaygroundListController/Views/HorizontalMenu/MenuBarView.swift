@@ -37,7 +37,7 @@ final class MenuBarView: UIView {
 
     // MARK: - Properties
     var horizontalConstraint: NSLayoutConstraint?
-    var typeSportPlacesController: TypeSportPlacesController?
+    var typeSportPlacesController: PlaygroundListController?
     var numberOfItems = HorizontalMenuName.allCases.count
 
     // MARK: - Lifecycle
@@ -93,6 +93,10 @@ extension MenuBarView {
         configureCollectionView()
         configureBottomBorder()
         configureHorizontalView()
+
+        self.snp.makeConstraints { (make) in
+            make.height.equalTo(50)
+        }
     }
 
     private func configureHorizontalView() {
