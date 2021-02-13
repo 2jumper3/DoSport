@@ -17,6 +17,8 @@ final class EventViewController: UIViewController {
     var event: Event?
     
     private lazy var eventCollectionManager = EventDataSource()
+    
+    private var userToReplyName: String = ""
 
     // MARK: - Init
     
@@ -89,8 +91,12 @@ private extension EventViewController {
             print(#function)
         }
         
-        eventCollectionManager.onDidTapReplyButton = {
-            print(#function)
+        eventCollectionManager.onDidTapReplyButton = { [unowned self] cell in
+//            let indexPath = eventView.collectionView.indexPath(for: cell)
+            userToReplyName = "@\(cell.memberNameLabel.text ?? ""), "
+            
+            eventView.messageInputView.textField.text = userToReplyName
+            eventView.messageInputView.textField.becomeFirstResponder()
         }
     }
     
@@ -117,7 +123,12 @@ private extension EventViewController {
 private extension EventViewController {
     
     func handleSendMessageButton() {
-        eventView.messageInputView.textField.resignFirstResponder()
+        if eventView.messageInputView.textField.text == userToReplyName {
+            eventView.messageInputView.textField.text = ""
+            eventView.messageInputView.textField.resignFirstResponder()
+        } else {
+            let text = eventView.messageInputView.textField.text
+        }
     }
     
     func handleKeybordWillShow(_ notification: Notification) {

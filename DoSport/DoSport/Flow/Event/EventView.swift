@@ -14,7 +14,7 @@ final class EventView: UIView {
     
     private let navBarSeparatorView = DSSeparatorView()
     
-    private lazy var collectionView: UICollectionView = {
+    private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical

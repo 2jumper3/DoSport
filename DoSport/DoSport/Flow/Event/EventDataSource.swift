@@ -11,7 +11,7 @@ final class EventDataSource: NSObject {
     
     var onDidTapInviteButton: ((UIButton) -> Void)?
     var onDidTapParticipateButton: (() -> Void)?
-    var onDidTapReplyButton: (() -> Void)?
+    var onDidTapReplyButton: ((CollectionViewMessageCell) -> Void)?
     
     private enum EventCellType {
         case eventCard(Event?)
@@ -76,8 +76,19 @@ private extension EventDataSource {
         onDidTapParticipateButton?()
     }
     
-    func handleReplyButton() {
-        onDidTapReplyButton?()
+    func handleReplyButton(_ button: UIButton) {
+        var superview = button.superview
+        
+        while let view = superview, !(view is CollectionViewMessageCell) {
+            superview = view.superview
+        }
+        
+        guard let cell = superview as? CollectionViewMessageCell else {
+            print("button is not contained in a CollectionViewMessageCell")
+            return
+        }
+        
+        onDidTapReplyButton?(cell)
     }
 }
 
@@ -146,11 +157,11 @@ extension EventDataSource: UICollectionViewDataSource {
             
             switch chatFrameItem {
             case .messages(let messages):
-                let messagesCell: CollectionViewMessageCell = collectionView.cell(forRowAt: indexPath)
                 let message = messages[indexPath.row - self.eventCells.count + 1]
                 
+                let messagesCell: CollectionViewMessageCell = collectionView.cell(forRowAt: indexPath)
                 messagesCell.messageLabel.text = message.text
-                
+                messagesCell.memberNameLabel.text = message.userName
                 messagesCell.replyButton.addTarget(
                     self,
                     action: #selector(handleReplyButton),
@@ -192,7 +203,7 @@ extension EventDataSource: UICollectionViewDelegateFlowLayout {
         let size: CGSize
         let cellType: EventCellType
         
-        if indexPath.row < self.eventCells.count {
+        if indexPath.row < self.eventCells.count { // FIXME: костыль?
             cellType = eventCells[indexPath.row]
         } else {
             guard let lastCell = eventCells.last else {
