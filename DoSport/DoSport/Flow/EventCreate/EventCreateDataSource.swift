@@ -105,7 +105,7 @@ extension EventCreateDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType: CellType = cells[indexPath.row]
-        let cell = tableView.visibleCells[indexPath.row]
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
         switch cellType {
         case .sportTypeSelection: onDidTapSportTypeCell?(cell)
