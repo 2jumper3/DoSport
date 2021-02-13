@@ -58,10 +58,17 @@ final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDe
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         passwordEntryView.endEditing(true)
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        passwordEntryView.passwordTextView.textField.becomeFirstResponder()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        passwordEntryView.endEditing(true)
+        
+        passwordEntryView.passwordTextView.textField.resignFirstResponder()
     }
 }
 
