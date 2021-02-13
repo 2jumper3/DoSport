@@ -9,6 +9,14 @@ import Foundation
 
 final class DateSelectionViewModel {
     
+    var onDidPrepareData: (([String]) -> Void)?
+    
+    private var hours: [String] = [] {
+        didSet {
+            onDidPrepareData?(hours)
+        }
+    }
+    
     init() {
         
     }
@@ -18,4 +26,7 @@ final class DateSelectionViewModel {
 
 extension DateSelectionViewModel {
     
+    func prepareData() {
+        self.hours = Event.Hour.allCases.map { $0.rawValue }
+    }
 }
