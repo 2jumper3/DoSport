@@ -102,9 +102,9 @@ extension Texts {
     }
 }
 
-//MARK: - SportTypeList Screen
+//MARK: - SportTypeGrid Screen
 extension Texts {
-    enum SportTypeList {
+    enum SportTypeGrid {
         static let title = "Что тебе интересно?"
         static let save = "Сохранить"
     }
@@ -161,5 +161,13 @@ extension Texts {
         static let memberCount = "Количество участников"
         static let noLimit = "Без ограничений"
         static let placeholder = "Расскажите о тренировке..."
+    }
+}
+
+//MARK: - SportTypeList screen
+extension Texts {
+    enum SportTypeList {
+        static let navTitle = "Выбрать вид спорта"
+        static let select = "Выбрать"
     }
 }

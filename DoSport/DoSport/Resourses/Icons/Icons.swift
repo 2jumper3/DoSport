@@ -18,7 +18,7 @@ public enum Icons {
     //MARK: - CountryList screen
     
     enum CountryList {
-        static let backButton = image(named: "back_button")
+        static let backButton = Common.backButton
     }
     
     //MARK: - OnboardingIcons screen
@@ -112,11 +112,24 @@ public enum Icons {
         static let cancel: UIImage = Icons.image(named: "cancel")
         static let closed: UIImage = Icons.image(named: "closed")
         static let next: UIImage = Icons.image(named: "next")
-        static let checkMark: UIImage = Icons.image(named: "check_mark")
+        static let checkMark: UIImage = Common.checkMark
+    }
+    
+    //MARK: - SportTypeList screen
+    
+    enum SportTypeList {
+        static let checkMark = Common.checkMark
+        static let backButton = Common.backButton
     }
 }
 
 extension Icons {
+    
+    enum Common {
+        static let checkMark: UIImage = Icons.image(named: "check_mark")
+        static let backButton = image(named: "back_button")
+    }
+    
     static func image(named name: String) -> UIImage {
         UIImage(named: name) ?? UIImage()
     }
