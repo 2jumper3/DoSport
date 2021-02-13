@@ -143,6 +143,6 @@ extension Texts {
         
         static let reply = "Ответить"
         
-        static let messages = "Сообщения"
+        static let messages = "Написать сообщение..."
     }
 }

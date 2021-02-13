@@ -10,6 +10,8 @@ import SnapKit
 
 final class EventView: UIView {
     
+    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
+    
     private let navBarSeparatorView = DSSeparatorView()
     
     private lazy var collectionView: UICollectionView = {
@@ -29,7 +31,7 @@ final class EventView: UIView {
         return collectionView
     }()
     
-    private lazy var messageInputView = DSMessageInputView()
+    private(set) lazy var messageInputView = DSMessageInputView()
 
     //MARK: - Init
     
@@ -64,7 +66,7 @@ final class EventView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.08)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-16)
+            $0.bottom.equalTo(snp.bottom).offset(-tabBarHeight)
         }
     }
 }

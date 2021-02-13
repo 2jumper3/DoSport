@@ -43,6 +43,13 @@ final class EventViewController: UIViewController {
         
         setupViewModelBindings()
         setupCollectionManagerBindings()
+        setupKeyboardNotification()
+        
+        eventView.messageInputView.messageSendButton.addTarget(
+            self,
+            action: #selector(handleSendMessageButton),
+            for: .touchUpInside
+        )
         
         viewModel.prepareEventData(event: self.event)
     }
@@ -86,13 +93,51 @@ private extension EventViewController {
             print(#function)
         }
     }
+    
+    func setupKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
 }
 
 //MARK: - Actions
 
 @objc
 private extension EventViewController {
-    func handleCreateButton() {
+    
+    func handleSendMessageButton() {
+        eventView.messageInputView.textField.resignFirstResponder()
+    }
+    
+    func handleKeybordWillShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardFrame = (
+                userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+            )?.cgRectValue
+        else { return }
         
+        let value = keyboardFrame.height - CGFloat(UIDevice.getDeviceRelatedTabBarHeight()) // FIXME: костыль
+        
+        UIView.animate(withDuration: 0.3) {
+            self.eventView.transform = CGAffineTransform(translationX: 0, y: -value)
+        }
+    }
+    
+    func handleKeybordWillHide() {
+        UIViewPropertyAnimator(duration: 0.3, curve: .linear) { [self] in
+            eventView.transform = .identity
+        }.startAnimation()
     }
 }
