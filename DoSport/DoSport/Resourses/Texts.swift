@@ -146,3 +146,20 @@ extension Texts {
         static let messages = "Сообщения"
     }
 }
+
+//MARK: - EventCreate screen
+extension Texts {
+    enum EventCreate {
+        static let navTitle = "Создать тренировку"
+        
+        static let create = "Создать"
+        static let closed = "Закрытая"
+        static let closedEventInfo = "В закрытую тренировку только вы можете пригласить участников"
+        static let sportTypes = "Вид спорта"
+        static let playground = "Площадка"
+        static let date = "Дата и время"
+        static let memberCount = "Количество участников"
+        static let noLimit = "Без ограничений"
+        static let placeholder = "Расскажите о тренировке..."
+    }
+}

@@ -29,4 +29,9 @@ final class FeedCoordinator: Coordinator {
         let coordinator = EventCoordinator(navController: navigationController, event: event)
         coordinator.start()
     }
+    
+    func goToEventCreateModule() {
+        let coordinator = EventCreateCoordinator(navController: self.navigationController)
+        coordinator.start()
+    }
 }

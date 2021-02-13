@@ -105,6 +105,15 @@ public enum Icons {
             return Icons.image(named: "message_send_button")
         }
     }
+    
+    //MARK: - EventCreate screen
+    
+    enum EventCreate {
+        static let cancel: UIImage = Icons.image(named: "cancel")
+        static let closed: UIImage = Icons.image(named: "closed")
+        static let next: UIImage = Icons.image(named: "next")
+        static let checkMark: UIImage = Icons.image(named: "check_mark")
+    }
 }
 
 extension Icons {
