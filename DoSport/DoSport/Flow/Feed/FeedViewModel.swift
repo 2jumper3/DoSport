@@ -56,7 +56,8 @@ final class FeedViewModel {
                 id: 1,
                 text: "Damn so boring really \(count)",
                 userId: 1,
-                userName: "Kamol \(count)"
+                userName: "Kamol \(count)",
+                createdDate: Date(timeIntervalSinceNow: TimeInterval())
             )
             messagesArray.append(message1)
             count += 1

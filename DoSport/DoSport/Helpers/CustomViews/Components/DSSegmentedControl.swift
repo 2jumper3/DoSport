@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DSSegmentedControlDelegate: class {
-    func didSelectItem(at: Int)
+    func didSelectItem(at index: Int)
 }
 
 final class DSSegmentedControl: UIView {
@@ -17,7 +17,11 @@ final class DSSegmentedControl: UIView {
     
     private let titles: [String]
     
-    private var selectedItemIndex: Int = 0
+    private var selectedItemIndex: Int = 0 {
+        didSet {
+            moveSeletectedItem(to: selectedItemIndex)
+        }
+    }
     
     private var buttons: [UIButton] = []
     

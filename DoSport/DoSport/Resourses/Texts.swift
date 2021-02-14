@@ -138,7 +138,7 @@ extension Texts {
 extension Texts {
     enum Event {
         static let invite = "Пригласить"
-        static let participate = "Учавствовать"
+        static let participate = "Участвовать"
         static let participating = "Ты в игре!"
         
         static let reply = "Ответить"

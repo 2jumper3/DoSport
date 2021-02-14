@@ -20,12 +20,11 @@ final class EventView: UIView {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = Colors.darkBlue
         collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.registerClass(CollectionViewActionCell.self)
         collectionView.registerClass(CollectionViewToogleCell.self)
-        collectionView.registerClass(CollectionViewMessageCell.self)
-        collectionView.registerClass(CollectionViewMemberCell.self)
+        collectionView.registerClass(CollectionViewActivitySectionCell.self)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView

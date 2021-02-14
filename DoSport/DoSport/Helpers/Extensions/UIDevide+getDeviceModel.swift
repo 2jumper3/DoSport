@@ -12,7 +12,6 @@ extension UIDevice { // костыль.. ?
     enum DSDeviceSize {
         case big // "iPhone X/XS/11 Pro""iPhone XS Max/11 Pro Max""iPhone XR/ 11 " = 49
         case small // "iPhone 5 or 5S or 5C" "iPhone 6/6S/7/8" "iPhone 6+/6S+/7+/8+" = 83
-        case none
     }
     
     static var deviceSize: DSDeviceSize {
@@ -37,6 +36,22 @@ extension UIDevice { // костыль.. ?
         }
         
         return 0
+    }
+    
+    static func getViewHeight() -> CGFloat {
+        let deviceHeight: CGFloat = UIScreen.main.bounds.height
+        let tabBarHeight: CGFloat = CGFloat(UIDevice.getDeviceRelatedTabBarHeight())
+        let navBarHeight: CGFloat = 44.0
+        let statusBarHeight: CGFloat
+        
+        switch deviceSize {
+        case .big: statusBarHeight = 44.0
+        case .small: statusBarHeight = 20.0
+        }
+        
+        let viewHeight = deviceHeight - navBarHeight - tabBarHeight - statusBarHeight
+        
+        return viewHeight
     }
 }
 

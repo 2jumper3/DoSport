@@ -62,6 +62,7 @@ final class EventViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(eventView.bounds.height)
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -91,13 +92,69 @@ private extension EventViewController {
             print(#function)
         }
         
-        eventCollectionManager.onDidTapReplyButton = { [unowned self] cell in
-//            let indexPath = eventView.collectionView.indexPath(for: cell)
-            userToReplyName = "@\(cell.memberNameLabel.text ?? ""), "
+        eventCollectionManager.onDidSelectSegmentedControl = { index, collectionView in
+            guard let collectionView = collectionView else { return }
             
-            eventView.messageInputView.textField.text = userToReplyName
-            eventView.messageInputView.textField.becomeFirstResponder()
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            collectionView.isPagingEnabled = false
+            collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
+            collectionView.isPagingEnabled = true
         }
+        
+        eventCollectionManager.onDidScroll = { [unowned self] commentsTableV, membersTableV in
+            let indexPath = IndexPath(row: 3, section: 0)
+
+            let cell: CollectionViewToogleCell = self.eventView.collectionView.cell(forRowAt: indexPath)
+            let cellOriginInRoot = eventView.collectionView.convert(cell.frame, to: eventView)
+            
+            if cellOriginInRoot.maxY <= eventView.collectionView.frame.maxY {
+                
+                eventView.collectionView.isScrollEnabled = false
+                commentsTableV?.isScrollEnabled = true
+                membersTableV?.isScrollEnabled = true
+            }
+        }
+        
+        eventCollectionManager.onCommentsDidScroll = { [unowned self] commentsTableV in
+            guard let tableV = commentsTableV else { return }
+            
+            let indexPath = IndexPath(row: 0, section: 0)
+            
+            if let cell: TableViewCommentCell = tableV.cellForRow(at: indexPath) as? TableViewCommentCell {
+
+                let cellOriginInRoot = tableV.convert(cell.frame, to: tableV)
+                
+                if cellOriginInRoot.origin.y > tableV.bounds.origin.y {
+                    tableV.isScrollEnabled = false
+                    eventView.collectionView.isScrollEnabled = true
+                }
+            }
+        }
+        
+        eventCollectionManager.onMembersDidScroll = { [unowned self] membersTableV in
+            guard let tableV = membersTableV else { return }
+            
+            let indexPath = IndexPath(row: 0, section: 0)
+            
+            if let cell: TableViewMemberCell = tableV.cellForRow(at: indexPath) as? TableViewMemberCell {
+
+                let cellOriginInRoot = tableV.convert(cell.frame, to: tableV)
+                
+                if cellOriginInRoot.origin.y > tableV.bounds.origin.y {
+                    tableV.isScrollEnabled = false
+                    eventView.collectionView.isScrollEnabled = true
+                }
+            }
+        }
+        
+//        eventCollectionManager.onDidTapReplyButton = { [unowned self] cell in
+////            let indexPath = eventView.collectionView.indexPath(for: cell)
+////            userToReplyName = "@\(cell.memberNameLabel.text ?? ""), "
+//
+//            eventView.messageInputView.textField.text = userToReplyName
+//            eventView.messageInputView.textField.becomeFirstResponder()
+//        }
     }
     
     func setupKeyboardNotification() {

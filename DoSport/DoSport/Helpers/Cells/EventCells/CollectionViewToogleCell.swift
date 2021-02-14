@@ -26,7 +26,7 @@ final class CollectionViewToogleCell: UICollectionViewCell {
         let segmentedControl = DSSegmentedControl(titles: items)
         segmentedControl.setSelectedItemIndex(0)
         
-        let size: CGFloat = UIDevice.deviceSize == .small ? 13.0 : 15.0
+        let size: CGFloat = UIDevice.deviceSize == .small ? 14.5 : 16.5
             
         segmentedControl.setTitleStyle(fontSize: size)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +38,7 @@ final class CollectionViewToogleCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
+        backgroundColor = Colors.darkBlue
         contentView.addSubview(segmentedControl)
     }
     

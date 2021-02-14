@@ -46,6 +46,7 @@ final class CollectionViewActionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
+        backgroundColor = Colors.darkBlue
         contentView.addSubviews(
             inviteButton,
             participateButton
