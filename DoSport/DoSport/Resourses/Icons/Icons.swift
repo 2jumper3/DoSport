@@ -9,6 +9,102 @@ import UIKit.UIImage
 
 public enum Icons {
     
+    //MARK: - Auth screen
+    
+    enum Auth {
+        static var logo = image(named: "logo_image")
+    }
+    
+    //MARK: - CountryList screen
+    
+    enum CountryList {
+        static let backButton = image(named: "back_button")
+    }
+    
+    //MARK: - OnboardingIcons screen
+    
+    enum OnboardingIcons {
+        static var firstIcon: UIImage {
+            return Icons.image(named: "firstPlayer")
+        }
+        static var secondIcon: UIImage {
+            return Icons.image(named: "secondPlayer")
+        }
+        static var thirdIcon: UIImage {
+            return Icons.image(named: "thirdPlayer")
+        }
+        static var fourthIcon: UIImage {
+            return Icons.image(named: "fourPNG")
+        }
+    }
+    
+    //MARK: - Registration screen
+    
+    enum Registration {
+        static var avatarDefault: UIImage {
+            return Icons.image(named: "firstPlayer")
+        }
+    }
+    
+    //MARK: - PasswordEntry screen
+    
+    enum PasswordEntry {
+        static var hiddenEye: UIImage {
+            return Icons.image(named: "hidden_eye_icon")
+        }
+        
+        static var showedEye: UIImage {
+            return Icons.image(named: "showed_eye_icon")
+        }
+    }
+    
+    //MARK: - Feed screen
+    
+    enum Feed {
+        static var plus: UIImage {
+            return Icons.image(named: "plus")
+        }
+        
+        static var options: UIImage {
+            return Icons.image(named: "options")
+        }
+        
+        static var subway: UIImage {
+            return Icons.image(named: "subway")
+        }
+        
+        static var location: UIImage {
+            return Icons.image(named: "location")
+        }
+        
+        static var currency: UIImage {
+            return Icons.image(named: "currency")
+        }
+        
+        static var defaultAvatar: UIImage {
+            return Icons.image(named: "event_organiser_default_avatar")
+        }
+        
+        static var clock: UIImage {
+            return Icons.image(named: "clock")
+        }
+        
+        static var chat: UIImage {
+            return Icons.image(named: "chat")
+        }
+        
+        static var user: UIImage {
+            return Icons.image(named: "user")
+        }
+    }
+    
+    //MARK: - Event screen
+    
+    enum Event {
+        static var messageSend: UIImage {
+            return Icons.image(named: "message_send_button")
+        }
+    }
 }
 
 extension Icons {
