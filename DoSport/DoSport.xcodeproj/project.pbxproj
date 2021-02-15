@@ -611,7 +611,6 @@
 				6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */,
 				653DA7CF25B3590A000263C9 /* ImagePicker.swift */,
 				6587052A25920DA300EFF7C7 /* Components */,
-				65C67E8925D579B500ABC58B /* EventCreate */,
 				653DA7DC25B364D2000263C9 /* Factory */,
 				65EAAAC325CD600B005E0131 /* FeedFilter */,
 				65CEF5D925CD9E3F00EB0B34 /* MessageInput */,
@@ -633,6 +632,7 @@
 				6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */,
 				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
 				65C67E6625D557C600ABC58B /* DSSeparatorView.swift */,
+				65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -692,14 +692,6 @@
 				CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		65C67E8925D579B500ABC58B /* EventCreate */ = {
-			isa = PBXGroup;
-			children = (
-				65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */,
-			);
-			path = EventCreate;
 			sourceTree = "<group>";
 		};
 		65CE01C925A88B8000556C7B /* CountryCell */ = {
