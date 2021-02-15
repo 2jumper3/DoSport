@@ -9,18 +9,8 @@
 import UIKit
 
 class PreviewLocationView: UIView   {
-//    let id: Int?
-//    let name: String?
-//    let range: Int?
-//    let price: Int?
-//    let location: String?
-//    init(frame: CGRect, id: Int, name: String, range: Int, price: Int, location: String) {
+
     override init (frame: CGRect) {
-//        self.id = id
-//        self.name = name
-//        self.range = range
-//        self.price = price
-//        self.location = location
         super.init(frame: frame)
     }
     
@@ -29,13 +19,22 @@ class PreviewLocationView: UIView   {
     }
     override func layoutSubviews() {
         setupUI()
+//        addTapGesture()
     }
     
     //MARK: - UI
+    
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOnView(tapGestureRecognizer:)))
+        return gesture
+    }()
+
     private lazy var background : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 12
         view.backgroundColor = Colors.lightBlue
+        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
         return view
     }()
     private lazy var adressLabel: UILabel = {
@@ -60,6 +59,7 @@ class PreviewLocationView: UIView   {
         let label = UILabel()
         label.font = Fonts.sfProRegular(size: 24)
         label.textColor = .white
+        label.isUserInteractionEnabled = true
         return label
     }()
     private lazy var metroIcon: UIImageView = {
@@ -85,24 +85,29 @@ class PreviewLocationView: UIView   {
         adressLabel.text = location
         rangeLabel.text = String("\(range) км")
         nameLabel.text = name
-        layoutSubviews()
+    }
+    //MARK: - Actions TODO
+    @objc func tapOnView(tapGestureRecognizer: UITapGestureRecognizer) {
+        guard tapGestureRecognizer.view != nil else { return }
+        if tapGestureRecognizer.state == .ended {
+            // place route to next screen 
+        }
     }
     
+    //MARK: - SetupUI
     func setupUI() {
         backgroundColor = Colors.darkBlue
         addSubviews(background,
-                    customBlueBorder,adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon)
+                    adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon)
         background.snp.makeConstraints { (make) in
-            make.left.top.right.left.equalTo(self)
+            make.left.equalTo(self.snp.left).offset(self.bounds.width / 23.4)
+            make.right.equalTo(self.snp.right).offset(-self.bounds.width / 23.4)
+            make.top.equalTo(self.snp.top).offset(self.bounds.width / 23.4)
+            make.bottom.equalTo(self.snp.bottom).offset(-self.bounds.width / 23.4)
         }
-//        background.snp.makeConstraints { (make) in
-//            make.left.right.equalTo(customBlueBorder)
-//            make.top.equalTo(customBlueBorder.snp.top).offset(5)
-//            make.bottom.equalTo(customBlueBorder.snp.bottom).offset(-5)
-//        }
         nameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(snp.left).offset(10)
-            make.centerY.equalTo(snp.centerY)
+            make.left.equalTo(background.snp.left).offset(10)
+            make.centerY.equalTo(background.snp.centerY)
         }
         metroIcon.snp.makeConstraints { (make) in
             make.left.equalTo(nameLabel.snp.left)
@@ -115,7 +120,7 @@ class PreviewLocationView: UIView   {
         }
         priceLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(adressLabel.snp.centerY)
-            make.right.equalTo(snp.right).offset(-10)
+            make.right.equalTo(background.snp.right).offset(-10)
             make.height.equalTo(22)
         }
         priceIcon.snp.makeConstraints { (make) in
@@ -123,7 +128,7 @@ class PreviewLocationView: UIView   {
             make.centerY.equalTo(priceLabel.snp.centerY)
         }
         rangeLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(snp.right).offset(-10)
+            make.right.equalTo(background.snp.right).offset(-10)
             make.bottom.equalTo(priceLabel.snp.top)
             make.height.equalTo(22)
         }

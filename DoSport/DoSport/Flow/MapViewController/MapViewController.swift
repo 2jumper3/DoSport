@@ -17,7 +17,6 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
 
     
     // MARK: - Outlets
-    private let transition = PanelTransition()
     var coordinator: MapCoordinator?
     let viewModel: MapViewModel
     private var placemarkMapObjectTapListener: PlacemarkMapObjectTapListener!
@@ -44,11 +43,7 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }()
     
     @objc func push()  {
-        let child = PreviewLocation(id: 111, name: "Планетарная", range: 222, price: 333, location: "Площадь Ильича")
-        child.transitioningDelegate = transition
-        child.modalPresentationStyle = .custom
-        
-        present(child, animated: true)
+
     }
     private let locationManager = CLLocationManager()
     // MARK: - Init
@@ -81,10 +76,12 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
             make.right.equalTo(view.snp.right).offset(-16)
         }
         popUpView.snp.makeConstraints { (make) in
-            make.top.equalTo(mapView.snp.bottom).offset(-88)
+            guard let height = self.tabBarController?.tabBar.frame.height else {return}
+            make.top.equalTo(mapView.snp.bottom).offset(-height)
             make.left.equalTo(mapView.snp.left)
             make.right.equalTo(mapView.snp.right)
-            make.height.equalTo(100)
+            make.height.equalTo(view.bounds.height / 5.7)
+            print ("height is \(height)")
         }
     }
 
@@ -114,17 +111,15 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }
     
     func onObjectTap(with: YMKGeoObjectTapEvent) -> Bool {
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
-            self.popUpView.frame = self.popUpView.frame.offsetBy(dx: 0, dy: 100)
+        UIView.animate(withDuration: 0.3) {
+            self.popUpView.transform = .identity
         }
-        animator.startAnimation()
         return true
     }
     func onMapTap(with map: YMKMap, point: YMKPoint) {
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
-            self.popUpView.frame = self.popUpView.frame.offsetBy(dx: 0, dy: 100)
+        UIView.animate(withDuration: 0.3) {
+            self.popUpView.transform = .identity
         }
-        animator.startAnimation()
     }
     func onMapLongTap(with map: YMKMap, point: YMKPoint) {
         
@@ -134,10 +129,9 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
 extension MapViewController: MapViewControllerDelegate {
 
     func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String) {
-        self.popUpView.textAdding(id: id, name: name, range: range, price: price, location: location) 
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
-            self.popUpView.frame = self.popUpView.frame.offsetBy(dx: 0, dy: -100)
+        self.popUpView.textAdding(id: id, name: name, range: range, price: price, location: location)
+        UIView.animate(withDuration: 0.3) {
+            self.popUpView.transform = CGAffineTransform(translationX: 0, y: (-self.view.bounds.height / 5.7))
         }
-        animator.startAnimation()
     }
 }

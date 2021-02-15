@@ -10,7 +10,6 @@ import YandexMapsMobile
 
 // MARK: - Pop-up panel settings
  class PlacemarkMapObjectTapListener: NSObject, YMKMapObjectTapListener {
-    private let transition = PanelTransition()
     var delegate: MapViewControllerDelegate?
     var child: PreviewLocationView?
     func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {

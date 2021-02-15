@@ -32,10 +32,21 @@ class PreviewLocation: UIViewController   {
     }
     
     //MARK: - UI
+    private let tapGesture: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnView(tapGestureRecognizer:)))
+        return tap
+    }()
     private lazy var background : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 12
         view.backgroundColor = Colors.lightBlue
+        return view
+    }()
+    private lazy var viewForTapRecognizer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tapGesture)
         return view
     }()
     private lazy var adressLabel: UILabel = {
@@ -64,6 +75,9 @@ class PreviewLocation: UIViewController   {
         label.text = name
         label.font = Fonts.sfProRegular(size: 24)
         label.textColor = .white
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapGesture)
+
         return label
     }()
     private lazy var metroIcon: UIImageView = {
@@ -80,15 +94,27 @@ class PreviewLocation: UIViewController   {
     }()
     private lazy var customBlueBorder: UIView = {
         let view = UIView()
-        view.backgroundColor = Colors.dirtyBlue
+        view.backgroundColor = Colors.lightBlue
         return view
     }()
+    
+    //MARK: - Actions
+    @objc func tapOnView(tapGestureRecognizer: UITapGestureRecognizer) {
+        let tappedView = tapGestureRecognizer.view
+        print("tapped")
+    }
     func setupUI() {
-        view.backgroundColor = Colors.darkBlue
-        view.addSubviews(background,customBlueBorder,adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon)
+        view.backgroundColor = Colors.lightBlue
+        view.addSubviews(background,customBlueBorder,adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon,viewForTapRecognizer)
         background.snp.makeConstraints { (make) in
             make.left.top.equalTo(view).offset(view.bounds.width / 23.4)
             make.right.bottom.equalTo(view).offset(-view.bounds.width / 23.4)
+        }
+        viewForTapRecognizer.snp.makeConstraints { (make) in
+            make.left.equalTo(background.snp.left)
+            make.right.equalTo(background.snp.right)
+            make.bottom.equalTo(background.snp.bottom)
+            make.top.equalTo(background.snp.top)
         }
 //        background.snp.makeConstraints { (make) in
 //            make.left.right.equalTo(customBlueBorder)
