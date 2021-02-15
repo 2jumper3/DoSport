@@ -1,0 +1,58 @@
+//
+//  SportGroundSelectionListDataSource.swift
+//  DoSport
+//
+//  Created by Komolbek Ibragimov on 15/02/2021.
+//
+
+import UIKit
+
+final class SportGroundSelectionListDataSource: NSObject {
+    
+    var onDidSelectSportGroundType: ((SportGround) -> Void)?
+    
+    var viewModels: [SportGround]
+    
+    private var selectedCell: TableViewSportTypeListCell?
+    
+    init(viewModels: [SportGround] = []) {
+        self.viewModels = viewModels
+        super.init()
+        
+    }
+}
+
+//MARK: - UITableViewDataSource
+
+extension SportGroundSelectionListDataSource: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModels.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModel = viewModels[indexPath.row]
+        
+        let cell: TableViewSportGroundSelectionCell = tableView.cell(forRowAt: indexPath)
+        cell.sportGroundTitleLabel.text = viewModel.title
+        cell.subwayNameLabel.text = viewModel.address
+        
+        return cell
+    }
+}
+
+//MARK: - UITableViewDelegate
+
+extension SportGroundSelectionListDataSource: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModel = viewModels[indexPath.row]
+        
+        onDidSelectSportGroundType?(viewModel)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height * 0.18
+    }
+}
+

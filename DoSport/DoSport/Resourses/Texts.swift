@@ -177,10 +177,17 @@ extension Texts {
     }
 }
 
-//MARK: - SportTypeList screen
+//MARK: - DateSelection screen
 extension Texts {
     enum DateSelection {
         static let save = Common.save
         static let date = Common.date
+    }
+}
+
+//MARK: - SportGroundSelectionList screen
+extension Texts {
+    enum SportGroundSelectionList {
+        static let select = "Выбрать"
     }
 }

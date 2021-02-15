@@ -16,6 +16,8 @@ final class DateSelectionViewController: UIViewController {
     
     private let collectionManager = DateSelectionDataSource()
     
+    var cell: UITableViewCell?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

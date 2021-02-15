@@ -99,11 +99,15 @@ private extension EventCreateViewController {
             self?.coordinator?.goToSportTypeListModule(with: cell)
         }
         
-        tableManager.onDidTapPlaygroundCell = { [weak self] cell in
-            self?.coordinator?.goToPlaygroundListModule(with: cell)
+        tableManager.onDidTapPlaygroundCell = { [weak self] cell, sportTypeTitle in
+            guard let sportTypeTitle = sportTypeTitle else { return }
+            
+            self?.coordinator?.goToPlaygroundListModule(with: cell, and: sportTypeTitle)
         }
         
-        tableManager.onDidTapDateCell = { [weak self] cell in
+        tableManager.onDidTapDateCell = { [weak self] cell, playgroundTitle in
+            guard playgroundTitle != nil else { return }
+            
             self?.coordinator?.goToDateSelectionModule(with: cell)
         }
         

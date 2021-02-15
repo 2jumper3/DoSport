@@ -121,6 +121,13 @@ public enum Icons {
         static let checkMark = Common.checkMark
         static let backButton = Common.backButton
     }
+    
+    //MARK: - SportGroundSelectionList screen
+    
+    enum SportGroundSelectionList {
+        static let filter = Icons.image(named: "filter")
+        static let map = Icons.image(named: "map")
+    }
 }
 
 extension Icons {

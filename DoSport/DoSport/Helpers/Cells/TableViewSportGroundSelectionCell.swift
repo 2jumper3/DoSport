@@ -1,33 +1,32 @@
 //
-//  CollectionViewEventCardCellBodyView.swift
+//  TableViewSportGroundSelectionCell.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 05/02/2021.
+//  Created by Komolbek Ibragimov on 15/02/2021.
 //
 
 import UIKit
-import SnapKit
 
-// Body part views of EventCollectioViewCell
-
-final class CollectionViewEventCardCellBodyView: UIView {
+final class TableViewSportGroundSelectionCell: UITableViewCell {
     
-    private(set) var eventShortDescriptionLabel: UILabel = { // TODO: make bold font
-        $0.font = Fonts.sfProRegular(size: 16)
-        $0.text = "Побросать во дворе, не хватает 3х парней Есть 2 мяча, майки с номерами разных цветов."
-        $0.numberOfLines = 3
+    private(set) var sportGroundTitleLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .white
-        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.font = Fonts.sfProRegular(size: 24)
         return $0
     }(UILabel())
-
-    private(set) var addressLabel: UILabel = { // TODO: add bold font to fonts
-        $0.font = Fonts.sfProRegular(size: 16)
-        $0.textColor = .black
-        $0.text = "Oxford Circus"
-        $0.translatesAutoresizingMaskIntoConstraints = false
+    
+    private(set) var backgroundImageView: UIImageView = {
+        $0.image = Icons.image(named: "sampleSportGround")
         return $0
-    }(UILabel())
+    }(UIImageView())
+    
+    private let  gradientView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = Colors.lightBlue
+        $0.alpha = 0.6
+        return $0
+    }(UIView())
     
     private(set) var subwayImageView: UIImageView = {
         $0.image = Icons.Feed.subway
@@ -38,12 +37,12 @@ final class CollectionViewEventCardCellBodyView: UIView {
     
     private(set) var subwayNameLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
-        $0.textColor = .black
+        $0.textColor = .white
         $0.text = "Oxford Circus station"
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
-
+    
     private(set) var locationImageView: UIImageView = {
         $0.image = Icons.Feed.location
         $0.contentMode = .scaleToFill
@@ -53,7 +52,7 @@ final class CollectionViewEventCardCellBodyView: UIView {
     
     private(set) var locationLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
-        $0.textColor = .black
+        $0.textColor = .white
         $0.text = Texts.Feed.km3
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -69,19 +68,25 @@ final class CollectionViewEventCardCellBodyView: UIView {
     private(set) var priceLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
         $0.text = Texts.Feed.free
-        $0.textColor = .black
+        $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
-    
+
     //MARK: - Init
     
-    init() {
-        super.init(frame: .zero)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubviews(
-            eventShortDescriptionLabel,
-            addressLabel,
+        backgroundColor = Colors.darkBlue
+        selectionStyle = .none
+        layer.cornerRadius = 12
+        clipsToBounds = true
+        
+        contentView.addSubviews(
+            backgroundImageView,
+            gradientView,
+            sportGroundTitleLabel,
             subwayImageView,
             subwayNameLabel,
             locationImageView,
@@ -95,58 +100,65 @@ final class CollectionViewEventCardCellBodyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+//        backgroundImageView.image = nil
+//        sportGroundTitleLabel.text = ""
+//        subwayNameLabel.text = ""
+//        locationLabel.text = ""
+//        priceLabel.text = ""
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        eventShortDescriptionLabel.snp.makeConstraints {
-            $0.width.top.centerX.equalToSuperview()
-            $0.height.equalTo(snp.height).multipliedBy(0.6)
-        }
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
         
-        addressLabel.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.top.equalTo(eventShortDescriptionLabel.snp.bottom).offset(12)
-            $0.height.equalTo(snp.height).multipliedBy(0.2)
-            $0.width.equalTo(snp.width).multipliedBy(0.7)
+        [backgroundImageView, gradientView].forEach { $0.snp.makeConstraints { $0.edges.equalToSuperview() } }
+        
+        sportGroundTitleLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview().offset(10)
+            $0.left.equalToSuperview().offset(12)
+            $0.height.equalToSuperview().multipliedBy(0.31)
         }
         
         subwayImageView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.top.equalTo(addressLabel.snp.bottom).offset(6.5)
-            $0.height.equalTo(addressLabel.snp.height).multipliedBy(0.7)
+            $0.left.equalTo(sportGroundTitleLabel.snp.left)
+            $0.top.equalTo(sportGroundTitleLabel.snp.bottom).offset(6.5)
+            $0.height.equalToSuperview().multipliedBy(0.2)
             $0.width.equalTo(subwayImageView.snp.height)
         }
         
         subwayNameLabel.snp.makeConstraints {
             $0.top.equalTo(subwayImageView.snp.top)
-            $0.left.equalTo(subwayImageView.snp.right).offset(4)
-            $0.height.equalTo(addressLabel.snp.height)
-            $0.right.equalTo(addressLabel.snp.right)
+            $0.left.equalTo(subwayImageView.snp.right).offset(6)
+            $0.height.equalTo(subwayImageView.snp.height)
         }
         
         locationLabel.snp.makeConstraints {
-            $0.right.equalToSuperview()
-            $0.top.equalTo(addressLabel.snp.top)
-            $0.height.equalTo(addressLabel.snp.height)
+            $0.right.equalToSuperview().offset(-12)
+            $0.top.equalTo(sportGroundTitleLabel.snp.top)
+            $0.height.equalTo(subwayNameLabel.snp.height)
         }
         
         locationImageView.snp.makeConstraints {
             $0.right.equalTo(locationLabel.snp.left).offset(-5.5)
-            $0.top.equalTo(addressLabel.snp.top)
-            $0.height.equalTo(addressLabel.snp.height).multipliedBy(0.7)
+            $0.top.equalTo(locationLabel.snp.top)
+            $0.height.equalTo(subwayImageView.snp.height)
             $0.width.equalTo(locationImageView.snp.height)
         }
         
         priceLabel.snp.makeConstraints {
             $0.right.equalToSuperview()
             $0.top.equalTo(subwayNameLabel.snp.top)
-            $0.height.equalTo(addressLabel.snp.height)
+            $0.height.equalTo(locationLabel.snp.height)
         }
         
         priceCurrencyImageView.snp.makeConstraints {
             $0.right.equalTo(priceLabel.snp.left).offset(-6)
             $0.top.equalTo(subwayNameLabel.snp.top)
-            $0.height.equalTo(addressLabel.snp.height).multipliedBy(0.7)
+            $0.height.equalTo(locationImageView.snp.height)
             $0.width.equalTo(priceCurrencyImageView.snp.height)
         }
     }
