@@ -77,7 +77,6 @@ class PreviewLocation: UIViewController   {
         label.textColor = .white
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(tapGesture)
-
         return label
     }()
     private lazy var metroIcon: UIImageView = {
@@ -116,11 +115,6 @@ class PreviewLocation: UIViewController   {
             make.bottom.equalTo(background.snp.bottom)
             make.top.equalTo(background.snp.top)
         }
-//        background.snp.makeConstraints { (make) in
-//            make.left.right.equalTo(customBlueBorder)
-//            make.top.equalTo(customBlueBorder.snp.top).offset(5)
-//            make.bottom.equalTo(customBlueBorder.snp.bottom).offset(-5)
-//        }
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(background.snp.left).offset(10)
             make.centerY.equalTo(background.snp.centerY)
