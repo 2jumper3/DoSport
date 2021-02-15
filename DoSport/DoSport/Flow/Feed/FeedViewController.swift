@@ -46,7 +46,6 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         title = Texts.Feed.feedTitle
-        navigationItem.setHidesBackButton(true, animated: true)
         
         navBar.createEventButton.addTarget(
             self,
@@ -64,7 +63,6 @@ final class FeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 

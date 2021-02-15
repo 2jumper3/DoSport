@@ -9,11 +9,11 @@ import UIKit
 
 final class DSSeparatorView: UIView {
     
-    init() {
+    init(color: UIColor = Colors.dirtyBlue) {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = Colors.dirtyBlue
+        backgroundColor = color
     }
     
     required init?(coder: NSCoder) {

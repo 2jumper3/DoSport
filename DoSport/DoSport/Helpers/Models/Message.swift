@@ -14,4 +14,5 @@ struct Message: Codable {
     let text: String?
     let userId: Int64?
     let userName: String?
+    let createdDate: Date?
 }
