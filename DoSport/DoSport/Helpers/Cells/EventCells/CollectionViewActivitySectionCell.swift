@@ -19,7 +19,6 @@ final class CollectionViewActivitySectionCell: UICollectionViewCell {
         collectionView.registerClass(CollectionViewCommentCell.self)
         collectionView.registerClass(CollectionViewMemberCell.self)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isScrollEnabled = true
         collectionView.isPagingEnabled = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView

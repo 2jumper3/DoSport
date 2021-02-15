@@ -116,6 +116,7 @@
 		65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E5925D5510800ABC58B /* DSMessageSendButton.swift */; };
 		65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E5E25D552D000ABC58B /* DSSearchBar.swift */; };
 		65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E6625D557C600ABC58B /* DSSeparatorView.swift */; };
+		65CC2CE725DA898B009D6B4B /* DSEventParticipateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */; };
 		65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */; };
 		65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */; };
 		65CEF62325CDB34700EB0B34 /* CollectionViewCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */; };
@@ -310,6 +311,7 @@
 		65C67E5925D5510800ABC58B /* DSMessageSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSMessageSendButton.swift; sourceTree = "<group>"; };
 		65C67E5E25D552D000ABC58B /* DSSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSearchBar.swift; sourceTree = "<group>"; };
 		65C67E6625D557C600ABC58B /* DSSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSeparatorView.swift; sourceTree = "<group>"; };
+		65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEventParticipateButton.swift; sourceTree = "<group>"; };
 		65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
 		65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewActionCell.swift; sourceTree = "<group>"; };
 		65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCommentCell.swift; sourceTree = "<group>"; };
@@ -627,15 +629,14 @@
 			children = (
 				653DA7D725B36455000263C9 /* AvatarImageView.swift */,
 				654210CF25AF8533004078C4 /* CodeLabelStackView.swift */,
-				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
 				65294D9925B38311003E7ED2 /* DatePicker.swift */,
-				6511D77525B0E5A10063EF76 /* DSButton.swift */,
 				65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */,
+				659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */,
+				65C67E6625D557C600ABC58B /* DSSeparatorView.swift */,
 				6511D77025B0DB130063EF76 /* DSTextField.swift */,
 				6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */,
 				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
-				659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */,
-				65C67E6625D557C600ABC58B /* DSSeparatorView.swift */,
+				65CC2CEB25DA899A009D6B4B /* Buttons */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -695,6 +696,16 @@
 				CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		65CC2CEB25DA899A009D6B4B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
+				6511D77525B0E5A10063EF76 /* DSButton.swift */,
+				65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		65CE01C925A88B8000556C7B /* CountryCell */ = {
@@ -1362,6 +1373,7 @@
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				65EEE91925B626290023168D /* AppConfiguration.swift in Sources */,
 				6531795C25D10FA5001DBA4B /* SportTypeListViewController.swift in Sources */,
+				65CC2CE725DA898B009D6B4B /* DSEventParticipateButton.swift in Sources */,
 				65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */,
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
 				653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */,

@@ -10,9 +10,10 @@ import UIKit
 final class EventActivitySectionDataSource: NSObject {
     
     var onCommentsDidScroll: ((UITableView?) -> Void)?
-    var onMemberssDidScroll: ((UITableView?) -> Void)?
+    var onMembersDidScroll: ((UITableView?) -> Void)?
+    var onCommentsDidTapReplyButton: ((TableViewCommentCell) -> Void)?
     
-    var viewModels: [EventDataSource.EventChatCellType]
+    var viewModels: [Event.EventChatCellType]
     
     private let commentsTableManager = EventCommentsDataSource()
     private let membersTableManager = EventMembersDataSource()
@@ -20,11 +21,12 @@ final class EventActivitySectionDataSource: NSObject {
     private(set) var commentsTableView: UITableView?
     private(set) var membersTableView: UITableView?
     
-    init(viewModels: [EventDataSource.EventChatCellType] = []) {
+    init(viewModels: [Event.EventChatCellType] = []) {
         self.viewModels = viewModels
         super.init()
         
         setupCommentsTableManagerBindings()
+        setupMembersTableManagerBindings()
     }
 }
 
@@ -37,8 +39,14 @@ extension EventActivitySectionDataSource {
             self.onCommentsDidScroll?(self.commentsTableView)
         }
         
+        commentsTableManager.onDidTapReplyButton = { [unowned self] inCell in
+            self.onCommentsDidTapReplyButton?(inCell)
+        }
+    }
+    
+    func setupMembersTableManagerBindings() {
         membersTableManager.onDidScroll = { [unowned self] in
-            self.onMemberssDidScroll?(self.membersTableView)
+            self.onMembersDidScroll?(self.membersTableView)
         }
     }
 }
@@ -79,15 +87,6 @@ extension EventActivitySectionDataSource: UICollectionViewDataSource {
         }
         
         return cell
-    }
-}
-
-//MARK: - UICollectionViewDelegate
-
-extension EventActivitySectionDataSource: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
 }
 

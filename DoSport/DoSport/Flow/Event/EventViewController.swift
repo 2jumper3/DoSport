@@ -62,7 +62,7 @@ final class EventViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(eventView.bounds.height)
+        
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -148,13 +148,13 @@ private extension EventViewController {
             }
         }
         
-//        eventCollectionManager.onDidTapReplyButton = { [unowned self] cell in
-////            let indexPath = eventView.collectionView.indexPath(for: cell)
-////            userToReplyName = "@\(cell.memberNameLabel.text ?? ""), "
-//
-//            eventView.messageInputView.textField.text = userToReplyName
-//            eventView.messageInputView.textField.becomeFirstResponder()
-//        }
+        eventCollectionManager.onCommentsDidTapReplyButton = { [unowned self] inCell in
+//            let indexPath = eventView.collectionView.indexPath(for: inCell)
+            let userToReplyName = inCell.memberNameLabel.text ?? ""
+
+            eventView.messageInputView.textField.text = userToReplyName
+            eventView.messageInputView.textField.becomeFirstResponder()
+        }
     }
     
     func setupKeyboardNotification() {

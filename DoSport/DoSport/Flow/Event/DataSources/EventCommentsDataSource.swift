@@ -9,7 +9,7 @@ import UIKit
 
 final class EventCommentsDataSource: NSObject {
     
-    var onDidTapReplyButton: ((CollectionViewCommentCell) -> Void)?
+    var onDidTapReplyButton: ((TableViewCommentCell) -> Void)?
     var onDidScroll: (() -> Void)?
     
     var viewModels: [Message]
@@ -28,11 +28,11 @@ private extension EventCommentsDataSource {
     func handleReplyButton(_ button: UIButton) {
         var superview = button.superview
         
-        while let view = superview, !(view is CollectionViewCommentCell) {
+        while let view = superview, !(view is TableViewCommentCell) {
             superview = view.superview
         }
         
-        guard let cell = superview as? CollectionViewCommentCell else {
+        guard let cell = superview as? TableViewCommentCell else {
             print("button is not contained in a CollectionViewMessageCell")
             return
         }
@@ -57,7 +57,6 @@ extension EventCommentsDataSource: UITableViewDataSource {
 //        cell.memberAvatarImageView.image =
 //        cell.commentCreatedTimeLabel.text = viewModel.createdDate
         cell.commentTextLabel.text = viewModel.text
-        
         cell.replyButton.addTarget(self, action: #selector(handleReplyButton), for: .touchUpInside)
         
         return cell
@@ -71,11 +70,7 @@ extension EventCommentsDataSource: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         onDidScroll?()
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIDevice.deviceSize == .small ? 65 : 80
     }

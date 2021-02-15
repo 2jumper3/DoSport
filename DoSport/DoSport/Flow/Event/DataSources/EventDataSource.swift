@@ -18,19 +18,9 @@ final class EventDataSource: NSObject {
     var onDidTapInviteButton: ((UIButton) -> Void)?
     var onDidTapParticipateButton: (() -> Void)?
     var onDidSelectSegmentedControl: ((Int, UICollectionView?) -> Void)?
+    var onCommentsDidTapReplyButton: ((TableViewCommentCell) -> Void)?
     
-    private enum EventCellType {
-        case eventCard(Event?)
-        case eventActions
-        case toogle(Int, Int)
-        case activityItems([EventChatCellType])
-    }
-    
-    enum EventChatCellType {
-        case messages([Message]), members([Member])
-    }
-    
-    private lazy var eventCells: [EventCellType] = [
+    private lazy var eventCells: [Event.EventCellType] = [
         .eventCard(self.viewModel),
         .eventActions,
         .toogle(self.viewModel?.chatID?.messages?.count ?? 0, self.viewModel?.members?.count ?? 0),
@@ -62,8 +52,8 @@ private extension EventDataSource {
         onDidTapInviteButton?(button)
     }
     
-    func handleParticipateButton(_ cell: CollectionViewActionCell) {
-        cell.bindParticipateButton()
+    func handleParticipateButton(_ button: DSEventParticipateButton) {
+        button.bind()
         onDidTapParticipateButton?()
     }
 }
@@ -77,8 +67,12 @@ private extension EventDataSource {
             self.onCommentsDidScroll?(commentsTableView)
         }
         
-        eventActivityCollectionManager.onMemberssDidScroll = { [unowned self] membersTableView in
+        eventActivityCollectionManager.onMembersDidScroll = { [unowned self] membersTableView in
             self.onMembersDidScroll?(membersTableView)
+        }
+        
+        eventActivityCollectionManager.onCommentsDidTapReplyButton = { [unowned self] inCell in
+            self.onCommentsDidTapReplyButton?(inCell)
         }
     }
 }
@@ -97,7 +91,7 @@ extension EventDataSource: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         
         let cell: UICollectionViewCell
-        let cellType: EventCellType = eventCells[indexPath.row]
+        let cellType: Event.EventCellType = eventCells[indexPath.row]
 
         switch cellType {
         case .eventCard(let event):
@@ -147,7 +141,7 @@ extension EventDataSource: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension EventDataSource: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+extension EventDataSource: UICollectionViewDelegateFlowLayout {
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -173,9 +167,8 @@ extension EventDataSource: UICollectionViewDelegateFlowLayout, UICollectionViewD
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
 
-        let size: CGSize
+        let size: CGSize, cellType: Event.EventCellType = eventCells[indexPath.row]
         let collectionBounds = collectionView.bounds, screenBounds = UIScreen.main.bounds
-        let cellType: EventCellType = eventCells[indexPath.row]
         
         switch cellType {
         case .eventCard: size = CGSize(width: collectionBounds.width, height: screenBounds.height * 0.3)

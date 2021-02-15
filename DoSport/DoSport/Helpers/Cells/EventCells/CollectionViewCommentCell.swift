@@ -18,7 +18,6 @@ final class CollectionViewCommentCell: UICollectionViewCell {
         return $0
     }(UITableView(frame: .zero, style: .plain))
 
-    
     //MARK: - Init
     
     override init(frame: CGRect) {

@@ -37,21 +37,5 @@ extension UIDevice { // костыль.. ?
         
         return 0
     }
-    
-    static func getViewHeight() -> CGFloat {
-        let deviceHeight: CGFloat = UIScreen.main.bounds.height
-        let tabBarHeight: CGFloat = CGFloat(UIDevice.getDeviceRelatedTabBarHeight())
-        let navBarHeight: CGFloat = 44.0
-        let statusBarHeight: CGFloat
-        
-        switch deviceSize {
-        case .big: statusBarHeight = 44.0
-        case .small: statusBarHeight = 20.0
-        }
-        
-        let viewHeight = deviceHeight - navBarHeight - tabBarHeight - statusBarHeight
-        
-        return viewHeight
-    }
 }
 

@@ -47,10 +47,6 @@ extension EventMembersDataSource: UITableViewDelegate {
         onDidScroll?()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIDevice.deviceSize == .small ? 40 : 45
     }
