@@ -125,8 +125,12 @@ private extension EventCreateViewController {
             switch button.getState() {
             case .notSelected:
                 cell.rangeSlide.bind(state: .enabled)
+                cell.maxValueTextField.bind(state: .enable)
+                cell.minValueTextField.bind(state: .enable)
             case .selected:
                 cell.rangeSlide.bind(state: .disabled)
+                cell.maxValueTextField.bind(state: .disabled)
+                cell.minValueTextField.bind(state: .disabled)
             }
         }
         
@@ -153,8 +157,8 @@ private extension EventCreateViewController {
         }
         
         tableManager.onSliderDidChangeValues = { minV, maxV, minVLabel, maxVLabel in
-            minVLabel.text = "от \(Int(minV))"
-            maxVLabel.text = "до \(Int(maxV))"
+            minVLabel.text = "от  \(Int(minV))"
+            maxVLabel.text = "до  \(Int(maxV))"
         }
     }
 }

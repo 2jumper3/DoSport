@@ -19,25 +19,18 @@ final class MembersCountCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    private(set) var minValueLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = Colors.dirtyBlue.cgColor
-        $0.layer.cornerRadius = 8
-        $0.textColor = .white
+    private(set) var minValueTextField: DSTextField = {
+        $0.isUserInteractionEnabled = false
+        $0.backgroundColor = Colors.darkBlue
         $0.font = Fonts.sfProRegular(size: 18)
         return $0
-    }(UILabel())
+    }(DSTextField())
     
-    private(set) var maxValueLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = .white
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = Colors.dirtyBlue.cgColor
-        $0.layer.cornerRadius = 8
+    private(set) var maxValueTextField: DSTextField = {
+        $0.backgroundColor = Colors.darkBlue
         $0.font = Fonts.sfProRegular(size: 18)
         return $0
-    }(UILabel())
+    }(DSTextField())
     
     private(set) lazy var rangeSlide = DSRangeSlider(state: .enabled)
     
@@ -58,8 +51,8 @@ final class MembersCountCell: UITableViewCell {
         
         contentView.addSubviews(
             titleLabel,
-            minValueLabel,
-            maxValueLabel,
+            minValueTextField,
+            maxValueTextField,
             rangeSlide,
             checkboxButton,
             checkboxInfoLabel
@@ -73,8 +66,8 @@ final class MembersCountCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        minValueLabel.text = "от \(Int(rangeSlide.selectedMinValue))"
-        maxValueLabel.text = "до \(Int(rangeSlide.selectedMaxValue))"
+        minValueTextField.text = "от  \(Int(rangeSlide.selectedMinValue))"
+        maxValueTextField.text = "до  \(Int(rangeSlide.selectedMaxValue))"
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
@@ -82,15 +75,15 @@ final class MembersCountCell: UITableViewCell {
             $0.height.equalTo(25)
         }
         
-        minValueLabel.snp.makeConstraints {
+        minValueTextField.snp.makeConstraints {
             $0.left.equalTo(titleLabel.snp.left)
         }
         
-        maxValueLabel.snp.makeConstraints {
+        maxValueTextField.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-16)
         }
         
-        [minValueLabel, maxValueLabel].forEach {
+        [minValueTextField, maxValueTextField].forEach {
             $0.snp.makeConstraints {
                 $0.top.equalTo(titleLabel.snp.bottom).offset(12)
                 $0.height.equalToSuperview().multipliedBy(0.23)
@@ -99,7 +92,7 @@ final class MembersCountCell: UITableViewCell {
         }
         
         rangeSlide.snp.makeConstraints {
-            $0.top.equalTo(minValueLabel.snp.bottom).offset(16)
+            $0.top.equalTo(minValueTextField.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.122)
             $0.width.equalToSuperview().multipliedBy(0.9)

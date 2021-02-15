@@ -21,8 +21,8 @@ final class EventCreateDataSource: NSObject {
     var onPlaygroundCellDidChangeState:((SelectionCell.CellState) -> Void)?
     var onDateSelecteCellDidChangeState:((SelectionCell.CellState) -> Void)?
     
-    /// Slider range chagen
-    var onSliderDidChangeValues: ((CGFloat, CGFloat, UILabel, UILabel) -> Void)?
+    /// Slider range changed
+    var onSliderDidChangeValues: ((CGFloat, CGFloat, DSTextField, DSTextField) -> Void)?
     
     private enum CellType: String, CaseIterable {
         case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
@@ -88,7 +88,7 @@ extension EventCreateDataSource: UITableViewDataSource {
             let membersCountCell: MembersCountCell = tableView.cell(forRowAt: indexPath)
             membersCountCell.checkboxButton.addTarget(self, action: #selector(handleCheckboxButton), for: .touchUpInside)
             
-            let minValueLabel = membersCountCell.minValueLabel, maxValueLabel = membersCountCell.maxValueLabel
+            let minValueLabel = membersCountCell.minValueTextField, maxValueLabel = membersCountCell.maxValueTextField
             
             membersCountCell.rangeSlide.onDidChangeValues = { [unowned self] minValue, maxValue in
                 self.onSliderDidChangeValues?(minValue, maxValue, minValueLabel, maxValueLabel)

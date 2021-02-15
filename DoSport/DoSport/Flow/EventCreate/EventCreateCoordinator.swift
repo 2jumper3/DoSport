@@ -23,7 +23,7 @@ final class EventCreateCoordinator: Coordinator {
     
     func start() {
         rootViewController.coordinator = self
-        rootViewController.modalPresentationStyle = .fullScreen
+        eventCreateNavController.modalPresentationStyle = .fullScreen
         eventCreateNavController.setViewControllers([rootViewController], animated: true)
         navigationController?.present(eventCreateNavController, animated: true, completion: nil)
     }
