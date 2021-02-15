@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		095B4A481D2BD49E02BE2175 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E09AF3E898CF29C747A32F8C /* Pods_DoSport.framework */; };
+		1076D97FDE670BCD86F2FB90 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D041D5CD88971A3A63ED0096 /* Pods_DoSport.framework */; };
 		65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */; };
 		65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1925B4D013000263FA /* PasswordEntryViewController.swift */; };
 		65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1E25B4D01B000263FA /* PasswordEntryView.swift */; };
@@ -70,6 +70,7 @@
 		655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B515525D5C02A004FE90F /* EventTypeCell.swift */; };
 		656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656418F625CE3CE2008DFAE0 /* Chat.swift */; };
 		6564195A25CE63E7008DFAE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564195925CE63E6008DFAE0 /* User.swift */; };
+		65674DED25DACF7200950FC7 /* DSRangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65674DEC25DACF7200950FC7 /* DSRangeSlider.swift */; };
 		6568F8DE25B4F97100225043 /* FeedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8DD25B4F97100225043 /* FeedAssembly.swift */; };
 		6568F8E325B4F97800225043 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8E225B4F97800225043 /* FeedViewController.swift */; };
 		6568F8E825B4F97D00225043 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8E725B4F97D00225043 /* FeedViewModel.swift */; };
@@ -121,8 +122,8 @@
 		65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E5925D5510800ABC58B /* DSMessageSendButton.swift */; };
 		65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E5E25D552D000ABC58B /* DSSearchBar.swift */; };
 		65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E6625D557C600ABC58B /* DSSeparatorView.swift */; };
-		65CC2CE725DA898B009D6B4B /* DSEventParticipateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */; };
 		65C67E9D25D57FB900ABC58B /* DSCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */; };
+		65CC2CE725DA898B009D6B4B /* DSEventParticipateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */; };
 		65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */; };
 		65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */; };
 		65CEF62325CDB34700EB0B34 /* CollectionViewCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */; };
@@ -208,8 +209,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		142FD7AE28750A8B44FF26CC /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
-		1C3FC30429A71D20B0845652 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
+		2E06AAE96DC9D81AA49CFDDA /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryAssembly.swift; sourceTree = "<group>"; };
 		65014F1925B4D013000263FA /* PasswordEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewController.swift; sourceTree = "<group>"; };
 		65014F1E25B4D01B000263FA /* PasswordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryView.swift; sourceTree = "<group>"; };
@@ -269,6 +269,7 @@
 		655B515525D5C02A004FE90F /* EventTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
 		656418F625CE3CE2008DFAE0 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6564195925CE63E6008DFAE0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		65674DEC25DACF7200950FC7 /* DSRangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSRangeSlider.swift; sourceTree = "<group>"; };
 		6568F8DD25B4F97100225043 /* FeedAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAssembly.swift; sourceTree = "<group>"; };
 		6568F8E225B4F97800225043 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		6568F8E725B4F97D00225043 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -322,8 +323,8 @@
 		65C67E5925D5510800ABC58B /* DSMessageSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSMessageSendButton.swift; sourceTree = "<group>"; };
 		65C67E5E25D552D000ABC58B /* DSSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSearchBar.swift; sourceTree = "<group>"; };
 		65C67E6625D557C600ABC58B /* DSSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSeparatorView.swift; sourceTree = "<group>"; };
-		65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEventParticipateButton.swift; sourceTree = "<group>"; };
 		65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSCheckboxButton.swift; sourceTree = "<group>"; };
+		65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEventParticipateButton.swift; sourceTree = "<group>"; };
 		65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
 		65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewActionCell.swift; sourceTree = "<group>"; };
 		65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCommentCell.swift; sourceTree = "<group>"; };
@@ -359,6 +360,7 @@
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		65F1A5FE25D96FC100011B5D /* EventCommentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCommentsDataSource.swift; sourceTree = "<group>"; };
 		65F1A60325D96FCB00011B5D /* EventMembersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMembersDataSource.swift; sourceTree = "<group>"; };
+		697C9BEAC44445C9526A51F1 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -396,7 +398,7 @@
 		CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewCell.swift; sourceTree = "<group>"; };
 		CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		CEDEB913258D4C75007B2BCA /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		E09AF3E898CF29C747A32F8C /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D041D5CD88971A3A63ED0096 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,7 +406,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				095B4A481D2BD49E02BE2175 /* Pods_DoSport.framework in Frameworks */,
+				1076D97FDE670BCD86F2FB90 /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,8 +430,8 @@
 		1B575704A7CC7F421F6A9B8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				142FD7AE28750A8B44FF26CC /* Pods-DoSport.debug.xcconfig */,
-				1C3FC30429A71D20B0845652 /* Pods-DoSport.release.xcconfig */,
+				2E06AAE96DC9D81AA49CFDDA /* Pods-DoSport.debug.xcconfig */,
+				697C9BEAC44445C9526A51F1 /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -655,14 +657,13 @@
 				654210CF25AF8533004078C4 /* CodeLabelStackView.swift */,
 				65294D9925B38311003E7ED2 /* DatePicker.swift */,
 				65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */,
+				65674DEC25DACF7200950FC7 /* DSRangeSlider.swift */,
 				659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */,
 				65C67E6625D557C600ABC58B /* DSSeparatorView.swift */,
 				6511D77025B0DB130063EF76 /* DSTextField.swift */,
 				6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */,
 				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
 				65CC2CEB25DA899A009D6B4B /* Buttons */,
-				65C67E6625D557C600ABC58B /* DSSeparatorView.swift */,
-				65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -729,6 +730,7 @@
 			children = (
 				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
 				6511D77525B0E5A10063EF76 /* DSButton.swift */,
+				65C67E9C25D57FB900ABC58B /* DSCheckboxButton.swift */,
 				65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */,
 			);
 			path = Buttons;
@@ -837,14 +839,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		6765DC86ADE65ED46B583329 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E09AF3E898CF29C747A32F8C /* Pods_DoSport.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CEBA62DA2593F278006A7F80 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,7 +866,7 @@
 				CEDEB79D258CB40B007B2BCA /* DoSportUITests */,
 				CEDEB77A258CB404007B2BCA /* Products */,
 				1B575704A7CC7F421F6A9B8A /* Pods */,
-				6765DC86ADE65ED46B583329 /* Frameworks */,
+				E15DE839D0997B8CEF6C8F15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1061,6 +1055,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E15DE839D0997B8CEF6C8F15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D041D5CD88971A3A63ED0096 /* Pods_DoSport.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1068,12 +1070,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDEB7A3258CB40B007B2BCA /* Build configuration list for PBXNativeTarget "DoSport" */;
 			buildPhases = (
-				CB8013C365402B89F21A4783 /* [CP] Check Pods Manifest.lock */,
+				1F19AB7F72AFB6575C1001B8 /* [CP] Check Pods Manifest.lock */,
 				CEDEB775258CB404007B2BCA /* Sources */,
 				CEDEB776258CB404007B2BCA /* Frameworks */,
 				CEDEB777258CB404007B2BCA /* Resources */,
-				12C6FB97427B71103D969898 /* [CP] Embed Pods Frameworks */,
-				2AC607559F4819D2D1C60135 /* [CP] Copy Pods Resources */,
+				983E1E9CA226C13E7CA2BC94 /* [CP] Embed Pods Frameworks */,
+				BD7733AF0F5D07F1F073786C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1193,41 +1195,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12C6FB97427B71103D969898 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2AC607559F4819D2D1C60135 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB8013C365402B89F21A4783 /* [CP] Check Pods Manifest.lock */ = {
+		1F19AB7F72AFB6575C1001B8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1247,6 +1215,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		983E1E9CA226C13E7CA2BC94 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD7733AF0F5D07F1F073786C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1301,6 +1303,7 @@
 				65C67E9D25D57FB900ABC58B /* DSCheckboxButton.swift in Sources */,
 				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
+				65674DED25DACF7200950FC7 /* DSRangeSlider.swift in Sources */,
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */,
 				6572954025D953FD00996440 /* TableViewCommentCell.swift in Sources */,
@@ -1592,7 +1595,7 @@
 		};
 		CEDEB7A4258CB40B007B2BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 142FD7AE28750A8B44FF26CC /* Pods-DoSport.debug.xcconfig */;
+			baseConfigurationReference = 2E06AAE96DC9D81AA49CFDDA /* Pods-DoSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1614,7 +1617,7 @@
 		};
 		CEDEB7A5258CB40B007B2BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C3FC30429A71D20B0845652 /* Pods-DoSport.release.xcconfig */;
+			baseConfigurationReference = 697C9BEAC44445C9526A51F1 /* Pods-DoSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

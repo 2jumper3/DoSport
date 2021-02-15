@@ -113,6 +113,7 @@ public enum Icons {
         static let closed: UIImage = Icons.image(named: "closed")
         static let next: UIImage = Icons.image(named: "next")
         static let checkMark: UIImage = Icons.image(named: "check_mark")
+        static let sliderThumb: UIImage = Icons.image(named: "sliderThumb")
     }
 }
 
@@ -121,3 +122,5 @@ extension Icons {
         UIImage(named: name) ?? UIImage()
     }
 }
+
+

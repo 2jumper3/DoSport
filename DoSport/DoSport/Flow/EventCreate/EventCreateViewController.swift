@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RangeSeekSlider
 
 final class EventCreateViewController: UIViewController {
     
@@ -108,7 +109,25 @@ private extension EventCreateViewController {
         }
         
         tableManager.onDidTapCheckboxButton = { button in
+            var superview = button.superview
+            
+            while let view = superview, !(view is MembersCountCell) {
+                superview = view.superview
+            }
+            
+            guard let cell = superview as? MembersCountCell else {
+                debugPrint("button is not contained in a MembersCountCell")
+                return
+            }
+            
             button.bind()
+            
+            switch button.getState() {
+            case .notSelected:
+                cell.rangeSlide.bind(state: .enabled)
+            case .selected:
+                cell.rangeSlide.bind(state: .disabled)
+            }
         }
         
         tableManager.onDidTapDoneButton = { textView in
@@ -131,6 +150,11 @@ private extension EventCreateViewController {
             if state == .dataSelected {
                 self.cellStateCounter += 1
             }
+        }
+        
+        tableManager.onSliderDidChangeValues = { minV, maxV, minVLabel, maxVLabel in
+            minVLabel.text = "от \(Int(minV))"
+            maxVLabel.text = "до \(Int(maxV))"
         }
     }
 }

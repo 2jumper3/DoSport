@@ -13,6 +13,7 @@ final class EventCreateCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
+    private var eventCreateNavController = DSNavigationController()
     
     init(navController: UINavigationController?) {
         let assembly = EventCreateAssembly()
@@ -22,15 +23,17 @@ final class EventCreateCoordinator: Coordinator {
     
     func start() {
         rootViewController.coordinator = self
-        navigationController?.pushViewController(rootViewController, animated: true)
+        rootViewController.modalPresentationStyle = .fullScreen
+        eventCreateNavController.setViewControllers([rootViewController], animated: true)
+        navigationController?.present(eventCreateNavController, animated: true, completion: nil)
     }
     
     func goBack() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func goToSportTypeListModule(with cell: UITableViewCell) {
-        let coordinator = SportTypeListCoordinator(navController: self.navigationController, cell: cell)
+        let coordinator = SportTypeListCoordinator(navController: eventCreateNavController, cell: cell)
         coordinator.start()
     }
     
@@ -39,7 +42,7 @@ final class EventCreateCoordinator: Coordinator {
     }
     
     func goToDateSelectionModule(with cell: UITableViewCell) {
-        let coordinator = DateSelectionCoordinator(navController: self.navigationController, cell: cell)
+        let coordinator = DateSelectionCoordinator(navController: eventCreateNavController, cell: cell)
         coordinator.start()
     }
 }
