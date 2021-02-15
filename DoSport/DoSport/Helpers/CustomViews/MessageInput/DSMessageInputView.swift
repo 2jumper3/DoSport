@@ -19,6 +19,8 @@ final class DSMessageInputView: UIView {
     init() {
         super.init(frame: .zero)
         
+        backgroundColor = Colors.darkBlue
+        
         addSubviews(topSeparatorView, messageSendButton, textField)
     }
     
@@ -36,8 +38,8 @@ final class DSMessageInputView: UIView {
         
         textField.snp.makeConstraints {
             $0.left.equalToSuperview().offset(10)
-            $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
+            $0.centerY.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.75)
             $0.width.equalToSuperview().multipliedBy(0.79)
         }
         

@@ -17,5 +17,16 @@ struct Event: Codable {
     var chatID: Chat?
     var members: [Member]?
     var sportGroundID: Int64?
-    var sportType: Sport? 
+    var sportType: Sport?
+    
+    enum EventCellType {
+        case eventCard(Event?)
+        case eventActions
+        case toogle(Int, Int)
+        case activityItems([EventChatCellType])
+    }
+    
+    enum EventChatCellType {
+        case messages([Message]), members([Member])
+    }
 }
