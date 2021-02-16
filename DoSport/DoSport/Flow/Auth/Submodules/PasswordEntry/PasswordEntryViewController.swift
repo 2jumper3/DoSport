@@ -11,14 +11,13 @@ final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDe
     
     var coordinator: PasswordEntryCoordinator?
     private let viewModel: PasswordEntryViewModel
-    
     private lazy var passwordEntryView = self.view as! PasswordEntryView
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    //MARK: - Init
+    //MARK: Init
     
     init(viewModel: PasswordEntryViewModel) {
         self.viewModel = viewModel
@@ -29,7 +28,7 @@ final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDe
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Life cycle
+    //MARK: Life cycle
     
     override func loadView() {
         let view = PasswordEntryView()
@@ -41,12 +40,6 @@ final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDe
         super.viewDidLoad()
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self
-        
-        passwordEntryView.passwordTextView.textField.addTarget(
-            self,
-            action: #selector(handlePasswordTextFieldEditing),
-            for: .editingChanged
-        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,40 +55,41 @@ final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        passwordEntryView.passwordTextView.textField.becomeFirstResponder()
+        passwordEntryView.makePasswordFieldFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        passwordEntryView.passwordTextView.textField.resignFirstResponder()
+        passwordEntryView.removePasswordFieldFirstResponder()
     }
 }
 
-//MARK: - PasswordEntryViewDelegate
+//MARK: - PasswordEntryViewDelegate -
 
 extension PasswordEntryViewController: PasswordEntryViewDelegate {
-    func didTapGoBackButton() {
+    
+    func goBackButtonClicked() {
         coordinator?.goBack()
     }
     
-    func didTapEnterButton() {
+    func enterButtonClicked() {
         viewModel.checkPassword { [weak self] in
             self?.coordinator?.goToFeedModule()
         }
     }
     
-    func didTapPasswordForgotButton() {
-        
+    func passwordForgotButtonClicked() {
+        print(#function)
     }
-}
-
-//MARK: - Actions
-
-@objc
-private extension PasswordEntryViewController {
-    func handlePasswordTextFieldEditing(_ textField: UITextField) {
-        if let text = textField.text, text.count > 3 {
+    
+    func passwordTextDidEditing(_ text: String?) {
+        guard let text = text else {
+            debugPrint("######## text nil - ", #function)
+            return
+        }
+        
+        if text.count > 3 {
             passwordEntryView.updateEnterButtonState(state: .normal)
         } else {
             passwordEntryView.updateEnterButtonState(state: .disabled)
