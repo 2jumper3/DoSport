@@ -24,7 +24,7 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
     private let  gradientView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = Colors.lightBlue
-        $0.alpha = 0.6
+        $0.alpha = 0.7
         return $0
     }(UIView())
     
@@ -36,7 +36,7 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
     }(UIImageView())
     
     private(set) var subwayNameLabel: UILabel = {
-        $0.font = Fonts.sfProRegular(size: 14)
+        $0.font = Fonts.sfProRegular(size: 16)
         $0.textColor = .white
         $0.text = "Oxford Circus station"
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -46,12 +46,13 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
     private(set) var locationImageView: UIImageView = {
         $0.image = Icons.Feed.location
         $0.contentMode = .scaleToFill
+        $0.setImageColor(color: .white)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIImageView())
     
     private(set) var locationLabel: UILabel = {
-        $0.font = Fonts.sfProRegular(size: 14)
+        $0.font = Fonts.sfProRegular(size: 16)
         $0.textColor = .white
         $0.text = Texts.Feed.km3
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -60,13 +61,14 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
     
     private(set) var priceCurrencyImageView: UIImageView = {
         $0.image = Icons.Feed.currency
+        $0.setImageColor(color: .white)
         $0.contentMode = .scaleToFill
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIImageView())
     
     private(set) var priceLabel: UILabel = {
-        $0.font = Fonts.sfProRegular(size: 14)
+        $0.font = Fonts.sfProRegular(size: 16)
         $0.text = Texts.Feed.free
         $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -78,11 +80,11 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = Colors.darkBlue
+        backgroundColor = .clear
         selectionStyle = .none
-        layer.cornerRadius = 12
-        clipsToBounds = true
-        
+        contentView.layer.cornerRadius = 12
+        contentView.clipsToBounds = true
+            
         contentView.addSubviews(
             backgroundImageView,
             gradientView,
@@ -115,18 +117,18 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
         
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
         
-        [backgroundImageView, gradientView].forEach { $0.snp.makeConstraints { $0.edges.equalToSuperview() } }
+        [backgroundImageView, gradientView].forEach { $0.snp.makeConstraints { $0.edges.equalTo(contentView) } }
         
         sportGroundTitleLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview().offset(10)
-            $0.left.equalToSuperview().offset(12)
-            $0.height.equalToSuperview().multipliedBy(0.31)
+            $0.centerY.equalTo(contentView.snp.centerY).offset(5)
+            $0.left.equalToSuperview().offset(15)
+            $0.height.equalTo(contentView.snp.height).multipliedBy(0.31)
         }
         
         subwayImageView.snp.makeConstraints {
             $0.left.equalTo(sportGroundTitleLabel.snp.left)
-            $0.top.equalTo(sportGroundTitleLabel.snp.bottom).offset(6.5)
-            $0.height.equalToSuperview().multipliedBy(0.2)
+            $0.top.equalTo(sportGroundTitleLabel.snp.bottom).offset(5)
+            $0.height.equalTo(contentView.snp.height).multipliedBy(0.15)
             $0.width.equalTo(subwayImageView.snp.height)
         }
         
@@ -138,7 +140,7 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
         
         locationLabel.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-12)
-            $0.top.equalTo(sportGroundTitleLabel.snp.top)
+            $0.top.equalTo(sportGroundTitleLabel.snp.top).offset(10)
             $0.height.equalTo(subwayNameLabel.snp.height)
         }
         
@@ -150,7 +152,7 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
         }
         
         priceLabel.snp.makeConstraints {
-            $0.right.equalToSuperview()
+            $0.right.equalTo(locationLabel.snp.right)
             $0.top.equalTo(subwayNameLabel.snp.top)
             $0.height.equalTo(locationLabel.snp.height)
         }

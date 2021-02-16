@@ -52,7 +52,7 @@ extension SportGroundSelectionListDataSource: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height * 0.18
+        return tableView.frame.height * 0.195
     }
 }
 
