@@ -68,7 +68,7 @@ struct Sport: Codable {
         case dance = "Танцы"
         case tablettennis = "Настольный теннис"
         case skateboard = "Скейтборд"
-        case badminton = "Бадминтон"
+        case badminton = "Бадминтое"
         case other = "Другое"
     }
 }
@@ -78,7 +78,6 @@ extension Sport.SportType: Codable { }
 //MARK: - Equatable
 
 extension Sport: Equatable {
-    
     static func ==(lhs: Sport, rhs: Sport) -> Bool {
         return lhs.title == rhs.title &&
             lhs.icon == rhs.icon

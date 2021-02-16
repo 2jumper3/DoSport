@@ -124,7 +124,7 @@ private extension FeedViewController {
 private extension FeedViewController {
     
     func handleCreateEventButton() {
-        coordinator?.goToEventCreateModule()
+        print(#function)
     }
     
     func handleFilterViewAllButton(_ button: FeedFilterButton) {

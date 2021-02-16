@@ -31,7 +31,7 @@ final class SportTypeGridView: UIView {
     private lazy var saveButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSaveButton), for:.touchUpInside)
         return $0
-    }(CommonButton(title: Texts.SportTypeGrid.save, state: .normal))
+    }(CommonButton(title: Texts.SportTypeList.save, state: .normal))
 
     
     init() {

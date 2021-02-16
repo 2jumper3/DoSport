@@ -7,12 +7,7 @@
 
 import Foundation
 
-public enum Texts {
-    enum Common {
-        static let save = "Сохранить"
-        static let date = "Дата и время"
-    }
-}
+public enum Texts { }
 
 //MARK: - OnBoarding Screen
 extension Texts {
@@ -89,7 +84,7 @@ extension Texts {
         static let navTitle = "Регистрация"
         
         static let addAvatar = "Загузить фото"
-        static let save = Common.save
+        static let save = "Сохранить"
         
         static let userName = "Никнейм"
         static let userNameError = "Никнейм занят"
@@ -107,11 +102,11 @@ extension Texts {
     }
 }
 
-//MARK: - SportTypeGrid Screen
+//MARK: - SportTypeList Screen
 extension Texts {
-    enum SportTypeGrid {
+    enum SportTypeList {
         static let title = "Что тебе интересно?"
-        static let save = Common.save
+        static let save = "Сохранить"
     }
 }
 
@@ -149,45 +144,5 @@ extension Texts {
         static let reply = "Ответить"
         
         static let messages = "Написать сообщение..."
-    }
-}
-
-//MARK: - EventCreate screen
-extension Texts {
-    enum EventCreate {
-        static let navTitle = "Создать тренировку"
-        
-        static let create = "Создать"
-        static let closed = "Закрытая"
-        static let closedEventInfo = "В закрытую тренировку только вы можете пригласить участников"
-        static let sportTypes = "Вид спорта"
-        static let playground = "Площадка"
-        static let date = Common.date
-        static let memberCount = "Количество участников"
-        static let noLimit = "Без ограничений"
-        static let placeholder = "Расскажите о тренировке..."
-    }
-}
-
-//MARK: - SportTypeList screen
-extension Texts {
-    enum SportTypeList {
-        static let navTitle = "Выбрать вид спорта"
-        static let select = "Выбрать"
-    }
-}
-
-//MARK: - DateSelection screen
-extension Texts {
-    enum DateSelection {
-        static let save = Common.save
-        static let date = Common.date
-    }
-}
-
-//MARK: - SportGroundSelectionList screen
-extension Texts {
-    enum SportGroundSelectionList {
-        static let select = "Выбрать"
     }
 }

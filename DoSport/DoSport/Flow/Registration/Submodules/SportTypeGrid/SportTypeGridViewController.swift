@@ -42,7 +42,7 @@ final class SportTypeGridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Texts.SportTypeGrid.title
+        title = Texts.SportTypeList.title
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
         

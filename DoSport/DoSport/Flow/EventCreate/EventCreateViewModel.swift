@@ -6,16 +6,3 @@
 //
 
 import Foundation
-
-final class EventCreateViewModel {
-    
-    init() {
-        
-    }
-}
-
-//MARK: - Public methods
-
-extension EventCreateViewModel {
-    
-}
