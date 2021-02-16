@@ -9,16 +9,6 @@ import Foundation
 
 struct Event: Codable {
     
-    var eventID: Int64?
-    var eventDate: Date?
-    var eventEndTime: Date?
-    var eventStartTime: Date?
-    var organiserID: Int64?
-    var chatID: Chat?
-    var members: [Member]?
-    var sportGroundID: Int64?
-    var sportType: Sport?
-    
     var hour: String?
     
     enum Hour: String, CaseIterable {
@@ -38,6 +28,16 @@ struct Event: Codable {
         case pm8pm9 = "20:00-21:00"
         case pm9pm10 = "21:00-22:00"
     }
+    
+    var eventID: Int64?
+    var eventDate: Date?
+    var eventEndTime: Date?
+    var eventStartTime: Date?
+    var organiserID: Int64?
+    var chatID: Chat?
+    var members: [Member]?
+    var sportGroundID: Int64?
+    var sportType: Sport?
 }
 
 extension Event.Hour: Codable { }
