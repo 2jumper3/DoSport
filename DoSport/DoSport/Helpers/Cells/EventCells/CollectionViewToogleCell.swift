@@ -6,44 +6,39 @@
 //
 
 import UIKit
-import SnapKit
 
 final class CollectionViewToogleCell: UICollectionViewCell {
     
     var messages: Int = 0 {
         didSet {
-            segmentedControl.setTitle(
-                "\(self.messages) Комментарии",
-                forSegmentAt: 0
-            )
+            segmentedControl.setTitle("\(self.messages) Комментариев", forItemAt: 0)
         }
     }
     
     var members: Int = 0 {
         didSet {
-            segmentedControl.setTitle(
-                "\(self.members) Участники",
-                forSegmentAt: 1
-            )
+            segmentedControl.setTitle( "\(self.members) Участников", forItemAt: 1 )
         }
     }
     
-    private(set) lazy var segmentedControl: UISegmentedControl = {
+    private(set) lazy var segmentedControl: DSSegmentedControl = {
         let items = ["", ""]
-        let segmentedControl = UISegmentedControl(items: items)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.font: Fonts.sfProRegular(size: 16)],
-            for: .normal
-        )
+        let segmentedControl = DSSegmentedControl(titles: items)
+        segmentedControl.setSelectedItemIndex(0)
+        
+        let size: CGFloat = UIDevice.deviceSize == .small ? 14.5 : 16.5
+            
+        segmentedControl.setTitleStyle(fontSize: size)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
     }()
 
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
+        backgroundColor = Colors.darkBlue
         contentView.addSubview(segmentedControl)
     }
     

@@ -10,26 +10,27 @@ import SnapKit
 
 final class EventView: UIView {
     
+    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
+    
     private let navBarSeparatorView = DSSeparatorView()
     
-    private lazy var collectionView: UICollectionView = {
+    private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = Colors.darkBlue
         collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.registerClass(CollectionViewActionCell.self)
         collectionView.registerClass(CollectionViewToogleCell.self)
-        collectionView.registerClass(CollectionViewMessageCell.self)
-        collectionView.registerClass(CollectionViewMemberCell.self)
+        collectionView.registerClass(CollectionViewActivitySectionCell.self)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-    private lazy var messageInputView = DSMessageInputView()
+    private(set) lazy var messageInputView = DSMessageInputView()
 
     //MARK: - Init
     
@@ -64,7 +65,7 @@ final class EventView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.08)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-16)
+            $0.bottom.equalTo(snp.bottom).offset(-tabBarHeight)
         }
     }
 }

@@ -20,9 +20,8 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(topSeparatorView)
-        
         loadTabBar()
+        
         delegate = self
     }
     
@@ -32,7 +31,7 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
         topSeparatorView.snp.makeConstraints {
             $0.width.centerX.equalTo(view)
             $0.height.equalTo(1)
-            $0.bottom.equalTo(customTabBar.snp.top).offset(1)
+            $0.top.equalTo(customTabBar.snp.top).offset(1)
         }
     }
     
@@ -70,6 +69,7 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
         customTabBar.translatesAutoresizingMaskIntoConstraints = false
         customTabBar.itemTapped = changeTab
         view.addSubview(customTabBar)
+        customTabBar.addSubview(topSeparatorView)
         
         customTabBar.snp.makeConstraints { (make) in
             make.left.right.equalTo(tabBar)
