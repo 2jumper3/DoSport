@@ -6,15 +6,24 @@
 //
 
 import UIKit
-import SnapKit
+
+protocol FeedViewDelegate: class {
+    func allFilterButtonClicked()
+    func subscribesFilterButtonClicked()
+    func subscribersFilterButtonClicked()
+}
 
 final class FeedView: UIView {
     
+    weak var delegate: FeedViewDelegate?
+    
+    // MARK: Outlets
+    
     private let navBarSeparatorView = DSSeparatorView()
     
-    private(set) lazy var filterButtonsView = FeedFilterButtonsView()
+    private let filterButtonsView = FeedFilterButtonsView()
     
-    private lazy var collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 8
         layout.scrollDirection = .vertical
@@ -29,8 +38,11 @@ final class FeedView: UIView {
         return collectionView
     }()
     
+    //MARK: Init
+    
     init() {
         super.init(frame: .zero)
+        
         backgroundColor = Colors.darkBlue
         
         addSubviews(
@@ -69,7 +81,7 @@ final class FeedView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension FeedView {
     
@@ -78,5 +90,22 @@ extension FeedView {
         collectionView.dataSource = dateSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+}
+
+//MARK: - FeedFilterButtonsViewDelegate -
+
+extension FeedView: FeedFilterButtonsViewDelegate {
+    
+    func allButtonClicked() {
+        delegate?.allFilterButtonClicked()
+    }
+    
+    func subscribesButtonClicked() {
+        delegate?.subscribesFilterButtonClicked()
+    }
+    
+    func subscribersButtonClicked() {
+        delegate?.subscribersFilterButtonClicked()
     }
 }

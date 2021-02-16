@@ -23,11 +23,10 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         if isAuthorised {
-            // open main module.. code
+            let navigationController = DSNavigationController()
+            let coordinator = FeedCoordinator(navController: navigationController)
+            coordinator.start()
         } else {
-//            let vc = OnBoardingViewController()
-//            window.rootViewController = vc
-            
             let myCoordinator = OnBoardingCoordinator()
             myCoordinator.start()
             window.rootViewController = myCoordinator.navigationController

@@ -84,11 +84,11 @@ private extension CountryCodeListViewController {
     }
 }
 
-//MARK: - Actions -
+//MARK: Actions
 
-@objc extension CountryCodeListViewController {
+@objc private extension CountryCodeListViewController {
     
-    private func handleGoBackButton() {
+    func handleGoBackButton() {
         coordinator?.goBack()
     }
 }
@@ -98,9 +98,8 @@ private extension CountryCodeListViewController {
 extension CountryCodeListViewController: CountryCodeListDataSourceDelegate {
     
     func tableView(didSelect country: Country) {
-        hideKeyboard(for: navBar.getSeachBar()) { // fix this
-            coordinator?.goBack(with: country)
-        }
+        navBar.resignSearchBarFirstResponder()
+        coordinator?.goBack(with: country)
     }
 }
 
