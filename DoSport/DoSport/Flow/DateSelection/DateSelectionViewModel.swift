@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+final class DateSelectionViewModel {
+    
+    init() {
+        
+    }
+}
+
+//MARK: - Public methods
+
+extension DateSelectionViewModel {
+    
+}

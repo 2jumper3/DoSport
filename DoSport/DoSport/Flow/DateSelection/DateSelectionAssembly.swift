@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+final class DateSelectionAssembly: Assembly {
+    
+    func makeModule() -> DateSelectionViewController {
+        let viewModel = DateSelectionViewModel()
+        let viewController = DateSelectionViewController(viewModel: viewModel)
+        return viewController
+    }
+}

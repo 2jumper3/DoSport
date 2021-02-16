@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+final class SportTypeListViewModel {
+    
+    init() {
+        
+    }
+}
+
+//MARK: - Public methods
+
+extension SportTypeListViewModel {
+    
+}

@@ -8,10 +8,20 @@
 import UIKit
 
 final class DSTextField: UITextField {
+    
+    enum DSTextFieldState {
+        case enable, disabled
+    }
+    
+    private var textFieldState: DSTextFieldState = .enable {
+        didSet {
+            handleStateChange()
+        }
+    }
 
     private let padding = UIEdgeInsets(top: 13, left: 17, bottom: 13, right: 0)
     
-    init(type: FormTextFieldView.TextFieldType) {
+    init(type: FormTextFieldView.TextFieldType = .dob) {
         super.init(frame: .zero)
         
         var placeholderText: String = ""
@@ -51,5 +61,32 @@ final class DSTextField: UITextField {
 
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
+    }
+}
+
+//MARK: - Public methods
+
+extension DSTextField {
+    
+    func bind(state: DSTextFieldState) {
+        textFieldState = state
+    }
+}
+
+//MARK: - Private methods
+
+private extension DSTextField {
+    
+    func handleStateChange() {
+        switch textFieldState {
+        case .disabled:
+            UIView.animate(withDuration: 0.3) {
+                self.textColor = Colors.dirtyBlue
+            }
+        case .enable:
+            UIView.animate(withDuration: 0.3) {
+                self.textColor = .white
+            }
+        }
     }
 }

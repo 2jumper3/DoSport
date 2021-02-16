@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+final class SportTypeListAssembly: Assembly {
+    
+    func makeModule() -> SportTypeListViewController {
+        let viewModel = SportTypeListViewModel()
+        let viewController = SportTypeListViewController(viewModel: viewModel)
+        return viewController
+    }
+}
