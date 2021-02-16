@@ -92,7 +92,7 @@ extension EventCreateDataSource: UITableViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension EventCreateDataSource: UITableViewDelegate {
     

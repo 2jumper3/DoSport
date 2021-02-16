@@ -16,11 +16,7 @@ final class SportGroundSelectionListViewController: UIViewController {
     
     private let completion: (String) -> Void
     
-    var sportTypeTitle: String = "" {
-        didSet {
-            title = sportTypeTitle
-        }
-    }
+    private let sportTypeTitle: String
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -28,9 +24,14 @@ final class SportGroundSelectionListViewController: UIViewController {
 
     // MARK: - Init
     
-    init(viewModel: SportGroundSelectionListViewModel, completion: @escaping (String) -> Void) {
+    init(
+        viewModel: SportGroundSelectionListViewModel,
+        sportTypeTitle: String,
+        completion: @escaping (String) -> Void
+    ) {
         self.viewModel = viewModel
         self.completion = completion
+        self.sportTypeTitle = sportTypeTitle
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -96,7 +97,7 @@ private extension SportGroundSelectionListViewController {
 //                debugPrint("############# 'self' or 'cell' is nil in SportGroundSelectionListViewController - 74 line")
 //                return
 //            }
-//            
+//
 //            cell.bind(sportGround.title ?? "")
 //            self.coordinator?.goBack()
 //        }
@@ -119,6 +120,8 @@ private extension SportGroundSelectionListViewController {
     }
     
     func setupNavBar() {
+        title = sportTypeTitle
+        
         /// right bar buttons setup
         let mapBtn = UIButton(type: .system), filterBtn = UIButton(type: .system)
         mapBtn.setImage(Icons.SportGroundSelectionList.map, for: .normal)

@@ -79,9 +79,9 @@ private extension SportTypeGridViewController {
     }
 }
 
-//MARK: - SportTypeListViewDelegate
+//MARK: - SportTypeGriidtViewDelegate
 
-extension SportTypeGridViewController: SportTypeListViewDelegate {
+extension SportTypeGridViewController: SportTypeGriidtViewDelegate {
     func didTapSaveButton() {
         viewModel.saveData() { [weak self] in
             self?.coordinator?.goToFeedModule()

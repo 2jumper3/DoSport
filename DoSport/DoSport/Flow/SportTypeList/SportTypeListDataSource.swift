@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol SportTypeListDataSourceDelegate: class {
+    func tableView(didSelectSport sport: Sport)
+}
+
 final class SportTypeListDataSource: NSObject {
     
-    var onDidSelectSportType: ((Sport) -> Void)?
+    weak var delegate: SportTypeListDataSourceDelegate?
     
     var viewModels: [Sport]
     
@@ -22,7 +26,7 @@ final class SportTypeListDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension SportTypeListDataSource: UITableViewDataSource {
     
@@ -40,7 +44,7 @@ extension SportTypeListDataSource: UITableViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension SportTypeListDataSource: UITableViewDelegate {
     
@@ -54,7 +58,7 @@ extension SportTypeListDataSource: UITableViewDelegate {
             selectedCell = cell
         }
         
-        onDidSelectSportType?(viewModel)
+        delegate?.tableView(didSelectSport: viewModel)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

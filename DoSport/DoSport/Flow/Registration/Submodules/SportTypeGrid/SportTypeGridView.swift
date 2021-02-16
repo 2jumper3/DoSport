@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-protocol SportTypeListViewDelegate: class {
+protocol SportTypeGriidtViewDelegate: class {
     func didTapSaveButton()
 }
 
 final class SportTypeGridView: UIView {
     
-    weak var delegate: SportTypeListViewDelegate?
+    weak var delegate: SportTypeGriidtViewDelegate?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

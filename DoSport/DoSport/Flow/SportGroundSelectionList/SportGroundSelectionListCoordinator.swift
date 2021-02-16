@@ -14,8 +14,16 @@ final class SportGroundSelectionListCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?, completion: @escaping (String) -> Void) {
-        let assembly = SportGroundSelectionListAssembly(completion: completion)
+    init(
+        navController: UINavigationController?,
+        sportTypeTitle: String,
+        completion: @escaping (String) -> Void
+    ) {
+        let assembly = SportGroundSelectionListAssembly(
+            sportTypeTitle: sportTypeTitle,
+            completion: completion
+        )
+        
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
     }

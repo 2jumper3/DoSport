@@ -15,8 +15,7 @@ final class SportTypeListCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?, completion: @escaping (String) -> Void) {
-        let assembly = SportTypeListAssembly(completion: completion)
-        self.rootViewController = assembly.makeModule()
+        self.rootViewController = SportTypeListViewController(completion: completion)
         self.navigationController = navController
     }
     

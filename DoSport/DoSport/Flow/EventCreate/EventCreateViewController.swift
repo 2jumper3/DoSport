@@ -16,14 +16,6 @@ final class EventCreateViewController: UIViewController {
     
     private var tableManager = EventCreateDataSource()
     
-    /// when cells: `SportTypeCell`, `SportGroundCell`, `DateSelectionCell` are selected then cellStateCounter
-    /// will increase its value. When value reaches `3` it will bind create button state to **normal** so the user could create Event
-    private var cellStateCounter: Int = 0 {
-        didSet {
-            handleCellStateCounterChange()
-        }
-    }
-    
     /// to provide title to the playground selection screen in order to define sport type. Used when tapped
     /// playground selection cell in this class's delegate part below
     private var sportTypeTitle: String?
@@ -76,12 +68,6 @@ final class EventCreateViewController: UIViewController {
 
 private extension EventCreateViewController {
     
-    func handleCellStateCounterChange() {
-        if cellStateCounter == 3 {
-            eventCreateView.bindCreateButton(state: .normal)
-        }
-    }
-    
     func setupNavBar() {
         title = Texts.EventCreate.navTitle
         
@@ -128,7 +114,9 @@ extension EventCreateViewController: EventCreateDataSourceDelegate {
     }
     
     func tableViewDidSelectSportGroundCell(completion: @escaping (String) -> Void) {
-        coordinator?.goToSportGroundSelectionListModule(completion: completion)
+        guard let title = sportTypeTitle else { return }
+        
+        coordinator?.goToSportGroundSelectionListModule(sportTypeTitle: title, completion: completion)
     }
     
     func tableViewDidSelectDateSelectionCell(completion: @escaping (String) -> Void) {
@@ -137,16 +125,14 @@ extension EventCreateViewController: EventCreateDataSourceDelegate {
     
     func tableViewSportTypeCell(didSetTitle title: String) {
         self.sportTypeTitle = title
-        cellStateCounter += 1
     }
     
     func tableViewSportGroudnCell(didSetTitle title: String) {
         self.sportGroundTitle = title
-        cellStateCounter += 1
     }
     
     func tableViewDateSelectionCellDidSetTitle() {
-        cellStateCounter += 1
+        eventCreateView.bindCreateButton(state: .normal)
     }
 }
 

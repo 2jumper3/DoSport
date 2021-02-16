@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol SportTypeListViewDelegate: class {
+    func selectButtonClicked()
+}
+
 final class SportTypeListView: UIView {
+    
+    weak var delegate: SportTypeListViewDelegate?
+    
+    //MARK: Outlets
     
     private let topSeparatorView = DSSeparatorView()
 
@@ -19,13 +27,16 @@ final class SportTypeListView: UIView {
         return $0
     }(UITableView(frame: .zero, style: .plain))
     
-    private(set) lazy var selectButton = CommonButton(title: Texts.SportTypeList.select, state: .disabled)
+    private lazy var selectButton = CommonButton(title: Texts.SportTypeList.select, state: .disabled)
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
+        
         backgroundColor = Colors.darkBlue
+        
+        selectButton.addTarget(self, action: #selector(handleSelectButton))
         
         addSubviews(topSeparatorView, selectButton, tableView)
     }
@@ -58,7 +69,7 @@ final class SportTypeListView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension SportTypeListView {
     
@@ -67,6 +78,19 @@ extension SportTypeListView {
         tableView.dataSource = dataSource
         tableView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func bindSelectButton(state: CommonButtonState) {
+        selectButton.bind(state: state)
+    }
+}
+
+//MARK: Actions
+
+@objc private extension SportTypeListView {
+    
+    func handleSelectButton() {
+        delegate?.selectButtonClicked()
     }
 }
 

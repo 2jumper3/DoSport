@@ -31,9 +31,7 @@
 		6531793325D10E26001DBA4B /* EventCreateAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531793225D10E26001DBA4B /* EventCreateAssembly.swift */; };
 		6531795725D10F9F001DBA4B /* SportTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531795625D10F9F001DBA4B /* SportTypeListView.swift */; };
 		6531795C25D10FA5001DBA4B /* SportTypeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531795B25D10FA5001DBA4B /* SportTypeListViewController.swift */; };
-		6531796125D10FAC001DBA4B /* SportTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531796025D10FAC001DBA4B /* SportTypeListViewModel.swift */; };
 		6531796625D10FB4001DBA4B /* SportTypeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531796525D10FB4001DBA4B /* SportTypeListCoordinator.swift */; };
-		6531796B25D10FBB001DBA4B /* SportTypeListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531796A25D10FBB001DBA4B /* SportTypeListAssembly.swift */; };
 		6531798F25D111F0001DBA4B /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531798E25D111F0001DBA4B /* RegionListView.swift */; };
 		6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531799325D111F7001DBA4B /* RegionListViewController.swift */; };
 		6531799925D111FE001DBA4B /* RegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531799825D111FE001DBA4B /* RegionListViewModel.swift */; };
@@ -244,9 +242,7 @@
 		6531793225D10E26001DBA4B /* EventCreateAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateAssembly.swift; sourceTree = "<group>"; };
 		6531795625D10F9F001DBA4B /* SportTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListView.swift; sourceTree = "<group>"; };
 		6531795B25D10FA5001DBA4B /* SportTypeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListViewController.swift; sourceTree = "<group>"; };
-		6531796025D10FAC001DBA4B /* SportTypeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListViewModel.swift; sourceTree = "<group>"; };
 		6531796525D10FB4001DBA4B /* SportTypeListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListCoordinator.swift; sourceTree = "<group>"; };
-		6531796A25D10FBB001DBA4B /* SportTypeListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListAssembly.swift; sourceTree = "<group>"; };
 		6531798E25D111F0001DBA4B /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
 		6531799325D111F7001DBA4B /* RegionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewController.swift; sourceTree = "<group>"; };
 		6531799825D111FE001DBA4B /* RegionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewModel.swift; sourceTree = "<group>"; };
@@ -488,12 +484,10 @@
 		6531794C25D10F5D001DBA4B /* SportTypeList */ = {
 			isa = PBXGroup;
 			children = (
-				6531796A25D10FBB001DBA4B /* SportTypeListAssembly.swift */,
 				6531796525D10FB4001DBA4B /* SportTypeListCoordinator.swift */,
 				658E0ABD25D82B7B0013DFF5 /* SportTypeListDataSource.swift */,
 				6531795625D10F9F001DBA4B /* SportTypeListView.swift */,
 				6531795B25D10FA5001DBA4B /* SportTypeListViewController.swift */,
-				6531796025D10FAC001DBA4B /* SportTypeListViewModel.swift */,
 			);
 			path = SportTypeList;
 			sourceTree = "<group>";
@@ -1378,7 +1372,6 @@
 				CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */,
 				653DA7D025B3590A000263C9 /* ImagePicker.swift in Sources */,
 				6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */,
-				6531796125D10FAC001DBA4B /* SportTypeListViewModel.swift in Sources */,
 				65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */,
 				6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */,
 				6503F4ED25B5D67C0002BC27 /* Member.swift in Sources */,
@@ -1405,7 +1398,6 @@
 				653DA7DE25B364DB000263C9 /* Button.swift in Sources */,
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
-				6531796B25D10FBB001DBA4B /* SportTypeListAssembly.swift in Sources */,
 				653408A0259A80180072542D /* CountryCodeListCoordinator.swift in Sources */,
 				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
 				657C064125AF2D50000DBD9B /* CodeEntryView.swift in Sources */,

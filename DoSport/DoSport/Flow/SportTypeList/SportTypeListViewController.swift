@@ -10,7 +10,6 @@ import UIKit
 final class SportTypeListViewController: UIViewController {
     
     var coordinator: SportTypeListCoordinator?
-    private let viewModel: SportTypeListViewModel
     private lazy var sportTypeListView = view as! SportTypeListView
     private let tableManager = SportTypeListDataSource()
     
@@ -22,10 +21,9 @@ final class SportTypeListViewController: UIViewController {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
-    init(viewModel: SportTypeListViewModel, completion: @escaping (String) -> Void) {
-        self.viewModel = viewModel
+    init(completion: @escaping (String) -> Void) {
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,23 +32,21 @@ final class SportTypeListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = SportTypeListView()
+        view.delegate = self
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sportTypeListView.selectButton.addTarget(self, action: #selector(handleSelectButton), for: .touchUpInside)
+        tableManager.delegate = self
         
-        setupTableManagerBindings()
-        setupViewModelBindings()
+        prepareTableViewData()
         setupNavBar()
-        
-        viewModel.prepareData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,25 +56,12 @@ final class SportTypeListViewController: UIViewController {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension SportTypeListViewController {
-
-    func setupTableManagerBindings()  {
-        tableManager.onDidSelectSportType = { [weak self] sport in
-            self?.sportTypeListView.selectButton.bind(state: .normal)
-            self?.selectedSport = sport
-        }
-    }
     
-    func setupViewModelBindings() {
-        viewModel.onDidPrepareData = { [weak self] sports in
-            self?.tableManager.viewModels = sports
-            self?.updateView()
-        }
-    }
-    
-    func updateView() {
+    func prepareTableViewData() {
+        tableManager.viewModels = Sport.SportType.allCases.map { Sport(type: $0) }
         sportTypeListView.udpateTableDataSource(dataSource: tableManager)
     }
     
@@ -94,10 +77,9 @@ private extension SportTypeListViewController {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension SportTypeListViewController {
+@objc private extension SportTypeListViewController {
     
     func handleSelectButton() {
         if let selectedSport = selectedSport, let title = selectedSport.title {
@@ -111,5 +93,30 @@ private extension SportTypeListViewController {
         coordinator?.goBack()
     }
 }
+
+//MARK: - SportTypeListDataSourceDelegate -
+
+extension SportTypeListViewController: SportTypeListDataSourceDelegate {
+    
+    func tableView(didSelectSport sport: Sport) {
+        sportTypeListView.bindSelectButton(state: .normal)
+        self.selectedSport = sport
+    }
+}
+
+//MARK: - SportTypeListViewDelegate -
+
+extension SportTypeListViewController: SportTypeListViewDelegate {
+    
+    func selectButtonClicked() {
+        if let selectedSport = selectedSport, let title = selectedSport.title {
+            
+            completion(title)
+            coordinator?.goBack()
+        }
+    }
+}
+
+
 
 
