@@ -6,84 +6,58 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol RegistrationViewDelegate: class {
-    func didTapSaveButton(username: String?, password: String?, dob: String?, gender: String?)
-    func didTapAvatarChangeButton()
-    func didChangeDatePickerValue(_ datePicker: UIDatePicker)
+    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?)
+    func avatarChangeButtonClicked()
+    func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
 
 final class RegistrationView: UIView {
     
     weak var delegate: RegistrationViewDelegate?
     
+    private var gender: String?
+    
     var avatarImage: UIImage? {
         get { avatarImageView.image }
         set { avatarImageView.image = newValue }
     }
     
-    private lazy var avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
+    //MARK: Outlets
     
-    private lazy var addAvatarButton: UIButton = {
-        $0.addTarget(self, action: #selector(handleAddAvatarButton), for: .touchUpInside)
-        return $0
-    }(UIButton.makeButton(title: Texts.Registration.addAvatar, titleColor: Colors.mainBlue))
+    private let avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
     
     private lazy var userNameTextField = FormTextFieldView(type: .userName)
     private lazy var passwordTextField = FormTextFieldView(type: .password)
     private lazy var dobTextField = FormTextFieldView(type: .dob)
     
-    private lazy var datePicker: DSDatePicker = {
-        $0.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-        $0.setTextField(dobTextField.textField)
-        $0.onDoneButtonTap = { [weak self] in
-            self?.dobTextField.textField.resignFirstResponder()
-        }
-        return $0
-    }(DSDatePicker())
+    private lazy var datePicker = DSDatePicker()
     
-    private var gender: String?
-    
-    private lazy var maleButton: DSButton = {
-        $0.addTarget(self, action: #selector(handleMaleButton), for: .touchUpInside)
-        return $0
-    }(DSButton(title: Texts.Registration.Gender.male))
-    
-    private lazy var femaleButton: DSButton = {
-        $0.addTarget(self, action: #selector(handleFemaleButton), for: .touchUpInside)
-        return $0
-    }(DSButton(title: Texts.Registration.Gender.female))
-    
-    private lazy var saveButton: CommonButton = {
-        $0.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
-        return $0
-    }(CommonButton(title: Texts.Registration.save, state: .normal))
-    
-    //MARK: - Init
+    private lazy var maleButton = DSButton(title: Texts.Registration.Gender.male)
+    private lazy var femaleButton = DSButton(title: Texts.Registration.Gender.female)
+    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal)
+    private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
+                                                           titleColor: Colors.mainBlue)
+
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        userNameTextField.textField.delegate = self
-        passwordTextField.textField.delegate = self
-        dobTextField.textField.delegate = self
+        setupOutletTargets()
+        setupKeyboardNotifications()
         
-        addSubviews(avatarImageView,addAvatarButton,userNameTextField,passwordTextField,dobTextField,saveButton,maleButton,femaleButton)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
+        addSubviews(
+            avatarImageView,
+            addAvatarButton,
+            userNameTextField,
+            passwordTextField,
+            dobTextField,
+            saveButton,
+            maleButton,
+            femaleButton
         )
     }
     
@@ -143,27 +117,53 @@ final class RegistrationView: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension RegistrationView {
+    
     func updateView() {
         userNameTextField.bind() { state in
             switch state {
-            case .normal: performErrorAnimationToIdentity()
-            case .error: performErrorAnimation()
+            case .normal: animateToIdentity()
+            case .error: animateToError()
             }
         }
     }
     
     func setDateOfBirth(_ text: String) {
-        dobTextField.textField.text = text
+        dobTextField.text = text
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension RegistrationView {
-    func performErrorAnimation() {
+    
+    func setupOutletTargets() {
+        addAvatarButton.addTarget(self, action: #selector(handleAddAvatarButton))
+        datePicker.addTarget(self, action: #selector(dateValueChanged), for: .valueChanged)
+        maleButton.addTarget(self, action: #selector(handleMaleButton))
+        femaleButton.addTarget(self, action: #selector(handleFemaleButton), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
+    }
+    
+    func setupKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    func animateToError() {
         UIView.animate(withDuration: 0.3) { [self] in
             [passwordTextField, dobTextField, maleButton, femaleButton].forEach {
                 $0.transform = CGAffineTransform(translationX: 0, y: 16)
@@ -172,7 +172,7 @@ private extension RegistrationView {
         }
     }
     
-    func performErrorAnimationToIdentity() {
+    func animateToIdentity() {
         UIView.animate(withDuration: 0.3) { [self] in
             [passwordTextField, dobTextField, maleButton, femaleButton].forEach {
                 $0.transform = .identity
@@ -182,16 +182,17 @@ private extension RegistrationView {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc extension RegistrationView {
+@objc private extension RegistrationView {
+    
     func handleAddAvatarButton() {
-        delegate?.didTapAvatarChangeButton()
+        delegate?.avatarChangeButtonClicked()
     }
     
     func handleSaveButton() {
-        delegate?.didTapSaveButton(
-            username: userNameTextField.text,
+        delegate?.saveButtonClicked(
+            with: userNameTextField.text,
             password: passwordTextField.text,
             dob: dobTextField.text,
             gender: gender
@@ -201,17 +202,17 @@ private extension RegistrationView {
     func handleMaleButton() {
         maleButton.bind(state: .seleted)
         femaleButton.bind(state: .normal)
-        gender = maleButton.titleLabel?.text
+        self.gender = maleButton.titleLabel?.text
     }
     
     func handleFemaleButton() {
         maleButton.bind(state: .normal)
         femaleButton.bind(state: .seleted)
-        gender = maleButton.titleLabel?.text
+        self.gender = maleButton.titleLabel?.text
     }
     
-    func dateChanged() {
-        delegate?.didChangeDatePickerValue(self.datePicker)
+    func dateValueChanged() {
+        delegate?.datePickerValueChanged(self.datePicker)
     }
     
     func handleKeybordWillShow(_ notification: Notification) {
@@ -228,28 +229,36 @@ private extension RegistrationView {
     }
     
     func handleKeybordWillHide() {
-        UIView.animate(withDuration: 0.3) {
-            self.transform = .identity
-        }
+        UIView.animate(withDuration: 0.3) { self.transform = .identity }
     }
 }
 
-//MARK: - UITextFieldDelegate
+//MARK: - UITextFieldDelegate -
 
 extension RegistrationView: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == dobTextField.textField {
-            delegate?.didChangeDatePickerValue(datePicker)
+        if textField == dobTextField.getTextField() {
+            delegate?.datePickerValueChanged(datePicker)
         }
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userNameTextField.textField {
-            passwordTextField.textField.becomeFirstResponder()
-        } else if textField == passwordTextField.textField {
-            dobTextField.textField.becomeFirstResponder()
+        if textField == userNameTextField.getTextField() {
+            passwordTextField.makeTextFieldFirstResponder()
+        } else if textField == passwordTextField.getTextField() {
+            dobTextField.makeTextFieldFirstResponder()
         }
         return true
+    }
+}
+
+//MARK: - DSDatePickerDelegate -
+
+extension RegistrationView: DSDatePickerDelegate {
+    
+    func doneButtonClicked() {
+        dobTextField.removeTextFieldFirstResponder()
     }
 }

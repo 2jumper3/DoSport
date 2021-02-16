@@ -7,11 +7,11 @@
 
 import UIKit
 
+enum DSTextFieldState {
+    case enable, disabled
+}
+
 final class DSTextField: UITextField {
-    
-    enum DSTextFieldState {
-        case enable, disabled
-    }
     
     private var textFieldState: DSTextFieldState = .enable {
         didSet {
@@ -21,7 +21,9 @@ final class DSTextField: UITextField {
 
     private let padding = UIEdgeInsets(top: 13, left: 17, bottom: 13, right: 0)
     
-    init(type: FormTextFieldView.TextFieldType = .dob) {
+    //MARK: Init
+    
+    init(type: FormTextFieldViewType = .dob) {
         super.init(frame: .zero)
         
         var placeholderText: String = ""
@@ -51,6 +53,8 @@ final class DSTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Padding set
+    
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
@@ -64,7 +68,7 @@ final class DSTextField: UITextField {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension DSTextField {
     
@@ -73,20 +77,16 @@ extension DSTextField {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension DSTextField {
     
     func handleStateChange() {
         switch textFieldState {
         case .disabled:
-            UIView.animate(withDuration: 0.3) {
-                self.textColor = Colors.dirtyBlue
-            }
+            UIView.animate(withDuration: 0.3) { self.textColor = Colors.dirtyBlue }
         case .enable:
-            UIView.animate(withDuration: 0.3) {
-                self.textColor = .white
-            }
+            UIView.animate(withDuration: 0.3) { self.textColor = .white }
         }
     }
 }
