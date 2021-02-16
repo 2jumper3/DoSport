@@ -10,26 +10,17 @@ import UIKit
 final class CountryCodeListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var coordinator: CountryCodeListCoordinator?
-    let viewModel: CountryCodeListViewModel
-    
+    private let viewModel: CountryCodeListViewModel
+    private let tableManager = CountryCodeListDataSource()
     private lazy var countryView = self.view as! CountryCodeListView
-    private lazy var navBar = DSCountryListNavBar()
     
-    private lazy var tableManager: CountryCodeListDataSource = {
-        $0.onCountryDidSelect = { [weak self] country in
-            guard self != nil else { return }
-            hideKeyboard(for: self!.navBar.getSeachBar()) {
-                self!.coordinator?.goBack(with: country)
-            }
-        }
-        return $0
-    }(CountryCodeListDataSource())
+    private lazy var navBar = DSCountryListNavBar()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    //MARK: - Init
+    //MARK: Init
     
     init(viewModel: CountryCodeListViewModel) {
         self.viewModel = viewModel
@@ -40,7 +31,7 @@ final class CountryCodeListViewController: UIViewController, UIGestureRecognizer
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Life cicle
+    //MARK: Life cicle
     
     override func loadView() {
         let view = CountryCodeListView()
@@ -53,8 +44,10 @@ final class CountryCodeListViewController: UIViewController, UIGestureRecognizer
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self;
         
+        tableManager.delegate = self
+        
         setupNavBar()
-        setupViewModel()
+        setupViewModelBindings()
         
         viewModel.loadCountries()
     }
@@ -66,27 +59,16 @@ final class CountryCodeListViewController: UIViewController, UIGestureRecognizer
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension CountryCodeListViewController {
+    
     func setupNavBar() {
         navBar.title = Texts.CountryList.title
         navigationItem.setHidesBackButton(true, animated: true)
-        
-        navBar.onSearchButtonDidTap = { [weak self] text in
-            self?.viewModel.prepareCountriesToSearch(by: text)
-        }
-        
-        navBar.onSeachBarDidChageText = { [weak self] text in
-            self?.viewModel.prepareCountriesToSearch(by: text)
-        }
-        
-        navBar.onBackButtonDidTap = { [weak self] in
-            self?.coordinator?.goBack()
-        }
     }
     
-    func setupViewModel() {
+    func setupViewModelBindings() {
         viewModel.onSectionsDidSet = { [weak self] sections in
             self?.tableManager.viewModels = sections
             self?.updateView()
@@ -102,9 +84,40 @@ private extension CountryCodeListViewController {
     }
 }
 
-//MARK: - Actions
+//MARK: - Actions -
+
 @objc extension CountryCodeListViewController {
+    
     private func handleGoBackButton() {
         coordinator?.goBack()
     }
 }
+
+//MARK: - CountryCodeListDataSourceDelegate -
+
+extension CountryCodeListViewController: CountryCodeListDataSourceDelegate {
+    
+    func tableView(didSelect country: Country) {
+        hideKeyboard(for: navBar.getSeachBar()) { // fix this
+            coordinator?.goBack(with: country)
+        }
+    }
+}
+
+//MARK: - DSCountryListNavBarDelegate -
+
+extension CountryCodeListViewController: DSCountryListNavBarDelegate {
+    
+    func searchButtonClicked(with text: String) {
+        viewModel.prepareCountriesToSearch(by: text)
+    }
+    
+    func searchTextChanged(text: String) {
+        viewModel.prepareCountriesToSearch(by: text)
+    }
+    
+    func navBarBackButtonClicked() {
+        coordinator?.goBack()
+    }
+}
+ 

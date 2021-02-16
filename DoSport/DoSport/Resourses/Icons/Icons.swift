@@ -115,9 +115,29 @@ public enum Icons {
         static let checkMark: UIImage = Icons.image(named: "check_mark")
         static let sliderThumb: UIImage = Icons.image(named: "sliderThumb")
     }
+    
+    //MARK: - SportGroundSelectionList screen
+    
+    enum SportGroundSelectionList {
+        static let filter = Icons.image(named: "filter")
+        static let map = Icons.image(named: "map")
+    }
+    
+    //MARK: - SportTypeList screen
+    
+    enum SportTypeList {
+        static let checkMark = Common.checkMark
+        static let backButton = Common.backButton
+    }
 }
 
 extension Icons {
+    
+    enum Common {
+        static let checkMark: UIImage = Icons.image(named: "check_mark")
+        static let backButton = image(named: "back_button")
+    }
+    
     static func image(named name: String) -> UIImage {
         UIImage(named: name) ?? UIImage()
     }
