@@ -10,6 +10,7 @@ import UIKit
 final class SelectionCell: UITableViewCell {
     
     var onDidChangeState: ((CellState) -> Void)?
+    var onDidChangeTitle: ((String?) -> Void)?
     
     enum CellState {
         case dataSelected, dataNotSelected
@@ -18,6 +19,13 @@ final class SelectionCell: UITableViewCell {
     private var cellState: CellState = .dataNotSelected {
         didSet {
             onDidChangeState?(cellState)
+        }
+    }
+    
+    private var newTitle: String? {
+        didSet {
+            myTitleLabel.text = newTitle
+            onDidChangeTitle?(newTitle)
         }
     }
     
@@ -69,7 +77,7 @@ final class SelectionCell: UITableViewCell {
 extension SelectionCell {
     
     func bind(_ text: String) {
-        myTitleLabel.text = text
+        self.newTitle = text
         
         if text != Texts.EventCreate.date &&
            text != Texts.EventCreate.sportTypes &&

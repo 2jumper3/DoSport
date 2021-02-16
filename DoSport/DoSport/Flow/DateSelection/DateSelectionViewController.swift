@@ -12,7 +12,11 @@ final class DateSelectionViewController: UIViewController {
     var coordinator: DateSelectionCoordinator?
     private(set) var viewModel: DateSelectionViewModel
     
-    private lazy var eventCreateView = view as! DateSelectionView
+    private lazy var dateSelectionView = view as! DateSelectionView
+    
+    private let collectionManager = DateSelectionDataSource()
+    
+    var cell: UITableViewCell?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -39,7 +43,10 @@ final class DateSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Дата и время"
+        setupNavBar()
+        setupViewModelBindings()
+        
+        viewModel.prepareData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +60,33 @@ final class DateSelectionViewController: UIViewController {
 
 private extension DateSelectionViewController {
 
+    func setupNavBar() {
+        title = Texts.DateSelection.date
+        
+        let button = UIButton(type: .system)
+        button.setImage(Icons.SportTypeList.backButton, for: .normal)
+        button.tintColor = Colors.mainBlue
+        button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    func setupCollectionManageBindings() {
+        collectionManager.onDidSelectHour = { hour in
+            
+        }
+    }
+    
+    func setupViewModelBindings() {
+        viewModel.onDidPrepareData = { [weak self] hours in
+            self?.collectionManager.viewModels = hours
+            self?.updateView()
+        }
+    }
+    
+    func updateView() {
+        self.dateSelectionView.udpateTableDataSource(dataSource: collectionManager)
+    }
 }
 
 //MARK: - Actions
@@ -60,7 +94,8 @@ private extension DateSelectionViewController {
 @objc
 private extension DateSelectionViewController {
     
-    func handleCancelButton() {
+    func handleBackButton() {
         coordinator?.goBack()
     }
 }
+

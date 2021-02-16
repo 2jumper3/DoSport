@@ -1,31 +1,34 @@
 //
-//  DateSelectionCoordinator.swift
+//  SportGroundSelectionListCoordinator.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 08/02/2021.
+//  Created by Komolbek Ibragimov on 15/02/2021.
 //
 
 import UIKit
 
-final class DateSelectionCoordinator: Coordinator {
+final class SportGroundSelectionListCoordinator: Coordinator {
     
-    let rootViewController: DateSelectionViewController
+    let rootViewController: SportGroundSelectionListViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     private let cell: UITableViewCell
+    private let sportTypeTitle: String
     
-    init(navController: UINavigationController?, cell: UITableViewCell) {
-        let assembly = DateSelectionAssembly()
+    init(navController: UINavigationController?, cell: UITableViewCell, sportTypeTitle: String) {
+        let assembly = SportGroundSelectionListAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
         self.cell = cell
+        self.sportTypeTitle = sportTypeTitle
     }
     
     func start() {
         rootViewController.coordinator = self
         rootViewController.cell = cell
+        rootViewController.sportTypeTitle = sportTypeTitle
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
@@ -33,3 +36,4 @@ final class DateSelectionCoordinator: Coordinator {
         navigationController?.popViewController(animated: true)
     }
 }
+

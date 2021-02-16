@@ -11,8 +11,8 @@ final class EventCreateDataSource: NSObject {
     
     /// Button taps
     var onDidTapSportTypeCell: ((UITableViewCell) -> Void)?
-    var onDidTapPlaygroundCell: ((UITableViewCell) -> Void)?
-    var onDidTapDateCell: ((UITableViewCell) -> Void)?
+    var onDidTapPlaygroundCell: ((UITableViewCell, String?) -> Void)?
+    var onDidTapDateCell: ((UITableViewCell, String?) -> Void)?
     var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
     var onDidTapDoneButton: ((UITextView) -> Void)?
     
@@ -29,6 +29,14 @@ final class EventCreateDataSource: NSObject {
     }
     
     private var cells: [CellType] = CellType.allCases
+    
+    /// to provide title to the playground selection screen in order to define sport type. Used when tapped
+    /// playground selection cell in this class's delegate part below
+    private var sportTypeTitle: String?
+    
+    /// to provide title to the date selection screen in order to define in what playground user can book time.
+    /// Uused when tapped date selection cell in this class's delegate part below
+    private var playgroundTitle: String?
 }
 
 //MARK: - Actions
@@ -67,12 +75,20 @@ extension EventCreateDataSource: UITableViewDataSource {
                 self.onSportTypeCellDidChangeState?(state)
             }
             
+            sportSelectionCell.onDidChangeTitle = { [unowned self] newTitle in
+                self.sportTypeTitle = newTitle
+            }
+            
             cell = sportSelectionCell
         case .playgroundSelection:
             let playgroundSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             playgroundSelectionCell.bind(Texts.EventCreate.playground)
             playgroundSelectionCell.onDidChangeState = { [unowned self] state in
                 self.onPlaygroundCellDidChangeState?(state)
+            }
+            
+            playgroundSelectionCell.onDidChangeTitle = { [unowned self] newTitle in
+                self.playgroundTitle = newTitle
             }
             
             cell = playgroundSelectionCell
@@ -112,12 +128,12 @@ extension EventCreateDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType: CellType = cells[indexPath.row]
-        let cell = tableView.visibleCells[indexPath.row]
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
         switch cellType {
         case .sportTypeSelection: onDidTapSportTypeCell?(cell)
-        case .playgroundSelection: onDidTapPlaygroundCell?(cell)
-        case .dateSelection: onDidTapDateCell?(cell)
+        case .playgroundSelection: onDidTapPlaygroundCell?(cell, sportTypeTitle)
+        case .dateSelection: onDidTapDateCell?(cell, playgroundTitle)
         default: break
         }
     }

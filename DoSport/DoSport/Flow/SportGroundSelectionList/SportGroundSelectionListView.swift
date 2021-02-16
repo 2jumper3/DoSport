@@ -1,25 +1,23 @@
 //
-//  SportTypeListView.swift
+//  SportGroundSelectionListView.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 08/02/2021.
+//  Created by Komolbek Ibragimov on 15/02/2021.
 //
 
 import UIKit
 
-final class SportTypeListView: UIView {
+final class SportGroundSelectionListView: UIView {
     
     private let topSeparatorView = DSSeparatorView()
 
     private lazy var tableView: UITableView = {
-        $0.registerClass(TableViewSportTypeListCell.self)
+        $0.registerClass(TableViewSportGroundSelectionCell.self)
         $0.separatorColor = Colors.dirtyBlue
         $0.backgroundColor = Colors.darkBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UITableView(frame: .zero, style: .plain))
-    
-    private(set) lazy var selectButton = CommonButton(title: Texts.SportTypeList.select, state: .disabled)
 
     //MARK: - Init
     
@@ -27,7 +25,7 @@ final class SportTypeListView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(topSeparatorView, selectButton, tableView)
+        addSubviews(topSeparatorView, tableView)
     }
     
     required init?(coder: NSCoder) {
@@ -40,27 +38,22 @@ final class SportTypeListView: UIView {
         topSeparatorView.snp.makeConstraints {
             $0.top.equalTo(safeAreaInsets.top).offset(1)
             $0.height.equalTo(1)
+            $0.width.equalToSuperview()
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(topSeparatorView.snp.bottom).offset(1)
-            $0.bottom.equalTo(selectButton.snp.top).offset(-5)
+            $0.top.equalTo(topSeparatorView.snp.bottom).offset(20)
+            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-20)
+            $0.width.equalToSuperview().multipliedBy(0.9)
         }
         
-        [topSeparatorView, tableView].forEach { $0.snp.makeConstraints { $0.centerX.width.equalToSuperview() } }
-        
-        selectButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-50) // FIXME: !
-            $0.width.equalToSuperview().multipliedBy(0.87)
-            $0.height.equalTo(48)
-            $0.centerX.equalToSuperview()
-        }
+        [topSeparatorView, tableView].forEach { $0.snp.makeConstraints { $0.centerX.equalToSuperview() } }
     }
 }
 
 //MARK: - Public Methods
 
-extension SportTypeListView {
+extension SportGroundSelectionListView {
     
     func udpateTableDataSource(dataSource: (UITableViewDataSource & UITableViewDelegate)) {
         tableView.delegate = dataSource
@@ -69,5 +62,3 @@ extension SportTypeListView {
         layoutIfNeeded()
     }
 }
-
-

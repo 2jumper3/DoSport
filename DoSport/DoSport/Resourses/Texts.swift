@@ -7,7 +7,12 @@
 
 import Foundation
 
-public enum Texts { }
+public enum Texts {
+    enum Common {
+        static let save = "Сохранить"
+        static let date = "Дата и время"
+    }
+}
 
 //MARK: - OnBoarding Screen
 extension Texts {
@@ -84,7 +89,7 @@ extension Texts {
         static let navTitle = "Регистрация"
         
         static let addAvatar = "Загузить фото"
-        static let save = "Сохранить"
+        static let save = Common.save
         
         static let userName = "Никнейм"
         static let userNameError = "Никнейм занят"
@@ -102,11 +107,11 @@ extension Texts {
     }
 }
 
-//MARK: - SportTypeList Screen
+//MARK: - SportTypeGrid Screen
 extension Texts {
-    enum SportTypeList {
+    enum SportTypeGrid {
         static let title = "Что тебе интересно?"
-        static let save = "Сохранить"
+        static let save = Common.save
     }
 }
 
@@ -157,9 +162,32 @@ extension Texts {
         static let closedEventInfo = "В закрытую тренировку только вы можете пригласить участников"
         static let sportTypes = "Вид спорта"
         static let playground = "Площадка"
-        static let date = "Дата и время"
+        static let date = Common.date
         static let memberCount = "Количество участников"
         static let noLimit = "Без ограничений"
         static let placeholder = "Расскажите о тренировке..."
+    }
+}
+
+//MARK: - SportTypeList screen
+extension Texts {
+    enum SportTypeList {
+        static let navTitle = "Выбрать вид спорта"
+        static let select = "Выбрать"
+    }
+}
+
+//MARK: - DateSelection screen
+extension Texts {
+    enum DateSelection {
+        static let save = Common.save
+        static let date = Common.date
+    }
+}
+
+//MARK: - SportGroundSelectionList screen
+extension Texts {
+    enum SportGroundSelectionList {
+        static let select = "Выбрать"
     }
 }

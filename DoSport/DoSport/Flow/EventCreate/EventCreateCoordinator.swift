@@ -37,8 +37,13 @@ final class EventCreateCoordinator: Coordinator {
         coordinator.start()
     }
     
-    func goToPlaygroundListModule(with cell: UITableViewCell) {
-        print(#function)
+    func goToPlaygroundListModule(with cell: UITableViewCell, and sportTypeTitle: String) {
+        let coordinator = SportGroundSelectionListCoordinator(
+            navController: navigationController,
+            cell: cell,
+            sportTypeTitle: sportTypeTitle
+        )
+        coordinator.start()
     }
     
     func goToDateSelectionModule(with cell: UITableViewCell) {
