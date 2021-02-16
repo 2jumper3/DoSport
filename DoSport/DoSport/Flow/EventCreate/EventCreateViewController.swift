@@ -12,22 +12,31 @@ final class EventCreateViewController: UIViewController {
     
     var coordinator: EventCreateCoordinator?
     private(set) var viewModel: EventCreateViewModel
-    
     private lazy var eventCreateView = view as! EventCreateView
     
     private var tableManager = EventCreateDataSource()
     
+    /// when cells: `SportTypeCell`, `SportGroundCell`, `DateSelectionCell` are selected then cellStateCounter
+    /// will increase its value. When value reaches `3` it will bind create button state to **normal** so the user could create Event
     private var cellStateCounter: Int = 0 {
         didSet {
             handleCellStateCounterChange()
         }
     }
     
+    /// to provide title to the playground selection screen in order to define sport type. Used when tapped
+    /// playground selection cell in this class's delegate part below
+    private var sportTypeTitle: String?
+    
+    /// to provide title to the date selection screen in order to define in what playground user can book time.
+    /// Uused when tapped date selection cell in this class's delegate part below
+    private var sportGroundTitle: String?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
     init(viewModel: EventCreateViewModel) {
         self.viewModel = viewModel
@@ -38,19 +47,20 @@ final class EventCreateViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = EventCreateView()
+        view.delegate = self
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableManager.delegate = self
+        
         setupNavBar()
-        setupButtonTargets()
-        setupTableManagerBindings()
         
         eventCreateView.updateTableDataSource(dataSource: self.tableManager)
     }
@@ -62,15 +72,13 @@ final class EventCreateViewController: UIViewController {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension EventCreateViewController {
     
     func handleCellStateCounterChange() {
         if cellStateCounter == 3 {
-            eventCreateView.createButton.bind(state: .normal)
-        } else {
-            eventCreateView.createButton.bind(state: .disabled)
+            eventCreateView.bindCreateButton(state: .normal)
         }
     }
     
@@ -90,94 +98,55 @@ private extension EventCreateViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
-    
-    func setupButtonTargets() {
-        eventCreateView.createButton.addTarget(self, action: #selector(handleEventCreateButton), for: .touchUpInside)
-    }
-    
-    func setupTableManagerBindings() {
-        tableManager.onDidTapSportTypeCell = { [weak self] cell in
-            self?.coordinator?.goToSportTypeListModule(with: cell)
-        }
-        
-        tableManager.onDidTapPlaygroundCell = { [weak self] cell, sportTypeTitle in
-            guard let sportTypeTitle = sportTypeTitle else { return }
-            
-            self?.coordinator?.goToPlaygroundListModule(with: cell, and: sportTypeTitle)
-        }
-        
-        tableManager.onDidTapDateCell = { [weak self] cell, playgroundTitle in
-            guard playgroundTitle != nil else { return }
-            
-            self?.coordinator?.goToDateSelectionModule(with: cell)
-        }
-        
-        tableManager.onDidTapCheckboxButton = { button in
-            var superview = button.superview
-            
-            while let view = superview, !(view is MembersCountCell) {
-                superview = view.superview
-            }
-            
-            guard let cell = superview as? MembersCountCell else {
-                debugPrint("button is not contained in a MembersCountCell")
-                return
-            }
-            
-            button.bind()
-            
-            switch button.getState() {
-            case .notSelected:
-                cell.rangeSlide.bind(state: .enabled)
-                cell.maxValueTextField.bind(state: .enable)
-                cell.minValueTextField.bind(state: .enable)
-            case .selected:
-                cell.rangeSlide.bind(state: .disabled)
-                cell.maxValueTextField.bind(state: .disabled)
-                cell.minValueTextField.bind(state: .disabled)
-            }
-        }
-        
-        tableManager.onDidTapDoneButton = { textView in
-            textView.resignFirstResponder()
-        }
-        
-        tableManager.onSportTypeCellDidChangeState = { [unowned self] state in
-            if state == .dataSelected {
-                self.cellStateCounter += 1
-            }
-        }
-        
-        tableManager.onPlaygroundCellDidChangeState = { [unowned self] state in
-            if state == .dataSelected {
-                self.cellStateCounter += 1
-            }
-        }
-        
-        tableManager.onDateSelecteCellDidChangeState = { [unowned self] state in
-            if state == .dataSelected {
-                self.cellStateCounter += 1
-            }
-        }
-        
-        tableManager.onSliderDidChangeValues = { minV, maxV, minVLabel, maxVLabel in
-            minVLabel.text = "от  \(Int(minV))"
-            maxVLabel.text = "до  \(Int(maxV))"
-        }
-    }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension EventCreateViewController {
+@objc private extension EventCreateViewController {
     
     func handleCancelButton() {
         coordinator?.goBack()
     }
+}
+
+//MARK: - EventCreateViewDelegate -
+
+extension EventCreateViewController: EventCreateViewDelegate {
     
-    func handleEventCreateButton(_ button: CommonButton) {
-        print(#function)
+    func createButtonClicked() {
+        /// by sending to viewModel all data needed for `Event` object creation this method should call viewModel's method
+        /// and send created object to backend
+    }
+}
+
+//MARK: - EventCreateDataSourceDelegate -
+
+extension EventCreateViewController: EventCreateDataSourceDelegate {
+    
+    func tableViewDidSelectSportTypeCell(completion: @escaping (String) -> Void) {
+        coordinator?.goToSportTypeListModule(completion: completion)
+    }
+    
+    func tableViewDidSelectSportGroundCell(completion: @escaping (String) -> Void) {
+        coordinator?.goToSportGroundSelectionListModule(completion: completion)
+    }
+    
+    func tableViewDidSelectDateSelectionCell(completion: @escaping (String) -> Void) {
+        coordinator?.goToDateSelectionModule(completion: completion)
+    }
+    
+    func tableViewSportTypeCell(didSetTitle title: String) {
+        self.sportTypeTitle = title
+        cellStateCounter += 1
+    }
+    
+    func tableViewSportGroudnCell(didSetTitle title: String) {
+        self.sportGroundTitle = title
+        cellStateCounter += 1
+    }
+    
+    func tableViewDateSelectionCellDidSetTitle() {
+        cellStateCounter += 1
     }
 }
 

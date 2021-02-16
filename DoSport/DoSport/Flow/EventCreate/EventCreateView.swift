@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol EventCreateViewDelegate: class {
+    func createButtonClicked()
+}
+
 final class EventCreateView: UIView {
+    
+    weak var delegate: EventCreateViewDelegate?
+    
+    // MARK: Outlets
     
     private let navSeperatorView = DSSeparatorView()
     
@@ -24,12 +32,13 @@ final class EventCreateView: UIView {
         return tableView
     }()
 
-    private(set) lazy var createButton = CommonButton(title: Texts.EventCreate.create, state: .disabled)
+    private lazy var createButton = CommonButton(title: Texts.EventCreate.create, state: .disabled)
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
+        
         backgroundColor = Colors.darkBlue
         
         addSubviews(navSeperatorView, tableView, createButton)
@@ -63,7 +72,7 @@ final class EventCreateView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension EventCreateView {
     
@@ -72,6 +81,10 @@ extension EventCreateView {
         tableView.dataSource = dataSource
         tableView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func bindCreateButton(state: CommonButtonState) {
+        createButton.bind(state: state)
     }
 }
 

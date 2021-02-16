@@ -7,53 +7,42 @@
 
 import UIKit
 
+protocol EventCreateDataSourceDelegate: class {
+    /// When tapped to sport type select cell, user goes to `SportTypeList` screen. When user selects sport type and clicks select button
+    ///  then `SportTypeList` screen calls completion with selected sport type title before going back.
+    func tableViewDidSelectSportTypeCell(completion: @escaping (String) -> Void)
+    
+    /// When tapped to date select cell, user goes to `SportGroundSelectionList` screen. When user selects sport ground
+    ///  then `SportGroundSelectionList` screen calls completion with selected sport ground string before going back.
+    func tableViewDidSelectSportGroundCell(completion: @escaping (String) -> Void)
+    
+    /// When tapped to date select cell, user goes to `DateSelection` screen. When user selects date and clicks save button
+    ///  then `DateSelection` screen calls completion with selected date string before going back.
+    func tableViewDidSelectDateSelectionCell(completion: @escaping (String) -> Void)
+    
+    func tableViewSportTypeCell(didSetTitle title: String)
+    func tableViewSportGroudnCell(didSetTitle title: String)
+    func tableViewDateSelectionCellDidSetTitle()
+}
+
 final class EventCreateDataSource: NSObject {
     
-    /// Button taps
-    var onDidTapSportTypeCell: ((UITableViewCell) -> Void)?
-    var onDidTapPlaygroundCell: ((UITableViewCell, String?) -> Void)?
-    var onDidTapDateCell: ((UITableViewCell, String?) -> Void)?
-    var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
-    var onDidTapDoneButton: ((UITextView) -> Void)?
-    
-    /// Cell state changes
-    var onSportTypeCellDidChangeState:((SelectionCell.CellState) -> Void)?
-    var onPlaygroundCellDidChangeState:((SelectionCell.CellState) -> Void)?
-    var onDateSelecteCellDidChangeState:((SelectionCell.CellState) -> Void)?
-    
-    /// Slider range changed
-    var onSliderDidChangeValues: ((CGFloat, CGFloat, DSTextField, DSTextField) -> Void)?
+    weak var delegate: EventCreateDataSourceDelegate?
     
     private enum CellType: String, CaseIterable {
         case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
     }
     
     private var cells: [CellType] = CellType.allCases
-    
-    /// to provide title to the playground selection screen in order to define sport type. Used when tapped
-    /// playground selection cell in this class's delegate part below
-    private var sportTypeTitle: String?
-    
-    /// to provide title to the date selection screen in order to define in what playground user can book time.
-    /// Uused when tapped date selection cell in this class's delegate part below
-    private var playgroundTitle: String?
 }
 
-//MARK: - Actions
-
-@objc
-private extension EventCreateDataSource {
-    
-    func handleCheckboxButton(_ button: DSCheckboxButton) {
-        onDidTapCheckboxButton?(button)
-    }
-}
-
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension EventCreateDataSource: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return cells.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cells.count
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell
@@ -62,55 +51,36 @@ extension EventCreateDataSource: UITableViewDataSource {
         switch cellType {
         case .textView:
             let textViewCell: TextViewCell = tableView.cell(forRowAt: indexPath)
-            // почему unowned? хз. изучить какие ссылки между ячейками и датаСурс
-            textViewCell.onDidTapDoneButton = { [unowned self] textView in
-                self.onDidTapDoneButton?(textView)
-            }
-            
             cell = textViewCell
+            
         case .sportTypeSelection:
             let sportSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             sportSelectionCell.bind(Texts.EventCreate.sportTypes)
-            sportSelectionCell.onDidChangeState = { [unowned self] state in
-                self.onSportTypeCellDidChangeState?(state)
-            }
-            
-            sportSelectionCell.onDidChangeTitle = { [unowned self] newTitle in
-                self.sportTypeTitle = newTitle
+            sportSelectionCell.onTitleDidSet = { [unowned self] title in
+                self.delegate?.tableViewSportTypeCell(didSetTitle: title)
             }
             
             cell = sportSelectionCell
         case .playgroundSelection:
             let playgroundSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             playgroundSelectionCell.bind(Texts.EventCreate.playground)
-            playgroundSelectionCell.onDidChangeState = { [unowned self] state in
-                self.onPlaygroundCellDidChangeState?(state)
-            }
-            
-            playgroundSelectionCell.onDidChangeTitle = { [unowned self] newTitle in
-                self.playgroundTitle = newTitle
+            playgroundSelectionCell.onTitleDidSet = { [unowned self] title in
+                self.delegate?.tableViewSportGroudnCell(didSetTitle: title)
             }
             
             cell = playgroundSelectionCell
         case .dateSelection:
             let dateSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             dateSelectionCell.bind(Texts.EventCreate.date)
-            dateSelectionCell.onDidChangeState = { [unowned self] state in
-                self.onDateSelecteCellDidChangeState?(state)
+            dateSelectionCell.onTitleDidSet = { [unowned self] _ in
+                self.delegate?.tableViewDateSelectionCellDidSetTitle()
             }
             
             cell = dateSelectionCell
         case .membersCount:
             let membersCountCell: MembersCountCell = tableView.cell(forRowAt: indexPath)
-            membersCountCell.checkboxButton.addTarget(self, action: #selector(handleCheckboxButton), for: .touchUpInside)
-            
-            let minValueLabel = membersCountCell.minValueTextField, maxValueLabel = membersCountCell.maxValueTextField
-            
-            membersCountCell.rangeSlide.onDidChangeValues = { [unowned self] minValue, maxValue in
-                self.onSliderDidChangeValues?(minValue, maxValue, minValueLabel, maxValueLabel)
-            }
-            
             cell = membersCountCell
+            
         case .eventType:
             let eventTypeCell: EventTypeCell = tableView.cell(forRowAt: indexPath)
             cell = eventTypeCell
@@ -128,12 +98,17 @@ extension EventCreateDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType: CellType = cells[indexPath.row]
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        guard
+            let cell: SelectionCell = tableView.cellForRow(at: indexPath) as? SelectionCell
+        else {
+            return
+        }
         
         switch cellType {
-        case .sportTypeSelection: onDidTapSportTypeCell?(cell)
-        case .playgroundSelection: onDidTapPlaygroundCell?(cell, sportTypeTitle)
-        case .dateSelection: onDidTapDateCell?(cell, playgroundTitle)
+        case .sportTypeSelection: delegate?.tableViewDidSelectSportTypeCell { cell.bind($0) }
+        case .playgroundSelection: delegate?.tableViewDidSelectSportGroundCell { cell.bind($0) }
+        case .dateSelection: delegate?.tableViewDidSelectDateSelectionCell { cell.bind($0) }
         default: break
         }
     }

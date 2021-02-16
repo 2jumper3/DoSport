@@ -16,7 +16,7 @@ final class DateSelectionViewController: UIViewController {
     
     private let collectionManager = DateSelectionDataSource()
     
-    var cell: UITableViewCell?
+    private let completion: (String) -> Void
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -24,8 +24,9 @@ final class DateSelectionViewController: UIViewController {
 
     // MARK: - Init
     
-    init(viewModel: DateSelectionViewModel) {
+    init(viewModel: DateSelectionViewModel, completion: @escaping (String) -> Void) {
         self.viewModel = viewModel
+        self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
     

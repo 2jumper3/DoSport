@@ -9,9 +9,18 @@ import Foundation
 
 final class DateSelectionAssembly: Assembly {
     
+    private let completion: (String) -> Void
+    
+    init(completion: @escaping (String) -> Void) {
+        self.completion = completion
+    }
+    
     func makeModule() -> DateSelectionViewController {
         let viewModel = DateSelectionViewModel()
-        let viewController = DateSelectionViewController(viewModel: viewModel)
+        let viewController = DateSelectionViewController(
+            viewModel: viewModel,
+            completion: completion
+        )
         return viewController
     }
 }

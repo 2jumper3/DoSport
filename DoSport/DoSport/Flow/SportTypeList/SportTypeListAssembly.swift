@@ -9,9 +9,15 @@ import Foundation
 
 final class SportTypeListAssembly: Assembly {
     
+    private let completion: (String) -> Void
+    
+    init(completion: @escaping (String) -> Void) {
+        self.completion = completion
+    }
+    
     func makeModule() -> SportTypeListViewController {
         let viewModel = SportTypeListViewModel()
-        let viewController = SportTypeListViewController(viewModel: viewModel)
+        let viewController = SportTypeListViewController(viewModel: viewModel, completion: completion)
         return viewController
     }
 }

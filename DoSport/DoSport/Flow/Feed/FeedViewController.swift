@@ -35,6 +35,7 @@ final class FeedViewController: UIViewController {
     
     override func loadView() {
         let view = FeedView()
+        view.delegate = self
         self.view = view
         
         navigationItem.titleView = navBar

@@ -9,28 +9,12 @@ import UIKit
 
 final class SelectionCell: UITableViewCell {
     
-    var onDidChangeState: ((CellState) -> Void)?
-    var onDidChangeTitle: ((String?) -> Void)?
+    var onTitleDidSet: ((String) -> Void)?
     
-    enum CellState {
-        case dataSelected, dataNotSelected
-    }
-    
-    private var cellState: CellState = .dataNotSelected {
-        didSet {
-            onDidChangeState?(cellState)
-        }
-    }
-    
-    private var newTitle: String? {
-        didSet {
-            myTitleLabel.text = newTitle
-            onDidChangeTitle?(newTitle)
-        }
-    }
+    // MARK: Outlets
     
     private lazy var myTitleLabel: UILabel = {
-        $0.textColor = cellState == .dataNotSelected ? Colors.dirtyBlue : .white
+        $0.textColor = Colors.dirtyBlue
         $0.font = Fonts.sfProRegular(size: 18)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -42,7 +26,7 @@ final class SelectionCell: UITableViewCell {
         return $0
     }(UIImageView())
     
-    //MARK: - Init
+    //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,26 +56,20 @@ final class SelectionCell: UITableViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension SelectionCell {
     
     func bind(_ text: String) {
-        self.newTitle = text
+        myTitleLabel.text = text
         
         if text != Texts.EventCreate.date &&
-           text != Texts.EventCreate.sportTypes &&
-           text != Texts.EventCreate.playground {
+            text != Texts.EventCreate.sportTypes &&
+            text != Texts.EventCreate.playground {
             
-            if cellState == .dataNotSelected {
-                myTitleLabel.textColor = .white
-                cellState = .dataSelected
-            }
+            myTitleLabel.textColor = .white
+            onTitleDidSet?(text)
         }
-    }
-    
-    func getState() -> CellState {
-        return cellState
     }
 }
 

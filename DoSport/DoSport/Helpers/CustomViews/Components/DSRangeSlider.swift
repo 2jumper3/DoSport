@@ -8,26 +8,26 @@
 import UIKit
 import RangeSeekSlider
 
+enum RangeSliderState {
+    case enabled, disabled
+}
+
 final class DSRangeSlider: RangeSeekSlider {
     
     var onDidChangeValues: ((CGFloat, CGFloat) -> Void)?
     
-    enum State {
-        case enabled, disabled
-    }
-    
-    private var sliderState: State = .enabled {
+    private var sliderState: RangeSliderState = .enabled {
         didSet {
             refresh()
         }
     }
     
-    private var maxValueBeforeStateChange: CGFloat = 0.0
-    private var minValueBeforeStateChange: CGFloat = 0.0
+//    private var maxValueBeforeStateChange: CGFloat = 0.0
+//    private var minValueBeforeStateChange: CGFloat = 0.0
     
-    //MARK: - Init
+    //MARK: Init
     
-    init(state: State) {
+    init(state: RangeSliderState) {
         super.init(frame: .zero)
         
         delegate = self
@@ -83,18 +83,18 @@ final class DSRangeSlider: RangeSeekSlider {
     }
 }
 
-//MARK: - Public methodss
+//MARK: Public API
 
 extension DSRangeSlider {
     
-    func bind(state: State) {
-        maxValueBeforeStateChange = selectedMaxValue
-        minValueBeforeStateChange = selectedMinValue
+    func bind(state: RangeSliderState) {
+//        maxValueBeforeStateChange = selectedMaxValue
+//        minValueBeforeStateChange = selectedMinValue
         sliderState = state
     }
 }
 
-//MARK: - RangeSeekSliderDelegate
+//MARK: - RangeSeekSliderDelegate -
 
 extension DSRangeSlider: RangeSeekSliderDelegate {
     

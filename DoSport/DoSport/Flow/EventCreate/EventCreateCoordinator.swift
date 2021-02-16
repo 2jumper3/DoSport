@@ -13,6 +13,7 @@ final class EventCreateCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
+    
     private var eventCreateNavController = DSNavigationController()
     
     init(navController: UINavigationController?) {
@@ -32,22 +33,30 @@ final class EventCreateCoordinator: Coordinator {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    func goToSportTypeListModule(with cell: UITableViewCell) {
-        let coordinator = SportTypeListCoordinator(navController: eventCreateNavController, cell: cell)
-        coordinator.start()
-    }
-    
-    func goToPlaygroundListModule(with cell: UITableViewCell, and sportTypeTitle: String) {
-        let coordinator = SportGroundSelectionListCoordinator(
-            navController: navigationController,
-            cell: cell,
-            sportTypeTitle: sportTypeTitle
+    func goToSportTypeListModule(completion: @escaping (String) -> Void) {
+        let coordinator = SportTypeListCoordinator(
+            navController: eventCreateNavController,
+            completion: completion
         )
+        
         coordinator.start()
     }
     
-    func goToDateSelectionModule(with cell: UITableViewCell) {
-        let coordinator = DateSelectionCoordinator(navController: eventCreateNavController, cell: cell)
+    func goToSportGroundSelectionListModule(completion: @escaping (String) -> Void) {
+        let coordinator = SportGroundSelectionListCoordinator(
+            navController: eventCreateNavController,
+            completion: completion
+        )
+        
+        coordinator.start()
+    }
+    
+    func goToDateSelectionModule(completion: @escaping (String) -> Void) {
+        let coordinator = DateSelectionCoordinator(
+            navController: eventCreateNavController,
+            completion: completion
+        )
+        
         coordinator.start()
     }
 }

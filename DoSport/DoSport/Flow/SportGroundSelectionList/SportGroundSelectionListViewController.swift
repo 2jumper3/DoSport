@@ -10,13 +10,11 @@ import UIKit
 final class SportGroundSelectionListViewController: UIViewController {
     
     var coordinator: SportGroundSelectionListCoordinator?
-    private(set) var viewModel: SportGroundSelectionListViewModel
-    
+    private var viewModel: SportGroundSelectionListViewModel
     private lazy var sportGroundListView = view as! SportGroundSelectionListView
-    
     private let tableManager = SportGroundSelectionListDataSource()
     
-    var cell: UITableViewCell?
+    private let completion: (String) -> Void
     
     var sportTypeTitle: String = "" {
         didSet {
@@ -30,8 +28,9 @@ final class SportGroundSelectionListViewController: UIViewController {
 
     // MARK: - Init
     
-    init(viewModel: SportGroundSelectionListViewModel) {
+    init(viewModel: SportGroundSelectionListViewModel, completion: @escaping (String) -> Void) {
         self.viewModel = viewModel
+        self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -92,15 +91,15 @@ private extension SportGroundSelectionListViewController {
 private extension SportGroundSelectionListViewController {
 
     func setupTableManagerBindings()  {
-        tableManager.onDidSelectSportGroundType = { [weak self] sportGround in
-            guard let self = self, let cell = self.cell as? SelectionCell else {
-                debugPrint("############# 'self' or 'cell' is nil in SportGroundSelectionListViewController - 74 line")
-                return
-            }
-            
-            cell.bind(sportGround.title ?? "")
-            self.coordinator?.goBack()
-        }
+//        tableManager.onDidSelectSportGroundType = { [weak self] sportGround in
+//            guard let self = self, let cell = self.cell as? SelectionCell else {
+//                debugPrint("############# 'self' or 'cell' is nil in SportGroundSelectionListViewController - 74 line")
+//                return
+//            }
+//            
+//            cell.bind(sportGround.title ?? "")
+//            self.coordinator?.goBack()
+//        }
     }
     
     func setupViewModelBindings() {

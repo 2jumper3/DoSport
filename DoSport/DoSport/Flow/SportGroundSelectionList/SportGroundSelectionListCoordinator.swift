@@ -14,21 +14,14 @@ final class SportGroundSelectionListCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    private let cell: UITableViewCell
-    private let sportTypeTitle: String
-    
-    init(navController: UINavigationController?, cell: UITableViewCell, sportTypeTitle: String) {
-        let assembly = SportGroundSelectionListAssembly()
+    init(navController: UINavigationController?, completion: @escaping (String) -> Void) {
+        let assembly = SportGroundSelectionListAssembly(completion: completion)
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
-        self.cell = cell
-        self.sportTypeTitle = sportTypeTitle
     }
     
     func start() {
         rootViewController.coordinator = self
-        rootViewController.cell = cell
-        rootViewController.sportTypeTitle = sportTypeTitle
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     

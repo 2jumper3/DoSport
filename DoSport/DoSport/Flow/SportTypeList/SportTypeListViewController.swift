@@ -10,14 +10,13 @@ import UIKit
 final class SportTypeListViewController: UIViewController {
     
     var coordinator: SportTypeListCoordinator?
-    private(set) var viewModel: SportTypeListViewModel
-    
+    private let viewModel: SportTypeListViewModel
     private lazy var sportTypeListView = view as! SportTypeListView
-    
-    var cell: UITableViewCell?
-    private var selectedSport: Sport?
-    
     private let tableManager = SportTypeListDataSource()
+    
+    private let completion: (String) -> Void
+    
+    private var selectedSport: Sport?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -25,8 +24,9 @@ final class SportTypeListViewController: UIViewController {
 
     // MARK: - Init
     
-    init(viewModel: SportTypeListViewModel) {
+    init(viewModel: SportTypeListViewModel, completion: @escaping (String) -> Void) {
         self.viewModel = viewModel
+        self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -100,12 +100,9 @@ private extension SportTypeListViewController {
 private extension SportTypeListViewController {
     
     func handleSelectButton() {
-        if let selectedSport = selectedSport {
+        if let selectedSport = selectedSport, let title = selectedSport.title {
             
-            if let cell = cell as? SelectionCell {
-                cell.bind(selectedSport.title ?? "")
-            }
-            
+            completion(title)
             coordinator?.goBack()
         }
     }

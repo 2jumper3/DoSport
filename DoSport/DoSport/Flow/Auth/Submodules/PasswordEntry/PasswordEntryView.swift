@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol PasswordEntryViewDelegate: class {
     func goBackButtonClicked()
@@ -134,7 +133,7 @@ final class PasswordEntryView: UIView {
 
 extension PasswordEntryView {
     
-    func updateEnterButtonState(state: CommonButton.State) {
+    func updateEnterButtonState(state: CommonButtonState) {
         enterButton.bind(state: state)
     }
     
@@ -168,9 +167,9 @@ private extension PasswordEntryView {
     }
     
     func setupOutletTargets() {
-        backButton.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        enterButton.addTarget(self, action: #selector(handleEnterButton), for: .touchUpInside)
-        forgorPasswordButton.addTarget(self, action: #selector(handleForgotPasswordButton), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(handleBackButton))
+        enterButton.addTarget(self, action: #selector(handleEnterButton))
+        forgorPasswordButton.addTarget(self, action: #selector(handleForgotPasswordButton))
     }
 }
 

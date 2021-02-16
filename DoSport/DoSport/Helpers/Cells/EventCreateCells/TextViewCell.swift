@@ -8,10 +8,10 @@
 import UIKit
 
 final class TextViewCell: UITableViewCell {
+
+    // MARK: Outlets
     
-    var onDidTapDoneButton: ((UITextView) -> Void)?
-    
-    private(set) lazy var textView: UITextView = {
+    private let textView: UITextView = {
         $0.textColor = .white
         $0.backgroundColor = .clear
         $0.textAlignment = .justified
@@ -20,7 +20,7 @@ final class TextViewCell: UITableViewCell {
         return $0
     }(UITextView())
     
-    private(set) lazy var keyboardDoneButton: UIBarButtonItem = {
+    private lazy var keyboardDoneButton: UIBarButtonItem = {
         return UIBarButtonItem(
             title: "Done",
             style: .done,
@@ -29,7 +29,7 @@ final class TextViewCell: UITableViewCell {
         )
     }()
     
-    //MARK: - Init
+    //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,7 +50,7 @@ final class TextViewCell: UITableViewCell {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension TextViewCell {
     
@@ -77,13 +77,12 @@ private extension TextViewCell {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension TextViewCell {
+@objc private extension TextViewCell {
     
     func handleDoneButton() {
-        onDidTapDoneButton?(textView)
+        textView.resignFirstResponder()
     }
 }
 

@@ -7,21 +7,21 @@
 
 import UIKit
 
+enum CommonButtonState {
+    case disabled, normal
+}
+
 final class CommonButton: UIButton {
     
-    enum State {
-        case disabled, normal
-    }
-    
-    private var commonState: State = .normal {
+    private var buttonState: CommonButtonState = .normal {
         didSet {
-            setState()
+            handleStateChange()
         }
     }
     
-    //MARK: - Init
+    //MARK: Init
     
-    init(title: String = "", state: State = .normal) {
+    init(title: String = "", state: CommonButtonState = .normal) {
         super.init(frame: .zero)
         layer.cornerRadius = 8
         setTitle(title, for: .normal)
@@ -37,21 +37,21 @@ final class CommonButton: UIButton {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension CommonButton {
     
-    func bind(state: State) {
-        commonState = state
+    func bind(state: CommonButtonState) {
+        buttonState = state
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension CommonButton {
     
-    func setState() {
-        switch commonState {
+    func handleStateChange() {
+        switch buttonState {
         case .disabled:
             isUserInteractionEnabled = false
             backgroundColor = Colors.dirtyBlue
