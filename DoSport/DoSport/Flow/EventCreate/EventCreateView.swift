@@ -58,7 +58,7 @@ final class EventCreateView: UIView {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.89)
             $0.height.equalTo(42)
-            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-30)
+            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-10)
         }
     }
 }

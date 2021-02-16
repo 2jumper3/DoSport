@@ -9,15 +9,20 @@ import UIKit
 
 final class EventCreateDataSource: NSObject {
     
+    /// Button taps
     var onDidTapSportTypeCell: ((UITableViewCell) -> Void)?
     var onDidTapPlaygroundCell: ((UITableViewCell, String?) -> Void)?
     var onDidTapDateCell: ((UITableViewCell, String?) -> Void)?
     var onDidTapCheckboxButton: ((DSCheckboxButton) -> Void)?
     var onDidTapDoneButton: ((UITextView) -> Void)?
     
+    /// Cell state changes
     var onSportTypeCellDidChangeState:((SelectionCell.CellState) -> Void)?
     var onPlaygroundCellDidChangeState:((SelectionCell.CellState) -> Void)?
     var onDateSelecteCellDidChangeState:((SelectionCell.CellState) -> Void)?
+    
+    /// Slider range changed
+    var onSliderDidChangeValues: ((CGFloat, CGFloat, DSTextField, DSTextField) -> Void)?
     
     private enum CellType: String, CaseIterable {
         case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
@@ -98,6 +103,12 @@ extension EventCreateDataSource: UITableViewDataSource {
         case .membersCount:
             let membersCountCell: MembersCountCell = tableView.cell(forRowAt: indexPath)
             membersCountCell.checkboxButton.addTarget(self, action: #selector(handleCheckboxButton), for: .touchUpInside)
+            
+            let minValueLabel = membersCountCell.minValueTextField, maxValueLabel = membersCountCell.maxValueTextField
+            
+            membersCountCell.rangeSlide.onDidChangeValues = { [unowned self] minValue, maxValue in
+                self.onSliderDidChangeValues?(minValue, maxValue, minValueLabel, maxValueLabel)
+            }
             
             cell = membersCountCell
         case .eventType:

@@ -9,6 +9,8 @@ import UIKit
 
 final class MembersCountCell: UITableViewCell {
     
+    var onRangeSliderDidChangeValues: ((CGFloat, CGFloat) -> Void)?
+    
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Texts.EventCreate.memberCount
@@ -17,32 +19,20 @@ final class MembersCountCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    private let fromRangeLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "от 0"
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = Colors.dirtyBlue.cgColor
-        $0.layer.cornerRadius = 8
-        $0.textColor = .white
+    private(set) var minValueTextField: DSTextField = {
+        $0.isUserInteractionEnabled = false
+        $0.backgroundColor = Colors.darkBlue
         $0.font = Fonts.sfProRegular(size: 18)
         return $0
-    }(UILabel())
+    }(DSTextField())
     
-    private let toRangeLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "до 300"
-        $0.textColor = .white
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = Colors.dirtyBlue.cgColor
-        $0.layer.cornerRadius = 8
+    private(set) var maxValueTextField: DSTextField = {
+        $0.backgroundColor = Colors.darkBlue
         $0.font = Fonts.sfProRegular(size: 18)
         return $0
-    }(UILabel())
+    }(DSTextField())
     
-    private lazy var rangeSlide: UISlider = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(UISlider())
+    private(set) lazy var rangeSlide = DSRangeSlider(state: .enabled)
     
     private(set) lazy var checkboxButton = DSCheckboxButton()
 
@@ -61,8 +51,8 @@ final class MembersCountCell: UITableViewCell {
         
         contentView.addSubviews(
             titleLabel,
-            fromRangeLabel,
-            toRangeLabel,
+            minValueTextField,
+            maxValueTextField,
             rangeSlide,
             checkboxButton,
             checkboxInfoLabel
@@ -76,21 +66,24 @@ final class MembersCountCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        minValueTextField.text = "от  \(Int(rangeSlide.selectedMinValue))"
+        maxValueTextField.text = "до  \(Int(rangeSlide.selectedMaxValue))"
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.left.equalToSuperview().offset(16)
             $0.height.equalTo(25)
         }
         
-        fromRangeLabel.snp.makeConstraints {
+        minValueTextField.snp.makeConstraints {
             $0.left.equalTo(titleLabel.snp.left)
         }
         
-        toRangeLabel.snp.makeConstraints {
+        maxValueTextField.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-16)
         }
         
-        [fromRangeLabel, toRangeLabel].forEach {
+        [minValueTextField, maxValueTextField].forEach {
             $0.snp.makeConstraints {
                 $0.top.equalTo(titleLabel.snp.bottom).offset(12)
                 $0.height.equalToSuperview().multipliedBy(0.23)
@@ -99,10 +92,10 @@ final class MembersCountCell: UITableViewCell {
         }
         
         rangeSlide.snp.makeConstraints {
-            $0.top.equalTo(fromRangeLabel.snp.bottom).offset(16)
+            $0.top.equalTo(minValueTextField.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.122)
-            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.width.equalToSuperview().multipliedBy(0.9)
         }
         
         checkboxButton.snp.makeConstraints {
@@ -119,3 +112,5 @@ final class MembersCountCell: UITableViewCell {
         }
     }
 }
+
+
