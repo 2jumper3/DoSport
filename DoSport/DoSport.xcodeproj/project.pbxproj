@@ -726,7 +726,7 @@
 			path = EventCreate;
 			sourceTree = "<group>";
 		};
-		65CDF89025DB11E00049F711 /* PlaygroundSelectionList */ = {
+		65CDF89025DB11E00049F711 /* SportGroundSelectionList */ = {
 			isa = PBXGroup;
 			children = (
 				65CDF89E25DB120F0049F711 /* SportGroundSelectionListAssembly.swift */,
@@ -736,7 +736,7 @@
 				65CDF89925DB12080049F711 /* SportGroundSelectionListViewController.swift */,
 				65CDF8A825DB12320049F711 /* SportGroundSelectionListViewModel.swift */,
 			);
-			path = PlaygroundSelectionList;
+			path = SportGroundSelectionList;
 			sourceTree = "<group>";
 		};
 		65CE01C925A88B8000556C7B /* CountryCell */ = {
@@ -1034,7 +1034,7 @@
 				6568F8DC25B4F85C00225043 /* Feed */,
 				CEBA62EF2593F3E2006A7F80 /* MainViewController */,
 				CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */,
-				65CDF89025DB11E00049F711 /* PlaygroundSelectionList */,
+				65CDF89025DB11E00049F711 /* SportGroundSelectionList */,
 				6531798D25D1115E001DBA4B /* RegionList */,
 				65870505259209A700EFF7C7 /* Registration */,
 				6531794C25D10F5D001DBA4B /* SportTypeList */,
