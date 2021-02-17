@@ -27,9 +27,10 @@ final class AppCoordinator: Coordinator {
             let coordinator = FeedCoordinator(navController: navigationController)
             coordinator.start()
         } else {
-            let myCoordinator = OnBoardingCoordinator()
-            myCoordinator.start()
-            window.rootViewController = myCoordinator.navigationController
+            let coordinator = OnBoardingCoordinator()
+            self.store(coordinator: coordinator)
+            coordinator.start()
+            window.rootViewController = coordinator.navigationController
         }
     }
 }

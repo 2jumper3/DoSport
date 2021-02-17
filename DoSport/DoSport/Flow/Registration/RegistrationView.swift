@@ -46,6 +46,13 @@ final class RegistrationView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
+        userNameTextField.getTextField().delegate = self
+        passwordTextField.getTextField().delegate = self
+        dobTextField.getTextField().delegate = self
+        datePicker.delegate = self
+        
+        datePicker.setTextField(dobTextField.getTextField())
+        
         setupOutletTargets()
         setupKeyboardNotifications()
         

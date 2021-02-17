@@ -1090,12 +1090,12 @@
 		CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CEDEB900258D370A007B2BCA /* Cell */,
-				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
-				CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */,
-				CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */,
 				CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */,
+				CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */,
+				CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */,
+				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
 				CEDEB8FB258D33D3007B2BCA /* OnBoardingAvatars.xcassets */,
+				CEDEB900258D370A007B2BCA /* Cell */,
 			);
 			path = OnBoardViewController;
 			sourceTree = "<group>";
@@ -1103,8 +1103,8 @@
 		CEDEB900258D370A007B2BCA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */,
 				CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */,
+				CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

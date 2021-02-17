@@ -9,7 +9,7 @@ import UIKit
 
 final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var coordinator: CodeEntryCoordinator?
+    weak var coordinator: CodeEntryCoordinator?
     private let viewModel: CodeEntryViewModel
     private lazy var codeEntryView = self.view as! CodeEntryView
     
@@ -62,6 +62,11 @@ final class CodeEntryViewController: UIViewController, UIGestureRecognizerDelega
         codeEntryView.endEditing(true)
         codeEntryView.clearCodeTextFields()
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.removeDependency(coordinator)
     }
 }
 

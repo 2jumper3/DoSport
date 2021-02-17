@@ -9,7 +9,7 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
-    var coordinator: AuthCoordinator?
+    weak var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
     
     private lazy var authView = self.view as! AuthView
@@ -53,6 +53,7 @@ final class AuthViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        coordinator?.removeDependency(coordinator)
     }
     
     override func viewDidAppear(_ animated: Bool) {
