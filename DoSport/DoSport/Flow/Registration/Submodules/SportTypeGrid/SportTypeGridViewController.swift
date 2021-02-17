@@ -9,7 +9,7 @@ import UIKit
 
 final class SportTypeGridViewController: UIViewController {
     
-    var coordinator: SportTypeGridCoordinator?
+    weak var coordinator: SportTypeGridCoordinator?
     private let viewModel: SportTypeGridViewModel
     private lazy var sportTypeListView = self.view as! SportTypeGridView
     private lazy var collectionManager = SportTypeGridDataSource()
@@ -58,10 +58,10 @@ final class SportTypeGridViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        
+        coordinator?.removeDependency(coordinator)
     }
 }
 

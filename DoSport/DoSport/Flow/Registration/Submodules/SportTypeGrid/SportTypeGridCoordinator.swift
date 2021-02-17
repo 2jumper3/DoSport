@@ -30,6 +30,8 @@ final class SportTypeGridCoordinator: Coordinator {
     }
     
     func goToFeedModule() {
-        navigationController?.viewControllers = [MainMenuTabController()]
+        let coordinator = MainTabBarCoordinator(navController: navigationController)
+        coordinator.store(coordinator: coordinator)
+        coordinator.start()
     }
 }

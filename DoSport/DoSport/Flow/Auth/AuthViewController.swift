@@ -13,6 +13,10 @@ final class AuthViewController: UIViewController {
     private let viewModel: AuthViewModel
     
     private lazy var authView = self.view as! AuthView
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - Init
     
@@ -36,10 +40,6 @@ final class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     /// Hide navigation bar before this ViewController will appear

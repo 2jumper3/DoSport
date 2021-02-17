@@ -9,51 +9,91 @@ import UIKit
 
 final class MainMenuTabController: UITabBarController, UINavigationControllerDelegate {
     
+    weak var coordinator: MainTabBarCoordinator?
+    
+    private let tabBarHeight: CGFloat = CGFloat(UIDevice.getDeviceRelatedTabBarHeight())
+    private let tabBarItems: [TabBarItem] = [.home, .map, .chat, .user]
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    //MARK: Outlets
+    
     private var customTabBar: CustomTabView!
-    
-    private var tabBarHeight: CGFloat = 0
-    
     private let topSeparatorView = DSSeparatorView()
     
-    // MARK: - Init
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadTabBar()
+        setupCustomTabBarItem()
         
+        selectedIndex = 0
         delegate = self
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         topSeparatorView.snp.makeConstraints {
             $0.width.centerX.equalTo(view)
             $0.height.equalTo(1)
             $0.top.equalTo(customTabBar.snp.top).offset(1)
         }
+        
+        customTabBar.snp.makeConstraints {
+            $0.left.right.equalTo(tabBar)
+            $0.height.equalTo(tabBarHeight)
+            $0.bottom.equalTo(tabBar.snp.bottom)
+        }
     }
     
-    // MARK: - Setup custom tabbar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
-    private func loadTabBar() {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        let tabItems: [TabBarItem] = [.home, .map, .chat, .user]
+        coordinator?.removeDependency(coordinator)
+    }
+}
+
+//MARK: Public API
+
+extension MainMenuTabController {
+    
+    func setupTabBarViewControllers() {
+        var tabViewControllers: [UIViewController]? = []
         
-        setupCustomTabBar(tabItems) { controllers in
-            self.viewControllers = controllers
+        self.tabBarItems.forEach { tabBarItem in
+            
+            if tabBarItem.viewController is FeedViewController {
+                let navigationController = DSNavigationController()
+                let feedCoordinator = FeedCoordinator(navController: navigationController)
+                self.coordinator?.store(coordinator: feedCoordinator)
+                feedCoordinator.start()
+                
+                tabViewControllers?.append(navigationController)
+            } else {
+                tabViewControllers?.append(tabBarItem.viewController)
+            }
         }
         
-        selectedIndex = 0
+        self.viewControllers = tabViewControllers
     }
+}
+
+//MARK: Private API
+
+private extension MainMenuTabController {
     
-    private func setupCustomTabBar(
-        _ items: [TabBarItem],
-        completion: @escaping ([UIViewController]) -> Void
-    ) {
-        setupDeviceRelatedTabBarHeight()
-        
+    func setupCustomTabBarItem() {
         let frame = CGRect(
             x: tabBar.frame.origin.x,
             y: tabBar.frame.origin.x,
@@ -61,46 +101,23 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
             height: tabBarHeight
         )
         
-        var controllers = [UIViewController]()
-        
         tabBar.isHidden = true
         
-        customTabBar = CustomTabView(menuItems: items, frame: frame)
+        customTabBar = CustomTabView(menuItems: self.tabBarItems, frame: frame)
         customTabBar.translatesAutoresizingMaskIntoConstraints = false
         customTabBar.itemTapped = changeTab
         view.addSubview(customTabBar)
         customTabBar.addSubview(topSeparatorView)
         
-        customTabBar.snp.makeConstraints { (make) in
-            make.left.right.equalTo(tabBar)
-            make.height.equalTo(tabBarHeight)
-            make.bottom.equalTo(tabBar.snp.bottom)
-        }
-        
-        for item in 0 ..< items.count {
-            controllers.append(items[item].viewController)
-        }
-        
         view.layoutIfNeeded()
-        completion(controllers)
     }
     
-    private func changeTab(tab: Int) {
+    func changeTab(tab: Int) {
         self.selectedIndex = tab
-    }
-    
-    private func setupDeviceRelatedTabBarHeight() {
-        if UIDevice().userInterfaceIdiom == .phone {
-            switch UIScreen.main.nativeBounds.height {
-            case 1136, 1334, 1920, 2208: tabBarHeight = 49 // "iPhone 5 or 5S or 5C" "iPhone 6/6S/7/8" "iPhone 6+/6S+/7+/8+"
-            case 2436, 2688, 1792: tabBarHeight = 83 // "iPhone X/XS/11 Pro""iPhone XS Max/11 Pro Max""iPhone XR/ 11 "
-            default: break
-            }
-        }
     }
 }
 
-// MARK: - Animation change viewControllers
+// MARK: - UITabBarControllerDelegate -
 
 extension MainMenuTabController: UITabBarControllerDelegate {
     
@@ -112,6 +129,8 @@ extension MainMenuTabController: UITabBarControllerDelegate {
         return MyTransition(viewControllers: tabBarController.viewControllers)
     }
 }
+
+// MARK: - UIViewControllerAnimatedTransitioning -
 
 final class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
     

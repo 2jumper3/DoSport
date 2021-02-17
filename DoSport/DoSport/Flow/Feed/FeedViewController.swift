@@ -9,7 +9,7 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     
-    var coordinator: FeedCoordinator?
+    weak var coordinator: FeedCoordinator?
     private let viewModel: FeedViewModel
     private lazy var feedView = self.view as! FeedView
     private let collectionViewManager = FeedDataSource()
@@ -57,6 +57,12 @@ final class FeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 

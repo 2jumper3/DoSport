@@ -9,7 +9,7 @@ import UIKit
 
 final class RegistrationViewController: UIViewController {
     
-    var coordinator: RegistrationCoordinator?
+    weak var coordinator: RegistrationCoordinator?
     private let viewModel: RegistrationViewModel
     private lazy var registrationView = self.view as! RegistrationView
     
@@ -53,6 +53,12 @@ final class RegistrationViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
