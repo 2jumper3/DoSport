@@ -9,7 +9,7 @@ import UIKit
 
 final class SportGroundSelectionListViewController: UIViewController {
     
-    var coordinator: SportGroundSelectionListCoordinator?
+    weak var coordinator: SportGroundSelectionListCoordinator?
     private var viewModel: SportGroundSelectionListViewModel
     private lazy var sportGroundListView = view as! SportGroundSelectionListView
     private let tableManager = SportGroundSelectionListDataSource()
@@ -22,7 +22,7 @@ final class SportGroundSelectionListViewController: UIViewController {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
     init(
         viewModel: SportGroundSelectionListViewModel,
@@ -39,7 +39,7 @@ final class SportGroundSelectionListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = SportGroundSelectionListView()
@@ -66,6 +66,12 @@ final class SportGroundSelectionListViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         title = nil
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 

@@ -39,6 +39,7 @@ final class EventCreateCoordinator: Coordinator {
             completion: completion
         )
         
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
@@ -49,6 +50,7 @@ final class EventCreateCoordinator: Coordinator {
             completion: completion
         )
         
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
@@ -58,6 +60,7 @@ final class EventCreateCoordinator: Coordinator {
             completion: completion
         )
         
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
 }

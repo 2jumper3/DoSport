@@ -9,7 +9,7 @@ import UIKit
 
 final class DateSelectionViewController: UIViewController {
     
-    var coordinator: DateSelectionCoordinator?
+    weak var coordinator: DateSelectionCoordinator?
     private(set) var viewModel: DateSelectionViewModel
     
     private lazy var dateSelectionView = view as! DateSelectionView
@@ -54,6 +54,12 @@ final class DateSelectionViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 

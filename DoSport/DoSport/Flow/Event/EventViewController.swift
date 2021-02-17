@@ -9,7 +9,7 @@ import UIKit
 
 final class EventViewController: UIViewController {
     
-    var coordinator: EventCoordinator?
+    weak var coordinator: EventCoordinator?
     private(set) var viewModel: EventViewModel
     
     private lazy var eventView = view as! EventView
@@ -65,6 +65,12 @@ final class EventViewController: UIViewController {
         
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 

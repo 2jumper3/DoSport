@@ -6,22 +6,20 @@
 //
 
 import UIKit
-import RangeSeekSlider
 
 final class EventCreateViewController: UIViewController {
     
-    var coordinator: EventCreateCoordinator?
-    private(set) var viewModel: EventCreateViewModel
+    weak var coordinator: EventCreateCoordinator?
+    private let viewModel: EventCreateViewModel
     private lazy var eventCreateView = view as! EventCreateView
-    
-    private var tableManager = EventCreateDataSource()
+    private let tableManager = EventCreateDataSource()
     
     /// to provide title to the playground selection screen in order to define sport type. Used when tapped
-    /// playground selection cell in this class's delegate part below
+    /// playground selection cell in this class's EventCreateDataSourceDelegate part below
     private var sportTypeTitle: String?
     
     /// to provide title to the date selection screen in order to define in what playground user can book time.
-    /// Uused when tapped date selection cell in this class's delegate part below
+    /// Uused when tapped date selection cell in this class's EventCreateDataSourceDelegate part below
     private var sportGroundTitle: String?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -61,6 +59,12 @@ final class EventCreateViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 
