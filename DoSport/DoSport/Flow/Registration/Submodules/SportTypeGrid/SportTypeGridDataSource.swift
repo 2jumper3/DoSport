@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol SportTypeGridDataSourceDelegate: class {
+    func collectionView(didSelect sport: Sport)
+}
+
 final class SportTypeGridDataSource: NSObject {
     
-    var onDidSelectSport: ((Sport) -> Void)?
+    weak var delegate: SportTypeGridDataSourceDelegate?
     
     var viewModels: [Sport]
     
@@ -19,9 +23,10 @@ final class SportTypeGridDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension SportTypeGridDataSource: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModels.count
     }
@@ -30,31 +35,36 @@ extension SportTypeGridDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell: CollectionViewSportTypeCell = collectionView.cell(forRowAt: indexPath)
-        
         let viewModel = viewModels[indexPath.row]
+        
+        let cell: CollectionViewSportTypeCell = collectionView.cell(forRowAt: indexPath)
         cell.text = viewModel.title
         
         return cell
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension SportTypeGridDataSource: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         
-        guard let cell: CollectionViewSportTypeCell = collectionView.cellForItem(at: indexPath) as? CollectionViewSportTypeCell else { return }
-        
+        guard
+            let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewSportTypeCell
+        else {
+            return
+        }
         cell.bind()
-        onDidSelectSport?(viewModel)
+        delegate?.collectionView(didSelect: viewModel)
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDelegateFlowLayout -
 
 extension SportTypeGridDataSource: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

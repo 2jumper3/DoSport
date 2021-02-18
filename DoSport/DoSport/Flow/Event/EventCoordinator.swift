@@ -15,10 +15,9 @@ final class EventCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?, event: Event) {
-        let assembly = EventAssembly()
+        let assembly = EventAssembly(event: event)
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
-        rootViewController.event = event
     }
     
     func start() {

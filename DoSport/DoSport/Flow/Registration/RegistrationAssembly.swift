@@ -8,6 +8,7 @@
 import UIKit
 
 final class RegistrationAssembly: Assembly {
+    
     func makeModule() -> RegistrationViewController {
         let viewModel = RegistrationViewModel()
         let vc = RegistrationViewController(viewModel: viewModel)

@@ -60,6 +60,7 @@ final class CountryCodeListView: UIView {
 //MARK: - Public methods
 
 extension CountryCodeListView {
+    
     func updateTableViewData(dataSource: (UITableViewDelegate & UITableViewDataSource)) {
         if !emptyView.isHidden || tableView.isHidden {
             emptyView.isHidden = true

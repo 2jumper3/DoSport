@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol CountryCodeListDataSourceDelegate: class {
+    func tableView(didSelect country: Country)
+}
+
 final class CountryCodeListDataSource: NSObject {
     
-    var onCountryDidSelect: ((Country) -> Swift.Void)?
+    weak var delegate: CountryCodeListDataSourceDelegate?
     
     var viewModels: [CountryCodeListSectionModel]
     
@@ -19,9 +23,10 @@ final class CountryCodeListDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension CountryCodeListDataSource: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModels.count
     }
@@ -49,12 +54,13 @@ extension CountryCodeListDataSource: UITableViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension CountryCodeListDataSource: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.section].countries[indexPath.row]
-        onCountryDidSelect?(viewModel)
+        delegate?.tableView(didSelect: viewModel)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

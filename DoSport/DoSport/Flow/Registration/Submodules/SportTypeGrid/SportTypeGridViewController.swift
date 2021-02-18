@@ -9,21 +9,18 @@ import UIKit
 
 final class SportTypeGridViewController: UIViewController {
     
-    var coordinator: SportTypeGridCoordinator?
+    weak var coordinator: SportTypeGridCoordinator?
     private let viewModel: SportTypeGridViewModel
-    
     private lazy var sportTypeListView = self.view as! SportTypeGridView
-    
     private lazy var collectionManager = SportTypeGridDataSource()
     
-    private lazy var backBarButton: DSBarBackButton = {
-        $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        return $0
-    }(DSBarBackButton())
+    private lazy var backBarButton = DSBarBackButton()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    //MARK: Init
     
     init(viewModel: SportTypeGridViewModel) {
         self.viewModel = viewModel
@@ -34,6 +31,8 @@ final class SportTypeGridViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Life cycle
+    
     override func loadView() {
         let view = SportTypeGridView()
         view.delegate = self
@@ -42,11 +41,13 @@ final class SportTypeGridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Texts.SportTypeList.title
+        title = Texts.SportTypeGrid.title
         
+        collectionManager.delegate = self
+        
+        backBarButton.addTarget(self, action: #selector(handleBackButton))
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
         
-        setupCollectionManagerBiding()
         setupViewModelBiding()
         
         viewModel.prepareData()
@@ -56,16 +57,17 @@ final class SportTypeGridViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension SportTypeGridViewController {
-    func setupCollectionManagerBiding() {
-        collectionManager.onDidSelectSport = { [weak self] sport in
-            self?.viewModel.handleDataSelection(sport)
-        }
-    }
     
     func setupViewModelBiding() {
         viewModel.onDataDidPrepare = { [weak self] sports in
@@ -79,9 +81,18 @@ private extension SportTypeGridViewController {
     }
 }
 
-//MARK: - SportTypeListViewDelegate
+//MARK: Actions
 
-extension SportTypeGridViewController: SportTypeListViewDelegate {
+@objc private extension SportTypeGridViewController {
+    func handleBackButton() {
+        coordinator?.goBack()
+    }
+}
+
+//MARK: - SportTypeGridViewDelegate -
+
+extension SportTypeGridViewController: SportTypeGridViewDelegate {
+    
     func didTapSaveButton() {
         viewModel.saveData() { [weak self] in
             self?.coordinator?.goToFeedModule()
@@ -89,11 +100,13 @@ extension SportTypeGridViewController: SportTypeListViewDelegate {
     }
 }
 
-//MARK: - Actions
+//MARK: - SportTypeListDataSourceDelegate -
 
-@objc
-private extension SportTypeGridViewController {
-    func handleBackButton() {
-        coordinator?.goBack()
+extension SportTypeGridViewController: SportTypeGridDataSourceDelegate {
+ 
+    func collectionView(didSelect sport: Sport) {
+        viewModel.handleDataSelection(sport)
     }
 }
+
+

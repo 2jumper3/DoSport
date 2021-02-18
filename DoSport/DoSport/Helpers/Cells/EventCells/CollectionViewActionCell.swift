@@ -6,21 +6,15 @@
 //
 
 import UIKit
-import SnapKit
 
 final class CollectionViewActionCell: UICollectionViewCell {
     
-    private enum ButtonState {
-        case selected, notSelected
-    }
+    var onInviteButtonClicked: (() -> Void)?
+    var onParticipateButtonClicked: (() -> Void)?
     
-    private var participateButtonState: ButtonState = .notSelected {
-        didSet {
-            setParticipateButotnState()
-        }
-    }
+    //MARK: Outlets
     
-    private(set) lazy var inviteButton: UIButton = {
+    private lazy var inviteButton: UIButton = {
         $0.setTitle(Texts.Event.invite, for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.white.cgColor
@@ -31,25 +25,19 @@ final class CollectionViewActionCell: UICollectionViewCell {
         return $0
     }(UIButton(type: .system))
     
-    private(set) lazy var participateButton: UIButton = {
-        $0.layer.cornerRadius = 8
-        $0.setTitle(Texts.Event.participate, for: .normal)
-        $0.backgroundColor = Colors.lightBlue
-        $0.setTitleColor(.white, for: .normal)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.titleLabel?.font = Fonts.sfProRegular(size: 18)
-        return $0
-    }(UIButton(type: .system))
+    private lazy var participateButton = DSEventParticipateButton(state: .notSeleted)
     
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        contentView.addSubviews(
-            inviteButton,
-            participateButton
-        )
+        backgroundColor = Colors.darkBlue
+        
+        inviteButton.addTarget(self, action: #selector(handleInviteButton))
+        participateButton.addTarget(self, action: #selector(handleParticipateButton))
+        
+        contentView.addSubviews(inviteButton, participateButton)
     }
     
     required init?(coder: NSCoder) {
@@ -71,38 +59,17 @@ final class CollectionViewActionCell: UICollectionViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Action
 
-extension CollectionViewActionCell {
+@objc private extension CollectionViewActionCell {
     
-    func bindParticipateButton() { // FIXME: fix button state change when click
-        switch participateButtonState {
-        case .selected:
-            participateButtonState = .notSelected
-        case .notSelected:
-            participateButtonState = .selected
-        }
+    func handleParticipateButton(_ button: DSEventParticipateButton) {
+        button.bind()
+        onParticipateButtonClicked?()
     }
-}
-
-//MARK: - Private methods
-
-private extension CollectionViewActionCell {
     
-    func setParticipateButotnState() {
-        switch participateButtonState {
-        case .selected:
-            UIView.animate(withDuration: 0.25) { [self] in
-                participateButton.setTitle(Texts.Event.participating, for: .normal)
-                participateButton.backgroundColor = Colors.lightBlue_02
-            }
-        case .notSelected:
-            UIView.animate(withDuration: 0.25) { [self] in
-                participateButton.setTitle(Texts.Event.participate, for: .normal)
-                participateButton.backgroundColor = Colors.lightBlue
-            }
-        }
-        layoutIfNeeded()
+    func handleInviteButton() {
+        onInviteButtonClicked?()
     }
 }
 

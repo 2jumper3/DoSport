@@ -6,35 +6,25 @@
 //
 
 import UIKit
-import SnapKit
 
 final class CollectionViewMemberCell: UICollectionViewCell {
     
-    private(set) lazy var memberAvatarImageView: UIImageView = {
-        $0.layer.cornerRadius = 8
-        $0.clipsToBounds = true
-        $0.image = Icons.Feed.defaultAvatar
+    private let tableView: UITableView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isScrollEnabled = false
+        $0.backgroundColor = Colors.darkBlue
+        $0.separatorStyle = .none
+        $0.registerClass(TableViewMemberCell.self)
         return $0
-    }(UIImageView())
+    }(UITableView(frame: .zero, style: .plain))
     
-    private(set) var memberNameLabel: UILabel = {
-        $0.font = Fonts.sfProRegular(size: 14)
-        $0.textColor = .white
-        $0.text = "Kamol"
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(UILabel())
-    
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        contentView.addSubviews(
-            memberAvatarImageView,
-            memberNameLabel
-        )
+        backgroundColor = Colors.darkBlue
+        contentView.addSubview(tableView)
     }
     
     required init?(coder: NSCoder) {
@@ -44,14 +34,22 @@ final class CollectionViewMemberCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        memberAvatarImageView.snp.makeConstraints {
-            $0.left.centerY.height.equalToSuperview()
-            $0.width.equalTo(memberAvatarImageView.snp.height)
-        }
-        
-        memberNameLabel.snp.makeConstraints {
-            $0.height.centerY.equalToSuperview()
-            $0.left.equalTo(memberAvatarImageView.snp.right).offset(16)
-        }
+        tableView.snp.makeConstraints {  $0.edges.equalToSuperview() }
+    }
+}
+
+//MARK: Public API
+
+extension CollectionViewMemberCell {
+    
+    func updataTAbleDataSource(dataSource: (UITableViewDataSource & UITableViewDelegate)) {
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+        tableView.reloadData()
+        layoutIfNeeded()
+    }
+    
+    func getTableView() -> UITableView {
+        return tableView
     }
 }

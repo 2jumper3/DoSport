@@ -18,13 +18,7 @@ enum TabBarItem: String, CaseIterable {
     var viewController: UIViewController {
         switch self {
         case .home:
-            let navigationController = DSNavigationController()
-            let coordinator = FeedCoordinator(navController: navigationController)
-            coordinator.start()
-            
-            guard let navController = coordinator.navigationController else { return UIViewController() }
-            
-            return navController
+            return FeedAssembly().makeModule()
         case .map:
             return MainViewController()
         case .chat:

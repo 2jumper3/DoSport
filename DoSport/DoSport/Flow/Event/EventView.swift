@@ -6,11 +6,22 @@
 //
 
 import UIKit
-import SnapKit
 
+protocol EventViewDelegate: class {
+    func inputViewSendButtonClicked()
+}
+    
 final class EventView: UIView {
     
+    weak var delegate: EventViewDelegate?
+    
+    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
+    
+    //MARK: Outlets
+    
     private let navBarSeparatorView = DSSeparatorView()
+    
+    private let messageInputView = DSMessageInputView()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -18,24 +29,23 @@ final class EventView: UIView {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = Colors.darkBlue
         collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.registerClass(CollectionViewActionCell.self)
         collectionView.registerClass(CollectionViewToogleCell.self)
-        collectionView.registerClass(CollectionViewMessageCell.self)
-        collectionView.registerClass(CollectionViewMemberCell.self)
+        collectionView.registerClass(CollectionViewChatrFrameCell.self)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    private lazy var messageInputView = DSMessageInputView()
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
+        
+        messageInputView.delegate = self
         
         addSubviews(navBarSeparatorView, collectionView, messageInputView)
     }
@@ -64,12 +74,12 @@ final class EventView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.08)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-16)
+            $0.bottom.equalTo(snp.bottom).offset(-tabBarHeight)
         }
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension EventView {
     
@@ -79,4 +89,38 @@ extension EventView {
         collectionView.reloadData()
         layoutIfNeeded()
     }
+    
+    func getCollectionView() -> UICollectionView {
+        return self.collectionView
+    }
+    
+    func setCollectionView(isScrollingEnabled value: Bool) {
+        self.collectionView.isScrollEnabled = value
+    }
+    
+    func getInputViewText() -> String {
+        return messageInputView.getInputText()
+    }
+    
+    func setInputView(text: String) {
+        messageInputView.setInput(text: text)
+    }
+    
+    func makeInputTextViewFirstResponder() {
+        messageInputView.makeTextFieldFirstResponder()
+    }
+    
+    func removeInputTextViewFirstResponder() {
+        messageInputView.removeTextFieldFirstResponder()
+    }
 }
+
+//MARK: - DSTextInputViewDelegate -
+
+extension EventView: DSTextInputViewDelegate {
+    
+    func sendTextButtonClicked() {
+        delegate?.inputViewSendButtonClicked()
+    }
+}
+ 

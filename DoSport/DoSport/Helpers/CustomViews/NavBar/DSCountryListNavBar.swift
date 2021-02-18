@@ -6,21 +6,24 @@
 //
 
 import UIKit
-import SnapKit
+
+protocol DSCountryListNavBarDelegate: class {
+    func searchButtonClicked(with text: String)
+    func searchTextChanged(text: String)
+    func navBarBackButtonClicked()
+}
+
+enum CountryListNavBarState {
+    case active, notActive
+}
 
 final class DSCountryListNavBar: UIView {
     
-    var onSearchButtonDidTap: ((String) -> Swift.Void)?
-    var onSeachBarDidChageText: ((String) -> Swift.Void)?
-    var onBackButtonDidTap: (() -> Swift.Void)?
+    weak var delegate: DSCountryListNavBarDelegate?
     
-    enum State {
-        case active, notActive
-    }
-    
-    var state: State = .notActive {
+    var navBarState: CountryListNavBarState = .notActive {
         didSet {
-            setState()
+            handleStateChange()
         }
     }
     
@@ -51,12 +54,14 @@ final class DSCountryListNavBar: UIView {
         return UIView.layoutFittingExpandedSize
     }
     
-    // MARK: - Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
+        
         backgroundColor = Colors.darkBlue
         translatesAutoresizingMaskIntoConstraints = false
+        
         searchBar.delegate = self
         
         addSubviews(backButton, titleLabel, searchBar)
@@ -92,38 +97,38 @@ final class DSCountryListNavBar: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension DSCountryListNavBar {
-    func bind(state: State) {
-        self.state = state
+    
+    func bind(state: CountryListNavBarState) {
+        navBarState = state
     }
     
-    func getSeachBar() -> UISearchBar {
-        return self.searchBar
+    func resignSearchBarFirstResponder() {
+        searchBar.resignFirstResponder()
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-extension DSCountryListNavBar {
+@objc extension DSCountryListNavBar {
+    
     func handleBackButton() {
-        hideKeyboard(for: searchBar) {
-            self.onBackButtonDidTap?()
-        }
+        searchBar.resignFirstResponder()
+        delegate?.navBarBackButtonClicked()
     }
 }
 
-//MARK: - Private Methods
+//MARK: Private API
 
 private extension DSCountryListNavBar {
-    func setState() {
-        switch self.state {
+    
+    func handleStateChange() {
+        switch navBarState {
         case .active:
             performExpandAnimation()
-        case .notActive:
-            print(#function)
+        default: break // FIXME: finish this
 //            performShrinkAnimation()
         }
     }
@@ -151,25 +156,26 @@ private extension DSCountryListNavBar {
 //    }
 }
 
-//MARK: - UISearchBarDelegate
+//MARK: - UISearchBarDelegate -
 
 extension DSCountryListNavBar: UISearchBarDelegate {
+    
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        if state == .notActive {
+        if navBarState == .notActive {
             bind(state: .active)
         }
         return true
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        onSeachBarDidChageText?(searchText)
+        delegate?.searchTextChanged(text: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        hideKeyboard(for: searchBar) {
-            self.onSearchButtonDidTap?(text)
-        }
+        
+        searchBar.resignFirstResponder()
+        delegate?.searchButtonClicked(with: text)
     }
 }
 

@@ -96,6 +96,9 @@ public enum Icons {
         static var user: UIImage {
             return Icons.image(named: "user")
         }
+        
+        static let search: UIImage = Icons.image(named: "search")
+        static let share: UIImage = Icons.image(named: "share")
     }
     
     //MARK: - Event screen
@@ -105,10 +108,42 @@ public enum Icons {
             return Icons.image(named: "message_send_button")
         }
     }
+    
+    //MARK: - EventCreate screen
+    
+    enum EventCreate {
+        static let cancel: UIImage = Icons.image(named: "cancel")
+        static let closed: UIImage = Icons.image(named: "closed")
+        static let next: UIImage = Icons.image(named: "next")
+        static let checkMark: UIImage = Icons.image(named: "check_mark")
+        static let sliderThumb: UIImage = Icons.image(named: "sliderThumb")
+    }
+    
+    //MARK: - SportGroundSelectionList screen
+    
+    enum SportGroundSelectionList {
+        static let filter = Icons.image(named: "filter")
+        static let map = Icons.image(named: "map")
+    }
+    
+    //MARK: - SportTypeList screen
+    
+    enum SportTypeList {
+        static let checkMark = Common.checkMark
+        static let backButton = Common.backButton
+    }
 }
 
 extension Icons {
+    
+    enum Common {
+        static let checkMark: UIImage = Icons.image(named: "check_mark")
+        static let backButton = image(named: "back_button")
+    }
+    
     static func image(named name: String) -> UIImage {
         UIImage(named: name) ?? UIImage()
     }
 }
+
+

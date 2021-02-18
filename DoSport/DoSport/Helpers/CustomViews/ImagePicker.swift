@@ -42,9 +42,10 @@ final class ImagePicker: NSObject {
     }
 }
 
-// MARK: - Get access to camera or photo library
+// MARK: - Get access to camera or photo library -
 
 extension ImagePicker {
+    
     private func showAlert(targetName: String, completion: ((Bool) -> Void)?) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -130,11 +131,11 @@ extension ImagePicker {
     }
 }
 
-// MARK: - UINavigationControllerDelegate
+// MARK: - UINavigationControllerDelegate -
 
 extension ImagePicker: UINavigationControllerDelegate { }
 
-// MARK: - UIImagePickerControllerDelegate
+// MARK: - UIImagePickerControllerDelegate -
 
 extension ImagePicker: UIImagePickerControllerDelegate {
     

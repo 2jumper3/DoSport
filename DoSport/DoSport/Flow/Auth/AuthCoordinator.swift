@@ -14,7 +14,7 @@ final class AuthCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController) {
+    init(navController: UINavigationController?) {
         let assembly = AuthAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
@@ -27,20 +27,19 @@ final class AuthCoordinator: Coordinator {
     
     func goToCodeEntryModule(_ phoneNumber: String) {
         let coordiator = CodeEntryCoordinator(navController: navigationController, phoneNumber)
+        self.store(coordinator: coordiator)
         coordiator.start()
     }
     
     func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
         let coordinator = CountryCodeListCoordinator(navController: navigationController, compilation: compilation)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
     func goToPasswordEntryModule() {
         let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
+        store(coordinator: coordinator)
         coordinator.start()
-    }
-    
-    func go() {
-        let _ = 10
     }
 }

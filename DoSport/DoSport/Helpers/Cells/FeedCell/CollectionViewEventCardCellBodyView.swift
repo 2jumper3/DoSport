@@ -43,7 +43,6 @@ final class CollectionViewEventCardCellBodyView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
-    
 
     private(set) var locationImageView: UIImageView = {
         $0.image = Icons.Feed.location

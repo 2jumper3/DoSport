@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SnapKit
 
 final class CollectionViewSportTypeCell: UICollectionViewCell {
     
     enum State {
-        case normal, selected
+        case notSelected, selected
     }
     
     var text: String? {
@@ -19,11 +18,13 @@ final class CollectionViewSportTypeCell: UICollectionViewCell {
         set { titleLabel.text = newValue }
     }
     
-    private var cellState: State = .normal {
+    private var cellState: State = .notSelected {
         didSet {
             handleStateChange()
         }
     }
+    
+    //MARK: Outlets
     
     private let titleLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 16)
@@ -33,7 +34,7 @@ final class CollectionViewSportTypeCell: UICollectionViewCell {
         return $0
     }(UILabel())
 
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +42,7 @@ final class CollectionViewSportTypeCell: UICollectionViewCell {
         layer.cornerRadius = 8
         layer.borderWidth = 1
         layer.borderColor = Colors.dirtyBlue.cgColor
+        backgroundColor = .clear
         contentView.addSubview(titleLabel)
     }
     
@@ -57,25 +59,27 @@ final class CollectionViewSportTypeCell: UICollectionViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension CollectionViewSportTypeCell {
+    
     func bind() {
         switch cellState {
-        case .normal:
+        case .notSelected:
             cellState = .selected
         case .selected:
-            cellState = .normal
+            cellState = .notSelected
         }
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension CollectionViewSportTypeCell {
+    
     func handleStateChange() {
         switch cellState {
-        case .normal:
+        case .notSelected:
             backgroundColor = .clear
         case .selected:
             backgroundColor = Colors.lightBlue

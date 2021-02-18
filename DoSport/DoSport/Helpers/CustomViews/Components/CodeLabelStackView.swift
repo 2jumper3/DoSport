@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol CodeLabelStackViewDelegate: class {
     func didEnterCode(_ code: String) 
@@ -18,6 +17,8 @@ final class CodeLabelStackView: UIView {
     
     var code: String = ""
     
+    //MARK: Outlets
+    
     private lazy var stackView: UIStackView = {
         $0.axis = .horizontal
         $0.distribution = .fillEqually
@@ -27,51 +28,23 @@ final class CodeLabelStackView: UIView {
         return $0
     }(UIStackView())
     
-    private lazy var textField1: UITextField = {
-        $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
-        return $0
-    }(UITextField.makeCodeEntryTextField())
+    private var textFields: [Int: UITextField] = [:]
     
-    private lazy var textField2: UITextField = {
-        $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
-        return $0
-    }(UITextField.makeCodeEntryTextField())
-    
-    private lazy var textField3: UITextField = {
-        $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
-        return $0
-    }(UITextField.makeCodeEntryTextField())
-    
-    private lazy var textField4: UITextField = {
-        $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
-        return $0
-    }(UITextField.makeCodeEntryTextField())
-    
-    private lazy var textField5: UITextField = {
-        $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
-        return $0
-    }(UITextField.makeCodeEntryTextField())
-    
-    private lazy var textField6: UITextField = {
-        $0.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
-        return $0
-    }(UITextField.makeCodeEntryTextField())
-    
-    //MARK: - Init
+    //MARK: Init
 
     init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.addArrangedSubviews(
-            textField1,
-            textField2,
-            textField3,
-            textField4,
-            textField5,
-            textField6
-        )
+        for i in 1...6 {
+            let textField = UITextField.makeCodeEntryTextField()
+            textField.tag = i
+            self.textFields[i] = textField
+            textField.addTarget(self, action: #selector(handleTextField))
+            stackView.addArrangedSubview(textField)
+        }
+        
         addSubview(stackView)
     }
     
@@ -88,23 +61,25 @@ final class CodeLabelStackView: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension CodeLabelStackView {
     
-    func bind() {
-        
+    func clearTextFields() {
+        textFields.values.forEach { $0.text = "" }
     }
     
     func becomeTextFieldResponder() {
-        textField1.isUserInteractionEnabled = true
-        textField1.becomeFirstResponder()
+        guard let textFiedl = textFields[1] else { return }
+        
+        textFiedl.isUserInteractionEnabled = true
+        textFiedl.becomeFirstResponder()
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc extension CodeLabelStackView {
+@objc private extension CodeLabelStackView {
     
     func handleTextField(_ textField: UITextField) {
         if var text = textField.text, text != "" {
@@ -120,69 +95,69 @@ extension CodeLabelStackView {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension CodeLabelStackView {
     
     func handleTextDidAdded(in textField: UITextField) {
-        if textField == textField1 {
-            textField2.isUserInteractionEnabled = true
-            textField2.text = " "
-            textField2.becomeFirstResponder()
-            textField1.isUserInteractionEnabled = false
-        } else if textField == textField2 {
-            textField3.isUserInteractionEnabled = true
-            textField3.text = " "
-            textField3.becomeFirstResponder()
-            textField2.isUserInteractionEnabled = false
-        } else if textField == textField3 {
-            textField4.isUserInteractionEnabled = true
-            textField4.text = " "
-            textField4.becomeFirstResponder()
-            textField3.isUserInteractionEnabled = false
-        } else if textField == textField4 {
-            textField5.isUserInteractionEnabled = true
-            textField5.text = " "
-            textField5.becomeFirstResponder()
-            textField4.isUserInteractionEnabled = false
-        } else if textField == textField5 {
-            textField6.isUserInteractionEnabled = true
-            textField6.text = " "
-            textField6.becomeFirstResponder()
-            textField5.isUserInteractionEnabled = false
-        } else if textField == textField6 {
-            textField6.resignFirstResponder()
-            textField6.isUserInteractionEnabled = false
+        if let textFiedl1 = textFields[1], textField == textFiedl1, let textFiedl2 = textFields[2] {
+            textFiedl2.isUserInteractionEnabled = true
+            textFiedl2.text = " "
+            textFiedl2.becomeFirstResponder()
+            textFiedl1.isUserInteractionEnabled = false
+        } else if let textFiedl2 = textFields[2], textField == textFiedl2, let textFiedl3 = textFields[3] {
+            textFiedl3.isUserInteractionEnabled = true
+            textFiedl3.text = " "
+            textFiedl3.becomeFirstResponder()
+            textFiedl2.isUserInteractionEnabled = false
+        } else if let textFiedl3 = textFields[3], textField == textFiedl3, let textFiedl4 = textFields[4] {
+            textFiedl4.isUserInteractionEnabled = true
+            textFiedl4.text = " "
+            textFiedl4.becomeFirstResponder()
+            textFiedl3.isUserInteractionEnabled = false
+        } else if let textFiedl4 = textFields[4], textField == textFiedl4, let textFiedl5 = textFields[5] {
+            textFiedl5.isUserInteractionEnabled = true
+            textFiedl5.text = " "
+            textFiedl5.becomeFirstResponder()
+            textFiedl4.isUserInteractionEnabled = false
+        } else if let textFiedl5 = textFields[5], textField == textFiedl5, let textFiedl6 = textFields[6] {
+            textFiedl6.isUserInteractionEnabled = true
+            textFiedl6.text = " "
+            textFiedl6.becomeFirstResponder()
+            textFiedl5.isUserInteractionEnabled = false
+        } else if let textFiedl6 = textFields[6], textField == textFiedl6 {
+            textFiedl6.resignFirstResponder()
+            textFiedl6.isUserInteractionEnabled = false
             delegate?.didEnterCode(code)
         }
     }
     
     func handleTextDidRemoved(in textField: UITextField) {
-        if textField == textField2 {
-            textField1.isUserInteractionEnabled = true
-            textField1.becomeFirstResponder()
-            textField1.text = ""
-            textField2.isUserInteractionEnabled = false
-        } else if textField == textField3 {
-            textField2.isUserInteractionEnabled = true
-            textField2.becomeFirstResponder()
-            textField2.text = " "
+        if let textFiedl2 = textFields[2], textField == textFiedl2, let textFiedl1 = textFields[1] {
+            textFiedl1.isUserInteractionEnabled = true
+            textFiedl1.becomeFirstResponder()
+            textFiedl1.text = ""
+            textFiedl2.isUserInteractionEnabled = false
+        } else if let textField3 = textFields[3], textField == textField3, let textFiedl2 = textFields[2] {
+            textFiedl2.isUserInteractionEnabled = true
+            textFiedl2.becomeFirstResponder()
+            textFiedl2.text = " "
             textField3.isUserInteractionEnabled = false
-        } else if textField == textField4 {
-            textField3.isUserInteractionEnabled = true
-            textField3.becomeFirstResponder()
-            textField3.text = " "
-            textField4.isUserInteractionEnabled = false
-        } else if textField == textField5 {
-            textField4.isUserInteractionEnabled = true
-            textField4.becomeFirstResponder()
-            textField4.text = " "
-            textField5.isUserInteractionEnabled = false
-        }  else if textField == textField6 {
-            textField5.isUserInteractionEnabled = true
-            textField5.becomeFirstResponder()
-            textField5.text = " "
-            textField6.isUserInteractionEnabled = false
+        } else if let textFiedl4 = textFields[4], textField == textFiedl4, let textFiedl3 = textFields[3] {
+            textFiedl3.isUserInteractionEnabled = true
+            textFiedl3.becomeFirstResponder()
+            textFiedl3.text = " "
+            textFiedl4.isUserInteractionEnabled = false
+        } else if let textFiedl5 = textFields[5], textField == textFiedl5, let textFiedl4 = textFields[4] {
+            textFiedl4.isUserInteractionEnabled = true
+            textFiedl4.becomeFirstResponder()
+            textFiedl4.text = " "
+            textFiedl5.isUserInteractionEnabled = false
+        } else if let textFiedl6 = textFields[6], textField == textFiedl6, let textFiedl5 = textFields[5] {
+            textFiedl5.isUserInteractionEnabled = true
+            textFiedl5.becomeFirstResponder()
+            textFiedl5.text = " "
+            textFiedl6.isUserInteractionEnabled = false
         }
     }
 }
