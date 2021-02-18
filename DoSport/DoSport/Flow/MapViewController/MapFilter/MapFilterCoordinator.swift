@@ -13,7 +13,7 @@ class MapFilterCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController) {
+    init(navController: UINavigationController?) {
         let assembly = MapFilterAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController

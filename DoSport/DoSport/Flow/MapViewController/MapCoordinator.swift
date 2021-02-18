@@ -23,9 +23,8 @@ class MapCoordinator: Coordinator {
         rootViewController.coordinator = self
         navigationController?.viewControllers = [rootViewController]
     }
-    func goToFilterViewController(navController: UINavigationController) {
-        let assembly = MapFilterAssembly()
-        let vc = assembly.makeModule()
-        navController.pushViewController(vc, animated: true)
+    func goToFilterViewController() {
+        let coordinator = MapFilterCoordinator(navController: self.navigationController)
+        coordinator.start()
     }
 }
