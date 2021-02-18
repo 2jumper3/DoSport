@@ -6,20 +6,30 @@
 //
 
 import UIKit
-import SnapKit
+
+protocol DSTextInputViewDelegate: class {
+    func sendTextButtonClicked()
+    
+}
 
 final class DSMessageInputView: UIView {
     
-    private let topSeparatorView = DSSeparatorView()
-    private(set) lazy var messageSendButton = DSMessageSendButton()
-    private(set) lazy var textField = UITextField.makeTextFieldWith(placeholder: Texts.Event.messages)
+    weak var delegate: DSTextInputViewDelegate?
     
-    //MARK: - Init
+    //MARK: Outlets
+    
+    private let topSeparatorView = DSSeparatorView()
+    private lazy var messageSendButton = DSMessageSendButton()
+    private lazy var textField = UITextField.makeTextFieldWith(placeholder: Texts.Event.messages)
+    
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         
         backgroundColor = Colors.darkBlue
+        
+        messageSendButton.addTarget(self, action: #selector(handleSendTextButton))
         
         addSubviews(topSeparatorView, messageSendButton, textField)
     }
@@ -48,5 +58,37 @@ final class DSMessageInputView: UIView {
             $0.right.equalToSuperview().offset(-10)
             $0.left.equalTo(textField.snp.right).offset(10)
         }
+    }
+}
+
+//MARK: Public API
+
+extension DSMessageInputView {
+    
+    func getInputText() -> String {
+        guard let text = textField.text else { return "" }
+        
+        return text
+    }
+    
+    func setInput(text: String) {
+        self.textField.text = text
+    }
+    
+    func makeTextFieldFirstResponder() {
+        textField.becomeFirstResponder()
+    }
+    
+    func removeTextFieldFirstResponder() {
+        textField.resignFirstResponder()
+    }
+}
+
+//MARK: Actions
+
+@objc private extension DSMessageInputView {
+    
+    func handleSendTextButton() {
+        delegate?.sendTextButtonClicked()
     }
 }

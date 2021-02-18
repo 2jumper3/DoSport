@@ -11,6 +11,7 @@ public enum Texts {
     enum Common {
         static let save = "Сохранить"
         static let date = "Дата и время"
+        static let invite = "Пригласить"
     }
 }
 
@@ -136,13 +137,17 @@ extension Texts {
         
         static let free = "Бесплатно"
         static let km3 = "3 км"
+        
+        static let cancel = "Отменить"
+        static let invite = Common.invite
+        static let selectChat = "Выберите чаты"
     }
 }
 
 //MARK: - Event screen
 extension Texts {
     enum Event {
-        static let invite = "Пригласить"
+        static let invite = Common.invite
         static let participate = "Участвовать"
         static let participating = "Ты в игре!"
         

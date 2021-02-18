@@ -6,15 +6,24 @@
 //
 
 import UIKit
-import SnapKit
 
+protocol EventViewDelegate: class {
+    func inputViewSendButtonClicked()
+}
+    
 final class EventView: UIView {
+    
+    weak var delegate: EventViewDelegate?
     
     private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
     
+    //MARK: Outlets
+    
     private let navBarSeparatorView = DSSeparatorView()
     
-    private(set) lazy var collectionView: UICollectionView = {
+    private let messageInputView = DSMessageInputView()
+    
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
@@ -24,19 +33,19 @@ final class EventView: UIView {
         collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.registerClass(CollectionViewActionCell.self)
         collectionView.registerClass(CollectionViewToogleCell.self)
-        collectionView.registerClass(CollectionViewActivitySectionCell.self)
+        collectionView.registerClass(CollectionViewChatrFrameCell.self)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    private(set) lazy var messageInputView = DSMessageInputView()
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
+        
+        messageInputView.delegate = self
         
         addSubviews(navBarSeparatorView, collectionView, messageInputView)
     }
@@ -70,7 +79,7 @@ final class EventView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension EventView {
     
@@ -80,4 +89,38 @@ extension EventView {
         collectionView.reloadData()
         layoutIfNeeded()
     }
+    
+    func getCollectionView() -> UICollectionView {
+        return self.collectionView
+    }
+    
+    func setCollectionView(isScrollingEnabled value: Bool) {
+        self.collectionView.isScrollEnabled = value
+    }
+    
+    func getInputViewText() -> String {
+        return messageInputView.getInputText()
+    }
+    
+    func setInputView(text: String) {
+        messageInputView.setInput(text: text)
+    }
+    
+    func makeInputTextViewFirstResponder() {
+        messageInputView.makeTextFieldFirstResponder()
+    }
+    
+    func removeInputTextViewFirstResponder() {
+        messageInputView.removeTextFieldFirstResponder()
+    }
 }
+
+//MARK: - DSTextInputViewDelegate -
+
+extension EventView: DSTextInputViewDelegate {
+    
+    func sendTextButtonClicked() {
+        delegate?.inputViewSendButtonClicked()
+    }
+}
+ 

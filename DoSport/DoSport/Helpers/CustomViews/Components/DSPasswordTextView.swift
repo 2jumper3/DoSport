@@ -28,7 +28,7 @@ final class DSPasswordTextView: UIView {
     
     // MARK: Outlets
     
-    private(set) lazy var textField: DSTextField = {
+    private lazy var textField: DSTextField = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.borderColor = UIColor.clear.cgColor
         $0.layer.borderWidth = 0

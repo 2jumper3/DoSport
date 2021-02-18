@@ -10,20 +10,19 @@ import UIKit
 final class EventViewController: UIViewController {
     
     weak var coordinator: EventCoordinator?
-    private(set) var viewModel: EventViewModel
-    
+    private let viewModel: EventViewModel
     private lazy var eventView = view as! EventView
+    private let eventCollectionManager = EventDataSource()
     
-    var event: Event?
-    
-    private lazy var eventCollectionManager = EventDataSource()
+    private let event: Event
     
     private var userToReplyName: String = ""
 
-    // MARK: - Init
+    // MARK: Init
     
-    init(viewModel: EventViewModel) {
+    init(viewModel: EventViewModel, event: Event) {
         self.viewModel = viewModel
+        self.event = event
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,10 +30,12 @@ final class EventViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = EventView()
+        view.delegate = self
+        eventCollectionManager.delegate = self
         self.view = view
     }
     
@@ -44,14 +45,7 @@ final class EventViewController: UIViewController {
         title = ""
         
         setupViewModelBindings()
-        setupCollectionManagerBindings()
         setupKeyboardNotification()
-        
-        eventView.messageInputView.messageSendButton.addTarget(
-            self,
-            action: #selector(handleSendMessageButton),
-            for: .touchUpInside
-        )
         
         viewModel.prepareEventData(event: self.event)
     }
@@ -74,7 +68,7 @@ final class EventViewController: UIViewController {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension EventViewController {
     
@@ -87,80 +81,6 @@ private extension EventViewController {
     
     func updateView() {
         eventView.updateCollectionDataSource(dateSource: self.eventCollectionManager)
-    }
-    
-    func setupCollectionManagerBindings() {
-        eventCollectionManager.onDidTapInviteButton = { button in
-            print(#function)
-        }
-        
-        eventCollectionManager.onDidTapParticipateButton = {
-            print(#function)
-        }
-        
-        eventCollectionManager.onDidSelectSegmentedControl = { index, collectionView in
-            guard let collectionView = collectionView else { return }
-            
-            let indexPath = IndexPath(row: index, section: 0)
-            
-            collectionView.isPagingEnabled = false
-            collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-            collectionView.isPagingEnabled = true
-        }
-        
-        eventCollectionManager.onDidScroll = { [unowned self] commentsTableV, membersTableV in
-            let indexPath = IndexPath(row: 3, section: 0)
-
-            let cell: CollectionViewToogleCell = self.eventView.collectionView.cell(forRowAt: indexPath)
-            let cellOriginInRoot = eventView.collectionView.convert(cell.frame, to: eventView)
-            
-            if cellOriginInRoot.maxY <= eventView.collectionView.frame.maxY {
-                
-                eventView.collectionView.isScrollEnabled = false
-                commentsTableV?.isScrollEnabled = true
-                membersTableV?.isScrollEnabled = true
-            }
-        }
-        
-        eventCollectionManager.onCommentsDidScroll = { [unowned self] commentsTableV in
-            guard let tableV = commentsTableV else { return }
-            
-            let indexPath = IndexPath(row: 0, section: 0)
-            
-            if let cell: TableViewCommentCell = tableV.cellForRow(at: indexPath) as? TableViewCommentCell {
-
-                let cellOriginInRoot = tableV.convert(cell.frame, to: tableV)
-                
-                if cellOriginInRoot.origin.y > tableV.bounds.origin.y {
-                    tableV.isScrollEnabled = false
-                    eventView.collectionView.isScrollEnabled = true
-                }
-            }
-        }
-        
-        eventCollectionManager.onMembersDidScroll = { [unowned self] membersTableV in
-            guard let tableV = membersTableV else { return }
-            
-            let indexPath = IndexPath(row: 0, section: 0)
-            
-            if let cell: TableViewMemberCell = tableV.cellForRow(at: indexPath) as? TableViewMemberCell {
-
-                let cellOriginInRoot = tableV.convert(cell.frame, to: tableV)
-                
-                if cellOriginInRoot.origin.y > tableV.bounds.origin.y {
-                    tableV.isScrollEnabled = false
-                    eventView.collectionView.isScrollEnabled = true
-                }
-            }
-        }
-        
-        eventCollectionManager.onCommentsDidTapReplyButton = { [unowned self] inCell in
-//            let indexPath = eventView.collectionView.indexPath(for: inCell)
-            let userToReplyName = inCell.memberNameLabel.text ?? ""
-
-            eventView.messageInputView.textField.text = userToReplyName
-            eventView.messageInputView.textField.becomeFirstResponder()
-        }
     }
     
     func setupKeyboardNotification() {
@@ -180,19 +100,9 @@ private extension EventViewController {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension EventViewController {
-    
-    func handleSendMessageButton() {
-        if eventView.messageInputView.textField.text == userToReplyName {
-            eventView.messageInputView.textField.text = ""
-            eventView.messageInputView.textField.resignFirstResponder()
-        } else {
-            let text = eventView.messageInputView.textField.text
-        }
-    }
+@objc private extension EventViewController {
     
     func handleKeybordWillShow(_ notification: Notification) {
         guard
@@ -215,3 +125,101 @@ private extension EventViewController {
         }.startAnimation()
     }
 }
+
+//MARK: - EventViewDelegate -
+
+extension EventViewController: EventViewDelegate {
+    
+    func inputViewSendButtonClicked() {
+        if eventView.getInputViewText() == userToReplyName {
+            eventView.setInputView(text: "")
+            eventView.removeInputTextViewFirstResponder()
+        } else {
+            let _ = eventView.getInputViewText()
+            
+        }
+    }
+}
+
+//MARK: - EventDataSourceDelegate -
+
+extension EventViewController: EventDataSourceDelegate {
+    
+    func collectionViewInviteButtonClicked() {
+        
+    }
+    
+    func collectionViewParicipateButtonClicked() {
+        
+    }
+    
+    func commentsTableViewReplyButtonClicked(to userName: String?) {
+        guard let userName = userName else { return }
+        
+        self.userToReplyName = userName
+        
+        eventView.setInputView(text: userName)
+        eventView.makeInputTextViewFirstResponder()
+    }
+    
+    func collectionViewSegmentedControlDidChange(index: Int, collectionView: UICollectionView?) {
+        guard let collectionView = collectionView else { return }
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        collectionView.isPagingEnabled = false
+        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
+        collectionView.isPagingEnabled = true
+    }
+    
+    func chatFrameCollectionView(scrolledTo index: Int, segmentedControl: DSSegmentedControl?) {
+        segmentedControl?.setSelectedItemIndex(index)
+    }
+    
+    func collectionViewScrolled(commentsTableView: UITableView?, membersTableView: UITableView?) {
+        let indexPath = IndexPath(row: 3, section: 0)
+
+        let cell: CollectionViewToogleCell = self.eventView.getCollectionView().cell(forRowAt: indexPath)
+        let cellOriginInRoot = eventView.getCollectionView().convert(cell.frame, to: eventView)
+        
+        if cellOriginInRoot.maxY <= eventView.getCollectionView().frame.maxY {
+            
+            eventView.setCollectionView(isScrollingEnabled: false)
+            commentsTableView?.isScrollEnabled = true
+            membersTableView?.isScrollEnabled = true
+        }
+    }
+    
+    func commentsTableViewSrolled(tableView: UITableView?) {
+        guard let tableView = tableView else { return }
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        if let cell: TableViewCommentCell = tableView.cellForRow(at: indexPath) as? TableViewCommentCell {
+
+            let cellOriginInRoot = tableView.convert(cell.frame, to: tableView)
+            
+            if cellOriginInRoot.origin.y > tableView.bounds.origin.y {
+                tableView.isScrollEnabled = false
+                eventView.setCollectionView(isScrollingEnabled: true)
+            }
+        }
+    }
+    
+    func membersTableViewSrolled(tableView: UITableView?) {
+        guard let tableView = tableView else { return }
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        if let cell: TableViewMemberCell = tableView.cellForRow(at: indexPath) as? TableViewMemberCell {
+
+            let cellOriginInRoot = tableView.convert(cell.frame, to: tableView)
+            
+            if cellOriginInRoot.origin.y > tableView.bounds.origin.y {
+                tableView.isScrollEnabled = false
+                eventView.setCollectionView(isScrollingEnabled: true)
+            }
+        }
+    }
+}
+

@@ -50,7 +50,7 @@ struct Event: Codable {
         case eventCard(Event?)
         case eventActions
         case toogle(Int, Int)
-        case activityItems([EventChatCellType])
+        case chatFrame([EventChatCellType])
     }
     
     enum EventChatCellType {
