@@ -41,6 +41,8 @@ final class EventCreateView: UIView {
         
         backgroundColor = Colors.darkBlue
         
+        createButton.addTarget(self, action: #selector(handleCreateButton))
+        
         addSubviews(navSeperatorView, tableView, createButton)
     }
     
@@ -87,4 +89,14 @@ extension EventCreateView {
         createButton.bind(state: state)
     }
 }
+
+//MARK: Actions
+
+@objc private extension EventCreateView {
+    
+    func handleCreateButton() {
+        delegate?.createButtonClicked()
+    }
+}
+
 

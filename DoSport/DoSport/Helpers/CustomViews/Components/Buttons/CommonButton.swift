@@ -44,6 +44,10 @@ extension CommonButton {
     func bind(state: CommonButtonState) {
         buttonState = state
     }
+    
+    func getState() -> CommonButtonState {
+        return buttonState
+    }
 }
 
 //MARK: Private API

@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol SportGroundSelectionListDataSourceDelegate: class {
+    func tableView(didSelect sportGround: SportGround)
+}
+
 final class SportGroundSelectionListDataSource: NSObject {
     
-    var onDidSelectSportGroundType: ((SportGround) -> Void)?
+    weak var delegate: SportGroundSelectionListDataSourceDelegate?
     
     var viewModels: [SportGround]
     
@@ -22,7 +26,7 @@ final class SportGroundSelectionListDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension SportGroundSelectionListDataSource: UITableViewDataSource {
     
@@ -41,14 +45,14 @@ extension SportGroundSelectionListDataSource: UITableViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension SportGroundSelectionListDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         
-        onDidSelectSportGroundType?(viewModel)
+        delegate?.tableView(didSelect: viewModel)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

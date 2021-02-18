@@ -141,6 +141,7 @@
 		65CEF63B25CDBADC00EB0B34 /* CollectionViewMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */; };
 		65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF65025CDC1ED00EB0B34 /* Message.swift */; };
 		65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2971725DD4222005AC413 /* MainTabBarCoordinator.swift */; };
+		65D2972025DD644C005AC413 /* Date+currentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2971F25DD644C005AC413 /* Date+currentDate.swift */; };
 		65D973F325B4730E00769653 /* SportTypeGridAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */; };
 		65D973FB25B4731800769653 /* SportTypeGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FA25B4731800769653 /* SportTypeGridViewController.swift */; };
 		65D9740025B4731D00769653 /* SportTypeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FF25B4731D00769653 /* SportTypeGridView.swift */; };
@@ -352,6 +353,7 @@
 		65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMemberCell.swift; sourceTree = "<group>"; };
 		65CEF65025CDC1ED00EB0B34 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		65D2971725DD4222005AC413 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		65D2971F25DD644C005AC413 /* Date+currentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+currentDate.swift"; sourceTree = "<group>"; };
 		65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridAssembly.swift; sourceTree = "<group>"; };
 		65D973FA25B4731800769653 /* SportTypeGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridViewController.swift; sourceTree = "<group>"; };
 		65D973FF25B4731D00769653 /* SportTypeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridView.swift; sourceTree = "<group>"; };
@@ -1066,6 +1068,7 @@
 				654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */,
 				65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */,
 				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
+				65D2971F25DD644C005AC413 /* Date+currentDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1445,6 +1448,7 @@
 				658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */,
 				CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */,
 				65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */,
+				65D2972025DD644C005AC413 /* Date+currentDate.swift in Sources */,
 				652E326125DC16D000077344 /* UI+addTargets.swift in Sources */,
 				65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */,
 				65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */,

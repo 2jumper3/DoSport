@@ -106,6 +106,7 @@ extension EventCreateViewController: EventCreateViewDelegate {
     func createButtonClicked() {
         /// by sending to viewModel all data needed for `Event` object creation this method should call viewModel's method
         /// and send created object to backend
+        coordinator?.goBack()
     }
 }
 
@@ -117,15 +118,21 @@ extension EventCreateViewController: EventCreateDataSourceDelegate {
         coordinator?.goToSportTypeListModule(completion: completion)
     }
     
-    func tableViewDidSelectSportGroundCell(completion: @escaping (String) -> Void) {
+    func tableViewDidSelectSportGroundCell(completion: @escaping (SportGround) -> Void) {
         guard let title = sportTypeTitle else { return }
         
         coordinator?.goToSportGroundSelectionListModule(sportTypeTitle: title, completion: completion)
     }
     
-    func tableViewDidSelectDateSelectionCell(completion: @escaping (String) -> Void) {
-        coordinator?.goToDateSelectionModule(completion: completion)
+    func tableViewDidSelectDateSelectionCell(
+        for sportGround: SportGround?,
+        completion: @escaping (String) -> Void
+    ) {
+        guard  sportGroundTitle != nil, let sportGround = sportGround else { return }
+        
+        coordinator?.goToDateSelectionModule(sportGround: sportGround, completion: completion)
     }
+    
     
     func tableViewSportTypeCell(didSetTitle title: String) {
         self.sportTypeTitle = title
