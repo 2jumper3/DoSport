@@ -9,10 +9,14 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
-    var coordinator: AuthCoordinator?
+    weak var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
     
     private lazy var authView = self.view as! AuthView
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - Init
     
@@ -37,10 +41,6 @@ final class AuthViewController: UIViewController {
         super.viewDidLoad()
         
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
     
     /// Hide navigation bar before this ViewController will appear
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +53,7 @@ final class AuthViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        coordinator?.removeDependency(coordinator)
     }
     
     override func viewDidAppear(_ animated: Bool) {

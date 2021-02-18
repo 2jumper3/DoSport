@@ -6,11 +6,15 @@
 //
 
 import UIKit
-import SnapKit
 
 final class CollectionViewActionCell: UICollectionViewCell {
     
-    private(set) lazy var inviteButton: UIButton = {
+    var onInviteButtonClicked: (() -> Void)?
+    var onParticipateButtonClicked: (() -> Void)?
+    
+    //MARK: Outlets
+    
+    private lazy var inviteButton: UIButton = {
         $0.setTitle(Texts.Event.invite, for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.white.cgColor
@@ -21,18 +25,19 @@ final class CollectionViewActionCell: UICollectionViewCell {
         return $0
     }(UIButton(type: .system))
     
-    private(set) lazy var participateButton = DSEventParticipateButton(state: .notSeleted)
+    private lazy var participateButton = DSEventParticipateButton(state: .notSeleted)
     
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         backgroundColor = Colors.darkBlue
-        contentView.addSubviews(
-            inviteButton,
-            participateButton
-        )
+        
+        inviteButton.addTarget(self, action: #selector(handleInviteButton))
+        participateButton.addTarget(self, action: #selector(handleParticipateButton))
+        
+        contentView.addSubviews(inviteButton, participateButton)
     }
     
     required init?(coder: NSCoder) {
@@ -51,6 +56,20 @@ final class CollectionViewActionCell: UICollectionViewCell {
             $0.right.height.centerY.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.48)
         }
+    }
+}
+
+//MARK: Action
+
+@objc private extension CollectionViewActionCell {
+    
+    func handleParticipateButton(_ button: DSEventParticipateButton) {
+        button.bind()
+        onParticipateButtonClicked?()
+    }
+    
+    func handleInviteButton() {
+        onInviteButtonClicked?()
     }
 }
 

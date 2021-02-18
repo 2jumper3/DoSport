@@ -28,7 +28,7 @@ final class DSSegmentedControl: UIView {
     private let staticSeparatorView: DSSeparatorView = DSSeparatorView()
     private let movableSeparatorView: DSSeparatorView = DSSeparatorView(color: .white)
     
-    //MARK: - Init
+    //MARK: Init
     
     init(titles: [String]) {
         self.titles = titles
@@ -78,7 +78,7 @@ final class DSSegmentedControl: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension DSSegmentedControl {
     
@@ -107,10 +107,9 @@ extension DSSegmentedControl {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension DSSegmentedControl {
+@objc private extension DSSegmentedControl {
     
     func handleButton(_ button: UIButton) {
         moveSeletectedItem(to: button.tag)
@@ -118,7 +117,7 @@ private extension DSSegmentedControl {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension DSSegmentedControl {
     

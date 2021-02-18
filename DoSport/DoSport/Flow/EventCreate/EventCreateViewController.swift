@@ -6,22 +6,20 @@
 //
 
 import UIKit
-import RangeSeekSlider
 
 final class EventCreateViewController: UIViewController {
     
-    var coordinator: EventCreateCoordinator?
-    private(set) var viewModel: EventCreateViewModel
+    weak var coordinator: EventCreateCoordinator?
+    private let viewModel: EventCreateViewModel
     private lazy var eventCreateView = view as! EventCreateView
-    
-    private var tableManager = EventCreateDataSource()
+    private let tableManager = EventCreateDataSource()
     
     /// to provide title to the playground selection screen in order to define sport type. Used when tapped
-    /// playground selection cell in this class's delegate part below
+    /// playground selection cell in this class's EventCreateDataSourceDelegate part below
     private var sportTypeTitle: String?
     
     /// to provide title to the date selection screen in order to define in what playground user can book time.
-    /// Uused when tapped date selection cell in this class's delegate part below
+    /// Uused when tapped date selection cell in this class's EventCreateDataSourceDelegate part below
     private var sportGroundTitle: String?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -53,6 +51,7 @@ final class EventCreateViewController: UIViewController {
         tableManager.delegate = self
         
         setupNavBar()
+        setupInviteFriendChildViewController()
         
         eventCreateView.updateTableDataSource(dataSource: self.tableManager)
     }
@@ -62,11 +61,30 @@ final class EventCreateViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
 //MARK: Private API
 
 private extension EventCreateViewController {
+    
+    func setupInviteFriendChildViewController() {
+//        self.inviteFriendChildViewController = InviteFriendsViewController(
+//            nibName: "InviteFriendChildViewController",
+//            bundle: nil
+//        )
+//
+//        view.addSubview(inviteFriendChildViewController.view)
+//        addChild(inviteFriendChildViewController)
+//        inviteFriendChildViewController.didMove(toParent: self)
+//        inviteFriendChildViewController.view.frame = CGRect(x: 0, y: 400, width: 300, height: 300)
+
+    }
     
     func setupNavBar() {
         title = Texts.EventCreate.navTitle
@@ -102,6 +120,7 @@ extension EventCreateViewController: EventCreateViewDelegate {
     func createButtonClicked() {
         /// by sending to viewModel all data needed for `Event` object creation this method should call viewModel's method
         /// and send created object to backend
+        coordinator?.goBack()
     }
 }
 
@@ -110,18 +129,25 @@ extension EventCreateViewController: EventCreateViewDelegate {
 extension EventCreateViewController: EventCreateDataSourceDelegate {
     
     func tableViewDidSelectSportTypeCell(completion: @escaping (String) -> Void) {
+//        self.inviteFriendChildViewController.view.transform = CGAffineTransform(translationX: 0, y: -200)
         coordinator?.goToSportTypeListModule(completion: completion)
     }
     
-    func tableViewDidSelectSportGroundCell(completion: @escaping (String) -> Void) {
+    func tableViewDidSelectSportGroundCell(completion: @escaping (SportGround) -> Void) {
         guard let title = sportTypeTitle else { return }
         
         coordinator?.goToSportGroundSelectionListModule(sportTypeTitle: title, completion: completion)
     }
     
-    func tableViewDidSelectDateSelectionCell(completion: @escaping (String) -> Void) {
-        coordinator?.goToDateSelectionModule(completion: completion)
+    func tableViewDidSelectDateSelectionCell(
+        for sportGround: SportGround?,
+        completion: @escaping (String) -> Void
+    ) {
+        guard  sportGroundTitle != nil, let sportGround = sportGround else { return }
+        
+        coordinator?.goToDateSelectionModule(sportGround: sportGround, completion: completion)
     }
+    
     
     func tableViewSportTypeCell(didSetTitle title: String) {
         self.sportTypeTitle = title

@@ -9,10 +9,10 @@ import Foundation
 
 final class SportGroundSelectionListAssembly: Assembly {
     
-    private let completion: (String) -> Void
+    private let completion: (SportGround) -> Void
     private let sportTypeTitle: String
     
-    init(sportTypeTitle: String, completion: @escaping (String) -> Void) {
+    init(sportTypeTitle: String, completion: @escaping (SportGround) -> Void) {
         self.completion = completion
         self.sportTypeTitle = sportTypeTitle
     }

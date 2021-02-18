@@ -9,11 +9,11 @@ import Foundation
 
 final class DateSelectionViewModel {
     
-    var onDidPrepareData: (([String]) -> Void)?
+    var onDidPrepareDefaultHours: (([String]) -> Void)?
     
     private var hours: [String] = [] {
         didSet {
-            onDidPrepareData?(hours)
+            onDidPrepareDefaultHours?(hours)
         }
     }
     

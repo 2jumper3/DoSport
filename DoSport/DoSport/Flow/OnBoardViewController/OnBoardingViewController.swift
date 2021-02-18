@@ -7,11 +7,12 @@
 
 import UIKit
 
-class OnBoardingViewController: UIViewController {
+final class OnBoardingViewController: UIViewController {
     
-    var coordinator: OnBoardingCoordinator?
+    weak var coordinator: OnBoardingCoordinator?
 
     // MARK: - Properties
+    
     var pages: [OnBoardingModel] = [
         OnBoardingModel(image:Icons.OnboardingIcons.firstIcon, textHeader: Texts.OnBoardingText.headers.firstSlideText, textDescription: Texts.OnBoardingText.Description.firstSlideText),
         OnBoardingModel(image: Icons.OnboardingIcons.secondIcon, textHeader: Texts.OnBoardingText.headers.secondSlideText, textDescription: Texts.OnBoardingText.Description.secondSlideText),
@@ -19,18 +20,19 @@ class OnBoardingViewController: UIViewController {
         OnBoardingModel(image: Icons.OnboardingIcons.fourthIcon, textHeader: Texts.OnBoardingText.headers.fourthSlideText, textDescription: Texts.OnBoardingText.Description.fourthSlideText)
     ]
 
-    // MARK: - Outlets
+    // MARK: Outlets
+    
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var pageControl = FlexiblePageControl()
     
-    //MARK: - UI
     private lazy var confirmButton: CommonButton = {
         $0.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         $0.backgroundColor = Colors.darkBlue
         return $0
     }(CommonButton(title: "OK", state: .normal))
 
-    // MARK: - View lifecycle
+    // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -42,14 +44,22 @@ class OnBoardingViewController: UIViewController {
     func pageControlSetup() {
         pageControl.numberOfPages = pages.count
     }
-    //MARK: - Actions
+    
+    //MARK: Actions
 
-    @objc func confirmButtonTapped() {
+    @objc private func confirmButtonTapped() {
         coordinator?.goToAuthView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource -
+
 extension OnBoardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -68,7 +78,8 @@ extension OnBoardingViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout -
+
 extension OnBoardingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

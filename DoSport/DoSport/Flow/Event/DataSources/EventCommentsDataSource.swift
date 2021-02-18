@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol EventCommentsDataSourceDelegate: class {
+    func commentsTableViewScrolled()
+    func tableViewReplyButtonClicked(to userName: String?)
+}
+
 final class EventCommentsDataSource: NSObject {
     
-    var onDidTapReplyButton: ((TableViewCommentCell) -> Void)?
-    var onDidScroll: (() -> Void)?
+    weak var delegate: EventCommentsDataSourceDelegate?
     
     var viewModels: [Message]
     
@@ -20,28 +24,7 @@ final class EventCommentsDataSource: NSObject {
     }
 }
 
-//MARK: - Actions
-
-@objc
-private extension EventCommentsDataSource {
-
-    func handleReplyButton(_ button: UIButton) {
-        var superview = button.superview
-        
-        while let view = superview, !(view is TableViewCommentCell) {
-            superview = view.superview
-        }
-        
-        guard let cell = superview as? TableViewCommentCell else {
-            print("button is not contained in a CollectionViewMessageCell")
-            return
-        }
-        
-        onDidTapReplyButton?(cell)
-    }
-}
-
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension EventCommentsDataSource: UITableViewDataSource {
     
@@ -53,22 +36,24 @@ extension EventCommentsDataSource: UITableViewDataSource {
         let viewModel = viewModels[indexPath.row]
         
         let cell: TableViewCommentCell = tableView.cell(forRowAt: indexPath)
-        cell.memberNameLabel.text = viewModel.userName
+        cell.memberName = viewModel.userName
 //        cell.memberAvatarImageView.image =
 //        cell.commentCreatedTimeLabel.text = viewModel.createdDate
-        cell.commentTextLabel.text = viewModel.text
-        cell.replyButton.addTarget(self, action: #selector(handleReplyButton), for: .touchUpInside)
+        cell.commentText = viewModel.text
+        cell.onReplyButtonClicked = { [unowned self] userName in
+            delegate?.tableViewReplyButtonClicked(to: userName)
+        }
         
         return cell
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension EventCommentsDataSource: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        onDidScroll?()
+       delegate?.commentsTableViewScrolled()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

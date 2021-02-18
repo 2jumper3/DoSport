@@ -55,13 +55,13 @@ final class SportTypeListView: UIView {
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(topSeparatorView.snp.bottom).offset(1)
-            $0.bottom.equalTo(selectButton.snp.top).offset(-5)
+            $0.bottom.equalTo(selectButton.snp.top).offset(-10)
         }
         
         [topSeparatorView, tableView].forEach { $0.snp.makeConstraints { $0.centerX.width.equalToSuperview() } }
         
         selectButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-50) // FIXME: !
+            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-15)
             $0.width.equalToSuperview().multipliedBy(0.87)
             $0.height.equalTo(48)
             $0.centerX.equalToSuperview()

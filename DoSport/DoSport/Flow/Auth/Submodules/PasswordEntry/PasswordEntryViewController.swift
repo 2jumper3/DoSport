@@ -9,7 +9,7 @@ import UIKit
 
 final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var coordinator: PasswordEntryCoordinator?
+    weak var coordinator: PasswordEntryCoordinator?
     private let viewModel: PasswordEntryViewModel
     private lazy var passwordEntryView = self.view as! PasswordEntryView
     
@@ -62,6 +62,12 @@ final class PasswordEntryViewController: UIViewController, UIGestureRecognizerDe
         super.viewWillDisappear(animated)
         
         passwordEntryView.removePasswordFieldFirstResponder()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 

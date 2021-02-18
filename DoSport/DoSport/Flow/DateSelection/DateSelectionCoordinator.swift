@@ -14,8 +14,16 @@ final class DateSelectionCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?, completion: @escaping (String) -> Void) {
-        let assembly = DateSelectionAssembly(completion: completion)
+    init(
+        navController: UINavigationController?,
+        sportGround: SportGround,
+        completion: @escaping (String) -> Void
+    ) {
+        let assembly = DateSelectionAssembly(
+            sportGround: sportGround,
+            completion: completion
+        )
+        
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
     }

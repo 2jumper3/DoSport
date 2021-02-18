@@ -14,11 +14,11 @@ protocol EventCreateDataSourceDelegate: class {
     
     /// When tapped to date select cell, user goes to `SportGroundSelectionList` screen. When user selects sport ground
     ///  then `SportGroundSelectionList` screen calls completion with selected sport ground string before going back.
-    func tableViewDidSelectSportGroundCell(completion: @escaping (String) -> Void)
+    func tableViewDidSelectSportGroundCell(completion: @escaping (SportGround) -> Void)
     
     /// When tapped to date select cell, user goes to `DateSelection` screen. When user selects date and clicks save button
     ///  then `DateSelection` screen calls completion with selected date string before going back.
-    func tableViewDidSelectDateSelectionCell(completion: @escaping (String) -> Void)
+    func tableViewDidSelectDateSelectionCell(for sportGround: SportGround?, completion: @escaping (String) -> Void)
     
     func tableViewSportTypeCell(didSetTitle title: String)
     func tableViewSportGroudnCell(didSetTitle title: String)
@@ -30,10 +30,12 @@ final class EventCreateDataSource: NSObject {
     weak var delegate: EventCreateDataSourceDelegate?
     
     private enum CellType: String, CaseIterable {
-        case textView, sportTypeSelection, playgroundSelection, dateSelection, membersCount, eventType
+        case textView, sportTypeSelection, sportGroundSelection, dateSelection, membersCount, eventType
     }
     
     private var cells: [CellType] = CellType.allCases
+    
+    private var sportGround: SportGround?
 }
 
 //MARK: - UITableViewDataSource -
@@ -61,7 +63,7 @@ extension EventCreateDataSource: UITableViewDataSource {
             }
             
             cell = sportSelectionCell
-        case .playgroundSelection:
+        case .sportGroundSelection:
             let playgroundSelectionCell: SelectionCell = tableView.cell(forRowAt: indexPath)
             playgroundSelectionCell.bind(Texts.EventCreate.playground)
             playgroundSelectionCell.onTitleDidSet = { [unowned self] title in
@@ -106,9 +108,20 @@ extension EventCreateDataSource: UITableViewDelegate {
         }
         
         switch cellType {
-        case .sportTypeSelection: delegate?.tableViewDidSelectSportTypeCell { cell.bind($0) }
-        case .playgroundSelection: delegate?.tableViewDidSelectSportGroundCell { cell.bind($0) }
-        case .dateSelection: delegate?.tableViewDidSelectDateSelectionCell { cell.bind($0) }
+        case .sportTypeSelection:
+            delegate?.tableViewDidSelectSportTypeCell { selectedSportTypeTitle in
+                cell.bind(selectedSportTypeTitle)
+            }
+        case .sportGroundSelection:
+            delegate?.tableViewDidSelectSportGroundCell { selectedSportGround in
+                cell.bind(selectedSportGround.title ?? "")
+                self.sportGround = selectedSportGround
+            }
+            
+        case .dateSelection:
+            delegate?.tableViewDidSelectDateSelectionCell(for: sportGround) { selectedDateTitle in
+                cell.bind(selectedDateTitle)
+            }
         default: break
         }
     }
@@ -120,7 +133,7 @@ extension EventCreateDataSource: UITableViewDelegate {
         switch cellType {
         case .textView: height = tableView.frame.height * 0.27
         case .sportTypeSelection: height = tableView.frame.height * 0.095
-        case .playgroundSelection: height = tableView.frame.height * 0.095
+        case .sportGroundSelection: height = tableView.frame.height * 0.095
         case .dateSelection: height = tableView.frame.height * 0.095
         case .membersCount: height = tableView.frame.height * 0.38
         case .eventType: height = tableView.frame.height * 0.13

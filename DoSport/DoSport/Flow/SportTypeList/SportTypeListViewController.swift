@@ -9,7 +9,7 @@ import UIKit
 
 final class SportTypeListViewController: UIViewController {
     
-    var coordinator: SportTypeListCoordinator?
+    weak var coordinator: SportTypeListCoordinator?
     private lazy var sportTypeListView = view as! SportTypeListView
     private let tableManager = SportTypeListDataSource()
     
@@ -54,6 +54,12 @@ final class SportTypeListViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
 //MARK: Private API
@@ -80,14 +86,6 @@ private extension SportTypeListViewController {
 //MARK: Actions
 
 @objc private extension SportTypeListViewController {
-    
-    func handleSelectButton() {
-        if let selectedSport = selectedSport, let title = selectedSport.title {
-            
-            completion(title)
-            coordinator?.goBack()
-        }
-    }
     
     func handleBackButton() {
         coordinator?.goBack()

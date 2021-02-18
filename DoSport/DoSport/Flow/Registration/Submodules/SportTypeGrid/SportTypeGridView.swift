@@ -6,23 +6,26 @@
 //
 
 import UIKit
-import SnapKit
 
-protocol SportTypeGriidtViewDelegate: class {
+protocol SportTypeGridViewDelegate: class {
     func didTapSaveButton()
 }
 
 final class SportTypeGridView: UIView {
     
-    weak var delegate: SportTypeGriidtViewDelegate?
+    weak var delegate: SportTypeGridViewDelegate?
+    
+    //MARK: Outlets
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 13
         layout.scrollDirection = .vertical
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.registerClass(CollectionViewSportTypeCell.self)
+        collectionView.backgroundColor = Colors.darkBlue
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -33,6 +36,7 @@ final class SportTypeGridView: UIView {
         return $0
     }(CommonButton(title: Texts.SportTypeGrid.save, state: .normal))
 
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -64,9 +68,10 @@ final class SportTypeGridView: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension SportTypeGridView {
+    
     func updateCollectionDataSource(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
         collectionView.delegate = dateSource
         collectionView.dataSource = dateSource
@@ -75,10 +80,10 @@ extension SportTypeGridView {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension SportTypeGridView {
+@objc private extension SportTypeGridView {
+    
     func handleSaveButton() {
         delegate?.didTapSaveButton()
     }

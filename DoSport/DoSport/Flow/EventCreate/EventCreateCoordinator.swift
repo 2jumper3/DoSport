@@ -39,25 +39,29 @@ final class EventCreateCoordinator: Coordinator {
             completion: completion
         )
         
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
-    func goToSportGroundSelectionListModule(sportTypeTitle: String, completion: @escaping (String) -> Void) {
+    func goToSportGroundSelectionListModule(sportTypeTitle: String, completion: @escaping (SportGround) -> Void) {
         let coordinator = SportGroundSelectionListCoordinator(
             navController: eventCreateNavController,
             sportTypeTitle: sportTypeTitle, 
             completion: completion
         )
         
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
-    func goToDateSelectionModule(completion: @escaping (String) -> Void) {
+    func goToDateSelectionModule(sportGround: SportGround, completion: @escaping (String) -> Void) {
         let coordinator = DateSelectionCoordinator(
             navController: eventCreateNavController,
+            sportGround: sportGround,
             completion: completion
         )
         
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
 }

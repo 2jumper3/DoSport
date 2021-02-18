@@ -9,7 +9,7 @@ import UIKit
 
 final class CollectionViewCommentCell: UICollectionViewCell {
     
-    private(set) lazy var tableView: UITableView = {
+    private let tableView: UITableView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.backgroundColor = Colors.darkBlue
@@ -18,7 +18,7 @@ final class CollectionViewCommentCell: UICollectionViewCell {
         return $0
     }(UITableView(frame: .zero, style: .plain))
 
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -39,7 +39,7 @@ final class CollectionViewCommentCell: UICollectionViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension CollectionViewCommentCell {
     
@@ -48,5 +48,9 @@ extension CollectionViewCommentCell {
         tableView.delegate = dataSource
         tableView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func getTableView() -> UITableView {
+        return tableView
     }
 }

@@ -7,13 +7,15 @@
 
 import UIKit
 
+/// `available`, `notAvalable` states are used to handle whether or not the hour is available for selected sport ground.
+/// And `Bool` associated type is used to handle cell's selected or not selected state by switching true & false.
+enum HoursCellState: Equatable {
+    case available(Bool), notAvailable
+}
+
 final class CollectionViewHoursCell: UICollectionViewCell {
     
-    enum CellState {
-        case selected, notSelected
-    }
-
-    var cellState: CellState = .notSelected {
+    var cellState: HoursCellState = .notAvailable {
         didSet {
             handleStateChange()
         }
@@ -27,7 +29,7 @@ final class CollectionViewHoursCell: UICollectionViewCell {
         return $0
     }(UILabel())
 
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,52 +55,42 @@ final class CollectionViewHoursCell: UICollectionViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension CollectionViewHoursCell {
     
-    func bind(state: CellState) {
+    func bind(state: HoursCellState) {
         cellState = state
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension CollectionViewHoursCell {
     
     func handleStateChange() {
         switch cellState {
-        case .notSelected:
-            UIView.animate(withDuration: 0.3) { [self] in
+        case .available(let isSelected):
+            myTitleLabel.textColor = .white
+            
+            if isSelected {
+                UIView.animate(withDuration: 0.2) { [self] in
+                    layer.borderColor = Colors.darkBlue.cgColor
+                    backgroundColor = Colors.lightBlue
+                }
+            } else {
+                UIView.animate(withDuration: 0.2) { [self] in
+                    layer.borderColor = Colors.dirtyBlue.cgColor
+                    backgroundColor = Colors.darkBlue
+                }
+            }
+            
+        case .notAvailable:
+            UIView.animate(withDuration: 0.2) { [self] in
                 myTitleLabel.textColor = Colors.dirtyBlue
                 layer.borderColor = Colors.dirtyBlue.cgColor
-            }
-        case .selected:
-            UIView.animate(withDuration: 0.3) { [self] in
-                myTitleLabel.textColor = .white
-                layer.borderColor = UIColor.white.cgColor
+                backgroundColor = Colors.darkBlue
             }
         }
     }
 }
-
-//enum CellState {
-//    case available(Bool), notAvailable
-//}
-//
-//func handleStateChange() {
-//    switch cellState {
-//    case .available(let isSelected):
-//        if isSelected {
-//            backgroundColor = Colors.lightBlue
-//            myTitleLabel.textColor = .white
-//            layer.borderColor = Colors.lightBlue.cgColor
-//        } else {
-//            myTitleLabel.textColor = .white
-//            layer.borderColor = Colors.darkBlue.cgColor
-//        }
-//    case .notAvailable:
-//        myTitleLabel.textColor = Colors.dirtyBlue
-//        layer.borderColor = Colors.dirtyBlue.cgColor
-//    }
-//}

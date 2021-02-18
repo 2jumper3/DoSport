@@ -9,12 +9,12 @@ import UIKit
 
 final class SportGroundSelectionListViewController: UIViewController {
     
-    var coordinator: SportGroundSelectionListCoordinator?
+    weak var coordinator: SportGroundSelectionListCoordinator?
     private var viewModel: SportGroundSelectionListViewModel
     private lazy var sportGroundListView = view as! SportGroundSelectionListView
     private let tableManager = SportGroundSelectionListDataSource()
     
-    private let completion: (String) -> Void
+    private let completion: (SportGround) -> Void
     
     private let sportTypeTitle: String
     
@@ -22,12 +22,12 @@ final class SportGroundSelectionListViewController: UIViewController {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
     init(
         viewModel: SportGroundSelectionListViewModel,
         sportTypeTitle: String,
-        completion: @escaping (String) -> Void
+        completion: @escaping (SportGround) -> Void
     ) {
         self.viewModel = viewModel
         self.completion = completion
@@ -39,7 +39,7 @@ final class SportGroundSelectionListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = SportGroundSelectionListView()
@@ -49,8 +49,9 @@ final class SportGroundSelectionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        tableManager.delegate = self
+        
         setupViewModelBindings()
-        setupTableManagerBindings()
         setupNavBar()
         
         viewModel.prepareData()
@@ -67,12 +68,17 @@ final class SportGroundSelectionListViewController: UIViewController {
         
         title = nil
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension SportGroundSelectionListViewController {
+@objc private extension SportGroundSelectionListViewController {
 
     func handleMapButton() {
         print(#function)
@@ -87,22 +93,10 @@ private extension SportGroundSelectionListViewController {
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension SportGroundSelectionListViewController {
 
-    func setupTableManagerBindings()  {
-//        tableManager.onDidSelectSportGroundType = { [weak self] sportGround in
-//            guard let self = self, let cell = self.cell as? SelectionCell else {
-//                debugPrint("############# 'self' or 'cell' is nil in SportGroundSelectionListViewController - 74 line")
-//                return
-//            }
-//
-//            cell.bind(sportGround.title ?? "")
-//            self.coordinator?.goBack()
-//        }
-    }
-    
     func setupViewModelBindings() {
         viewModel.onDidPrepareData = { [weak self] sportGrounds in
             guard let self = self else {
@@ -140,5 +134,15 @@ private extension SportGroundSelectionListViewController {
         backBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+    }
+}
+
+//MARK: - SportGroundSelectionListDataSourceDelegate -
+
+extension SportGroundSelectionListViewController: SportGroundSelectionListDataSourceDelegate {
+    
+    func tableView(didSelect sportGround: SportGround) {
+        completion(sportGround)
+        coordinator?.goBack()
     }
 }

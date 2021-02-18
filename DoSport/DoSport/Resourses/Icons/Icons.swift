@@ -96,6 +96,9 @@ public enum Icons {
         static var user: UIImage {
             return Icons.image(named: "user")
         }
+        
+        static let search: UIImage = Icons.image(named: "search")
+        static let share: UIImage = Icons.image(named: "share")
     }
     
     //MARK: - Event screen
