@@ -5,4 +5,7 @@
 //  Created by Sergey on 16.02.2021.
 //
 
-import Foundation
+import UIKit
+final class MapFilterViewModel {
+    
+}

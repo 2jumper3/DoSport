@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
                         self.window = UIWindow(windowScene: windowScene)
                         let vc = MainMenuTabController()
-//                        let vc = UINavigationController(rootViewController: MapViewController())
+//                        let vc = UINavigationController(rootViewController: MapFilterViewController())
                         self.window!.rootViewController = vc
                         self.window!.makeKeyAndVisible()
                         self.window!.backgroundColor = .red

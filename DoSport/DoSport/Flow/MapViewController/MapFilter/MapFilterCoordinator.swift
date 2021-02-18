@@ -1,20 +1,20 @@
 //
-//  MapCoordinator.swift
+//  MapFilterCoordinator.swift
 //  DoSport
 //
-//  Created by Sergey on 17.01.2021.
+//  Created by Sergey on 18.02.2021.
 //
 
 import UIKit
 
-class MapCoordinator: Coordinator {
-    var rootViewController: MapViewController
+class MapFilterCoordinator: Coordinator {
+    var rootViewController: MapFilterViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController) {
-        let assembly = MapAssembly()
+        let assembly = MapFilterAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
     }
@@ -24,8 +24,6 @@ class MapCoordinator: Coordinator {
         navigationController?.viewControllers = [rootViewController]
     }
     func goToFilterViewController(navController: UINavigationController) {
-        let assembly = MapFilterAssembly()
-        let vc = assembly.makeModule()
-        navController.pushViewController(vc, animated: true)
+        
     }
 }

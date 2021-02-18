@@ -41,7 +41,7 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }()
     //MARK: - Actions
     @objc func push()  {
-
+        coordinator?.goToFilterViewController(navController: self.navigationController!)
     }
     
     // MARK: - Init

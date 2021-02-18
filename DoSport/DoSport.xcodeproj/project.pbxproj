@@ -36,6 +36,12 @@
 		CE83AB5125CFCD7800A2C6E1 /* PreviewLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */; };
 		CE83AB7B25DB9F9F00A2C6E1 /* MapFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */; };
 		CE83AB8025DB9FA700A2C6E1 /* MapFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB7F25DB9FA700A2C6E1 /* MapFilterViewModel.swift */; };
+		CE83AB8C25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB8B25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift */; };
+		CE83AB9425DD3EA800A2C6E1 /* MapFilter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE83AB9325DD3EA700A2C6E1 /* MapFilter.xcassets */; };
+		CE83AB9925DD898500A2C6E1 /* CitySelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB9825DD898400A2C6E1 /* CitySelectTableViewCell.swift */; };
+		CE83ABA125DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABA025DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift */; };
+		CE83ABA625DE9CDC00A2C6E1 /* MapFilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */; };
+		CE83ABAB25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */; };
 		CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92157925B48B4E003BF78E /* MapCoordinator.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
@@ -127,6 +133,12 @@
 		CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationView.swift; sourceTree = "<group>"; };
 		CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterModel.swift; sourceTree = "<group>"; };
 		CE83AB7F25DB9FA700A2C6E1 /* MapFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewModel.swift; sourceTree = "<group>"; };
+		CE83AB8B25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeTableViewCell.swift; sourceTree = "<group>"; };
+		CE83AB9325DD3EA700A2C6E1 /* MapFilter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapFilter.xcassets; sourceTree = "<group>"; };
+		CE83AB9825DD898400A2C6E1 /* CitySelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectTableViewCell.swift; sourceTree = "<group>"; };
+		CE83ABA025DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroSelectTableViewCell.swift; sourceTree = "<group>"; };
+		CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterAssembly.swift; sourceTree = "<group>"; };
+		CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterCoordinator.swift; sourceTree = "<group>"; };
 		CE92157925B48B4E003BF78E /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -388,6 +400,16 @@
 			path = YandexMapKit;
 			sourceTree = "<group>";
 		};
+		CE83AB8A25DBAC4D00A2C6E1 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AB8B25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift */,
+				CE83AB9825DD898400A2C6E1 /* CitySelectTableViewCell.swift */,
+				CE83ABA025DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		CEBA62DA2593F278006A7F80 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,8 +446,12 @@
 		CEBA6391259A8C54006A7F80 /* MapFilter */ = {
 			isa = PBXGroup;
 			children = (
+				CE83AB8A25DBAC4D00A2C6E1 /* TableViewCells */,
 				CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */,
+				CE83AB9325DD3EA700A2C6E1 /* MapFilter.xcassets */,
 				CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */,
+				CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */,
+				CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */,
 				CE83AB7F25DB9FA700A2C6E1 /* MapFilterViewModel.swift */,
 			);
 			path = MapFilter;
@@ -736,6 +762,7 @@
 				CEDEB8FC258D33D3007B2BCA /* OnBoardingAvatars.xcassets in Resources */,
 				CEDEB786258CB40A007B2BCA /* Icons.xcassets in Resources */,
 				CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */,
+				CE83AB9425DD3EA800A2C6E1 /* MapFilter.xcassets in Resources */,
 				CEBA62EB2593F350006A7F80 /* TabBarIcons.xcassets in Resources */,
 				CEBF0F0B25BB5A5B00DB1E19 /* PreviewIcons.xcassets in Resources */,
 			);
@@ -835,10 +862,12 @@
 				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
 				65FF8F002595DCFB0082A80E /* CommonButton.swift in Sources */,
 				CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */,
+				CE83AB8C25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
 				CEBF0F0325BB348400DB1E19 /* PreviewLocation.swift in Sources */,
 				CECBC9E525B0818C002EB9BF /* MapModel.swift in Sources */,
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
+				CE83ABA625DE9CDC00A2C6E1 /* MapFilterAssembly.swift in Sources */,
 				CEDEB841258CE146007B2BCA /* AbstractRequestFactory.swift in Sources */,
 				CEDEB869258CE1EB007B2BCA /* EditUserInfo.swift in Sources */,
 				CEDEB914258D4C75007B2BCA /* UIImage.swift in Sources */,
@@ -864,6 +893,7 @@
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				CEBF0EFD25B9F0D500DB1E19 /* MapMarkIcon.swift in Sources */,
 				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
+				CE83AB9925DD898500A2C6E1 /* CitySelectTableViewCell.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
@@ -873,7 +903,9 @@
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
+				CE83ABAB25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
+				CE83ABA125DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift in Sources */,
 				CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
