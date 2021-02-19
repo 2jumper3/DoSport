@@ -17,6 +17,8 @@ final class EventViewController: UIViewController {
     private let event: Event
     
     private var userToReplyName: String = ""
+    
+    private var inviteFriendsChildViewController: InviteFriendsViewController!
 
     // MARK: Init
     
@@ -61,6 +63,13 @@ final class EventViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupInviteFriendsChildViewController()
+        inviteFriendsChildViewController.delegate = self
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -97,6 +106,42 @@ private extension EventViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+    }
+    
+    func setupInviteFriendsChildViewController() {
+        
+        self.inviteFriendsChildViewController = InviteFriendsViewController(
+            nibName: "InviteFriendChildViewController",
+            bundle: nil
+        )
+        
+        view.addSubview(inviteFriendsChildViewController.view)
+        addChild(inviteFriendsChildViewController)
+        inviteFriendsChildViewController.didMove(toParent: self)
+        
+        inviteFriendsChildViewController.view.snp.makeConstraints {
+            $0.top.equalTo(view.snp.bottom)
+            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.height.equalToSuperview().multipliedBy(0.4)
+            $0.centerX.equalToSuperview()
+        }
+    }
+    
+    func presentInviteFriendsChildViewController() {
+        let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
+        let y: CGFloat = view.bounds.maxY - inviteFriendsViewHeight - 10
+        UIView.animate(withDuration: 0.3) { [self] in
+            inviteFriendsChildViewController.view.transform = CGAffineTransform(
+                translationX: 0,
+                y: -y
+            )
+        }
+    }
+    
+    func dismissInviteFriendsChildViewController() {
+        UIView.animate(withDuration: 0.3) { [self] in
+            inviteFriendsChildViewController.view.transform = .identity
+        }
     }
 }
 
@@ -146,7 +191,7 @@ extension EventViewController: EventViewDelegate {
 extension EventViewController: EventDataSourceDelegate {
     
     func collectionViewInviteButtonClicked() {
-        
+        presentInviteFriendsChildViewController()
     }
     
     func collectionViewParicipateButtonClicked() {
@@ -220,6 +265,15 @@ extension EventViewController: EventDataSourceDelegate {
                 eventView.setCollectionView(isScrollingEnabled: true)
             }
         }
+    }
+}
+
+//MARK: - InviteFriendsViewControllerDelegate -
+
+extension EventViewController: InviteFriendsViewControllerDelegate {
+    
+    func cancelButtonClicked() {
+        dismissInviteFriendsChildViewController()
     }
 }
 

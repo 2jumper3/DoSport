@@ -9,7 +9,13 @@ import UIKit
 
 protocol DSTextInputViewDelegate: class {
     func sendTextButtonClicked()
+    func textFieldValueChaged(text: String?)
+}
+
+extension DSTextInputViewDelegate {
     
+    /// in order to provide default implementation and do not force to implement in some classes when is not needed
+    func textFieldValueChaged(text: String?) { }
 }
 
 final class DSMessageInputView: UIView {
@@ -24,12 +30,13 @@ final class DSMessageInputView: UIView {
     
     //MARK: Init
     
-    init() {
+    init(backgroundColor color: UIColor = Colors.darkBlue) {
         super.init(frame: .zero)
         
-        backgroundColor = Colors.darkBlue
+        backgroundColor = color
         
         messageSendButton.addTarget(self, action: #selector(handleSendTextButton))
+        textField.addTarget(self, action: #selector(handleTextField))
         
         addSubviews(topSeparatorView, messageSendButton, textField)
     }
@@ -90,5 +97,9 @@ extension DSMessageInputView {
     
     func handleSendTextButton() {
         delegate?.sendTextButtonClicked()
+    }
+    
+    func handleTextField(_ textField: UITextField) {
+        delegate?.textFieldValueChaged(text: textField.text)
     }
 }

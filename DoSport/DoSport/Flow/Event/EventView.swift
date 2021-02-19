@@ -23,7 +23,7 @@ final class EventView: UIView {
     
     private let messageInputView = DSMessageInputView()
     
-    private lazy var collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical

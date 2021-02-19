@@ -11,6 +11,8 @@ protocol InviteFriendsViewDelegate: class {
     func cancelButtonClicked()
     func searchButtonClicked()
     func shareButtonClicked()
+    func sendButtonClicked()
+    func inputTextChanged(text: String?)
 }
 
 final class InvitesFriendView: UIView {
@@ -28,16 +30,31 @@ final class InvitesFriendView: UIView {
     
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.numberOfLines = 2
         $0.makeAttributedText(
             with: Texts.Feed.invite,
             and: Texts.Feed.selectChat,
             text1Color: .white,
-            text2Color: Colors.mainBlue
+            text2Color: Colors.darkBlue
         )
         return $0
     }(UILabel())
     
-    private let textInputView = DSMessageInputView()
+    private let textInputView = DSMessageInputView(backgroundColor: Colors.mainBlue)
+    
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 18
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = Colors.mainBlue
+        collectionView.registerClass(ShareMemberCollectionViewCell.self)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+
     
     private lazy var searchButton: UIButton = {
         $0.backgroundColor = .clear
@@ -74,8 +91,9 @@ final class InvitesFriendView: UIView {
         super.init(frame: .zero)
         
         backgroundColor = .clear
+        translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.addSubviews(searchButton, titleLabel, shareButton, textInputView)
+        contentView.addSubviews(searchButton, titleLabel, shareButton, collectionView, textInputView)
         addSubviews(contentView, cancelButton)
     }
     
@@ -91,6 +109,40 @@ final class InvitesFriendView: UIView {
             $0.bottom.equalTo(cancelButton.snp.top).offset(-12)
         }
         
+        searchButton.snp.makeConstraints {
+            $0.top.left.equalToSuperview().offset(16)
+            $0.width.equalTo(23)
+            $0.height.equalTo(23)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(contentView.snp.width).multipliedBy(0.3)
+            $0.height.equalTo(contentView.snp.height).multipliedBy(0.2)
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.right.equalToSuperview().offset(-16)
+            $0.width.equalTo(23)
+            $0.height.equalTo(23)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(22)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(textInputView.snp.top).offset(-10)
+        }
+        
+        textInputView.snp.makeConstraints {
+            $0.height.equalToSuperview().multipliedBy(0.15)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-20)
+        }
+        
         cancelButton.snp.makeConstraints {
             $0.bottom.left.right.equalToSuperview()
             $0.bottom.height.equalTo(48)
@@ -103,7 +155,7 @@ final class InvitesFriendView: UIView {
 @objc private extension InvitesFriendView {
     
     func handleCancelButton() {
-        
+        delegate?.cancelButtonClicked()
     }
     
     func handleSearchButton() {
@@ -114,3 +166,18 @@ final class InvitesFriendView: UIView {
         
     }
 }
+
+//MARK: - DSTextInputViewDelegate -
+
+extension InvitesFriendView: DSTextInputViewDelegate {
+    
+    func sendTextButtonClicked() {
+        
+    }
+    
+    func textFieldValueChaged(text: String?) {
+        delegate?.inputTextChanged(text: text)
+    }
+}
+
+

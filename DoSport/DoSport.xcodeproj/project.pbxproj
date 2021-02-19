@@ -146,6 +146,7 @@
 		65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF65025CDC1ED00EB0B34 /* Message.swift */; };
 		65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2971725DD4222005AC413 /* MainTabBarCoordinator.swift */; };
 		65D2972025DD644C005AC413 /* Date+currentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2971F25DD644C005AC413 /* Date+currentDate.swift */; };
+		65D9387425DF2454009D1CDD /* ShareMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9387325DF2454009D1CDD /* ShareMemberCollectionViewCell.swift */; };
 		65D973F325B4730E00769653 /* SportTypeGridAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */; };
 		65D973FB25B4731800769653 /* SportTypeGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FA25B4731800769653 /* SportTypeGridViewController.swift */; };
 		65D9740025B4731D00769653 /* SportTypeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FF25B4731D00769653 /* SportTypeGridView.swift */; };
@@ -362,6 +363,7 @@
 		65CEF65025CDC1ED00EB0B34 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		65D2971725DD4222005AC413 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		65D2971F25DD644C005AC413 /* Date+currentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+currentDate.swift"; sourceTree = "<group>"; };
+		65D9387325DF2454009D1CDD /* ShareMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridAssembly.swift; sourceTree = "<group>"; };
 		65D973FA25B4731800769653 /* SportTypeGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridViewController.swift; sourceTree = "<group>"; };
 		65D973FF25B4731D00769653 /* SportTypeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridView.swift; sourceTree = "<group>"; };
@@ -583,7 +585,6 @@
 				6568F8EC25B4F98200225043 /* FeedView.swift */,
 				6568F8E225B4F97800225043 /* FeedViewController.swift */,
 				6568F8E725B4F97D00225043 /* FeedViewModel.swift */,
-				65B150D625DEA5B800720015 /* InviteFriendsPopup */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -825,9 +826,10 @@
 			children = (
 				65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */,
 				6572953A25D952DF00996440 /* CollectionViewChatrFrameCell.swift */,
-				65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */,
 				65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */,
+				65CEF63A25CDBADC00EB0B34 /* CollectionViewMemberCell.swift */,
 				65CEF63225CDB37000EB0B34 /* CollectionViewToogleCell.swift */,
+				65D9387325DF2454009D1CDD /* ShareMemberCollectionViewCell.swift */,
 				6572953F25D953FD00996440 /* TableViewCommentCell.swift */,
 				6572954725D9540500996440 /* TableViewMemberCell.swift */,
 			);
@@ -878,6 +880,7 @@
 				65EAAA9D25CD59D3005E0131 /* EventView.swift */,
 				65EAAA9525CD59CD005E0131 /* EventViewController.swift */,
 				65EAAAA225CD59DA005E0131 /* EventViewModel.swift */,
+				65B150D625DEA5B800720015 /* InviteFriendsPopup */,
 				6572955725D9595D00996440 /* DataSources */,
 			);
 			path = Event;
@@ -1448,6 +1451,7 @@
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				65D9741225B4760F00769653 /* Sport.swift in Sources */,
 				656CC23B259A4F7100DEC84C /* CountryCodeListViewController.swift in Sources */,
+				65D9387425DF2454009D1CDD /* ShareMemberCollectionViewCell.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
 				657C063725AF2D2A000DBD9B /* CodeEntryCoordinator.swift in Sources */,
