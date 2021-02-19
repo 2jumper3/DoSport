@@ -18,6 +18,8 @@ final class InviteFriendsViewController: UIViewController {
     private let inveteFriendCollectionManager = InviteFriendsDataSource()
     private lazy var inviteFriendChildView = self.view as! InvitesFriendView
     
+//    private var users: [User]?
+    
     //MARK: Life cycle
     
     override func loadView() {
@@ -29,7 +31,22 @@ final class InviteFriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        prepareCollectionData()
+    }
+}
+
+//MARK: Private API
+
+private extension InviteFriendsViewController {
+    
+    func prepareCollectionData() { // test
+        var users: [User] = []
+        for _ in 1...10 {
+            let user = User()
+            users.append(user)
+        }
+        inveteFriendCollectionManager.viewModels = users
+        inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
     }
 }
 

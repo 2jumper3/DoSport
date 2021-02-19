@@ -12,8 +12,8 @@ enum FormTextFieldViewState { // FIXME able to combine this
     case normal, error
 }
 
-enum FormTextFieldViewType { // FIXME able to combine this
-    case userName, password, dob
+enum FormTextFieldViewType: Equatable { // FIXME able to combine this
+    case userName, password, dob, custom(placeholder: String)
 }
 
 final class FormTextFieldView: UIView {

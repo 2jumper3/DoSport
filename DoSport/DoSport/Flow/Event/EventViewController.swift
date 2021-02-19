@@ -108,9 +108,22 @@ private extension EventViewController {
         )
     }
     
-    func setupInviteFriendsChildViewController() {
+    func removeKeyboardNotification() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
         
-        self.inviteFriendsChildViewController = InviteFriendsViewController(
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    func setupInviteFriendsChildViewController() {
+        inviteFriendsChildViewController = InviteFriendsViewController(
             nibName: "InviteFriendChildViewController",
             bundle: nil
         )
@@ -121,15 +134,18 @@ private extension EventViewController {
         
         inviteFriendsChildViewController.view.snp.makeConstraints {
             $0.top.equalTo(view.snp.bottom)
-            $0.width.equalToSuperview().multipliedBy(0.8)
-            $0.height.equalToSuperview().multipliedBy(0.4)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.height.equalToSuperview().multipliedBy(0.45)
             $0.centerX.equalToSuperview()
         }
     }
     
     func presentInviteFriendsChildViewController() {
+        removeKeyboardNotification()
+        
         let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
-        let y: CGFloat = view.bounds.maxY - inviteFriendsViewHeight - 10
+        let y: CGFloat = view.frame.maxY - inviteFriendsViewHeight - 10
+        
         UIView.animate(withDuration: 0.3) { [self] in
             inviteFriendsChildViewController.view.transform = CGAffineTransform(
                 translationX: 0,
@@ -139,6 +155,8 @@ private extension EventViewController {
     }
     
     func dismissInviteFriendsChildViewController() {
+        setupKeyboardNotification()
+        
         UIView.animate(withDuration: 0.3) { [self] in
             inviteFriendsChildViewController.view.transform = .identity
         }

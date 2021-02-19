@@ -30,17 +30,26 @@ final class InvitesFriendView: UIView {
     
     private let titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.numberOfLines = 2
-        $0.makeAttributedText(
-            with: Texts.Feed.invite,
-            and: Texts.Feed.selectChat,
-            text1Color: .white,
-            text2Color: Colors.darkBlue
-        )
+        $0.textAlignment = .center
+        $0.text = Texts.Feed.invite
+        $0.textColor = .white
         return $0
     }(UILabel())
     
-    private let textInputView = DSMessageInputView(backgroundColor: Colors.mainBlue)
+    private let subTitleLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textAlignment = .center
+        $0.text = Texts.Feed.selectChat
+        $0.textColor = Colors.darkBlue
+        return $0
+    }(UILabel())
+    
+    private let textInputView = DSMessageInputView(
+        backgroundColor: Colors.mainBlue,
+        borderColor: .white,
+        textColor: .white,
+        placeholderColor: .white
+    )
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -93,7 +102,15 @@ final class InvitesFriendView: UIView {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.addSubviews(searchButton, titleLabel, shareButton, collectionView, textInputView)
+        contentView.addSubviews(
+            searchButton,
+            titleLabel,
+            subTitleLabel,
+            shareButton,
+            collectionView,
+            textInputView
+        )
+        
         addSubviews(contentView, cancelButton)
     }
     
@@ -118,8 +135,13 @@ final class InvitesFriendView: UIView {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(contentView.snp.width).multipliedBy(0.3)
-            $0.height.equalTo(contentView.snp.height).multipliedBy(0.2)
+            $0.height.equalTo(26)
+        }
+        
+        subTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(2)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(26)
         }
         
         shareButton.snp.makeConstraints {
@@ -131,22 +153,35 @@ final class InvitesFriendView: UIView {
         
         collectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(22)
-            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.width.equalToSuperview().multipliedBy(0.95)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(textInputView.snp.top).offset(-10)
         }
         
+        let textInputViewHeight = UIDevice.deviceSize == .small ? 55 : 65
         textInputView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.15)
-            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.height.equalTo(textInputViewHeight)
+            $0.width.equalToSuperview().multipliedBy(0.95)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-20)
+            $0.bottom.equalToSuperview().offset(-12)
         }
         
         cancelButton.snp.makeConstraints {
             $0.bottom.left.right.equalToSuperview()
             $0.bottom.height.equalTo(48)
         }
+    }
+}
+
+//MARK: Public API
+
+extension InvitesFriendView {
+    
+    func updateCollectionDataSource(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
+        collectionView.delegate = dateSource
+        collectionView.dataSource = dateSource
+        collectionView.reloadData()
+        layoutIfNeeded()
     }
 }
 

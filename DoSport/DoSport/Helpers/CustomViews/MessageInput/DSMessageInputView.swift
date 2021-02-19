@@ -26,14 +26,22 @@ final class DSMessageInputView: UIView {
     
     private let topSeparatorView = DSSeparatorView()
     private lazy var messageSendButton = DSMessageSendButton()
-    private lazy var textField = UITextField.makeTextFieldWith(placeholder: Texts.Event.messages)
+    private lazy var textField = DSTextField(type: .custom(placeholder: Texts.Event.messages))
     
     //MARK: Init
     
-    init(backgroundColor color: UIColor = Colors.darkBlue) {
+    init(
+        backgroundColor color: UIColor = Colors.darkBlue,
+        borderColor bColor: UIColor = Colors.mainBlue,
+        textColor tColor: UIColor = Colors.mainBlue,
+        placeholderColor pColor: UIColor = Colors.mainBlue
+    ) {
         super.init(frame: .zero)
         
         backgroundColor = color
+        self.textField.layer.borderColor = bColor.cgColor
+        self.textField.textColor = tColor
+        self.textField.setPlaceholderColor(pColor, for: textField.text ?? "" )
         
         messageSendButton.addTarget(self, action: #selector(handleSendTextButton))
         textField.addTarget(self, action: #selector(handleTextField))
@@ -56,7 +64,7 @@ final class DSMessageInputView: UIView {
         textField.snp.makeConstraints {
             $0.left.equalToSuperview().offset(10)
             $0.centerY.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.75)
+            $0.height.equalToSuperview().multipliedBy(0.70)
             $0.width.equalToSuperview().multipliedBy(0.79)
         }
         
