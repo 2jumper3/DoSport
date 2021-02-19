@@ -764,8 +764,8 @@
 			isa = PBXGroup;
 			children = (
 				65B150F525DEBC5F00720015 /* InviteFriendsDataSource.swift */,
-				65B150E725DEAB8300720015 /* InvitesFriendView.swift */,
 				65B150DF25DEA82F00720015 /* InviteFriendsViewController.swift */,
+				65B150E725DEAB8300720015 /* InvitesFriendView.swift */,
 				65B150DA25DEA77F00720015 /* InviteFriendsViewController.xib */,
 			);
 			path = InviteFriendsPopup;

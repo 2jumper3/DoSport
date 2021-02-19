@@ -16,7 +16,7 @@ final class InviteFriendsViewController: UIViewController {
     weak var delegate: InviteFriendsViewControllerDelegate?
     
     private let inveteFriendCollectionManager = InviteFriendsDataSource()
-    private lazy var inviteFriendChildView = self.view as! InvitesFriendView
+    lazy var inviteFriendChildView = self.view as! InvitesFriendView
     
 //    private var users: [User]?
     
@@ -25,6 +25,7 @@ final class InviteFriendsViewController: UIViewController {
     override func loadView() {
         let view = InvitesFriendView()
         view.delegate = self
+        inveteFriendCollectionManager.delegate = self
         self.view = view
     }
     
@@ -32,6 +33,7 @@ final class InviteFriendsViewController: UIViewController {
         super.viewDidLoad()
         
         prepareCollectionData()
+        setupKeyboardNotification()
     }
 }
 
@@ -48,6 +50,64 @@ private extension InviteFriendsViewController {
         inveteFriendCollectionManager.viewModels = users
         inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
     }
+    
+    func setupKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    func removeKeyboardNotification() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+}
+
+//MARK: Actions
+
+@objc private extension InviteFriendsViewController {
+    
+    func handleKeybordWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = (
+                userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+              )?.cgRectValue
+        else { return }
+        
+        let yOffset: CGFloat =
+            keyboardFrame.height
+            + inviteFriendChildView.frame.height
+            - inviteFriendChildView.getCancelButtonHeight()
+        
+        UIView.animate(withDuration: 0.3) {
+            self.inviteFriendChildView.transform = CGAffineTransform(translationX: 0, y: -yOffset)
+        }
+    }
+
+    func handleKeybordWillHide() {
+        UIViewPropertyAnimator(duration: 0.3, curve: .linear) { [self] in
+            inviteFriendChildView.transform = .identity
+        }.startAnimation()
+    }
 }
 
 //MARK: - InviteFriendsViewDelegate -
@@ -55,6 +115,7 @@ private extension InviteFriendsViewController {
 extension InviteFriendsViewController: InviteFriendsViewDelegate {
     
     func cancelButtonClicked() {
+        removeKeyboardNotification()
         delegate?.cancelButtonClicked()
     }
     
@@ -67,7 +128,8 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
     }
     
     func sendButtonClicked() {
-        
+        inviteFriendChildView.removeMessageInputBarFirstResponder()
+        removeKeyboardNotification()
     }
     
     func inputTextChanged(text: String?) {
@@ -80,6 +142,6 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
 extension InviteFriendsViewController: InviteFriendsDataSourceDelegate {
     
     func collectionView(didSelect user: User) {
-        
+        inviteFriendChildView.makeMessageInputBarFirstResponder()
     }
 }

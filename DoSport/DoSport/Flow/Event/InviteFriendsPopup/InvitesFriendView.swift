@@ -33,14 +33,16 @@ final class InvitesFriendView: UIView {
         $0.textAlignment = .center
         $0.text = Texts.Feed.invite
         $0.textColor = .white
+        $0.font = Fonts.sfProRegular(size: 18)
         return $0
     }(UILabel())
     
     private let subTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .center
+        $0.font = Fonts.sfProRegular(size: 14)
         $0.text = Texts.Feed.selectChat
-        $0.textColor = Colors.darkBlue
+        $0.textColor = Colors.lightBlue
         return $0
     }(UILabel())
     
@@ -53,13 +55,13 @@ final class InvitesFriendView: UIView {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 18
-        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = Colors.mainBlue
         collectionView.registerClass(ShareMemberCollectionViewCell.self)
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -87,6 +89,7 @@ final class InvitesFriendView: UIView {
         $0.backgroundColor = Colors.mainBlue
         $0.setTitleColor(.white, for: .normal)
         $0.setTitle(Texts.Feed.cancel, for: .normal)
+        $0.setTitleColor(.gray, for: .highlighted)
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(handleCancelButton))
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -98,9 +101,6 @@ final class InvitesFriendView: UIView {
 
     init() {
         super.init(frame: .zero)
-        
-        backgroundColor = .clear
-        translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubviews(
             searchButton,
@@ -122,7 +122,9 @@ final class InvitesFriendView: UIView {
         super.layoutSubviews()
         
         contentView.snp.makeConstraints {
-            $0.top.left.right.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(350)
             $0.bottom.equalTo(cancelButton.snp.top).offset(-12)
         }
         
@@ -139,7 +141,7 @@ final class InvitesFriendView: UIView {
         }
         
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(2)
+            $0.top.equalTo(titleLabel.snp.bottom)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(26)
         }
@@ -152,23 +154,25 @@ final class InvitesFriendView: UIView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(22)
+            $0.top.equalTo(subTitleLabel.snp.bottom).offset(22)
             $0.width.equalToSuperview().multipliedBy(0.95)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(textInputView.snp.top).offset(-10)
         }
         
-        let textInputViewHeight = UIDevice.deviceSize == .small ? 55 : 65
         textInputView.snp.makeConstraints {
-            $0.height.equalTo(textInputViewHeight)
+            $0.height.equalTo(65)
             $0.width.equalToSuperview().multipliedBy(0.95)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-12)
         }
         
+        let cancelButtonBottom = UIDevice.deviceSize == .big ? 25 : 10
         cancelButton.snp.makeConstraints {
-            $0.bottom.left.right.equalToSuperview()
-            $0.bottom.height.equalTo(48)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.bottom.equalToSuperview().offset(-cancelButtonBottom)
+            $0.height.equalTo(48)
+            $0.centerX.equalToSuperview()
         }
     }
 }
@@ -182,6 +186,18 @@ extension InvitesFriendView {
         collectionView.dataSource = dateSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func makeMessageInputBarFirstResponder() {
+        self.textInputView.makeTextFieldFirstResponder()
+    }
+    
+    func removeMessageInputBarFirstResponder() {
+        textInputView.removeTextFieldFirstResponder()
+    }
+    
+    func getCancelButtonHeight() -> CGFloat {
+        return cancelButton.frame.height
     }
 }
 

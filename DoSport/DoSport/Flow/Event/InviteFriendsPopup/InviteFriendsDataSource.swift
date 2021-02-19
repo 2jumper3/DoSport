@@ -23,7 +23,7 @@ final class InviteFriendsDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource -
+//MARK: - UICollectionViewDataSource -
 
 extension InviteFriendsDataSource: UICollectionViewDataSource {
     
@@ -46,7 +46,16 @@ extension InviteFriendsDataSource: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate -
+//MARK: - UICollectionViewDelegate -
+
+extension InviteFriendsDataSource: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.collectionView(didSelect: viewModels[indexPath.row])
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout -
 
 extension InviteFriendsDataSource: UICollectionViewDelegateFlowLayout {
     
@@ -55,7 +64,10 @@ extension InviteFriendsDataSource: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: collectionView.frame.width * 0.22, height: collectionView.frame.height)
+        return CGSize(
+            width: collectionView.bounds.width * 0.20,
+            height: collectionView.bounds.width / 4 + 15
+        )
     }
 }
 

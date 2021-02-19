@@ -59,7 +59,7 @@ final class ShareMemberCollectionViewCell: UICollectionViewCell {
         
         memberAvatarImageView.snp.makeConstraints {
             $0.top.right.left.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.72)
+            $0.height.equalTo(memberAvatarImageView.snp.width)
         }
         
         memberNameLabel.snp.makeConstraints {

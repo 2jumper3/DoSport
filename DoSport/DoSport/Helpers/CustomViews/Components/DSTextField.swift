@@ -77,13 +77,6 @@ extension DSTextField {
     func bind(state: DSTextFieldState) {
         textFieldState = state
     }
-    
-    func setPlaceholderColor(_ color: UIColor, for text: String) {
-//        attributedPlaceholder = NSAttributedString(
-//            string: text,
-//            attributes: [NSAttributedString.Key.foregroundColor: color]
-//        )
-    }
 }
 
 //MARK: Private API

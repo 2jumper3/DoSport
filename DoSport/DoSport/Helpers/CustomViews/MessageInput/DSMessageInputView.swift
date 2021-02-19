@@ -22,11 +22,16 @@ final class DSMessageInputView: UIView {
     
     weak var delegate: DSTextInputViewDelegate?
     
+    private let placeholderColor: UIColor
+    
     //MARK: Outlets
     
     private let topSeparatorView = DSSeparatorView()
     private lazy var messageSendButton = DSMessageSendButton()
-    private lazy var textField = DSTextField(type: .custom(placeholder: Texts.Event.messages))
+    private lazy var textField = DSTextField(
+        type: .custom(placeholder: Texts.Event.messages),
+        placeholderColor: placeholderColor
+    )
     
     //MARK: Init
     
@@ -36,12 +41,12 @@ final class DSMessageInputView: UIView {
         textColor tColor: UIColor = Colors.mainBlue,
         placeholderColor pColor: UIColor = Colors.mainBlue
     ) {
+        self.placeholderColor = pColor
         super.init(frame: .zero)
         
         backgroundColor = color
         self.textField.layer.borderColor = bColor.cgColor
         self.textField.textColor = tColor
-        self.textField.setPlaceholderColor(pColor, for: textField.text ?? "" )
         
         messageSendButton.addTarget(self, action: #selector(handleSendTextButton))
         textField.addTarget(self, action: #selector(handleTextField))

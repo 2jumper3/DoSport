@@ -67,7 +67,6 @@ final class EventViewController: UIViewController {
         super.viewDidAppear(animated)
         
         setupInviteFriendsChildViewController()
-        inviteFriendsChildViewController.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -127,38 +126,46 @@ private extension EventViewController {
             nibName: "InviteFriendChildViewController",
             bundle: nil
         )
+        inviteFriendsChildViewController.delegate = self
         
-        view.addSubview(inviteFriendsChildViewController.view)
-        addChild(inviteFriendsChildViewController)
-        inviteFriendsChildViewController.didMove(toParent: self)
-        
-        inviteFriendsChildViewController.view.snp.makeConstraints {
-            $0.top.equalTo(view.snp.bottom)
-            $0.width.equalToSuperview().multipliedBy(0.9)
-            $0.height.equalToSuperview().multipliedBy(0.45)
-            $0.centerX.equalToSuperview()
-        }
+        inviteFriendsChildViewController.view.frame = tabBarController!.view.frame
+        inviteFriendsChildViewController.view.frame.origin.y = tabBarController!.view.frame.maxY
     }
     
     func presentInviteFriendsChildViewController() {
         removeKeyboardNotification()
         
+        tabBarController?.view.addSubview(inviteFriendsChildViewController.view)
+        tabBarController?.addChild(inviteFriendsChildViewController)
+        inviteFriendsChildViewController.didMove(toParent: tabBarController)
+        
         let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
         let y: CGFloat = view.frame.maxY - inviteFriendsViewHeight - 10
         
         UIView.animate(withDuration: 0.3) { [self] in
-            inviteFriendsChildViewController.view.transform = CGAffineTransform(
-                translationX: 0,
-                y: -y
-            )
+            inviteFriendsChildViewController.view.frame.origin.y = y
+        } completion: { value in
+            UIView.animate(withDuration: 0.3) { [self] in
+                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            }
         }
     }
     
     func dismissInviteFriendsChildViewController() {
         setupKeyboardNotification()
         
-        UIView.animate(withDuration: 0.3) { [self] in
-            inviteFriendsChildViewController.view.transform = .identity
+        UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3) { [self] in
+                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+            } completion: { value in
+                UIView.animate(withDuration: 0.3) { [self] in
+                    inviteFriendsChildViewController.view.frame.origin.y = eventView.frame.maxY
+                } completion: { [self] value in
+                    inviteFriendsChildViewController.willMove(toParent: nil)
+                    inviteFriendsChildViewController.removeFromParent()
+                    inviteFriendsChildViewController.view.removeFromSuperview()
+                }
+            }
         }
     }
 }
