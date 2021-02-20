@@ -6,12 +6,34 @@
 //
 
 import UIKit
+import SnapKit
+
+extension UISearchBar {
+    
+    var compatibleSearchTextField: UITextField {
+        guard #available(iOS 13.0, *) else { return legacySearchField }
+        return self.searchTextField
+    }
+
+    private var legacySearchField: UITextField {
+        if let textField = self.subviews.first?.subviews.last as? UITextField {
+            // Xcode 11 previous environment
+            return textField
+        } else if let textField = self.value(forKey: "searchField") as? UITextField {
+            // Xcode 11 run in iOS 13 previous devices
+            return textField
+        } else {
+            // exception condition or error handler in here
+            return UITextField()
+        }
+    }
+}
 
 protocol InviteFriendsViewDelegate: class {
     func cancelButtonClicked()
-    func searchButtonClicked()
     func shareButtonClicked()
     func sendButtonClicked()
+    func searchBarTextChanged(text: String?)
     func inputTextChanged(text: String?)
 }
 
@@ -19,9 +41,17 @@ final class InvitesFriendView: UIView {
     
     weak var delegate: InviteFriendsViewDelegate?
     
+    var isSearhing: Bool = false {
+        didSet {
+            handleStateChange()
+        }
+    }
+    
+    private var collectionBottomConstraint: ConstraintMakerEditable!
+    
     //MARK: Outlets
     
-    private let contentView: UIView = {
+    private let containerView: UIView = {
         $0.layer.cornerRadius = 12
         $0.backgroundColor = Colors.mainBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -61,16 +91,35 @@ final class InvitesFriendView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = Colors.mainBlue
         collectionView.registerClass(ShareMemberCollectionViewCell.self)
+        collectionView.layer.cornerRadius = 8
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
+    private let searchBar: UISearchBar = {
+        $0.isHidden = true
+        $0.alpha = 0.0
+        $0.compatibleSearchTextField.backgroundColor = Colors.mainBlue
+        $0.compatibleSearchTextField.textColor = .white
+        $0.compatibleSearchTextField.layer.borderColor = UIColor.white.cgColor
+        $0.compatibleSearchTextField.layer.borderWidth = 1
+        $0.compatibleSearchTextField.layer.cornerRadius = 8
+        $0.setImage(Icons.Event.search, for: .search, state: .normal)
+        $0.showsCancelButton = true
+        $0.barTintColor = .clear
+        $0.backgroundColor = .clear
+        $0.isTranslucent = true
+        $0.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        $0.isUserInteractionEnabled = false
+        return $0
+    }(UISearchBar())
 
     
     private lazy var searchButton: UIButton = {
         $0.backgroundColor = .clear
         $0.setTitleColor(.white, for: .normal)
-        $0.setImage(Icons.Feed.search, for: .normal)
+        $0.setImage(Icons.Event.search, for: .normal)
         $0.addTarget(self, action: #selector(handleSearchButton))
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -79,7 +128,7 @@ final class InvitesFriendView: UIView {
     private lazy var shareButton: UIButton = {
         $0.backgroundColor = .clear
         $0.setTitleColor(.white, for: .normal)
-        $0.setImage(Icons.Feed.share, for: .normal)
+        $0.setImage(Icons.Event.share, for: .normal)
         $0.addTarget(self, action: #selector(handleShareButton))
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -102,7 +151,11 @@ final class InvitesFriendView: UIView {
     init() {
         super.init(frame: .zero)
         
-        contentView.addSubviews(
+        textInputView.delegate = self
+        searchBar.delegate = self
+        
+        containerView.addSubviews(
+            searchBar,
             searchButton,
             titleLabel,
             subTitleLabel,
@@ -111,7 +164,7 @@ final class InvitesFriendView: UIView {
             textInputView
         )
         
-        addSubviews(contentView, cancelButton)
+        addSubviews(containerView, cancelButton)
     }
     
     required init?(coder: NSCoder) {
@@ -121,11 +174,18 @@ final class InvitesFriendView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.9)
+        containerView.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.92)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(350)
+            $0.height.equalTo(335)
             $0.bottom.equalTo(cancelButton.snp.top).offset(-12)
+        }
+        
+        searchBar.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.height.equalTo(40)
         }
         
         searchButton.snp.makeConstraints {
@@ -157,7 +217,7 @@ final class InvitesFriendView: UIView {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(22)
             $0.width.equalToSuperview().multipliedBy(0.95)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(textInputView.snp.top).offset(-10)
+            collectionBottomConstraint = $0.bottom.equalTo(textInputView.snp.top).offset(-10)
         }
         
         textInputView.snp.makeConstraints {
@@ -188,6 +248,16 @@ extension InvitesFriendView {
         layoutIfNeeded()
     }
     
+    func makeContainerViewAnimation(offset: CGAffineTransform) {
+        UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+            containerView.transform = offset
+        }.startAnimation()
+    }
+    
+    func getContentViewHeigh() -> CGFloat {
+        return containerView.frame.height
+    }
+    
     func makeMessageInputBarFirstResponder() {
         self.textInputView.makeTextFieldFirstResponder()
     }
@@ -210,11 +280,47 @@ extension InvitesFriendView {
     }
     
     func handleSearchButton() {
-        
+        isSearhing = true
     }
     
     func handleShareButton() {
         
+    }
+    
+    func handleStateChange() {
+        if isSearhing {
+            searchBar.becomeFirstResponder()
+            searchBar.isHidden = false
+            searchBar.isUserInteractionEnabled = true
+            
+            [searchButton, shareButton, textInputView, titleLabel, subTitleLabel].forEach {
+                $0.isHidden = true
+                $0.isUserInteractionEnabled = false
+            }
+            
+            UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+                collectionView.transform = CGAffineTransform(translationX: 0, y: -15)
+                collectionView.frame.size.height += textInputView.frame.height
+                searchBar.alpha = 1.0
+                [searchButton, shareButton, textInputView, titleLabel, subTitleLabel].forEach { $0.alpha = 0.0 }
+            }.startAnimation()
+        } else {
+            searchBar.resignFirstResponder()
+            searchBar.isHidden = true
+            searchBar.isUserInteractionEnabled = false
+            
+            [searchButton, shareButton, textInputView, titleLabel, subTitleLabel].forEach {
+                $0.isHidden = false
+                $0.isUserInteractionEnabled = true
+            }
+            
+            UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+                collectionView.transform = .identity
+                collectionView.frame.size.height -= textInputView.frame.height
+                searchBar.alpha = 0.0
+                [searchButton, shareButton, textInputView, titleLabel, subTitleLabel].forEach { $0.alpha = 1.0 }
+            }.startAnimation()
+        }
     }
 }
 
@@ -223,11 +329,24 @@ extension InvitesFriendView {
 extension InvitesFriendView: DSTextInputViewDelegate {
     
     func sendTextButtonClicked() {
-        
+        delegate?.sendButtonClicked()
     }
     
     func textFieldValueChaged(text: String?) {
         delegate?.inputTextChanged(text: text)
+    }
+}
+
+//MARK: - UISearchBarDelegate -
+
+extension InvitesFriendView: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        delegate?.searchBarTextChanged(text: searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearhing = false
     }
 }
 

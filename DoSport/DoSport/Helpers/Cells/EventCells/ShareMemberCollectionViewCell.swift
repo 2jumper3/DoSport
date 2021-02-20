@@ -9,6 +9,10 @@ import UIKit
 
 final class ShareMemberCollectionViewCell: UICollectionViewCell {
     
+    struct ViewData {
+        let name: String?
+    }
+    
     var avatartImage: UIImage? {
         get { memberAvatarImageView.image }
         set { memberAvatarImageView.image = newValue }
@@ -66,5 +70,14 @@ final class ShareMemberCollectionViewCell: UICollectionViewCell {
             $0.bottom.left.right.equalToSuperview()
             $0.top.equalTo(memberAvatarImageView.snp.bottom).offset(-10)
         }
+    }
+}
+
+//MARK: Public API
+
+extension ShareMemberCollectionViewCell {
+    
+    func bind(with data: ViewData) {
+        self.memberName = data.name
     }
 }

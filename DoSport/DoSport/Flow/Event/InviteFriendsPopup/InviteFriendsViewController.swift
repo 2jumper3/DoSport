@@ -18,7 +18,8 @@ final class InviteFriendsViewController: UIViewController {
     private let inveteFriendCollectionManager = InviteFriendsDataSource()
     lazy var inviteFriendChildView = self.view as! InvitesFriendView
     
-//    private var users: [User]?
+    private var users: [User] = [] // test
+    private var userSearchText: String = ""
     
     //MARK: Life cycle
     
@@ -33,23 +34,24 @@ final class InviteFriendsViewController: UIViewController {
         super.viewDidLoad()
         
         prepareCollectionData()
-        setupKeyboardNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        inviteFriendChildView.removeMessageInputBarFirstResponder()
     }
 }
 
-//MARK: Private API
+//MARK: Public API
 
-private extension InviteFriendsViewController {
-    
-    func prepareCollectionData() { // test
-        var users: [User] = []
-        for _ in 1...10 {
-            let user = User()
-            users.append(user)
-        }
-        inveteFriendCollectionManager.viewModels = users
-        inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
-    }
+extension InviteFriendsViewController {
     
     func setupKeyboardNotification() {
         NotificationCenter.default.addObserver(
@@ -65,6 +67,21 @@ private extension InviteFriendsViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+    }
+}
+
+//MARK: Private API
+
+private extension InviteFriendsViewController {
+    
+    func prepareCollectionData() { // test
+        
+        for i in 1...25 {
+            let user = User(name: "\(i) - Kamol")
+            users.append(user)
+        }
+        inveteFriendCollectionManager.viewModels = users
+        inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
     }
     
     func removeKeyboardNotification() {
@@ -93,20 +110,16 @@ private extension InviteFriendsViewController {
               )?.cgRectValue
         else { return }
         
-        let yOffset: CGFloat =
-            keyboardFrame.height
-            + inviteFriendChildView.frame.height
-            - inviteFriendChildView.getCancelButtonHeight()
+        // FIXME: костыль
+        let yOffset: CGFloat = keyboardFrame.height - inviteFriendChildView.getCancelButtonHeight() - 18
         
-        UIView.animate(withDuration: 0.3) {
-            self.inviteFriendChildView.transform = CGAffineTransform(translationX: 0, y: -yOffset)
-        }
+        inviteFriendChildView.makeContainerViewAnimation(
+            offset: CGAffineTransform(translationX: 0, y: -yOffset)
+        )
     }
 
     func handleKeybordWillHide() {
-        UIViewPropertyAnimator(duration: 0.3, curve: .linear) { [self] in
-            inviteFriendChildView.transform = .identity
-        }.startAnimation()
+        inviteFriendChildView.makeContainerViewAnimation(offset: .identity)
     }
 }
 
@@ -119,17 +132,34 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
         delegate?.cancelButtonClicked()
     }
     
-    func searchButtonClicked() {
-        
-    }
-    
     func shareButtonClicked() {
         
     }
     
     func sendButtonClicked() {
         inviteFriendChildView.removeMessageInputBarFirstResponder()
-        removeKeyboardNotification()
+//        removeKeyboardNotification()
+    }
+    
+    func searchBarTextChanged(text: String?) {
+        guard let text = text else { return }
+        
+        let charSet = CharacterSet(charactersIn: text.lowercased())
+        
+        let mappedUsers: [User] = users.compactMap {
+            guard let userName = $0.name?.lowercased() else { return nil }
+            
+            let nameCharSet = CharacterSet(charactersIn: userName)
+
+            if charSet.isStrictSubset(of: nameCharSet) {
+                return $0
+            } else {
+                return nil
+            }
+        }
+        
+        inveteFriendCollectionManager.viewModels = mappedUsers
+        inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
     }
     
     func inputTextChanged(text: String?) {
@@ -142,6 +172,8 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
 extension InviteFriendsViewController: InviteFriendsDataSourceDelegate {
     
     func collectionView(didSelect user: User) {
-        inviteFriendChildView.makeMessageInputBarFirstResponder()
+        if inviteFriendChildView.isSearhing {
+            inviteFriendChildView.isSearhing = false
+        }
     }
 }

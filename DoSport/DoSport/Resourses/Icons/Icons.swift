@@ -96,9 +96,6 @@ public enum Icons {
         static var user: UIImage {
             return Icons.image(named: "user")
         }
-        
-        static let search: UIImage = Icons.image(named: "search")
-        static let share: UIImage = Icons.image(named: "share")
     }
     
     //MARK: - Event screen
@@ -107,6 +104,8 @@ public enum Icons {
         static var messageSend: UIImage {
             return Icons.image(named: "message_send_button")
         }
+        static let search: UIImage = Icons.image(named: "search")
+        static let share: UIImage = Icons.image(named: "share")
     }
     
     //MARK: - EventCreate screen
@@ -145,5 +144,4 @@ extension Icons {
         UIImage(named: name) ?? UIImage()
     }
 }
-
 

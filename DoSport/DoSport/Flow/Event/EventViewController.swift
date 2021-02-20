@@ -69,6 +69,12 @@ final class EventViewController: UIViewController {
         setupInviteFriendsChildViewController()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -216,6 +222,7 @@ extension EventViewController: EventViewDelegate {
 extension EventViewController: EventDataSourceDelegate {
     
     func collectionViewInviteButtonClicked() {
+        inviteFriendsChildViewController.setupKeyboardNotification()
         presentInviteFriendsChildViewController()
     }
     

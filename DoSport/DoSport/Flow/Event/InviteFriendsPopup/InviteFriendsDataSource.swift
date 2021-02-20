@@ -38,10 +38,9 @@ extension InviteFriendsDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-//        let viewModel = viewModels[indexPath.row]
+        let viewModel = viewModels[indexPath.row]
         let cell: ShareMemberCollectionViewCell = collectionView.cell(forRowAt: indexPath)
-//        cell.avatartImage =
-//        cell.memberName =
+        cell.bind(with: .init(name: viewModel.name))
         return cell
     }
 }
