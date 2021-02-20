@@ -16,8 +16,6 @@ final class SportTypeListView: UIView {
     weak var delegate: SportTypeListViewDelegate?
     
     //MARK: Outlets
-    
-    private let topSeparatorView = DSSeparatorView()
 
     private lazy var tableView: UITableView = {
         $0.registerClass(TableViewSportTypeListCell.self)
@@ -38,7 +36,7 @@ final class SportTypeListView: UIView {
         
         selectButton.addTarget(self, action: #selector(handleSelectButton))
         
-        addSubviews(topSeparatorView, selectButton, tableView)
+        addSubviews(selectButton, tableView)
     }
     
     required init?(coder: NSCoder) {
@@ -48,17 +46,11 @@ final class SportTypeListView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        topSeparatorView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaInsets.top).offset(1)
-            $0.height.equalTo(1)
-        }
-        
         tableView.snp.makeConstraints {
-            $0.top.equalTo(topSeparatorView.snp.bottom).offset(1)
+            $0.top.equalTo(safeAreaInsets.top).offset(2)
             $0.bottom.equalTo(selectButton.snp.top).offset(-10)
+            $0.centerX.width.equalToSuperview()
         }
-        
-        [topSeparatorView, tableView].forEach { $0.snp.makeConstraints { $0.centerX.width.equalToSuperview() } }
         
         selectButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaInsets.bottom).offset(-15)

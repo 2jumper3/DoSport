@@ -26,7 +26,6 @@ final class DSMessageInputView: UIView {
     
     //MARK: Outlets
     
-    private let topSeparatorView = DSSeparatorView()
     private lazy var messageSendButton = DSMessageSendButton()
     private lazy var textField = DSTextField(
         type: .custom(placeholder: Texts.Event.messages),
@@ -51,7 +50,7 @@ final class DSMessageInputView: UIView {
         messageSendButton.addTarget(self, action: #selector(handleSendTextButton))
         textField.addTarget(self, action: #selector(handleTextField))
         
-        addSubviews(topSeparatorView, messageSendButton, textField)
+        addSubviews(messageSendButton, textField)
     }
     
     required init?(coder: NSCoder) {
@@ -60,11 +59,6 @@ final class DSMessageInputView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        topSeparatorView.snp.makeConstraints {
-            $0.centerX.width.top.equalToSuperview()
-            $0.height.equalTo(1)
-        }
         
         textField.snp.makeConstraints {
             $0.left.equalToSuperview().offset(10)

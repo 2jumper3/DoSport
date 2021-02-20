@@ -8,8 +8,6 @@
 import UIKit
 
 final class SportGroundSelectionListView: UIView {
-    
-    private let topSeparatorView = DSSeparatorView()
 
     private lazy var tableView: UITableView = {
         $0.registerClass(TableViewSportGroundSelectionCell.self)
@@ -25,7 +23,7 @@ final class SportGroundSelectionListView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(topSeparatorView, tableView)
+        addSubviews(tableView)
     }
     
     required init?(coder: NSCoder) {
@@ -35,19 +33,12 @@ final class SportGroundSelectionListView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        topSeparatorView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaInsets.top).offset(1)
-            $0.height.equalTo(1)
-            $0.width.equalToSuperview()
-        }
-        
         tableView.snp.makeConstraints {
-            $0.top.equalTo(topSeparatorView.snp.bottom).offset(20)
+            $0.top.equalTo(safeAreaInsets.top).offset(2)
             $0.bottom.equalTo(safeAreaInsets.bottom).offset(-20)
             $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.centerX.equalToSuperview()
         }
-        
-        [topSeparatorView, tableView].forEach { $0.snp.makeConstraints { $0.centerX.equalToSuperview() } }
     }
 }
 

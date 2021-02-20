@@ -17,8 +17,6 @@ final class EventCreateView: UIView {
     
     // MARK: Outlets
     
-    private let navSeperatorView = DSSeparatorView()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.registerClass(TextViewCell.self)
@@ -43,7 +41,7 @@ final class EventCreateView: UIView {
         
         createButton.addTarget(self, action: #selector(handleCreateButton))
         
-        addSubviews(navSeperatorView, tableView, createButton)
+        addSubviews(tableView, createButton)
     }
     
     required init?(coder: NSCoder) {
@@ -53,15 +51,9 @@ final class EventCreateView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        navSeperatorView.snp.makeConstraints {
-            $0.centerX.width.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.top.equalTo(safeAreaInsets.top).offset(10)
-        }
-        
         tableView.snp.makeConstraints {
             $0.centerX.width.equalToSuperview()
-            $0.top.equalTo(navSeperatorView.snp.bottom)
+            $0.top.equalTo(safeAreaInsets.top).offset(2)
             $0.bottom.equalTo(createButton.snp.top).offset(-25)
         }
         
