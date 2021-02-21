@@ -19,7 +19,7 @@ final class InviteFriendsViewController: UIViewController {
     lazy var inviteFriendChildView = self.view as! InvitesFriendView
     
     private var users: [User] = [] // test
-    private var userSearchText: String = ""
+    private var selectedUsers: [Int: User] = [:]
     
     //MARK: Life cycle
     
@@ -132,11 +132,17 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
         delegate?.cancelButtonClicked()
     }
     
+    func searchCancelButtonClicked() {
+        inveteFriendCollectionManager.viewModels = self.users
+        inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
+    }
+    
     func shareButtonClicked() {
         
     }
     
     func sendButtonClicked() {
+        delegate?.cancelButtonClicked()
         inviteFriendChildView.removeMessageInputBarFirstResponder()
 //        removeKeyboardNotification()
     }
@@ -171,9 +177,19 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
 
 extension InviteFriendsViewController: InviteFriendsDataSourceDelegate {
     
-    func collectionView(didSelect user: User) {
+    func collectionView(didSelect user: User, with key: Int) {
         if inviteFriendChildView.isSearhing {
+            inveteFriendCollectionManager.viewModels = users
+            inviteFriendChildView.updateCollectionDataSource(dateSource: inveteFriendCollectionManager)
             inviteFriendChildView.isSearhing = false
         }
+        
+        selectedUsers[key] = user
+        print(selectedUsers[key]?.name ?? "")
+    }
+    
+    func collectionView(didUnselect user: User, for key: Int) {
+        selectedUsers.removeValue(forKey: key)
+        print(selectedUsers[key]?.name ?? "")
     }
 }

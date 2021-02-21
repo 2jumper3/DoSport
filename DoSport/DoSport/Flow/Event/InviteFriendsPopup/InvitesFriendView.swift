@@ -6,33 +6,12 @@
 //
 
 import UIKit
-import SnapKit
-
-extension UISearchBar {
-    
-    var compatibleSearchTextField: UITextField {
-        guard #available(iOS 13.0, *) else { return legacySearchField }
-        return self.searchTextField
-    }
-
-    private var legacySearchField: UITextField {
-        if let textField = self.subviews.first?.subviews.last as? UITextField {
-            // Xcode 11 previous environment
-            return textField
-        } else if let textField = self.value(forKey: "searchField") as? UITextField {
-            // Xcode 11 run in iOS 13 previous devices
-            return textField
-        } else {
-            // exception condition or error handler in here
-            return UITextField()
-        }
-    }
-}
 
 protocol InviteFriendsViewDelegate: class {
     func cancelButtonClicked()
     func shareButtonClicked()
     func sendButtonClicked()
+    func searchCancelButtonClicked()
     func searchBarTextChanged(text: String?)
     func inputTextChanged(text: String?)
 }
@@ -46,8 +25,6 @@ final class InvitesFriendView: UIView {
             handleStateChange()
         }
     }
-    
-    private var collectionBottomConstraint: ConstraintMakerEditable!
     
     //MARK: Outlets
     
@@ -90,7 +67,7 @@ final class InvitesFriendView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = Colors.mainBlue
-        collectionView.registerClass(ShareMemberCollectionViewCell.self)
+        collectionView.registerClass(ShareMemberCollectionCell.self)
         collectionView.layer.cornerRadius = 8
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -177,7 +154,7 @@ final class InvitesFriendView: UIView {
         containerView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.92)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(335)
+            $0.height.equalTo(315)
             $0.bottom.equalTo(cancelButton.snp.top).offset(-12)
         }
         
@@ -217,7 +194,7 @@ final class InvitesFriendView: UIView {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(22)
             $0.width.equalToSuperview().multipliedBy(0.95)
             $0.centerX.equalToSuperview()
-            collectionBottomConstraint = $0.bottom.equalTo(textInputView.snp.top).offset(-10)
+            $0.bottom.equalTo(textInputView.snp.top).offset(-10)
         }
         
         textInputView.snp.makeConstraints {
@@ -252,10 +229,6 @@ extension InvitesFriendView {
         UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
             containerView.transform = offset
         }.startAnimation()
-    }
-    
-    func getContentViewHeigh() -> CGFloat {
-        return containerView.frame.height
     }
     
     func makeMessageInputBarFirstResponder() {
@@ -306,6 +279,7 @@ extension InvitesFriendView {
             }.startAnimation()
         } else {
             searchBar.resignFirstResponder()
+            searchBar.text = ""
             searchBar.isHidden = true
             searchBar.isUserInteractionEnabled = false
             
@@ -346,6 +320,7 @@ extension InvitesFriendView: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        delegate?.searchCancelButtonClicked()
         isSearhing = false
     }
 }

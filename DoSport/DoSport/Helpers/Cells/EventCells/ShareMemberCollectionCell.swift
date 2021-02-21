@@ -1,5 +1,5 @@
 //
-//  ShareMemberCollectionViewCell.swift
+//  ShareMemberCollectionCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/02/2021.
@@ -7,10 +7,20 @@
 
 import UIKit
 
-final class ShareMemberCollectionViewCell: UICollectionViewCell {
+final class ShareMemberCollectionCell: UICollectionViewCell {
     
     struct ViewData {
         let name: String?
+    }
+    
+    enum CellState {
+        case selected, notSelected
+    }
+    
+    var cellState: CellState = .notSelected {
+        didSet {
+            handleStateChange()
+        }
     }
     
     var avatartImage: UIImage? {
@@ -75,9 +85,38 @@ final class ShareMemberCollectionViewCell: UICollectionViewCell {
 
 //MARK: Public API
 
-extension ShareMemberCollectionViewCell {
+extension ShareMemberCollectionCell {
     
     func bind(with data: ViewData) {
         self.memberName = data.name
+    }
+    
+    func bindState() {
+        switch cellState {
+        case .notSelected: cellState = .selected
+        case .selected: cellState = .notSelected
+        }
+    }
+    
+    func bind(state: CellState) {
+        cellState = state
+    }
+}
+
+//MARK: Private API
+
+private extension ShareMemberCollectionCell {
+    
+    func handleStateChange() {
+        switch cellState {
+        case .selected:
+            UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+                memberAvatarImageView.backgroundColor = Colors.lightBlue
+            }.startAnimation()
+        case .notSelected:
+            UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+                memberAvatarImageView.backgroundColor = Colors.mainBlue
+            }.startAnimation()
+        }
     }
 }
