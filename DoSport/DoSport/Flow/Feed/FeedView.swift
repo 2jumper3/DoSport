@@ -19,8 +19,6 @@ final class FeedView: UIView {
     
     // MARK: Outlets
     
-    private let navBarSeparatorView = DSSeparatorView()
-    
     private let filterButtonsView = FeedFilterButtonsView()
     
     private let collectionView: UICollectionView = {
@@ -45,11 +43,7 @@ final class FeedView: UIView {
         
         backgroundColor = Colors.darkBlue
         
-        addSubviews(
-            navBarSeparatorView,
-            filterButtonsView,
-            collectionView
-        )
+        addSubviews(filterButtonsView, collectionView)
     }
     
     required init?(coder: NSCoder) {
@@ -59,17 +53,11 @@ final class FeedView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        navBarSeparatorView.snp.makeConstraints {
-            $0.width.centerX.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.top.equalTo(self.safeAreaInsets.top).offset(10)
-        }
-        
         filterButtonsView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.85)
             $0.height.equalTo(45)
             $0.left.equalTo(collectionView.snp.left)
-            $0.top.equalTo(navBarSeparatorView.snp.bottom).offset(16)
+            $0.top.equalTo(safeAreaInsets.top).offset(16)
         }
         
         collectionView.snp.makeConstraints {

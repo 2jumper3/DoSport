@@ -23,7 +23,7 @@ final class DSTextField: UITextField {
     
     //MARK: Init
     
-    init(type: FormTextFieldViewType = .dob) {
+    init(type: FormTextFieldViewType = .dob, placeholderColor: UIColor = Colors.mainBlue) {
         super.init(frame: .zero)
         
         var placeholderText: String = ""
@@ -35,6 +35,8 @@ final class DSTextField: UITextField {
             isSecureTextEntry = true
         case .dob:
             placeholderText = Texts.Registration.dob
+        case .custom(let placeholder):
+            placeholderText = placeholder
         }
         font = Fonts.sfProRegular(size: 16)
         translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +47,7 @@ final class DSTextField: UITextField {
         layer.cornerRadius = 8
         attributedPlaceholder = NSAttributedString(
             string: placeholderText,
-            attributes: [NSAttributedString.Key.foregroundColor: Colors.dirtyBlue]
+            attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
         )
     }
     

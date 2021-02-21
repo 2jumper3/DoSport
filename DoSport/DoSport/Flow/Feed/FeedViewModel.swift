@@ -31,36 +31,30 @@ final class FeedViewModel {
 //            print(events)
 //        }
         
-        let member1 = Member(
-            userID: 1,
-            eventID: 1,
-            userStatus: "SomeStatus"
-        )
         
-        let member2 = Member(
-            userID: 2,
-            eventID: 1,
-            userStatus: "SomeStatus"
-        )
-        
-        let members: [Member] = [member1, member2]
+        var membersArray: [Member] = []
+        for i in 1...11 {
+            let member = Member(
+                userID: 1,
+                eventID: 1,
+                userStatus: "SomeStatus - \(i)"
+            )
+            membersArray.append(member)
+        }
         
         let sportType = Sport(type: .basketball)
         
-        var count = 0
         var messagesArray: [Message] = []
-        
-        for _ in 1...15 {
+        for i in 1...15 {
             let message1 = Message(
                 eventId: 1,
                 id: 1,
-                text: "Damn so boring really \(count)",
+                text: "Some sample comment \(i)",
                 userId: 1,
-                userName: "Kamol \(count)",
+                userName: "Kamol \(i)",
                 createdDate: Date(timeIntervalSinceNow: TimeInterval())
             )
             messagesArray.append(message1)
-            count += 1
         }
         
         let chat = Chat(
@@ -70,31 +64,23 @@ final class FeedViewModel {
             userName: nil
         )
         
-        let event1 = Event(
-            eventID: 1,
-            eventDate: Date.init(),
-            eventEndTime: Date.init(),
-            eventStartTime: Date.init(),
-            organiserID: 1,
-            chatID: chat,
-            members: members,
-            sportGroundID: 1,
-            sportType: sportType
-        )
+        var customEvents: [Event] = []
         
-        let event2 = Event(
-            eventID: 2,
-            eventDate: Date.init(),
-            eventEndTime: Date.init(),
-            eventStartTime: Date.init(),
-            organiserID: 2,
-            chatID: chat,
-            members: members,
-            sportGroundID: 2,
-            sportType: sportType
-        )
-        
-        let customEvents = [event1, event2]
+        for i in 1...10 {
+            let event = Event(
+                eventID: i,
+                eventDate: Date.init(),
+                eventEndTime: Date.init(),
+                eventStartTime: Date.init(),
+                organiserID: i,
+                chatID: chat,
+                members: membersArray,
+                sportGroundID: i,
+                sportType: sportType
+            )
+            customEvents.append(event)
+        }
+
         self.events = customEvents
     }
 }

@@ -40,7 +40,7 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
         topSeparatorView.snp.makeConstraints {
             $0.width.centerX.equalTo(view)
             $0.height.equalTo(1)
-            $0.top.equalTo(customTabBar.snp.top).offset(1)
+            $0.top.equalTo(customTabBar.snp.top).offset(-1)
         }
         
         customTabBar.snp.makeConstraints {

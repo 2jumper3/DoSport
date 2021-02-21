@@ -18,12 +18,12 @@ final class EventView: UIView {
     private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
     
     //MARK: Outlets
-    
-    private let navBarSeparatorView = DSSeparatorView()
+
+    private let messageInputTopSeparatorView = DSSeparatorView()
     
     private let messageInputView = DSMessageInputView()
     
-    private lazy var collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
@@ -47,7 +47,7 @@ final class EventView: UIView {
         
         messageInputView.delegate = self
         
-        addSubviews(navBarSeparatorView, collectionView, messageInputView)
+        addSubviews(collectionView, messageInputTopSeparatorView, messageInputView)
     }
     
     required init?(coder: NSCoder) {
@@ -57,17 +57,18 @@ final class EventView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        navBarSeparatorView.snp.makeConstraints {
-            $0.width.centerX.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.top.equalTo(self.safeAreaInsets.top).offset(10)
-        }
-        
         collectionView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.9)
-            $0.top.equalTo(safeAreaInsets.top).offset(26)
+            $0.top.equalTo(safeAreaInsets.top).offset(22)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(messageInputView.snp.top).offset(-6)
+        }
+        
+        messageInputTopSeparatorView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(1)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(messageInputView.snp.top).offset(-1)
         }
         
         messageInputView.snp.makeConstraints {
