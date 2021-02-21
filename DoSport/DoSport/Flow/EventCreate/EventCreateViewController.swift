@@ -51,7 +51,6 @@ final class EventCreateViewController: UIViewController {
         tableManager.delegate = self
         
         setupNavBar()
-        setupInviteFriendChildViewController()
         
         eventCreateView.updateTableDataSource(dataSource: self.tableManager)
     }
@@ -72,19 +71,6 @@ final class EventCreateViewController: UIViewController {
 //MARK: Private API
 
 private extension EventCreateViewController {
-    
-    func setupInviteFriendChildViewController() {
-//        self.inviteFriendChildViewController = InviteFriendsViewController(
-//            nibName: "InviteFriendChildViewController",
-//            bundle: nil
-//        )
-//
-//        view.addSubview(inviteFriendChildViewController.view)
-//        addChild(inviteFriendChildViewController)
-//        inviteFriendChildViewController.didMove(toParent: self)
-//        inviteFriendChildViewController.view.frame = CGRect(x: 0, y: 400, width: 300, height: 300)
-
-    }
     
     func setupNavBar() {
         title = Texts.EventCreate.navTitle
@@ -129,7 +115,6 @@ extension EventCreateViewController: EventCreateViewDelegate {
 extension EventCreateViewController: EventCreateDataSourceDelegate {
     
     func tableViewDidSelectSportTypeCell(completion: @escaping (String) -> Void) {
-//        self.inviteFriendChildViewController.view.transform = CGAffineTransform(translationX: 0, y: -200)
         coordinator?.goToSportTypeListModule(completion: completion)
     }
     

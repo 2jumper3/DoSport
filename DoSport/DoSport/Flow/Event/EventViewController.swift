@@ -17,6 +17,8 @@ final class EventViewController: UIViewController {
     private let event: Event
     
     private var userToReplyName: String = ""
+    
+    private var inviteFriendsChildViewController: InviteFriendsViewController!
 
     // MARK: Init
     
@@ -61,6 +63,18 @@ final class EventViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupInviteFriendsChildViewController()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -97,6 +111,68 @@ private extension EventViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+    }
+    
+    func removeKeyboardNotification() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    func setupInviteFriendsChildViewController() {
+        inviteFriendsChildViewController = InviteFriendsViewController(
+            nibName: "InviteFriendChildViewController",
+            bundle: nil
+        )
+        inviteFriendsChildViewController.delegate = self
+        
+        inviteFriendsChildViewController.view.frame = tabBarController!.view.frame
+        inviteFriendsChildViewController.view.frame.origin.y = tabBarController!.view.frame.maxY
+    }
+    
+    func presentInviteFriendsChildViewController() {
+        removeKeyboardNotification()
+        
+        tabBarController?.view.addSubview(inviteFriendsChildViewController.view)
+        tabBarController?.addChild(inviteFriendsChildViewController)
+        inviteFriendsChildViewController.didMove(toParent: tabBarController)
+        
+        let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
+        let y: CGFloat = view.frame.maxY - inviteFriendsViewHeight - 10
+        
+        UIView.animate(withDuration: 0.3) { [self] in
+            inviteFriendsChildViewController.view.frame.origin.y = y
+        } completion: { value in
+            UIView.animate(withDuration: 0.3) { [self] in
+                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            }
+        }
+    }
+    
+    func dismissInviteFriendsChildViewController() {
+        setupKeyboardNotification()
+        
+        UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3) { [self] in
+                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+            } completion: { value in
+                UIView.animate(withDuration: 0.3) { [self] in
+                    inviteFriendsChildViewController.view.frame.origin.y = eventView.frame.maxY
+                } completion: { [self] value in
+                    inviteFriendsChildViewController.willMove(toParent: nil)
+                    inviteFriendsChildViewController.removeFromParent()
+                    inviteFriendsChildViewController.view.removeFromSuperview()
+                }
+            }
+        }
     }
 }
 
@@ -146,7 +222,8 @@ extension EventViewController: EventViewDelegate {
 extension EventViewController: EventDataSourceDelegate {
     
     func collectionViewInviteButtonClicked() {
-        
+        inviteFriendsChildViewController.setupKeyboardNotification()
+        presentInviteFriendsChildViewController()
     }
     
     func collectionViewParicipateButtonClicked() {
@@ -220,6 +297,15 @@ extension EventViewController: EventDataSourceDelegate {
                 eventView.setCollectionView(isScrollingEnabled: true)
             }
         }
+    }
+}
+
+//MARK: - InviteFriendsViewControllerDelegate -
+
+extension EventViewController: InviteFriendsViewControllerDelegate {
+    
+    func cancelButtonClicked() {
+        dismissInviteFriendsChildViewController()
     }
 }
 

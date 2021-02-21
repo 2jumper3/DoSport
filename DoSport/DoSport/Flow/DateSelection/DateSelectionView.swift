@@ -19,8 +19,6 @@ final class DateSelectionView: UIView {
     
     //MARK: Outlets
     
-    private let topSeparatorView = DSSeparatorView()
-    
     private let calendarView = FSCalendar()
     
     private lazy var collectionView: UICollectionView = {
@@ -47,7 +45,7 @@ final class DateSelectionView: UIView {
         
         saveButton.addTarget(self, action: #selector(handleSaveButton))
         
-        addSubviews(calendarView, topSeparatorView, collectionView, saveButton)
+        addSubviews(calendarView, collectionView, saveButton)
     }
     
     required init?(coder: NSCoder) {
@@ -58,11 +56,6 @@ final class DateSelectionView: UIView {
         super.layoutSubviews()
         
         setupCalendarView()
-        
-        topSeparatorView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaInsets.top).offset(1)
-            $0.height.equalTo(1)
-        }
         
         collectionView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.9)
