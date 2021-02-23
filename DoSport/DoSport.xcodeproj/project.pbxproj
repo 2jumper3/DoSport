@@ -109,8 +109,6 @@
 		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
 		659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61A42593DB3F00C33D05 /* RegistrationCoordinator.swift */; };
 		659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61AC2593DB5A00C33D05 /* RegistrationView.swift */; };
-		659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
-		659C61C92593E15700C33D05 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */; };
 		65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */; };
 		65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */; };
@@ -173,8 +171,6 @@
 		65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */; };
 		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
 		65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C8259BAD1300BF8CEE /* Reusable.swift */; };
-		65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */; };
-		C4811A41EB5B4A05E10CEF4A /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EC2618CDB8CEA9277A6144 /* Pods_DoSport.framework */; };
 		65ECB2D6259BBB9800BF8CEE /* CountryCodeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2D5259BBB9800BF8CEE /* CountryCodeListViewModel.swift */; };
 		65EEE91425B622A90023168D /* GetEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91325B622A90023168D /* GetEventsRequest.swift */; };
 		65EEE91925B626290023168D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91825B626290023168D /* AppConfiguration.swift */; };
@@ -182,32 +178,35 @@
 		65F1A60425D96FCB00011B5D /* EventMembersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1A60325D96FCB00011B5D /* EventMembersDataSource.swift */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
-		CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */; };
-		CE83AB5125CFCD7800A2C6E1 /* PreviewLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */; };
-		CE83AB7B25DB9F9F00A2C6E1 /* MapFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */; };
-		CE83AB8025DB9FA700A2C6E1 /* MapFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB7F25DB9FA700A2C6E1 /* MapFilterViewModel.swift */; };
-		CE83AB8C25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB8B25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift */; };
-		CE83AB9425DD3EA800A2C6E1 /* MapFilter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE83AB9325DD3EA700A2C6E1 /* MapFilter.xcassets */; };
-		CE83AB9925DD898500A2C6E1 /* CitySelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB9825DD898400A2C6E1 /* CitySelectTableViewCell.swift */; };
-		CE83ABA125DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABA025DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift */; };
-		CE83ABA625DE9CDC00A2C6E1 /* MapFilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */; };
-		CE83ABAB25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */; };
 		CE83ABE025E58DE100A2C6E1 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABDF25E58DE100A2C6E1 /* FilterButton.swift */; };
-		CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92157925B48B4E003BF78E /* MapCoordinator.swift */; };
+		CE83AC6925E59B7000A2C6E1 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */; };
+		CE83AC6A25E59B7000A2C6E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */; };
+		CE83AC6B25E59B7000A2C6E1 /* MapFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5625E59B4B00A2C6E1 /* MapFilterViewModel.swift */; };
+		CE83AC6C25E59B7000A2C6E1 /* MapFilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5725E59B4B00A2C6E1 /* MapFilterCoordinator.swift */; };
+		CE83AC6D25E59B7000A2C6E1 /* MapFilterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5825E59B4B00A2C6E1 /* MapFilterAssembly.swift */; };
+		CE83AC6E25E59B7000A2C6E1 /* MapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5925E59B4B00A2C6E1 /* MapFilterViewController.swift */; };
+		CE83AC6F25E59B7000A2C6E1 /* CitySelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5B25E59B4B00A2C6E1 /* CitySelectTableViewCell.swift */; };
+		CE83AC7025E59B7000A2C6E1 /* MetroSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5C25E59B4B00A2C6E1 /* MetroSelectTableViewCell.swift */; };
+		CE83AC7125E59B7000A2C6E1 /* SportTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5D25E59B4B00A2C6E1 /* SportTypeTableViewCell.swift */; };
+		CE83AC7225E59B7000A2C6E1 /* MapFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5E25E59B4B00A2C6E1 /* MapFilterModel.swift */; };
+		CE83AC7425E59B7000A2C6E1 /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6025E59B4B00A2C6E1 /* MapAssembly.swift */; };
+		CE83AC7525E59B7000A2C6E1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6125E59B4B00A2C6E1 /* MapViewModel.swift */; };
+		CE83AC7625E59B7000A2C6E1 /* PreviewLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6325E59B4B00A2C6E1 /* PreviewLocationView.swift */; };
+		CE83AC7725E59B7000A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6525E59B4B00A2C6E1 /* PlacemarkMapObjectTapListener.swift */; };
+		CE83AC7925E59B7000A2C6E1 /* PreviewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6725E59B4B00A2C6E1 /* PreviewLocation.swift */; };
+		CE83AC7A25E59B7000A2C6E1 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6825E59B4B00A2C6E1 /* MapModel.swift */; };
+		CE83AC8125E59C4B00A2C6E1 /* MapFilter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE83AC5F25E59B4B00A2C6E1 /* MapFilter.xcassets */; };
+		CE83AC8525E59C6800A2C6E1 /* PreviewIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE83AC6625E59B4B00A2C6E1 /* PreviewIcons.xcassets */; };
+		CE83ACA025E5A2F700A2C6E1 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
+		CE83ACA725E5A3E900A2C6E1 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
+		CE83ACAE25E5A43800A2C6E1 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
+		CE83ACB525E5A49100A2C6E1 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
 		CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */; };
 		CEBA62EB2593F350006A7F80 /* TabBarIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBA62EA2593F350006A7F80 /* TabBarIcons.xcassets */; };
 		CEBA62F12593F3FB006A7F80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62F02593F3FB006A7F80 /* MainViewController.swift */; };
 		CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */; };
-		CEBA637B25993838006A7F80 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA637A25993838006A7F80 /* MapViewController.swift */; };
-		CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA6387259A6007006A7F80 /* MapViewModel.swift */; };
-		CEBA638D259A68A6006A7F80 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */; };
-		CEBA6393259A8C6F006A7F80 /* MapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */; };
-		CEBF0F0325BB348400DB1E19 /* PreviewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */; };
-		CEBF0F0B25BB5A5B00DB1E19 /* PreviewIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */; };
-		CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBC9DF25B08139002EB9BF /* MapAssembly.swift */; };
-		CECBC9E525B0818C002EB9BF /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBC9E425B0818C002EB9BF /* MapModel.swift */; };
 		CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
 		CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
@@ -220,12 +219,10 @@
 		CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB84D258CE194007B2BCA /* ErrorParser.swift */; };
 		CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB852258CE1A5007B2BCA /* RequestRouter.swift */; };
 		CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB85B258CE1C7007B2BCA /* AuthRequest.swift */; };
-		CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
 		CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB86D258CE208007B2BCA /* EditPasswordRequest.swift */; };
 		CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
 		CEDEB879258CE240007B2BCA /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB878258CE240007B2BCA /* Responses.swift */; };
 		CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB87E258CE2EA007B2BCA /* Security.swift */; };
-		CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
 		CEDEB8FC258D33D3007B2BCA /* OnBoardingAvatars.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB8FB258D33D3007B2BCA /* OnBoardingAvatars.xcassets */; };
 		CEDEB902258D371D007B2BCA /* OnBoardingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */; };
 		CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */; };
@@ -249,7 +246,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23EC2618CDB8CEA9277A6144 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryAssembly.swift; sourceTree = "<group>"; };
 		65014F1925B4D013000263FA /* PasswordEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewController.swift; sourceTree = "<group>"; };
 		65014F1E25B4D01B000263FA /* PasswordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryView.swift; sourceTree = "<group>"; };
@@ -433,6 +429,24 @@
 		CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterAssembly.swift; sourceTree = "<group>"; };
 		CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterCoordinator.swift; sourceTree = "<group>"; };
 		CE83ABDF25E58DE100A2C6E1 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CE83AC5625E59B4B00A2C6E1 /* MapFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewModel.swift; sourceTree = "<group>"; };
+		CE83AC5725E59B4B00A2C6E1 /* MapFilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterCoordinator.swift; sourceTree = "<group>"; };
+		CE83AC5825E59B4B00A2C6E1 /* MapFilterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterAssembly.swift; sourceTree = "<group>"; };
+		CE83AC5925E59B4B00A2C6E1 /* MapFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewController.swift; sourceTree = "<group>"; };
+		CE83AC5B25E59B4B00A2C6E1 /* CitySelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectTableViewCell.swift; sourceTree = "<group>"; };
+		CE83AC5C25E59B4B00A2C6E1 /* MetroSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroSelectTableViewCell.swift; sourceTree = "<group>"; };
+		CE83AC5D25E59B4B00A2C6E1 /* SportTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeTableViewCell.swift; sourceTree = "<group>"; };
+		CE83AC5E25E59B4B00A2C6E1 /* MapFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterModel.swift; sourceTree = "<group>"; };
+		CE83AC5F25E59B4B00A2C6E1 /* MapFilter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapFilter.xcassets; sourceTree = "<group>"; };
+		CE83AC6025E59B4B00A2C6E1 /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
+		CE83AC6125E59B4B00A2C6E1 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		CE83AC6325E59B4B00A2C6E1 /* PreviewLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationView.swift; sourceTree = "<group>"; };
+		CE83AC6525E59B4B00A2C6E1 /* PlacemarkMapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkMapObjectTapListener.swift; sourceTree = "<group>"; };
+		CE83AC6625E59B4B00A2C6E1 /* PreviewIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewIcons.xcassets; sourceTree = "<group>"; };
+		CE83AC6725E59B4B00A2C6E1 /* PreviewLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocation.swift; sourceTree = "<group>"; };
+		CE83AC6825E59B4B00A2C6E1 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		CE92157925B48B4E003BF78E /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -442,7 +456,6 @@
 		CEBA637A25993838006A7F80 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CEBA6387259A6007006A7F80 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
-		CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewController.swift; sourceTree = "<group>"; };
 		CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocation.swift; sourceTree = "<group>"; };
 		CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewIcons.xcassets; sourceTree = "<group>"; };
 		CECBC9DF25B08139002EB9BF /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
@@ -964,22 +977,86 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE83AB0325C42C6500A2C6E1 /* YandexMapKit */ = {
+		CE83AC4E25E59B1B00A2C6E1 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */,
+				CECBC9DF25B08139002EB9BF /* MapAssembly.swift */,
+				CE83AB8B25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift */,
+				CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */,
+				CECBC9E425B0818C002EB9BF /* MapModel.swift */,
+				CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */,
+				CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */,
+				CEBA637A25993838006A7F80 /* MapViewController.swift */,
+				CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */,
+				CE92157925B48B4E003BF78E /* MapCoordinator.swift */,
+				CE83AB9825DD898400A2C6E1 /* CitySelectTableViewCell.swift */,
 				CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */,
+				CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */,
+				CE83ABA025DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift */,
+				CEBA6387259A6007006A7F80 /* MapViewModel.swift */,
+				CE83AB7F25DB9FA700A2C6E1 /* MapFilterViewModel.swift */,
+				CE83AB9325DD3EA700A2C6E1 /* MapFilter.xcassets */,
+				CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */,
 			);
-			path = YandexMapKit;
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		CE83AB8A25DBAC4D00A2C6E1 /* TableViewCells */ = {
+		CE83AC5225E59B4B00A2C6E1 /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE83AB8B25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift */,
-				CE83AB9825DD898400A2C6E1 /* CitySelectTableViewCell.swift */,
-				CE83ABA025DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift */,
+				CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */,
+				CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */,
+				CE83AC5525E59B4B00A2C6E1 /* MapFilter */,
+				CE83AC6025E59B4B00A2C6E1 /* MapAssembly.swift */,
+				CE83AC6125E59B4B00A2C6E1 /* MapViewModel.swift */,
+				CE83AC6225E59B4B00A2C6E1 /* Helpers */,
+				CE83AC6825E59B4B00A2C6E1 /* MapModel.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		CE83AC5525E59B4B00A2C6E1 /* MapFilter */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AC5625E59B4B00A2C6E1 /* MapFilterViewModel.swift */,
+				CE83AC5725E59B4B00A2C6E1 /* MapFilterCoordinator.swift */,
+				CE83AC5825E59B4B00A2C6E1 /* MapFilterAssembly.swift */,
+				CE83AC5925E59B4B00A2C6E1 /* MapFilterViewController.swift */,
+				CE83AC5A25E59B4B00A2C6E1 /* TableViewCells */,
+				CE83AC5E25E59B4B00A2C6E1 /* MapFilterModel.swift */,
+				CE83AC5F25E59B4B00A2C6E1 /* MapFilter.xcassets */,
+			);
+			path = MapFilter;
+			sourceTree = "<group>";
+		};
+		CE83AC5A25E59B4B00A2C6E1 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AC5B25E59B4B00A2C6E1 /* CitySelectTableViewCell.swift */,
+				CE83AC5C25E59B4B00A2C6E1 /* MetroSelectTableViewCell.swift */,
+				CE83AC5D25E59B4B00A2C6E1 /* SportTypeTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		CE83AC6225E59B4B00A2C6E1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AC6325E59B4B00A2C6E1 /* PreviewLocationView.swift */,
+				CE83AC6425E59B4B00A2C6E1 /* YandexMapKit */,
+				CE83AC6625E59B4B00A2C6E1 /* PreviewIcons.xcassets */,
+				CE83AC6725E59B4B00A2C6E1 /* PreviewLocation.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CE83AC6425E59B4B00A2C6E1 /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				CE83AC6525E59B4B00A2C6E1 /* PlacemarkMapObjectTapListener.swift */,
+			);
+			path = YandexMapKit;
 			sourceTree = "<group>";
 		};
 		CEBA62DA2593F278006A7F80 /* TabBarController */ = {
@@ -1002,45 +1079,6 @@
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
-		CEBA637925988F87006A7F80 /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CECBC9DF25B08139002EB9BF /* MapAssembly.swift */,
-				CE92157925B48B4E003BF78E /* MapCoordinator.swift */,
-				CECBC9E425B0818C002EB9BF /* MapModel.swift */,
-				CEBA637A25993838006A7F80 /* MapViewController.swift */,
-				CEBA6387259A6007006A7F80 /* MapViewModel.swift */,
-				CEBF0F0125BB347900DB1E19 /* Helpers */,
-				CEBA6391259A8C54006A7F80 /* MapFilter */,
-			);
-			path = MapViewController;
-			sourceTree = "<group>";
-		};
-		CEBA6391259A8C54006A7F80 /* MapFilter */ = {
-			isa = PBXGroup;
-			children = (
-				CE83AB8A25DBAC4D00A2C6E1 /* TableViewCells */,
-				CEBA6392259A8C6E006A7F80 /* MapFilterViewController.swift */,
-				CE83AB9325DD3EA700A2C6E1 /* MapFilter.xcassets */,
-				CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */,
-				CE83ABA525DE9CDB00A2C6E1 /* MapFilterAssembly.swift */,
-				CE83ABAA25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift */,
-				CE83AB7F25DB9FA700A2C6E1 /* MapFilterViewModel.swift */,
-			);
-			path = MapFilter;
-			sourceTree = "<group>";
-		};
-		CEBF0F0125BB347900DB1E19 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CE83AB0325C42C6500A2C6E1 /* YandexMapKit */,
-				CEBF0F0225BB348400DB1E19 /* PreviewLocation.swift */,
-				CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */,
-				CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		CEDEB770258CB404007B2BCA = {
 			isa = PBXGroup;
 			children = (
@@ -1050,6 +1088,7 @@
 				CEDEB77A258CB404007B2BCA /* Products */,
 				1B575704A7CC7F421F6A9B8A /* Pods */,
 				86FDF7AEC152A8EDA7FFAD16 /* Frameworks */,
+				CE83AC4E25E59B1B00A2C6E1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1203,6 +1242,7 @@
 		CEDEB8DF258CF94C007B2BCA /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				CE83AC5225E59B4B00A2C6E1 /* MapViewController */,
 				659C61732593D3F700C33D05 /* Auth */,
 				653179D625D112B3001DBA4B /* DateSelection */,
 				65EAAA9425CD59A9005E0131 /* Event */,
@@ -1348,15 +1388,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE83AC8525E59C6800A2C6E1 /* PreviewIcons.xcassets in Resources */,
+				CE83AC8125E59C4B00A2C6E1 /* MapFilter.xcassets in Resources */,
 				65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */,
 				CEDEB789258CB40A007B2BCA /* LaunchScreen.storyboard in Resources */,
 				65B150DB25DEA77F00720015 /* InviteFriendsViewController.xib in Resources */,
 				CEDEB8FC258D33D3007B2BCA /* OnBoardingAvatars.xcassets in Resources */,
 				CEDEB786258CB40A007B2BCA /* Icons.xcassets in Resources */,
 				CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */,
-				CE83AB9425DD3EA800A2C6E1 /* MapFilter.xcassets in Resources */,
 				CEBA62EB2593F350006A7F80 /* TabBarIcons.xcassets in Resources */,
-				CEBF0F0B25BB5A5B00DB1E19 /* PreviewIcons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1440,6 +1480,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE83ACB525E5A49100A2C6E1 /* GetUserInfo.swift in Sources */,
+				CE83ACAE25E5A43800A2C6E1 /* UIView+addSubviews.swift in Sources */,
+				CE83ACA725E5A3E900A2C6E1 /* UserCountry.swift in Sources */,
+				CE83ACA025E5A2F700A2C6E1 /* OnBoardingViewController.swift in Sources */,
+				CE83AC6925E59B7000A2C6E1 /* MapCoordinator.swift in Sources */,
+				CE83AC6A25E59B7000A2C6E1 /* MapViewController.swift in Sources */,
+				CE83AC6B25E59B7000A2C6E1 /* MapFilterViewModel.swift in Sources */,
+				CE83AC6C25E59B7000A2C6E1 /* MapFilterCoordinator.swift in Sources */,
+				CE83AC6D25E59B7000A2C6E1 /* MapFilterAssembly.swift in Sources */,
+				CE83AC6E25E59B7000A2C6E1 /* MapFilterViewController.swift in Sources */,
+				CE83AC6F25E59B7000A2C6E1 /* CitySelectTableViewCell.swift in Sources */,
+				CE83AC7025E59B7000A2C6E1 /* MetroSelectTableViewCell.swift in Sources */,
+				CE83AC7125E59B7000A2C6E1 /* SportTypeTableViewCell.swift in Sources */,
+				CE83AC7225E59B7000A2C6E1 /* MapFilterModel.swift in Sources */,
+				CE83AC7425E59B7000A2C6E1 /* MapAssembly.swift in Sources */,
+				CE83AC7525E59B7000A2C6E1 /* MapViewModel.swift in Sources */,
+				CE83AC7625E59B7000A2C6E1 /* PreviewLocationView.swift in Sources */,
+				CE83AC7725E59B7000A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */,
+				CE83AC7925E59B7000A2C6E1 /* PreviewLocation.swift in Sources */,
+				CE83AC7A25E59B7000A2C6E1 /* MapModel.swift in Sources */,
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
@@ -1483,9 +1543,6 @@
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */,
-				659C61C92593E15700C33D05 /* UserCountry.swift in Sources */,
-				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
-				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
 				65CEF62325CDB34700EB0B34 /* CollectionViewCommentCell.swift in Sources */,
 				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
@@ -1497,28 +1554,13 @@
 				6572954025D953FD00996440 /* TableViewCommentCell.swift in Sources */,
 				653DA7D825B36455000263C9 /* AvatarImageView.swift in Sources */,
 				65EAAA9625CD59CE005E0131 /* EventViewController.swift in Sources */,
-				CE83AB5125CFCD7800A2C6E1 /* PreviewLocationView.swift in Sources */,
-				659C61C92593E15700C33D05 /* UserCountry.swift in Sources */,
-				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
-				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
-				CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */,
-				CE83AB8C25DBAC7200A2C6E1 /* SportTypeTableViewCell.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
-				CEBF0F0325BB348400DB1E19 /* PreviewLocation.swift in Sources */,
-				CECBC9E525B0818C002EB9BF /* MapModel.swift in Sources */,
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
-				CE83ABA625DE9CDC00A2C6E1 /* MapFilterAssembly.swift in Sources */,
-				CEBA638D259A68A6006A7F80 /* OnBoardingCoordinator.swift in Sources */,
-				CEBA637B25993838006A7F80 /* MapViewController.swift in Sources */,
-				659C61C92593E15700C33D05 /* UserCountry.swift in Sources */,
-				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
-				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
-				65D9741E25B47FAF00769653 /* SportTypeListDataSource.swift in Sources */,
+				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				653DA7D825B36455000263C9 /* AvatarImageView.swift in Sources */,
-				653408B4259A88BD0072542D /* DSSearchBar.swift in Sources */,
 				CEBA62F12593F3FB006A7F80 /* MainViewController.swift in Sources */,
 				65EAAAA325CD59DA005E0131 /* EventViewModel.swift in Sources */,
 				6503F4E825B5D56A0002BC27 /* LocalTime.swift in Sources */,
@@ -1548,10 +1590,8 @@
 				6568F8F225B4F98900225043 /* FeedCoordinator.swift in Sources */,
 				6595195925A87C0100CC15E0 /* TableViewCellsHeaderView.swift in Sources */,
 				656CC248259A4F8700DEC84C /* CountryCodeListView.swift in Sources */,
-				CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */,
-				6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */,
-				656CC248259A4F8700DEC84C /* CountryListView.swift in Sources */,
-				CE83AB7B25DB9F9F00A2C6E1 /* MapFilterModel.swift in Sources */,
+				6595195925A87C0100CC15E0 /* TableViewCellsHeaderView.swift in Sources */,
+				656CC248259A4F8700DEC84C /* CountryCodeListView.swift in Sources */,
 				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
 				653179F125D112E1001DBA4B /* DateSelectionDataSource.swift in Sources */,
 				655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */,
@@ -1560,14 +1600,12 @@
 				65CEF63B25CDBADC00EB0B34 /* CollectionViewMemberCell.swift in Sources */,
 				65ECB2D6259BBB9800BF8CEE /* CountryCodeListViewModel.swift in Sources */,
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
-				CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */,
 				653DA7DE25B364DB000263C9 /* Button.swift in Sources */,
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
 				653408A0259A80180072542D /* CountryCodeListCoordinator.swift in Sources */,
 				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
 				657C064125AF2D50000DBD9B /* CodeEntryView.swift in Sources */,
-				CE83AB9925DD898500A2C6E1 /* CitySelectTableViewCell.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
 				65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
@@ -1595,18 +1633,12 @@
 				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
 				655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
-				CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				65CDF8D225DB1BF50049F711 /* TableViewSportGroundSelectionCell.swift in Sources */,
 				655B515125D5C021004FE90F /* MembersCountCell.swift in Sources */,
 				6531798F25D111F0001DBA4B /* RegionListView.swift in Sources */,
 				658E0AB625D828BB0013DFF5 /* TableViewSportTypeListCell.swift in Sources */,
 				6568F8E325B4F97800225043 /* FeedViewController.swift in Sources */,
-				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
-				CE83ABAB25DE9CEA00A2C6E1 /* MapFilterCoordinator.swift in Sources */,
-				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
-				CE83ABA125DD8A4A00A2C6E1 /* MetroSelectTableViewCell.swift in Sources */,
-				CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
 				6531792925D10E19001DBA4B /* EventCreateViewModel.swift in Sources */,
 				65CDF8B625DB13F10049F711 /* SportGround.swift in Sources */,
@@ -1632,7 +1664,6 @@
 				65CDF89225DB11FF0049F711 /* SportGroundSelectionListView.swift in Sources */,
 				6531793325D10E26001DBA4B /* EventCreateAssembly.swift in Sources */,
 				CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */,
-				CE83AB8025DB9FA700A2C6E1 /* MapFilterViewModel.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
 				65ECB2B6259BAA6600BF8CEE /* CountryCodeListDataSource.swift in Sources */,
 				65F1A60425D96FCB00011B5D /* EventMembersDataSource.swift in Sources */,
@@ -1659,7 +1690,7 @@
 				6572955025D9591600996440 /* EventChatFrameDataSource.swift in Sources */,
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */,
-				65D9742325B4807F00769653 /* SportTypeCollectionCell.swift in Sources */,
+				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				CE83ABE025E58DE100A2C6E1 /* FilterButton.swift in Sources */,
 				65014F2925B4D02B000263FA /* PasswordEntryViewModel.swift in Sources */,
 				65BBC37225DB5E78003DEF53 /* DSCheckboxButton.swift in Sources */,

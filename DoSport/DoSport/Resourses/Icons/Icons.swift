@@ -105,7 +105,7 @@ extension Icons {
         UIImage(named: name) ?? UIImage()
     }
 }
-
+//MARK: - MapIcons & Filter
 extension Icons {
     enum MapIcons {
         static var placeMark = image(named: "customPoint")
@@ -115,5 +115,12 @@ extension Icons {
         static var price = image(named: "Rub")
         static var location = image(named: "Location")
         static var metro = image(named: "Metro")
+    }
+}
+
+extension Icons {
+    enum FilterIcon {
+        static var filter = image(named: "Filter")
+
     }
 }

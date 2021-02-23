@@ -17,7 +17,7 @@ final class InviteFriendsDataSource: NSObject {
     weak var delegate: InviteFriendsDataSourceDelegate?
     
     var viewModels: [User]
-    var selectedIndecies: Set<User> = .init()
+    var selectedIndecies: [Int: User] = [:]
     
     init(viewModels: [User] = []) {
         self.viewModels = viewModels
@@ -45,7 +45,6 @@ extension InviteFriendsDataSource: UICollectionViewDataSource {
         let cell: ShareMemberCollectionCell = collectionView.cell(forRowAt: indexPath)
         cell.bind(with: .init(name: viewModel.name))
         cell.bind(state: .notSelected)
-        selectedIndecies.add(viewModel)
         if selectedIndecies.values.contains(viewModel) {
             cell.bind(state: .selected)
         }
