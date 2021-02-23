@@ -37,9 +37,13 @@ extension SportGroundSelectionListDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = viewModels[indexPath.row]
         
-        let cell: TableViewSportGroundSelectionCell = tableView.cell(forRowAt: indexPath)
-        cell.sportGroundTitleLabel.text = viewModel.title
-        cell.subwayNameLabel.text = viewModel.address
+        let cell: SportGroundSelectionTableCell = tableView.cell(forRowAt: indexPath)
+        cell.bind(with: .init(
+                    sportGroundTitle: viewModel.title,
+                    spogroundBackImage: nil,
+                    subwayName: viewModel.address,
+                    location: nil,
+                    price: nil))
         
         return cell
     }
@@ -56,7 +60,7 @@ extension SportGroundSelectionListDataSource: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height * 0.195
+        return tableView.frame.height * 0.2
     }
 }
 
