@@ -48,16 +48,16 @@ final class DSSearchBar: UISearchBar {
 }
 
 //MARK: - Public methods
-
 extension DSSearchBar {
+    
     func bind(state: State) {
         self.state = state
     }
 }
 
 //MARK: - Private methods
-
 private extension DSSearchBar {
+    
     func setState() {
         switch self.state {
         case .active:

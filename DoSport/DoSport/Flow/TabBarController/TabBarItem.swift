@@ -11,19 +11,15 @@ enum TabBarItem: String, CaseIterable {
 
     case home = "Home"
     case map = "Map"
-    case list = "Main"
     case chat = "Chat"
     case user = "User"
+    
 //Need to add newControllers when it will be finished
     var viewController: UIViewController {
         switch self {
         case .home:
-            return UINavigationController(rootViewController: MainViewController())
+            return FeedAssembly().makeModule()
         case .map:
-            let assembly = MapAssembly()
-            let viewController = assembly.makeModule()
-            return viewController
-        case .list:
             return MainViewController()
         case .chat:
             return MainViewController()
@@ -32,18 +28,16 @@ enum TabBarItem: String, CaseIterable {
         }
     }
 
-    var icon: UIImage? {
+    var icon: UIImage {
         switch self {
         case .home:
-            return UIImage(named: "homeInactive")!
+            return UIImage(named: "homeInactive") ?? UIImage()
         case .map:
-            return UIImage(named: "mapInactive")!
-        case .list:
-            return UIImage(named: "listInative")!
+            return UIImage(named: "mapInactive") ?? UIImage()
         case .chat:
-            return UIImage(named: "chatInactive")!
+            return UIImage(named: "chatInactive") ?? UIImage()
         case .user:
-            return UIImage(named: "userInactive")!
+            return UIImage(named: "userInactive") ?? UIImage()
         }
     }
 

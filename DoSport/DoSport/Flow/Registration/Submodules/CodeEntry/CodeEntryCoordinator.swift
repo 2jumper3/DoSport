@@ -31,6 +31,7 @@ final class CodeEntryCoordinator: Coordinator {
     
     func goToRegistrationModule() {
         let coordinator = RegistrationCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
 }

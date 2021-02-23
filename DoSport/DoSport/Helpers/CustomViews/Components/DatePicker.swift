@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol DSDatePickerDelegate: class {
+    func doneButtonClicked()
+}
+
 final class DSDatePicker: UIDatePicker {
     
-    var onDoneButtonTap: (() -> Swift.Void)?
+    weak var delegate: DSDatePickerDelegate?
     
     private var toolBar: UIToolbar?
+    
+    //MARK: Init
 
     init() {
         super.init(frame: .zero)
@@ -27,9 +33,9 @@ final class DSDatePicker: UIDatePicker {
             action: #selector(handleDoneButton)
         )
         
-        self.toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 44))
-        self.toolBar?.isTranslucent = false
-        self.toolBar?.barTintColor = Colors.darkBlue_02
+        toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 44))
+        toolBar?.isTranslucent = false
+        toolBar?.barTintColor = Colors.darkBlue_02
         
         let barButtonItem = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
@@ -44,20 +50,21 @@ final class DSDatePicker: UIDatePicker {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension DSDatePicker {
+    
     func setTextField(_ textField: UITextField) {
         textField.inputView = self
         textField.inputAccessoryView = self.toolBar
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension DSDatePicker {
+@objc private extension DSDatePicker {
+    
     func handleDoneButton() {
-        onDoneButtonTap?()
+        delegate?.doneButtonClicked()
     }
 }

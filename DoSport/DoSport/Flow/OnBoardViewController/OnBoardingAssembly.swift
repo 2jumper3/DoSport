@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 final class OnBoardingAssembly: Assembly {
     
     func makeModule() -> OnBoardingViewController {

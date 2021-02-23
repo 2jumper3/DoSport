@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Sport {
+struct Sport: Codable {
     
     var title: String?
     var icon: String?
     
-    var type: SportType
+    var type: SportType?
     
     init(type: SportType) {
         self.type = type
@@ -68,14 +68,17 @@ struct Sport {
         case dance = "Танцы"
         case tablettennis = "Настольный теннис"
         case skateboard = "Скейтборд"
-        case badminton = "Бадминтое"
+        case badminton = "Бадминтон"
         case other = "Другое"
     }
 }
 
+extension Sport.SportType: Codable { }
+
 //MARK: - Equatable
 
 extension Sport: Equatable {
+    
     static func ==(lhs: Sport, rhs: Sport) -> Bool {
         return lhs.title == rhs.title &&
             lhs.icon == rhs.icon

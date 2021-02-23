@@ -9,6 +9,8 @@ import UIKit
 
 final class DSNavigationController: UINavigationController {
     
+    private let navBarSeparatorView = DSSeparatorView()
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
 
         if let topVC = viewControllers.last {
@@ -17,5 +19,24 @@ final class DSNavigationController: UINavigationController {
         }
 
         return .default
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationBar.isTranslucent = false
+        navigationBar.barTintColor = Colors.darkBlue
+        
+        navigationBar.addSubview(navBarSeparatorView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        navBarSeparatorView.snp.makeConstraints {
+            $0.width.centerX.equalToSuperview()
+            $0.height.equalTo(1)
+            $0.bottom.equalTo(self.navigationBar.snp.bottom).offset(1)
+        }
     }
 }

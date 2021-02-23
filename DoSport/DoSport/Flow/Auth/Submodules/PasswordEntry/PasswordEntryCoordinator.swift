@@ -28,4 +28,8 @@ final class PasswordEntryCoordinator: Coordinator {
     func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func goToFeedModule() {
+        navigationController?.viewControllers = [MainMenuTabController()]
+    }
 }

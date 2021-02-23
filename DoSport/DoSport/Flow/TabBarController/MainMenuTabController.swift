@@ -8,94 +8,144 @@
 import UIKit
 
 final class MainMenuTabController: UITabBarController, UINavigationControllerDelegate {
-
-    // MARK: - Outlets
-    let backGroundView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    var customTabBar: CustomTabView!
-
-    // MARK: - Properteis
-    var tabBarHeight: CGFloat = 88.0
-
-    // MARK: - Init
+    
+    weak var coordinator: MainTabBarCoordinator?
+    
+    private let tabBarHeight: CGFloat = CGFloat(UIDevice.getDeviceRelatedTabBarHeight())
+    private let tabBarItems: [TabBarItem] = [.home, .map, .chat, .user]
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    //MARK: Outlets
+    
+    private var customTabBar: CustomTabView!
+    private let topSeparatorView = DSSeparatorView()
+    
+    // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
-        self.loadTabBar()
+        
+        setupCustomTabBarItem()
+        
+        selectedIndex = 0
         delegate = self
     }
-
-    // MARK: - Setup custom tabbar
-    private func loadTabBar() {
-        let tabItems: [TabBarItem] = [.home, .map, .list, .chat, .user]
-        self.setupCustomTabBar(tabItems) { (controllers) in
-            self.viewControllers = controllers
-            let navControllers = controllers[0] as? UINavigationController
-            let controller = navControllers?.viewControllers.first as? MainViewController
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        topSeparatorView.snp.makeConstraints {
+            $0.width.centerX.equalTo(view)
+            $0.height.equalTo(1)
+            $0.top.equalTo(customTabBar.snp.top).offset(-1)
         }
-        self.selectedIndex = 0
+        
+        customTabBar.snp.makeConstraints {
+            $0.left.right.equalTo(tabBar)
+            $0.height.equalTo(tabBarHeight)
+            $0.bottom.equalTo(tabBar.snp.bottom)
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
+}
 
-    private func setupCustomTabBar(_ items: [TabBarItem],
-                                   completion: @escaping ([UIViewController]) -> Void) {
-        let frame = CGRect(x: tabBar.frame.origin.x, y: tabBar.frame.origin.x, width: tabBar.frame.width, height: tabBarHeight)
+//MARK: Public API
 
-        var controllers = [UIViewController]()
+extension MainMenuTabController {
+    
+    func setupTabBarViewControllers() {
+        var tabViewControllers: [UIViewController]? = []
+        
+        self.tabBarItems.forEach { tabBarItem in
+            
+            if tabBarItem.viewController is FeedViewController {
+                let navigationController = DSNavigationController()
+                let feedCoordinator = FeedCoordinator(navController: navigationController)
+                self.coordinator?.store(coordinator: feedCoordinator)
+                feedCoordinator.start()
+                
+                tabViewControllers?.append(navigationController)
+            } else {
+                tabViewControllers?.append(tabBarItem.viewController)
+            }
+        }
+        
+        self.viewControllers = tabViewControllers
+    }
+}
 
+//MARK: Private API
+
+private extension MainMenuTabController {
+    
+    func setupCustomTabBarItem() {
+        let frame = CGRect(
+            x: tabBar.frame.origin.x,
+            y: tabBar.frame.origin.x,
+            width: tabBar.frame.width,
+            height: tabBarHeight
+        )
+        
         tabBar.isHidden = true
-
-        self.customTabBar = CustomTabView(menuItems: items, frame: frame)
-        self.customTabBar.translatesAutoresizingMaskIntoConstraints = false
-        self.customTabBar.itemTapped = self.changeTab
-        self.view.addSubview(customTabBar)
-
-        customTabBar.snp.makeConstraints { (make) in
-            make.leading.equalTo(tabBar.snp.leading)
-            make.trailing.equalTo(tabBar.snp.trailing)
-            make.width.equalTo(tabBar.snp.width)
-            make.height.equalTo(tabBarHeight)
-            make.bottom.equalTo(tabBar.snp.bottom)
-        }
-
-        for item in 0 ..< items.count {
-            controllers.append(items[item].viewController)
-        }
-
-        self.view.layoutIfNeeded()
-        completion(controllers)
+        
+        customTabBar = CustomTabView(menuItems: self.tabBarItems, frame: frame)
+        customTabBar.translatesAutoresizingMaskIntoConstraints = false
+        customTabBar.itemTapped = changeTab
+        view.addSubview(customTabBar)
+        customTabBar.addSubview(topSeparatorView)
+        
+        view.layoutIfNeeded()
     }
-
+    
     func changeTab(tab: Int) {
         self.selectedIndex = tab
     }
 }
-// MARK: - Animation change viewControllers
-extension MainMenuTabController: UITabBarControllerDelegate {
 
-    func tabBarController(_ tabBarController: UITabBarController,
-                          animationControllerForTransitionFrom fromVC: UIViewController,
-                          to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+// MARK: - UITabBarControllerDelegate -
+
+extension MainMenuTabController: UITabBarControllerDelegate {
+    
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        animationControllerForTransitionFrom fromVC: UIViewController,
+        to toVC: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         return MyTransition(viewControllers: tabBarController.viewControllers)
     }
 }
 
-class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
+// MARK: - UIViewControllerAnimatedTransitioning -
 
-    let viewControllers: [UIViewController]?
-    let transitionDuration: Double = 0.25
-
+final class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    private let viewControllers: [UIViewController]?
+    private let transitionDuration: Double = 0.25
+    
     init(viewControllers: [UIViewController]?) {
         self.viewControllers = viewControllers
     }
-
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return TimeInterval(transitionDuration)
     }
-
+    
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-
         guard
             let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let fromView = fromVC.view,
@@ -103,20 +153,22 @@ class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
             let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
             let toView = toVC.view,
             let toIndex = getIndex(for: toVC)
-            else {
-                transitionContext.completeTransition(false)
-                return
+        else {
+            transitionContext.completeTransition(false)
+            return
         }
-
+        
         let frame = transitionContext.initialFrame(for: fromVC)
         var fromFrameEnd = frame
         var toFrameStart = frame
+        
         fromFrameEnd.origin.x = toIndex > fromIndex ? frame.origin.x - frame.width : frame.origin.x + frame.width
         toFrameStart.origin.x = toIndex > fromIndex ? frame.origin.x + frame.width : frame.origin.x - frame.width
         toView.frame = toFrameStart
-
+        
         DispatchQueue.main.async {
             transitionContext.containerView.addSubview(toView)
+            
             UIView.animate(withDuration: self.transitionDuration, animations: {
                 fromView.frame = fromFrameEnd
                 toView.frame = frame
@@ -126,14 +178,16 @@ class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
             })
         }
     }
-
+    
     func getIndex(for controller: UIViewController) -> Int? {
         guard let vcs = self.viewControllers else { return nil }
+        
         for (index, thisVC) in vcs.enumerated() {
             if thisVC == controller {
                 return index
             }
         }
+        
         return nil
     }
 }

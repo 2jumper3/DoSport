@@ -7,7 +7,13 @@
 
 import Foundation
 
-public enum Texts { }
+public enum Texts {
+    enum Common {
+        static let save = "Сохранить"
+        static let date = "Дата и время"
+        static let invite = "Пригласить"
+    }
+}
 
 //MARK: - OnBoarding Screen
 extension Texts {
@@ -84,7 +90,7 @@ extension Texts {
         static let navTitle = "Регистрация"
         
         static let addAvatar = "Загузить фото"
-        static let save = "Сохранить"
+        static let save = Common.save
         
         static let userName = "Никнейм"
         static let userNameError = "Никнейм занят"
@@ -102,11 +108,11 @@ extension Texts {
     }
 }
 
-//MARK: - SportTypeList Screen
+//MARK: - SportTypeGrid Screen
 extension Texts {
-    enum SportTypeList {
+    enum SportTypeGrid {
         static let title = "Что тебе интересно?"
-        static let save = "Сохранить"
+        static let save = Common.save
     }
 }
 
@@ -116,5 +122,77 @@ extension Texts {
         static let title = "Вход"
         static let forgotPassword = "Забыли пароль?"
         static let enter = "Войти"
+    }
+}
+
+//MARK: - Feed screen
+extension Texts {
+    enum Feed {
+        static let title = "Создать тренировку"
+        static let feedTitle = "Лента"
+        
+        static let all = "Все"
+        static let subscribes = "Подписки"
+        static let subscribers = "Подписчики"
+        
+        static let free = "Бесплатно"
+        static let km3 = "3 км"
+        
+        static let cancel = "Отменить"
+        static let invite = Common.invite
+        static let selectChat = "Выберите чаты"
+    }
+}
+
+//MARK: - Event screen
+extension Texts {
+    enum Event {
+        static let invite = Common.invite
+        static let participate = "Участвовать"
+        static let participating = "Ты в игре!"
+        
+        static let reply = "Ответить"
+        
+        static let messages = "Написать сообщение..."
+    }
+}
+
+//MARK: - EventCreate screen
+extension Texts {
+    enum EventCreate {
+        static let navTitle = "Создать тренировку"
+        
+        static let create = "Создать"
+        static let closed = "Закрытая"
+        static let closedEventInfo = "В закрытую тренировку только вы можете пригласить участников"
+        static let sportTypes = "Вид спорта"
+        static let playground = "Площадка"
+        static let date = Common.date
+        static let memberCount = "Количество участников"
+        static let noLimit = "Без ограничений"
+        static let placeholder = "Расскажите о тренировке..."
+    }
+}
+
+//MARK: - SportTypeList screen
+extension Texts {
+    enum SportTypeList {
+        static let navTitle = "Выбрать вид спорта"
+        static let select = "Выбрать"
+    }
+}
+
+//MARK: - DateSelection screen
+extension Texts {
+    enum DateSelection {
+        static let save = Common.save
+        static let date = Common.date
+    }
+}
+
+//MARK: - SportGroundSelectionList screen
+extension Texts {
+    enum SportGroundSelectionList {
+        static let select = "Выбрать"
     }
 }

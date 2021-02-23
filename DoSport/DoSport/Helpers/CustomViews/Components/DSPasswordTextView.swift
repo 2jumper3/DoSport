@@ -6,43 +6,56 @@
 //
 
 import UIKit
-import SnapKit
+
+protocol DSPasswordTextViewDelegate: class {
+    func visibilityControlButtonClicked()
+    func textFieldDidEditing(_ text: String?)
+}
+
+enum TextVisibility {
+    case normal, hidden
+}
 
 final class DSPasswordTextView: UIView {
     
-    enum State {
-        case normal, hidden
-    }
+    weak var delegate: DSPasswordTextViewDelegate?
     
-    private var textViewState: State = .hidden {
+    private var textVisibility: TextVisibility = .hidden {
         didSet {
             handleStateChagne()
         }
     }
     
-    private(set) lazy var textField = DSTextField(type: .password)
+    // MARK: Outlets
     
-    private lazy var hideShowButton: UIButton = {
-        let icon: UIImage = textViewState == .normal ? Icons.PasswordEntry.showedEye : Icons.PasswordEntry.hiddenEye
+    private lazy var textField: DSTextField = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.layer.borderColor = UIColor.clear.cgColor
+        $0.layer.borderWidth = 0
+        return $0
+    }(DSTextField(type: .password))
+    
+    private lazy var visibilityControlButton: UIButton = {
+        let icon = textVisibility == .normal ? Icons.PasswordEntry.showedEye : Icons.PasswordEntry.hiddenEye
         $0.setImage(icon, for: .normal)
         $0.tintColor = Colors.mainBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIButton(type: .system))
     
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
+        
         translatesAutoresizingMaskIntoConstraints = false
         layer.borderWidth = 1
         layer.borderColor = Colors.dirtyBlue.cgColor
         layer.cornerRadius = 8
         
-        textField.layer.borderColor = UIColor.clear.cgColor
-        textField.layer.borderWidth = 0
+        setupOutletTargets()
         
-        addSubviews(textField, hideShowButton)
+        addSubviews(textField, visibilityControlButton)
     }
     
     required init?(coder: NSCoder) {
@@ -58,44 +71,66 @@ final class DSPasswordTextView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.9)
         }
         
-        hideShowButton.snp.makeConstraints {
+        visibilityControlButton.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-15)
             $0.centerY.height.equalToSuperview()
-            $0.width.equalTo(hideShowButton.snp.width)
+            $0.width.equalTo(visibilityControlButton.snp.width)
         }
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension DSPasswordTextView {
+    
     func bind() {
-        switch textViewState {
-        case .normal:
-            self.textViewState = .hidden
-        case .hidden:
-            self.textViewState = .normal
+        switch textVisibility {
+        case .normal: textVisibility = .hidden
+        case .hidden: textVisibility = .normal
         }
     }
     
-    func addButtonTarget(target: Any?, action: Selector) {
-        hideShowButton.addTarget(target, action: action, for: .touchUpInside)
+    func makeTextFieldFirstResponder() {
+        textField.becomeFirstResponder()
+    }
+    
+    func removeTextFieldFirstResponder() {
+        textField.resignFirstResponder()
     }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
-extension DSPasswordTextView {
+private extension DSPasswordTextView {
+    
+    func setupOutletTargets() {
+        visibilityControlButton.addTarget(self, action: #selector(handleVisibilityControlButton))
+        textField.addTarget(self, action: #selector(handleTextFieldEditing))
+    }
+    
     func handleStateChagne() {
-        switch textViewState {
+        switch textVisibility {
         case .normal:
             textField.isSecureTextEntry = false
-            hideShowButton.setImage(Icons.PasswordEntry.showedEye, for: .normal)
+            visibilityControlButton.setImage(Icons.PasswordEntry.showedEye, for: .normal)
         case .hidden:
             textField.isSecureTextEntry = true
-            hideShowButton.setImage(Icons.PasswordEntry.hiddenEye, for: .normal)
+            visibilityControlButton.setImage(Icons.PasswordEntry.hiddenEye, for: .normal)
         }
-        layoutIfNeeded()
+        setNeedsDisplay()
+    }
+}
+
+//MARK: Actions
+
+@objc private extension DSPasswordTextView {
+    
+    func handleVisibilityControlButton() {
+        delegate?.visibilityControlButtonClicked()
+    }
+    
+    func handleTextFieldEditing(_ textField: UITextField) {
+        delegate?.textFieldDidEditing(textField.text)
     }
 }
 

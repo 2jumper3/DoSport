@@ -20,6 +20,8 @@ final class CodeEntryView: UIView {
     
     private let phoneNumber: String
     
+    //MARK: Outlets
+    
     private lazy var goBackButton: DSBarBackButton = {
         $0.addTarget(self, action: #selector(handleGoBackButton), for: .touchUpInside)
         return $0
@@ -49,7 +51,7 @@ final class CodeEntryView: UIView {
     
     private lazy var codeLabelsStackView = CodeLabelStackView()
     
-    private lazy var codeSentToNumberLabel: UILabel = {
+    private lazy var phoneNumberLabel: UILabel = {
         $0.text = Texts.CodeEntry.codeSentToNumber + " " + self.phoneNumber
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textAlignment = .center
@@ -66,7 +68,7 @@ final class CodeEntryView: UIView {
         return $0
     }(UIButton(type: .system))
     
-    // MARK: - Init
+    // MARK: Init
     
     init(_ phoneNumber: String) {
         self.phoneNumber = phoneNumber
@@ -81,7 +83,7 @@ final class CodeEntryView: UIView {
             titleLabel,
             confirmationLabel,
             codeLabelsStackView,
-            codeSentToNumberLabel,
+            phoneNumberLabel,
             codeResendButton
         )
     }
@@ -125,35 +127,37 @@ final class CodeEntryView: UIView {
             $0.height.equalTo(50)
         }
         
-        codeSentToNumberLabel.snp.makeConstraints {
+        phoneNumberLabel.snp.makeConstraints {
             $0.top.equalTo(codeLabelsStackView.snp.bottom).offset(16)
             $0.centerX.width.equalTo(codeLabelsStackView)
             $0.height.equalTo(17)
         }
         
         codeResendButton.snp.makeConstraints {
-            $0.top.equalTo(codeSentToNumberLabel.snp.bottom).offset(24)
+            $0.top.equalTo(phoneNumberLabel.snp.bottom).offset(24)
             $0.width.centerX.equalTo(codeLabelsStackView)
             $0.height.equalTo(24)
         }
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension CodeEntryView {
-    func bind() {
-        
-    }
-    
+
     func becomeResponder() {
         codeLabelsStackView.becomeTextFieldResponder()
     }
+    
+    func clearCodeTextFields() {
+        codeLabelsStackView.clearTextFields()
+    }
 }
  
-//MARK: - Actions
+//MARK: Actions
 
-@objc extension CodeEntryView {
+@objc private extension CodeEntryView {
+    
     func handleCodeResendButton() {
         delegate?.didTapCodeResentButton()
     }
@@ -163,9 +167,10 @@ extension CodeEntryView {
     }
 }
 
-//MARK: - Public methods
+//MARK: - CodeLabelStackViewDelegate -
 
 extension CodeEntryView: CodeLabelStackViewDelegate {
+    
     func didEnterCode(_ code: String) {
         delegate?.didAddCode(code)
     }

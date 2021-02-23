@@ -14,10 +14,10 @@ final class OnBoardingCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init() {
+    init(navController: UINavigationController?) {
         let assembly = OnBoardingAssembly()
         self.rootViewController = assembly.makeModule()
-        self.navigationController = DSNavigationController()
+        self.navigationController = navController
         self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
         self.navigationController?.navigationBar.isTranslucent = false
     }
@@ -28,7 +28,8 @@ final class OnBoardingCoordinator: Coordinator {
     }
     
     func goToAuthView() {
-        let coordiator = AuthCoordinator(navController: navigationController!)
+        let coordiator = AuthCoordinator(navController: navigationController)
+        store(coordinator: coordiator)
         coordiator.start()
     }
 }
