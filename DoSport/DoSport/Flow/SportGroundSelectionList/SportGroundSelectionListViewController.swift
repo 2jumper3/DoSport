@@ -118,6 +118,11 @@ private extension SportGroundSelectionListViewController {
         
         /// right bar buttons setup
         let mapBtn = UIButton(type: .system), filterBtn = UIButton(type: .system)
+       [mapBtn, filterBtn].forEach {
+            $0.frame.size = CGSize(width: 30, height: 24)
+            $0.tintColor = Colors.mainBlue
+        }
+        
         mapBtn.setImage(Icons.SportGroundSelectionList.map, for: .normal)
         mapBtn.addTarget(self, action: #selector(handleMapButton), for: .touchUpInside)
         filterBtn.setImage(Icons.SportGroundSelectionList.filter, for: .normal)
@@ -128,11 +133,8 @@ private extension SportGroundSelectionListViewController {
         navigationItem.rightBarButtonItems = [mapBarBtn, filterBarBtn]
         
         /// left back button setup
-        let backBtn = UIButton(type: .system)
-        backBtn.setImage(Icons.SportTypeList.backButton, for: .normal)
-        backBtn.tintColor = Colors.mainBlue
+        let backBtn = DSBarBackButton()
         backBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
     }
 }
