@@ -7,21 +7,10 @@
 
 import Foundation
 
-//MARK: - Auth Screen
+public enum Texts { }
+
+//MARK: - OnBoarding Screen
 extension Texts {
-    enum Auth {
-        static let submit = "Отправить SMS"
-        static let phoneNumberPlaceholder = "Номер телефона"
-        static let enter = "Вход"
-        static let description = "Ваш номер телефона будет использоваться для входа в приложение"
-        enum Regulations {
-            static let upper = "Нажимая «Отправить SMS», ты принимаешь "
-            static let bottom = "Правила пользования и Защиты информации"
-        }
-    }
-}
-//MARK: - OnBoardingTexts
-public enum Texts {
     enum OnBoardingText {
         enum headers {
             static var firstSlideText: String {
@@ -52,5 +41,80 @@ public enum Texts {
                 return "Находи единомышленников, создавай чаты, планируй тренировки! "
             }
         }
+    }
+}
+
+
+//MARK: - Auth Screen
+extension Texts {
+    enum Auth {
+        static let submit = "Отправить SMS"
+        static let phoneNumberPlaceholder = "Номер телефона"
+        static let enter = "Вход"
+        static let description = "Ваш номер телефона будет использоваться для входа в приложение"
+        
+        enum Regulations {
+            static let upper = "Нажимая «Отправить SMS», ты принимаешь "
+            static let bottom = "Правила пользования и Защиты информации"
+        }
+    }
+}
+
+//MARK: - CountryList Screen
+extension Texts {
+    enum CountryList {
+        static let title = "Регион"
+        static let search = "Поиск"
+        static let noResults = "По вашему запросу ничего не найдено"
+    }
+}
+
+//MARK: - CodeEntry Screen
+extension Texts {
+    enum CodeEntry {
+        static let title = "Вход"
+        static let confirmation = "Код подтверждения, который мы прислали"
+        static let codeSentToNumber = "Код был отправлен на номер"
+        static let codeResend = "Повторно отправить SMS"
+    }
+}
+//MARK: - Registration Screen
+extension Texts {
+    enum Registration {
+        static let navTitle = "Регистрация"
+        
+        static let addAvatar = "Загузить фото"
+        static let save = "Сохранить"
+        
+        static let userName = "Никнейм"
+        static let userNameError = "Никнейм занят"
+        
+        static let password = "Пароль"
+        static let passwordError = "Неверный формат пароля"
+        
+        static let dob = "Дата рождения"
+        static let dobError = "Неверный формат Даты рождения"
+        
+        enum Gender {
+            static let male = "Мужчина"
+            static let female = "Женщина"
+        }
+    }
+}
+
+//MARK: - SportTypeList Screen
+extension Texts {
+    enum SportTypeList {
+        static let title = "Что тебе интересно?"
+        static let save = "Сохранить"
+    }
+}
+
+//MARK: - PasswordEntry Screen
+extension Texts {
+    enum PasswordEntry {
+        static let title = "Вход"
+        static let forgotPassword = "Забыли пароль?"
+        static let enter = "Войти"
     }
 }

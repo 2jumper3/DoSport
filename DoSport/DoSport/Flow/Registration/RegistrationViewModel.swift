@@ -7,4 +7,16 @@
 
 import Foundation
 
-
+final class RegistrationViewModel {
+    
+//    var onSuccess: (() -> Swift.Void)?
+    
+    init() {
+        
+    }
+    
+    func createUser(compilation: (() -> Void)) {
+        print(#function)
+        compilation()
+    }
+}

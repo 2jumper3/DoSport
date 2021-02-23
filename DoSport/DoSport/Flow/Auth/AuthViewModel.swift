@@ -9,18 +9,22 @@ import Foundation
 
 final class AuthViewModel {
     
-    var userRegions: [UserRegion] {
-        var userRegion: [UserRegion] = []
-        Region.allCases.forEach { region in
-            RegionCode.allCases.forEach { regionCode in
-                userRegion.append(UserRegion(region: region, code: regionCode))
-            }
-        }
-        return userRegion
+    /// TEMPRORARY ENUM.
+    ///
+    /// For TEST purposes.
+    ///
+    /// REMOVE when back-end is ready
+    
+    enum AuthResult {
+        case registred, notRegistred
     }
     
     init() {
         
     }
     
+    func checkIfNumberExists(compilation: (AuthResult) -> Void) {
+        // TODO: some networking logic when back-end is ready
+        compilation(.registred)
+    }
 }

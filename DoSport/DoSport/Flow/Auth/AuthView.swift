@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol AuthViewDelegate: AnyObject {
-    func submitButtonTapped()
+    func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
 }
 
@@ -47,21 +47,9 @@ final class AuthView: UIView {
     }(PhoneNumberAddView())
     
     private let regulationsLabel: UILabel = {
-        let upperTextAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: Colors.dirtyBlue]
-        let bottomTextAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: Colors.mainBlue]
-
-        let text = NSMutableAttributedString(
-            string: Texts.Auth.Regulations.upper,
-            attributes: upperTextAttrs
-        )
-        let bottomText = NSMutableAttributedString(
-            string: Texts.Auth.Regulations.bottom, attributes: bottomTextAttrs
-        )
-
-        text.append(bottomText)
+        $0.makeAttributedText(with: Texts.Auth.Regulations.upper, and: Texts.Auth.Regulations.bottom)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.numberOfLines = 3
-        $0.attributedText = text
         $0.textAlignment = .center
         $0.font = Fonts.sfProRegular(size: 14)
         return $0
@@ -70,7 +58,7 @@ final class AuthView: UIView {
     private lazy var submitButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSubmitButton), for: .touchUpInside)
         return $0
-    }(CommonButton(title: Texts.Auth.submit, state: .disabled))
+    }(CommonButton(title: Texts.Auth.submit, state: .normal))
     
     //MARK: - Init
     
@@ -128,7 +116,8 @@ final class AuthView: UIView {
         }
         
         phoneNumberAddView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-40)
             $0.width.equalToSuperview().multipliedBy(0.87)
             $0.height.equalTo(48)
         }
@@ -151,9 +140,10 @@ final class AuthView: UIView {
     }
     
     //MARK: - Actions
-    
+
     @objc private func handleSubmitButton() {
-        delegate?.submitButtonTapped()
+        let text = phoneNumberAddView.text
+        delegate?.submitButtonTapped(with: text)
     }
     
     @objc private func handleRegionSelectionButton() {
@@ -177,6 +167,24 @@ final class AuthView: UIView {
         UIView.animate(withDuration: 0.3) {
             self.submitButton.transform = .identity
         }
+    }
+}
+
+//MARK: - Public Methods
+
+extension AuthView {
+    func bind(callingCode: String) {
+        phoneNumberAddView.bind(callingCode: callingCode)
+        submitButton.bind(state: .normal) // for test purposes, can be removed
+        layoutIfNeeded()
+    }
+    
+    func becomeTextFieldResponder() {
+        phoneNumberAddView.becomeResponder()
+    }
+    
+    func removeTextFieldResponder() {
+        phoneNumberAddView.removeFirstResponder()
     }
 }
 

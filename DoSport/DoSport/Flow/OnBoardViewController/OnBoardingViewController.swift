@@ -45,8 +45,7 @@ class OnBoardingViewController: UIViewController {
     //MARK: - Actions
 
     @objc func confirmButtonTapped() {
-        let vc = MainMenuTabController()
-        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToAuthView()
     }
 }
 
@@ -86,13 +85,13 @@ extension OnBoardingViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let currentPage = Int(round(collectionView.contentOffset.x / collectionView.bounds.width))
+        let currentPage = Int(targetContentOffset.pointee.x / view.frame.width)
         if currentPage == 3 {
             confirmButton.isHidden = false
         } else {
             confirmButton.isHidden = true
         }
-        pageControl.setProgress(contentOffsetX: collectionView.contentOffset.x, pageWidth: collectionView.bounds.width)
+        pageControl.setCurrentPage(at: Int(currentPage))
     }
 }
 
@@ -113,7 +112,7 @@ extension OnBoardingViewController {
 
     private func setupUI() {
         self.navigationController?.navigationBar.isHidden = true
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = Colors.lightBlue
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
@@ -130,7 +129,7 @@ extension OnBoardingViewController {
     }
 
     private func setupBottomControls() {
-        pageControl.center = CGPoint(x: view.center.x, y: view.frame.maxY - 208)
+        pageControl.center = CGPoint(x: view.center.x, y: view.frame.maxY - view.frame.maxY / 4)
         view.addSubview(pageControl)
     }
 }
