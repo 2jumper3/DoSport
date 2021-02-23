@@ -138,7 +138,7 @@
 		65CDF8A925DB12320049F711 /* SportGroundSelectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF8A825DB12320049F711 /* SportGroundSelectionListViewModel.swift */; };
 		65CDF8AE25DB123B0049F711 /* SportGroundSelectionListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF8AD25DB123B0049F711 /* SportGroundSelectionListDataSource.swift */; };
 		65CDF8B625DB13F10049F711 /* SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF8B525DB13F10049F711 /* SportGround.swift */; };
-		65CDF8D225DB1BF50049F711 /* TableViewSportGroundSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF8D125DB1BF50049F711 /* TableViewSportGroundSelectionCell.swift */; };
+		65CDF8D225DB1BF50049F711 /* SportGroundSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF8D125DB1BF50049F711 /* SportGroundSelectionTableCell.swift */; };
 		65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */; };
 		65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */; };
 		65CEF62325CDB34700EB0B34 /* CollectionViewCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */; };
@@ -356,7 +356,7 @@
 		65CDF8A825DB12320049F711 /* SportGroundSelectionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundSelectionListViewModel.swift; sourceTree = "<group>"; };
 		65CDF8AD25DB123B0049F711 /* SportGroundSelectionListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundSelectionListDataSource.swift; sourceTree = "<group>"; };
 		65CDF8B525DB13F10049F711 /* SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGround.swift; sourceTree = "<group>"; };
-		65CDF8D125DB1BF50049F711 /* TableViewSportGroundSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSportGroundSelectionCell.swift; sourceTree = "<group>"; };
+		65CDF8D125DB1BF50049F711 /* SportGroundSelectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundSelectionTableCell.swift; sourceTree = "<group>"; };
 		65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
 		65CEF60125CDA8DB00EB0B34 /* CollectionViewActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewActionCell.swift; sourceTree = "<group>"; };
 		65CEF62225CDB34700EB0B34 /* CollectionViewCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCommentCell.swift; sourceTree = "<group>"; };
@@ -902,7 +902,7 @@
 			children = (
 				655D52B825D864AF001DC13C /* CollectionViewHoursCell.swift */,
 				65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */,
-				65CDF8D125DB1BF50049F711 /* TableViewSportGroundSelectionCell.swift */,
+				65CDF8D125DB1BF50049F711 /* SportGroundSelectionTableCell.swift */,
 				658E0AB525D828BB0013DFF5 /* TableViewSportTypeListCell.swift */,
 				65CE01C925A88B8000556C7B /* CountryCell */,
 				65CEF60025CDA8BE00EB0B34 /* EventCells */,
@@ -1465,7 +1465,7 @@
 				655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
-				65CDF8D225DB1BF50049F711 /* TableViewSportGroundSelectionCell.swift in Sources */,
+				65CDF8D225DB1BF50049F711 /* SportGroundSelectionTableCell.swift in Sources */,
 				655B515125D5C021004FE90F /* MembersCountCell.swift in Sources */,
 				6531798F25D111F0001DBA4B /* RegionListView.swift in Sources */,
 				658E0AB625D828BB0013DFF5 /* TableViewSportTypeListCell.swift in Sources */,

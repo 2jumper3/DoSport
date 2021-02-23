@@ -10,14 +10,14 @@ import UIKit
 final class SportGroundSelectionListView: UIView {
 
     private lazy var tableView: UITableView = {
-        $0.registerClass(TableViewSportGroundSelectionCell.self)
+        $0.registerClass(SportGroundSelectionTableCell.self)
         $0.separatorColor = Colors.dirtyBlue
         $0.backgroundColor = Colors.darkBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UITableView(frame: .zero, style: .plain))
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -34,7 +34,7 @@ final class SportGroundSelectionListView: UIView {
         super.layoutSubviews()
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaInsets.top).offset(2)
+            $0.top.equalTo(safeAreaInsets.top).offset(10)
             $0.bottom.equalTo(safeAreaInsets.bottom).offset(-20)
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.centerX.equalToSuperview()
@@ -42,7 +42,7 @@ final class SportGroundSelectionListView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension SportGroundSelectionListView {
     

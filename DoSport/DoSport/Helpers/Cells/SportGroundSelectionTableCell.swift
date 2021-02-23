@@ -1,5 +1,5 @@
 //
-//  TableViewSportGroundSelectionCell.swift
+//  SportGroundSelectionTableCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 15/02/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TableViewSportGroundSelectionCell: UITableViewCell {
+final class SportGroundSelectionTableCell: UITableViewCell {
     
     private(set) var sportGroundTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -82,8 +82,6 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
         
         backgroundColor = .clear
         selectionStyle = .none
-        contentView.layer.cornerRadius = 12
-        contentView.clipsToBounds = true
             
         contentView.addSubviews(
             backgroundImageView,
@@ -115,7 +113,10 @@ final class TableViewSportGroundSelectionCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
+        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
+        contentView.frame = contentView.frame.inset(by: margins)
+        contentView.layer.cornerRadius = 8
+        contentView.layer.masksToBounds = true
         
         [backgroundImageView, gradientView].forEach { $0.snp.makeConstraints { $0.edges.equalTo(contentView) } }
         
