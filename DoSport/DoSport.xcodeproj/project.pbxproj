@@ -93,7 +93,6 @@
 		65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870507259209ED00EFF7C7 /* AuthViewController.swift */; };
 		65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870512259209F700EFF7C7 /* AuthViewModel.swift */; };
 		6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051725920A0100EFF7C7 /* AuthCoordinator.swift */; };
-		6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
 		65870536259216AA00EFF7C7 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870535259216AA00EFF7C7 /* Assembly.swift */; };
 		6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587053D2592493400EFF7C7 /* Coordinator.swift */; };
 		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
@@ -110,7 +109,6 @@
 		659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61A42593DB3F00C33D05 /* RegistrationCoordinator.swift */; };
 		659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61AC2593DB5A00C33D05 /* RegistrationView.swift */; };
 		659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
-		659C61C92593E15700C33D05 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */; };
 		65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */; };
 		65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */; };
@@ -178,6 +176,20 @@
 		65EEE91925B626290023168D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91825B626290023168D /* AppConfiguration.swift */; };
 		65F1A5FF25D96FC100011B5D /* EventCommentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1A5FE25D96FC100011B5D /* EventCommentsDataSource.swift */; };
 		65F1A60425D96FCB00011B5D /* EventMembersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1A60325D96FCB00011B5D /* EventMembersDataSource.swift */; };
+		65F9497C25E4B70000CE861B /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9497B25E4B70000CE861B /* MapAssembly.swift */; };
+		65F9498425E4B70A00CE861B /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9498325E4B70A00CE861B /* MapCoordinator.swift */; };
+		65F9498925E4B71900CE861B /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9498825E4B71800CE861B /* MapController.swift */; };
+		65F9498E25E4B73700CE861B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9498D25E4B73700CE861B /* MapViewModel.swift */; };
+		65F9499425E4B76600CE861B /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9499325E4B76600CE861B /* PreviewController.swift */; };
+		65F9499925E4B77800CE861B /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9499825E4B77800CE861B /* PreviewView.swift */; };
+		65F9499F25E4B7F100CE861B /* PlaceMarkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9499E25E4B7F100CE861B /* PlaceMarkObject.swift */; };
+		65F949AC25E4B83E00CE861B /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F949AB25E4B83E00CE861B /* Coordinate.swift */; };
+		65F949C425E4BA3200CE861B /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F949C325E4BA3200CE861B /* FilterButton.swift */; };
+		65F949DA25E4BB0E00CE861B /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
+		65F949DB25E4BB0E00CE861B /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
+		65F949DC25E4BB0E00CE861B /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
+		65F949DD25E4BB0E00CE861B /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
+		65F949DE25E4BB0E00CE861B /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
@@ -198,12 +210,9 @@
 		CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB84D258CE194007B2BCA /* ErrorParser.swift */; };
 		CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB852258CE1A5007B2BCA /* RequestRouter.swift */; };
 		CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB85B258CE1C7007B2BCA /* AuthRequest.swift */; };
-		CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
 		CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB86D258CE208007B2BCA /* EditPasswordRequest.swift */; };
-		CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
 		CEDEB879258CE240007B2BCA /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB878258CE240007B2BCA /* Responses.swift */; };
 		CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB87E258CE2EA007B2BCA /* Security.swift */; };
-		CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
 		CEDEB8FC258D33D3007B2BCA /* OnBoardingAvatars.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB8FB258D33D3007B2BCA /* OnBoardingAvatars.xcassets */; };
 		CEDEB902258D371D007B2BCA /* OnBoardingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */; };
 		CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */; };
@@ -395,6 +404,15 @@
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		65F1A5FE25D96FC100011B5D /* EventCommentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCommentsDataSource.swift; sourceTree = "<group>"; };
 		65F1A60325D96FCB00011B5D /* EventMembersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMembersDataSource.swift; sourceTree = "<group>"; };
+		65F9497B25E4B70000CE861B /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
+		65F9498325E4B70A00CE861B /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		65F9498825E4B71800CE861B /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		65F9498D25E4B73700CE861B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		65F9499325E4B76600CE861B /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		65F9499825E4B77800CE861B /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		65F9499E25E4B7F100CE861B /* PlaceMarkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarkObject.swift; sourceTree = "<group>"; };
+		65F949AB25E4B83E00CE861B /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		65F949C325E4BA3200CE861B /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		6EA482F6FB5DE244DE6779E0 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
@@ -404,6 +422,7 @@
 		CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTabController.swift; sourceTree = "<group>"; };
 		CEBA62EA2593F350006A7F80 /* TabBarIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBarIcons.xcassets; sourceTree = "<group>"; };
 		CEBA62F02593F3FB006A7F80 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAssembly.swift; sourceTree = "<group>"; };
 		CEDEB779258CB404007B2BCA /* DoSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -667,6 +686,7 @@
 				65CDF8B525DB13F10049F711 /* SportGround.swift */,
 				6564195925CE63E6008DFAE0 /* User.swift */,
 				659C61C82593E15700C33D05 /* UserCountry.swift */,
+				65F949AB25E4B83E00CE861B /* Coordinate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -787,6 +807,7 @@
 				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
 				6511D77525B0E5A10063EF76 /* DSButton.swift */,
 				65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */,
+				65F949C325E4BA3200CE861B /* FilterButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -910,6 +931,36 @@
 				65EAAA7B25CD3FC0005E0131 /* FeedCell */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		65F9497725E4B6EC00CE861B /* MapController */ = {
+			isa = PBXGroup;
+			children = (
+				65F9497B25E4B70000CE861B /* MapAssembly.swift */,
+				65F9498825E4B71800CE861B /* MapController.swift */,
+				65F9498325E4B70A00CE861B /* MapCoordinator.swift */,
+				65F9498D25E4B73700CE861B /* MapViewModel.swift */,
+				65F9499225E4B75700CE861B /* PreviewController */,
+				65F9499D25E4B7E600CE861B /* YandexMapKit */,
+			);
+			path = MapController;
+			sourceTree = "<group>";
+		};
+		65F9499225E4B75700CE861B /* PreviewController */ = {
+			isa = PBXGroup;
+			children = (
+				65F9499325E4B76600CE861B /* PreviewController.swift */,
+				65F9499825E4B77800CE861B /* PreviewView.swift */,
+			);
+			path = PreviewController;
+			sourceTree = "<group>";
+		};
+		65F9499D25E4B7E600CE861B /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				65F9499E25E4B7F100CE861B /* PlaceMarkObject.swift */,
+			);
+			path = YandexMapKit;
 			sourceTree = "<group>";
 		};
 		86FDF7AEC152A8EDA7FFAD16 /* Frameworks */ = {
@@ -1102,6 +1153,7 @@
 		CEDEB8DF258CF94C007B2BCA /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				65F9497725E4B6EC00CE861B /* MapController */,
 				659C61732593D3F700C33D05 /* Auth */,
 				653179D625D112B3001DBA4B /* DateSelection */,
 				65EAAA9425CD59A9005E0131 /* Event */,
@@ -1122,9 +1174,10 @@
 		CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */,
-				CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */,
 				CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */,
+				CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */,
+				CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */,
+				CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */,
 				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
 				CEDEB8FB258D33D3007B2BCA /* OnBoardingAvatars.xcassets */,
 				CEDEB900258D370A007B2BCA /* Cell */,
@@ -1337,6 +1390,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F949DA25E4BB0E00CE861B /* AuthAssembly.swift in Sources */,
+				CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */,
+				65F949DB25E4BB0E00CE861B /* OnBoardingViewController.swift in Sources */,
+				65F949DC25E4BB0E00CE861B /* GetUserInfo.swift in Sources */,
+				65F949DD25E4BB0E00CE861B /* RegisterRequest.swift in Sources */,
+				65F949DE25E4BB0E00CE861B /* UserCountry.swift in Sources */,
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
@@ -1354,6 +1413,7 @@
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
 				6527303425C1B15B00550ED1 /* FeedFilterButtonsView.swift in Sources */,
 				657C063C25AF2D30000DBD9B /* CodeEntryViewController.swift in Sources */,
+				65F949C425E4BA3200CE861B /* FilterButton.swift in Sources */,
 				65F1A5FF25D96FC100011B5D /* EventCommentsDataSource.swift in Sources */,
 				6568F8F725B4F99000225043 /* FeedDataSource.swift in Sources */,
 				656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */,
@@ -1368,6 +1428,7 @@
 				6531796625D10FB4001DBA4B /* SportTypeListCoordinator.swift in Sources */,
 				65B150F625DEBC5F00720015 /* InviteFriendsDataSource.swift in Sources */,
 				65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */,
+				65F9498E25E4B73700CE861B /* MapViewModel.swift in Sources */,
 				6568F8E825B4F97D00225043 /* FeedViewModel.swift in Sources */,
 				65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */,
 				6503F4E325B5CDD60002BC27 /* Event.swift in Sources */,
@@ -1380,16 +1441,11 @@
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65CEF60225CDA8DB00EB0B34 /* CollectionViewActionCell.swift in Sources */,
-				659C61C92593E15700C33D05 /* UserCountry.swift in Sources */,
-				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
-				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
 				65CEF62325CDB34700EB0B34 /* CollectionViewCommentCell.swift in Sources */,
 				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
-				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
 				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				65674DED25DACF7200950FC7 /* DSRangeSlider.swift in Sources */,
-				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */,
 				6572954025D953FD00996440 /* TableViewCommentCell.swift in Sources */,
 				653DA7D825B36455000263C9 /* AvatarImageView.swift in Sources */,
@@ -1401,6 +1457,7 @@
 				CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */,
 				656CC26A259A521000DEC84C /* LoadJson.swift in Sources */,
 				6531795725D10F9F001DBA4B /* SportTypeListView.swift in Sources */,
+				65F9498925E4B71900CE861B /* MapController.swift in Sources */,
 				6568F8DE25B4F97100225043 /* FeedAssembly.swift in Sources */,
 				CEDEB849258CE182007B2BCA /* RequestFactory.swift in Sources */,
 				6568F8ED25B4F98200225043 /* FeedView.swift in Sources */,
@@ -1412,6 +1469,7 @@
 				6503F4ED25B5D67C0002BC27 /* Member.swift in Sources */,
 				658E0AA825D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift in Sources */,
 				655B514225D5C007004FE90F /* SelectionCell.swift in Sources */,
+				65F949AC25E4B83E00CE861B /* Coordinate.swift in Sources */,
 				65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */,
 				6531799925D111FE001DBA4B /* RegionListViewModel.swift in Sources */,
 				65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */,
@@ -1428,6 +1486,7 @@
 				655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */,
 				65C080A425E1AFB200BF353B /* UISearchBar+textField.swift in Sources */,
 				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
+				65F9499425E4B76600CE861B /* PreviewController.swift in Sources */,
 				65CEF63B25CDBADC00EB0B34 /* CollectionViewMemberCell.swift in Sources */,
 				65ECB2D6259BBB9800BF8CEE /* CountryCodeListViewModel.swift in Sources */,
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
@@ -1449,7 +1508,9 @@
 				65EAAA8525CD3FFF005E0131 /* CollectionViewEventCardCellBodyView.swift in Sources */,
 				654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */,
 				65D9740025B4731D00769653 /* SportTypeGridView.swift in Sources */,
+				65F9497C25E4B70000CE861B /* MapAssembly.swift in Sources */,
 				65DDC09F25B6503B00228FC7 /* CollectionViewEventCardCell.swift in Sources */,
+				65F9499F25E4B7F100CE861B /* PlaceMarkObject.swift in Sources */,
 				65B150E025DEA82F00720015 /* InviteFriendsViewController.swift in Sources */,
 				65D973F325B4730E00769653 /* SportTypeGridAssembly.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
@@ -1476,6 +1537,7 @@
 				65CDF8B625DB13F10049F711 /* SportGround.swift in Sources */,
 				65D9740A25B4733D00769653 /* SportTypeGridCoordinator.swift in Sources */,
 				6531791F25D10E09001DBA4B /* EventCreateView.swift in Sources */,
+				65F9499925E4B77800CE861B /* PreviewView.swift in Sources */,
 				65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */,
 				658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */,
 				CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */,
@@ -1486,7 +1548,6 @@
 				65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */,
 				65CEF63325CDB37000EB0B34 /* CollectionViewToogleCell.swift in Sources */,
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,
-				CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
 				659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */,
 				6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */,
@@ -1519,6 +1580,7 @@
 				65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */,
 				6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */,
 				65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */,
+				65F9498425E4B70A00CE861B /* MapCoordinator.swift in Sources */,
 				6572955025D9591600996440 /* EventChatFrameDataSource.swift in Sources */,
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65014F2925B4D02B000263FA /* PasswordEntryViewModel.swift in Sources */,
