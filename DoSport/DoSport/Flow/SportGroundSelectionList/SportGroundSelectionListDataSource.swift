@@ -38,8 +38,12 @@ extension SportGroundSelectionListDataSource: UITableViewDataSource {
         let viewModel = viewModels[indexPath.row]
         
         let cell: SportGroundSelectionTableCell = tableView.cell(forRowAt: indexPath)
-        cell.sportGroundTitleLabel.text = viewModel.title
-        cell.subwayNameLabel.text = viewModel.address
+        cell.bind(with: .init(
+                    sportGroundTitle: viewModel.title,
+                    spogroundBackImage: nil,
+                    subwayName: viewModel.address,
+                    location: nil,
+                    price: nil))
         
         return cell
     }

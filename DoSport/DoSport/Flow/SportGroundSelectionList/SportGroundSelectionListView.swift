@@ -14,6 +14,7 @@ final class SportGroundSelectionListView: UIView {
         $0.separatorColor = Colors.dirtyBlue
         $0.backgroundColor = Colors.darkBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.showsVerticalScrollIndicator = false
         return $0
     }(UITableView(frame: .zero, style: .plain))
 

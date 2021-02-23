@@ -9,33 +9,43 @@ import UIKit
 
 final class SportGroundSelectionTableCell: UITableViewCell {
     
-    private(set) var sportGroundTitleLabel: UILabel = {
+    struct ViewData {
+        let sportGroundTitle: String?
+        let spogroundBackImage: UIImage?
+        let subwayName: String?
+        let location: String?
+        let price: String?
+    }
+    
+    //MARK: Outlets
+    
+    private let sportGroundTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .white
         $0.font = Fonts.sfProRegular(size: 24)
         return $0
     }(UILabel())
     
-    private(set) var backgroundImageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         $0.image = Icons.image(named: "sampleSportGround")
         return $0
     }(UIImageView())
     
-    private let  gradientView: UIView = {
+    private let gradientView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = Colors.lightBlue
         $0.alpha = 0.7
         return $0
     }(UIView())
     
-    private(set) var subwayImageView: UIImageView = {
+    private let subwayImageView: UIImageView = {
         $0.image = Icons.Feed.subway
         $0.contentMode = .scaleToFill
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIImageView())
     
-    private(set) var subwayNameLabel: UILabel = {
+    private let subwayNameLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 16)
         $0.textColor = .white
         $0.text = "Oxford Circus station"
@@ -43,7 +53,7 @@ final class SportGroundSelectionTableCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    private(set) var locationImageView: UIImageView = {
+    private let locationImageView: UIImageView = {
         $0.image = Icons.Feed.location
         $0.contentMode = .scaleToFill
         $0.setImageColor(color: .white)
@@ -51,7 +61,7 @@ final class SportGroundSelectionTableCell: UITableViewCell {
         return $0
     }(UIImageView())
     
-    private(set) var locationLabel: UILabel = {
+    private let locationLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 16)
         $0.textColor = .white
         $0.text = Texts.Feed.km3
@@ -59,7 +69,7 @@ final class SportGroundSelectionTableCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    private(set) var priceCurrencyImageView: UIImageView = {
+    private let priceCurrencyImageView: UIImageView = {
         $0.image = Icons.Feed.currency
         $0.setImageColor(color: .white)
         $0.contentMode = .scaleToFill
@@ -67,7 +77,7 @@ final class SportGroundSelectionTableCell: UITableViewCell {
         return $0
     }(UIImageView())
     
-    private(set) var priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 16)
         $0.text = Texts.Feed.free
         $0.textColor = .white
@@ -75,7 +85,7 @@ final class SportGroundSelectionTableCell: UITableViewCell {
         return $0
     }(UILabel())
 
-    //MARK: - Init
+    //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -164,6 +174,19 @@ final class SportGroundSelectionTableCell: UITableViewCell {
             $0.height.equalTo(locationImageView.snp.height)
             $0.width.equalTo(priceCurrencyImageView.snp.height)
         }
+    }
+}
+
+//MARK: Public API
+
+extension SportGroundSelectionTableCell {
+    
+    func bind(with data: ViewData) {
+        sportGroundTitleLabel.text = data.sportGroundTitle
+        backgroundImageView.image = data.spogroundBackImage
+        subwayNameLabel.text = data.subwayName
+        locationLabel.text = data.location
+        priceLabel.text = data.price
     }
 }
 
