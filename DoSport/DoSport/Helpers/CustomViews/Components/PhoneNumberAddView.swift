@@ -17,13 +17,19 @@ final class PhoneNumberAddView: UIView {
     weak var delegate: PhoneNumberAddViewDelegate?
     
     var text: String {
-        return textField.text ?? ""
+        guard
+            let regionText = button.titleLabel?.text,
+            let phoneNumber = textField.text
+        else {
+            return ""
+        }
+        return regionText + " " + phoneNumber
     }
     
     private lazy var button: UIButton = {
         $0.titleLabel?.font = Fonts.sfProRegular(size: 12)
         $0.setTitleColor(.white, for: .normal)
-        $0.setTitle(("+\(RegionCode.c_994.rawValue)"), for: .normal)
+        $0.setTitle(("+7"), for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.titleLabel?.textAlignment = .center
         return $0
@@ -85,6 +91,15 @@ final class PhoneNumberAddView: UIView {
             $0.right.equalToSuperview().offset(-5)
         }
     }
+}
+
+//MARK: - Public Methods
+ 
+extension PhoneNumberAddView {
+    func bind(callingCode: String) {
+        self.button.setTitle(callingCode, for: .normal)
+        layoutIfNeeded()
+    }
     
     func addButtonTarget(_ target: Any?, action: Selector) {
         button.addTarget(target, action: action, for: .touchUpInside)
@@ -92,6 +107,10 @@ final class PhoneNumberAddView: UIView {
     
     func removeFirstResponder() {
         textField.resignFirstResponder()
+    }
+    
+    func becomeResponder() {
+        textField.becomeFirstResponder()
     }
 }
 

@@ -7,31 +7,81 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A189916C417114A643406C3 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED130427424E2AEEF396846 /* Pods_DoSport.framework */; };
+		180824487F51C8754BAA5D0C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */; };
+		65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1925B4D013000263FA /* PasswordEntryViewController.swift */; };
+		65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1E25B4D01B000263FA /* PasswordEntryView.swift */; };
+		65014F2425B4D023000263FA /* PasswordEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F2325B4D023000263FA /* PasswordEntryCoordinator.swift */; };
+		65014F2925B4D02B000263FA /* PasswordEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F2825B4D02B000263FA /* PasswordEntryViewModel.swift */; };
+		65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */; };
+		6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */; };
+		6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D77025B0DB130063EF76 /* DSTextField.swift */; };
+		6511D77625B0E5A10063EF76 /* DSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D77525B0E5A10063EF76 /* DSButton.swift */; };
+		65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65294D9925B38311003E7ED2 /* DatePicker.swift */; };
 		6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529500B258D6EE2002AA621 /* UIColor+inits.swift */; };
+		65340899259A77280072542D /* EditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB868258CE1EB007B2BCA /* EditUserInfo.swift */; };
+		6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB840258CE146007B2BCA /* AbstractRequestFactory.swift */; };
+		6534089B259A77280072542D /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB913258D4C75007B2BCA /* UIImage.swift */; };
+		653408A0259A80180072542D /* CountryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534089F259A80180072542D /* CountryListCoordinator.swift */; };
+		653408AF259A86D40072542D /* DSNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653408AE259A86D40072542D /* DSNavBar.swift */; };
+		653408B4259A88BD0072542D /* DSSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653408B3259A88BD0072542D /* DSSearchBar.swift */; };
+		653DA7D025B3590A000263C9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7CF25B3590A000263C9 /* ImagePicker.swift */; };
+		653DA7D825B36455000263C9 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7D725B36455000263C9 /* AvatarImageView.swift */; };
+		653DA7DE25B364DB000263C9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7DD25B364DB000263C9 /* Button.swift */; };
+		654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210CF25AF8533004078C4 /* CodeLabelStackView.swift */; };
+		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
+		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
+		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
+		656CC23B259A4F7100DEC84C /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CC23A259A4F7100DEC84C /* CountryListViewController.swift */; };
+		656CC243259A4F7C00DEC84C /* CountryListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CC242259A4F7C00DEC84C /* CountryListAssembly.swift */; };
+		656CC248259A4F8700DEC84C /* CountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CC247259A4F8700DEC84C /* CountryListView.swift */; };
+		656CC26A259A521000DEC84C /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CC269259A521000DEC84C /* LoadJson.swift */; };
+		657C063225AF2D24000DBD9B /* CodeEntryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C063125AF2D24000DBD9B /* CodeEntryAssembly.swift */; };
+		657C063725AF2D2A000DBD9B /* CodeEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C063625AF2D2A000DBD9B /* CodeEntryCoordinator.swift */; };
+		657C063C25AF2D30000DBD9B /* CodeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C063B25AF2D30000DBD9B /* CodeEntryViewController.swift */; };
+		657C064125AF2D50000DBD9B /* CodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C064025AF2D50000DBD9B /* CodeEntryView.swift */; };
+		657C064625AF2D5A000DBD9B /* CodeEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C064525AF2D5A000DBD9B /* CodeEntryViewModel.swift */; };
 		65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870507259209ED00EFF7C7 /* AuthViewController.swift */; };
 		65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870512259209F700EFF7C7 /* AuthViewModel.swift */; };
 		6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051725920A0100EFF7C7 /* AuthCoordinator.swift */; };
 		6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
-		6587052C25920EC800EFF7C7 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587052B25920EC800EFF7C7 /* CommonButton.swift */; };
 		65870536259216AA00EFF7C7 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870535259216AA00EFF7C7 /* Assembly.swift */; };
 		6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587053D2592493400EFF7C7 /* Coordinator.swift */; };
 		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
 		658705512592540D00EFF7C7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* AuthView.swift */; };
+		6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */; };
+		6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */; };
+		6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */; };
 		659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */; };
 		659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* RegistrationViewController.swift */; };
 		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
 		659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61A42593DB3F00C33D05 /* RegistrationCoordinator.swift */; };
 		659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61AC2593DB5A00C33D05 /* RegistrationView.swift */; };
 		659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
-		659C61C92593E15700C33D05 /* UserRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserRegion.swift */; };
+		659C61C92593E15700C33D05 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
+		65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */; };
+		65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */; };
+		65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587052B25920EC800EFF7C7 /* CommonButton.swift */; };
 		65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F0258D04E60037D2B5 /* Icons.swift */; };
 		65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F3258D04F10037D2B5 /* Fonts.swift */; };
 		65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F6258D04FD0037D2B5 /* Texts.swift */; };
 		65AF25F9258D05020037D2B5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AF25F8258D05020037D2B5 /* Colors.swift */; };
-		65F9493625E4A9B900CE861B /* EditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB868258CE1EB007B2BCA /* EditUserInfo.swift */; };
-		65F9493725E4A9B900CE861B /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB840258CE146007B2BCA /* AbstractRequestFactory.swift */; };
-		65F9493825E4A9B900CE861B /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB913258D4C75007B2BCA /* UIImage.swift */; };
+		65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */; };
+		65D973F325B4730E00769653 /* SportTypeListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973F225B4730E00769653 /* SportTypeListAssembly.swift */; };
+		65D973FB25B4731800769653 /* SportTypeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FA25B4731800769653 /* SportTypeListViewController.swift */; };
+		65D9740025B4731D00769653 /* SportTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FF25B4731D00769653 /* SportTypeListView.swift */; };
+		65D9740525B4732400769653 /* SportTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9740425B4732400769653 /* SportTypeListViewModel.swift */; };
+		65D9740A25B4733D00769653 /* SportTypeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9740925B4733D00769653 /* SportTypeListCoordinator.swift */; };
+		65D9741225B4760F00769653 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741125B4760F00769653 /* Sport.swift */; };
+		65D9741E25B47FAF00769653 /* SportTypeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741D25B47FAF00769653 /* SportTypeListDataSource.swift */; };
+		65D9742325B4807F00769653 /* SportTypeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* SportTypeCollectionCell.swift */; };
+		65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */; };
+		65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 656CC24C259A50A200DEC84C /* CountryList.json */; };
+		65ECB2B6259BAA6600BF8CEE /* CountryListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2B5259BAA6600BF8CEE /* CountryListDataSource.swift */; };
+		65ECB2BF259BAC8E00BF8CEE /* CountryListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */; };
+		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
+		65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C8259BAD1300BF8CEE /* Reusable.swift */; };
+		65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
 		CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */; };
@@ -53,6 +103,8 @@
 		CEBF0F0B25BB5A5B00DB1E19 /* PreviewIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */; };
 		CECBC9E025B08139002EB9BF /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBC9DF25B08139002EB9BF /* MapAssembly.swift */; };
 		CECBC9E525B0818C002EB9BF /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBC9E425B0818C002EB9BF /* MapModel.swift */; };
+		CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
+		CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
 		CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */; };
 		CEDEB786258CB40A007B2BCA /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB785258CB40A007B2BCA /* Icons.xcassets */; };
@@ -95,7 +147,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryAssembly.swift; sourceTree = "<group>"; };
+		65014F1925B4D013000263FA /* PasswordEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewController.swift; sourceTree = "<group>"; };
+		65014F1E25B4D01B000263FA /* PasswordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryView.swift; sourceTree = "<group>"; };
+		65014F2325B4D023000263FA /* PasswordEntryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryCoordinator.swift; sourceTree = "<group>"; };
+		65014F2825B4D02B000263FA /* PasswordEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewModel.swift; sourceTree = "<group>"; };
+		65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPasswordTextView.swift; sourceTree = "<group>"; };
+		6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
+		6511D77025B0DB130063EF76 /* DSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTextField.swift; sourceTree = "<group>"; };
+		6511D77525B0E5A10063EF76 /* DSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSButton.swift; sourceTree = "<group>"; };
+		65294D9925B38311003E7ED2 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		6529500B258D6EE2002AA621 /* UIColor+inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+inits.swift"; sourceTree = "<group>"; };
+		6534089F259A80180072542D /* CountryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListCoordinator.swift; sourceTree = "<group>"; };
+		653408AE259A86D40072542D /* DSNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavBar.swift; sourceTree = "<group>"; };
+		653408B3259A88BD0072542D /* DSSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSearchBar.swift; sourceTree = "<group>"; };
+		653DA7CF25B3590A000263C9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		653DA7D725B36455000263C9 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		653DA7DD25B364DB000263C9 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		654210CF25AF8533004078C4 /* CodeLabelStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLabelStackView.swift; sourceTree = "<group>"; };
+		654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
+		654210DA25AF8837004078C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+attributedString.swift"; sourceTree = "<group>"; };
+		656CC23A259A4F7100DEC84C /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
+		656CC242259A4F7C00DEC84C /* CountryListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListAssembly.swift; sourceTree = "<group>"; };
+		656CC247259A4F8700DEC84C /* CountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListView.swift; sourceTree = "<group>"; };
+		656CC24C259A50A200DEC84C /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
+		656CC269259A521000DEC84C /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
+		657C063125AF2D24000DBD9B /* CodeEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEntryAssembly.swift; sourceTree = "<group>"; };
+		657C063625AF2D2A000DBD9B /* CodeEntryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEntryCoordinator.swift; sourceTree = "<group>"; };
+		657C063B25AF2D30000DBD9B /* CodeEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEntryViewController.swift; sourceTree = "<group>"; };
+		657C064025AF2D50000DBD9B /* CodeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEntryView.swift; sourceTree = "<group>"; };
+		657C064525AF2D5A000DBD9B /* CodeEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEntryViewModel.swift; sourceTree = "<group>"; };
 		65870507259209ED00EFF7C7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		65870512259209F700EFF7C7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		6587051725920A0100EFF7C7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -105,6 +187,9 @@
 		6587053D2592493400EFF7C7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6587054B25924C3200EFF7C7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		658705502592540D00EFF7C7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavigationController.swift; sourceTree = "<group>"; };
+		6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCellSectionModel.swift; sourceTree = "<group>"; };
+		6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCellHeaderView.swift; sourceTree = "<group>"; };
 		659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
 		659C619A2593DB2700C33D05 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -112,13 +197,29 @@
 		659C61AC2593DB5A00C33D05 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberAddView.swift; sourceTree = "<group>"; };
 		659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
-		659C61C82593E15700C33D05 /* UserRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegion.swift; sourceTree = "<group>"; };
+		659C61C82593E15700C33D05 /* UserCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCountry.swift; sourceTree = "<group>"; };
+		65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardWithAction.swift; sourceTree = "<group>"; };
+		65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEmptyView.swift; sourceTree = "<group>"; };
 		65AF25F0258D04E60037D2B5 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		65AF25F3258D04F10037D2B5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		65AF25F6258D04FD0037D2B5 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		65AF25F8258D05020037D2B5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		65FF8EFF2595DCFB0082A80E /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
-		AED130427424E2AEEF396846 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSBarBackButton.swift; sourceTree = "<group>"; };
+		65D973F225B4730E00769653 /* SportTypeListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListAssembly.swift; sourceTree = "<group>"; };
+		65D973FA25B4731800769653 /* SportTypeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListViewController.swift; sourceTree = "<group>"; };
+		65D973FF25B4731D00769653 /* SportTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListView.swift; sourceTree = "<group>"; };
+		65D9740425B4732400769653 /* SportTypeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListViewModel.swift; sourceTree = "<group>"; };
+		65D9740925B4733D00769653 /* SportTypeListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListCoordinator.swift; sourceTree = "<group>"; };
+		65D9741125B4760F00769653 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		65D9741D25B47FAF00769653 /* SportTypeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListDataSource.swift; sourceTree = "<group>"; };
+		65D9742225B4807F00769653 /* SportTypeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeCollectionCell.swift; sourceTree = "<group>"; };
+		65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+cellForRow.swift"; sourceTree = "<group>"; };
+		65ECB2B5259BAA6600BF8CEE /* CountryListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListDataSource.swift; sourceTree = "<group>"; };
+		65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableCell.swift; sourceTree = "<group>"; };
+		65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellForRow.swift"; sourceTree = "<group>"; };
+		65ECB2C8259BAD1300BF8CEE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
+		9BB02212611ED6E60ECD5C19 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkMapObjectTapListener.swift; sourceTree = "<group>"; };
 		CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationView.swift; sourceTree = "<group>"; };
@@ -138,6 +239,8 @@
 		CEBF0F0A25BB5A5B00DB1E19 /* PreviewIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewIcons.xcassets; sourceTree = "<group>"; };
 		CECBC9DF25B08139002EB9BF /* MapAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
 		CECBC9E425B0818C002EB9BF /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
+		CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAssembly.swift; sourceTree = "<group>"; };
 		CEDEB779258CB404007B2BCA /* DoSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDEB77C258CB404007B2BCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,8 +273,7 @@
 		CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewCell.swift; sourceTree = "<group>"; };
 		CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		CEDEB913258D4C75007B2BCA /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		D51EE22CF44F5B29B2793A8C /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
-		DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
+		D70D66C4A4F2B76E7CA0A71A /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A189916C417114A643406C3 /* Pods_DoSport.framework in Frameworks */,
+				180824487F51C8754BAA5D0C /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,10 +305,85 @@
 		1B575704A7CC7F421F6A9B8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D51EE22CF44F5B29B2793A8C /* Pods-DoSport.debug.xcconfig */,
-				DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */,
+				D70D66C4A4F2B76E7CA0A71A /* Pods-DoSport.debug.xcconfig */,
+				9BB02212611ED6E60ECD5C19 /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		65014F1025B4CFF4000263FA /* PasswordEntry */ = {
+			isa = PBXGroup;
+			children = (
+				65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */,
+				65014F2325B4D023000263FA /* PasswordEntryCoordinator.swift */,
+				65014F1E25B4D01B000263FA /* PasswordEntryView.swift */,
+				65014F1925B4D013000263FA /* PasswordEntryViewController.swift */,
+				65014F2825B4D02B000263FA /* PasswordEntryViewModel.swift */,
+			);
+			path = PasswordEntry;
+			sourceTree = "<group>";
+		};
+		653408AD259A86680072542D /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				653408AE259A86D40072542D /* DSNavBar.swift */,
+				653408B3259A88BD0072542D /* DSSearchBar.swift */,
+				65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */,
+			);
+			path = NavBar;
+			sourceTree = "<group>";
+		};
+		653DA7DC25B364D2000263C9 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				653DA7DD25B364DB000263C9 /* Button.swift */,
+				654210DA25AF8837004078C4 /* TextField.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		656CC238259A4F5800DEC84C /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
+				CEBA6397259BD3C0006A7F80 /* FilterButton.swift */,
+				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
+				CEBF0EFC25B9F0D500DB1E19 /* MapMarkIcon.swift */,
+				656CC239259A4F6000DEC84C /* CountryList */,
+				65014F1025B4CFF4000263FA /* PasswordEntry */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		656CC239259A4F6000DEC84C /* CountryList */ = {
+			isa = PBXGroup;
+			children = (
+				656CC242259A4F7C00DEC84C /* CountryListAssembly.swift */,
+				6534089F259A80180072542D /* CountryListCoordinator.swift */,
+				65ECB2B5259BAA6600BF8CEE /* CountryListDataSource.swift */,
+				656CC247259A4F8700DEC84C /* CountryListView.swift */,
+				656CC23A259A4F7100DEC84C /* CountryListViewController.swift */,
+				65ECB2D5259BBB9800BF8CEE /* CountryListViewModel.swift */,
+			);
+			path = CountryList;
+			sourceTree = "<group>";
+		};
+		656CC268259A51FB00DEC84C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				656CC269259A521000DEC84C /* LoadJson.swift */,
+				65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		657C063025AF2D14000DBD9B /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				65D9741625B47DBD00769653 /* CodeEntry */,
+				65D973F125B472C800769653 /* SportTypes */,
+			);
+			path = Submodules;
 			sourceTree = "<group>";
 		};
 		65870505259209A700EFF7C7 /* Registration */ = {
@@ -217,7 +394,7 @@
 				659C61AC2593DB5A00C33D05 /* RegistrationView.swift */,
 				659C619A2593DB2700C33D05 /* RegistrationViewController.swift */,
 				659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */,
-				659C61722593D16100C33D05 /* Submodules */,
+				657C063025AF2D14000DBD9B /* Submodules */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -225,7 +402,8 @@
 		6587052825920D0A00EFF7C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				659C61C82593E15700C33D05 /* UserRegion.swift */,
+				659C61C82593E15700C33D05 /* UserCountry.swift */,
+				65D9741125B4760F00769653 /* Sport.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,7 +411,12 @@
 		6587052925920D9800EFF7C7 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				653DA7CF25B3590A000263C9 /* ImagePicker.swift */,
+				65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */,
+				6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */,
 				6587052A25920DA300EFF7C7 /* Components */,
+				653DA7DC25B364D2000263C9 /* Factory */,
+				653408AD259A86680072542D /* NavBar */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -241,10 +424,15 @@
 		6587052A25920DA300EFF7C7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				653DA7D725B36455000263C9 /* AvatarImageView.swift */,
+				654210CF25AF8533004078C4 /* CodeLabelStackView.swift */,
 				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
-				CEBA6397259BD3C0006A7F80 /* FilterButton.swift */,
+				65294D9925B38311003E7ED2 /* DatePicker.swift */,
+				6511D77525B0E5A10063EF76 /* DSButton.swift */,
+				65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */,
+				6511D77025B0DB130063EF76 /* DSTextField.swift */,
+				6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */,
 				659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */,
-				CEBF0EFC25B9F0D500DB1E19 /* MapMarkIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -262,17 +450,9 @@
 			isa = PBXGroup;
 			children = (
 				65870535259216AA00EFF7C7 /* Assembly.swift */,
+				65ECB2C8259BAD1300BF8CEE /* Reusable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		659C61722593D16100C33D05 /* Submodules */ = {
-			isa = PBXGroup;
-			children = (
-				659C61B12593DB6600C33D05 /* CodeEntry */,
-				659C61B22593DB7100C33D05 /* InterestsSelection */,
-			);
-			path = Submodules;
 			sourceTree = "<group>";
 		};
 		659C61732593D3F700C33D05 /* Auth */ = {
@@ -283,46 +463,9 @@
 				658705502592540D00EFF7C7 /* AuthView.swift */,
 				65870507259209ED00EFF7C7 /* AuthViewController.swift */,
 				65870512259209F700EFF7C7 /* AuthViewModel.swift */,
-				659C61942593DAC700C33D05 /* Submodules */,
+				656CC238259A4F5800DEC84C /* Submodules */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		659C61922593DA5100C33D05 /* CountryList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CountryList;
-			sourceTree = "<group>";
-		};
-		659C61932593DA6600C33D05 /* PasswordEntry */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PasswordEntry;
-			sourceTree = "<group>";
-		};
-		659C61942593DAC700C33D05 /* Submodules */ = {
-			isa = PBXGroup;
-			children = (
-				659C61922593DA5100C33D05 /* CountryList */,
-				659C61932593DA6600C33D05 /* PasswordEntry */,
-			);
-			path = Submodules;
-			sourceTree = "<group>";
-		};
-		659C61B12593DB6600C33D05 /* CodeEntry */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CodeEntry;
-			sourceTree = "<group>";
-		};
-		659C61B22593DB7100C33D05 /* InterestsSelection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InterestsSelection;
 			sourceTree = "<group>";
 		};
 		65AF25EF258D04DF0037D2B5 /* Icons */ = {
@@ -351,26 +494,53 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		65FF8EFD2595DCE90082A80E /* CustomViews */ = {
+		65CE01C925A88B8000556C7B /* CountryListTableCell */ = {
 			isa = PBXGroup;
 			children = (
-				65FF8EFE2595DCEF0082A80E /* Components */,
+				65ECB2BE259BAC8E00BF8CEE /* CountryListTableCell.swift */,
+				6595195325A8704300CC15E0 /* CountryListTableCellSectionModel.swift */,
+				6595195825A87C0100CC15E0 /* CountryListTableCellHeaderView.swift */,
 			);
-			path = CustomViews;
+			path = CountryListTableCell;
 			sourceTree = "<group>";
 		};
-		65FF8EFE2595DCEF0082A80E /* Components */ = {
+		65D973F125B472C800769653 /* SportTypes */ = {
 			isa = PBXGroup;
 			children = (
-				65FF8EFF2595DCFB0082A80E /* CommonButton.swift */,
+				65D973F225B4730E00769653 /* SportTypeListAssembly.swift */,
+				65D9740925B4733D00769653 /* SportTypeListCoordinator.swift */,
+				65D9741D25B47FAF00769653 /* SportTypeListDataSource.swift */,
+				65D973FF25B4731D00769653 /* SportTypeListView.swift */,
+				65D973FA25B4731800769653 /* SportTypeListViewController.swift */,
+				65D9740425B4732400769653 /* SportTypeListViewModel.swift */,
 			);
-			path = Components;
+			path = SportTypes;
 			sourceTree = "<group>";
 		};
-		8764389EC8CF290CF630E1B9 /* Frameworks */ = {
+		65D9741625B47DBD00769653 /* CodeEntry */ = {
 			isa = PBXGroup;
 			children = (
-				AED130427424E2AEEF396846 /* Pods_DoSport.framework */,
+				657C063125AF2D24000DBD9B /* CodeEntryAssembly.swift */,
+				657C063625AF2D2A000DBD9B /* CodeEntryCoordinator.swift */,
+				657C064025AF2D50000DBD9B /* CodeEntryView.swift */,
+				657C063B25AF2D30000DBD9B /* CodeEntryViewController.swift */,
+				657C064525AF2D5A000DBD9B /* CodeEntryViewModel.swift */,
+			);
+			path = CodeEntry;
+			sourceTree = "<group>";
+		};
+		65ECB2BD259BAC7100BF8CEE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				65CE01C925A88B8000556C7B /* CountryListTableCell */,
+				65D9742225B4807F00769653 /* SportTypeCollectionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AAE0692D4F4755F576D4845F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -443,7 +613,7 @@
 				CEDEB79D258CB40B007B2BCA /* DoSportUITests */,
 				CEDEB77A258CB404007B2BCA /* Products */,
 				1B575704A7CC7F421F6A9B8A /* Pods */,
-				8764389EC8CF290CF630E1B9 /* Frameworks */,
+				AAE0692D4F4755F576D4845F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -550,6 +720,7 @@
 		CEDEB886258CE77C007B2BCA /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				656CC24C259A50A200DEC84C /* CountryList.json */,
 				CEDEB78A258CB40A007B2BCA /* Info.plist */,
 				65AF25F8258D05020037D2B5 /* Colors.swift */,
 				65AF25F6258D04FD0037D2B5 /* Texts.swift */,
@@ -564,10 +735,11 @@
 			isa = PBXGroup;
 			children = (
 				658705332592169D00EFF7C7 /* Base */,
+				65ECB2BD259BAC7100BF8CEE /* Cells */,
 				6587052925920D9800EFF7C7 /* CustomViews */,
-				6587052825920D0A00EFF7C7 /* Models */,
-				65FF8EFD2595DCE90082A80E /* CustomViews */,
 				CEDEB895258CEC2F007B2BCA /* Extensions */,
+				6587052825920D0A00EFF7C7 /* Models */,
+				656CC268259A51FB00DEC84C /* Utils */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -576,11 +748,15 @@
 			isa = PBXGroup;
 			children = (
 				CEDEB896258CEC3C007B2BCA /* UIButton+Extensions.swift */,
+				65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */,
 				CEDEB89E258CEC49007B2BCA /* UIColor+Extensions.swift */,
-				CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */,
 				6529500B258D6EE2002AA621 /* UIColor+inits.swift */,
-				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
 				CEDEB913258D4C75007B2BCA /* UIImage.swift */,
+				6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */,
+				CEDEB8A3258CF020007B2BCA /* UILabel+Extensions.swift */,
+				654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */,
+				65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */,
+				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -601,6 +777,10 @@
 		CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CEDEB900258D370A007B2BCA /* Cell */,
+				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
+				CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */,
+				CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */,
 				CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */,
 				CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */,
 				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
@@ -626,12 +806,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDEB7A3258CB40B007B2BCA /* Build configuration list for PBXNativeTarget "DoSport" */;
 			buildPhases = (
-				C904505308A6C69E46A5BCEC /* [CP] Check Pods Manifest.lock */,
+				F7722D1DAE2E60C3B7596319 /* [CP] Check Pods Manifest.lock */,
 				CEDEB775258CB404007B2BCA /* Sources */,
 				CEDEB776258CB404007B2BCA /* Frameworks */,
 				CEDEB777258CB404007B2BCA /* Resources */,
-				BB409A4C5FD3D11426325938 /* [CP] Embed Pods Frameworks */,
-				22774913ECC54F2697B8651F /* [CP] Copy Pods Resources */,
+				48D9262AAC771A1423E0DF93 /* [CP] Embed Pods Frameworks */,
+				7C5915D87079D1BAB3A9A543 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -725,6 +905,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */,
 				CEDEB789258CB40A007B2BCA /* LaunchScreen.storyboard in Resources */,
 				CEDEB8FC258D33D3007B2BCA /* OnBoardingAvatars.xcassets in Resources */,
 				CEDEB786258CB40A007B2BCA /* Icons.xcassets in Resources */,
@@ -751,24 +932,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22774913ECC54F2697B8651F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB409A4C5FD3D11426325938 /* [CP] Embed Pods Frameworks */ = {
+		48D9262AAC771A1423E0DF93 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -785,7 +949,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C904505308A6C69E46A5BCEC /* [CP] Check Pods Manifest.lock */ = {
+		7C5915D87079D1BAB3A9A543 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7722D1DAE2E60C3B7596319 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -814,16 +995,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F9493625E4A9B900CE861B /* EditUserInfo.swift in Sources */,
-				65F9493725E4A9B900CE861B /* AbstractRequestFactory.swift in Sources */,
-				6587052C25920EC800EFF7C7 /* CommonButton.swift in Sources */,
-				65F9493825E4A9B900CE861B /* UIImage.swift in Sources */,
+				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
+				65340899259A77280072542D /* EditUserInfo.swift in Sources */,
+				65014F2425B4D023000263FA /* PasswordEntryCoordinator.swift in Sources */,
+				6595195425A8704300CC15E0 /* CountryListTableCellSectionModel.swift in Sources */,
+				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
+				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
+				653408AF259A86D40072542D /* DSNavBar.swift in Sources */,
+				6534089B259A77280072542D /* UIImage.swift in Sources */,
 				CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */,
 				CEDEB853258CE1A5007B2BCA /* RequestRouter.swift in Sources */,
+				657C063C25AF2D30000DBD9B /* CodeEntryViewController.swift in Sources */,
+				654210DB25AF8837004078C4 /* TextField.swift in Sources */,
 				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
+				65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */,
+				65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */,
+				65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */,
+				65D973FB25B4731800769653 /* SportTypeListViewController.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
+				65D9740525B4732400769653 /* SportTypeListViewModel.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				CE83AB5125CFCD7800A2C6E1 /* PreviewLocationView.swift in Sources */,
@@ -837,42 +1029,87 @@
 				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
 				CEBA638D259A68A6006A7F80 /* OnBoardingCoordinator.swift in Sources */,
 				CEBA637B25993838006A7F80 /* MapViewController.swift in Sources */,
+				659C61C92593E15700C33D05 /* UserCountry.swift in Sources */,
+				CEDEB864258CE1D9007B2BCA /* GetUserInfo.swift in Sources */,
+				CEDEB8F4258D311A007B2BCA /* OnBoardingViewController.swift in Sources */,
+				65D9741E25B47FAF00769653 /* SportTypeListDataSource.swift in Sources */,
+				CEDEB873258CE21C007B2BCA /* RegisterRequest.swift in Sources */,
+				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
+				6587051D25920A0B00EFF7C7 /* AuthAssembly.swift in Sources */,
+				653DA7D825B36455000263C9 /* AvatarImageView.swift in Sources */,
+				653408B4259A88BD0072542D /* DSSearchBar.swift in Sources */,
 				CEBA62F12593F3FB006A7F80 /* MainViewController.swift in Sources */,
+				6511D77625B0E5A10063EF76 /* DSButton.swift in Sources */,
 				CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */,
+				656CC26A259A521000DEC84C /* LoadJson.swift in Sources */,
 				CEDEB849258CE182007B2BCA /* RequestFactory.swift in Sources */,
 				CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */,
+				653DA7D025B3590A000263C9 /* ImagePicker.swift in Sources */,
+				65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */,
+				6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */,
+				65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */,
+				65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */,
 				CEDEB902258D371D007B2BCA /* OnBoardingViewCell.swift in Sources */,
 				6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */,
 				CEBA6393259A8C6F006A7F80 /* MapFilterViewController.swift in Sources */,
 				659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */,
 				CEDEB897258CEC3C007B2BCA /* UIButton+Extensions.swift in Sources */,
+				6595195925A87C0100CC15E0 /* CountryListTableCellHeaderView.swift in Sources */,
+				656CC248259A4F8700DEC84C /* CountryListView.swift in Sources */,
 				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
+				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
+				65ECB2D6259BBB9800BF8CEE /* CountryListViewModel.swift in Sources */,
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
 				CE92157A25B48B4E003BF78E /* MapCoordinator.swift in Sources */,
+				653DA7DE25B364DB000263C9 /* Button.swift in Sources */,
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				CEBF0EFD25B9F0D500DB1E19 /* MapMarkIcon.swift in Sources */,
 				CEDEB879258CE240007B2BCA /* Responses.swift in Sources */,
+				653408A0259A80180072542D /* CountryListCoordinator.swift in Sources */,
+				657C064125AF2D50000DBD9B /* CodeEntryView.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
+				65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */,
+				654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */,
+				65D9740025B4731D00769653 /* SportTypeListView.swift in Sources */,
+				65D973F325B4730E00769653 /* SportTypeListAssembly.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				CEDEB8A4258CF020007B2BCA /* UILabel+Extensions.swift in Sources */,
+				65D9741225B4760F00769653 /* Sport.swift in Sources */,
+				656CC23B259A4F7100DEC84C /* CountryListViewController.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
+				657C063725AF2D2A000DBD9B /* CodeEntryCoordinator.swift in Sources */,
+				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				CE83AB0525C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				CEBA6388259A6008006A7F80 /* MapViewModel.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
+				65D9740A25B4733D00769653 /* SportTypeListCoordinator.swift in Sources */,
+				65ECB2BF259BAC8E00BF8CEE /* CountryListTableCell.swift in Sources */,
+				CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */,
+				CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
+				6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */,
+				657C063225AF2D24000DBD9B /* CodeEntryAssembly.swift in Sources */,
 				CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
+				65ECB2B6259BAA6600BF8CEE /* CountryListDataSource.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				CEDEB89F258CEC49007B2BCA /* UIColor+Extensions.swift in Sources */,
+				656CC243259A4F7C00DEC84C /* CountryListAssembly.swift in Sources */,
+				6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */,
+				65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */,
 				CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */,
 				CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */,
 				CEBA6398259BD3C1006A7F80 /* FilterButton.swift in Sources */,
+				65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */,
+				65D9742325B4807F00769653 /* SportTypeCollectionCell.swift in Sources */,
+				65014F2925B4D02B000263FA /* PasswordEntryViewModel.swift in Sources */,
+				657C064625AF2D5A000DBD9B /* CodeEntryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,7 +1274,7 @@
 		};
 		CEDEB7A4258CB40B007B2BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D51EE22CF44F5B29B2793A8C /* Pods-DoSport.debug.xcconfig */;
+			baseConfigurationReference = D70D66C4A4F2B76E7CA0A71A /* Pods-DoSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1059,7 +1296,7 @@
 		};
 		CEDEB7A5258CB40B007B2BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBEE09D6C850B69FC15F1FCE /* Pods-DoSport.release.xcconfig */;
+			baseConfigurationReference = 9BB02212611ED6E60ECD5C19 /* Pods-DoSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

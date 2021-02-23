@@ -52,7 +52,7 @@ class OnBoardingViewCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .blue
+        backgroundColor = Colors.lightBlue
         layoutSubview()
     }
 

@@ -10,7 +10,12 @@ import UIKit.UIImage
 public enum Icons {
     enum Auth {
         static var logo = image(named: "logo_image")
-     }
+    }
+    
+    enum CountryList {
+        static let backButton = image(named: "back_button")
+    }
+    
     enum OnboardingIcons {
         static var firstIcon: UIImage {
             return Icons.image(named: "firstPlayer")
@@ -25,6 +30,23 @@ public enum Icons {
             return Icons.image(named: "fourPNG")
         }
     }
+    
+    enum Registration {
+        static var avatarDefault: UIImage {
+            return Icons.image(named: "firstPlayer")
+        }
+    }
+    
+    enum PasswordEntry {
+        static var hiddenEye: UIImage {
+            return Icons.image(named: "hidden_eye_icon")
+        }
+        
+        static var showedEye: UIImage {
+            return Icons.image(named: "showed_eye_icon")
+        }
+	}
+
     enum FilterIcon {
         static var filter = image(named: "Filter")
     }

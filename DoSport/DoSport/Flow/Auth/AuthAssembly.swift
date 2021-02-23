@@ -5,7 +5,7 @@
 //  Created by Komolbek Ibragimov on 22/12/2020.
 //
 
-import UIKit
+import Foundation
 
 final class AuthAssembly: Assembly {
     
