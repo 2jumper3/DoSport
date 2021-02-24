@@ -23,21 +23,16 @@ final class EventView: UIView {
     
     private let messageInputView = DSMessageInputView()
     
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
-        layout.scrollDirection = .vertical
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = Colors.darkBlue
-        collectionView.registerClass(CollectionViewEventCardCell.self)
-        collectionView.registerClass(CollectionViewActionCell.self)
-        collectionView.registerClass(CollectionViewToogleCell.self)
-        collectionView.registerClass(CollectionViewChatrFrameCell.self)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
+    private let tableView: UITableView = {
+        $0.backgroundColor = Colors.darkBlue
+        $0.registerClass(TableViewCommentCell.self)
+        $0.registerClass(TableViewMemberCell.self)
+        $0.registerHeaderFooter(EventTableHeaderView.self)
+        $0.showsVerticalScrollIndicator = false
+        $0.separatorStyle = .none
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }( UITableView(frame: .zero, style: .grouped))
 
     //MARK: Init
     
@@ -47,7 +42,7 @@ final class EventView: UIView {
         
         messageInputView.delegate = self
         
-        addSubviews(collectionView, messageInputTopSeparatorView, messageInputView)
+        addSubviews(tableView, messageInputTopSeparatorView, messageInputView)
     }
     
     required init?(coder: NSCoder) {
@@ -57,11 +52,11 @@ final class EventView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        collectionView.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.9)
-            $0.top.equalTo(safeAreaInsets.top).offset(22)
+        tableView.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.93)
+            $0.top.equalTo(safeAreaInsets.top)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(messageInputView.snp.top).offset(-6)
+            $0.bottom.equalTo(messageInputView.snp.top).offset(-2)
         }
         
         messageInputTopSeparatorView.snp.makeConstraints {
@@ -84,19 +79,28 @@ final class EventView: UIView {
 
 extension EventView {
     
-    func updateCollectionDataSource(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
-        collectionView.delegate = dateSource
-        collectionView.dataSource = dateSource
-        collectionView.reloadData()
+    func updateCollectionDataSource(dateSource: (UITableViewDelegate & UITableViewDataSource)) {
+        tableView.delegate = dateSource
+        tableView.dataSource = dateSource
+        tableView.reloadData()
         layoutIfNeeded()
     }
     
-    func getCollectionView() -> UICollectionView {
-        return self.collectionView
-    }
-    
-    func setCollectionView(isScrollingEnabled value: Bool) {
-        self.collectionView.isScrollEnabled = value
+    func sizeTableHeaderViewToFit() {
+        if let headerView = tableView.tableHeaderView as? EventTableHeaderView {
+            headerView.setNeedsLayout()
+            headerView.layoutIfNeeded()
+            
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var newFrame = headerView.frame
+            
+            if height != newFrame.size.height {
+                newFrame.size.height = height
+                headerView.frame = newFrame
+                
+                tableView.tableHeaderView = headerView
+            }
+        }
     }
     
     func getInputViewText() -> String {

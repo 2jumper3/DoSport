@@ -19,6 +19,10 @@ final class EventViewController: UIViewController {
     private var userToReplyName: String = ""
     
     private var inviteFriendsChildViewController: InviteFriendsViewController!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: Init
     
@@ -52,9 +56,11 @@ final class EventViewController: UIViewController {
         
         viewModel.prepareEventData(event: self.event)
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        eventView.sizeTableHeaderViewToFit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,16 +228,16 @@ extension EventViewController: EventViewDelegate {
 
 extension EventViewController: EventDataSourceDelegate {
     
-    func collectionViewInviteButtonClicked() {
+    func tableViewInviteButtonClicked() {
         inviteFriendsChildViewController.setupKeyboardNotification()
         presentInviteFriendsChildViewController()
     }
     
-    func collectionViewParicipateButtonClicked() {
+    func tableViewParicipateButtonClicked() {
         
     }
     
-    func commentsTableViewReplyButtonClicked(to userName: String?) {
+    func commentReplyButtonClicked(to userName: String?) {
         guard let userName = userName else { return }
         
         self.userToReplyName = userName
@@ -240,64 +246,8 @@ extension EventViewController: EventDataSourceDelegate {
         eventView.makeInputTextViewFirstResponder()
     }
     
-    func collectionViewSegmentedControlDidChange(index: Int, collectionView: UICollectionView?) {
-        guard let collectionView = collectionView else { return }
-        
-        let indexPath = IndexPath(row: index, section: 0)
-        
-        collectionView.isPagingEnabled = false
-        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-        collectionView.isPagingEnabled = true
-    }
-    
-    func chatFrameCollectionView(scrolledTo index: Int, segmentedControl: DSSegmentedControl?) {
-        segmentedControl?.setSelectedItemIndex(index)
-    }
-    
-    func collectionViewScrolled(commentsTableView: UITableView?, membersTableView: UITableView?) {
-        let indexPath = IndexPath(row: 3, section: 0)
-
-        let cell: CollectionViewToogleCell = self.eventView.getCollectionView().cell(forRowAt: indexPath)
-        let cellOriginInRoot = eventView.getCollectionView().convert(cell.frame, to: eventView)
-        
-        if cellOriginInRoot.maxY <= eventView.getCollectionView().frame.maxY {
-            
-            eventView.setCollectionView(isScrollingEnabled: false)
-            commentsTableView?.isScrollEnabled = true
-            membersTableView?.isScrollEnabled = true
-        }
-    }
-    
-    func commentsTableViewSrolled(tableView: UITableView?) {
-        guard let tableView = tableView else { return }
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        
-        if let cell: TableViewCommentCell = tableView.cellForRow(at: indexPath) as? TableViewCommentCell {
-
-            let cellOriginInRoot = tableView.convert(cell.frame, to: tableView)
-            
-            if cellOriginInRoot.origin.y > tableView.bounds.origin.y {
-                tableView.isScrollEnabled = false
-                eventView.setCollectionView(isScrollingEnabled: true)
-            }
-        }
-    }
-    
-    func membersTableViewSrolled(tableView: UITableView?) {
-        guard let tableView = tableView else { return }
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        
-        if let cell: TableViewMemberCell = tableView.cellForRow(at: indexPath) as? TableViewMemberCell {
-
-            let cellOriginInRoot = tableView.convert(cell.frame, to: tableView)
-            
-            if cellOriginInRoot.origin.y > tableView.bounds.origin.y {
-                tableView.isScrollEnabled = false
-                eventView.setCollectionView(isScrollingEnabled: true)
-            }
-        }
+    func tableViewNeedsReloadData() {
+        eventView.updateCollectionDataSource(dateSource: eventCollectionManager)
     }
 }
 
