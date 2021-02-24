@@ -41,7 +41,7 @@ final class SportTypeGridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Texts.SportTypeList.navTitle
+        title = Texts.SportTypeGrid.title
         
         collectionManager.delegate = self
         

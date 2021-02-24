@@ -50,7 +50,7 @@ final class AuthViewController: UIViewController {
     }
     
     /// Show navigation bar after this ViewController did disappear
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         coordinator?.removeDependency(coordinator)
@@ -60,6 +60,12 @@ final class AuthViewController: UIViewController {
         super.viewDidAppear(animated)
         
         authView.becomeTextFieldResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        authView.removeTextFieldResponder()
     }
 }
 

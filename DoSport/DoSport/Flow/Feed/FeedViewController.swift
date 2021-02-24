@@ -89,7 +89,7 @@ private extension FeedViewController {
 @objc private extension FeedViewController {
     
     func handleCreateEventButton() {
-        print(#function)
+        coordinator?.goToEventCreateModule()
     }
 }
 

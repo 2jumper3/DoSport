@@ -57,3 +57,5 @@ struct Event: Codable {
         case messages([Message]), members([Member])
     }
 }
+
+extension Event.Hour: Codable { }

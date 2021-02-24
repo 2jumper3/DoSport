@@ -4,6 +4,7 @@
 //
 //  Created by Komolbek Ibragimov on 11/02/2021.
 //
+
 import UIKit
 
 final class EventTypeCell: UITableViewCell {
@@ -38,6 +39,7 @@ final class EventTypeCell: UITableViewCell {
 //        $0.font = Fonts.sfProRegular(size: 14)
 //        return $0
 //    }(UILabel())
+
     //MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
