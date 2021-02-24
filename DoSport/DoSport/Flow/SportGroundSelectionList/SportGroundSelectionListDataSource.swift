@@ -17,7 +17,7 @@ final class SportGroundSelectionListDataSource: NSObject {
     
     var viewModels: [SportGround]
     
-    private var selectedCell: TableViewSportTypeListCell?
+    private var selectedCell: SportTypeListTableCell?
     
     init(viewModels: [SportGround] = []) {
         self.viewModels = viewModels

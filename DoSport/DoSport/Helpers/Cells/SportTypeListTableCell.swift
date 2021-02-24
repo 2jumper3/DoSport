@@ -1,5 +1,5 @@
 //
-//  TableViewSportTypeListCell.swift
+//  SportTypeListTableCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 13/02/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TableViewSportTypeListCell: UITableViewCell {
+final class SportTypeListTableCell: UITableViewCell {
     
     enum CellState {
         case selected, notSelected
@@ -19,7 +19,14 @@ final class TableViewSportTypeListCell: UITableViewCell {
         }
     }
     
-    private(set) var myTitleLabel: UILabel = {
+    var titleText: String? {
+        get { myTitleLabel.text }
+        set { myTitleLabel.text = newValue }
+    }
+    
+    //MARK: Outlets
+    
+    private let myTitleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.mainBlue
         $0.font = Fonts.sfProRegular(size: 18)
@@ -32,7 +39,7 @@ final class TableViewSportTypeListCell: UITableViewCell {
         return $0
     }(UIImageView())
 
-    //MARK: - Init
+    //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -48,6 +55,12 @@ final class TableViewSportTypeListCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        bind(state: .notSelected)
     }
     
     override func layoutSubviews() {
@@ -68,18 +81,18 @@ final class TableViewSportTypeListCell: UITableViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public c
 
-extension TableViewSportTypeListCell {
- 
+extension SportTypeListTableCell {
+
     func bind(state: CellState) {
         cellState = state
     }
 }
 
-//MARK: - Private methods
+//MARK: Private TableView
 
-private extension TableViewSportTypeListCell {
+private extension SportTypeListTableCell {
  
     func handleCellStateChange() {
         switch cellState {

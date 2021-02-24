@@ -99,7 +99,7 @@
 		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
 		658705512592540D00EFF7C7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* AuthView.swift */; };
 		658E0AA825D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0AA725D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift */; };
-		658E0AB625D828BB0013DFF5 /* TableViewSportTypeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0AB525D828BB0013DFF5 /* TableViewSportTypeListCell.swift */; };
+		658E0AB625D828BB0013DFF5 /* SportTypeListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0AB525D828BB0013DFF5 /* SportTypeListTableCell.swift */; };
 		658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0ABD25D82B7B0013DFF5 /* SportTypeListDataSource.swift */; };
 		6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */; };
 		6595195425A8704300CC15E0 /* CountryCodeListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195325A8704300CC15E0 /* CountryCodeListSectionModel.swift */; };
@@ -317,7 +317,7 @@
 		6587054B25924C3200EFF7C7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		658705502592540D00EFF7C7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		658E0AA725D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevide+getDeviceModel.swift"; sourceTree = "<group>"; };
-		658E0AB525D828BB0013DFF5 /* TableViewSportTypeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSportTypeListCell.swift; sourceTree = "<group>"; };
+		658E0AB525D828BB0013DFF5 /* SportTypeListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListTableCell.swift; sourceTree = "<group>"; };
 		658E0ABD25D82B7B0013DFF5 /* SportTypeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListDataSource.swift; sourceTree = "<group>"; };
 		6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavigationController.swift; sourceTree = "<group>"; };
 		6595195325A8704300CC15E0 /* CountryCodeListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeListSectionModel.swift; sourceTree = "<group>"; };
@@ -903,7 +903,7 @@
 				655D52B825D864AF001DC13C /* CollectionViewHoursCell.swift */,
 				65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */,
 				65CDF8D125DB1BF50049F711 /* SportGroundSelectionTableCell.swift */,
-				658E0AB525D828BB0013DFF5 /* TableViewSportTypeListCell.swift */,
+				658E0AB525D828BB0013DFF5 /* SportTypeListTableCell.swift */,
 				65CE01C925A88B8000556C7B /* CountryCell */,
 				65CEF60025CDA8BE00EB0B34 /* EventCells */,
 				655B513B25D5BFC5004FE90F /* EventCreateCells */,
@@ -1468,7 +1468,7 @@
 				65CDF8D225DB1BF50049F711 /* SportGroundSelectionTableCell.swift in Sources */,
 				655B515125D5C021004FE90F /* MembersCountCell.swift in Sources */,
 				6531798F25D111F0001DBA4B /* RegionListView.swift in Sources */,
-				658E0AB625D828BB0013DFF5 /* TableViewSportTypeListCell.swift in Sources */,
+				658E0AB625D828BB0013DFF5 /* SportTypeListTableCell.swift in Sources */,
 				6568F8E325B4F97800225043 /* FeedViewController.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				CEDEB86E258CE208007B2BCA /* EditPasswordRequest.swift in Sources */,
