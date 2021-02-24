@@ -45,6 +45,7 @@ final class EventViewController: UIViewController {
         super.viewDidLoad()
         
         title = ""
+        navigationController?.navigationBar.tintColor = Colors.mainBlue
         
         setupViewModelBindings()
         setupKeyboardNotification()
