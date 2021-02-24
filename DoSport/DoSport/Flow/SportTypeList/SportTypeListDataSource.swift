@@ -37,8 +37,8 @@ extension SportTypeListDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = viewModels[indexPath.row]
         
-        let cell: TableViewSportTypeListCell = tableView.cell(forRowAt: indexPath)
-        cell.myTitleLabel.text = viewModel.title
+        let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
+        cell.titleText = viewModel.title
         
         if selectedRow == 0 && indexPath.row == 0 {
             cell.bind(state: .selected)
@@ -64,19 +64,19 @@ extension SportTypeListDataSource: UITableViewDelegate {
         let selectedIndexPath = IndexPath(row: selectedRow, section: 0)
         
         if indexPath.row == 0 {
-            let selectedCell: TableViewSportTypeListCell = tableView.cell(forRowAt: selectedIndexPath)
+            let selectedCell: SportTypeListTableCell = tableView.cell(forRowAt: selectedIndexPath)
             selectedCell.bind(state: .notSelected)
             
-            let newCell: TableViewSportTypeListCell = tableView.cell(forRowAt: indexPath)
+            let newCell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
             newCell.bind(state: .selected)
             
             selectedRow = indexPath.row
             
         } else if indexPath.row != selectedRow && indexPath.row > 0 {
-            let selectedCell: TableViewSportTypeListCell = tableView.cell(forRowAt: selectedIndexPath)
+            let selectedCell: SportTypeListTableCell = tableView.cell(forRowAt: selectedIndexPath)
             selectedCell.bind(state: .notSelected)
             
-            let newCell: TableViewSportTypeListCell = tableView.cell(forRowAt: indexPath)
+            let newCell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
             newCell.bind(state: .selected)
             
             selectedRow = indexPath.row
