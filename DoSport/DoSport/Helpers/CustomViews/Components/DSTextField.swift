@@ -7,11 +7,23 @@
 
 import UIKit
 
+enum DSTextFieldState {
+    case enable, disabled
+}
+
 final class DSTextField: UITextField {
+    
+    private var textFieldState: DSTextFieldState = .enable {
+        didSet {
+            handleStateChange()
+        }
+    }
 
     private let padding = UIEdgeInsets(top: 13, left: 17, bottom: 13, right: 0)
     
-    init(type: FormTextFieldView.TextFieldType) {
+    //MARK: Init
+    
+    init(type: FormTextFieldViewType = .dob, placeholderColor: UIColor = Colors.mainBlue) {
         super.init(frame: .zero)
         
         var placeholderText: String = ""
@@ -23,6 +35,8 @@ final class DSTextField: UITextField {
             isSecureTextEntry = true
         case .dob:
             placeholderText = Texts.Registration.dob
+        case .custom(let placeholder):
+            placeholderText = placeholder
         }
         font = Fonts.sfProRegular(size: 16)
         translatesAutoresizingMaskIntoConstraints = false
@@ -33,13 +47,15 @@ final class DSTextField: UITextField {
         layer.cornerRadius = 8
         attributedPlaceholder = NSAttributedString(
             string: placeholderText,
-            attributes: [NSAttributedString.Key.foregroundColor: Colors.dirtyBlue]
+            attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
         )
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: Padding set
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
@@ -51,5 +67,28 @@ final class DSTextField: UITextField {
 
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
+    }
+}
+
+//MARK: Public API
+
+extension DSTextField {
+    
+    func bind(state: DSTextFieldState) {
+        textFieldState = state
+    }
+}
+
+//MARK: Private API
+
+private extension DSTextField {
+    
+    func handleStateChange() {
+        switch textFieldState {
+        case .disabled:
+            UIView.animate(withDuration: 0.3) { self.textColor = Colors.dirtyBlue }
+        case .enable:
+            UIView.animate(withDuration: 0.3) { self.textColor = .white }
+        }
     }
 }

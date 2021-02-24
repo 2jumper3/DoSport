@@ -9,20 +9,18 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     
-    var coordinator: FeedCoordinator?
+    weak var coordinator: FeedCoordinator?
     private let viewModel: FeedViewModel
-    
     private lazy var feedView = self.view as! FeedView
+    private let collectionViewManager = FeedDataSource()
     
     private let navBar = DSFeedNavBar()
-    
-    private lazy var collectionViewManager = FeedDataSource()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
@@ -33,10 +31,11 @@ final class FeedViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = FeedView()
+        view.delegate = self
         self.view = view
         
         navigationItem.titleView = navBar
@@ -47,14 +46,9 @@ final class FeedViewController: UIViewController {
         
         title = Texts.Feed.feedTitle
         
-        navBar.createEventButton.addTarget(
-            self,
-            action: #selector(handleCreateEventButton),
-            for: .touchUpInside
-        )
-        
-        setupViewsTargets()
-        setupCollectionViewBinding()
+        collectionViewManager.delegate = self
+        navBar.delegate = self
+
         setupViewModelBinding()
         
         viewModel.prepareEventsData()
@@ -64,45 +58,17 @@ final class FeedViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension FeedViewController {
-    
-    func setupViewsTargets() {
-        
-        // filter view buttons
-        feedView.filterButtonsView.allButton.addTarget(
-            self,
-            action: #selector(handleFilterViewAllButton),
-            for: .touchUpInside
-        )
-        
-        feedView.filterButtonsView.subscribesButton.addTarget(
-            self,
-            action: #selector(handleFilterViewSubscribesButton),
-            for: .touchUpInside
-        )
-        
-        feedView.filterButtonsView.subscribersButton.addTarget(
-            self,
-            action: #selector(handleFilterViewSubscribersButton),
-            for: .touchUpInside
-        )
-        
-        navBar.createEventButton.addTarget(
-            self,
-            action: #selector(handleCreateEventButton),
-            for: .touchUpInside
-        )
-    }
-    
-    func setupCollectionViewBinding() {
-        collectionViewManager.onDidSelectEvent = { [weak self] event in
-            self?.coordinator?.goToEventModule(withSelected: event)
-        }
-    }
     
     func setupViewModelBinding() {
         viewModel.onDidPrepareEventsData = { [weak self] events in
@@ -118,52 +84,46 @@ private extension FeedViewController {
     }
 }
 
-//MARK: - Actions
+//MARK: Actions
 
-@objc
-private extension FeedViewController {
+@objc private extension FeedViewController {
     
     func handleCreateEventButton() {
         print(#function)
     }
+}
+
+//MARK: - FeedViewDelegate -
+
+extension FeedViewController: FeedViewDelegate {
     
-    func handleFilterViewAllButton(_ button: FeedFilterButton) {
-        let subscribersButton = feedView.filterButtonsView.subscribersButton
-        let subscribesButton = feedView.filterButtonsView.subscribesButton
-        
-        if button.getState() == .notSelected
-            && (subscribersButton.getState() == .selected
-            && subscribesButton.getState() == .selected) {
-            
-            button.bind()
-            subscribersButton.bind(state: .notSelected)
-            subscribesButton.bind(state: .notSelected)
-        } else {
-            button.bind()
-        }
+    func allFilterButtonClicked() {
+        /// viewModel method should be called to filter the feed
     }
     
-    func handleFilterViewSubscribesButton(_ button: FeedFilterButton) {
-        let subscribersButton = feedView.filterButtonsView.subscribersButton
-        let allButton = feedView.filterButtonsView.allButton
-        
-        if subscribersButton.getState() == .selected && allButton.getState() == .selected {
-            allButton.bind()
-            button.bind()
-        } else {
-            button.bind()
-        }
+    func subscribesFilterButtonClicked() {
+        /// viewModel method should be called to filter the feed
     }
     
-    func handleFilterViewSubscribersButton(_ button: FeedFilterButton) {
-        let subscribesButton = feedView.filterButtonsView.subscribesButton
-        let allButton = feedView.filterButtonsView.allButton
-        
-        if subscribesButton.getState() == .selected && allButton.getState() == .selected {
-            allButton.bind()
-            button.bind()
-        } else {
-            button.bind()
-        }
+    func subscribersFilterButtonClicked() {
+        /// viewModel method should be called to filter the feed
+    }
+}
+
+//MARK: - FeedDataSourceDelegate -
+
+extension FeedViewController: FeedDataSourceDelegate {
+    
+    func collectionView(didSelect event: Event) {
+        coordinator?.goToEventModule(withSelected: event)
+    }
+}
+
+//MARK: - DSFeedNavBarDelegate -
+
+extension FeedViewController: DSFeedNavBarDelegate {
+    
+    func createButtonClicked() {
+        coordinator?.goToEventCreateModule()
     }
 }

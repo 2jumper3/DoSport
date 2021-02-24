@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol FeedDataSourceDelegate: class {
+    func collectionView(didSelect event: Event)
+}
+
 final class FeedDataSource: NSObject {
     
-    var onDidSelectEvent: ((Event) -> Void)?
-    
+    weak var delegate: FeedDataSourceDelegate?
+
     var viewModels: [Event]
     
     init(viewModels: [Event] = []) {
@@ -19,7 +23,7 @@ final class FeedDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension FeedDataSource: UICollectionViewDataSource {
     
@@ -41,7 +45,7 @@ extension FeedDataSource: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension FeedDataSource: UICollectionViewDelegate {
     
@@ -52,11 +56,11 @@ extension FeedDataSource: UICollectionViewDelegate {
 //        else { return }
         
 //        cell.bind()
-        onDidSelectEvent?(viewModel)
+        delegate?.collectionView(didSelect: viewModel)
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDelegateFlowLayout -
 
 extension FeedDataSource: UICollectionViewDelegateFlowLayout {
     

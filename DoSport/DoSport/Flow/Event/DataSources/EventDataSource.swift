@@ -7,24 +7,31 @@
 
 import UIKit
 
+protocol EventDataSourceDelegate: class {
+    /// Button taps
+    func collectionViewInviteButtonClicked()
+    func collectionViewParicipateButtonClicked()
+    func commentsTableViewReplyButtonClicked(to userName: String?)
+    
+    /// Segmented control index changed
+    func collectionViewSegmentedControlDidChange(index: Int, collectionView: UICollectionView?)
+    func chatFrameCollectionView(scrolledTo index: Int, segmentedControl: DSSegmentedControl?)
+    
+    /// Table & Collection views scrolls
+    func commentsTableViewSrolled(tableView: UITableView?)
+    func membersTableViewSrolled(tableView: UITableView?)
+    func collectionViewScrolled(commentsTableView: UITableView?, membersTableView: UITableView?)
+}
+
 final class EventDataSource: NSObject {
     
-    /// Scrolls
-    var onCommentsDidScroll: ((UITableView?) -> Void)?
-    var onMembersDidScroll: ((UITableView?) -> Void)?
-    var onDidScroll: ((UITableView?, UITableView?) -> Void)?
-    
-    /// Button taps
-    var onDidTapInviteButton: ((UIButton) -> Void)?
-    var onDidTapParticipateButton: (() -> Void)?
-    var onDidSelectSegmentedControl: ((Int, UICollectionView?) -> Void)?
-    var onCommentsDidTapReplyButton: ((TableViewCommentCell) -> Void)?
+    weak var delegate: EventDataSourceDelegate?
     
     private lazy var eventCells: [Event.EventCellType] = [
         .eventCard(self.viewModel),
         .eventActions,
         .toogle(self.viewModel?.chatID?.messages?.count ?? 0, self.viewModel?.members?.count ?? 0),
-        .activityItems([
+        .chatFrame([
             .messages(self.viewModel?.chatID?.messages ?? []),
             .members(self.viewModel?.members ?? [])
         ])
@@ -32,52 +39,22 @@ final class EventDataSource: NSObject {
     
     var viewModel: Event?
     
-    private let eventActivityCollectionManager = EventActivitySectionDataSource()
-    private var activityCollectionView: UICollectionView?
+    private let chatFrameCollectionManager = EventChatFrameDataSource()
+    
+    private lazy var commentsTableView = chatFrameCollectionManager.getCommentsTableView()
+    private lazy var membersTableView = chatFrameCollectionManager.getMembersTableView()
+    private var chatFrameCollectionView: UICollectionView?
+    private var toogleSegmentedControl: DSSegmentedControl?
     
     init(viewModel: Event? = nil) {
         self.viewModel = viewModel
         super.init()
         
-        setupActivityCollectionManagerBindings()
+        chatFrameCollectionManager.delegate = self
     }
 }
 
-//MARK: - Actions
-
-@objc
-private extension EventDataSource {
-    
-    func handleInviteButton(_ button: UIButton) {
-        onDidTapInviteButton?(button)
-    }
-    
-    func handleParticipateButton(_ button: DSEventParticipateButton) {
-        button.bind()
-        onDidTapParticipateButton?()
-    }
-}
-
-//MARK: - Private methods
-
-private extension EventDataSource {
-    
-    func setupActivityCollectionManagerBindings() {
-        eventActivityCollectionManager.onCommentsDidScroll = { [unowned self] commentsTableView in
-            self.onCommentsDidScroll?(commentsTableView)
-        }
-        
-        eventActivityCollectionManager.onMembersDidScroll = { [unowned self] membersTableView in
-            self.onMembersDidScroll?(membersTableView)
-        }
-        
-        eventActivityCollectionManager.onCommentsDidTapReplyButton = { [unowned self] inCell in
-            self.onCommentsDidTapReplyButton?(inCell)
-        }
-    }
-}
-
-//MARK: - UICollectionViewDataSource
+//MARK: - UICollectionViewDataSource -
 
 extension EventDataSource: UICollectionViewDataSource {
     
@@ -101,60 +78,53 @@ extension EventDataSource: UICollectionViewDataSource {
             
         case .eventActions:
             let eventActionCell: CollectionViewActionCell = collectionView.cell(forRowAt: indexPath)
+            eventActionCell.onInviteButtonClicked = { [unowned self] in
+                self.delegate?.collectionViewInviteButtonClicked()
+            }
             
-            eventActionCell.inviteButton.addTarget(
-                self,
-                action: #selector(handleInviteButton),
-                for: .touchUpInside
-            )
-            
-            eventActionCell.participateButton.addTarget(
-                self,
-                action: #selector(handleParticipateButton),
-                for: .touchUpInside
-            )
+            eventActionCell.onParticipateButtonClicked = { [unowned self] in
+                self.delegate?.collectionViewParicipateButtonClicked()
+            }
             
             cell = eventActionCell
             
         case .toogle(let messages, let members):
             let toogleCell: CollectionViewToogleCell = collectionView.cell(forRowAt: indexPath)
-            toogleCell.segmentedControl.delegate = self
             toogleCell.messages = messages
             toogleCell.members = members
+            self.toogleSegmentedControl = toogleCell.getSegmentedControl()
+            toogleCell.onSegmentedControlChanged = { [unowned self] index in
+                delegate?.collectionViewSegmentedControlDidChange(
+                    index: index,
+                    collectionView: chatFrameCollectionView
+                )
+            }
             
             cell = toogleCell
             
-        case .activityItems(let activityItems):
-            eventActivityCollectionManager.viewModels = activityItems
+        case .chatFrame(let chatFrameItems):
+            chatFrameCollectionManager.viewModels = chatFrameItems
             
-            let activitySectionCell: CollectionViewActivitySectionCell = collectionView.cell(forRowAt: indexPath)
-            activitySectionCell.updataCollectionDataSource(dataSource: self.eventActivityCollectionManager)
+            let chatFrameCell: CollectionViewChatrFrameCell = collectionView.cell(forRowAt: indexPath)
+            chatFrameCell.updataCollectionDataSource(dataSource: self.chatFrameCollectionManager)
+            self.chatFrameCollectionView = chatFrameCell.getCollectionView()
             
-            self.activityCollectionView = activitySectionCell.collectionView
-            
-            cell = activitySectionCell
+            cell = chatFrameCell
         }
 
         return cell
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDelegateFlowLayout -
 
 extension EventDataSource: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        willDisplay cell: UICollectionViewCell,
-        forItemAt indexPath: IndexPath
-    ) {
-         if (indexPath.row == eventCells.count - 1 ) {
-            print("reached last")
-         }
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        onDidScroll?(eventActivityCollectionManager.commentsTableView, eventActivityCollectionManager.membersTableView)
+        delegate?.collectionViewScrolled(
+            commentsTableView: commentsTableView,
+            membersTableView: membersTableView
+        )
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
@@ -174,18 +144,35 @@ extension EventDataSource: UICollectionViewDelegateFlowLayout {
         case .eventCard: size = CGSize(width: collectionBounds.width, height: screenBounds.height * 0.3)
         case .eventActions: size = CGSize(width: collectionBounds.width, height: screenBounds.height * 0.06)
         case .toogle: size = CGSize(width: collectionBounds.width, height: screenBounds.height * 0.05)
-        case .activityItems: size = CGSize(width: collectionBounds.width, height: collectionBounds.height * 0.8)
+        case .chatFrame: size = CGSize(width: collectionBounds.width, height: collectionBounds.height * 0.8)
         }
 
         return size
     }
 }
 
-//MARK: - DSSegmentedControlDelegate
+//MARK: - EventChatFrameDataSourceDelegate -
 
-extension EventDataSource: DSSegmentedControlDelegate {
+extension EventDataSource: EventChatFrameDataSourceDelegate {
     
-    func didSelectItem(at index: Int) {
-        onDidSelectSegmentedControl?(index, self.activityCollectionView)
+    func commentsTableViewReplyButtonClicked(to userName: String?) {
+        delegate?.commentsTableViewReplyButtonClicked(to: userName)
+    }
+    
+    func commentsTableViewScrolled() {
+        delegate?.commentsTableViewSrolled(tableView: commentsTableView)
+    }
+    
+    func membersTableViewScrolled() {
+        delegate?.membersTableViewSrolled(tableView: membersTableView)
+    }
+    
+    func chatFramCollectionView(scrolledTo index: Int) {
+        delegate?.chatFrameCollectionView(
+            scrolledTo: index,
+            segmentedControl: toogleSegmentedControl
+        )
     }
 }
+
+

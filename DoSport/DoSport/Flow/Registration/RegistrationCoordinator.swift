@@ -27,6 +27,7 @@ final class RegistrationCoordinator: Coordinator {
     
     func goToSportTypeListModule() {
         let coordinator = SportTypeGridCoordinator(navController: self.navigationController)
+        coordinator.store(coordinator: coordinator)
         coordinator.start()
     }
 }

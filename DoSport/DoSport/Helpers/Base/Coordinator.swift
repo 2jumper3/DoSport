@@ -14,24 +14,24 @@ protocol Coordinator: AnyObject {
     func start()
     
     // extension implemented
-//    func removeDependency(_ coordinator: Coordinator?)
-//    func store(coordinator: Coordinator)
+    func removeDependency(_ coordinator: Coordinator?)
+    func store(coordinator: Coordinator)
 }
 
-//extension Coordinator {
-//    func removeDependency(_ coordinator: Coordinator?) {
-//        guard
-//            childCoordinators.isEmpty == false,
-//            let coordinator = coordinator
-//        else { return }
-//
-//        for (index, element) in childCoordinators.enumerated() where element === coordinator {
-//            childCoordinators.remove(at: index)
-//            break
-//        }
-//    }
-//
-//    func store(coordinator: Coordinator) {
-//        childCoordinators.append(coordinator)
-//    }
-//}
+extension Coordinator {
+    func removeDependency(_ coordinator: Coordinator?) {
+        guard
+            childCoordinators.isEmpty == false,
+            let coordinator = coordinator
+        else { return }
+
+        for (index, element) in childCoordinators.enumerated() where element === coordinator {
+            childCoordinators.remove(at: index)
+            break
+        }
+    }
+
+    func store(coordinator: Coordinator) {
+        childCoordinators.append(coordinator)
+    }
+}

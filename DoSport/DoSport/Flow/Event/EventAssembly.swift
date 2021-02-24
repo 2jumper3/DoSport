@@ -9,9 +9,15 @@ import Foundation
 
 final class EventAssembly: Assembly {
     
+    let event: Event
+    
+    init(event: Event) {
+        self.event = event
+    }
+    
     func makeModule() -> EventViewController {
         let viewModel = EventViewModel()
-        let viewController = EventViewController(viewModel: viewModel)
+        let viewController = EventViewController(viewModel: viewModel, event: event)
         return viewController
     }
 }

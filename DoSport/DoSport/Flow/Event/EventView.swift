@@ -6,15 +6,24 @@
 //
 
 import UIKit
-import SnapKit
 
+protocol EventViewDelegate: class {
+    func inputViewSendButtonClicked()
+}
+    
 final class EventView: UIView {
+    
+    weak var delegate: EventViewDelegate?
     
     private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
     
-    private let navBarSeparatorView = DSSeparatorView()
+    //MARK: Outlets
+
+    private let messageInputTopSeparatorView = DSSeparatorView()
     
-    private(set) lazy var collectionView: UICollectionView = {
+    private let messageInputView = DSMessageInputView()
+    
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
@@ -24,21 +33,21 @@ final class EventView: UIView {
         collectionView.registerClass(CollectionViewEventCardCell.self)
         collectionView.registerClass(CollectionViewActionCell.self)
         collectionView.registerClass(CollectionViewToogleCell.self)
-        collectionView.registerClass(CollectionViewActivitySectionCell.self)
+        collectionView.registerClass(CollectionViewChatrFrameCell.self)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    private(set) lazy var messageInputView = DSMessageInputView()
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(navBarSeparatorView, collectionView, messageInputView)
+        messageInputView.delegate = self
+        
+        addSubviews(collectionView, messageInputTopSeparatorView, messageInputView)
     }
     
     required init?(coder: NSCoder) {
@@ -48,17 +57,18 @@ final class EventView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        navBarSeparatorView.snp.makeConstraints {
-            $0.width.centerX.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.top.equalTo(self.safeAreaInsets.top).offset(10)
-        }
-        
         collectionView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.9)
-            $0.top.equalTo(safeAreaInsets.top).offset(26)
+            $0.top.equalTo(safeAreaInsets.top).offset(22)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(messageInputView.snp.top).offset(-6)
+        }
+        
+        messageInputTopSeparatorView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(1)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(messageInputView.snp.top).offset(-1)
         }
         
         messageInputView.snp.makeConstraints {
@@ -70,7 +80,7 @@ final class EventView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension EventView {
     
@@ -80,4 +90,38 @@ extension EventView {
         collectionView.reloadData()
         layoutIfNeeded()
     }
+    
+    func getCollectionView() -> UICollectionView {
+        return self.collectionView
+    }
+    
+    func setCollectionView(isScrollingEnabled value: Bool) {
+        self.collectionView.isScrollEnabled = value
+    }
+    
+    func getInputViewText() -> String {
+        return messageInputView.getInputText()
+    }
+    
+    func setInputView(text: String) {
+        messageInputView.setInput(text: text)
+    }
+    
+    func makeInputTextViewFirstResponder() {
+        messageInputView.makeTextFieldFirstResponder()
+    }
+    
+    func removeInputTextViewFirstResponder() {
+        messageInputView.removeTextFieldFirstResponder()
+    }
 }
+
+//MARK: - DSTextInputViewDelegate -
+
+extension EventView: DSTextInputViewDelegate {
+    
+    func sendTextButtonClicked() {
+        delegate?.inputViewSendButtonClicked()
+    }
+}
+ 

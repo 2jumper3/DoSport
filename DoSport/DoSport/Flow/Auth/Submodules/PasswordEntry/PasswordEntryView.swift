@@ -6,12 +6,12 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol PasswordEntryViewDelegate: class {
-    func didTapGoBackButton()
-    func didTapEnterButton()
-    func didTapPasswordForgotButton()
+    func goBackButtonClicked()
+    func enterButtonClicked()
+    func passwordForgotButtonClicked()
+    func passwordTextDidEditing(_ text: String?)
 }
 
 final class PasswordEntryView: UIView {
@@ -28,6 +28,8 @@ final class PasswordEntryView: UIView {
         set { userNameLabel.text = newValue }
     }
     
+    // MARK: Outlets
+    
     private let titleLabel: UILabel = {
         $0.textAlignment = .center
         $0.textColor = .white
@@ -37,14 +39,6 @@ final class PasswordEntryView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var backButton: DSBarBackButton = {
-        $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        return $0
-    }(DSBarBackButton())
-
-    
-    private lazy var avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
-    
     private let userNameLabel: UILabel = {
         $0.textAlignment = .center
         $0.textColor = Colors.mainBlue
@@ -53,43 +47,31 @@ final class PasswordEntryView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
-    
-    private(set) lazy var passwordTextView: DSPasswordTextView = {
-        $0.addButtonTarget(target: self, action: #selector(handleShowHideButton))
-        return $0
-    }(DSPasswordTextView())
-    
-    private lazy var forgorPasswordButton: UIButton = {
-        $0.addTarget(self, action: #selector(handleForgotPasswordButton), for: .touchUpInside)
-        return $0
-    }(UIButton.makeButton(title: Texts.PasswordEntry.forgotPassword,titleColor: Colors.mainBlue))
 
-    private lazy var enterButton: CommonButton = {
-        $0.addTarget(self, action: #selector(handleEnterButton), for: .touchUpInside)
-        return $0
-    }(CommonButton(title: Texts.PasswordEntry.enter, state: .disabled))
+    private lazy var avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
+    
+    private lazy var backButton = DSBarBackButton()
+    
+    private(set) lazy var passwordTextView = DSPasswordTextView()
+    
+    private lazy var enterButton = CommonButton(title: Texts.PasswordEntry.enter, state: .disabled)
+    
+    private lazy var forgorPasswordButton = UIButton.makeButton(title: Texts.PasswordEntry.forgotPassword,
+                                                                titleColor: Colors.mainBlue)
 
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
+        
         backgroundColor = Colors.darkBlue
         
+        passwordTextView.delegate = self
+        
+        setupKeyboardNotifications()
+        setupOutletTargets()
+        
         addSubviews(backButton, titleLabel, avatarImageView, userNameLabel, passwordTextView, forgorPasswordButton, enterButton)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
     }
     
     required init?(coder: NSCoder) {
@@ -147,32 +129,64 @@ final class PasswordEntryView: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension PasswordEntryView {
-    func updateEnterButtonState(state: CommonButton.State) {
+    
+    func updateEnterButtonState(state: CommonButtonState) {
         enterButton.bind(state: state)
+    }
+    
+    func makePasswordFieldFirstResponder() {
+        passwordTextView.makeTextFieldFirstResponder()
+    }
+    
+    func removePasswordFieldFirstResponder() {
+        passwordTextView.removeTextFieldFirstResponder()
     }
 }
 
-//MARK: - Actions
+//MARK: Private API
 
-@objc
 private extension PasswordEntryView {
-    func handleShowHideButton() {
-        passwordTextView.bind()
+    
+    func setupKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeybordWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
+    func setupOutletTargets() {
+        backButton.addTarget(self, action: #selector(handleBackButton))
+        enterButton.addTarget(self, action: #selector(handleEnterButton))
+        forgorPasswordButton.addTarget(self, action: #selector(handleForgotPasswordButton))
+    }
+}
+
+//MARK: Actions
+
+@objc private extension PasswordEntryView {
+    
     func handleForgotPasswordButton() {
-        delegate?.didTapPasswordForgotButton()
+        delegate?.passwordForgotButtonClicked()
     }
     
     func handleEnterButton() {
-        delegate?.didTapEnterButton()
+        delegate?.enterButtonClicked()
     }
     
     func handleBackButton() {
-        delegate?.didTapGoBackButton()
+        delegate?.goBackButtonClicked()
     }
     
     func handleKeybordWillShow(_ notification: Notification) {
@@ -185,5 +199,18 @@ private extension PasswordEntryView {
         UIView.animate(withDuration: 0.3) {
             self.enterButton.transform = .identity
         }
+    }
+}
+
+//MARK: - DSPasswordTextViewDelegate
+
+extension PasswordEntryView: DSPasswordTextViewDelegate {
+    
+    func visibilityControlButtonClicked() {
+        passwordTextView.bind()
+    }
+    
+    func textFieldDidEditing(_ text: String?) {
+        delegate?.passwordTextDidEditing(text)
     }
 }

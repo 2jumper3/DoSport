@@ -9,7 +9,31 @@ import UIKit
 
 final class TableViewCommentCell: UITableViewCell {
     
-    private(set) lazy var memberAvatarImageView: UIImageView = {
+    var onReplyButtonClicked: ((String?) -> Void)?
+    
+    var avatarImage: UIImage? {
+        get { memberAvatarImageView.image }
+        set { memberAvatarImageView.image = newValue }
+    }
+    
+    var memberName: String? {
+        get { memberNameLabel.text }
+        set { memberNameLabel.text = newValue }
+    }
+
+    var commentCreatedTime: String? {
+        get { commentCreatedTimeLabel.text }
+        set { commentCreatedTimeLabel.text = newValue }
+    }
+    
+    var commentText: String? {
+        get { commentTextLabel.text }
+        set { commentTextLabel.text = newValue }
+    }
+    
+    //MARK: Outlets
+    
+    private lazy var memberAvatarImageView: UIImageView = {
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
         $0.image = Icons.Feed.defaultAvatar
@@ -17,7 +41,7 @@ final class TableViewCommentCell: UITableViewCell {
         return $0
     }(UIImageView())
 
-    private(set) var memberNameLabel: UILabel = {
+    private let memberNameLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textColor = Colors.mainBlue
         $0.text = "Kamol"
@@ -25,7 +49,7 @@ final class TableViewCommentCell: UITableViewCell {
         return $0
     }(UILabel())
 
-    private(set) var commentCreatedTimeLabel: UILabel = {
+    private let commentCreatedTimeLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textColor = Colors.dirtyBlue
         $0.text = "2 hours ago"
@@ -33,7 +57,7 @@ final class TableViewCommentCell: UITableViewCell {
         return $0
     }(UILabel())
 
-    private(set) var commentTextLabel: UILabel = {
+    private let commentTextLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textColor = .white
         $0.numberOfLines = 10
@@ -42,15 +66,16 @@ final class TableViewCommentCell: UITableViewCell {
         return $0
     }(UILabel())
 
-    private(set) lazy var replyButton: UIButton = {
+    private lazy var replyButton: UIButton = {
         $0.setTitle(Texts.Event.reply, for: .normal)
         $0.titleLabel?.font = Fonts.sfProRegular(size: 14)
         $0.setTitleColor(Colors.mainBlue, for: .normal)
+        $0.addTarget(self, action: #selector(handleReplyButton))
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIButton())
     
-    //MARK: - Init
+    //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -113,5 +138,14 @@ final class TableViewCommentCell: UITableViewCell {
             $0.left.equalTo(memberNameLabel.snp.left)
             $0.height.equalTo(memberNameLabel.snp.height)
         }
+    }
+}
+
+//MARK: Action
+
+@objc private extension TableViewCommentCell {
+    
+    func handleReplyButton() {
+        onReplyButtonClicked?(memberName)
     }
 }

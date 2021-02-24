@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol EventMembersDataSourceDelegate: class {
+    func membersTableViewScrolled()
+}
+
 final class EventMembersDataSource: NSObject {
     
-    var onDidScroll: (() -> Void)?
+    weak var delegate: EventMembersDataSourceDelegate?
     
     var viewModels: [Member]
     
@@ -19,7 +23,7 @@ final class EventMembersDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 
 extension EventMembersDataSource: UITableViewDataSource {
     
@@ -28,7 +32,7 @@ extension EventMembersDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = viewModels[indexPath.row]
+//        let viewModel = viewModels[indexPath.row]
         
         let cell: TableViewMemberCell = tableView.cell(forRowAt: indexPath)
 //        cell.memberNameLabel.text =
@@ -39,12 +43,12 @@ extension EventMembersDataSource: UITableViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 
 extension EventMembersDataSource: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        onDidScroll?()
+        delegate?.membersTableViewScrolled()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

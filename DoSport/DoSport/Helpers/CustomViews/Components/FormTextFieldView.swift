@@ -6,31 +6,34 @@
 //
 
 import UIKit
-import SnapKit
+
+
+enum FormTextFieldViewState { // FIXME able to combine this
+    case normal, error
+}
+
+enum FormTextFieldViewType: Equatable { // FIXME able to combine this
+    case userName, password, dob, custom(placeholder: String)
+}
 
 final class FormTextFieldView: UIView {
     
-    enum State {
-        case normal, error
+    var text: String? {
+        get { textField.text }
+        set { textField.text = newValue }
     }
     
-    enum TextFieldType {
-        case userName, password, dob
-    }
-    
-    private var state: State = .normal {
+    private var state: FormTextFieldViewState = .normal {
         didSet {
             handleDidSetState()
         }
     }
     
-    var text: String? {
-        get { textField.text }
-    }
+    //MARK: Outlets
     
-    private let type: TextFieldType
+    private let type: FormTextFieldViewType
     
-    private(set) lazy var textField = DSTextField(type: self.type)
+    private lazy var textField = DSTextField(type: self.type)
     
     private lazy var errorLabel: UILabel = {
         if self.type == .userName {
@@ -43,9 +46,9 @@ final class FormTextFieldView: UIView {
         return $0
     }(UILabel())
     
-    //MARK: - Init
+    //MARK: Init
     
-    init(type: TextFieldType) {
+    init(type: FormTextFieldViewType) {
         self.type = type
         super.init(frame: .zero)
         
@@ -75,11 +78,11 @@ final class FormTextFieldView: UIView {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
 extension FormTextFieldView {
     
-    func bind(compilation: (State) -> ()) {
+    func bind(compilation: (FormTextFieldViewState) -> ()) {
         switch state {
         case .normal:
             self.state = .error
@@ -88,9 +91,21 @@ extension FormTextFieldView {
         }
         compilation(self.state)
     }
+    
+    func removeTextFieldFirstResponder() {
+        textField.resignFirstResponder()
+    }
+    
+    func makeTextFieldFirstResponder() {
+        textField.becomeFirstResponder()
+    }
+    
+    func getTextField() -> UITextField {
+        return self.textField
+    }
 }
 
-//MARK: - Private methods
+//MARK: Private API
 
 private extension FormTextFieldView {
     

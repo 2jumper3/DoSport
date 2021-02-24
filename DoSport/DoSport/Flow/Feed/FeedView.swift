@@ -6,15 +6,22 @@
 //
 
 import UIKit
-import SnapKit
+
+protocol FeedViewDelegate: class {
+    func allFilterButtonClicked()
+    func subscribesFilterButtonClicked()
+    func subscribersFilterButtonClicked()
+}
 
 final class FeedView: UIView {
     
-    private let navBarSeparatorView = DSSeparatorView()
+    weak var delegate: FeedViewDelegate?
     
-    private(set) lazy var filterButtonsView = FeedFilterButtonsView()
+    // MARK: Outlets
     
-    private lazy var collectionView: UICollectionView = {
+    private let filterButtonsView = FeedFilterButtonsView()
+    
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 8
         layout.scrollDirection = .vertical
@@ -28,15 +35,14 @@ final class FeedView: UIView {
         return collectionView
     }()
     
+    //MARK: Init
+    
     init() {
         super.init(frame: .zero)
+        
         backgroundColor = Colors.darkBlue
         
-        addSubviews(
-            navBarSeparatorView,
-            filterButtonsView,
-            collectionView
-        )
+        addSubviews(filterButtonsView, collectionView)
     }
     
     required init?(coder: NSCoder) {
@@ -46,17 +52,11 @@ final class FeedView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        navBarSeparatorView.snp.makeConstraints {
-            $0.width.centerX.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.top.equalTo(self.safeAreaInsets.top).offset(10)
-        }
-        
         filterButtonsView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.85)
             $0.height.equalTo(45)
             $0.left.equalTo(collectionView.snp.left)
-            $0.top.equalTo(navBarSeparatorView.snp.bottom).offset(16)
+            $0.top.equalTo(safeAreaInsets.top).offset(16)
         }
         
         collectionView.snp.makeConstraints {
@@ -68,7 +68,7 @@ final class FeedView: UIView {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension FeedView {
     
@@ -77,5 +77,22 @@ extension FeedView {
         collectionView.dataSource = dateSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+}
+
+//MARK: - FeedFilterButtonsViewDelegate -
+
+extension FeedView: FeedFilterButtonsViewDelegate {
+    
+    func allButtonClicked() {
+        delegate?.allFilterButtonClicked()
+    }
+    
+    func subscribesButtonClicked() {
+        delegate?.subscribesFilterButtonClicked()
+    }
+    
+    func subscribersButtonClicked() {
+        delegate?.subscribersFilterButtonClicked()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CollectionViewActivitySectionCell.swift
+//  CollectionViewChatrFrameCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 14/02/2021.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CollectionViewActivitySectionCell: UICollectionViewCell {
+final class CollectionViewChatrFrameCell: UICollectionViewCell {
     
-    private(set) lazy var collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
         layout.scrollDirection = .horizontal
@@ -24,7 +24,7 @@ final class CollectionViewActivitySectionCell: UICollectionViewCell {
         return collectionView
     }()
     
-    //MARK: - Init
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -45,15 +45,19 @@ final class CollectionViewActivitySectionCell: UICollectionViewCell {
     }
 }
 
-//MARK: - Public methods
+//MARK: Public API
 
-extension CollectionViewActivitySectionCell {
+extension CollectionViewChatrFrameCell {
     
     func updataCollectionDataSource(dataSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
         collectionView.dataSource = dataSource
         collectionView.delegate = dataSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func getCollectionView() -> UICollectionView {
+        return collectionView
     }
 }
 

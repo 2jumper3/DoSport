@@ -6,11 +6,16 @@
 //
 
 import UIKit
-import SnapKit
+
+protocol DSFeedNavBarDelegate: class {
+    func createButtonClicked()
+}
 
 final class DSFeedNavBar: UIView {
     
-    // to create new event
+    weak var delegate: DSFeedNavBarDelegate?
+     
+    // MARK: Outlets
     
     private(set) lazy var createEventButton: UIButton = {
         $0.setImage(Icons.Feed.plus, for: .normal)
@@ -18,8 +23,6 @@ final class DSFeedNavBar: UIView {
         $0.tintColor = .white
         return $0
     }(UIButton(type: .system))
-    
-    // home screen navBar title
     
     private let titleLabel: UILabel = {
         $0.text = Texts.Feed.title
@@ -29,18 +32,20 @@ final class DSFeedNavBar: UIView {
         return $0
     }(UILabel())
     
-    // expands navBar width in navigationItem beyond standard titleView
-    
+    /// expands navBar width in navigationItem beyond standard titleView
     override internal var intrinsicContentSize: CGSize {
         return UIView.layoutFittingExpandedSize
     }
     
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
+        
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = Colors.darkBlue
+        
+        createEventButton.addTarget(self, action: #selector(handleCreateButtonClick))
         
         addSubviews(createEventButton, titleLabel)
     }
@@ -63,6 +68,15 @@ final class DSFeedNavBar: UIView {
             $0.height.centerY.equalToSuperview()
             $0.width.equalTo(snp.height).multipliedBy(1.4)
         }
+    }
+}
+
+//MARK: Private API
+
+@objc private extension DSFeedNavBar {
+    
+    func handleCreateButtonClick() {
+        delegate?.createButtonClicked()
     }
 }
 
