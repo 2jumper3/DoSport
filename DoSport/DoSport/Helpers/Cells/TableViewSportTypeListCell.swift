@@ -50,6 +50,12 @@ final class TableViewSportTypeListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        bind(state: .notSelected)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -71,7 +77,7 @@ final class TableViewSportTypeListCell: UITableViewCell {
 //MARK: - Public methods
 
 extension TableViewSportTypeListCell {
- 
+
     func bind(state: CellState) {
         cellState = state
     }
