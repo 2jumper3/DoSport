@@ -50,7 +50,7 @@ final class CollectionViewEventCardCellHeaderView: UIView {
         return $0
     }(UIButton())
     
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -72,7 +72,8 @@ final class CollectionViewEventCardCellHeaderView: UIView {
         super.layoutSubviews()
         
         organiserImageView.snp.makeConstraints {
-            $0.left.height.centerY.equalToSuperview()
+            $0.left.centerY.equalToSuperview()
+            $0.height.centerY.equalToSuperview().multipliedBy(0.9)
             $0.width.equalTo(organiserImageView.snp.height)
         }
         
