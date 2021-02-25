@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DateSelectionViewController: UIViewController {
+final class DateSelectionViewController: UIViewController, UIGestureRecognizerDelegate {
     
     weak var coordinator: DateSelectionCoordinator?
     private let viewModel: DateSelectionViewModel
@@ -66,6 +66,8 @@ final class DateSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// go back by swipe
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         collectionManager.delegate = self
         
@@ -98,12 +100,13 @@ private extension DateSelectionViewController {
     
     func setupNavBar() {
         title = Texts.DateSelection.date
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: Fonts.sfProRegular(size: 18),
+            NSAttributedString.Key.foregroundColor: Colors.mainBlue
+        ]
         
-        let button = UIButton(type: .system)
-        button.setImage(Icons.SportTypeList.backButton, for: .normal)
-        button.tintColor = Colors.mainBlue
+        let button = DSBarBackButton()
         button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }
     
@@ -121,11 +124,13 @@ private extension DateSelectionViewController {
     }
     
     func checkAvailableHoursFor(selected date: Date) {
-        /// clear notAvailable hours of previos date
+        /// clear notAvailable & selected hours of previos date
         notAvailableHours.removeAll()
+        selectedHours.removeAll()
         
         /// clear selected hours of previous date
         collectionManager.selectedHours.removeAll()
+        updateView()
         
         self.selectedDate = date
         
