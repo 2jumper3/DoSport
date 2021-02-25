@@ -80,6 +80,13 @@ extension MainMenuTabController {
                 feedCoordinator.start()
                 
                 tabViewControllers?.append(navigationController)
+            } else if tabBarItem.viewController is MapViewController {
+                let navigationController = DSNavigationController()
+                let mapCoordinator = MapCoordinator(navController: navigationController)
+                self.coordinator?.store(coordinator: mapCoordinator)
+                mapCoordinator.start()
+                
+                tabViewControllers?.append(navigationController)
             } else {
                 tabViewControllers?.append(tabBarItem.viewController)
             }

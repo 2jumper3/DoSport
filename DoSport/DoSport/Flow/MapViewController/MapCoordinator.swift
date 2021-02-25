@@ -8,6 +8,7 @@
 import UIKit
 
 class MapCoordinator: Coordinator {
+    
     var rootViewController: MapViewController
     
     var childCoordinators: [Coordinator] = []

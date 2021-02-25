@@ -1007,9 +1007,9 @@
 			children = (
 				CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */,
 				CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */,
-				CE83AC5525E59B4B00A2C6E1 /* MapFilter */,
-				CE83AC6025E59B4B00A2C6E1 /* MapAssembly.swift */,
 				CE83AC6125E59B4B00A2C6E1 /* MapViewModel.swift */,
+				CE83AC6025E59B4B00A2C6E1 /* MapAssembly.swift */,
+				CE83AC5525E59B4B00A2C6E1 /* MapFilter */,
 				CE83AC6225E59B4B00A2C6E1 /* Helpers */,
 				CE83AC6825E59B4B00A2C6E1 /* MapModel.swift */,
 			);

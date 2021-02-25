@@ -20,7 +20,7 @@ enum TabBarItem: String, CaseIterable {
         case .home:
             return FeedAssembly().makeModule()
         case .map:
-            return MainViewController()
+            return MapAssembly().makeModule()
         case .chat:
             return MainViewController()
         case .user:

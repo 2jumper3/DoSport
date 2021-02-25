@@ -29,29 +29,37 @@ class PreviewLocationView: UIView   {
         return gesture
     }()
 
-    private lazy var background : UIView = {
-        let view = UIView()
+    private lazy var background : UIImageView = {
+        let view = UIImageView()
         view.layer.cornerRadius = 12
-        view.backgroundColor = Colors.lightBlue
+        view.image = Icons.image(named: "sampleSportGround")
         view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         return view
     }()
+    private lazy var  gradientView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 12
+        view.backgroundColor = Colors.lightBlue
+        view.alpha = 0.7
+        return view
+    }()
     private lazy var adressLabel: UILabel = {
         let label = UILabel()
-        label.font = Fonts.sfProRegular(size: 14)
+        label.font = Fonts.sfProRegular(size: 16)
         label.textColor = .white
         return label
     }()
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.font = Fonts.sfProRegular(size: 14)
+        label.font = Fonts.sfProRegular(size: 16)
         label.textColor = .white
         return label
     }()
     private lazy var rangeLabel: UILabel = {
         let label = UILabel()
-        label.font = Fonts.sfProRegular(size: 14)
+        label.font = Fonts.sfProRegular(size: 16)
         label.textColor = .white
         return label
     }()
@@ -97,13 +105,16 @@ class PreviewLocationView: UIView   {
     //MARK: - SetupUI
     func setupUI() {
         backgroundColor = Colors.darkBlue
-        addSubviews(background,
+        addSubviews(background, gradientView,
                     adressLabel,priceLabel,rangeLabel,nameLabel, metroIcon,locationIcon,priceIcon)
         background.snp.makeConstraints { (make) in
             make.left.equalTo(self.snp.left).offset(self.bounds.width / 23.4)
             make.right.equalTo(self.snp.right).offset(-self.bounds.width / 23.4)
             make.top.equalTo(self.snp.top).offset(self.bounds.width / 23.4)
             make.bottom.equalTo(self.snp.bottom).offset(-self.bounds.width / 23.4)
+        }
+        gradientView.snp.makeConstraints { (make) in
+            make.left.bottom.top.right.equalTo(background)
         }
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(background.snp.left).offset(10)
