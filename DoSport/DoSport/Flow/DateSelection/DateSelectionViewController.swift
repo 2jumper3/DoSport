@@ -98,6 +98,9 @@ private extension DateSelectionViewController {
     
     func setupNavBar() {
         title = Texts.DateSelection.date
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: Fonts.sfProRegular(size: 18)
+        ]
         
         let button = UIButton(type: .system)
         button.setImage(Icons.SportTypeList.backButton, for: .normal)
@@ -121,11 +124,13 @@ private extension DateSelectionViewController {
     }
     
     func checkAvailableHoursFor(selected date: Date) {
-        /// clear notAvailable hours of previos date
+        /// clear notAvailable & selected hours of previos date
         notAvailableHours.removeAll()
+        selectedHours.removeAll()
         
         /// clear selected hours of previous date
         collectionManager.selectedHours.removeAll()
+        updateView()
         
         self.selectedDate = date
         

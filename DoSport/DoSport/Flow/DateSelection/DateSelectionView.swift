@@ -131,6 +131,7 @@ private extension DateSelectionView {
         calendarView.appearance.headerTitleColor = .white
         calendarView.appearance.todayColor = Colors.lightBlue
         calendarView.appearance.weekdayTextColor = Colors.mainBlue
+        calendarView.appearance.selectionColor = Colors.lightBlue
         calendarView.appearance.titleSelectionColor = .white
         calendarView.appearance.headerSeparatorColor = Colors.dirtyBlue
         calendarView.appearance.titlePlaceholderColor = Colors.mainBlue
@@ -191,8 +192,7 @@ extension DateSelectionView: FSCalendarDelegate {
             delegate?.calendarView(didSelect: date)
         }
         
-       
-        calendarView.appearance.selectionColor = Colors.lightBlue
+        calendar.appearance.selectionColor = Colors.lightBlue
         calendar.appearance.titleSelectionColor = .white
     }
 }
