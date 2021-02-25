@@ -99,14 +99,12 @@ private extension DateSelectionViewController {
     func setupNavBar() {
         title = Texts.DateSelection.date
         navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: Fonts.sfProRegular(size: 18)
+            NSAttributedString.Key.font: Fonts.sfProRegular(size: 18),
+            NSAttributedString.Key.foregroundColor: Colors.mainBlue
         ]
         
-        let button = UIButton(type: .system)
-        button.setImage(Icons.SportTypeList.backButton, for: .normal)
-        button.tintColor = Colors.mainBlue
+        let button = DSBarBackButton()
         button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }
     
