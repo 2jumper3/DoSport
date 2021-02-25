@@ -26,6 +26,7 @@ final class FeedFilterButton: UIButton {
         layer.cornerRadius = 8
         layer.borderWidth = 1
         layer.borderColor = Colors.dirtyBlue.cgColor
+        titleLabel?.font = Fonts.sfProRegular(size: 16)
         setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
         setTitleColor(.gray, for: .highlighted)
