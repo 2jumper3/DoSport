@@ -17,7 +17,7 @@ final class SportTypeListDataSource: NSObject {
     
     var viewModels: [Sport]
     
-    private var selectedCell: TableViewSportTypeListCell?
+    private var selectedRow: Int = 0
     
     init(viewModels: [Sport] = []) {
         self.viewModels = viewModels
@@ -37,10 +37,21 @@ extension SportTypeListDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = viewModels[indexPath.row]
         
-        let cell: TableViewSportTypeListCell = tableView.cell(forRowAt: indexPath)
-        cell.myTitleLabel.text = viewModel.title
+        let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
+        cell.titleText = viewModel.title
+        
+        if selectedRow == 0 && indexPath.row == 0 {
+            cell.bind(state: .selected)
+            delegate?.tableView(didSelectSport: viewModel)
+        } else if selectedRow > 0 && selectedRow == indexPath.row {
+            cell.bind(state: .selected)
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
     }
 }
 
@@ -50,15 +61,30 @@ extension SportTypeListDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
+        let selectedIndexPath = IndexPath(row: selectedRow, section: 0)
         
-        if let cell = tableView.cellForRow(at: indexPath) as? TableViewSportTypeListCell,
-           cell.cellState == .notSelected {
-            selectedCell?.bind(state: .notSelected)
-            cell.bind(state: .selected)
-            selectedCell = cell
+        if indexPath.row == 0 {
+            let selectedCell: SportTypeListTableCell = tableView.cell(forRowAt: selectedIndexPath)
+            selectedCell.bind(state: .notSelected)
+            
+            let newCell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
+            newCell.bind(state: .selected)
+            
+            selectedRow = indexPath.row
+            
+        } else if indexPath.row != selectedRow && indexPath.row > 0 {
+            let selectedCell: SportTypeListTableCell = tableView.cell(forRowAt: selectedIndexPath)
+            selectedCell.bind(state: .notSelected)
+            
+            let newCell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
+            newCell.bind(state: .selected)
+            
+            selectedRow = indexPath.row
+            
+            delegate?.tableView(didSelectSport: viewModel)
         }
         
-        delegate?.tableView(didSelectSport: viewModel)
+        tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .middle)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

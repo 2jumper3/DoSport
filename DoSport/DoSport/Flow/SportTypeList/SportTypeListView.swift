@@ -18,7 +18,7 @@ final class SportTypeListView: UIView {
     //MARK: Outlets
 
     private lazy var tableView: UITableView = {
-        $0.registerClass(TableViewSportTypeListCell.self)
+        $0.registerClass(SportTypeListTableCell.self)
         $0.separatorColor = Colors.dirtyBlue
         $0.backgroundColor = Colors.darkBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
