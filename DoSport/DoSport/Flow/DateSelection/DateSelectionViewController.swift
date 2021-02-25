@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DateSelectionViewController: UIViewController {
+final class DateSelectionViewController: UIViewController, UIGestureRecognizerDelegate {
     
     weak var coordinator: DateSelectionCoordinator?
     private let viewModel: DateSelectionViewModel
@@ -66,6 +66,8 @@ final class DateSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// go back by swipe
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         collectionManager.delegate = self
         
