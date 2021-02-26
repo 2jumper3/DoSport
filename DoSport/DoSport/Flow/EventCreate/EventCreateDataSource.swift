@@ -127,18 +127,40 @@ extension EventCreateDataSource: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height: CGFloat
+        let height: CGFloat = tableView.frame.height * 0.26
+        var selectionHeight: CGFloat = 50
+        var membersCountHeight: CGFloat = 208
         let cellType: CellType = cells[indexPath.row]
         
-        switch cellType {
-        case .textView: height = tableView.frame.height * 0.27
-        case .sportTypeSelection: height = tableView.frame.height * 0.095
-        case .sportGroundSelection: height = tableView.frame.height * 0.095
-        case .dateSelection: height = tableView.frame.height * 0.095
-        case .membersCount: height = tableView.frame.height * 0.38
-        case .eventType: height = tableView.frame.height * 0.13
+        switch UIDevice.deviceSize {
+        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: membersCountHeight = 200
+        case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: selectionHeight = 55
+        case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
+            selectionHeight = 60
+            membersCountHeight = 220
+        default: break
         }
         
-        return height
+        switch cellType {
+        case .textView: return height
+        case .sportTypeSelection: return selectionHeight
+        case .sportGroundSelection: return selectionHeight
+        case .dateSelection: return selectionHeight
+        case .membersCount: return membersCountHeight
+        case .eventType: return selectionHeight
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? { nil }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 0 }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = EventTypeTableCellFooter()
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 55
     }
 }

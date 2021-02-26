@@ -22,12 +22,14 @@ final class MembersCountCell: UITableViewCell {
     private let minValueTextField: DSTextField = {
         $0.isUserInteractionEnabled = false
         $0.backgroundColor = Colors.darkBlue
+        $0.isUserInteractionEnabled = false
         $0.font = Fonts.sfProRegular(size: 18)
         return $0
     }(DSTextField())
     
     private let maxValueTextField: DSTextField = {
         $0.backgroundColor = Colors.darkBlue
+        $0.isUserInteractionEnabled = false
         $0.font = Fonts.sfProRegular(size: 18)
         return $0
     }(DSTextField())

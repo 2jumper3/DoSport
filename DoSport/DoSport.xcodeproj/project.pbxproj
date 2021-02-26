@@ -62,6 +62,7 @@
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
+		654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */; };
 		655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B513325D5BD9A004FE90F /* EventCreateDataSource.swift */; };
 		655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B513C25D5BFFC004FE90F /* TextViewCell.swift */; };
 		655B514225D5C007004FE90F /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B514125D5C007004FE90F /* SelectionCell.swift */; };
@@ -272,6 +273,7 @@
 		654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		654210DA25AF8837004078C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+attributedString.swift"; sourceTree = "<group>"; };
+		654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeTableCellFooter.swift; sourceTree = "<group>"; };
 		655B513325D5BD9A004FE90F /* EventCreateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateDataSource.swift; sourceTree = "<group>"; };
 		655B513C25D5BFFC004FE90F /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		655B514125D5C007004FE90F /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				655B515525D5C02A004FE90F /* EventTypeCell.swift */,
+				654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */,
 				655B515025D5C021004FE90F /* MembersCountCell.swift */,
 				655B514125D5C007004FE90F /* SelectionCell.swift */,
 				655B513C25D5BFFC004FE90F /* TextViewCell.swift */,
@@ -1321,12 +1324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */,
-				65A62A4525E720C9000AA184 /* OnBoardingViewController.swift in Sources */,
-				65A62A4625E720C9000AA184 /* GetUserInfo.swift in Sources */,
-				65A62A4725E720C9000AA184 /* RegisterRequest.swift in Sources */,
-				65A62A4825E720C9000AA184 /* UserCountry.swift in Sources */,
-				65A62A4125E720BF000AA184 /* AuthAssembly.swift in Sources */,
+				654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */,
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
