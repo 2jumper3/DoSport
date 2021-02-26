@@ -39,6 +39,7 @@ final class EventCardTableCell: UITableViewCell {
         participateButton.addTarget(self, action: #selector(handleParticipateButton))
         
         backgroundColor = Colors.darkBlue
+        selectionStyle = .none
         
         contentView.addSubviews(eventCardView, inviteButton, participateButton)
     }
