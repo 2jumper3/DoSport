@@ -57,12 +57,6 @@ final class EventViewController: UIViewController {
         viewModel.prepareEventData(event: self.event)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        eventView.sizeTableHeaderViewToFit()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
