@@ -64,7 +64,7 @@ final class EventView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalTo(1)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(messageInputView.snp.top).offset(-1)
+            $0.bottom.equalTo(messageInputView.snp.top)
         }
         
         messageInputView.snp.makeConstraints {
