@@ -63,6 +63,13 @@
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
 		654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */; };
+		654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
+		654D705625E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
+		654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */; };
+		654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
+		654D705925E88D6B00B37AD3 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
+		654D705A25E88D6B00B37AD3 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
+		654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B513325D5BD9A004FE90F /* EventCreateDataSource.swift */; };
 		655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B513C25D5BFFC004FE90F /* TextViewCell.swift */; };
 		655B514225D5C007004FE90F /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B514125D5C007004FE90F /* SelectionCell.swift */; };
@@ -111,11 +118,6 @@
 		659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */; };
 		65A62A0425E700AC000AA184 /* EventTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A62A0325E700AC000AA184 /* EventTableHeaderView.swift */; };
 		65A62A0925E70109000AA184 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A62A0825E70109000AA184 /* EventCardView.swift */; };
-		65A62A4125E720BF000AA184 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
-		65A62A4525E720C9000AA184 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
-		65A62A4625E720C9000AA184 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB863258CE1D9007B2BCA /* GetUserInfo.swift */; };
-		65A62A4725E720C9000AA184 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB872258CE21C007B2BCA /* RegisterRequest.swift */; };
-		65A62A4825E720C9000AA184 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */; };
 		65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2DD25ACA40C00A86730 /* DSEmptyView.swift */; };
 		65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587052B25920EC800EFF7C7 /* CommonButton.swift */; };
@@ -184,7 +186,6 @@
 		CEBA62EB2593F350006A7F80 /* TabBarIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBA62EA2593F350006A7F80 /* TabBarIcons.xcassets */; };
 		CEBA62F12593F3FB006A7F80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62F02593F3FB006A7F80 /* MainViewController.swift */; };
 		CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */; };
-		CECBCA1725B4297E002EB9BF /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
 		CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
 		CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */; };
@@ -1324,6 +1325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */,
+				654D705625E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */,
+				654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */,
+				654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */,
+				654D705925E88D6B00B37AD3 /* GetUserInfo.swift in Sources */,
+				654D705A25E88D6B00B37AD3 /* RegisterRequest.swift in Sources */,
+				654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */,
 				654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */,
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
