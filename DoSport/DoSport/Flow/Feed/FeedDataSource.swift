@@ -75,7 +75,6 @@ extension FeedDataSource: UICollectionViewDelegateFlowLayout {
         case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: height *= 0.3
         case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: height *= 0.28
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max: height *= 0.26
-        default: break
         }
         
         return CGSize(width: collectionView.bounds.width, height: height)

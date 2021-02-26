@@ -48,6 +48,7 @@ final class ShareMemberCollectionCell: UICollectionViewCell {
     private var memberNameLabel: UILabel = {
         $0.text = "Kamol"
         $0.numberOfLines = 2
+        $0.textColor = .white
         $0.textAlignment = .center
         $0.font = Fonts.sfProRegular(size: 14)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -72,8 +73,10 @@ final class ShareMemberCollectionCell: UICollectionViewCell {
         super.layoutSubviews()
         
         memberAvatarImageView.snp.makeConstraints {
-            $0.top.right.left.equalToSuperview()
+            $0.top.equalToSuperview()
             $0.height.equalTo(memberAvatarImageView.snp.width)
+            $0.width.equalToSuperview()
+            $0.centerX.equalToSuperview()
         }
         
         memberNameLabel.snp.makeConstraints {

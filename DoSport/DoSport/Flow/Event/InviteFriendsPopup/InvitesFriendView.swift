@@ -178,7 +178,7 @@ final class InvitesFriendView: UIView {
         }
         
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(-5)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(26)
         }
@@ -204,9 +204,9 @@ final class InvitesFriendView: UIView {
             $0.bottom.equalToSuperview().offset(-12)
         }
         
-        let cancelButtonBottom = UIDevice.deviceSize == .big ? 25 : 10
+        let cancelButtonBottom = UIDevice.hasBang ? 30 : 15
         cancelButton.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.width.equalToSuperview().multipliedBy(0.92)
             $0.bottom.equalToSuperview().offset(-cancelButtonBottom)
             $0.height.equalTo(48)
             $0.centerX.equalToSuperview()

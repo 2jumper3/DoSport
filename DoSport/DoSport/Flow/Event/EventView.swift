@@ -27,12 +27,13 @@ final class EventView: UIView {
         $0.backgroundColor = Colors.darkBlue
         $0.registerClass(TableViewCommentCell.self)
         $0.registerClass(TableViewMemberCell.self)
-        $0.registerHeaderFooter(EventTableHeaderView.self)
+        $0.registerClass(EventCardTableCell.self)
+        $0.registerHeaderFooter(EventTableChatHeaderView.self)
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }( UITableView(frame: .zero, style: .grouped))
+    }(UITableView(frame: .zero, style: .plain))
 
     //MARK: Init
     
@@ -63,7 +64,7 @@ final class EventView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalTo(1)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(messageInputView.snp.top).offset(-1)
+            $0.bottom.equalTo(messageInputView.snp.top)
         }
         
         messageInputView.snp.makeConstraints {
@@ -84,23 +85,6 @@ extension EventView {
         tableView.dataSource = dateSource
         tableView.reloadData()
         layoutIfNeeded()
-    }
-    
-    func sizeTableHeaderViewToFit() {
-        if let headerView = tableView.tableHeaderView as? EventTableHeaderView {
-            headerView.setNeedsLayout()
-            headerView.layoutIfNeeded()
-            
-            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            var newFrame = headerView.frame
-            
-            if height != newFrame.size.height {
-                newFrame.size.height = height
-                headerView.frame = newFrame
-                
-                tableView.tableHeaderView = headerView
-            }
-        }
     }
     
     func getInputViewText() -> String {

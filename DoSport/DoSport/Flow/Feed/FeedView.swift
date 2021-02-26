@@ -65,7 +65,6 @@ final class FeedView: UIView {
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
             filterButtonsHeight = 42
             filterButtonsWidth = 0.85
-        default: break
         }
         
         filterButtonsView.snp.makeConstraints {

@@ -1,5 +1,5 @@
 //
-//  EventCardView.swift
+//  DSEventCardView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 24/02/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EventCardView: UIView {
+final class DSEventCardView: UIView {
     
     struct ViewData {
         
@@ -64,7 +64,7 @@ final class EventCardView: UIView {
 
 //MARK: Public API
 
-extension EventCardView {
+extension DSEventCardView {
     
 }
 
