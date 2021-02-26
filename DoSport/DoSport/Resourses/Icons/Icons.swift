@@ -105,4 +105,3 @@ extension Icons {
         UIImage(named: name) ?? UIImage()
     }
 }
-
