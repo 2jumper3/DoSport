@@ -27,7 +27,7 @@ final class FeedView: UIView {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.registerClass(CollectionViewEventCardCell.self)
+        collectionView.registerClass(EventCardCollectioCell.self)
         collectionView.backgroundColor = Colors.darkBlue
         collectionView.backgroundColor = Colors.darkBlue
         collectionView.showsVerticalScrollIndicator = false

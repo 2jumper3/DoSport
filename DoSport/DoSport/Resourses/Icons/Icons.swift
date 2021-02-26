@@ -91,6 +91,12 @@ public enum Icons {
         static let checkMark = Common.checkMark
         static let backButton = Common.backButton
     }
+    
+    //MARK: - UserMain screen
+    
+    enum UserMain {
+        static let settings = Icons.image(named: "settings")
+    }
 }
 
 extension Icons {

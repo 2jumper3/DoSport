@@ -28,6 +28,8 @@ final class DSNavigationController: UINavigationController {
         navigationBar.barTintColor = Colors.darkBlue
         
         navigationBar.addSubview(navBarSeparatorView)
+        
+        setStatusBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,6 +39,23 @@ final class DSNavigationController: UINavigationController {
             $0.width.centerX.equalToSuperview()
             $0.height.equalTo(1)
             $0.bottom.equalTo(self.navigationBar.snp.bottom).offset(1)
+        }
+    }
+}
+
+//MARK: Private API
+
+private extension DSNavigationController {
+    
+    func setStatusBar() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = Colors.darkBlue
+            navigationBar.standardAppearance = navBarAppearance
+            navigationBar.scrollEdgeAppearance = navBarAppearance
         }
     }
 }

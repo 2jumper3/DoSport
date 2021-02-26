@@ -1,14 +1,13 @@
 //
-//  CollectionViewEventCardCell.swift
+//  EventCardCollectioCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/01/2021.
 //
 
 import UIKit
-import SnapKit
 
-final class CollectionViewEventCardCell: UICollectionViewCell {
+final class EventCardCollectioCell: UICollectionViewCell {
     
     private(set) lazy var headerView = CollectionViewEventCardCellHeaderView()
     private(set) lazy var bodyView = CollectionViewEventCardCellBodyView()

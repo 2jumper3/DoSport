@@ -1,13 +1,13 @@
 //
-//  EventTableChatHeaderView.swift
+//  ReusableCollectionSegmentedView.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 24/02/2021.
+//  Created by Komolbek Ibragimov on 26/02/2021.
 //
 
 import UIKit
 
-final class EventTableChatHeaderView: UITableViewHeaderFooterView {
+final class ReusableCollectionSegmentedView: UICollectionReusableView {
     
     var onSegmentedControlChanged: ((Int) -> Void)?
     
@@ -36,13 +36,13 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
     
     //MARK: Init
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         segmentedControl.delegate = self
         
-        contentView.backgroundColor = Colors.darkBlue
-        contentView.addSubviews(segmentedControl)
+        backgroundColor = Colors.darkBlue
+        addSubviews(segmentedControl)
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +61,7 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
 
 //MARK: Public API
 
-extension EventTableChatHeaderView {
+extension ReusableCollectionSegmentedView {
     
     func getSegmentedControl() -> DSSegmentedControl {
         return segmentedControl
@@ -74,7 +74,7 @@ extension EventTableChatHeaderView {
 
 //MARK: - DSSegmentedControlDelegate -
 
-extension EventTableChatHeaderView: DSSegmentedControlDelegate {
+extension ReusableCollectionSegmentedView: DSSegmentedControlDelegate {
     
     func didSelectItem(at index: Int) {
         onSegmentedControlChanged?(index)

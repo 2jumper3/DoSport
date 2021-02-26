@@ -1,5 +1,5 @@
 //
-//  SportGroundSelectionTableCell.swift
+//  SportGroundSelectionCollectionCell.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 15/02/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SportGroundSelectionTableCell: UITableViewCell {
+final class SportGroundSelectionCollectionCell: UICollectionViewCell {
     
     struct ViewData {
         let sportGroundTitle: String?
@@ -87,11 +87,12 @@ final class SportGroundSelectionTableCell: UITableViewCell {
 
     //MARK: Init
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         backgroundColor = .clear
-        selectionStyle = .none
+        contentView.layer.cornerRadius = 8
+        contentView.layer.masksToBounds = true
             
         contentView.addSubviews(
             backgroundImageView,
@@ -122,11 +123,6 @@ final class SportGroundSelectionTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
-        contentView.frame = contentView.frame.inset(by: margins)
-        contentView.layer.cornerRadius = 8
-        contentView.layer.masksToBounds = true
         
         [backgroundImageView, gradientView].forEach { $0.snp.makeConstraints { $0.edges.equalTo(contentView) } }
         
@@ -179,7 +175,7 @@ final class SportGroundSelectionTableCell: UITableViewCell {
 
 //MARK: Public API
 
-extension SportGroundSelectionTableCell {
+extension SportGroundSelectionCollectionCell {
     
     func bind(with data: ViewData) {
         sportGroundTitleLabel.text = data.sportGroundTitle
