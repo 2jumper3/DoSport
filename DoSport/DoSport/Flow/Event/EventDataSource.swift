@@ -116,24 +116,31 @@ extension EventDataSource: UITableViewDataSource {
 extension EventDataSource: UITableViewDelegate  {
   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            var height: CGFloat = tableView.bounds.height
-            
-            switch UIDevice.deviceSize {  // FIXME: костыль?
-            case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: height *= 0.65
-            case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: height *= 0.57
-            case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max: height *= 0.42
-            default: break
-            }
-            
-            return height
-        } else {
-            switch eventDataSourceState {
-            case .comments: return UIDevice.deviceSize == .small ? 80 : 90
-            case .members: return UIDevice.deviceSize == .small ? 45 : 50
-            }
+        var sectionZeroCellHeight: CGFloat = tableView.bounds.height
+        var commentsCellsHeight: CGFloat = 80 // FiXME: will need to be changed to autoSizing by comment text
+        var membersCellsHeight: CGFloat = 40
+        
+        switch UIDevice.deviceSize {  // FIXME: костыль?
+        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2:
+            sectionZeroCellHeight *= 0.65
+        case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini:
+            sectionZeroCellHeight *= 0.61
+            commentsCellsHeight += 5
+            membersCellsHeight += 2
+        case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
+            sectionZeroCellHeight *= 0.5
+            commentsCellsHeight += 10
+            membersCellsHeight += 4
         }
         
+        if indexPath.section == 0 {
+            return sectionZeroCellHeight
+        } else {
+            switch eventDataSourceState {
+            case .comments: return commentsCellsHeight
+            case .members: return membersCellsHeight
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -144,7 +151,6 @@ extension EventDataSource: UITableViewDelegate  {
             case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: height = 50
             case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: height = 53
             case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max: height = 55
-            default: height = 45
             }
             
             return height

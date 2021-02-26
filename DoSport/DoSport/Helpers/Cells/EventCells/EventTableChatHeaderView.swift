@@ -29,10 +29,7 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
         let items = ["", ""]
         let segmentedControl = DSSegmentedControl(titles: items)
         segmentedControl.setSelectedItemIndex(0)
-        
-        let size: CGFloat = UIDevice.deviceSize == .small ? 14.5 : 16.5
-            
-        segmentedControl.setTitleStyle(fontSize: size)
+        segmentedControl.setTitleStyle(fontSize: 16)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
     }()

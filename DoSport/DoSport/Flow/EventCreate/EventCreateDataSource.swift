@@ -138,7 +138,6 @@ extension EventCreateDataSource: UITableViewDelegate {
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
             selectionHeight = 60
             membersCountHeight = 220
-        default: break
         }
         
         switch cellType {
