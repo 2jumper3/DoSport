@@ -78,6 +78,7 @@ private extension EventCreateViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         
         navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: Fonts.sfProRegular(size: 18),
             NSAttributedString.Key.foregroundColor: Colors.mainBlue
         ]
         

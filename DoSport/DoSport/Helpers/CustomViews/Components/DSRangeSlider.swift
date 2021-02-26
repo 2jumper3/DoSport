@@ -22,9 +22,6 @@ final class DSRangeSlider: RangeSeekSlider {
         }
     }
     
-//    private var maxValueBeforeStateChange: CGFloat = 0.0
-//    private var minValueBeforeStateChange: CGFloat = 0.0
-    
     //MARK: Init
     
     init(state: RangeSliderState) {
@@ -39,7 +36,7 @@ final class DSRangeSlider: RangeSeekSlider {
         handleColor = .white
         tintColor = .white
         minDistance = 10.0
-        handleDiameter = 30.0
+        handleDiameter = 25.0
         lineHeight = 2
         selectedHandleDiameterMultiplier = 1.2
         handleBorderWidth = 1.5
