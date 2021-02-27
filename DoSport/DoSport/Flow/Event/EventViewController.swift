@@ -18,7 +18,7 @@ final class EventViewController: UIViewController {
     
     private var userToReplyName: String = ""
     
-    private var inviteFriendsChildViewController: EventInviteViewController!
+    private var eventInviteContainer: EventInviteViewController?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -67,7 +67,7 @@ final class EventViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupInviteFriendsChildViewController()
+        setupeventInviteContainer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -128,49 +128,50 @@ private extension EventViewController {
         )
     }
     
-    func setupInviteFriendsChildViewController() {
-        inviteFriendsChildViewController = EventInviteViewController(
+    func setupeventInviteContainer() {
+        eventInviteContainer = EventInviteViewController(
             nibName: "EventInviteViewController",
             bundle: nil
         )
-        inviteFriendsChildViewController.delegate = self
+        eventInviteContainer?.delegate = self
         
-        inviteFriendsChildViewController.view.frame = tabBarController!.view.frame
-        inviteFriendsChildViewController.view.frame.origin.y = tabBarController!.view.frame.maxY
+        eventInviteContainer?.view.frame = tabBarController!.view.frame
+        eventInviteContainer?.view.frame.origin.y = tabBarController!.view.frame.maxY
     }
     
-    func presentInviteFriendsChildViewController() {
+    func presenteventInviteContainer() {
+        guard let container = eventInviteContainer else { return }
         removeKeyboardNotification()
         
-        tabBarController?.view.addSubview(inviteFriendsChildViewController.view)
-        tabBarController?.addChild(inviteFriendsChildViewController)
-        inviteFriendsChildViewController.didMove(toParent: tabBarController)
+        tabBarController?.view.addSubview(container.view)
+        tabBarController?.addChild(container)
+        container.didMove(toParent: tabBarController)
         
-        let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
-        let y: CGFloat = view.frame.maxY - inviteFriendsViewHeight - 10
+        let y: CGFloat = view.frame.maxY - container.view.frame.height - 10
         
-        UIView.animate(withDuration: 0.3) { [self] in
-            inviteFriendsChildViewController.view.frame.origin.y = y
+        UIView.animate(withDuration: 0.3) {
+            container.view.frame.origin.y = y
         } completion: { value in
-            UIView.animate(withDuration: 0.3) { [self] in
-                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            UIView.animate(withDuration: 0.3) {
+                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             }
         }
     }
     
-    func dismissInviteFriendsChildViewController() {
+    func dismisseventInviteContainer() {
+        guard let container = eventInviteContainer else { return }
         setupKeyboardNotification()
         
         UIView.animate(withDuration: 0.3) {
-            UIView.animate(withDuration: 0.3) { [self] in
-                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+            UIView.animate(withDuration: 0.3) {
+                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
             } completion: { value in
-                UIView.animate(withDuration: 0.3) { [self] in
-                    inviteFriendsChildViewController.view.frame.origin.y = eventView.frame.maxY
-                } completion: { [self] value in
-                    inviteFriendsChildViewController.willMove(toParent: nil)
-                    inviteFriendsChildViewController.removeFromParent()
-                    inviteFriendsChildViewController.view.removeFromSuperview()
+                UIView.animate(withDuration: 0.3) { [unowned self] in
+                    container.view.frame.origin.y = eventView.frame.maxY
+                } completion: {value in
+                    container.willMove(toParent: nil)
+                    container.removeFromParent()
+                    container.view.removeFromSuperview()
                 }
             }
         }
@@ -223,8 +224,8 @@ extension EventViewController: EventViewDelegate {
 extension EventViewController: EventDataSourceDelegate {
     
     func tableViewInviteButtonClicked() {
-        inviteFriendsChildViewController.setupKeyboardNotification()
-        presentInviteFriendsChildViewController()
+        eventInviteContainer?.setupKeyboardNotification()
+        presenteventInviteContainer()
     }
     
     func tableViewParicipateButtonClicked() {
@@ -250,7 +251,7 @@ extension EventViewController: EventDataSourceDelegate {
 extension EventViewController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
-        dismissInviteFriendsChildViewController()
+        dismisseventInviteContainer()
     }
 }
 
