@@ -56,7 +56,7 @@ public enum Icons {
         static let defaultAvatar: UIImage = Common.defaultAvatar
         static let clock: UIImage = Icons.image(named: "clock")
         static let chat: UIImage = Icons.image(named: "chat")
-        static let user: UIImage = Icons.image(named: "user")
+        static let user: UIImage = Common.user
     }
     
     //MARK: - Event screen
@@ -73,7 +73,7 @@ public enum Icons {
     enum EventCreate {
         static let cancel: UIImage = Icons.image(named: "cancel")
         static let closed: UIImage = Icons.image(named: "closed")
-        static let next: UIImage = Icons.image(named: "next")
+        static let next: UIImage = Common.next
         static let checkMark: UIImage = Icons.image(named: "check_mark")
         static let sliderThumb: UIImage = Icons.image(named: "sliderThumb")
     }
@@ -101,6 +101,17 @@ public enum Icons {
         static let unlock = Icons.image(named: "unlock")
         static let share: UIImage = Common.share
     }
+    
+    //MARK: - Settings screen
+    
+    enum Settings {
+        static let user: UIImage = Common.user
+        static let globe = Icons.image(named: "globe")
+        static let lock = Icons.image(named: "lock")
+        static let helpCircle = Icons.image(named: "help_circle")
+        static let alertBell = Icons.image(named: "alert_bell")
+        static let next: UIImage = Common.next
+    }
 }
 
 extension Icons {
@@ -110,6 +121,8 @@ extension Icons {
         static let backButton = image(named: "back_button")
         static let defaultAvatar: UIImage = Icons.image(named: "default_avatar")
         static let share: UIImage = Icons.image(named: "share")
+        static let user: UIImage = Icons.image(named: "user")
+        static let next: UIImage = Icons.image(named: "next")
     }
     
     static func image(named name: String) -> UIImage {

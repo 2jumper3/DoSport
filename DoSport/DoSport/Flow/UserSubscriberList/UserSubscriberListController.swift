@@ -109,11 +109,11 @@ private extension UserSubscriberListController {
 
 @objc private extension UserSubscriberListController { }
 
-//MARK: - UserMainViewDelegate -
+//MARK: - UserSubscriberListViewDelegate -
 
 extension UserSubscriberListController: UserSubscriberListViewDelegate { }
 
-//MARK: - UserMainDataSourceDelegate -
+//MARK: - UserSubscriberListDataSourceDelegate -
 
 extension UserSubscriberListController: UserSubscriberListDataSourceDelegate {
     
