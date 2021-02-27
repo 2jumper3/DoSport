@@ -22,7 +22,6 @@ final class SettingsTableCell: UITableViewCell {
         return $0
     }(UIImageView())
 
-    
     //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

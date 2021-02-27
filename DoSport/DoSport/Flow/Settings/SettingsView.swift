@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol SettingsViewDelegate: class {
-
-}
+protocol SettingsViewDelegate: class { }
     
 final class SettingsView: UIView {
     
