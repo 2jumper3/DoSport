@@ -213,3 +213,15 @@ extension Texts {
         static let close = "Закрыть"
     }
 }
+
+//MARK: - Settings screen
+extension Texts {
+    enum Settings {
+        static let account = "Аккаунт"
+        static let alerts = "Увядомления"
+        static let privacy = "Конфеденциальность"
+        static let language = "Язык"
+        static let help = "Помощь"
+    }
+}
+

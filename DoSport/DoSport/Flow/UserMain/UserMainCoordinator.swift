@@ -36,6 +36,8 @@ final class UserMainCoordinator: Coordinator {
     }
     
     func goToSettingsMainListModule() {
-        
+        let coordinator = SettingsCoordinator(navController: navigationController)
+        store(coordinator: coordinator)
+        coordinator.start()
     }
 }
