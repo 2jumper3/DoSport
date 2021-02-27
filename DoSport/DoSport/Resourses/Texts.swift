@@ -206,5 +206,10 @@ extension Texts {
         static let subscribes = Common.subscribes
         static let myEvents = "Мои тренировки"
         static let mySportGrounds = "Мои плошадки"
+        
+        static let invite = Common.invite
+        static let delete = "Удалить"
+        static let edit = "Изменить"
+        static let close = "Закрыть"
     }
 }

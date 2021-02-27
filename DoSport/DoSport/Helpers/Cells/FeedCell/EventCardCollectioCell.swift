@@ -9,6 +9,8 @@ import UIKit
 
 final class EventCardCollectioCell: UICollectionViewCell {
     
+    var onOptionButtonClicked: (() -> Swift.Void)?
+    
     private(set) lazy var headerView = CollectionViewEventCardCellHeaderView()
     private(set) lazy var bodyView = CollectionViewEventCardCellBodyView()
     private(set) lazy var footerView = CollectionViewEventCardCellFooterView()
@@ -19,6 +21,8 @@ final class EventCardCollectioCell: UICollectionViewCell {
         super.init(frame: .zero)
         backgroundColor = Colors.mainBlue
         layer.cornerRadius = 12
+        
+        headerView.optionsButton.addTarget(self, action: #selector(handleOptionsButton))
         
         contentView.addSubviews(
             headerView,
@@ -54,5 +58,14 @@ final class EventCardCollectioCell: UICollectionViewCell {
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.height.equalTo(snp.height).multipliedBy(0.11)
         }
+    }
+}
+
+//MARK: Actions
+
+@objc private extension EventCardCollectioCell {
+    
+    func handleOptionsButton() {
+        onOptionButtonClicked?()
     }
 }

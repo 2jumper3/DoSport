@@ -18,7 +18,7 @@ final class EventViewController: UIViewController {
     
     private var userToReplyName: String = ""
     
-    private var inviteFriendsChildViewController: InviteFriendsViewController!
+    private var inviteFriendsChildViewController: EventInviteViewController!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -129,8 +129,8 @@ private extension EventViewController {
     }
     
     func setupInviteFriendsChildViewController() {
-        inviteFriendsChildViewController = InviteFriendsViewController(
-            nibName: "InviteFriendChildViewController",
+        inviteFriendsChildViewController = EventInviteViewController(
+            nibName: "EventInviteViewController",
             bundle: nil
         )
         inviteFriendsChildViewController.delegate = self
@@ -245,9 +245,9 @@ extension EventViewController: EventDataSourceDelegate {
     }
 }
 
-//MARK: - InviteFriendsViewControllerDelegate -
+//MARK: - EventInviteViewControllerDelegate -
 
-extension EventViewController: InviteFriendsViewControllerDelegate {
+extension EventViewController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
         dismissInviteFriendsChildViewController()

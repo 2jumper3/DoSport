@@ -27,7 +27,7 @@ final class DSSubscribtionCountView: UIView {
     
     //MARK: Init
     
-    init(name: String = "", count: String = "") {
+    init(name: String = "", count: String = "15") {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         self.countLabel.text = count
@@ -47,14 +47,14 @@ final class DSSubscribtionCountView: UIView {
             x: 0,
             y: 0,
             width: bounds.width,
-            height: bounds.height * 0.75
+            height: bounds.height * 0.8
         )
         
         nameLabel.frame = CGRect(
             x: 0,
             y: countLabel.frame.maxY+3,
             width: bounds.width,
-            height: bounds.height * 0.75
+            height: bounds.height * 0.23
         )
     }
 }

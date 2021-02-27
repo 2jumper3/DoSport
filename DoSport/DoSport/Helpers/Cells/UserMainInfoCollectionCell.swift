@@ -38,7 +38,7 @@ final class UserMainInfoCollectionCell: UICollectionViewCell {
         super.layoutSubviews()
         
         avatarImageView.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(20)
+            $0.left.equalToSuperview().offset(4)
             $0.height.equalToSuperview().multipliedBy(0.7)
             $0.top.equalToSuperview().offset(12)
             $0.width.equalTo(avatarImageView.snp.height)

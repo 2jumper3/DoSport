@@ -11,6 +11,7 @@ protocol UserMainDataSourceDelegate: class {
     func collectionViewNeedsReloadData()
     func collectionDidClickSubscribers()
     func collectionDidClickSubscribes()
+    func collectionDidClickOptions(for event: Event?)
 }
 
 enum UserMainDataSourceState {
@@ -67,6 +68,7 @@ extension UserMainDataSource: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         let cell: UICollectionViewCell
+//        let event = events?[indexPath.row]
         
         if indexPath.section == 0 {
             let userInfoCell: UserMainInfoCollectionCell = collectionView.cell(forRowAt: indexPath)
@@ -79,11 +81,17 @@ extension UserMainDataSource: UICollectionViewDataSource {
             }
 
             cell = userInfoCell
+            
         } else {
             switch userMainDataSourceState {
             case .events:
                 let eventCell: EventCardCollectioCell = collectionView.cell(forRowAt: indexPath)
+                eventCell.onOptionButtonClicked = { [unowned self] in
+                    delegate?.collectionDidClickOptions(for: nil)
+                }
+                
                 cell = eventCell
+                
             case .sportGrounds:
                 let sportGroundCell: SportGroundSelectionCollectionCell = collectionView.cell(forRowAt: indexPath)
                 cell = sportGroundCell
@@ -120,7 +128,7 @@ extension UserMainDataSource: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate -
+//MARK: - UICollectionViewDelegateFlowLayout -
 
 extension UserMainDataSource: UICollectionViewDelegateFlowLayout  {
 
@@ -135,17 +143,17 @@ extension UserMainDataSource: UICollectionViewDelegateFlowLayout  {
 
         switch UIDevice.deviceSize {  // FIXME: костыль?
         case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2:
-            sectionZeroCellHeight *= 0.25
-            sportGroundsCellsHeight *= 0.22
+            sectionZeroCellHeight *= 0.24
+            sportGroundsCellsHeight *= 0.19
             eventsCellsHeight *= 0.37
         case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini:
-            sectionZeroCellHeight *= 0.22
-            sportGroundsCellsHeight *= 0.20
+            sectionZeroCellHeight *= 0.21
+            sportGroundsCellsHeight *= 0.17
             eventsCellsHeight *= 0.35
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
-            sectionZeroCellHeight *= 0.2
-            sportGroundsCellsHeight *= 0.18
-            eventsCellsHeight *= 0.33
+            sectionZeroCellHeight *= 0.19
+            sportGroundsCellsHeight *= 0.15
+            eventsCellsHeight *= 0.32
         }
 
         if indexPath.section == 0 {
