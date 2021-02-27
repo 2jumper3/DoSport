@@ -36,9 +36,6 @@ final class DSNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationBar.isTranslucent = false
-        navigationBar.barTintColor = Colors.darkBlue
-        
         if hasSeparator {
             navigationBar.addSubview(navBarSeparatorView)
         }
@@ -76,11 +73,13 @@ private extension DSNavigationController {
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.titleTextAttributes = [.foregroundColor: Colors.mainBlue]
             navBarAppearance.backgroundColor = Colors.darkBlue
             navigationBar.standardAppearance = navBarAppearance
             navigationBar.scrollEdgeAppearance = navBarAppearance
+            navigationBar.isTranslucent = false
+        } else {
+            
         }
     }
 }
