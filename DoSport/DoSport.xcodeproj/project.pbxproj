@@ -191,6 +191,10 @@
 		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
 		65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C8259BAD1300BF8CEE /* Reusable.swift */; };
 		65ECB2D6259BBB9800BF8CEE /* CountryCodeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2D5259BBB9800BF8CEE /* CountryCodeListViewModel.swift */; };
+		65EEB92D25E9E34900821F8F /* UserSubscriberListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEB92C25E9E34900821F8F /* UserSubscriberListController.swift */; };
+		65EEB93225E9E35D00821F8F /* UserSubscriberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEB93125E9E35D00821F8F /* UserSubscriberListView.swift */; };
+		65EEB93725E9E36300821F8F /* UserSubscriberListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEB93625E9E36300821F8F /* UserSubscriberListDataSource.swift */; };
+		65EEB93C25E9E36B00821F8F /* UserSubscriberListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEB93B25E9E36B00821F8F /* UserSubscriberListCoordinator.swift */; };
 		65EEE91425B622A90023168D /* GetEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91325B622A90023168D /* GetEventsRequest.swift */; };
 		65EEE91925B626290023168D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91825B626290023168D /* AppConfiguration.swift */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
@@ -415,6 +419,10 @@
 		65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellForRow.swift"; sourceTree = "<group>"; };
 		65ECB2C8259BAD1300BF8CEE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		65ECB2D5259BBB9800BF8CEE /* CountryCodeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeListViewModel.swift; sourceTree = "<group>"; };
+		65EEB92C25E9E34900821F8F /* UserSubscriberListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriberListController.swift; sourceTree = "<group>"; };
+		65EEB93125E9E35D00821F8F /* UserSubscriberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriberListView.swift; sourceTree = "<group>"; };
+		65EEB93625E9E36300821F8F /* UserSubscriberListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriberListDataSource.swift; sourceTree = "<group>"; };
+		65EEB93B25E9E36B00821F8F /* UserSubscriberListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriberListCoordinator.swift; sourceTree = "<group>"; };
 		65EEE91325B622A90023168D /* GetEventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsRequest.swift; sourceTree = "<group>"; };
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		6EA482F6FB5DE244DE6779E0 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -984,6 +992,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		65EEB92B25E9E2CE00821F8F /* UserSubscriberList */ = {
+			isa = PBXGroup;
+			children = (
+				65EEB92C25E9E34900821F8F /* UserSubscriberListController.swift */,
+				65EEB93B25E9E36B00821F8F /* UserSubscriberListCoordinator.swift */,
+				65EEB93625E9E36300821F8F /* UserSubscriberListDataSource.swift */,
+				65EEB93125E9E35D00821F8F /* UserSubscriberListView.swift */,
+			);
+			path = UserSubscriberList;
+			sourceTree = "<group>";
+		};
 		86FDF7AEC152A8EDA7FFAD16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1189,6 +1208,7 @@
 				653179B425D11239001DBA4B /* SubwayList */,
 				CEBA62DA2593F278006A7F80 /* TabBarController */,
 				65DC548D25E9C41500712EC7 /* UserMain */,
+				65EEB92B25E9E2CE00821F8F /* UserSubscriberList */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -1447,6 +1467,7 @@
 				65C8B4C925E8C66E00BBCF77 /* UserMainViewModel.swift in Sources */,
 				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
 				65B150E825DEAB8300720015 /* EventInviteView.swift in Sources */,
+				65EEB92D25E9E34900821F8F /* UserSubscriberListController.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
 				65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */,
 				65CDF8AE25DB123B0049F711 /* SportGroundSelectionListDataSource.swift in Sources */,
@@ -1511,6 +1532,7 @@
 				653179F125D112E1001DBA4B /* DateSelectionDataSource.swift in Sources */,
 				655B513D25D5BFFC004FE90F /* TextViewCell.swift in Sources */,
 				65C080A425E1AFB200BF353B /* UISearchBar+textField.swift in Sources */,
+				65EEB93725E9E36300821F8F /* UserSubscriberListDataSource.swift in Sources */,
 				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
 				65ECB2D6259BBB9800BF8CEE /* CountryCodeListViewModel.swift in Sources */,
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
@@ -1565,12 +1587,14 @@
 				6531791F25D10E09001DBA4B /* EventCreateView.swift in Sources */,
 				65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */,
 				658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */,
+				65EEB93225E9E35D00821F8F /* UserSubscriberListView.swift in Sources */,
 				65C6C7AF25E8F83D00109EE2 /* ReusableCollectionSegmentedView.swift in Sources */,
 				CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */,
 				65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */,
 				65D2972025DD644C005AC413 /* Date+currentDate.swift in Sources */,
 				652E326125DC16D000077344 /* UI+addTargets.swift in Sources */,
 				65DC543B25E992E800712EC7 /* EventManageControlsView.swift in Sources */,
+				65EEB93C25E9E36B00821F8F /* UserSubscriberListCoordinator.swift in Sources */,
 				65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */,
 				65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */,
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,

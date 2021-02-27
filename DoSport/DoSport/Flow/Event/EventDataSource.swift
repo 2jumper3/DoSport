@@ -94,8 +94,8 @@ extension EventDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
             let eventTableHeaderView: EventTableChatHeaderView = tableView.dequeHeaderFooter()
-            eventTableHeaderView.membersCount = viewModel?.members?.count ?? 0
-            eventTableHeaderView.messagesCount = viewModel?.chatID?.messages?.count ?? 0
+            eventTableHeaderView.firstIndexText = "\(viewModel?.members?.count ?? 0)"
+            eventTableHeaderView.secondIndexText = "\(viewModel?.chatID?.messages?.count ?? 0)"
             
             eventTableHeaderView.onSegmentedControlChanged = { [unowned self] index in
                 switch index {

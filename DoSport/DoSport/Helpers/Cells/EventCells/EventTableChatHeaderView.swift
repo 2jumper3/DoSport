@@ -11,15 +11,21 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
     
     var onSegmentedControlChanged: ((Int) -> Void)?
     
-    var messagesCount: Int = 0 {
+    var firstIndexText: String = "" {
         didSet {
-            segmentedControl.setTitle("\(self.messagesCount) Комментариев", forItemAt: 0)
+            segmentedControl.setTitle(self.firstIndexText, forItemAt: 0)
         }
     }
     
-    var membersCount: Int = 0 {
+    var secondIndexText: String = "" {
         didSet {
-            segmentedControl.setTitle( "\(self.membersCount) Участников", forItemAt: 1)
+            segmentedControl.setTitle( self.secondIndexText, forItemAt: 1)
+        }
+    }
+    
+    var selectedItemIndex: Int = 0 {
+        didSet {
+            segmentedControl.setSelectedItemIndex(selectedItemIndex)
         }
     }
     
@@ -28,7 +34,7 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
     private lazy var segmentedControl: DSSegmentedControl = {
         let items = ["", ""]
         let segmentedControl = DSSegmentedControl(titles: items)
-        segmentedControl.setSelectedItemIndex(0)
+        segmentedControl.setSelectedItemIndex(self.selectedItemIndex)
         segmentedControl.setTitleStyle(fontSize: 16)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
