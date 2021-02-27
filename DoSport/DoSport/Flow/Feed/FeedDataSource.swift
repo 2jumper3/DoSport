@@ -35,7 +35,7 @@ extension FeedDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell: CollectionViewEventCardCell = collectionView.cell(forRowAt: indexPath)
+        let cell: EventCardCollectioCell = collectionView.cell(forRowAt: indexPath)
 
         let viewModel = viewModels[indexPath.row]
         cell.footerView.chatMessagesCountLabel.text = String(describing: viewModel.chatID?.messages?.count ?? 0)

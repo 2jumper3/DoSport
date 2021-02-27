@@ -12,6 +12,8 @@ public enum Texts {
         static let save = "Сохранить"
         static let date = "Дата и время"
         static let invite = "Пригласить"
+        static let subscribers = "Подписчики"
+        static let subscribes = "Подписки"
     }
 }
 
@@ -194,5 +196,20 @@ extension Texts {
 extension Texts {
     enum SportGroundSelectionList {
         static let select = "Выбрать"
+    }
+}
+
+//MARK: - UserMain screen
+extension Texts {
+    enum UserMain {
+        static let subscribers = Common.subscribers
+        static let subscribes = Common.subscribes
+        static let myEvents = "Мои тренировки"
+        static let mySportGrounds = "Мои плошадки"
+        
+        static let invite = Common.invite
+        static let delete = "Удалить"
+        static let edit = "Изменить"
+        static let close = "Закрыть"
     }
 }

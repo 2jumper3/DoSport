@@ -26,7 +26,7 @@ final class RegistrationView: UIView {
     
     //MARK: Outlets
     
-    private let avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
+    private let avatarImageView: DSAvatartImageView = DSAvatartImageView()
     
     private lazy var userNameTextField = FormTextFieldView(type: .userName)
     private lazy var passwordTextField = FormTextFieldView(type: .password)

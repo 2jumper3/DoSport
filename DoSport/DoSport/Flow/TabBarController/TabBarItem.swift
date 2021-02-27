@@ -16,6 +16,7 @@ enum TabBarItem: String, CaseIterable {
     
 //Need to add newControllers when it will be finished
     var viewController: UIViewController {
+        // FIXME: we should not return VCs here because we creating them in coordinator afterwards
         switch self {
         case .home:
             return FeedAssembly().makeModule()
@@ -24,7 +25,7 @@ enum TabBarItem: String, CaseIterable {
         case .chat:
             return MainViewController()
         case .user:
-            return MainViewController()
+            return UserMainAssembly(user: nil).makeModule()
         }
     }
 
