@@ -11,18 +11,6 @@ final class ReusableCollectionSegmentedView: UICollectionReusableView {
     
     var onSegmentedControlChanged: ((Int) -> Void)?
     
-    var messagesCount: Int = 0 {
-        didSet {
-            segmentedControl.setTitle("\(self.messagesCount) Комментариев", forItemAt: 0)
-        }
-    }
-    
-    var membersCount: Int = 0 {
-        didSet {
-            segmentedControl.setTitle( "\(self.membersCount) Участников", forItemAt: 1)
-        }
-    }
-    
     //MARK: Outlets
     
     private lazy var segmentedControl: DSSegmentedControl = {

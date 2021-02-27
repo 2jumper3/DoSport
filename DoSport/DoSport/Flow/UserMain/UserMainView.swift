@@ -53,7 +53,7 @@ final class UserMainView: UIView {
         
         collectionView.snp.makeConstraints {
             $0.top.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-UIDevice.getDeviceRelatedTabBarHeight()-10)
+            $0.bottom.equalToSuperview().offset(-tabBarHeight-10)
             $0.width.equalToSuperview().multipliedBy(0.9)
         }
     }

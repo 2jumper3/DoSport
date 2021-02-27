@@ -122,11 +122,15 @@ extension UserMainController: UserMainDataSourceDelegate {
     }
     
     func collectionDidClickSubscribes() {
-        coordinator?.goToUserSubscribtionListModule()
+        /// Zero here means that when user clicks `Subscribes` it is gonna open next screen that has segmentedControl,
+        /// which shows user's subscribed members at `0` and subscribers at `1`, passing index we let VC to know what to show
+        coordinator?.goToUserSubscribtionListModule(0, with: user)
     }
     
     func collectionDidClickSubscribers() {
-        coordinator?.goToUserSubscribtionListModule()
+        /// Zero here means that when user clicks `Subscribers` it is gonna open next screen that has segmentedControl,
+        /// which shows user's subscribed members at `0` and subscribers at `1`, passing index we let VC to know what to show
+        coordinator?.goToUserSubscribtionListModule(1, with: user)
     }
     
     func collectionDidClickOptions(for event: Event?) {
