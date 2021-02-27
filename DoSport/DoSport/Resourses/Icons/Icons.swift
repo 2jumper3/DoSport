@@ -64,7 +64,7 @@ public enum Icons {
     enum Event {
         static let messageSend: UIImage = Icons.image(named: "message_send_button")
         static let search: UIImage = Icons.image(named: "search")
-        static let share: UIImage = Icons.image(named: "share")
+        static let share: UIImage = Common.share
         static let defaultAvatar: UIImage = Common.defaultAvatar
     }
     
@@ -91,6 +91,16 @@ public enum Icons {
         static let checkMark = Common.checkMark
         static let backButton = Common.backButton
     }
+    
+    //MARK: - UserMain screen
+    
+    enum UserMain {
+        static let settings = Icons.image(named: "settings")
+        static let edit = Icons.image(named: "edit")
+        static let delete = Icons.image(named: "delete")
+        static let unlock = Icons.image(named: "unlock")
+        static let share: UIImage = Common.share
+    }
 }
 
 extension Icons {
@@ -99,6 +109,7 @@ extension Icons {
         static let checkMark: UIImage = Icons.image(named: "check_mark")
         static let backButton = image(named: "back_button")
         static let defaultAvatar: UIImage = Icons.image(named: "default_avatar")
+        static let share: UIImage = Icons.image(named: "share")
     }
     
     static func image(named name: String) -> UIImage {

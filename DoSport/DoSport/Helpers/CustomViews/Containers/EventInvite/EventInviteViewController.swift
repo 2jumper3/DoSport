@@ -1,5 +1,5 @@
 //
-//  InviteFriendsViewController.swift
+//  EventInviteViewController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/02/2021.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol InviteFriendsViewControllerDelegate: class {
+protocol EventInviteViewControllerDelegate: class {
     func cancelButtonClicked()
 }
 
-final class InviteFriendsViewController: UIViewController {
+final class EventInviteViewController: UIViewController {
     
-    weak var delegate: InviteFriendsViewControllerDelegate?
+    weak var delegate: EventInviteViewControllerDelegate?
     
-    private let inveteFriendCollectionManager = InviteFriendsDataSource()
-    lazy var inviteFriendChildView = self.view as! InvitesFriendView
+    private let inveteFriendCollectionManager = EventInviteDataSource()
+    lazy var inviteFriendChildView = self.view as! EventInviteView
     
     private var users: [User] = [] // test
     private var selectedUsers: [Int: User] = [:]
@@ -24,7 +24,7 @@ final class InviteFriendsViewController: UIViewController {
     //MARK: Life cycle
     
     override func loadView() {
-        let view = InvitesFriendView()
+        let view = EventInviteView()
         view.delegate = self
         inveteFriendCollectionManager.delegate = self
         self.view = view
@@ -51,7 +51,7 @@ final class InviteFriendsViewController: UIViewController {
 
 //MARK: Public API
 
-extension InviteFriendsViewController {
+extension EventInviteViewController {
     
     func setupKeyboardNotification() {
         NotificationCenter.default.addObserver(
@@ -72,7 +72,7 @@ extension InviteFriendsViewController {
 
 //MARK: Private API
 
-private extension InviteFriendsViewController {
+private extension EventInviteViewController {
     
     func prepareCollectionData() { // test
         
@@ -101,7 +101,7 @@ private extension InviteFriendsViewController {
 
 //MARK: Actions
 
-@objc private extension InviteFriendsViewController {
+@objc private extension EventInviteViewController {
     
     func handleKeybordWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
@@ -123,9 +123,9 @@ private extension InviteFriendsViewController {
     }
 }
 
-//MARK: - InviteFriendsViewDelegate -
+//MARK: - EventInviteViewDelegate -
 
-extension InviteFriendsViewController: InviteFriendsViewDelegate {
+extension EventInviteViewController: EventInviteViewDelegate {
     
     func cancelButtonClicked() {
         removeKeyboardNotification()
@@ -173,9 +173,9 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
     }
 }
 
-//MARK: - InviteFriendsDataSourceDelegate -
+//MARK: - EventInviteDataSourceDelegate -
 
-extension InviteFriendsViewController: InviteFriendsDataSourceDelegate {
+extension EventInviteViewController: EventInviteDataSourceDelegate {
     
     func collectionView(didSelect user: User, with key: Int) {
         if inviteFriendChildView.isSearhing {

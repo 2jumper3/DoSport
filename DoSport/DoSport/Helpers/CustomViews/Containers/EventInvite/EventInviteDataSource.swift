@@ -1,5 +1,5 @@
 //
-//  InviteFriendsDataSource.swift
+//  EventInviteDataSource.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/02/2021.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol InviteFriendsDataSourceDelegate: class {
+protocol EventInviteDataSourceDelegate: class {
     func collectionView(didSelect user: User, with key: Int)
     func collectionView(didUnselect user: User, for key: Int)
 }
 
-final class InviteFriendsDataSource: NSObject {
+final class EventInviteDataSource: NSObject {
     
-    weak var delegate: InviteFriendsDataSourceDelegate?
+    weak var delegate: EventInviteDataSourceDelegate?
     
     var viewModels: [User]
     var selectedIndecies: [Int: User] = [:]
@@ -27,7 +27,7 @@ final class InviteFriendsDataSource: NSObject {
 
 //MARK: - UICollectionViewDataSource -
 
-extension InviteFriendsDataSource: UICollectionViewDataSource {
+extension EventInviteDataSource: UICollectionViewDataSource {
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -56,7 +56,7 @@ extension InviteFriendsDataSource: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate -
 
-extension InviteFriendsDataSource: UICollectionViewDelegate {
+extension EventInviteDataSource: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let user = viewModels[indexPath.row]
@@ -76,7 +76,7 @@ extension InviteFriendsDataSource: UICollectionViewDelegate {
 
 //MARK: - UICollectionViewDelegateFlowLayout -
 
-extension InviteFriendsDataSource: UICollectionViewDelegateFlowLayout {
+extension EventInviteDataSource: UICollectionViewDelegateFlowLayout {
     
     func collectionView(
         _ collectionView: UICollectionView,

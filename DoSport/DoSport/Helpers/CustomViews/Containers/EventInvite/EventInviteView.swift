@@ -1,5 +1,5 @@
 //
-//  InvitesFriendView.swift
+//  EventInviteView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 18/02/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol InviteFriendsViewDelegate: class {
+protocol EventInviteViewDelegate: class {
     func cancelButtonClicked()
     func shareButtonClicked()
     func sendButtonClicked()
@@ -16,9 +16,9 @@ protocol InviteFriendsViewDelegate: class {
     func inputTextChanged(text: String?)
 }
 
-final class InvitesFriendView: UIView {
+final class EventInviteView: UIView {
     
-    weak var delegate: InviteFriendsViewDelegate?
+    weak var delegate: EventInviteViewDelegate?
     
     var isSearhing: Bool = false {
         didSet {
@@ -216,7 +216,7 @@ final class InvitesFriendView: UIView {
 
 //MARK: Public API
 
-extension InvitesFriendView {
+extension EventInviteView {
     
     func updateCollectionDataSource(dateSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
         collectionView.delegate = dateSource
@@ -246,7 +246,7 @@ extension InvitesFriendView {
 
 //MARK: Actions
 
-@objc private extension InvitesFriendView {
+@objc private extension EventInviteView {
     
     func handleCancelButton() {
         delegate?.cancelButtonClicked()
@@ -300,7 +300,7 @@ extension InvitesFriendView {
 
 //MARK: - DSTextInputViewDelegate -
 
-extension InvitesFriendView: DSTextInputViewDelegate {
+extension EventInviteView: DSTextInputViewDelegate {
     
     func sendTextButtonClicked() {
         delegate?.sendButtonClicked()
@@ -313,7 +313,7 @@ extension InvitesFriendView: DSTextInputViewDelegate {
 
 //MARK: - UISearchBarDelegate -
 
-extension InvitesFriendView: UISearchBarDelegate {
+extension EventInviteView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         delegate?.searchBarTextChanged(text: searchBar.text)
