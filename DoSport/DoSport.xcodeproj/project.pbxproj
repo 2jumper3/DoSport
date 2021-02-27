@@ -804,19 +804,6 @@
 			path = EventCreate;
 			sourceTree = "<group>";
 		};
-		65C8B4B025E8C62A00BBCF77 /* UserMain */ = {
-			isa = PBXGroup;
-			children = (
-				65C8B4B125E8C65100BBCF77 /* UserMainAssembly.swift */,
-				65C8B4BE25E8C66400BBCF77 /* UserMainController.swift */,
-				65C8B4C325E8C66900BBCF77 /* UserMainCoordinator.swift */,
-				65C8B4CD25E8C67600BBCF77 /* UserMainDataSource.swift */,
-				65C8B4B925E8C65D00BBCF77 /* UserMainView.swift */,
-				65C8B4C825E8C66E00BBCF77 /* UserMainViewModel.swift */,
-			);
-			name = UserMain;
-			sourceTree = "<group>";
-		};
 		65C8B4D525E8D2E800BBCF77 /* UserMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +921,19 @@
 				65DC545F25E9A98000712EC7 /* EventManageContainerViewController.xib */,
 			);
 			path = EventManager;
+			sourceTree = "<group>";
+		};
+		65DC548D25E9C41500712EC7 /* UserMain */ = {
+			isa = PBXGroup;
+			children = (
+				65C8B4B125E8C65100BBCF77 /* UserMainAssembly.swift */,
+				65C8B4BE25E8C66400BBCF77 /* UserMainController.swift */,
+				65C8B4C325E8C66900BBCF77 /* UserMainCoordinator.swift */,
+				65C8B4CD25E8C67600BBCF77 /* UserMainDataSource.swift */,
+				65C8B4B925E8C65D00BBCF77 /* UserMainView.swift */,
+				65C8B4C825E8C66E00BBCF77 /* UserMainViewModel.swift */,
+			);
+			path = UserMain;
 			sourceTree = "<group>";
 		};
 		65EAAA7B25CD3FC0005E0131 /* FeedCell */ = {
@@ -1185,7 +1185,7 @@
 				6531794C25D10F5D001DBA4B /* SportTypeList */,
 				653179B425D11239001DBA4B /* SubwayList */,
 				CEBA62DA2593F278006A7F80 /* TabBarController */,
-				65C8B4B025E8C62A00BBCF77 /* UserMain */,
+				65DC548D25E9C41500712EC7 /* UserMain */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
