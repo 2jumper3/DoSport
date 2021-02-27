@@ -75,7 +75,7 @@ final class DSUserMainNavBar: UIView {
     }
 }
 
-//MARK: Private API
+//MARK: Actions
 
 @objc private extension DSUserMainNavBar {
     

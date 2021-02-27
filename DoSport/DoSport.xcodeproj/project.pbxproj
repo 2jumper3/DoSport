@@ -818,9 +818,9 @@
 		65CC2CEB25DA899A009D6B4B /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				65DC543F25E9957200712EC7 /* DSEventControlButton.swift */,
 				6587052B25920EC800EFF7C7 /* CommonButton.swift */,
 				6511D77525B0E5A10063EF76 /* DSButton.swift */,
+				65DC543F25E9957200712EC7 /* DSEventControlButton.swift */,
 				65CC2CE625DA898B009D6B4B /* DSEventParticipateButton.swift */,
 			);
 			path = Buttons;
