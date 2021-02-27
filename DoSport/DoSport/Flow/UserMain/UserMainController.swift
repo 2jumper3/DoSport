@@ -71,8 +71,10 @@ final class UserMainController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupEventInviteContainer()
-        setupEventManageContainer()
+        setup(&eventInviteContainerController)
+        eventInviteContainerController?.delegate = self // TODO: Create base generic container class
+        setup(&eventManageContanerController)
+        eventManageContanerController?.delegate = self // TODO: Create base generic container class
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -101,102 +103,6 @@ private extension UserMainController {
     func updateView() {
         userMainView.updateCollectionDataSource(dateSource: self.userMainCollectionManager)
     }
-    
-    func setupEventInviteContainer() {
-        eventInviteContainerController = EventInviteViewController(
-            nibName: "EventInviteViewController",
-            bundle: nil
-        )
-        eventInviteContainerController?.delegate = self
-        
-        eventInviteContainerController?.view.frame = tabBarController!.view.frame
-        eventInviteContainerController?.view.frame.origin.y = tabBarController!.view.frame.maxY
-    }
-    
-    func setupEventManageContainer() {
-        eventManageContanerController = EventManageContanerViewController(
-            nibName: "EventManageContanerViewController",
-            bundle: nil
-        )
-        eventManageContanerController?.delegate = self
-        
-        eventManageContanerController?.view.frame = tabBarController!.view.frame // FIXME: remove force
-        eventManageContanerController?.view.frame.origin.y = tabBarController!.view.frame.maxY
-    }
-    
-    func presentEventInviteContainer() {
-        guard let container = eventInviteContainerController else { return }
-        
-        tabBarController?.view.addSubview(container.view)
-        tabBarController?.addChild(container)
-        container.didMove(toParent: tabBarController)
-        
-        let y: CGFloat = view.frame.maxY - container.view.frame.height - 10
-        
-        UIView.animate(withDuration: 0.3) {
-            container.view.frame.origin.y = y
-        } completion: { value in
-            UIView.animate(withDuration: 0.3) {
-                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            }
-        }
-    }
-    
-    func dismissEventInviteContainer() {
-        guard let container = eventInviteContainerController else { return }
-        
-        UIView.animate(withDuration: 0.3) {
-            UIView.animate(withDuration: 0.3) {
-                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
-            } completion: { value in
-                UIView.animate(withDuration: 0.3) { [unowned self] in
-                    container.view.frame.origin.y = userMainView.frame.maxY
-                } completion: { value in
-                    container.willMove(toParent: nil)
-                    container.removeFromParent()
-                    container.view.removeFromSuperview()
-                }
-            }
-        }
-    }
-
-    
-    func presentEventManageContainer() {
-        guard let container = eventManageContanerController else { return }
-        
-        tabBarController?.view.addSubview(container.view)
-        tabBarController?.addChild(container)
-        container.didMove(toParent: tabBarController)
-        
-        let y: CGFloat = view.frame.maxY - container.view.frame.height - 10
-        
-        UIView.animate(withDuration: 0.3) {
-            container.view.frame.origin.y = y
-        } completion: { value in
-            UIView.animate(withDuration: 0.3) {
-                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            }
-        }
-    }
-    
-    func dismissEventManageContainer(completion: @escaping () -> Swift.Void = { return }) {
-        guard let container = eventManageContanerController else { return }
-        
-        UIView.animate(withDuration: 0.2) {
-            UIView.animate(withDuration: 0.15) {
-                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
-            } completion: { value in
-                UIView.animate(withDuration: 0.1) { [unowned self] in
-                    container.view.frame.origin.y = userMainView.frame.maxY
-                } completion: { value in
-                    container.willMove(toParent: nil)
-                    container.removeFromParent()
-                    container.view.removeFromSuperview()
-                    completion()
-                }
-            }
-        }
-    }
 }
 
 //MARK: Actions
@@ -224,7 +130,7 @@ extension UserMainController: UserMainDataSourceDelegate {
     }
     
     func collectionDidClickOptions(for event: Event?) {
-        presentEventManageContainer()
+        present(eventManageContanerController)
     }
 }
 
@@ -242,7 +148,7 @@ extension UserMainController: DSUserMainNavBarDelegate {
 extension UserMainController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
-        dismissEventInviteContainer()
+        dismiss(eventInviteContainerController, from: userMainView)
     }
 }
 
@@ -255,13 +161,13 @@ extension UserMainController: EventManageContanerViewControllerDelegate {
     }
     
     func eventManageCancelButtonClicked() {
-        dismissEventManageContainer()
+        dismiss(eventManageContanerController, from: userMainView)
     }
     
     func inviteButtonClicked() {
-        dismissEventManageContainer() { [unowned self] in
+        dismiss(eventManageContanerController, from: userMainView) { [unowned self] in
             eventInviteContainerController?.setupKeyboardNotification()
-            presentEventInviteContainer()
+            present(eventInviteContainerController)
         }
     }
     

@@ -67,7 +67,8 @@ final class EventViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupeventInviteContainer()
+        setup(&eventInviteContainer)
+        eventInviteContainer?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,55 +128,6 @@ private extension EventViewController {
             object: nil
         )
     }
-    
-    func setupeventInviteContainer() {
-        eventInviteContainer = EventInviteViewController(
-            nibName: "EventInviteViewController",
-            bundle: nil
-        )
-        eventInviteContainer?.delegate = self
-        
-        eventInviteContainer?.view.frame = tabBarController!.view.frame
-        eventInviteContainer?.view.frame.origin.y = tabBarController!.view.frame.maxY
-    }
-    
-    func presenteventInviteContainer() {
-        guard let container = eventInviteContainer else { return }
-        removeKeyboardNotification()
-        
-        tabBarController?.view.addSubview(container.view)
-        tabBarController?.addChild(container)
-        container.didMove(toParent: tabBarController)
-        
-        let y: CGFloat = view.frame.maxY - container.view.frame.height - 10
-        
-        UIView.animate(withDuration: 0.3) {
-            container.view.frame.origin.y = y
-        } completion: { value in
-            UIView.animate(withDuration: 0.3) {
-                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            }
-        }
-    }
-    
-    func dismisseventInviteContainer() {
-        guard let container = eventInviteContainer else { return }
-        setupKeyboardNotification()
-        
-        UIView.animate(withDuration: 0.3) {
-            UIView.animate(withDuration: 0.3) {
-                container.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
-            } completion: { value in
-                UIView.animate(withDuration: 0.3) { [unowned self] in
-                    container.view.frame.origin.y = eventView.frame.maxY
-                } completion: {value in
-                    container.willMove(toParent: nil)
-                    container.removeFromParent()
-                    container.view.removeFromSuperview()
-                }
-            }
-        }
-    }
 }
 
 //MARK: Actions
@@ -225,7 +177,7 @@ extension EventViewController: EventDataSourceDelegate {
     
     func tableViewInviteButtonClicked() {
         eventInviteContainer?.setupKeyboardNotification()
-        presenteventInviteContainer()
+        present(eventInviteContainer)
     }
     
     func tableViewParicipateButtonClicked() {
@@ -251,7 +203,7 @@ extension EventViewController: EventDataSourceDelegate {
 extension EventViewController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
-        dismisseventInviteContainer()
+        dismiss(eventInviteContainer, from: eventView)
     }
 }
 

@@ -173,6 +173,7 @@
 		65DC544025E9957200712EC7 /* DSEventControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC543F25E9957200712EC7 /* DSEventControlButton.swift */; };
 		65DC546025E9A98000712EC7 /* EventManageContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DC545F25E9A98000712EC7 /* EventManageContainerViewController.xib */; };
 		65DC546525E9A99700712EC7 /* EventManageContanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC546425E9A99700712EC7 /* EventManageContanerViewController.swift */; };
+		65DC54A225E9CE7400712EC7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC54A125E9CE7400712EC7 /* UIViewController.swift */; };
 		65DDC09F25B6503B00228FC7 /* EventCardCollectioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC09E25B6503B00228FC7 /* EventCardCollectioCell.swift */; };
 		65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDC0A325B6510500228FC7 /* DSFeedNavBar.swift */; };
 		65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 656CC24C259A50A200DEC84C /* CountryList.json */; };
@@ -397,6 +398,7 @@
 		65DC543F25E9957200712EC7 /* DSEventControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEventControlButton.swift; sourceTree = "<group>"; };
 		65DC545F25E9A98000712EC7 /* EventManageContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventManageContainerViewController.xib; sourceTree = "<group>"; };
 		65DC546425E9A99700712EC7 /* EventManageContanerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManageContanerViewController.swift; sourceTree = "<group>"; };
+		65DC54A125E9CE7400712EC7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		65DDC09E25B6503B00228FC7 /* EventCardCollectioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardCollectioCell.swift; sourceTree = "<group>"; };
 		65DDC0A325B6510500228FC7 /* DSFeedNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFeedNavBar.swift; sourceTree = "<group>"; };
 		65EAAA7C25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEventCardCellHeaderView.swift; sourceTree = "<group>"; };
@@ -734,8 +736,8 @@
 		658705332592169D00EFF7C7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				658705342592169F00EFF7C7 /* Protocols */,
 				6587053D2592493400EFF7C7 /* Coordinator.swift */,
+				658705342592169F00EFF7C7 /* Protocols */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1165,6 +1167,7 @@
 				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
 				65D2971F25DD644C005AC413 /* Date+currentDate.swift */,
 				65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */,
+				65DC54A125E9CE7400712EC7 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1464,6 +1467,7 @@
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
+				65DC54A225E9CE7400712EC7 /* UIViewController.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				65674DED25DACF7200950FC7 /* DSRangeSlider.swift in Sources */,
 				65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */,
