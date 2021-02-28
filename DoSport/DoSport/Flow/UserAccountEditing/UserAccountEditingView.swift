@@ -91,7 +91,6 @@ final class UserAccountEditingView: UIView {
             buttonsHeight = 48
         }
         
-      
         passwordTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview()
         }

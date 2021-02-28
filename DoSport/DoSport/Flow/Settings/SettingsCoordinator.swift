@@ -24,7 +24,7 @@ final class SettingsCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
-    func goToUserAccountEditingModule(with title: String?) {
+    func goToUserAccountEditingModule() {
         let coordinator = UserAccountEditingCoordinator(navController: navigationController)
         store(coordinator: coordinator)
         coordinator.start()
