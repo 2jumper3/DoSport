@@ -85,11 +85,11 @@ private extension SoundListController {
     }
 }
 
-//MARK: - NotificationSettingsViewDelegate -
+//MARK: - SoundListViewDelegate -
 
 extension SoundListController: SoundListViewDelegate { }
 
-//MARK: - NotificationSettingsDataSourceDelegate -
+//MARK: - SoundListDataSourceDelegate -
 
 extension SoundListController: SoundListDataSourceDelegate {
     
