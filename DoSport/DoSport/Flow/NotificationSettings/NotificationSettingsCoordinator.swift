@@ -24,23 +24,7 @@ final class NotificationSettingsCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
-    func goToUserAccountEditingModule() {
-        
-    }
-    
-    func goToNotificationSettingsModule(with title: String?) {
-        
-    }
-    
-    func goToPrivacySettingsModule(with title: String?) {
-        
-    }
-    
-    func goToLanguageListModule(with title: String?) {
-        
-    }
-    
-    func goToSupportSettingsModule(with title: String?) {
+    func goToSoundList() {
         
     }
 }

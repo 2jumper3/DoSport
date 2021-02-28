@@ -13,6 +13,8 @@ protocol NotificationSettingsDataSourceDelegate: class {
 
 final class NotificationSettingsDataSource: NSObject {
     
+    weak var delegate: NotificationSettingsDataSourceDelegate?
+    
     private enum NotificationSettingsSectionType: String, CaseIterable {
         case messageNotifications, eventsNotification, newEventsNotifications
         
@@ -40,8 +42,6 @@ final class NotificationSettingsDataSource: NSObject {
             }
         }
     }
-    
-    weak var delegate: NotificationSettingsDataSourceDelegate?
     
     private let notificationSettingsCells: [String]
     private let notificationSettingsSections: [String]
