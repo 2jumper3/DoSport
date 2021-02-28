@@ -79,7 +79,13 @@ private extension DSNavigationController {
             navigationBar.scrollEdgeAppearance = navBarAppearance
             navigationBar.isTranslucent = false
         } else {
-            
+            navigationBar.isTranslucent = false
+            navigationBar.barTintColor = Colors.darkBlue
+            navigationBar.tintColor = Colors.mainBlue
+            navigationBar.titleTextAttributes = [
+                NSAttributedString.Key.font: Fonts.sfProRegular(size: 18),
+                NSAttributedString.Key.foregroundColor: Colors.mainBlue
+            ]
         }
     }
 }

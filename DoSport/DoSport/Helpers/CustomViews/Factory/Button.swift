@@ -13,7 +13,7 @@ extension UIButton {
     
     static func makeButton(title: String, titleColor: UIColor) -> UIButton {
         let button = UIButton(type: .system)
-        button.titleLabel?.textColor = titleColor
+        button.setTitleColor(titleColor, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
         button.titleLabel?.font = Fonts.sfProRegular(size: 16)
