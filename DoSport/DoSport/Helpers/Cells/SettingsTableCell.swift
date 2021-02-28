@@ -16,7 +16,7 @@ final class SettingsTableCell: UITableViewCell {
     
     //MARK: Outlets
     
-    private let nextIconImageView: UIImageView = {
+    private let pointerImageView: UIImageView = {
         $0.image = Icons.Settings.next
         $0.setImageColor(color: Colors.dirtyBlue)
         return $0
@@ -30,7 +30,7 @@ final class SettingsTableCell: UITableViewCell {
         backgroundColor = Colors.darkBlue
         selectionStyle = .none
         separatorInset = .init(top: 0, left: 40, bottom: 0, right: 0)
-        contentView.addSubviews(nextIconImageView)
+        contentView.addSubviews(pointerImageView)
     }
     
     required init?(coder: NSCoder) {
@@ -56,11 +56,11 @@ final class SettingsTableCell: UITableViewCell {
             $0.left.equalTo(imageView.snp.right).offset(16)
         }
         
-        nextIconImageView.snp.makeConstraints {
+        pointerImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.right.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.35)
-            $0.width.equalTo(nextIconImageView.snp.height).multipliedBy(0.55)
+            $0.width.equalTo(pointerImageView.snp.height).multipliedBy(0.55)
         }
     }
 }
