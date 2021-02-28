@@ -95,7 +95,7 @@ extension SettingsController: SettingsDataSourceDelegate {
   
     func tableView(didSelect cellType: SettingCellType) {
         switch cellType {
-        case .account(_, let title): coordinator?.goToUserAccountModule(with: title)
+        case .account(_, let title): coordinator?.goToUserAccountEditingModule(with: title)
         case .alerts(_, let title): coordinator?.goToNotificationSettingsModule(with: title)
         case .privacy(_, let title): coordinator?.goToPrivacySettingsModule(with: title)
         case .language(_, let title): coordinator?.goToLanguageListModule(with: title)

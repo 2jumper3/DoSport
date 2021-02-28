@@ -14,6 +14,7 @@ public enum Texts {
         static let invite = "Пригласить"
         static let subscribers = "Подписчики"
         static let subscribes = "Подписки"
+        static let account = "Аккаунт"
     }
 }
 
@@ -217,11 +218,19 @@ extension Texts {
 //MARK: - Settings screen
 extension Texts {
     enum Settings {
-        static let account = "Аккаунт"
+        static let account = Common.account
         static let alerts = "Увядомления"
         static let privacy = "Конфеденциальность"
         static let language = "Язык"
         static let help = "Помощь"
+    }
+}
+
+//MARK: - UserAccountEditing screen
+extension Texts {
+    enum UserAccountEditing {
+        static let title = Common.account
+        static let signOut = "Выйти из аккунта"
     }
 }
 
