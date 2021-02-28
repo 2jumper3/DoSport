@@ -31,7 +31,9 @@ final class SettingsCoordinator: Coordinator {
     }
     
     func goToNotificationSettingsModule(with title: String?) {
-        
+        let coordinator = NotificationSettingsCoordinator(navController: navigationController)
+        store(coordinator: coordinator)
+        coordinator.start()
     }
     
     func goToPrivacySettingsModule(with title: String?) {
