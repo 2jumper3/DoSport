@@ -1,5 +1,5 @@
 //
-//  NotificationSettingsController.swift
+//  SoundListController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 28/02/2021.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class NotificationSettingsController: UIViewController, UIGestureRecognizerDelegate {
+final class SoundListController: UIViewController, UIGestureRecognizerDelegate {
     
-    weak var coordinator: NotificationSettingsCoordinator?
-    private lazy var notificationSettingsView = view as! NotificationSettingsView
-    private let notificationSettingsTableManager = NotificationSettingsDataSource()
+    weak var coordinator: SoundListCoordinator?
+    private lazy var soundListView = view as! SoundListView
+    private let soundListDataSource = SoundListDataSource()
     
-    private var selectedSound: String?
+    private let compilation: (String) -> Swift.Void
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -21,7 +21,8 @@ final class NotificationSettingsController: UIViewController, UIGestureRecognize
 
     // MARK: Init
     
-    init() {
+    init(compilation: @escaping (String) -> Swift.Void) {
+        self.compilation = compilation
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,9 +33,9 @@ final class NotificationSettingsController: UIViewController, UIGestureRecognize
     // MARK: Life Cycle
     
     override func loadView() {
-        let view = NotificationSettingsView()
+        let view = SoundListView()
         view.delegate = self
-        notificationSettingsTableManager.delegate = self
+        soundListDataSource.delegate = self
         
         self.view = view
     }
@@ -43,7 +44,7 @@ final class NotificationSettingsController: UIViewController, UIGestureRecognize
         super.viewDidLoad()
         
         setupNavBar()
-        notificationSettingsView.updateCollectionDataSource(dateSource: notificationSettingsTableManager)
+        soundListView.updateCollectionDataSource(dateSource: soundListDataSource)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,10 +63,10 @@ final class NotificationSettingsController: UIViewController, UIGestureRecognize
 
 //MARK: Private API
 
-private extension NotificationSettingsController {
+private extension SoundListController {
     
     func setupNavBar() {
-        title = Texts.NotificationSettings.title
+        title = Texts.SoundList.title
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
@@ -77,24 +78,22 @@ private extension NotificationSettingsController {
 
 //MARK: Actions
 
-@objc private extension NotificationSettingsController {
+@objc private extension SoundListController {
     
     func handleGoBackButton() {
         navigationController?.popViewController(animated: true)
     }
 }
 
-//MARK: - NotificationSettingsViewDelegate -
+//MARK: - SoundListViewDelegate -
 
-extension NotificationSettingsController: NotificationSettingsViewDelegate { }
+extension SoundListController: SoundListViewDelegate { }
 
-//MARK: - NotificationSettingsDataSourceDelegate -
+//MARK: - SoundListDataSourceDelegate -
 
-extension NotificationSettingsController: NotificationSettingsDataSourceDelegate {
-  
-    func tableViewDidSelectSoundCell() {
-        coordinator?.goToSoundList() { [unowned self] sound in
-            selectedSound = sound
-        }
+extension SoundListController: SoundListDataSourceDelegate {
+    
+    func tableView(didSelect sound: String) {
+        compilation(sound)
     }
 }

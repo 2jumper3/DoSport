@@ -24,7 +24,12 @@ final class NotificationSettingsCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
-    func goToSoundList() {
-        
+    func goToSoundList(compilation: @escaping (String) -> Swift.Void) {
+        let coordinator = SoundListCoordinator(
+            navController: navigationController,
+            compilation: compilation
+        )
+        store(coordinator: coordinator)
+        coordinator.start()
     }
 }
