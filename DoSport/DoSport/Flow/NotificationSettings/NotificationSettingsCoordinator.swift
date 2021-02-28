@@ -1,21 +1,21 @@
 //
-//  SettingsCoordinator.swift
+//  NotificationSettingsCoordinator.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 27/02/2021.
+//  Created by Komolbek Ibragimov on 28/02/2021.
 //
 
 import UIKit
 
-final class SettingsCoordinator: Coordinator {
+final class NotificationSettingsCoordinator: Coordinator {
     
-    let rootViewController: SettingsController
+    let rootViewController: NotificationSettingsController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        self.rootViewController = SettingsController()
+        self.rootViewController = NotificationSettingsController()
         self.navigationController = navController
     }
     
@@ -25,15 +25,11 @@ final class SettingsCoordinator: Coordinator {
     }
     
     func goToUserAccountEditingModule() {
-        let coordinator = UserAccountEditingCoordinator(navController: navigationController)
-        store(coordinator: coordinator)
-        coordinator.start()
+        
     }
     
     func goToNotificationSettingsModule(with title: String?) {
-        let coordinator = NotificationSettingsCoordinator(navController: navigationController)
-        store(coordinator: coordinator)
-        coordinator.start()
+        
     }
     
     func goToPrivacySettingsModule(with title: String?) {

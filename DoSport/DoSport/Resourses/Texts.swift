@@ -15,6 +15,7 @@ public enum Texts {
         static let subscribers = "Подписчики"
         static let subscribes = "Подписки"
         static let account = "Аккаунт"
+        static let alerts = "Увядомления"
     }
 }
 
@@ -219,7 +220,7 @@ extension Texts {
 extension Texts {
     enum Settings {
         static let account = Common.account
-        static let alerts = "Увядомления"
+        static let alerts = Common.alerts
         static let privacy = "Конфеденциальность"
         static let language = "Язык"
         static let help = "Помощь"
@@ -231,6 +232,22 @@ extension Texts {
     enum UserAccountEditing {
         static let title = Common.account
         static let signOut = "Выйти из аккунта"
+    }
+}
+
+//MARK: - NotificationSettings screen
+extension Texts {
+    enum NotificationSettings {
+        static let title = Common.alerts
+        static let sectionOneTitle = "Уведомления о сообщенииях"
+        static let showNotifications = "Показывать уведомления"
+        static let showText = "Показывать текст"
+        static let sound = "Звук"
+        static let secondSectionTitle = "Уведомления о событиях площадок и людей, на которых вы подписаны"
+        static let groundEvents = "События площадок"
+        static let usersEvents = "События людей"
+        static let newGroundsAround = "О новых площадках поблизости"
+        static let newEventsAround = "О новых событиях поблизости"
     }
 }
 
