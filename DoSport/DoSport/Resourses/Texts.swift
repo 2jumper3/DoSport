@@ -17,6 +17,7 @@ public enum Texts {
         static let account = "Аккаунт"
         static let alerts = "Увядомления"
         static let sound = "Звук"
+        static let privacy = "Конфеденциальность"
     }
 }
 
@@ -222,7 +223,7 @@ extension Texts {
     enum Settings {
         static let account = Common.account
         static let alerts = Common.alerts
-        static let privacy = "Конфеденциальность"
+        static let privacy = Common.privacy
         static let language = "Язык"
         static let help = "Помощь"
     }
@@ -257,6 +258,16 @@ extension Texts {
     enum SoundList {
         static let title = Common.sound
         static let tableSection = "Звуки сообщений"
+    }
+}
+
+//MARK: - PrivacySettingList screen
+extension Texts {
+    enum PrivacySettingList {
+        static let title = Common.privacy
+        static let allUsers = "От всех пользователей"
+        static let subsribtionUsers = "Только от подписчиков и подписок "
+        static let subscrobtions = "Только от подписок"
     }
 }
 
