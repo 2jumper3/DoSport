@@ -132,7 +132,7 @@ extension MapViewController: MapViewControllerDelegate {
     func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String) {
         self.popUpView.textAdding(id: id, name: name, range: range, price: price, location: location)
         UIView.animate(withDuration: 0.3) {
-            self.popUpView.transform = CGAffineTransform(translationX: 0, y: (-self.view.bounds.height / 5.7))
+            self.popUpView.transform = CGAffineTransform(translationX: 0, y: (-self.popUpView.bounds.height))
         }
     }
 

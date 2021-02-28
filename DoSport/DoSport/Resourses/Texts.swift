@@ -196,3 +196,16 @@ extension Texts {
         static let select = "Выбрать"
     }
 }
+//MARK: - MapFilter screen
+
+
+extension Texts {
+    enum PlaceTypeTableViewCell {
+        static let ground = "Площадки"
+        static let training = "Тренировки"
+        static let studio = "Студии"
+        static let clubs = "Тренажерные залы"
+        static let challenges = "Соревнования"
+        static let group = "Групповые тренировки"
+    }
+}

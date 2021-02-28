@@ -120,7 +120,7 @@ extension Icons {
 
 extension Icons {
     enum FilterIcon {
-        static var filter = image(named: "Filter")
+        static var filter = image(named: "FilterMap")
 
     }
 }
