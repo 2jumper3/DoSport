@@ -136,8 +136,14 @@ extension DateSelectionDataSource: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let cellHeight = UIDevice.deviceSize == .small ? (collectionView.frame.height/6) : (collectionView.frame.height/8)
+        var height: CGFloat = collectionView.bounds.height
         
-        return CGSize(width: collectionView.frame.width * 0.31, height: cellHeight-2)
+        switch UIDevice.deviceSize {
+        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: height /= 5
+        case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: height /= 6
+        case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max: height /= 7
+        }
+        
+        return CGSize(width: collectionView.frame.width * 0.31, height: height)
     }
 }

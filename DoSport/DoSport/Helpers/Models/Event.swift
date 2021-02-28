@@ -45,17 +45,6 @@ struct Event: Codable {
     var members: [Member]?
     var sportGroundID: Int?
     var sportType: Sport?
-    
-    enum EventCellType {
-        case eventCard(Event?)
-        case eventActions
-        case toogle(Int, Int)
-        case chatFrame([EventChatCellType])
-    }
-    
-    enum EventChatCellType {
-        case messages([Message]), members([Member])
-    }
 }
 
 extension Event.Hour: Codable { }

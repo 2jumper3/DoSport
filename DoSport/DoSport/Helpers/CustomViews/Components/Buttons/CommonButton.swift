@@ -21,9 +21,15 @@ final class CommonButton: UIButton {
     
     //MARK: Init
     
-    init(title: String = "", state: CommonButtonState = .normal) {
+    init(
+        title: String = "",
+        state: CommonButtonState = .normal,
+        isHidden: Bool = false
+    ) {
         super.init(frame: .zero)
+        
         layer.cornerRadius = 8
+        self.isHidden = isHidden
         setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
         setTitleColor(.gray, for: .highlighted)
@@ -43,6 +49,10 @@ extension CommonButton {
     
     func bind(state: CommonButtonState) {
         buttonState = state
+    }
+    
+    func isHidden(_ value: Bool) {
+        self.isHidden = value
     }
     
     func getState() -> CommonButtonState {

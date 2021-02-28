@@ -12,6 +12,12 @@ public enum Texts {
         static let save = "Сохранить"
         static let date = "Дата и время"
         static let invite = "Пригласить"
+        static let subscribers = "Подписчики"
+        static let subscribes = "Подписки"
+        static let account = "Аккаунт"
+        static let alerts = "Увядомления"
+        static let sound = "Звук"
+        static let privacy = "Конфеденциальность"
     }
 }
 
@@ -196,6 +202,75 @@ extension Texts {
         static let select = "Выбрать"
     }
 }
+
+//MARK: - UserMain screen
+extension Texts {
+    enum UserMain {
+        static let subscribers = Common.subscribers
+        static let subscribes = Common.subscribes
+        static let myEvents = "Мои тренировки"
+        static let mySportGrounds = "Мои плошадки"
+        
+        static let invite = Common.invite
+        static let delete = "Удалить"
+        static let edit = "Изменить"
+        static let close = "Закрыть"
+    }
+}
+
+//MARK: - Settings screen
+extension Texts {
+    enum Settings {
+        static let account = Common.account
+        static let alerts = Common.alerts
+        static let privacy = Common.privacy
+        static let language = "Язык"
+        static let help = "Помощь"
+    }
+}
+
+//MARK: - UserAccountEditing screen
+extension Texts {
+    enum UserAccountEditing {
+        static let title = Common.account
+        static let signOut = "Выйти из аккунта"
+    }
+}
+
+//MARK: - NotificationSettings screen
+extension Texts {
+    enum NotificationSettings {
+        static let title = Common.alerts
+        static let sectionOneTitle = "Уведомления о сообщенииях"
+        static let showNotifications = "Показывать уведомления"
+        static let showText = "Показывать текст"
+        static let sound = Common.sound
+        static let secondSectionTitle = "Уведомления о событиях площадок и людей, на которых вы подписаны"
+        static let groundEvents = "События площадок"
+        static let usersEvents = "События людей"
+        static let newGroundsAround = "О новых площадках поблизости"
+        static let newEventsAround = "О новых событиях поблизости"
+    }
+}
+
+//MARK: - SoundList screen
+extension Texts {
+    enum SoundList {
+        static let title = Common.sound
+        static let tableSection = "Звуки сообщений"
+    }
+}
+
+//MARK: - PrivacySettingList screen
+extension Texts {
+    enum PrivacySettingList {
+        static let title = Common.privacy
+        static let allUsers = "От всех пользователей"
+        static let subsribtionUsers = "Только от подписчиков и подписок "
+        static let subscrobtions = "Только от подписок"
+    }
+}
+
 //MARK: - MapFilter screen
 
 

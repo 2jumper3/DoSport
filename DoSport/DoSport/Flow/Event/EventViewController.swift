@@ -18,7 +18,11 @@ final class EventViewController: UIViewController {
     
     private var userToReplyName: String = ""
     
-    private var inviteFriendsChildViewController: InviteFriendsViewController!
+    private var eventInviteContainer: EventInviteViewController?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: Init
     
@@ -45,15 +49,12 @@ final class EventViewController: UIViewController {
         super.viewDidLoad()
         
         title = ""
+        navigationController?.navigationBar.tintColor = Colors.mainBlue
         
         setupViewModelBindings()
         setupKeyboardNotification()
         
         viewModel.prepareEventData(event: self.event)
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +67,8 @@ final class EventViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupInviteFriendsChildViewController()
+        setup(&eventInviteContainer)
+        eventInviteContainer?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -126,54 +128,6 @@ private extension EventViewController {
             object: nil
         )
     }
-    
-    func setupInviteFriendsChildViewController() {
-        inviteFriendsChildViewController = InviteFriendsViewController(
-            nibName: "InviteFriendChildViewController",
-            bundle: nil
-        )
-        inviteFriendsChildViewController.delegate = self
-        
-        inviteFriendsChildViewController.view.frame = tabBarController!.view.frame
-        inviteFriendsChildViewController.view.frame.origin.y = tabBarController!.view.frame.maxY
-    }
-    
-    func presentInviteFriendsChildViewController() {
-        removeKeyboardNotification()
-        
-        tabBarController?.view.addSubview(inviteFriendsChildViewController.view)
-        tabBarController?.addChild(inviteFriendsChildViewController)
-        inviteFriendsChildViewController.didMove(toParent: tabBarController)
-        
-        let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
-        let y: CGFloat = view.frame.maxY - inviteFriendsViewHeight - 10
-        
-        UIView.animate(withDuration: 0.3) { [self] in
-            inviteFriendsChildViewController.view.frame.origin.y = y
-        } completion: { value in
-            UIView.animate(withDuration: 0.3) { [self] in
-                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            }
-        }
-    }
-    
-    func dismissInviteFriendsChildViewController() {
-        setupKeyboardNotification()
-        
-        UIView.animate(withDuration: 0.3) {
-            UIView.animate(withDuration: 0.3) { [self] in
-                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
-            } completion: { value in
-                UIView.animate(withDuration: 0.3) { [self] in
-                    inviteFriendsChildViewController.view.frame.origin.y = eventView.frame.maxY
-                } completion: { [self] value in
-                    inviteFriendsChildViewController.willMove(toParent: nil)
-                    inviteFriendsChildViewController.removeFromParent()
-                    inviteFriendsChildViewController.view.removeFromSuperview()
-                }
-            }
-        }
-    }
 }
 
 //MARK: Actions
@@ -221,16 +175,16 @@ extension EventViewController: EventViewDelegate {
 
 extension EventViewController: EventDataSourceDelegate {
     
-    func collectionViewInviteButtonClicked() {
-        inviteFriendsChildViewController.setupKeyboardNotification()
-        presentInviteFriendsChildViewController()
+    func tableViewInviteButtonClicked() {
+        eventInviteContainer?.setupKeyboardNotification()
+        present(eventInviteContainer)
     }
     
-    func collectionViewParicipateButtonClicked() {
+    func tableViewParicipateButtonClicked() {
         
     }
     
-    func commentsTableViewReplyButtonClicked(to userName: String?) {
+    func commentReplyButtonClicked(to userName: String?) {
         guard let userName = userName else { return }
         
         self.userToReplyName = userName
@@ -239,73 +193,17 @@ extension EventViewController: EventDataSourceDelegate {
         eventView.makeInputTextViewFirstResponder()
     }
     
-    func collectionViewSegmentedControlDidChange(index: Int, collectionView: UICollectionView?) {
-        guard let collectionView = collectionView else { return }
-        
-        let indexPath = IndexPath(row: index, section: 0)
-        
-        collectionView.isPagingEnabled = false
-        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-        collectionView.isPagingEnabled = true
-    }
-    
-    func chatFrameCollectionView(scrolledTo index: Int, segmentedControl: DSSegmentedControl?) {
-        segmentedControl?.setSelectedItemIndex(index)
-    }
-    
-    func collectionViewScrolled(commentsTableView: UITableView?, membersTableView: UITableView?) {
-        let indexPath = IndexPath(row: 3, section: 0)
-
-        let cell: CollectionViewToogleCell = self.eventView.getCollectionView().cell(forRowAt: indexPath)
-        let cellOriginInRoot = eventView.getCollectionView().convert(cell.frame, to: eventView)
-        
-        if cellOriginInRoot.maxY <= eventView.getCollectionView().frame.maxY {
-            
-            eventView.setCollectionView(isScrollingEnabled: false)
-            commentsTableView?.isScrollEnabled = true
-            membersTableView?.isScrollEnabled = true
-        }
-    }
-    
-    func commentsTableViewSrolled(tableView: UITableView?) {
-        guard let tableView = tableView else { return }
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        
-        if let cell: TableViewCommentCell = tableView.cellForRow(at: indexPath) as? TableViewCommentCell {
-
-            let cellOriginInRoot = tableView.convert(cell.frame, to: tableView)
-            
-            if cellOriginInRoot.origin.y > tableView.bounds.origin.y {
-                tableView.isScrollEnabled = false
-                eventView.setCollectionView(isScrollingEnabled: true)
-            }
-        }
-    }
-    
-    func membersTableViewSrolled(tableView: UITableView?) {
-        guard let tableView = tableView else { return }
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        
-        if let cell: TableViewMemberCell = tableView.cellForRow(at: indexPath) as? TableViewMemberCell {
-
-            let cellOriginInRoot = tableView.convert(cell.frame, to: tableView)
-            
-            if cellOriginInRoot.origin.y > tableView.bounds.origin.y {
-                tableView.isScrollEnabled = false
-                eventView.setCollectionView(isScrollingEnabled: true)
-            }
-        }
+    func tableViewNeedsReloadData() {
+        eventView.updateCollectionDataSource(dateSource: eventCollectionManager)
     }
 }
 
-//MARK: - InviteFriendsViewControllerDelegate -
+//MARK: - EventInviteViewControllerDelegate -
 
-extension EventViewController: InviteFriendsViewControllerDelegate {
+extension EventViewController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
-        dismissInviteFriendsChildViewController()
+        dismiss(eventInviteContainer, from: eventView)
     }
 }
 

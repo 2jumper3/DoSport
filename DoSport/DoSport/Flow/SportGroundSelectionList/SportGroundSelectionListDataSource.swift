@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SportGroundSelectionListDataSourceDelegate: class {
-    func tableView(didSelect sportGround: SportGround)
+    func collectionView(didSelect sportGround: SportGround)
 }
 
 final class SportGroundSelectionListDataSource: NSObject {
@@ -17,7 +17,7 @@ final class SportGroundSelectionListDataSource: NSObject {
     
     var viewModels: [SportGround]
     
-    private var selectedCell: TableViewSportTypeListCell?
+    private var selectedCell: SportTypeListTableCell?
     
     init(viewModels: [SportGround] = []) {
         self.viewModels = viewModels
@@ -26,37 +26,56 @@ final class SportGroundSelectionListDataSource: NSObject {
     }
 }
 
-//MARK: - UITableViewDataSource -
+//MARK: - UICollectionViewDataSource -
 
-extension SportGroundSelectionListDataSource: UITableViewDataSource {
+extension SportGroundSelectionListDataSource: UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModels.count
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let viewModel = viewModels[indexPath.row]
         
-        let cell: TableViewSportGroundSelectionCell = tableView.cell(forRowAt: indexPath)
-        cell.sportGroundTitleLabel.text = viewModel.title
-        cell.subwayNameLabel.text = viewModel.address
+        let cell: SportGroundSelectionCollectionCell = collectionView.cell(forRowAt: indexPath)
+        cell.bind(
+            with: .init(
+                sportGroundTitle: viewModel.title,
+                spogroundBackImage: nil,
+                subwayName: viewModel.address,
+                location: nil,
+                price: nil
+            )
+        )
         
         return cell
     }
 }
 
-//MARK: - UITableViewDelegate -
+//MARK: - UICollectionViewDelegate -
 
-extension SportGroundSelectionListDataSource: UITableViewDelegate {
+extension SportGroundSelectionListDataSource: UICollectionViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         
-        delegate?.tableView(didSelect: viewModel)
+        delegate?.collectionView(didSelect: viewModel)
     }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout -
+
+extension SportGroundSelectionListDataSource: UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height * 0.195
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height * 0.2)
     }
 }
 

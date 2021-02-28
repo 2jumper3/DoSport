@@ -20,6 +20,10 @@ final class DSPasswordTextView: UIView {
     
     weak var delegate: DSPasswordTextViewDelegate?
     
+    var text: String? {
+        get { textField.text }
+    }
+    
     private var textVisibility: TextVisibility = .hidden {
         didSet {
             handleStateChagne()
@@ -88,6 +92,10 @@ extension DSPasswordTextView {
         case .normal: textVisibility = .hidden
         case .hidden: textVisibility = .normal
         }
+    }
+    
+    func getTextField() -> UITextField {
+        return textField
     }
     
     func makeTextFieldFirstResponder() {
