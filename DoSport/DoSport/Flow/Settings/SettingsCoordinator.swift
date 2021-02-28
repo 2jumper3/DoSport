@@ -36,8 +36,13 @@ final class SettingsCoordinator: Coordinator {
         coordinator.start()
     }
     
-    func goToPrivacySettingsModule(with title: String?) {
-        
+    func goToPrivacySettingsModule(compilation: @escaping (PrivacySettingType) -> Swift.Void) {
+        let coordinator = PrivacySettingListCoordinator(
+            navController: navigationController,
+            compilation: compilation
+        )
+        store(coordinator: coordinator)
+        coordinator.start()
     }
     
     func goToLanguageListModule(with title: String?) {
