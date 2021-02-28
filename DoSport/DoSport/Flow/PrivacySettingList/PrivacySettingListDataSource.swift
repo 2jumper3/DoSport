@@ -1,5 +1,5 @@
 //
-//  SoundListDataSource.swift
+//  PrivacySettingListDataSource.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 28/02/2021.
@@ -7,19 +7,31 @@
 
 import UIKit
 
-protocol SoundListDataSourceDelegate: class {
-    func tableView(didSelect sound: String)
+protocol PrivacySettingListDataSourceDelegate: class {
+    func tableView(didSelect privacySetting: PrivacySettingType)
 }
 
-final class SoundListDataSource: NSObject {
+enum PrivacySettingType: String, CaseIterable {
+    case allUsers, allSubsribtionsType, subsribes
     
-    weak var delegate: SoundListDataSourceDelegate?
+    var title: String {
+        switch self {
+        case .allUsers: return Texts.PrivacySettingList.allUsers
+        case .allSubsribtionsType: return Texts.PrivacySettingList.subsribtionUsers
+        case .subsribes: return Texts.PrivacySettingList.subscrobtions
+        }
+    }
+}
+
+final class PrivacySettingListDataSource: NSObject {
     
-    private let viewModels: [String]
+    weak var delegate: PrivacySettingListDataSourceDelegate?
+    
+    private let viewModels: [PrivacySettingType]
     private var selectedRow: Int = 0
     
     override init() {
-        self.viewModels = DSNotificationSound.NotificationSoundType.allCases.map { $0.title }
+        self.viewModels = PrivacySettingType.allCases
         super.init()
         
     }
@@ -27,21 +39,21 @@ final class SoundListDataSource: NSObject {
 
 //MARK: - UITableViewDataSource -
 
-extension SoundListDataSource:  UITableViewDataSource {
+extension PrivacySettingListDataSource:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sound: String = viewModels[indexPath.row]
+        let privacyMode: PrivacySettingType = viewModels[indexPath.row]
         let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
-        cell.titleText = sound
+        cell.titleText = privacyMode.title
         cell.bind(state: .notSelected)
         
         if selectedRow == 0 && indexPath.row == 0 {
             cell.bind(state: .selected)
-            delegate?.tableView(didSelect: sound)
+            delegate?.tableView(didSelect: privacyMode)
         } else if selectedRow > 0 && selectedRow == indexPath.row {
             cell.bind(state: .selected)
         }
@@ -60,10 +72,10 @@ extension SoundListDataSource:  UITableViewDataSource {
 
 //MARK: - UITableViewDelegate -
 
-extension SoundListDataSource: UITableViewDelegate {
+extension PrivacySettingListDataSource: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sound = viewModels[indexPath.row]
+        let privacyMode = viewModels[indexPath.row]
         let selectedIndexPath = IndexPath(row: selectedRow, section: 0)
         let selectedCell: SportTypeListTableCell
         let newCell: SportTypeListTableCell
@@ -87,7 +99,7 @@ extension SoundListDataSource: UITableViewDelegate {
             selectedRow = indexPath.row
         }
         
-        delegate?.tableView(didSelect: sound)
+        delegate?.tableView(didSelect: privacyMode)
         tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .none)
     }
     
@@ -115,4 +127,3 @@ extension SoundListDataSource: UITableViewDelegate {
         return height
     }
 }
-

@@ -95,11 +95,19 @@ extension SettingsController: SettingsDataSourceDelegate {
   
     func tableView(didSelect cellType: SettingCellType) {
         switch cellType {
-        case .account: coordinator?.goToUserAccountEditingModule()
-        case .alerts(_, let title): coordinator?.goToNotificationSettingsModule(with: title)
-        case .privacy(_, let title): coordinator?.goToPrivacySettingsModule(with: title)
-        case .language(_, let title): coordinator?.goToLanguageListModule(with: title)
-        case .help(_, let title): coordinator?.goToSupportSettingsModule(with: title)
+        case .account:
+            coordinator?.goToUserAccountEditingModule()
+        case .alerts(_, let title):
+            coordinator?.goToNotificationSettingsModule(with: title)
+        case .privacy:
+            coordinator?.goToPrivacySettingsModule() { privacyMode in
+                print(privacyMode) /// use it later while implementing back-end
+                /// TODO: implement selected privacy mode persistency and using that mode when go again to privacy screen
+            }
+        case .language(_, let title):
+            coordinator?.goToLanguageListModule(with: title)
+        case .help(_, let title):
+            coordinator?.goToSupportSettingsModule(with: title)
         }
     }
 }

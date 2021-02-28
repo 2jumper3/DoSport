@@ -165,6 +165,10 @@
 		65CD774425EB3ECE00D042FD /* SoundListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD774325EB3ECE00D042FD /* SoundListDataSource.swift */; };
 		65CD774925EB3F3C00D042FD /* SoundListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD774825EB3F3C00D042FD /* SoundListCoordinator.swift */; };
 		65CD775125EB404E00D042FD /* DSNotificationSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD775025EB404E00D042FD /* DSNotificationSound.swift */; };
+		65CD776925EB4A8C00D042FD /* PrivacySettingListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD776825EB4A8C00D042FD /* PrivacySettingListCoordinator.swift */; };
+		65CD776E25EB4A9100D042FD /* PrivacySettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD776D25EB4A9100D042FD /* PrivacySettingListView.swift */; };
+		65CD777325EB4A9800D042FD /* PrivacySettingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD777225EB4A9800D042FD /* PrivacySettingListController.swift */; };
+		65CD777825EB4A9E00D042FD /* PrivacySettingListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD777725EB4A9E00D042FD /* PrivacySettingListDataSource.swift */; };
 		65CDF89225DB11FF0049F711 /* SportGroundSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF89125DB11FF0049F711 /* SportGroundSelectionListView.swift */; };
 		65CDF89A25DB12080049F711 /* SportGroundSelectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF89925DB12080049F711 /* SportGroundSelectionListViewController.swift */; };
 		65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDF89E25DB120F0049F711 /* SportGroundSelectionListAssembly.swift */; };
@@ -417,6 +421,10 @@
 		65CD774325EB3ECE00D042FD /* SoundListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundListDataSource.swift; sourceTree = "<group>"; };
 		65CD774825EB3F3C00D042FD /* SoundListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundListCoordinator.swift; sourceTree = "<group>"; };
 		65CD775025EB404E00D042FD /* DSNotificationSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNotificationSound.swift; sourceTree = "<group>"; };
+		65CD776825EB4A8C00D042FD /* PrivacySettingListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingListCoordinator.swift; sourceTree = "<group>"; };
+		65CD776D25EB4A9100D042FD /* PrivacySettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingListView.swift; sourceTree = "<group>"; };
+		65CD777225EB4A9800D042FD /* PrivacySettingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingListController.swift; sourceTree = "<group>"; };
+		65CD777725EB4A9E00D042FD /* PrivacySettingListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingListDataSource.swift; sourceTree = "<group>"; };
 		65CDF89125DB11FF0049F711 /* SportGroundSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundSelectionListView.swift; sourceTree = "<group>"; };
 		65CDF89925DB12080049F711 /* SportGroundSelectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundSelectionListViewController.swift; sourceTree = "<group>"; };
 		65CDF89E25DB120F0049F711 /* SportGroundSelectionListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundSelectionListAssembly.swift; sourceTree = "<group>"; };
@@ -909,11 +917,22 @@
 			isa = PBXGroup;
 			children = (
 				65CD773E25EB3EC700D042FD /* SoundListController.swift */,
+				65CD774825EB3F3C00D042FD /* SoundListCoordinator.swift */,
 				65CD774325EB3ECE00D042FD /* SoundListDataSource.swift */,
 				65CD773925EB3EB700D042FD /* SoundListView.swift */,
-				65CD774825EB3F3C00D042FD /* SoundListCoordinator.swift */,
 			);
 			path = SoundList;
+			sourceTree = "<group>";
+		};
+		65CD776725EB4A7700D042FD /* PrivacySettingList */ = {
+			isa = PBXGroup;
+			children = (
+				65CD777225EB4A9800D042FD /* PrivacySettingListController.swift */,
+				65CD776825EB4A8C00D042FD /* PrivacySettingListCoordinator.swift */,
+				65CD777725EB4A9E00D042FD /* PrivacySettingListDataSource.swift */,
+				65CD776D25EB4A9100D042FD /* PrivacySettingListView.swift */,
+			);
+			path = PrivacySettingList;
 			sourceTree = "<group>";
 		};
 		65CDF89025DB11E00049F711 /* SportGroundSelectionList */ = {
@@ -1299,6 +1318,7 @@
 				CEBA62EF2593F3E2006A7F80 /* MainViewController */,
 				65782D9325EB18B50063A52A /* NotificationSettings */,
 				CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */,
+				65CD776725EB4A7700D042FD /* PrivacySettingList */,
 				6531798D25D1115E001DBA4B /* RegionList */,
 				65870505259209A700EFF7C7 /* Registration */,
 				65EEB94C25EA01FA00821F8F /* Settings */,
@@ -1551,6 +1571,7 @@
 				6595195425A8704300CC15E0 /* CountryCodeListSectionModel.swift in Sources */,
 				65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
+				65CD777825EB4A9E00D042FD /* PrivacySettingListDataSource.swift in Sources */,
 				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
 				653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */,
 				6534089B259A77280072542D /* UIImage.swift in Sources */,
@@ -1611,6 +1632,7 @@
 				CEDEB84E258CE194007B2BCA /* ErrorParser.swift in Sources */,
 				65A62A0425E700AC000AA184 /* EventTableChatHeaderView.swift in Sources */,
 				658F851425E8D79600EBE6A1 /* DSSubscribtionCountView.swift in Sources */,
+				65CD777325EB4A9800D042FD /* PrivacySettingListController.swift in Sources */,
 				656CC26A259A521000DEC84C /* LoadJson.swift in Sources */,
 				6531795725D10F9F001DBA4B /* SportTypeListView.swift in Sources */,
 				6568F8DE25B4F97100225043 /* FeedAssembly.swift in Sources */,
@@ -1682,6 +1704,7 @@
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
 				657C063725AF2D2A000DBD9B /* CodeEntryCoordinator.swift in Sources */,
 				65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */,
+				65CD776E25EB4A9100D042FD /* PrivacySettingListView.swift in Sources */,
 				653179DD25D112C7001DBA4B /* DateSelectionViewController.swift in Sources */,
 				65CD771525EB301B00D042FD /* DSSwitch.swift in Sources */,
 				65EEB95B25EA022E00821F8F /* SettingsController.swift in Sources */,
@@ -1752,6 +1775,7 @@
 				CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */,
 				CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */,
 				65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */,
+				65CD776925EB4A8C00D042FD /* PrivacySettingListCoordinator.swift in Sources */,
 				6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */,
 				65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */,
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
