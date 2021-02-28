@@ -16,6 +16,7 @@ public enum Texts {
         static let subscribes = "Подписки"
         static let account = "Аккаунт"
         static let alerts = "Увядомления"
+        static let sound = "Звук"
     }
 }
 
@@ -242,12 +243,20 @@ extension Texts {
         static let sectionOneTitle = "Уведомления о сообщенииях"
         static let showNotifications = "Показывать уведомления"
         static let showText = "Показывать текст"
-        static let sound = "Звук"
+        static let sound = Common.sound
         static let secondSectionTitle = "Уведомления о событиях площадок и людей, на которых вы подписаны"
         static let groundEvents = "События площадок"
         static let usersEvents = "События людей"
         static let newGroundsAround = "О новых площадках поблизости"
         static let newEventsAround = "О новых событиях поблизости"
+    }
+}
+
+//MARK: - SoundList screen
+extension Texts {
+    enum SoundList {
+        static let title = Common.sound
+        static let tableSection = "Звуки сообщений"
     }
 }
 

@@ -93,7 +93,7 @@ extension NotificationSettingsDataSource:  UITableViewDataSource {
         let label = UILabel()
         label.numberOfLines = Int(2)
         label.textColor = Colors.dirtyBlue
-        label.font = Fonts.sfProRegular(size: CGFloat(18))
+        label.font = Fonts.sfProRegular(size: CGFloat(17))
         label.text = sectionText
         return label
     }
