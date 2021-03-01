@@ -45,8 +45,13 @@ final class SettingsCoordinator: Coordinator {
         coordinator.start()
     }
     
-    func goToLanguageListModule(with title: String?) {
-        
+    func goToLanguageListModule(compilation: @escaping (String) -> Swift.Void) {
+        let coordinator = AppLanguageListCoordinator(
+            navController: navigationController,
+            compilation: compilation
+        )
+        store(coordinator: coordinator)
+        coordinator.start()
     }
     
     func goToSupportSettingsModule(with title: String?) {

@@ -104,8 +104,10 @@ extension SettingsController: SettingsDataSourceDelegate {
                 print(privacyMode) /// use it later while implementing back-end
                 /// TODO: implement selected privacy mode persistency and using that mode when go again to privacy screen
             }
-        case .language(_, let title):
-            coordinator?.goToLanguageListModule(with: title)
+        case .language:
+            coordinator?.goToLanguageListModule() { language in
+                print(language)
+            }
         case .help(_, let title):
             coordinator?.goToSupportSettingsModule(with: title)
         }
