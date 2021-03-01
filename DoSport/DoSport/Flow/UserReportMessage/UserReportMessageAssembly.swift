@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+final class UserReportMessageAssembly: Assembly {
+    
+    func makeModule() -> UserReportMessageController {
+        let viewModel = UserReportMessageViewModel()
+        let viewController = UserReportMessageController(viewModel: viewModel)
+        return viewController
+    }
+}
