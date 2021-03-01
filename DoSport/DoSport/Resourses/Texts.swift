@@ -17,7 +17,9 @@ public enum Texts {
         static let account = "Аккаунт"
         static let alerts = "Увядомления"
         static let sound = "Звук"
+        static let language = "Язык"
         static let privacy = "Конфеденциальность"
+        static let help = "Помощь"
     }
 }
 
@@ -224,8 +226,8 @@ extension Texts {
         static let account = Common.account
         static let alerts = Common.alerts
         static let privacy = Common.privacy
-        static let language = "Язык"
-        static let help = "Помощь"
+        static let language = Common.language
+        static let help = Common.help
     }
 }
 
@@ -268,6 +270,17 @@ extension Texts {
         static let allUsers = "От всех пользователей"
         static let subsribtionUsers = "Только от подписчиков и подписок "
         static let subscrobtions = "Только от подписок"
+    }
+}
+
+//MARK: - UserSupportSettings screen
+extension Texts {
+    enum UserSupportSettings {
+        static let title = Common.help
+        static let reportAProblem = "Сообщить о проблеме"
+        static let supportRequest = "Запросы поддержки"
+        static let dataUsagePolicy = "Политика использования данных"
+        static let appUsagePolicy = "Условия использования"
     }
 }
 
