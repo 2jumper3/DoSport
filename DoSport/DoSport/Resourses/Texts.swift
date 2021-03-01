@@ -20,6 +20,9 @@ public enum Texts {
         static let language = "Язык"
         static let privacy = "Конфеденциальность"
         static let help = "Помощь"
+        static let reportAProblem = "Сообщить о проблеме"
+        static let send = "Отправить"
+        static let userName = "Никнейм"
     }
 }
 
@@ -100,7 +103,7 @@ extension Texts {
         static let addAvatar = "Загузить фото"
         static let save = Common.save
         
-        static let userName = "Никнейм"
+        static let userName = Common.userName
         static let userNameError = "Никнейм занят"
         
         static let password = "Пароль"
@@ -277,7 +280,7 @@ extension Texts {
 extension Texts {
     enum UserSupportSettings {
         static let title = Common.help
-        static let reportAProblem = "Сообщить о проблеме"
+        static let reportAProblem = Common.reportAProblem
         static let supportRequest = "Запросы поддержки"
         static let dataUsagePolicy = "Политика использования данных"
         static let appUsagePolicy = "Условия использования"

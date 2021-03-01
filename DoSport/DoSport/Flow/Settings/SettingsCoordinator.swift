@@ -55,6 +55,8 @@ final class SettingsCoordinator: Coordinator {
     }
     
     func goToSupportSettingsModule(with title: String?) {
-        
+        let coordinator = UserSupportSettingsCoordinator(navController: navigationController)
+        store(coordinator: coordinator)
+        coordinator.start()
     }
 }
