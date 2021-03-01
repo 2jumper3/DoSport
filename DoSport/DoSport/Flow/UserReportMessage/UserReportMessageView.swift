@@ -55,6 +55,8 @@ final class UserReportMessageView: UIView {
         reportTextView.delegate = self
         
         addSubviews(avatarImageView, userNameLabel, reportTextView, sendButton)
+        
+        reportTextView.becomeFirstResponder()
     }
     
     required init?(coder: NSCoder) {
