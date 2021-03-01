@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+final class UserReportMessageViewModel {
+    
+    init() {
+        
+    }
+}
+
+//MARK: Public API
+
+extension UserReportMessageViewModel {
+    
+    func sendReport() {
+        
+    }
+}
