@@ -61,15 +61,37 @@ struct Sport: Codable {
         case tennis = "Теннис"
         case workout = "Воркаут"
         case run = "Бег"
-        case gym = "Треножерный зал"
+        case gym = "Тренажерный зал"
         case yoga = "Йога"
         case box = "Бокс"
-        case group = "Групповое трени"
+        case group = "Групповые тренировки"
         case dance = "Танцы"
         case tablettennis = "Настольный теннис"
         case skateboard = "Скейтборд"
         case badminton = "Бадминтон"
         case other = "Другое"
+    }
+
+    static func returnSportTypeModelsList() -> [Sport] {
+        let typeOfSports = [
+            Sport(type: .football),
+            Sport(type: .basketball),
+            Sport(type: .hockey),
+            Sport(type: .volleyball),
+            Sport(type: .tennis),
+            Sport(type: .workout),
+            Sport(type: .run),
+            Sport(type: .gym),
+            Sport(type: .yoga),
+            Sport(type: .box),
+            Sport(type: .group),
+            Sport(type: .dance),
+            Sport(type: .tablettennis),
+            Sport(type: .skateboard),
+            Sport(type: .badminton),
+        ]
+
+        return typeOfSports
     }
 }
 
