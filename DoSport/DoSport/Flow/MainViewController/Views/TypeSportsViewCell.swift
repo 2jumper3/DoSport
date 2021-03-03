@@ -65,7 +65,7 @@ final class TypeSportsViewCell: UICollectionViewCell {
 
     func configureCell(typeOfSport: Sport) {
         self.nameTypeSport.text = typeOfSport.title?.description
-        if let icon = typeOfSport.icon {
+        if let icon = typeOfSport.icon?.description {
             self.imageView.image = UIImage(named: icon)
         } else {
             self.imageView.image = UIImage()
