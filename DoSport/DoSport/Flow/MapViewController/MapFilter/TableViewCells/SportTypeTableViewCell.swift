@@ -17,7 +17,7 @@ class SportTypeTableViewCell: UITableViewCell {
         return label
     }()
     private lazy var arrowImage: UIImageView = {
-        let view = UIImageView(image: UIImage.init(named: "Arrow"))
+        let view = UIImageView(image: Icons.image(named: "Arrow"))
         return view
     }()
     

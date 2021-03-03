@@ -34,28 +34,28 @@ class PlaceTypeTableViewCell: UITableViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = Colors.darkBlue
-        contentView.addSubviews([groundButton, trainingButton, studioButton,clubsButton,challengesButton,groupButton])
-        headName.translatesAutoresizingMaskIntoConstraints = false
-        arrowImage.translatesAutoresizingMaskIntoConstraints = false
+        groundButton.translatesAutoresizingMaskIntoConstraints = false
+        trainingButton.translatesAutoresizingMaskIntoConstraints = false
+        studioButton.translatesAutoresizingMaskIntoConstraints = false
+        clubsButton.translatesAutoresizingMaskIntoConstraints = false
+        challengesButton.translatesAutoresizingMaskIntoConstraints = false
+        groupButton.translatesAutoresizingMaskIntoConstraints = false
 
-        headName.snp.makeConstraints { (make) in
+        let groupButtons = UIStackView(arrangedSubviews: [groundButton, trainingButton, studioButton,clubsButton,challengesButton,groupButton])
+        contentView.addSubview(groupButtons)
+        groupButtons.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.top)
-            make.height.equalTo(60)
+            make.height.equalTo(100)
             make.left.equalTo(contentView.snp.left).offset(16)
             make.bottom.equalTo(contentView.snp.bottom).priority(999)
         }
-        arrowImage.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView.snp.centerY)
-            make.right.equalTo(contentView.snp.right).offset(-16)
-            make.height.equalTo(16)
-            make.width.equalTo(8.8)
-        }
+        groupButtons.spacing = 10
+        groupButtons.alignment = .leading
     }
-    
     func textAdding(text: String)  {
-        headName.text = text
+//        headName.text = text
     }
 
 }
 
-}
+
