@@ -23,6 +23,15 @@ protocol RequestRouter: URLRequestConvertible {
 }
 
 extension RequestRouter {
+    
+    var headers: HTTPHeaders {
+        return HTTPHeaders([])
+    }
+    
+    var baseUrl: URL {
+        return AppConfiguration.serverURL
+    }
+    
     var fullUrl: URL {
         return baseUrl.appendingPathComponent(path)
     }

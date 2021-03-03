@@ -28,3 +28,15 @@ final class AuthViewModel {
         compilation(.notRegistred)
     }
 }
+
+enum AuthDataFlow {
+    
+    enum AuthEmailCheck {
+        
+    }
+    
+    enum ViewControllerState {
+        case result(code: Int?)
+        case noResult
+    }
+}

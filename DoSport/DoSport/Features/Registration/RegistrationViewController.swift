@@ -70,11 +70,9 @@ final class RegistrationViewController: UIViewController {
 
 extension RegistrationViewController: RegistrationViewDelegate {
     
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?) {
-        //создать модель с этими данными или передать данные в vm и создать модель там
-        viewModel.createUser() { [weak self] in
-            self?.coordinator?.goToSportTypeListModule()
-        }
+    func saveButtonClicked(with viewData: RegistrationView.ViewData) {
+        
+        viewModel.register(with: viewData)
     }
     
     func avatarChangeButtonClicked() {

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RegistrationViewDelegate: class {
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?)
+    func saveButtonClicked(with viewData: RegistrationView.ViewData)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
@@ -16,6 +16,15 @@ protocol RegistrationViewDelegate: class {
 final class RegistrationView: UIView {
     
     weak var delegate: RegistrationViewDelegate?
+    
+    struct ViewData {
+        let avatar: UIImage?
+        let userName: String?
+        let password: String?
+        let passwordConfirm: String?
+        let dob: String?
+        let gender: String?
+    }
     
     private var gender: String?
     
@@ -199,10 +208,14 @@ private extension RegistrationView {
     
     func handleSaveButton() {
         delegate?.saveButtonClicked(
-            with: userNameTextField.text,
-            password: passwordTextField.text,
-            dob: dobTextField.text,
-            gender: gender
+            with: .init(
+                avatar: avatarImage,
+                userName: userNameTextField.text,
+                password: passwordTextField.text,
+                passwordConfirm: passwordTextField.text,
+                dob: dobTextField.text,
+                gender: gender
+            )
         )
     }
     
