@@ -1216,14 +1216,14 @@
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		CEBA62EF2593F3E2006A7F80 /* MainViewController */ = {
+		CEBA62EF2593F3E2006A7F80 /* TypeSportsListController */ = {
 			isa = PBXGroup;
 			children = (
 				0401A13725EFA47400A1659E /* Views */,
 				CEBA62F02593F3FB006A7F80 /* TypeSportsListController.swift */,
 				0401A13225EFA44F00A1659E /* TypeSportsListViewModel.swift */,
 			);
-			path = MainViewController;
+			path = TypeSportsListController;
 			sourceTree = "<group>";
 		};
 		CEDEB770258CB404007B2BCA = {
@@ -1396,7 +1396,7 @@
 				65EAAA9425CD59A9005E0131 /* Event */,
 				6531791D25D10DF6001DBA4B /* EventCreate */,
 				6568F8DC25B4F85C00225043 /* Feed */,
-				CEBA62EF2593F3E2006A7F80 /* MainViewController */,
+				CEBA62EF2593F3E2006A7F80 /* TypeSportsListController */,
 				65782D9325EB18B50063A52A /* NotificationSettings */,
 				CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */,
 				65CD776725EB4A7700D042FD /* PrivacySettingList */,
