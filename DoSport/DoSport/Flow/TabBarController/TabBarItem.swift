@@ -21,9 +21,9 @@ enum TabBarItem: String, CaseIterable {
         case .home:
             return FeedAssembly().makeModule()
         case .map:
-            return MainViewController()
+            return TypeSportsListController()
         case .chat:
-            return MainViewController()
+            return TypeSportsListController()
         case .user:
             return UserMainAssembly(user: nil).makeModule()
         }
