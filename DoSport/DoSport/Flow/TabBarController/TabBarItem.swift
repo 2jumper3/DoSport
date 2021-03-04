@@ -23,7 +23,7 @@ enum TabBarItem: String, CaseIterable {
         case .map:
             return MapAssembly().makeModule()
         case .chat:
-            return MainViewController()
+            return TypeSportsListController()
         case .user:
             return UserMainAssembly(user: nil).makeModule()
         }

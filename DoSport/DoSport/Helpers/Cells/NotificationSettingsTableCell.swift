@@ -36,7 +36,7 @@ final class NotificationSettingsTableCell: UITableViewCell {
         
         switchControl.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.right.equalToSuperview().offset(-5)
         }
     }
 }
