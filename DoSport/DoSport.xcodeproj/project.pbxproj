@@ -267,6 +267,7 @@
 		CE83ACC325E8132200A2C6E1 /* PlaceTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ACC225E8132100A2C6E1 /* PlaceTypeTableViewCell.swift */; };
 		CE83ACCD25EB6AF000A2C6E1 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
 		CE83ACDB25EFFD9400A2C6E1 /* TypeSportsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ACDA25EFFD9400A2C6E1 /* TypeSportsListController.swift */; };
+		CE83ACEB25F2BCEC00A2C6E1 /* StreetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ACEA25F2BCEB00A2C6E1 /* StreetTableViewCell.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
 		CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */; };
@@ -571,6 +572,7 @@
 		CE83AC6825E59B4B00A2C6E1 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		CE83ACC225E8132100A2C6E1 /* PlaceTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTypeTableViewCell.swift; sourceTree = "<group>"; };
 		CE83ACDA25EFFD9400A2C6E1 /* TypeSportsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TypeSportsListController.swift; path = DoSport/Flow/TypeSportsListController/TypeSportsListController.swift; sourceTree = SOURCE_ROOT; };
+		CE83ACEA25F2BCEB00A2C6E1 /* StreetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetTableViewCell.swift; sourceTree = "<group>"; };
 		CE92157925B48B4E003BF78E /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -1326,6 +1328,7 @@
 				CE83AC5C25E59B4B00A2C6E1 /* MetroSelectTableViewCell.swift */,
 				CE83AC5D25E59B4B00A2C6E1 /* SportTypeTableViewCell.swift */,
 				CE83ACC225E8132100A2C6E1 /* PlaceTypeTableViewCell.swift */,
+				CE83ACEA25F2BCEB00A2C6E1 /* StreetTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1970,6 +1973,7 @@
 				CEDEB85C258CE1C7007B2BCA /* AuthRequest.swift in Sources */,
 				657C063725AF2D2A000DBD9B /* CodeEntryCoordinator.swift in Sources */,
 				65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */,
+				CE83ACEB25F2BCEC00A2C6E1 /* StreetTableViewCell.swift in Sources */,
 				65CD776E25EB4A9100D042FD /* PrivacySettingListView.swift in Sources */,
 				653179DD25D112C7001DBA4B /* DateSelectionViewController.swift in Sources */,
 				65CD771525EB301B00D042FD /* DSSwitch.swift in Sources */,

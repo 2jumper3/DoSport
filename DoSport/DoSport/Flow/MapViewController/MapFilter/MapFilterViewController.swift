@@ -58,9 +58,14 @@ class MapFilterViewController: UITableViewController {
 
             return cell
         }
+        else if indexPath.row == 3 {
+            let cell: StreetTableViewCell = StreetTableViewCell(style: .default, reuseIdentifier: "fourhCustomCell")
+
+            return cell
+        }
         else {
             let cell: PlaceTypeTableViewCell = PlaceTypeTableViewCell(style: .default, reuseIdentifier: "thirdCustomCell")
-
+            
             return cell
         }
     }
