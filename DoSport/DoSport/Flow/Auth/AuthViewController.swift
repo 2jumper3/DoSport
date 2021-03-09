@@ -67,6 +67,7 @@ final class AuthViewController: UIViewController {
         
         authView.removeTextFieldResponder()
     }
+    
 }
 
 extension AuthViewController: AuthViewDelegate {
@@ -86,5 +87,8 @@ extension AuthViewController: AuthViewDelegate {
                 self?.coordinator?.goToCodeEntryModule(text)
             }
         }
+    }
+    func fbAuthPassed() {
+        coordinator?.goToMainTabBar()
     }
 }

@@ -42,4 +42,9 @@ final class AuthCoordinator: Coordinator {
         store(coordinator: coordinator)
         coordinator.start()
     }
+    func goToMainTabBar() {
+        let coordinator = MainTabBarCoordinator(navController: self.navigationController)
+        self.store(coordinator: coordinator)
+        coordinator.start()
+    }
 }

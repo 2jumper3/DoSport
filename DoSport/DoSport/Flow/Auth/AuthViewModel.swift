@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 final class AuthViewModel {
     
     /// TEMPRORARY ENUM.

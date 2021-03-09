@@ -7,15 +7,23 @@
 
 import UIKit
 import SnapKit
+import FBSDKLoginKit
 
 protocol AuthViewDelegate: AnyObject {
     func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
+    func fbAuthPassed()
 }
 
-final class AuthView: UIView {
+final class AuthView: UIView, LoginButtonDelegate {
+
     
     weak var delegate: AuthViewDelegate?
+    
+    private lazy var fbLoginBtn: FBLoginButton = {
+        $0.delegate = self
+        return $0
+    }(FBLoginButton())
     
     private let logoImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +88,7 @@ final class AuthView: UIView {
             object: nil
         )
         
-        addSubviews(logoImageView,titleLabel,descriptionLabel,phoneNumberAddView,regulationsLabel,submitButton)
+        addSubviews(logoImageView,titleLabel,descriptionLabel,phoneNumberAddView,regulationsLabel,submitButton, fbLoginBtn)
     }
     
     required init?(coder: NSCoder) {
@@ -127,7 +135,10 @@ final class AuthView: UIView {
             $0.width.centerX.equalTo(phoneNumberAddView)
             $0.height.equalTo(descriptionLabel)
         }
-        
+        fbLoginBtn.snp.makeConstraints {
+            $0.top.equalTo(regulationsLabel.snp.bottom).offset(10)
+            $0.centerX.equalTo(self.snp.centerX)
+        }
         submitButton.snp.makeConstraints {
             if #available(iOS 11.0, *) {
                 $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
@@ -168,6 +179,15 @@ final class AuthView: UIView {
             self.submitButton.transform = .identity
         }
     }
+    
+    //MARK: - FaceBookDelegate Methods
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        delegate?.fbAuthPassed()
+    }
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        return
+    }
+    
 }
 
 //MARK: - Public Methods
@@ -186,5 +206,9 @@ extension AuthView {
     func removeTextFieldResponder() {
         phoneNumberAddView.removeFirstResponder()
     }
+
 }
+
+
+// Swift // // Добавьте этот код в заголовок файла, например в ViewController.swift import FBSDKLoginKit // Добавьте этот код в тело класса ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let loginButton = FBLoginButton() loginButton.center = view.center view.addSubview(loginButton) } }
 

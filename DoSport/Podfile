@@ -12,5 +12,6 @@ target 'DoSport' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'SDWebImage', '~> 5.0'
   pod 'RangeSeekSlider'
-  pod 'FSCalendar'
+  pod 'FSCalendar'	
+
 end
