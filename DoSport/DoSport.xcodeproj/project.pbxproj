@@ -241,6 +241,7 @@
 		65EEE91925B626290023168D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91825B626290023168D /* AppConfiguration.swift */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
+		CE2B5D8A25F7EABF007E5EEA /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B5D8925F7EABF007E5EEA /* PriceTableViewCell.swift */; };
 		CE83ABE025E58DE100A2C6E1 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ABDF25E58DE100A2C6E1 /* FilterButton.swift */; };
 		CE83AC6925E59B7000A2C6E1 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */; };
 		CE83AC6A25E59B7000A2C6E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */; };
@@ -541,6 +542,7 @@
 		7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		CE2B5D8925F7EABF007E5EEA /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		CE83AB0425C42C7400A2C6E1 /* PlacemarkMapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkMapObjectTapListener.swift; sourceTree = "<group>"; };
 		CE83AB5025CFCD7800A2C6E1 /* PreviewLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationView.swift; sourceTree = "<group>"; };
 		CE83AB7A25DB9F9F00A2C6E1 /* MapFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterModel.swift; sourceTree = "<group>"; };
@@ -1329,6 +1331,7 @@
 				CE83AC5D25E59B4B00A2C6E1 /* SportTypeTableViewCell.swift */,
 				CE83ACC225E8132100A2C6E1 /* PlaceTypeTableViewCell.swift */,
 				CE83ACEA25F2BCEB00A2C6E1 /* StreetTableViewCell.swift */,
+				CE2B5D8925F7EABF007E5EEA /* PriceTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1838,6 +1841,7 @@
 				657C063C25AF2D30000DBD9B /* CodeEntryViewController.swift in Sources */,
 				6568F8F725B4F99000225043 /* FeedDataSource.swift in Sources */,
 				CE83ACDB25EFFD9400A2C6E1 /* TypeSportsListController.swift in Sources */,
+				CE2B5D8A25F7EABF007E5EEA /* PriceTableViewCell.swift in Sources */,
 				656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */,
 				65CD773F25EB3EC700D042FD /* SoundListController.swift in Sources */,
 				6531792425D10E10001DBA4B /* EventCreateViewController.swift in Sources */,

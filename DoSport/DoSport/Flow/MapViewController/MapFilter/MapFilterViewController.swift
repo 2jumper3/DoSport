@@ -35,7 +35,7 @@ class MapFilterViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
@@ -54,7 +54,7 @@ class MapFilterViewController: UITableViewController {
             return cell
         }
         else if indexPath.row == 2 {
-            let cell: MetroSelectTableViewCell = MetroSelectTableViewCell(style: .default, reuseIdentifier: "fourthCustomCell")
+            let cell: MetroSelectTableViewCell = MetroSelectTableViewCell(style: .default, reuseIdentifier: "thirdCustomCell")
 
             return cell
         }
@@ -62,9 +62,14 @@ class MapFilterViewController: UITableViewController {
             let cell: StreetTableViewCell = StreetTableViewCell(style: .default, reuseIdentifier: "fourhCustomCell")
 
             return cell
+        } else if indexPath.row == 4 {
+            let cell: PriceTableViewCell = PriceTableViewCell(style: .default, reuseIdentifier: "fifthCustomCell")
+
+            return cell
         }
+
         else {
-            let cell: PlaceTypeTableViewCell = PlaceTypeTableViewCell(style: .default, reuseIdentifier: "thirdCustomCell")
+            let cell: PlaceTypeTableViewCell = PlaceTypeTableViewCell(style: .default, reuseIdentifier: "sixCustomCell")
             
             return cell
         }
