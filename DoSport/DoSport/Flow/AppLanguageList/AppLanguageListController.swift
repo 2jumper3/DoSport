@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import DoSportSwiftUI
+
+#if canImport(SwiftUI)
+import SwiftUI
+#endif
 
 final class AppLanguageListController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -42,6 +47,24 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            let hostingController = UIHostingController(rootView: AuthViewSUI())
+            
+            addChild(hostingController)
+            view.addSubview(hostingController.view)
+            hostingController.didMove(toParent: self)
+            
+            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+                hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+                hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor)
+            ])
+        } else {
+            
+        }
         
         setupNavBar()
         appLanguageListView.updateCollectionDataSource(dateSource: appLanguageListManager)
