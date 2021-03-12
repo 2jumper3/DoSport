@@ -6,19 +6,24 @@
 //
 
 import UIKit
-import DoSportSwiftUI
 
-#if canImport(SwiftUI)
-import SwiftUI
-#endif
-
+/// Describes handling view events and user interactions in App Language selection screen.
 final class AppLanguageListController: UIViewController, UIGestureRecognizerDelegate {
     
+    /// Coordinator object that's used to call nagication methods
     weak var coordinator: AppLanguageListCoordinator?
+    
+    /// Custom view containing all UI elements and their layouts
     private lazy var appLanguageListView = view as! AppLanguageListView
+    
+    /// Manager object  handles all tableView's dataSource & delegate methods
     private let appLanguageListManager = AppLanguageListDataSource()
     
-    private let compilation: (String) -> Swift.Void
+    /// Compilation that returns app language to the previous screen when user selects.
+    ///
+    /// - Parameters:
+    ///     - language: the app language that is `String` which user can select when clicking cell
+    private let compilation: (_ language: String) -> Swift.Void
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -48,24 +53,6 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            let hostingController = UIHostingController(rootView: AuthViewSUI())
-            
-            addChild(hostingController)
-            view.addSubview(hostingController.view)
-            hostingController.didMove(toParent: self)
-            
-            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
-                hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-                hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor)
-            ])
-        } else {
-            
-        }
-        
         setupNavBar()
         appLanguageListView.updateCollectionDataSource(dateSource: appLanguageListManager)
     }
@@ -88,6 +75,7 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
 
 private extension AppLanguageListController {
     
+    /// Sets navigation bar title text, back bar button and gesture recogniser to go back by swipe
     func setupNavBar() {
         title = Texts.Common.language
         
@@ -116,7 +104,10 @@ extension AppLanguageListController: AppLanguageListViewDelegate { }
 
 extension AppLanguageListController: AppLanguageListDataSourceDelegate {
     
-    func tableView(didSelect sound: String) {
-        compilation(sound)
+    /// Called when user selects app sound setting from the list of sounds
+    /// - Parameters:
+    ///     - language: The language `string` name inside tableCell that user can select
+    func tableView(didSelect language: String) {
+        compilation(language)
     }
 }

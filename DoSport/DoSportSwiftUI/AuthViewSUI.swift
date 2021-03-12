@@ -11,7 +11,6 @@ import SwiftUI
 
 import MapKit
 
-
 struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         MKMapView(frame: .zero)
@@ -28,6 +27,7 @@ struct MapView: UIViewRepresentable {
 
 @available(iOS 13.0, *)
 struct CircleImage: View {
+    
     var body: some View {
         Image("logo")
             .clipShape(Circle())
@@ -44,15 +44,19 @@ struct AuthViewSUI: View {
             MapView()
                 .frame(height: 250)
                 .edgesIgnoringSafeArea(.top)
+            
             CircleImage()
                 .offset(y: -100)
                 .padding(.bottom, -40)
+            
             VStack(alignment: .leading) {
                 Text("Kamol")
                     .font(.title)
+                
                 HStack {
                     Text("Ibragimov")
                         .font(.subheadline)
+                    
                     Spacer()
                     Text("Abdurasul ogli")
                         .font(.subheadline)
