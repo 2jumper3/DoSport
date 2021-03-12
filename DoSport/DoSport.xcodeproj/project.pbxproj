@@ -128,6 +128,7 @@
 		65993B2B25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993B2925FBD78D00CC7E49 /* AuthViewSUI.swift */; };
 		65993B8225FBE57500CC7E49 /* DoSportSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */; };
 		65993B8325FBE57500CC7E49 /* DoSportSwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65993B8E25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */; };
 		659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */; };
 		659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* RegistrationViewController.swift */; };
 		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
@@ -425,6 +426,7 @@
 		65993B1C25FBD73C00CC7E49 /* DoSportSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoSportSwiftUI.h; sourceTree = "<group>"; };
 		65993B1D25FBD73C00CC7E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65993B2925FBD78D00CC7E49 /* AuthViewSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewSUI.swift; sourceTree = "<group>"; };
+		65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addSwiftUI.swift"; sourceTree = "<group>"; };
 		659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
 		659C619A2593DB2700C33D05 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -1416,19 +1418,20 @@
 		CEDEB895258CEC2F007B2BCA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				65D2971F25DD644C005AC413 /* Date+currentDate.swift */,
 				652E326025DC16D000077344 /* UI+addTargets.swift */,
 				65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */,
 				6529500B258D6EE2002AA621 /* UIColor+inits.swift */,
 				658E0AA725D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift */,
 				CEDEB913258D4C75007B2BCA /* UIImage.swift */,
 				6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */,
+				65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */,
 				654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */,
+				6552CF3525EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift */,
 				65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */,
 				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
-				65D2971F25DD644C005AC413 /* Date+currentDate.swift */,
-				65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */,
 				65DC54A125E9CE7400712EC7 /* UIViewController.swift */,
-				6552CF3525EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift */,
+				65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1778,6 +1781,7 @@
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
 				65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */,
 				65CDF8AE25DB123B0049F711 /* SportGroundSelectionListDataSource.swift in Sources */,
+				65993B8E25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift in Sources */,
 				65DC544025E9957200712EC7 /* DSEventControlButton.swift in Sources */,
 				6531796625D10FB4001DBA4B /* SportTypeListCoordinator.swift in Sources */,
 				65B150F625DEBC5F00720015 /* EventInviteDataSource.swift in Sources */,
