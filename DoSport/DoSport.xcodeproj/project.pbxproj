@@ -234,6 +234,7 @@
 		65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */; };
 		65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */; };
 		65EAAAC525CD6024005E0131 /* FeedFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAC425CD6024005E0131 /* FeedFilterButton.swift */; };
+		65EC680125FD1EDB00103B0A /* DSPushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EC680025FD1EDB00103B0A /* DSPushNotificationManager.swift */; };
 		65ECB2B6259BAA6600BF8CEE /* CountryCodeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2B5259BAA6600BF8CEE /* CountryCodeListDataSource.swift */; };
 		65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */; };
 		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
@@ -535,6 +536,7 @@
 		65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
 		65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssembly.swift; sourceTree = "<group>"; };
 		65EAAAC425CD6024005E0131 /* FeedFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterButton.swift; sourceTree = "<group>"; };
+		65EC680025FD1EDB00103B0A /* DSPushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPushNotificationManager.swift; sourceTree = "<group>"; };
 		65ECB2B5259BAA6600BF8CEE /* CountryCodeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeListDataSource.swift; sourceTree = "<group>"; };
 		65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCountryCell.swift; sourceTree = "<group>"; };
 		65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellForRow.swift"; sourceTree = "<group>"; };
@@ -1210,6 +1212,14 @@
 			path = FeedFilter;
 			sourceTree = "<group>";
 		};
+		65EC67FF25FD1EBC00103B0A /* UserNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				65EC680025FD1EDB00103B0A /* DSPushNotificationManager.swift */,
+			);
+			path = UserNotifications;
+			sourceTree = "<group>";
+		};
 		65ECB2BD259BAC7100BF8CEE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1350,6 +1360,7 @@
 		CEDEB83B258CE0EF007B2BCA /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				65EC67FF25FD1EBC00103B0A /* UserNotifications */,
 				CEDEB83C258CE0FE007B2BCA /* Network */,
 			);
 			path = Service;
@@ -1768,6 +1779,7 @@
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
 				65CD777825EB4A9E00D042FD /* PrivacySettingListDataSource.swift in Sources */,
 				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
+				65EC680125FD1EDB00103B0A /* DSPushNotificationManager.swift in Sources */,
 				653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */,
 				6534089B259A77280072542D /* UIImage.swift in Sources */,
 				65CDF8A925DB12320049F711 /* SportGroundSelectionListViewModel.swift in Sources */,
