@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Delegates AppLanguageListDataSource main methods to AppLanguageListController class
 protocol AppLanguageListDataSourceDelegate: class {
     
     /// Called when user selects app sound setting from the list of sounds
@@ -19,9 +18,13 @@ protocol AppLanguageListDataSourceDelegate: class {
 /// Describes AppLanguage screen's table data souce object
 final class AppLanguageListDataSource: NSObject {
     
+    /// Delegates AppLanguage table methods to AppLanguageListController class
     weak var delegate: AppLanguageListDataSourceDelegate?
     
+    /// Languages in `String` type used to display in table cell
     private let viewModels: [String]
+    
+    /// Number used to store selected cell row value
     private var selectedRow: Int = 0
     
     override init() {

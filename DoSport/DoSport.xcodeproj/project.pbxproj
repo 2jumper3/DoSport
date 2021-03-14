@@ -23,6 +23,7 @@
 		6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */; };
 		6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D77025B0DB130063EF76 /* DSTextField.swift */; };
 		6511D77625B0E5A10063EF76 /* DSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D77525B0E5A10063EF76 /* DSButton.swift */; };
+		651FBF5825FE13F00018C6B1 /* AppLanguageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */; };
 		6527303425C1B15B00550ED1 /* FeedFilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6527303325C1B15B00550ED1 /* FeedFilterButtonsView.swift */; };
 		65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65294D9925B38311003E7ED2 /* DatePicker.swift */; };
 		6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529500B258D6EE2002AA621 /* UIColor+inits.swift */; };
@@ -183,7 +184,6 @@
 		65CD778F25EB527400D042FD /* DSAppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD778E25EB527400D042FD /* DSAppLanguage.swift */; };
 		65CD779525EB535600D042FD /* AppLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD779425EB535600D042FD /* AppLanguageListView.swift */; };
 		65CD779A25EB535A00D042FD /* AppLanguageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD779925EB535A00D042FD /* AppLanguageListController.swift */; };
-		65CD779F25EB536200D042FD /* AppLanguageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD779E25EB536200D042FD /* AppLanguageListCoordinator.swift */; };
 		65CD77A425EB536900D042FD /* AppLanguageListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */; };
 		65CD77B325EB581200D042FD /* UserSupportSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD77B225EB581200D042FD /* UserSupportSettingsController.swift */; };
 		65CD77C025EB581F00D042FD /* UserSupportSettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD77BF25EB581F00D042FD /* UserSupportSettingsDataSource.swift */; };
@@ -332,6 +332,7 @@
 		6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
 		6511D77025B0DB130063EF76 /* DSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTextField.swift; sourceTree = "<group>"; };
 		6511D77525B0E5A10063EF76 /* DSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSButton.swift; sourceTree = "<group>"; };
+		651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListCoordinator.swift; sourceTree = "<group>"; };
 		6527303325C1B15B00550ED1 /* FeedFilterButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterButtonsView.swift; sourceTree = "<group>"; };
 		65294D9925B38311003E7ED2 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		6529500B258D6EE2002AA621 /* UIColor+inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+inits.swift"; sourceTree = "<group>"; };
@@ -486,7 +487,6 @@
 		65CD778E25EB527400D042FD /* DSAppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSAppLanguage.swift; sourceTree = "<group>"; };
 		65CD779425EB535600D042FD /* AppLanguageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListView.swift; sourceTree = "<group>"; };
 		65CD779925EB535A00D042FD /* AppLanguageListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListController.swift; sourceTree = "<group>"; };
-		65CD779E25EB536200D042FD /* AppLanguageListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListCoordinator.swift; sourceTree = "<group>"; };
 		65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListDataSource.swift; sourceTree = "<group>"; };
 		65CD77B225EB581200D042FD /* UserSupportSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupportSettingsController.swift; sourceTree = "<group>"; };
 		65CD77BF25EB581F00D042FD /* UserSupportSettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupportSettingsDataSource.swift; sourceTree = "<group>"; };
@@ -1040,7 +1040,7 @@
 			isa = PBXGroup;
 			children = (
 				65CD779925EB535A00D042FD /* AppLanguageListController.swift */,
-				65CD779E25EB536200D042FD /* AppLanguageListCoordinator.swift */,
+				651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */,
 				65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */,
 				65CD779425EB535600D042FD /* AppLanguageListView.swift */,
 			);
@@ -1818,7 +1818,6 @@
 				65CDF89A25DB12080049F711 /* SportGroundSelectionListViewController.swift in Sources */,
 				65D973FB25B4731800769653 /* SportTypeGridViewController.swift in Sources */,
 				65CD77A425EB536900D042FD /* AppLanguageListDataSource.swift in Sources */,
-				65CD779F25EB536200D042FD /* AppLanguageListCoordinator.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				65CD773A25EB3EB700D042FD /* SoundListView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
@@ -1896,6 +1895,7 @@
 				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
 				657C064125AF2D50000DBD9B /* CodeEntryView.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
+				651FBF5825FE13F00018C6B1 /* AppLanguageListCoordinator.swift in Sources */,
 				654D706725E8903D00B37AD3 /* EventCardTableCell.swift in Sources */,
 				65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,

@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// Describes navigation & coordination of class that controlls Authentification screen.
 final class AuthCoordinator: Coordinator {
     
+    /// NavigationController's root viewController object .
     let rootViewController: AuthViewController
     
     var childCoordinators: [Coordinator] = []

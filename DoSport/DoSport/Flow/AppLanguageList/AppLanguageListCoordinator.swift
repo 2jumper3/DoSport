@@ -10,11 +10,11 @@ import UIKit
 /// Describes navigation & coordination of class that controlls App Language selection screen.
 final class AppLanguageListCoordinator: Coordinator {
     
-    /// Object that controlls the view events in App Language selection screen.
+    /// NavigationController's root viewController object .
     let rootViewController: AppLanguageListController
     
-    ///
     var childCoordinators: [Coordinator] = []
+    
     var navigationController: UINavigationController?
     
     /// Initialises an AppLanguageListCoordinator object.
@@ -28,7 +28,6 @@ final class AppLanguageListCoordinator: Coordinator {
         self.navigationController = navController
     }
     
-    /// Shows `rootViewController`  with animation by `push` method.
     func start() {
         rootViewController.coordinator = self
         navigationController?.pushViewController(rootViewController, animated: true)
