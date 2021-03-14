@@ -1608,7 +1608,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					65993B1925FBD73C00CC7E49 = {
 						CreatedOnToolsVersion = 12.4;
@@ -2070,7 +2070,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2102,7 +2102,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
