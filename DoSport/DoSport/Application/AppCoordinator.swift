@@ -26,7 +26,7 @@ final class AppCoordinator: Coordinator {
         let coordinator: Coordinator
         
         if isAuthorised {
-            coordinator = MainTabBarCoordinator(navController: navigationController)
+            coordinator = RegistrationCoordinator(navController: navigationController)
             self.store(coordinator: coordinator)
             coordinator.start()
         } else {
