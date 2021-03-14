@@ -87,33 +87,11 @@ struct Sport: Codable {
         case badminton = "Бадминтон"
         case other = "Другое"
     }
-
-    static func returnSportTypeModelsList() -> [Sport] {
-        let typeOfSports = [
-            Sport(type: .football),
-            Sport(type: .basketball),
-            Sport(type: .hockey),
-            Sport(type: .volleyball),
-            Sport(type: .tennis),
-            Sport(type: .workout),
-            Sport(type: .run),
-            Sport(type: .gym),
-            Sport(type: .yoga),
-            Sport(type: .box),
-            Sport(type: .group),
-            Sport(type: .dance),
-            Sport(type: .tabletennis),
-            Sport(type: .skateboard),
-            Sport(type: .badminton),
-        ]
-
-        return typeOfSports
-    }
 }
 
 extension Sport.SportType: Codable { }
 
-//MARK: - Equatable
+//MARK: - Equatable -
 
 extension Sport: Equatable {
     
