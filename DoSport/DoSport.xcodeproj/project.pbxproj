@@ -10,7 +10,7 @@
 		0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */; };
 		0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */; };
 		0401A14125EFA50E00A1659E /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A14025EFA50E00A1659E /* CustomSearchBar.swift */; };
-		458E6EDC20D0948A78547ADB /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA482F6FB5DE244DE6779E0 /* Pods_DoSport.framework */; };
+		555F212A0537C324F808BB95 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2A5BED711FCC45AEA85546 /* Pods_DoSport.framework */; };
 		65014F1225B4D006000263FA /* PasswordEntryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */; };
 		65014F1A25B4D013000263FA /* PasswordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1925B4D013000263FA /* PasswordEntryViewController.swift */; };
 		65014F1F25B4D01B000263FA /* PasswordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F1E25B4D01B000263FA /* PasswordEntryView.swift */; };
@@ -26,6 +26,7 @@
 		651FBF2925FE01070018C6B1 /* MainSportTypeSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FBF2825FE01070018C6B1 /* MainSportTypeSelectionCoordinator.swift */; };
 		651FBF2E25FE01150018C6B1 /* MainSportTypeSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FBF2D25FE01150018C6B1 /* MainSportTypeSelectionDataSource.swift */; };
 		651FBF3325FE01250018C6B1 /* MainSportTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FBF3225FE01250018C6B1 /* MainSportTypeSelectionView.swift */; };
+		651FBF5825FE13F00018C6B1 /* AppLanguageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */; };
 		6527303425C1B15B00550ED1 /* FeedFilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6527303325C1B15B00550ED1 /* FeedFilterButtonsView.swift */; };
 		65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65294D9925B38311003E7ED2 /* DatePicker.swift */; };
 		6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529500B258D6EE2002AA621 /* UIColor+inits.swift */; };
@@ -127,6 +128,12 @@
 		6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */; };
 		6595195425A8704300CC15E0 /* CountryCodeListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195325A8704300CC15E0 /* CountryCodeListSectionModel.swift */; };
 		6595195925A87C0100CC15E0 /* TableViewCellsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595195825A87C0100CC15E0 /* TableViewCellsHeaderView.swift */; };
+		65993B1E25FBD73C00CC7E49 /* DoSportSwiftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 65993B1C25FBD73C00CC7E49 /* DoSportSwiftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65993B2A25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993B2925FBD78D00CC7E49 /* AuthViewSUI.swift */; };
+		65993B2B25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993B2925FBD78D00CC7E49 /* AuthViewSUI.swift */; };
+		65993B8225FBE57500CC7E49 /* DoSportSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */; };
+		65993B8325FBE57500CC7E49 /* DoSportSwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65993B8E25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */; };
 		659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */; };
 		659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* RegistrationViewController.swift */; };
 		659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */; };
@@ -147,6 +154,8 @@
 		65B150E025DEA82F00720015 /* EventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B150DF25DEA82F00720015 /* EventInviteViewController.swift */; };
 		65B150E825DEAB8300720015 /* EventInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B150E725DEAB8300720015 /* EventInviteView.swift */; };
 		65B150F625DEBC5F00720015 /* EventInviteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B150F525DEBC5F00720015 /* EventInviteDataSource.swift */; };
+		65B7131D25FCE85C0013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */; };
+		65B7132925FCE9210013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7132825FCE9210013A082 /* GoogleService-Info.plist */; };
 		65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */; };
 		65BBC37225DB5E78003DEF53 /* DSCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BBC37125DB5E78003DEF53 /* DSCheckboxButton.swift */; };
 		65C080A425E1AFB200BF353B /* UISearchBar+textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */; };
@@ -178,7 +187,6 @@
 		65CD778F25EB527400D042FD /* DSAppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD778E25EB527400D042FD /* DSAppLanguage.swift */; };
 		65CD779525EB535600D042FD /* AppLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD779425EB535600D042FD /* AppLanguageListView.swift */; };
 		65CD779A25EB535A00D042FD /* AppLanguageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD779925EB535A00D042FD /* AppLanguageListController.swift */; };
-		65CD779F25EB536200D042FD /* AppLanguageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD779E25EB536200D042FD /* AppLanguageListCoordinator.swift */; };
 		65CD77A425EB536900D042FD /* AppLanguageListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */; };
 		65CD77B325EB581200D042FD /* UserSupportSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD77B225EB581200D042FD /* UserSupportSettingsController.swift */; };
 		65CD77C025EB581F00D042FD /* UserSupportSettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD77BF25EB581F00D042FD /* UserSupportSettingsDataSource.swift */; };
@@ -229,6 +237,7 @@
 		65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */; };
 		65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */; };
 		65EAAAC525CD6024005E0131 /* FeedFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EAAAC425CD6024005E0131 /* FeedFilterButton.swift */; };
+		65EC680125FD1EDB00103B0A /* DSPushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EC680025FD1EDB00103B0A /* DSPushNotificationManager.swift */; };
 		65ECB2B6259BAA6600BF8CEE /* CountryCodeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2B5259BAA6600BF8CEE /* CountryCodeListDataSource.swift */; };
 		65ECB2BF259BAC8E00BF8CEE /* TableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */; };
 		65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */; };
@@ -272,6 +281,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		65993B8425FBE57500CC7E49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEDEB771258CB404007B2BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65993B1925FBD73C00CC7E49;
+			remoteInfo = DoSportSwiftUI;
+		};
 		CEDEB790258CB40B007B2BCA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CEDEB771258CB404007B2BCA /* Project object */;
@@ -288,10 +304,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		65993B8625FBE57500CC7E49 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				65993B8325FBE57500CC7E49 /* DoSportSwiftUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionViewModel.swift; sourceTree = "<group>"; };
 		0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionTableCell.swift; sourceTree = "<group>"; };
 		0401A14025EFA50E00A1659E /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		2D2A5BED711FCC45AEA85546 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65014F1125B4D006000263FA /* PasswordEntryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryAssembly.swift; sourceTree = "<group>"; };
 		65014F1925B4D013000263FA /* PasswordEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryViewController.swift; sourceTree = "<group>"; };
 		65014F1E25B4D01B000263FA /* PasswordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntryView.swift; sourceTree = "<group>"; };
@@ -307,6 +338,7 @@
 		651FBF2825FE01070018C6B1 /* MainSportTypeSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionCoordinator.swift; sourceTree = "<group>"; };
 		651FBF2D25FE01150018C6B1 /* MainSportTypeSelectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionDataSource.swift; sourceTree = "<group>"; };
 		651FBF3225FE01250018C6B1 /* MainSportTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionView.swift; sourceTree = "<group>"; };
+		651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListCoordinator.swift; sourceTree = "<group>"; };
 		6527303325C1B15B00550ED1 /* FeedFilterButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterButtonsView.swift; sourceTree = "<group>"; };
 		65294D9925B38311003E7ED2 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		6529500B258D6EE2002AA621 /* UIColor+inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+inits.swift"; sourceTree = "<group>"; };
@@ -402,6 +434,11 @@
 		6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavigationController.swift; sourceTree = "<group>"; };
 		6595195325A8704300CC15E0 /* CountryCodeListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeListSectionModel.swift; sourceTree = "<group>"; };
 		6595195825A87C0100CC15E0 /* TableViewCellsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsHeaderView.swift; sourceTree = "<group>"; };
+		65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoSportSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65993B1C25FBD73C00CC7E49 /* DoSportSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoSportSwiftUI.h; sourceTree = "<group>"; };
+		65993B1D25FBD73C00CC7E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65993B2925FBD78D00CC7E49 /* AuthViewSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewSUI.swift; sourceTree = "<group>"; };
+		65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addSwiftUI.swift"; sourceTree = "<group>"; };
 		659C61952593DB1D00C33D05 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
 		659C619A2593DB2700C33D05 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		659C619F2593DB3100C33D05 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -423,6 +460,8 @@
 		65B150DF25DEA82F00720015 /* EventInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteViewController.swift; sourceTree = "<group>"; };
 		65B150E725DEAB8300720015 /* EventInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteView.swift; sourceTree = "<group>"; };
 		65B150F525DEBC5F00720015 /* EventInviteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteDataSource.swift; sourceTree = "<group>"; };
+		65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65B7132825FCE9210013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSBarBackButton.swift; sourceTree = "<group>"; };
 		65BBC37125DB5E78003DEF53 /* DSCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSCheckboxButton.swift; sourceTree = "<group>"; };
 		65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+textField.swift"; sourceTree = "<group>"; };
@@ -454,7 +493,6 @@
 		65CD778E25EB527400D042FD /* DSAppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSAppLanguage.swift; sourceTree = "<group>"; };
 		65CD779425EB535600D042FD /* AppLanguageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListView.swift; sourceTree = "<group>"; };
 		65CD779925EB535A00D042FD /* AppLanguageListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListController.swift; sourceTree = "<group>"; };
-		65CD779E25EB536200D042FD /* AppLanguageListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListCoordinator.swift; sourceTree = "<group>"; };
 		65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageListDataSource.swift; sourceTree = "<group>"; };
 		65CD77B225EB581200D042FD /* UserSupportSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupportSettingsController.swift; sourceTree = "<group>"; };
 		65CD77BF25EB581F00D042FD /* UserSupportSettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupportSettingsDataSource.swift; sourceTree = "<group>"; };
@@ -504,6 +542,7 @@
 		65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
 		65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssembly.swift; sourceTree = "<group>"; };
 		65EAAAC425CD6024005E0131 /* FeedFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterButton.swift; sourceTree = "<group>"; };
+		65EC680025FD1EDB00103B0A /* DSPushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPushNotificationManager.swift; sourceTree = "<group>"; };
 		65ECB2B5259BAA6600BF8CEE /* CountryCodeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeListDataSource.swift; sourceTree = "<group>"; };
 		65ECB2BE259BAC8E00BF8CEE /* TableViewCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCountryCell.swift; sourceTree = "<group>"; };
 		65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+cellForRow.swift"; sourceTree = "<group>"; };
@@ -519,7 +558,6 @@
 		65EEB95F25EA023400821F8F /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		65EEE91325B622A90023168D /* GetEventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsRequest.swift; sourceTree = "<group>"; };
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		6EA482F6FB5DE244DE6779E0 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
@@ -563,11 +601,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		65993B1725FBD73C00CC7E49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDEB776258CB404007B2BCA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458E6EDC20D0948A78547ADB /* Pods_DoSport.framework in Frameworks */,
+				65993B8225FBE57500CC7E49 /* DoSportSwiftUI.framework in Frameworks */,
+				555F212A0537C324F808BB95 /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +926,17 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		65993B1B25FBD73C00CC7E49 /* DoSportSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				65B7132825FCE9210013A082 /* GoogleService-Info.plist */,
+				65993B1C25FBD73C00CC7E49 /* DoSportSwiftUI.h */,
+				65993B1D25FBD73C00CC7E49 /* Info.plist */,
+				65993B2925FBD78D00CC7E49 /* AuthViewSUI.swift */,
+			);
+			path = DoSportSwiftUI;
+			sourceTree = "<group>";
+		};
 		659C61732593D3F700C33D05 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -981,7 +1038,7 @@
 			isa = PBXGroup;
 			children = (
 				65CD779925EB535A00D042FD /* AppLanguageListController.swift */,
-				65CD779E25EB536200D042FD /* AppLanguageListCoordinator.swift */,
+				651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */,
 				65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */,
 				65CD779425EB535600D042FD /* AppLanguageListView.swift */,
 			);
@@ -1153,6 +1210,14 @@
 			path = FeedFilter;
 			sourceTree = "<group>";
 		};
+		65EC67FF25FD1EBC00103B0A /* UserNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				65EC680025FD1EDB00103B0A /* DSPushNotificationManager.swift */,
+			);
+			path = UserNotifications;
+			sourceTree = "<group>";
+		};
 		65ECB2BD259BAC7100BF8CEE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1198,7 +1263,7 @@
 		86FDF7AEC152A8EDA7FFAD16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6EA482F6FB5DE244DE6779E0 /* Pods_DoSport.framework */,
+				2D2A5BED711FCC45AEA85546 /* Pods_DoSport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1233,9 +1298,10 @@
 				CEDEB77B258CB404007B2BCA /* DoSport */,
 				CEDEB792258CB40B007B2BCA /* DoSportTests */,
 				CEDEB79D258CB40B007B2BCA /* DoSportUITests */,
-				CEDEB77A258CB404007B2BCA /* Products */,
-				1B575704A7CC7F421F6A9B8A /* Pods */,
+				65993B1B25FBD73C00CC7E49 /* DoSportSwiftUI */,
 				86FDF7AEC152A8EDA7FFAD16 /* Frameworks */,
+				1B575704A7CC7F421F6A9B8A /* Pods */,
+				CEDEB77A258CB404007B2BCA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1245,6 +1311,7 @@
 				CEDEB779258CB404007B2BCA /* DoSport.app */,
 				CEDEB78F258CB40B007B2BCA /* DoSportTests.xctest */,
 				CEDEB79A258CB40B007B2BCA /* DoSportUITests.xctest */,
+				65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1252,11 +1319,12 @@
 		CEDEB77B258CB404007B2BCA /* DoSport */ = {
 			isa = PBXGroup;
 			children = (
+				65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */,
 				CEDEB7BB258CDC4D007B2BCA /* Application */,
 				CEDEB8DF258CF94C007B2BCA /* Flow */,
-				CEDEB83B258CE0EF007B2BCA /* Service */,
 				CEDEB887258CE793007B2BCA /* Helpers */,
 				CEDEB886258CE77C007B2BCA /* Resourses */,
+				CEDEB83B258CE0EF007B2BCA /* Service */,
 			);
 			path = DoSport;
 			sourceTree = "<group>";
@@ -1293,6 +1361,7 @@
 		CEDEB83B258CE0EF007B2BCA /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				65EC67FF25FD1EBC00103B0A /* UserNotifications */,
 				CEDEB83C258CE0FE007B2BCA /* Network */,
 			);
 			path = Service;
@@ -1371,19 +1440,20 @@
 		CEDEB895258CEC2F007B2BCA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				65D2971F25DD644C005AC413 /* Date+currentDate.swift */,
 				652E326025DC16D000077344 /* UI+addTargets.swift */,
 				65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */,
 				6529500B258D6EE2002AA621 /* UIColor+inits.swift */,
 				658E0AA725D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift */,
 				CEDEB913258D4C75007B2BCA /* UIImage.swift */,
 				6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */,
+				65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */,
 				654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */,
+				6552CF3525EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift */,
 				65ECB2C3259BACBE00BF8CEE /* UITableView+cellForRow.swift */,
 				659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */,
-				65D2971F25DD644C005AC413 /* Date+currentDate.swift */,
-				65C080A325E1AFB200BF353B /* UISearchBar+textField.swift */,
 				65DC54A125E9CE7400712EC7 /* UIViewController.swift */,
-				6552CF3525EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift */,
+				65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1443,7 +1513,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		65993B1525FBD73C00CC7E49 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65993B1E25FBD73C00CC7E49 /* DoSportSwiftUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		65993B1925FBD73C00CC7E49 /* DoSportSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65993B2325FBD73C00CC7E49 /* Build configuration list for PBXNativeTarget "DoSportSwiftUI" */;
+			buildPhases = (
+				65993B1525FBD73C00CC7E49 /* Headers */,
+				65993B1625FBD73C00CC7E49 /* Sources */,
+				65993B1725FBD73C00CC7E49 /* Frameworks */,
+				65993B1825FBD73C00CC7E49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoSportSwiftUI;
+			productName = DoSportSwiftUI;
+			productReference = 65993B1A25FBD73C00CC7E49 /* DoSportSwiftUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		CEDEB778258CB404007B2BCA /* DoSport */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDEB7A3258CB40B007B2BCA /* Build configuration list for PBXNativeTarget "DoSport" */;
@@ -1454,10 +1553,12 @@
 				CEDEB777258CB404007B2BCA /* Resources */,
 				743943CA1C8BD961B78568BB /* [CP] Embed Pods Frameworks */,
 				3CC80F753240E0A0302143EE /* [CP] Copy Pods Resources */,
+				65993B8625FBE57500CC7E49 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				65993B8525FBE57500CC7E49 /* PBXTargetDependency */,
 			);
 			name = DoSport;
 			productName = DoSport;
@@ -1509,6 +1610,10 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					65993B1925FBD73C00CC7E49 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
 					CEDEB778258CB404007B2BCA = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -1538,17 +1643,27 @@
 				CEDEB778258CB404007B2BCA /* DoSport */,
 				CEDEB78E258CB40B007B2BCA /* DoSportTests */,
 				CEDEB799258CB40B007B2BCA /* DoSportUITests */,
+				65993B1925FBD73C00CC7E49 /* DoSportSwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		65993B1825FBD73C00CC7E49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65B7132925FCE9210013A082 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDEB777258CB404007B2BCA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				65DE5DC2259BCF2E00DEF482 /* CountryList.json in Resources */,
 				CEDEB789258CB40A007B2BCA /* LaunchScreen.storyboard in Resources */,
+				65B7131D25FCE85C0013A082 /* GoogleService-Info.plist in Resources */,
 				65B150DB25DEA77F00720015 /* EventInviteController.xib in Resources */,
 				CEDEB8FC258D33D3007B2BCA /* OnBoardingAvatars.xcassets in Resources */,
 				65DC546025E9A98000712EC7 /* EventManageContainerViewController.xib in Resources */,
@@ -1634,6 +1749,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		65993B1625FBD73C00CC7E49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65993B2B25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEDEB775258CB404007B2BCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1657,6 +1780,7 @@
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
 				65CD777825EB4A9E00D042FD /* PrivacySettingListDataSource.swift in Sources */,
 				6534089A259A77280072542D /* AbstractRequestFactory.swift in Sources */,
+				65EC680125FD1EDB00103B0A /* DSPushNotificationManager.swift in Sources */,
 				653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */,
 				6534089B259A77280072542D /* UIImage.swift in Sources */,
 				65CDF8A925DB12320049F711 /* SportGroundSelectionListViewModel.swift in Sources */,
@@ -1682,6 +1806,7 @@
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
 				65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */,
 				65CDF8AE25DB123B0049F711 /* SportGroundSelectionListDataSource.swift in Sources */,
+				65993B8E25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift in Sources */,
 				65DC544025E9957200712EC7 /* DSEventControlButton.swift in Sources */,
 				6531796625D10FB4001DBA4B /* SportTypeListCoordinator.swift in Sources */,
 				65B150F625DEBC5F00720015 /* EventInviteDataSource.swift in Sources */,
@@ -1694,7 +1819,6 @@
 				65CDF89A25DB12080049F711 /* SportGroundSelectionListViewController.swift in Sources */,
 				65D973FB25B4731800769653 /* SportTypeGridViewController.swift in Sources */,
 				65CD77A425EB536900D042FD /* AppLanguageListDataSource.swift in Sources */,
-				65CD779F25EB536200D042FD /* AppLanguageListCoordinator.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */,
 				65CD773A25EB3EB700D042FD /* SoundListView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
@@ -1772,6 +1896,7 @@
 				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
 				657C064125AF2D50000DBD9B /* CodeEntryView.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
+				651FBF5825FE13F00018C6B1 /* AppLanguageListCoordinator.swift in Sources */,
 				654D706725E8903D00B37AD3 /* EventCardTableCell.swift in Sources */,
 				651FBF2925FE01070018C6B1 /* MainSportTypeSelectionCoordinator.swift in Sources */,
 				65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */,
@@ -1848,6 +1973,7 @@
 				6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */,
 				653179A825D11212001DBA4B /* RegionListAssembly.swift in Sources */,
 				657C063225AF2D24000DBD9B /* CodeEntryAssembly.swift in Sources */,
+				65993B2A25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */,
 				65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */,
 				65CDF89225DB11FF0049F711 /* SportGroundSelectionListView.swift in Sources */,
 				6531793325D10E26001DBA4B /* EventCreateAssembly.swift in Sources */,
@@ -1911,6 +2037,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		65993B8525FBE57500CC7E49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65993B1925FBD73C00CC7E49 /* DoSportSwiftUI */;
+			targetProxy = 65993B8425FBE57500CC7E49 /* PBXContainerItemProxy */;
+		};
 		CEDEB791258CB40B007B2BCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CEDEB778258CB404007B2BCA /* DoSport */;
@@ -1935,6 +2066,69 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		65993B2425FBD73C00CC7E49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DFZ8N2CQSG;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoSportSwiftUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Vladmus.DoSportSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		65993B2525FBD73C00CC7E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DFZ8N2CQSG;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoSportSwiftUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Vladmus.DoSportSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CEDEB7A1258CB40B007B2BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2055,21 +2249,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DFZ8N2CQSG;
 				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = komolbekibragimov.DoSport;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.DoSport.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2077,21 +2273,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DFZ8N2CQSG;
 				INFOPLIST_FILE = "$(SRCROOT)/DoSport/Resourses/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = komolbekibragimov.DoSport;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.DoSport.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -2182,6 +2380,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		65993B2325FBD73C00CC7E49 /* Build configuration list for PBXNativeTarget "DoSportSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65993B2425FBD73C00CC7E49 /* Debug */,
+				65993B2525FBD73C00CC7E49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CEDEB774258CB404007B2BCA /* Build configuration list for PBXProject "DoSport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

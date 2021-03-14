@@ -42,14 +42,12 @@ final class AuthViewController: UIViewController {
         
     }
     
-    /// Hide navigation bar before this ViewController will appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    /// Show navigation bar after this ViewController did disappear
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)

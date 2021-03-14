@@ -13,6 +13,7 @@ final class AppLanguageListView: UIView {
     
     weak var delegate: AppLanguageListViewDelegate?
     
+    ///
     private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
     
     //MARK: Outlets
@@ -54,7 +55,10 @@ final class AppLanguageListView: UIView {
 
 extension AppLanguageListView {
     
-    func updateCollectionDataSource(dateSource: (UITableViewDataSource & UITableViewDelegate)) {
+    /// Reloads table's data using `dataSource` param
+    /// - Parameters:
+    ///     - dataSource: is `Tuple` data type containig `object` that conforms tableDataSource and tableDelegate protocols
+    func updateCollectionDataSource(dataSource: (UITableViewDataSource & UITableViewDelegate)) {
         tableView.delegate = dateSource
         tableView.dataSource = dateSource
         tableView.reloadData()

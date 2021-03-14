@@ -7,14 +7,23 @@
 
 import UIKit
 
+/// Describes navigation & coordination of class that controlls App Language selection screen.
 final class AppLanguageListCoordinator: Coordinator {
     
+    /// NavigationController's root viewController object .
     let rootViewController: AppLanguageListController
     
     var childCoordinators: [Coordinator] = []
+    
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?, compilation: @escaping (String) -> Swift.Void) {
+    /// Initialises an AppLanguageListCoordinator object.
+    ///
+    /// - Parameters:
+    ///     - navController: navigation controller provided from previous coordinator used to `push` App Language selection screen controller.
+    ///     - compilation: is called when user select app language in App Language selection screen
+    ///     - language: the `String` name of app language that user selects
+    init(navController: UINavigationController?, compilation: @escaping (_ language: String) -> Swift.Void) {
         self.rootViewController = AppLanguageListController(compilation: compilation)
         self.navigationController = navController
     }
