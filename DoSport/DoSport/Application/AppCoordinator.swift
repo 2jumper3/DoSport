@@ -26,7 +26,12 @@ final class AppCoordinator: Coordinator {
         let coordinator: Coordinator
         
         if isAuthorised {
-            coordinator = MainTabBarCoordinator(navController: navigationController)
+            if #available(iOS 13.0, *) {
+                coordinator = AuthCoordinator(navController: navigationController)
+            } else {
+                coordinator = MainTabBarCoordinator(navController: navigationController)
+            }
+            
             self.store(coordinator: coordinator)
             coordinator.start()
         } else {

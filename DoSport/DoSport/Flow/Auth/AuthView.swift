@@ -6,11 +6,12 @@
 //
 
 import UIKit
-import SnapKit
+import AuthenticationServices
 
 protocol AuthViewDelegate: AnyObject {
     func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
+    func appleSignInButtomClicked()
 }
 
 final class AuthView: UIView {
@@ -60,7 +61,13 @@ final class AuthView: UIView {
         return $0
     }(CommonButton(title: Texts.Auth.submit, state: .normal))
     
-    //MARK: - Init
+    @available(iOS 13.0, *)
+    private lazy var appleSignInButton: ASAuthorizationAppleIDButton = {
+        $0.addTarget(self, action: #selector(handleAppleSignInButton), for: .touchUpInside)
+        return $0
+    }(ASAuthorizationAppleIDButton())
+    
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -80,7 +87,20 @@ final class AuthView: UIView {
             object: nil
         )
         
-        addSubviews(logoImageView,titleLabel,descriptionLabel,phoneNumberAddView,regulationsLabel,submitButton)
+        addSubviews(
+            logoImageView,
+            titleLabel,
+            descriptionLabel,
+            phoneNumberAddView,
+            regulationsLabel,
+            submitButton
+        )
+        
+        if #available(iOS 13.0, *) {
+            addSubview(appleSignInButton)
+        } else {
+            
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -128,51 +148,28 @@ final class AuthView: UIView {
             $0.height.equalTo(descriptionLabel)
         }
         
-        submitButton.snp.makeConstraints {
-            if #available(iOS 11.0, *) {
-                $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
-                $0.width.centerX.height.equalTo(phoneNumberAddView)
-            } else {
-                $0.bottom.equalToSuperview().offset(-16)
-                $0.width.centerX.height.equalTo(phoneNumberAddView)
+        if #available(iOS 13.0, *) {
+            appleSignInButton.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.width.equalToSuperview()
+                $0.centerY.equalToSuperview()
+                $0.height.equalTo(submitButton.snp.height)
             }
+        } else {
+            
         }
-    }
-    
-    //MARK: - Actions
-
-    @objc private func handleSubmitButton() {
-        let text = phoneNumberAddView.text
-        delegate?.submitButtonTapped(with: text)
-    }
-    
-    @objc private func handleRegionSelectionButton() {
-        delegate?.regionSelectionButtonTapped()
-    }
-    
-    @objc private func handleKeybordWillShow(_ notification: Notification) {
-        guard
-            let userInfo = notification.userInfo,
-            let keyboardFrame = (
-                userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-            )?.cgRectValue
-        else { return }
         
-        UIView.animate(withDuration: 0.3) {
-            self.submitButton.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
-        }
-    }
-    
-    @objc private func handleKeybordWillHide() {
-        UIView.animate(withDuration: 0.3) {
-            self.submitButton.transform = .identity
+        submitButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-20)
+            $0.width.centerX.height.equalTo(phoneNumberAddView)
         }
     }
 }
 
-//MARK: - Public Methods
+//MARK: Public API
 
 extension AuthView {
+    
     func bind(callingCode: String) {
         phoneNumberAddView.bind(callingCode: callingCode)
         submitButton.bind(state: .normal) // for test purposes, can be removed
@@ -185,6 +182,43 @@ extension AuthView {
     
     func removeTextFieldResponder() {
         phoneNumberAddView.removeFirstResponder()
+    }
+}
+
+//MARK: Actions
+
+@objc private extension AuthView {
+    
+    func handleAppleSignInButton() {
+        delegate?.appleSignInButtomClicked()
+    }
+
+    func handleSubmitButton() {
+        let text = phoneNumberAddView.text
+        delegate?.submitButtonTapped(with: text)
+    }
+    
+    func handleRegionSelectionButton() {
+        delegate?.regionSelectionButtonTapped()
+    }
+    
+    func handleKeybordWillShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardFrame = (
+                userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+            )?.cgRectValue
+        else { return }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.submitButton.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
+        }
+    }
+    
+    func handleKeybordWillHide() {
+        UIView.animate(withDuration: 0.3) {
+            self.submitButton.transform = .identity
+        }
     }
 }
 

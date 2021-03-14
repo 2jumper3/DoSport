@@ -28,8 +28,10 @@ final class OnBoardingCoordinator: Coordinator {
     }
     
     func goToAuthView() {
-        let coordiator = AuthCoordinator(navController: navigationController)
-        store(coordinator: coordiator)
-        coordiator.start()
+        if #available(iOS 13.0, *) {
+            let coordiator = AuthCoordinator(navController: navigationController)
+            store(coordinator: coordiator)
+            coordiator.start()
+        }
     }
 }

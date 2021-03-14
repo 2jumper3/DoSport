@@ -7,10 +7,13 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 final class AuthViewController: UIViewController {
     
     weak var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
+    
+    private let authManager: AuthManagerProtocol?
     
     private lazy var authView = self.view as! AuthView
     
@@ -18,10 +21,11 @@ final class AuthViewController: UIViewController {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
-    init(viewModel: AuthViewModel) {
+    init(viewModel: AuthViewModel, authManeger: AuthManagerProtocol?) {
         self.viewModel = viewModel
+        self.authManager = authManeger
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,7 +33,7 @@ final class AuthViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = AuthView()
@@ -39,7 +43,7 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     /// Hide navigation bar before this ViewController will appear
@@ -69,7 +73,15 @@ final class AuthViewController: UIViewController {
     }
 }
 
+//MARK: - AuthViewDelegate -
+
+@available(iOS 13.0, *)
 extension AuthViewController: AuthViewDelegate {
+
+    func appleSignInButtomClicked() {
+        authManager?.signInWithApple(for: self)
+    }
+    
     func regionSelectionButtonTapped() {
         coordinator?.goToCountryListModule { callingCode in
             self.authView.bind(callingCode: callingCode)
