@@ -5,7 +5,6 @@
 //  Created by Sergey on 20.12.2020.
 //
 
-import Foundation
 import UIKit
 
 public class FlexiblePageControl: UIView {
@@ -35,21 +34,20 @@ public class FlexiblePageControl: UIView {
     
     // default config
     
-    private var config = Config()
-
-    public func setConfig(_ config: Config) {
-
-        self.config = config
-        
-        invalidateIntrinsicContentSize()
-
-        update(currentPage: currentPage, config: config)
+    private var config: Config {
+        get {
+            return Config()
+        }
+        set {
+            invalidateIntrinsicContentSize()
+            update(currentPage: currentPage, config: config)
+        }
     }
 
     public func setCurrentPage(at currentPage: Int, animated: Bool = false) {
 
-        guard (currentPage < numberOfPages && currentPage >= 0) else { return }
-        guard currentPage != self.currentPage else { return }
+        guard (currentPage < numberOfPages && currentPage >= 0),
+              currentPage != self.currentPage else { return }
 
         scrollView.layer.removeAllAnimations()
         updateDot(at: currentPage, animated: animated)
@@ -87,7 +85,6 @@ public class FlexiblePageControl: UIView {
     }
 
     public init() {
-
         super.init(frame: .zero)
 
         setup()
@@ -95,14 +92,12 @@ public class FlexiblePageControl: UIView {
     }
 
     public override init(frame: CGRect) {
-
         super.init(frame: frame)
 
         setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
-
         super.init(coder: aDecoder)
 
         setup()
@@ -161,12 +156,11 @@ public class FlexiblePageControl: UIView {
                 .map { ItemView(config: itemConfig, index: $0) }
         }
         else {
-            guard let firstItem = items.first else { return }
-            guard let lastItem = items.last else { return }
+            guard let firstItem = items.first,
+                  let lastItem = items.last else { return }
+            
             items = (firstItem.index...lastItem.index)
                 .map { ItemView(config: itemConfig, index: $0) }
-//            items = ((currentPage - displayCount - 2)...(currentPage + 2))
-//                .map { ItemView(itemSize: itemSize, dotSize: config.dotSize, index: $0) }
         }
 
         scrollView.contentSize = .init(width: itemSize * CGFloat(numberOfPages), height: itemSize)
@@ -264,15 +258,6 @@ public class FlexiblePageControl: UIView {
         }
     }
 
-    private func moveScrollView(x: CGFloat, duration: TimeInterval) {
-
-//        let direction = behaviorDirection(x: x)
-//        reusedView(direction: direction)
-//        UIView.animate(withDuration: duration, animations: { [unowned self] in
-//            self.scrollView.contentOffset.x = x
-//        })
-    }
-
     private enum Direction {
         case left
         case right
@@ -293,8 +278,8 @@ public class FlexiblePageControl: UIView {
 
     private func reusedView(direction: Direction) {
 
-        guard let firstItem = items.first else { return }
-        guard let lastItem = items.last else { return }
+        guard let firstItem = items.first,
+              let lastItem = items.last else { return }
 
         switch direction {
         case .left:
@@ -318,7 +303,6 @@ public class FlexiblePageControl: UIView {
     }
 }
 
-
 private class ItemView: UIView {
 
     struct ItemConfig {
@@ -329,10 +313,10 @@ private class ItemView: UIView {
     }
 
     enum State {
-        case None
-        case Small
-        case Medium
-        case Normal
+        case none
+        case small
+        case medium
+        case normal
     }
 
     var index: Int
@@ -379,7 +363,6 @@ private class ItemView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     // MARK: private
 
     private let dotView = UIView()
@@ -411,9 +394,7 @@ private class ItemView: UIView {
                 width: dotSize * smallSizeRatio,
                 height: dotSize * smallSizeRatio
             )
-
         }
-
 
         UIView.animate(withDuration: animateDuration, animations: { [unowned self] in
             self.dotView.layer.cornerRadius = _size.height / 2.0
