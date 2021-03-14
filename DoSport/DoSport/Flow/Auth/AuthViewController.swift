@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 final class AuthViewController: UIViewController {
     
@@ -34,6 +35,7 @@ final class AuthViewController: UIViewController {
     override func loadView() {
         let view = AuthView()
         view.delegate = self
+        
         self.view = view
     }
     
@@ -70,7 +72,10 @@ final class AuthViewController: UIViewController {
     
 }
 
+//MARK: - AuthViewDelegate -
+
 extension AuthViewController: AuthViewDelegate {
+    
     func regionSelectionButtonTapped() {
         coordinator?.goToCountryListModule { callingCode in
             self.authView.bind(callingCode: callingCode)
@@ -88,7 +93,8 @@ extension AuthViewController: AuthViewDelegate {
             }
         }
     }
-    func fbAuthPassed() {
+    
+    func facebookSignInButtonClicked() {
         coordinator?.goToMainTabBar()
     }
 }

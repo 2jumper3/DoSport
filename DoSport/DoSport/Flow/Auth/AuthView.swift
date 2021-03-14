@@ -6,24 +6,18 @@
 //
 
 import UIKit
-import SnapKit
 import FBSDKLoginKit
 
 protocol AuthViewDelegate: AnyObject {
     func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
-    func fbAuthPassed()
+    func facebookSignInButtonClicked()
 }
 
-final class AuthView: UIView, LoginButtonDelegate {
-
+/// Describes Authentification screen's UI elements, their layouts and delegates events to `AuthViewController` class's object to manage them
+final class AuthView: UIView {
     
     weak var delegate: AuthViewDelegate?
-    
-    private lazy var fbLoginBtn: FBLoginButton = {
-        $0.delegate = self
-        return $0
-    }(FBLoginButton())
     
     private let logoImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -63,16 +57,20 @@ final class AuthView: UIView, LoginButtonDelegate {
         return $0
     }(UILabel())
     
+    private lazy var facebookSignInButton: FBLoginButton = FBLoginButton()
+    
     private lazy var submitButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSubmitButton), for: .touchUpInside)
         return $0
     }(CommonButton(title: Texts.Auth.submit, state: .normal))
     
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
+        
+        facebookSignInButton.delegate = self
         
         NotificationCenter.default.addObserver(
             self,
@@ -88,7 +86,7 @@ final class AuthView: UIView, LoginButtonDelegate {
             object: nil
         )
         
-        addSubviews(logoImageView,titleLabel,descriptionLabel,phoneNumberAddView,regulationsLabel,submitButton, fbLoginBtn)
+        addSubviews(logoImageView,titleLabel,descriptionLabel,phoneNumberAddView,regulationsLabel,submitButton, facebookSignInButton)
     }
     
     required init?(coder: NSCoder) {
@@ -135,23 +133,46 @@ final class AuthView: UIView, LoginButtonDelegate {
             $0.width.centerX.equalTo(phoneNumberAddView)
             $0.height.equalTo(descriptionLabel)
         }
-        fbLoginBtn.snp.makeConstraints {
+        
+        facebookSignInButton.snp.makeConstraints {
             $0.top.equalTo(regulationsLabel.snp.bottom).offset(10)
             $0.centerX.equalTo(self.snp.centerX)
         }
+        
         submitButton.snp.makeConstraints {
-            if #available(iOS 11.0, *) {
-                $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
-                $0.width.centerX.height.equalTo(phoneNumberAddView)
-            } else {
-                $0.bottom.equalToSuperview().offset(-16)
-                $0.width.centerX.height.equalTo(phoneNumberAddView)
-            }
+            $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-20)
+            $0.width.centerX.height.equalTo(phoneNumberAddView)
         }
     }
     
-    //MARK: - Actions
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
 
+//MARK: Public API
+
+extension AuthView {
+    
+    func bind(callingCode: String) {
+        phoneNumberAddView.bind(callingCode: callingCode)
+        submitButton.bind(state: .normal) // for test purposes, can be removed
+        layoutIfNeeded()
+    }
+    
+    func becomeTextFieldResponder() {
+        phoneNumberAddView.becomeResponder()
+    }
+    
+    func removeTextFieldResponder() {
+        phoneNumberAddView.removeFirstResponder()
+    }
+}
+
+//MARK: Actions
+
+@objc private extension AuthView {
+    
     @objc private func handleSubmitButton() {
         let text = phoneNumberAddView.text
         delegate?.submitButtonTapped(with: text)
@@ -179,36 +200,19 @@ final class AuthView: UIView, LoginButtonDelegate {
             self.submitButton.transform = .identity
         }
     }
+}
+
+//MARK: - LoginButtonDelegate -
+
+extension AuthView: LoginButtonDelegate {
     
-    //MARK: - FaceBookDelegate Methods
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        delegate?.fbAuthPassed()
+        delegate?.facebookSignInButtonClicked()
     }
+    
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        
         return
     }
-    
 }
-
-//MARK: - Public Methods
-
-extension AuthView {
-    func bind(callingCode: String) {
-        phoneNumberAddView.bind(callingCode: callingCode)
-        submitButton.bind(state: .normal) // for test purposes, can be removed
-        layoutIfNeeded()
-    }
-    
-    func becomeTextFieldResponder() {
-        phoneNumberAddView.becomeResponder()
-    }
-    
-    func removeTextFieldResponder() {
-        phoneNumberAddView.removeFirstResponder()
-    }
-
-}
-
-
-// Swift // // Добавьте этот код в заголовок файла, например в ViewController.swift import FBSDKLoginKit // Добавьте этот код в тело класса ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let loginButton = FBLoginButton() loginButton.center = view.center view.addSubview(loginButton) } }
 
