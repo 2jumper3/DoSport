@@ -11,6 +11,7 @@ final class CustomTabView: UIView {
     // MARK: - Properties
     
     var itemTapped: ((_ tab: Int) -> Void)?
+    var onActiveItemTapped: (() -> Swift.Void)?
     var activeItem: Int = 0
 
     // MARK: - Init
@@ -81,6 +82,11 @@ final class CustomTabView: UIView {
     // MARK: - Actions
     
     @objc func handleTap(_ sender: UIGestureRecognizer) {
+        if activeItem == sender.view!.tag {
+            onActiveItemTapped?()
+            return
+        }
+        
         switchTab(from: activeItem, too: sender.view!.tag)
     }
 

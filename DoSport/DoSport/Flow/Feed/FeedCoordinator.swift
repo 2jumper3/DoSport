@@ -36,4 +36,8 @@ final class FeedCoordinator: Coordinator {
         self.store(coordinator: coordinator)
         coordinator.start()
     }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }

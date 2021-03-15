@@ -41,7 +41,7 @@ final class AuthCoordinator: Coordinator {
     
     func goToPasswordEntryModule() {
         let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
-        store(coordinator: coordinator)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
 }
