@@ -143,7 +143,7 @@ private extension SportGroundSelectionListViewController {
 
 extension SportGroundSelectionListViewController: SportGroundSelectionListDataSourceDelegate {
     
-    func tableView(didSelect sportGround: SportGround) {
+    func collectionView(didSelect sportGround: SportGround) {
         completion(sportGround)
         coordinator?.goBack()
     }

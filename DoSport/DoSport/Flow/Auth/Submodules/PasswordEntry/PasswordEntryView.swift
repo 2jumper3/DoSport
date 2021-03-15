@@ -48,8 +48,8 @@ final class PasswordEntryView: UIView {
         return $0
     }(UILabel())
 
-    private lazy var avatarImageView = AvatartImageView(image: Icons.Registration.avatarDefault)
-    
+    private lazy var avatarImageView: DSAvatartImageView = DSAvatartImageView()
+
     private lazy var backButton = DSBarBackButton()
     
     private(set) lazy var passwordTextView = DSPasswordTextView()
