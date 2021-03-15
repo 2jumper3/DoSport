@@ -23,7 +23,7 @@ final class SportTypeListView: UIView {
         $0.backgroundColor = Colors.darkBlue
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(UITableView(frame: .zero, style: .plain))
+    }(UITableView(frame: .zero, style: .grouped))
     
     private lazy var selectButton = CommonButton(title: Texts.SportTypeList.select, state: .disabled)
 
