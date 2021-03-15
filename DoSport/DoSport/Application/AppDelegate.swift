@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Firebase
-import UserNotifications
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
@@ -17,7 +15,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions
-        launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        launchOptions: [UIApplication.LaunchOptionsKey : Any]?
+    ) -> Bool {
         
         if #available(iOS 13, *) {
             let pushManager = DSPushNotificationManager(userID: "currently_logged_in_user_id") // TODO: finish UN setup
@@ -50,13 +49,5 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         print(#function)
         window?.endEditing(true)
-    }
-}
-
-@objc private extension AppDelegate {
-    
-    /// Called when Firebase registration token is received
-    @objc func handleReceiveMessagingFromFirebase() {
-        
     }
 }
