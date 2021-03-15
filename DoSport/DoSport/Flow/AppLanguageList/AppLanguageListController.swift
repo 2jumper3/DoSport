@@ -54,7 +54,7 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
         super.viewDidLoad()
         
         setupNavBar()
-        appLanguageListView.updateCollectionDataSource(dateSource: appLanguageListManager)
+        appLanguageListView.updateCollectionDataSource(dataSource: appLanguageListManager)
     }
 
     override func viewWillAppear(_ animated: Bool) {

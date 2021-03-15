@@ -45,7 +45,7 @@ extension AppLanguageListDataSource:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sound: String = viewModels[indexPath.row]
         let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
-        cell.titleText = sound
+        cell.textLabel?.text = sound
         cell.bind(state: .notSelected)
         
         if selectedRow == 0 && indexPath.row == 0 {
