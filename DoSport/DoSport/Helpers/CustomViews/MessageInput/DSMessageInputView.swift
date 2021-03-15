@@ -64,13 +64,13 @@ final class DSMessageInputView: UIView {
             $0.left.equalToSuperview().offset(10)
             $0.centerY.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.70)
-            $0.width.equalToSuperview().multipliedBy(0.79)
+            $0.right.equalTo(messageSendButton.snp.left).offset(-10)
         }
         
         messageSendButton.snp.makeConstraints {
-            $0.top.bottom.equalTo(textField)
+            $0.centerY.height.equalTo(textField)
             $0.right.equalToSuperview().offset(-10)
-            $0.left.equalTo(textField.snp.right).offset(10)
+            $0.width.equalTo(messageSendButton.snp.height)
         }
     }
 }

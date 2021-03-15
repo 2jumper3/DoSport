@@ -62,22 +62,24 @@ extension SportTypeListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
         let selectedIndexPath = IndexPath(row: selectedRow, section: 0)
+        let selectedCell: SportTypeListTableCell
+        let newCell: SportTypeListTableCell
         
         if indexPath.row == 0 && selectedRow != 0 {
-            let selectedCell: SportTypeListTableCell = tableView.cell(forRowAt: selectedIndexPath)
+            selectedCell = tableView.cell(forRowAt: selectedIndexPath)
             selectedCell.bind(state: .notSelected)
             
-            let newCell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
+            newCell = tableView.cell(forRowAt: indexPath)
             newCell.bind(state: .selected)
             
             selectedRow = indexPath.row
             tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .none)
             
         } else if indexPath.row != selectedRow && indexPath.row > 0 {
-            let selectedCell: SportTypeListTableCell = tableView.cell(forRowAt: selectedIndexPath)
+            selectedCell = tableView.cell(forRowAt: selectedIndexPath)
             selectedCell.bind(state: .notSelected)
             
-            let newCell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
+            newCell = tableView.cell(forRowAt: indexPath)
             newCell.bind(state: .selected)
             
             selectedRow = indexPath.row
