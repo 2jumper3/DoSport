@@ -40,4 +40,8 @@ final class UserMainCoordinator: Coordinator {
         store(coordinator: coordinator)
         coordinator.start()
     }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }

@@ -59,8 +59,8 @@ extension AppLanguageListView {
     /// - Parameters:
     ///     - dataSource: is `Tuple` data type containig `object` that conforms tableDataSource and tableDelegate protocols
     func updateCollectionDataSource(dataSource: (UITableViewDataSource & UITableViewDelegate)) {
-        tableView.delegate = dateSource
-        tableView.dataSource = dateSource
+        tableView.delegate = dataSource
+        tableView.dataSource = dataSource
         tableView.reloadData()
         layoutIfNeeded()
     }
