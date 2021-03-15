@@ -130,11 +130,11 @@ private extension MainMenuTabController {
         view.layoutIfNeeded()
     }
     
-    private func changeTab(tab: Int) {
+    func changeTab(tab: Int) {
         self.selectedIndex = tab
     }
     
-    private func popToRootController() {
+    func popToRootController() {
         if self.viewControllers?[self.selectedIndex] == self.feedCoordinator?.navigationController {
             feedCoordinator?.popToRoot()
         } else if self.viewControllers?[self.selectedIndex] == self.userMainCoordinator?.navigationController {
