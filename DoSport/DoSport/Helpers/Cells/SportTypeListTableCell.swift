@@ -19,23 +19,11 @@ final class SportTypeListTableCell: UITableViewCell {
         }
     }
     
-    var titleText: String? {
-        get { myTitleLabel.text }
-        set { myTitleLabel.text = newValue }
-    }
-    
     //MARK: Outlets
-    
-    private let myTitleLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = Colors.mainBlue
-        $0.font = Fonts.sfProRegular(size: 18)
-        return $0
-    }(UILabel())
     
     private let checkmarkImageView: UIImageView = {
         $0.image = Icons.SportTypeList.checkMark
-        $0.setImageColor(color: .clear)
+        $0.isHidden = true
         return $0
     }(UIImageView())
 
@@ -48,10 +36,11 @@ final class SportTypeListTableCell: UITableViewCell {
         backgroundColor = Colors.darkBlue
         selectionStyle = .none
         
-        contentView.addSubviews(
-            myTitleLabel,
-            checkmarkImageView
-        )
+        guard let label = textLabel else { return }
+        label.textColor = Colors.mainBlue
+        label.font = Fonts.sfProRegular(size: 18)
+        
+        contentView.addSubviews(checkmarkImageView)
     }
     
     required init?(coder: NSCoder) {
@@ -67,12 +56,6 @@ final class SportTypeListTableCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        myTitleLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().offset(10)
-            $0.height.equalToSuperview().multipliedBy(0.75)
-        }
-        
         checkmarkImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.right.equalToSuperview().offset(-10)
@@ -82,7 +65,7 @@ final class SportTypeListTableCell: UITableViewCell {
     }
 }
 
-//MARK: Public c
+//MARK: Public API
 
 extension SportTypeListTableCell {
 
@@ -91,21 +74,23 @@ extension SportTypeListTableCell {
     }
 }
 
-//MARK: Private TableView
+//MARK: Private API
 
 private extension SportTypeListTableCell {
  
     func handleCellStateChange() {
+        guard let label = textLabel else { return }
+        
         switch cellState {
         case .selected:
             UIView.animate(withDuration: 0.15) { [self] in
-                myTitleLabel.textColor = .white
-                checkmarkImageView.setImageColor(color: .white)
+                label.textColor = .white
+                checkmarkImageView.isHidden = false
             }
         case .notSelected:
             UIView.animate(withDuration: 0.15) { [self] in
-                myTitleLabel.textColor = Colors.mainBlue
-                checkmarkImageView.setImageColor(color: .clear)
+                label.textColor = Colors.mainBlue
+                checkmarkImageView.isHidden = true
             }
         }
     }
