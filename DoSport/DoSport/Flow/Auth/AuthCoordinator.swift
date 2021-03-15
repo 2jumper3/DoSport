@@ -27,20 +27,8 @@ final class AuthCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
-    func goToCodeEntryModule(_ phoneNumber: String) {
-        let coordiator = CodeEntryCoordinator(navController: navigationController, phoneNumber)
-        self.store(coordinator: coordiator)
-        coordiator.start()
-    }
-    
-    func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
-        let coordinator = CountryCodeListCoordinator(navController: navigationController, compilation: compilation)
-        self.store(coordinator: coordinator)
-        coordinator.start()
-    }
-    
-    func goToPasswordEntryModule() {
-        let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
+    func goToFeedModule() {
+        let coordinator = MainTabBarCoordinator(navController: navigationController)
         self.store(coordinator: coordinator)
         coordinator.start()
     }
