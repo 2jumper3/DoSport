@@ -36,7 +36,7 @@ final class SportGroundSelectionListView: UIView {
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(safeAreaInsets.top).offset(10)
-            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-20)
+            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-35)
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.centerX.equalToSuperview()
         }

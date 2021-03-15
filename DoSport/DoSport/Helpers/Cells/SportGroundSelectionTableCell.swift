@@ -139,39 +139,36 @@ final class SportGroundSelectionTableCell: UITableViewCell {
         subwayImageView.snp.makeConstraints {
             $0.left.equalTo(sportGroundTitleLabel.snp.left)
             $0.top.equalTo(sportGroundTitleLabel.snp.bottom).offset(5)
-            $0.height.equalTo(contentView.snp.height).multipliedBy(0.15)
+            $0.height.equalTo(subwayNameLabel.snp.height).multipliedBy(0.85)
             $0.width.equalTo(subwayImageView.snp.height)
         }
         
         subwayNameLabel.snp.makeConstraints {
             $0.top.equalTo(subwayImageView.snp.top)
             $0.left.equalTo(subwayImageView.snp.right).offset(6)
-            $0.height.equalTo(subwayImageView.snp.height)
         }
         
         locationLabel.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-12)
             $0.top.equalTo(sportGroundTitleLabel.snp.top).offset(10)
-            $0.height.equalTo(subwayNameLabel.snp.height)
         }
         
         locationImageView.snp.makeConstraints {
             $0.right.equalTo(locationLabel.snp.left).offset(-5.5)
             $0.top.equalTo(locationLabel.snp.top)
-            $0.height.equalTo(subwayImageView.snp.height)
+            $0.height.equalTo(locationLabel.snp.height).multipliedBy(0.85)
             $0.width.equalTo(locationImageView.snp.height)
         }
         
         priceLabel.snp.makeConstraints {
             $0.right.equalTo(locationLabel.snp.right)
             $0.top.equalTo(subwayNameLabel.snp.top)
-            $0.height.equalTo(locationLabel.snp.height)
         }
         
         priceCurrencyImageView.snp.makeConstraints {
             $0.right.equalTo(priceLabel.snp.left).offset(-6)
             $0.top.equalTo(subwayNameLabel.snp.top)
-            $0.height.equalTo(locationImageView.snp.height)
+            $0.height.equalTo(priceLabel.snp.height).multipliedBy(0.85)
             $0.width.equalTo(priceCurrencyImageView.snp.height)
         }
     }
