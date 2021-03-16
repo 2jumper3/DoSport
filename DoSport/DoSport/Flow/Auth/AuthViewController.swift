@@ -52,7 +52,6 @@ final class AuthViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         coordinator?.removeDependency(coordinator)
     }
 }
@@ -62,6 +61,6 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: AuthViewDelegate {
     
     func skipButtonClicked() {
-        coordinator?.goToFeedModule()
+        coordinator?.goToRegistrationModule()
     }
 }

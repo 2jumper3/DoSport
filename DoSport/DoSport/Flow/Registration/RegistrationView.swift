@@ -45,10 +45,6 @@ final class RegistrationView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        userNameTextField.getTextField().delegate = self
-        dobTextField.getTextField().delegate = self
-        datePicker.delegate = self
-        
         datePicker.setTextField(dobTextField.getTextField())
         
         setupOutletTargets()
@@ -139,6 +135,32 @@ extension RegistrationView {
     func setDateOfBirth(_ text: String) {
         dobTextField.text = text
     }
+    
+    func setDelegates(textField TFDelegate: UITextFieldDelegate?, datePicker DPDelegate: DSDatePickerDelegate?) {
+        userNameTextField.getTextField().delegate = TFDelegate
+        dobTextField.getTextField().delegate = TFDelegate
+        datePicker.delegate = DPDelegate
+    }
+    
+    func getDobTextField() -> UITextField {
+        return dobTextField.getTextField()
+    }
+    
+    func makeDobTextFieldFirstResponder() {
+        dobTextField.makeTextFieldFirstResponder()
+    }
+    
+    func removeDobTextFieldFirstResponder() {
+        dobTextField.removeTextFieldFirstResponder()
+    }
+    
+    func getUsernameTextFeild() -> UITextField {
+        return userNameTextField.getTextField()
+    }
+    
+    func getDatePicker() -> DSDatePicker {
+        return datePicker
+    }
 }
 
 //MARK: Private API
@@ -224,34 +246,5 @@ private extension RegistrationView {
     
     func handleKeybordWillHide() {
         UIView.animate(withDuration: 0.3) { self.transform = .identity }
-    }
-}
-
-//MARK: - UITextFieldDelegate -
-
-extension RegistrationView: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == dobTextField.getTextField() {
-            delegate?.datePickerValueChanged(datePicker)
-        }
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userNameTextField.getTextField() {
-            dobTextField.makeTextFieldFirstResponder()
-        }
-        
-        return true
-    }
-}
-
-//MARK: - DSDatePickerDelegate -
-
-extension RegistrationView: DSDatePickerDelegate {
-    
-    func doneButtonClicked() {
-        dobTextField.removeTextFieldFirstResponder()
     }
 }

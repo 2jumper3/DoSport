@@ -27,6 +27,12 @@ final class AuthCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
+    func goToRegistrationModule() {
+        let coordinator = RegistrationCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
+        coordinator.start()
+    }
+    
     func goToFeedModule() {
         let coordinator = MainTabBarCoordinator(navController: navigationController)
         self.store(coordinator: coordinator)
