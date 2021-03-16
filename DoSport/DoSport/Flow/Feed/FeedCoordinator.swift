@@ -21,6 +21,7 @@ final class FeedCoordinator: Coordinator {
     }
     
     func start() {
+        
         rootViewController.coordinator = self
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
