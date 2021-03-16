@@ -82,6 +82,10 @@ final class EventViewController: UIViewController {
         
         coordinator?.removeDependency(coordinator)
     }
+    
+    deinit {
+        self.removeKeyboardNotification()
+    }
 }
 
 //MARK: Private API
