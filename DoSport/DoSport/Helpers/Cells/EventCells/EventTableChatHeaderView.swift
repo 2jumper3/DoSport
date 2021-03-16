@@ -13,13 +13,13 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
     
     var firstIndexText: String = "" {
         didSet {
-            segmentedControl.setTitle(self.firstIndexText, forItemAt: 0)
+            segmentedControl.setTitle("Комментариев \(self.firstIndexText)", forItemAt: 0)
         }
     }
     
     var secondIndexText: String = "" {
         didSet {
-            segmentedControl.setTitle( self.secondIndexText, forItemAt: 1)
+            segmentedControl.setTitle("Участников \(self.secondIndexText)", forItemAt: 1)
         }
     }
     

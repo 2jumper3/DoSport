@@ -34,6 +34,19 @@ final class EventView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UITableView(frame: .zero, style: .plain))
+    
+    private let eventVisibilityChangePopupView = EventVisibilityChangePopupView(isClosedType: true)
+    
+    private let visualEffect: UIVisualEffectView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            $0.effect = UIBlurEffect(style: .systemMaterialDark)
+        } else {
+            $0.effect = UIBlurEffect(style: .dark)
+        }
+        $0.alpha  = 0.0
+        return $0
+    }(UIVisualEffectView())
 
     //MARK: Init
     
@@ -43,7 +56,7 @@ final class EventView: UIView {
         
         messageInputView.delegate = self
         
-        addSubviews(tableView, messageInputTopSeparatorView, messageInputView)
+        addSubviews(tableView, messageInputTopSeparatorView, messageInputView, visualEffect, eventVisibilityChangePopupView)
     }
     
     required init?(coder: NSCoder) {
@@ -52,6 +65,10 @@ final class EventView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        visualEffect.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         tableView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.93)
@@ -72,6 +89,12 @@ final class EventView: UIView {
             $0.height.equalTo(65)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(snp.bottom).offset(-tabBarHeight)
+        }
+        
+        eventVisibilityChangePopupView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.height.equalTo(150)
         }
     }
 }
@@ -101,6 +124,20 @@ extension EventView {
     
     func removeInputTextViewFirstResponder() {
         messageInputView.removeTextFieldFirstResponder()
+    }
+    
+    func showEventVisibilityChangePopupView() {
+        UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+            eventVisibilityChangePopupView.alpha = 1.0
+            visualEffect.alpha = 1.0
+        }.startAnimation()
+    }
+    
+    func hideEventVisibilityChangePopupView() {
+        UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
+            eventVisibilityChangePopupView.alpha = 0.0
+            visualEffect.alpha = 0.0
+        }.startAnimation()
     }
 }
 

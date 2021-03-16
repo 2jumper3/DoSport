@@ -162,6 +162,9 @@ extension Texts {
         static let participate = "Участвовать"
         static let participating = "Ты в игре!"
         
+        static let open = "Открыть"
+        static let close = "Закрыть"
+        
         static let reply = "Ответить"
         
         static let messages = "Написать сообщение..."
