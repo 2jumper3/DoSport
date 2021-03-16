@@ -99,10 +99,7 @@ private extension SportGroundSelectionListViewController {
 
     func setupViewModelBindings() {
         viewModel.onDidPrepareData = { [weak self] sportGrounds in
-            guard let self = self else {
-                debugPrint("############# 'self' nil in SportGroundSelectionListViewController - 84 line")
-                return
-            }
+            guard let self = self else { return }
             
             self.tableManager.viewModels = sportGrounds
             self.updateView()

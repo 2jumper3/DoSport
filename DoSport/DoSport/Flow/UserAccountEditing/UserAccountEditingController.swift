@@ -101,7 +101,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
         
     }
     
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?) {
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?) {
         
     }
     

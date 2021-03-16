@@ -9,7 +9,7 @@ import UIKit
 
 protocol UserAccountEditingViewDelegate: class {
     func signOutButtonCliked()
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?)
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
@@ -30,7 +30,6 @@ final class UserAccountEditingView: UIView {
     private let avatarImageView: DSAvatartImageView = DSAvatartImageView()
     
     private lazy var userNameTextField = FormTextFieldView(type: .userName)
-    private lazy var passwordTextField = FormTextFieldView(type: .password)
     private lazy var dobTextField = FormTextFieldView(type: .dob)
     
     private lazy var datePicker = DSDatePicker()
@@ -60,7 +59,6 @@ final class UserAccountEditingView: UIView {
             avatarImageView,
             addAvatarButton,
             userNameTextField,
-            passwordTextField,
             dobTextField,
             saveButton,
             maleButton,
@@ -91,11 +89,11 @@ final class UserAccountEditingView: UIView {
             buttonsHeight = 48
         }
         
-        passwordTextField.snp.makeConstraints {
+        dobTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview()
         }
         
-        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(passwordTextField.snp.top).offset(10) }
+        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(dobTextField.snp.top).offset(10) }
         
         addAvatarButton.snp.makeConstraints {
             $0.bottom.equalTo(userNameTextField.snp.top).offset(-20)
@@ -108,8 +106,6 @@ final class UserAccountEditingView: UIView {
             $0.height.equalTo(avatarImageView.snp.width)
             $0.width.equalToSuperview().multipliedBy(0.28)
         }
-        
-        dobTextField.snp.makeConstraints { $0.top.equalTo(passwordTextField.snp.bottom).offset(-10) }
         
         saveButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-UIDevice.getDeviceRelatedTabBarHeight()-10)
@@ -134,16 +130,20 @@ final class UserAccountEditingView: UIView {
             $0.centerX.equalToSuperview()
         }
         
-        [passwordTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
+        [dobTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
             $0.snp.makeConstraints { $0.centerX.equalToSuperview() }
         }
         
-        [passwordTextField, userNameTextField, dobTextField].forEach {
+        [dobTextField, userNameTextField, dobTextField].forEach {
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().multipliedBy(0.87)
                 $0.height.equalTo(textFieldsHeight)
             }
         }
+    }
+    
+    deinit {
+        removeObserver()
     }
 }
 
@@ -153,7 +153,6 @@ private extension UserAccountEditingView {
     
     func setupDelegates() {
         userNameTextField.getTextField().delegate = self
-        passwordTextField.getTextField().delegate = self
         dobTextField.getTextField().delegate = self
         datePicker.delegate = self
     }
@@ -167,19 +166,8 @@ private extension UserAccountEditingView {
     }
     
     func setupKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        addObserver(selector: #selector(handleKeybordWillShow), for: UIResponder.keyboardWillShowNotification)
+        addObserver(selector: #selector(handleKeybordWillHide), for: UIResponder.keyboardWillHideNotification)
     }
 }
 
@@ -194,7 +182,6 @@ private extension UserAccountEditingView {
     func handleSaveButton() {
         delegate?.saveButtonClicked(
             with: userNameTextField.text,
-            password: passwordTextField.text,
             dob: dobTextField.text,
             gender: gender
         )
@@ -247,10 +234,9 @@ extension UserAccountEditingView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userNameTextField.getTextField() {
-            passwordTextField.makeTextFieldFirstResponder()
-        } else if textField == passwordTextField.getTextField() {
             dobTextField.makeTextFieldFirstResponder()
         }
+        
         return true
     }
 }

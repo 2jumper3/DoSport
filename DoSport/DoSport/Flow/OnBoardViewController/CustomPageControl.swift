@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class FlexiblePageControl: UIView {
+public final class FlexiblePageControl: UIView {
 
     // MARK: public
     
