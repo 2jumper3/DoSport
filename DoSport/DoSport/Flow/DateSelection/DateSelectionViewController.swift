@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FSCalendar
 
 final class DateSelectionViewController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -18,6 +19,7 @@ final class DateSelectionViewController: UIViewController, UIGestureRecognizerDe
     private let sportGround: SportGround
     
     private var selectedDate: Date?
+    private var calendarSelectedDate: Date?
     private var selectedHours: [String] = []
     private var notAvailableHours: [String] = []
     
@@ -70,6 +72,7 @@ final class DateSelectionViewController: UIViewController, UIGestureRecognizerDe
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         collectionManager.delegate = self
+        dateSelectionView.setCalendarDelegate(self)
         
         setupNavBar()
         setupViewModelBindings()
@@ -179,10 +182,6 @@ private extension DateSelectionViewController {
 //MARK: - DateSelectionViewDelegate -
 
 extension DateSelectionViewController: DateSelectionViewDelegate {
-
-    func calendarView(didSelect date: Date) {
-        checkAvailableHoursFor(selected: date)
-    }
     
     func saveButtonClicked() {
         completion(finalDateString)
@@ -218,6 +217,97 @@ extension DateSelectionViewController: DateSelectionDataSourceDelegate {
     func collectionViewAfterClearAll(didSelect hour: String) {
         selectedHours.removeAll()
         selectedHours.append(hour)
+    }
+}
+
+//MARK: - FSCalendarDelegate -
+
+extension DateSelectionViewController: FSCalendarDelegate {
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if date.removeTimeStamp?.compare(Date().removeTimeStamp!) == .orderedAscending {
+            /// Past date was selected ----
+            /// Selection colour will not change from default colour so user will understand that past days are not
+            ///  available to be selected
+            calendar.appearance.selectionColor = .clear
+            calendar.appearance.titleSelectionColor = Colors.dirtyBlue
+            return
+        }
+        /// ELSE. Upcomming date or current date  was selected
+        
+        let currentMonth = Calendar.current(.month, for: calendar.currentPage)
+        let selectedDateMonth = Calendar.current(.month, for: date)
+        
+        /// If user selects date out of current month then show him selected date's month
+        if selectedDateMonth != currentMonth {
+            calendar.setCurrentPage(date, animated: true)
+            self.calendarSelectedDate = date
+            self.checkAvailableHoursFor(selected: date)
+            return
+        }
+        
+        /// If user selected day and selects it again we should deselect selected date. And set it nil after deselection
+        if let selectedDate = calendarSelectedDate, selectedDate == date {
+            calendar.deselect(date)
+            self.calendarSelectedDate = nil
+            
+            /// And if date is selected then send to VC selected date,
+            /// otherwise send to VC current date
+            self.checkAvailableHoursFor(selected:  Date())
+        } else {
+            if calendarSelectedDate != nil {
+                calendar.deselect(calendarSelectedDate!)
+                self.calendarSelectedDate = nil
+            }
+            
+            self.calendarSelectedDate = date
+            self.checkAvailableHoursFor(selected: date)
+        }
+        
+        calendar.appearance.selectionColor = Colors.lightBlue
+        calendar.appearance.titleSelectionColor = .white
+    }
+}
+
+//MARK: - FSCalendarDelegateAppearance -
+
+extension DateSelectionViewController: FSCalendarDelegateAppearance {
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        /// In order to reload date colours of previous month and current
+        calendar.reloadData()
+    }
+    
+    /// Setup calendarView's each date title colour by `past or future months` / `current month ` / `current day`
+    func calendar(
+        _ calendar: FSCalendar,
+        appearance: FSCalendarAppearance,
+        titleDefaultColorFor date: Date
+    ) -> UIColor? {
+        if date.removeTimeStamp?.compare(Date().removeTimeStamp!) == .orderedAscending {
+            /// Set past dates color
+            
+            return Colors.dirtyBlue
+        } else if date.removeTimeStamp!.compare(Date().removeTimeStamp!) == .orderedDescending {
+            /// Set upcomming dates
+            
+            let currentPage = dateSelectionView.getCalendarCurrentPage()
+            
+            let month = Calendar.current(.month, for: date),
+                year = Calendar.current(.year, for: date)
+            let currnentMonth = Calendar.current(.month, for: currentPage),
+                currnentYear = Calendar.current(.year, for: currentPage)
+            
+            /// Set only current month's dates color to white,  otherwise set dirtyBlue
+            if (month == currnentMonth) && (year == currnentYear) {
+                return .white
+            } else {
+                return Colors.dirtyBlue
+            }
+        } else {
+            /// Set current date color
+            return .white
+        }
     }
 }
 

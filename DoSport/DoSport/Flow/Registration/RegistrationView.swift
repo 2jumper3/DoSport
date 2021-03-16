@@ -117,6 +117,10 @@ final class RegistrationView: UIView {
             }
         }
     }
+    
+    deinit {
+        removeObserver()
+    }
 }
 
 //MARK: Public API
@@ -150,19 +154,8 @@ private extension RegistrationView {
     }
     
     func setupKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        addObserver(selector: #selector(handleKeybordWillShow), for: UIResponder.keyboardWillShowNotification)
+        addObserver(selector: #selector(handleKeybordWillHide), for: UIResponder.keyboardWillHideNotification)
     }
     
     func animateToError() {
