@@ -41,10 +41,10 @@ final class AuthView: UIView {
     
     private let regulationsLabel: UILabel = {
         $0.makeAttributedText(with: Texts.Auth.Regulations.upper, and: Texts.Auth.Regulations.bottom)
+        $0.font = UIFont.preferredFont(forTextStyle: .footnote)
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.numberOfLines = 3
+        $0.numberOfLines = 2
         $0.textAlignment = .center
-        $0.font = Fonts.sfProRegular(size: 14)
         return $0
     }(UILabel())
     

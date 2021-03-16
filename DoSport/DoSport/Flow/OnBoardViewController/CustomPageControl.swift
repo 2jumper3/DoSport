@@ -40,7 +40,7 @@ public class FlexiblePageControl: UIView {
         }
         set {
             invalidateIntrinsicContentSize()
-            update(currentPage: currentPage, config: config)
+            update(currentPage: currentPage, config: newValue)
         }
     }
 
@@ -183,7 +183,6 @@ public class FlexiblePageControl: UIView {
 
     private func updateDot(at currentPage: Int, animated: Bool) {
         updateDotColor(currentPage: currentPage)
-        updateDotPosition(currentPage: currentPage, animated: animated)
         updateDotSize(currentPage: currentPage, animated: animated)
     }
     
@@ -194,30 +193,6 @@ public class FlexiblePageControl: UIView {
                 currentPageIndicatorTintColor : pageIndicatorTintColor
         }
     }
-    
-    private func updateDotPosition(currentPage: Int, animated: Bool) {
-        let duration = animated ? animateDuration : 0
-
-        if currentPage == 0 {
-            let x = -scrollView.contentInset.left
-            moveScrollView(x: x, duration: duration)
-        }
-        else if currentPage == numberOfPages - 1 {
-            let x = scrollView.contentSize.width - scrollView.bounds.width + scrollView.contentInset.right
-            moveScrollView(x: x, duration: duration)
-
-        }
-        else if CGFloat(currentPage) * itemSize <= scrollView.contentOffset.x + itemSize {
-            let x = scrollView.contentOffset.x - itemSize
-            moveScrollView(x: x, duration: duration)
-
-        }
-        else if CGFloat(currentPage) * itemSize + itemSize >=
-            scrollView.contentOffset.x + scrollView.bounds.width - itemSize {
-            let x = scrollView.contentOffset.x + itemSize
-            moveScrollView(x: x, duration: duration)
-        }
-    }
 
     private func updateDotSize(currentPage: Int, animated: Bool) {
         
@@ -226,34 +201,34 @@ public class FlexiblePageControl: UIView {
         items.forEach { item in
             item.animateDuration = duration
             if item.index == currentPage {
-                item.state = .Normal
+                item.state = .normal
             }
 //             outside of left
             else if item.index < 0 {
-                item.state = .None
+                item.state = .none
             }
 //             outside of right
             else if item.index > numberOfPages - 1 {
-                item.state = .None
+                item.state = .none
             }
             // first dot from left
             else if item.frame.minX <= scrollView.contentOffset.x {
-                item.state = .Small
+                item.state = .small
             }
             // first dot from right
             else if item.frame.maxX >= scrollView.contentOffset.x + scrollView.bounds.width {
-                item.state = .Small
+                item.state = .small
             }
             // second dot from left
             else if item.frame.minX <= scrollView.contentOffset.x + itemSize {
-                item.state = .Small
+                item.state = .small
             }
             // second dot from right
             else if item.frame.maxX >= scrollView.contentOffset.x + scrollView.bounds.width - itemSize {
-                item.state = .Small
+                item.state = .small
             }
             else {
-                item.state = .Small
+                item.state = .small
             }
         }
     }
@@ -327,7 +302,7 @@ private class ItemView: UIView {
         }
     }
 
-    var state: State = .Normal {
+    var state: State = .normal {
         didSet {
             updateDotSize(state: state)
         }
@@ -380,16 +355,16 @@ private class ItemView: UIView {
         var _size: CGSize
         
         switch state {
-        case .Normal:
+        case .normal:
             _size = CGSize(width: dotSize, height: dotSize)
-        case .Medium:
+        case .medium:
             _size = CGSize(width: dotSize * mediumSizeRatio, height: dotSize * mediumSizeRatio)
-        case .Small:
+        case .small:
             _size = CGSize(
                 width: dotSize * smallSizeRatio,
                 height: dotSize * smallSizeRatio
             )
-        case .None:
+        case .none:
             _size = CGSize(
                 width: dotSize * smallSizeRatio,
                 height: dotSize * smallSizeRatio
