@@ -127,6 +127,8 @@
 		659C61AD2593DB5A00C33D05 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61AC2593DB5A00C33D05 /* RegistrationView.swift */; };
 		659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
 		659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */; };
+		65A2DC6C26011A3B003B9ECA /* DSSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2DC6B26011A3B003B9ECA /* DSSharedData.swift */; };
+		65A2DC7426011A4E003B9ECA /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2DC7326011A4E003B9ECA /* LoginData.swift */; };
 		65A62A0425E700AC000AA184 /* EventTableChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A62A0325E700AC000AA184 /* EventTableChatHeaderView.swift */; };
 		65A62A0925E70109000AA184 /* DSEventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A62A0825E70109000AA184 /* DSEventCardView.swift */; };
 		65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */; };
@@ -417,6 +419,8 @@
 		659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
 		659C61C82593E15700C33D05 /* UserCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCountry.swift; sourceTree = "<group>"; };
 		659DCA1225D933FA00D56193 /* DSSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSegmentedControl.swift; sourceTree = "<group>"; };
+		65A2DC6B26011A3B003B9ECA /* DSSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSharedData.swift; sourceTree = "<group>"; };
+		65A2DC7326011A4E003B9ECA /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		65A62A0325E700AC000AA184 /* EventTableChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableChatHeaderView.swift; sourceTree = "<group>"; };
 		65A62A0825E70109000AA184 /* DSEventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEventCardView.swift; sourceTree = "<group>"; };
 		65AAB2D825ACA0D000A86730 /* HideKeyboardWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardWithAction.swift; sourceTree = "<group>"; };
@@ -880,6 +884,38 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		65A2DC6926011A19003B9ECA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				65A2DC6B26011A3B003B9ECA /* DSSharedData.swift */,
+				65A2DC7326011A4E003B9ECA /* LoginData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		65A2DC6A26011A1D003B9ECA /* DSApi */ = {
+			isa = PBXGroup;
+			children = (
+				65A2DC7826011A5F003B9ECA /* endpoints */,
+				65A2DC7926011A6A003B9ECA /* models */,
+			);
+			path = DSApi;
+			sourceTree = "<group>";
+		};
+		65A2DC7826011A5F003B9ECA /* endpoints */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = endpoints;
+			sourceTree = "<group>";
+		};
+		65A2DC7926011A6A003B9ECA /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		65A62A1F25E70395000AA184 /* InviteFriendsPopupCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1231,7 +1267,6 @@
 				CEDEB8DF258CF94C007B2BCA /* Flow */,
 				CEDEB887258CE793007B2BCA /* Helpers */,
 				CEDEB886258CE77C007B2BCA /* Resourses */,
-				CEDEB83B258CE0EF007B2BCA /* Service */,
 			);
 			path = DoSport;
 			sourceTree = "<group>";
@@ -1269,7 +1304,6 @@
 			isa = PBXGroup;
 			children = (
 				65EC67FF25FD1EBC00103B0A /* UserNotifications */,
-				CEDEB83C258CE0FE007B2BCA /* Network */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1334,6 +1368,10 @@
 		CEDEB887258CE793007B2BCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				65A2DC6A26011A1D003B9ECA /* DSApi */,
+				65A2DC6926011A19003B9ECA /* Data */,
+				CEDEB83C258CE0FE007B2BCA /* Network */,
+				CEDEB83B258CE0EF007B2BCA /* Service */,
 				658705332592169D00EFF7C7 /* Base */,
 				65ECB2BD259BAC7100BF8CEE /* Cells */,
 				6587052925920D9800EFF7C7 /* CustomViews */,
@@ -1731,6 +1769,7 @@
 				65D9740525B4732400769653 /* SportTypeGridViewModel.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
+				65A2DC6C26011A3B003B9ECA /* DSSharedData.swift in Sources */,
 				65CD77EA25EB58A000D042FD /* UserReportMessageAssembly.swift in Sources */,
 				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
@@ -1881,6 +1920,7 @@
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				65CD77E525EB589B00D042FD /* UserReportMessageViewModel.swift in Sources */,
+				65A2DC7426011A4E003B9ECA /* LoginData.swift in Sources */,
 				65CD77D325EB588100D042FD /* UserReportMessageController.swift in Sources */,
 				65EEE91925B626290023168D /* AppConfiguration.swift in Sources */,
 				65EEB94E25EA022300821F8F /* SettingsCoordinator.swift in Sources */,
