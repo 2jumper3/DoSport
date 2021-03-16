@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 final class AuthViewController: UIViewController {
     
@@ -71,6 +72,23 @@ final class AuthViewController: UIViewController {
 }
 
 extension AuthViewController: AuthViewDelegate {
+    func fbAuthClicked() {
+        let login = LoginManager()
+        login.logIn(
+            permissions: [],
+            from: self,
+            handler: { result, error in
+                if error != nil {
+                    print("Process error")
+                } else if ((result?.isCancelled) != nil) {
+                    print("Cancelled")
+                } else {
+                    print("Logged in")
+                }
+            })
+
+    }
+    
     func regionSelectionButtonTapped() {
         coordinator?.goToCountryListModule { callingCode in
             self.authView.bind(callingCode: callingCode)
@@ -88,7 +106,14 @@ extension AuthViewController: AuthViewDelegate {
             }
         }
     }
+    
     func fbAuthPassed() {
         coordinator?.goToMainTabBar()
     }
+    
+    func vkAuthPassed() {
+        coordinator?.goToMainTabBar()
+    }
+    
+    
 }

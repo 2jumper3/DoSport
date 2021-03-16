@@ -13,6 +13,10 @@ public enum Icons {
     
     enum Auth {
         static let logo: UIImage = image(named: "logo_image")
+        static let vkAuth: UIImage = image(named: "vkAuth")
+        static let fbAuth: UIImage = image(named: "fbAuth")
+        static let googleAuth: UIImage = image(named: "googleAuth")
+        static let appleAuth: UIImage = image(named: "appleAuth")
     }
     
     //MARK: - CountryList screen

@@ -13,17 +13,31 @@ protocol AuthViewDelegate: AnyObject {
     func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
     func fbAuthPassed()
+    func fbAuthClicked()
 }
 
-final class AuthView: UIView, LoginButtonDelegate {
+final class AuthView: UIView,LoginButtonDelegate {
 
     
     weak var delegate: AuthViewDelegate?
     
-    private lazy var fbLoginBtn: FBLoginButton = {
-        $0.delegate = self
+    private lazy var fbLoginBtn: CustomAuthButton = {
+        $0.addTarget(self, action: #selector(fbAuthButtonTapped), for: .touchUpInside)
         return $0
-    }(FBLoginButton())
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.facebook, state: .normal, image: Icons.Auth.fbAuth, isHidden: false))
+    
+    private lazy var appleLoginBtn: CustomAuthButton = {
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.apple, state: .normal, image: Icons.Auth.appleAuth, isHidden: false))
+    
+    private lazy var googleLoginBtn: CustomAuthButton = {
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.google, state: .normal, image: Icons.Auth.googleAuth, isHidden: false))
+    
+    private lazy var vkLoginBtn: CustomAuthButton = {
+        $0.addTarget(self, action: #selector(vkAuthButtonTapped), for: .touchUpInside)
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.vkontakte, state: .normal, image: Icons.Auth.vkAuth, isHidden: false))
     
     private let logoImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +102,8 @@ final class AuthView: UIView, LoginButtonDelegate {
             object: nil
         )
         
-        addSubviews(logoImageView,titleLabel,descriptionLabel,phoneNumberAddView,regulationsLabel,submitButton, fbLoginBtn)
+        addSubviews(logoImageView,titleLabel,regulationsLabel,//descriptionLabel,phoneNumberAddView,,submitButton,
+                    appleLoginBtn,googleLoginBtn,vkLoginBtn,fbLoginBtn)
     }
     
     required init?(coder: NSCoder) {
@@ -109,44 +124,65 @@ final class AuthView: UIView, LoginButtonDelegate {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.15)
             $0.height.equalTo(logoImageView.snp.width)
-            $0.bottom.equalTo(titleLabel.snp.top).offset(-67)
+            $0.centerY.equalToSuperview().multipliedBy(0.4)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.bottom.equalTo(descriptionLabel.snp.top).offset(-24)
+            $0.top.equalTo(logoImageView.snp.bottom).offset(self.frame.size.height / 10)
             $0.centerX.equalToSuperview()
         }
         
-        descriptionLabel.snp.makeConstraints {
-            $0.bottom.equalTo(phoneNumberAddView.snp.top).offset(-12)
-            $0.height.equalTo(phoneNumberAddView.snp.height).multipliedBy(0.7)
-            $0.width.centerX.equalTo(phoneNumberAddView)
+//        descriptionLabel.snp.makeConstraints {
+//            $0.bottom.equalTo(phoneNumberAddView.snp.top).offset(-12)
+//            $0.height.equalTo(phoneNumberAddView.snp.height).multipliedBy(0.7)
+//            $0.width.centerX.equalTo(phoneNumberAddView)
+//        }
+//
+//        phoneNumberAddView.snp.makeConstraints {
+//            $0.centerX.equalToSuperview()
+//            $0.centerY.equalToSuperview().offset(-40)
+//            $0.width.equalToSuperview().multipliedBy(0.87)
+//            $0.height.equalTo(48)
+//        }
+//
+//        submitButton.snp.makeConstraints {
+//            if #available(iOS 11.0, *) {
+//                $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
+//                $0.width.centerX.height.equalTo(phoneNumberAddView)
+//            } else {
+//                $0.bottom.equalToSuperview().offset(-16)
+//                $0.width.centerX.height.equalTo(phoneNumberAddView)
+//            }
+//        }
+
+        appleLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.centerY.equalToSuperview().offset(-40)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
         }
-        
-        phoneNumberAddView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-40)
-            $0.width.equalToSuperview().multipliedBy(0.87)
-            $0.height.equalTo(48)
+        googleLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+            $0.top.equalTo(appleLoginBtn.snp.bottom).offset(12)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
         }
-        
-        regulationsLabel.snp.makeConstraints {
-            $0.top.equalTo(phoneNumberAddView.snp.bottom).offset(16)
-            $0.width.centerX.equalTo(phoneNumberAddView)
-            $0.height.equalTo(descriptionLabel)
+        vkLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+            $0.top.equalTo(googleLoginBtn.snp.bottom).offset(12)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
         }
         fbLoginBtn.snp.makeConstraints {
-            $0.top.equalTo(regulationsLabel.snp.bottom).offset(10)
-            $0.centerX.equalTo(self.snp.centerX)
+                $0.centerX.equalToSuperview()
+            $0.top.equalTo(vkLoginBtn.snp.bottom).offset(12)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
         }
-        submitButton.snp.makeConstraints {
-            if #available(iOS 11.0, *) {
-                $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
-                $0.width.centerX.height.equalTo(phoneNumberAddView)
-            } else {
-                $0.bottom.equalToSuperview().offset(-16)
-                $0.width.centerX.height.equalTo(phoneNumberAddView)
-            }
+        regulationsLabel.snp.makeConstraints {
+            $0.top.equalTo(fbLoginBtn.snp.bottom).offset(16)
+            $0.width.centerX.equalTo(fbLoginBtn)
+            $0.height.equalTo(fbLoginBtn)
         }
     }
     
@@ -179,15 +215,13 @@ final class AuthView: UIView, LoginButtonDelegate {
             self.submitButton.transform = .identity
         }
     }
-    
-    //MARK: - FaceBookDelegate Methods
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        delegate?.fbAuthPassed()
-    }
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        return
+    @objc private func fbAuthButtonTapped() {
+        delegate?.fbAuthClicked()
     }
     
+    @objc private func vkAuthButtonTapped() {
+        
+    }
 }
 
 //MARK: - Public Methods
@@ -206,9 +240,13 @@ extension AuthView {
     func removeTextFieldResponder() {
         phoneNumberAddView.removeFirstResponder()
     }
-
+    
+    //MARK: - FaceBookDelegate Methods
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        delegate?.fbAuthPassed()
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        return
+    }
 }
-
-
-// Swift // // Добавьте этот код в заголовок файла, например в ViewController.swift import FBSDKLoginKit // Добавьте этот код в тело класса ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let loginButton = FBLoginButton() loginButton.center = view.center view.addSubview(loginButton) } }
-

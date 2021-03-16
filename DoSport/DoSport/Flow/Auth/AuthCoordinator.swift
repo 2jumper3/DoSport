@@ -47,4 +47,9 @@ final class AuthCoordinator: Coordinator {
         self.store(coordinator: coordinator)
         coordinator.start()
     }
+    func openVkAuthView() {
+        let coordinator = WKWebViewController(navController: self.navigationController)
+        self.store(coordinator: coordinator)
+        coordinator.start()
+    }
 }
