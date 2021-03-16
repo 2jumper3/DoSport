@@ -9,10 +9,6 @@ import UIKit
 
 final class ShareMemberCollectionCell: UICollectionViewCell {
     
-    struct ViewData {
-        let name: String?
-    }
-    
     enum CellState {
         case selected, notSelected
     }
@@ -35,12 +31,16 @@ final class ShareMemberCollectionCell: UICollectionViewCell {
     
     //MARK: Outlets
     
-    private lazy var memberAvatarImageView: UIImageView = {
-        $0.clipsToBounds = true
+    private let avatarImageViewBorderView: UIView = {
         $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 8
-        $0.image = Icons.Feed.defaultAvatar
         $0.layer.borderColor = UIColor.white.cgColor
+        $0.layer.cornerRadius = 8
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView())
+    
+    private lazy var memberAvatarImageView: UIImageView = {
+        $0.image = Icons.Feed.defaultAvatar
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIImageView())
@@ -62,7 +62,7 @@ final class ShareMemberCollectionCell: UICollectionViewCell {
         
         backgroundColor = Colors.mainBlue
         
-        contentView.addSubviews(memberAvatarImageView, memberNameLabel)
+        contentView.addSubviews(avatarImageViewBorderView, memberAvatarImageView, memberNameLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -72,16 +72,20 @@ final class ShareMemberCollectionCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        avatarImageViewBorderView.snp.makeConstraints {
+            $0.top.width.centerX.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.7)
+        }
+        
         memberAvatarImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.height.equalTo(memberAvatarImageView.snp.width)
-            $0.width.equalToSuperview()
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(avatarImageViewBorderView.snp.top).offset(8)
+            $0.width.equalTo(avatarImageViewBorderView.snp.width).multipliedBy(0.8)
+            $0.bottom.equalTo(avatarImageViewBorderView.snp.bottom).offset(-8)
+            $0.centerX.equalTo(avatarImageViewBorderView.snp.centerX)
         }
         
         memberNameLabel.snp.makeConstraints {
             $0.bottom.left.right.equalToSuperview()
-            $0.top.equalTo(memberAvatarImageView.snp.bottom).offset(-10)
         }
     }
 }
@@ -89,10 +93,6 @@ final class ShareMemberCollectionCell: UICollectionViewCell {
 //MARK: Public API
 
 extension ShareMemberCollectionCell {
-    
-    func bind(with data: ViewData) {
-        self.memberName = data.name
-    }
     
     func bindState() {
         switch cellState {
@@ -114,11 +114,11 @@ private extension ShareMemberCollectionCell {
         switch cellState {
         case .selected:
             UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
-                memberAvatarImageView.backgroundColor = Colors.lightBlue
+                avatarImageViewBorderView.backgroundColor = Colors.lightBlue
             }.startAnimation()
         case .notSelected:
             UIViewPropertyAnimator(duration: 0.2, curve: .linear) { [unowned self] in
-                memberAvatarImageView.backgroundColor = Colors.mainBlue
+                avatarImageViewBorderView.backgroundColor = Colors.mainBlue
             }.startAnimation()
         }
     }

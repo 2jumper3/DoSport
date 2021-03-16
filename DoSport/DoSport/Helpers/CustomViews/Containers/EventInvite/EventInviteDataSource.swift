@@ -43,7 +43,7 @@ extension EventInviteDataSource: UICollectionViewDataSource {
         let viewModel = viewModels[indexPath.row]
         
         let cell: ShareMemberCollectionCell = collectionView.cell(forRowAt: indexPath)
-        cell.bind(with: .init(name: viewModel.name))
+        cell.memberName = viewModel.name
         cell.bind(state: .notSelected)
         
         if selectedIndecies.values.contains(viewModel) {

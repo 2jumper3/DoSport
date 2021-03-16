@@ -15,7 +15,7 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     // temprorary variable to immitate auth logic
-    var isAuthorised = false
+    var isAuthorised = true
     
     init(window: UIWindow) {
         self.window = window
@@ -26,7 +26,7 @@ final class AppCoordinator: Coordinator {
         let coordinator: Coordinator
         
         if isAuthorised {
-            coordinator = FeedCoordinator(navController: self.navigationController)
+            coordinator = MainTabBarCoordinator(navController: navigationController)
             self.store(coordinator: coordinator)
             coordinator.start()
         } else {
