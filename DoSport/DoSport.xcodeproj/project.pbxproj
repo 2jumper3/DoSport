@@ -17,6 +17,7 @@
 		6503F4ED25B5D67C0002BC27 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4EC25B5D67C0002BC27 /* Member.swift */; };
 		650B75522600823B00625332 /* Calendar+currnetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B75512600823B00625332 /* Calendar+currnetComponent.swift */; };
 		650B7565260086E300625332 /* UIView+setupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B7564260086E300625332 /* UIView+setupNotification.swift */; };
+		650B75B12600C6A400625332 /* EventVisibilityChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B75B02600C6A400625332 /* EventVisibilityChangePopupView.swift */; };
 		6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */; };
 		6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D77025B0DB130063EF76 /* DSTextField.swift */; };
 		6511D77625B0E5A10063EF76 /* DSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6511D77525B0E5A10063EF76 /* DSButton.swift */; };
@@ -312,6 +313,7 @@
 		6503F4EC25B5D67C0002BC27 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		650B75512600823B00625332 /* Calendar+currnetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+currnetComponent.swift"; sourceTree = "<group>"; };
 		650B7564260086E300625332 /* UIView+setupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+setupNotification.swift"; sourceTree = "<group>"; };
+		650B75B02600C6A400625332 /* EventVisibilityChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVisibilityChangePopupView.swift; sourceTree = "<group>"; };
 		6511D76B25B0CC880063EF76 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
 		6511D77025B0DB130063EF76 /* DSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTextField.swift; sourceTree = "<group>"; };
 		6511D77525B0E5A10063EF76 /* DSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSButton.swift; sourceTree = "<group>"; };
@@ -607,6 +609,15 @@
 				7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		650B75AF2600C68600625332 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65EAAA9D25CD59D3005E0131 /* EventView.swift */,
+				650B75B02600C6A400625332 /* EventVisibilityChangePopupView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6531791D25D10DF6001DBA4B /* EventCreate */ = {
@@ -1099,10 +1110,10 @@
 		65EAAA9425CD59A9005E0131 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				650B75AF2600C68600625332 /* Views */,
 				65EAAAAC25CD59EE005E0131 /* EventAssembly.swift */,
 				65EAAAA725CD59E6005E0131 /* EventCoordinator.swift */,
 				65CEF5E225CD9ED100EB0B34 /* EventDataSource.swift */,
-				65EAAA9D25CD59D3005E0131 /* EventView.swift */,
 				65EAAA9525CD59CD005E0131 /* EventViewController.swift */,
 				65EAAAA225CD59DA005E0131 /* EventViewModel.swift */,
 			);
@@ -1880,6 +1891,7 @@
 				65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
+				650B75B12600C6A400625332 /* EventVisibilityChangePopupView.swift in Sources */,
 				65CD77E525EB589B00D042FD /* UserReportMessageViewModel.swift in Sources */,
 				65CD77D325EB588100D042FD /* UserReportMessageController.swift in Sources */,
 				65EEE91925B626290023168D /* AppConfiguration.swift in Sources */,

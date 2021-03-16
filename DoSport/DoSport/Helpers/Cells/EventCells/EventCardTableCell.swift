@@ -11,10 +11,24 @@ final class EventCardTableCell: UITableViewCell {
     
     var onInviteButtonClicked: (() -> Void)?
     var onParticipateButtonClicked: (() -> Void)?
+    var onEventVisibilityChangeButtonClicked: (() -> Swift.Void) = {}
     
     //MARK: Outlets
     
     private let eventCardView = DSEventCardView()
+    
+    var isCurrentUserOrganisedEvent: Bool = false {
+        didSet {
+            if isCurrentUserOrganisedEvent {
+                participateButton.isHidden = true
+                participateButton.isUserInteractionEnabled = false
+            } else {
+                eventVisibilityChangeButton.isUserInteractionEnabled = false
+                eventVisibilityChangeButton.isHidden = true
+            }
+            layoutSubviews()
+        }
+    }
     
     private lazy var inviteButton: UIButton = {
         $0.setTitle(Texts.Event.invite, for: .normal)
@@ -28,8 +42,8 @@ final class EventCardTableCell: UITableViewCell {
     }(UIButton(type: .system))
     
     private lazy var participateButton = DSEventParticipateButton(state: .notSeleted)
+    private lazy var eventVisibilityChangeButton = DSEventParticipateButton(state: .notSeleted, isParticipatingType: false)
 
-    
     //MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,11 +51,12 @@ final class EventCardTableCell: UITableViewCell {
         
         inviteButton.addTarget(self, action: #selector(handleInviteButton))
         participateButton.addTarget(self, action: #selector(handleParticipateButton))
+        eventVisibilityChangeButton.addTarget(self, action: #selector(handleEventVisibilityChangeButton))
         
         backgroundColor = Colors.darkBlue
         selectionStyle = .none
         
-        contentView.addSubviews(eventCardView, inviteButton, participateButton)
+        contentView.addSubviews(eventCardView, inviteButton, eventVisibilityChangeButton, participateButton)
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +88,15 @@ final class EventCardTableCell: UITableViewCell {
             $0.width.equalToSuperview().multipliedBy(0.47)
         }
 
-        participateButton.snp.makeConstraints {
+        let button: DSEventParticipateButton
+        
+        if self.isCurrentUserOrganisedEvent {
+            button = eventVisibilityChangeButton
+        } else {
+            button = participateButton
+        }
+        
+        button.snp.makeConstraints {
             $0.right.equalToSuperview()
             $0.height.equalTo(buttonsHeight)
             $0.bottom.equalToSuperview().offset(-5)
@@ -89,6 +112,11 @@ final class EventCardTableCell: UITableViewCell {
     func handleParticipateButton(_ button: DSEventParticipateButton) {
         button.bind()
         onParticipateButtonClicked?()
+    }
+    
+    func handleEventVisibilityChangeButton(_ button: DSEventParticipateButton) {
+        button.bind()
+        self.onEventVisibilityChangeButtonClicked()
     }
     
     func handleInviteButton() {
