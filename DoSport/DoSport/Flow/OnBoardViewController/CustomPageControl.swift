@@ -5,10 +5,9 @@
 //  Created by Sergey on 20.12.2020.
 //
 
-import Foundation
 import UIKit
 
-public class FlexiblePageControl: UIView {
+public final class FlexiblePageControl: UIView {
 
     // MARK: public
     

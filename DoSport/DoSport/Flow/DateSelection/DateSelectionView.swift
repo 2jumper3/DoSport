@@ -10,14 +10,13 @@ import FSCalendar
 
 protocol DateSelectionViewDelegate: class {
     func saveButtonClicked()
-    func calendarView(didSelect date: Date)
 }
 
 final class DateSelectionView: UIView {
     
     weak var delegate: DateSelectionViewDelegate?
-    private var selectedDate: Date?
     private var calendarWidth: CGFloat = 375
+    private var calendarHeight: CGFloat = 250
     
     //MARK: Outlets
     
@@ -43,8 +42,6 @@ final class DateSelectionView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        calendarView.delegate = self
-        
         saveButton.addTarget(self, action: #selector(handleSaveButton))
         
         addSubviews(calendarView, collectionView, saveButton)
@@ -66,11 +63,12 @@ final class DateSelectionView: UIView {
         case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini:
             buttonBottom = 20
             calendarWidth = 400
+            calendarHeight = 300
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
             buttonBottom = 40
             calendarWidth = 420
+            calendarHeight = 320
             saveButtonsHeight = 50
-        default: break
         }
         
         setupCalendarView()
@@ -109,6 +107,14 @@ extension DateSelectionView {
     func getSaveButtonState() -> CommonButtonState {
         return saveButton.getState()
     }
+    
+    func setCalendarDelegate(_ delegate: FSCalendarDelegate?) {
+        calendarView.delegate = delegate
+    }
+    
+    func getCalendarCurrentPage() -> Date {
+        return calendarView.currentPage
+    }
 }
 
 //MARK: Private API
@@ -116,7 +122,6 @@ extension DateSelectionView {
 private extension DateSelectionView {
     
     func setupCalendarView() {
-        let calendarHeight: CGFloat = UIDevice.deviceSize == .small ? 250 : 320
         let xOffset = (bounds.width - calendarWidth) / 2
         
         calendarView.frame = CGRect(
@@ -139,110 +144,11 @@ private extension DateSelectionView {
     }
 }
 
-//MARK: Action
+//MARK: Actions
 
 @objc private extension DateSelectionView {
     
     func handleSaveButton() {
         delegate?.saveButtonClicked()
-    }
-}
-
-//MARK: - FSCalendarDelegate -
-
-extension DateSelectionView: FSCalendarDelegate {
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if date.removeTimeStamp?.compare(Date().removeTimeStamp!) == .orderedAscending {
-            /// Past date was selected ----
-            /// Selection colour will not change from default colour so user will understand that past days are not
-            ///  available to be selected
-            calendar.appearance.selectionColor = .clear
-            calendar.appearance.titleSelectionColor = Colors.dirtyBlue
-            return
-        }
-        /// ELSE. Upcomming date or current date  was selected
-        
-        let currentMonth = Calendar.current(.month, for: calendar.currentPage)
-        let selectedDateMonth = Calendar.current(.month, for: date)
-        
-        /// If user selects date out of current month then show him selected date's month
-        if selectedDateMonth != currentMonth {
-            calendar.setCurrentPage(date, animated: true)
-            self.selectedDate = date
-            delegate?.calendarView(didSelect: date)
-            return
-        }
-        
-        /// If user selected day and selects it again we should deselect selected date. And set it nil after deselection
-        if let selectedDate = selectedDate, selectedDate == date {
-            calendar.deselect(date)
-            self.selectedDate = nil
-            
-            /// And if date is selected then send to VC selected date,
-            /// otherwise send to VC current date
-            delegate?.calendarView(didSelect: Date())
-        } else {
-            if selectedDate != nil {
-                calendar.deselect(selectedDate!)
-                self.selectedDate = nil
-            }
-            
-            self.selectedDate = date
-            delegate?.calendarView(didSelect: date)
-        }
-        
-        calendar.appearance.selectionColor = Colors.lightBlue
-        calendar.appearance.titleSelectionColor = .white
-    }
-}
-
-//MARK: - FSCalendarDelegateAppearance -
-
-extension DateSelectionView: FSCalendarDelegateAppearance {
-    
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        /// In order to reload date colours of previous month and current
-        calendar.reloadData()
-    }
-    
-    /// Setup calendarView's each date title colour by `past or future months` / `current month ` / `current day`
-    func calendar(
-        _ calendar: FSCalendar,
-        appearance: FSCalendarAppearance,
-        titleDefaultColorFor date: Date
-    ) -> UIColor? {
-        if date.removeTimeStamp?.compare(Date().removeTimeStamp!) == .orderedAscending {
-            /// Set past dates color
-            
-            return Colors.dirtyBlue
-        } else if date.removeTimeStamp!.compare(Date().removeTimeStamp!) == .orderedDescending {
-            /// Set upcomming dates
-            
-            let currentPage = calendarView.currentPage
-            
-            let month = Calendar.current(.month, for: date),
-                year = Calendar.current(.year, for: date)
-            let currnentMonth = Calendar.current(.month, for: currentPage),
-                currnentYear = Calendar.current(.year, for: currentPage)
-            
-            /// Set only current month's dates color to white,  otherwise set dirtyBlue
-            if (month == currnentMonth) && (year == currnentYear) {
-                return .white
-            } else {
-                return Colors.dirtyBlue
-            }
-        } else {
-            /// Set current date color
-            return .white
-        }
-    }
-}
-
-extension Calendar {
-    
-    static func current(_ component: Component, for date: Date) -> Int {
-        let calendar = Calendar.current
-        return calendar.component(component, from: date)
     }
 }

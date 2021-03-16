@@ -12,6 +12,17 @@ public enum Texts {
         static let save = "Сохранить"
         static let date = "Дата и время"
         static let invite = "Пригласить"
+        static let subscribers = "Подписчики"
+        static let subscribes = "Подписки"
+        static let account = "Аккаунт"
+        static let alerts = "Увядомления"
+        static let sound = "Звук"
+        static let language = "Язык"
+        static let privacy = "Конфеденциальность"
+        static let help = "Помощь"
+        static let reportAProblem = "Сообщить о проблеме"
+        static let send = "Отправить"
+        static let userName = "Никнейм"
     }
 }
 
@@ -92,7 +103,7 @@ extension Texts {
         static let addAvatar = "Загузить фото"
         static let save = Common.save
         
-        static let userName = "Никнейм"
+        static let userName = Common.userName
         static let userNameError = "Никнейм занят"
         
         static let password = "Пароль"
@@ -196,3 +207,83 @@ extension Texts {
         static let select = "Выбрать"
     }
 }
+
+//MARK: - UserMain screen
+extension Texts {
+    enum UserMain {
+        static let subscribers = Common.subscribers
+        static let subscribes = Common.subscribes
+        static let myEvents = "Мои тренировки"
+        static let mySportGrounds = "Мои плошадки"
+        
+        static let invite = Common.invite
+        static let delete = "Удалить"
+        static let edit = "Изменить"
+        static let close = "Закрыть"
+    }
+}
+
+//MARK: - Settings screen
+extension Texts {
+    enum Settings {
+        static let account = Common.account
+        static let alerts = Common.alerts
+        static let privacy = Common.privacy
+        static let language = Common.language
+        static let help = Common.help
+    }
+}
+
+//MARK: - UserAccountEditing screen
+extension Texts {
+    enum UserAccountEditing {
+        static let title = Common.account
+        static let signOut = "Выйти из аккунта"
+    }
+}
+
+//MARK: - NotificationSettings screen
+extension Texts {
+    enum NotificationSettings {
+        static let title = Common.alerts
+        static let sectionOneTitle = "Уведомления о сообщенииях"
+        static let showNotifications = "Показывать уведомления"
+        static let showText = "Показывать текст"
+        static let sound = Common.sound
+        static let secondSectionTitle = "Уведомления о событиях площадок и людей, на которых вы подписаны"
+        static let groundEvents = "События площадок"
+        static let usersEvents = "События людей"
+        static let newGroundsAround = "О новых площадках поблизости"
+        static let newEventsAround = "О новых событиях поблизости"
+    }
+}
+
+//MARK: - SoundList screen
+extension Texts {
+    enum SoundList {
+        static let title = Common.sound
+        static let tableSection = "Звуки сообщений"
+    }
+}
+
+//MARK: - PrivacySettingList screen
+extension Texts {
+    enum PrivacySettingList {
+        static let title = Common.privacy
+        static let allUsers = "От всех пользователей"
+        static let subsribtionUsers = "Только от подписчиков и подписок "
+        static let subscrobtions = "Только от подписок"
+    }
+}
+
+//MARK: - UserSupportSettings screen
+extension Texts {
+    enum UserSupportSettings {
+        static let title = Common.help
+        static let reportAProblem = Common.reportAProblem
+        static let supportRequest = "Запросы поддержки"
+        static let dataUsagePolicy = "Политика использования данных"
+        static let appUsagePolicy = "Условия использования"
+    }
+}
+

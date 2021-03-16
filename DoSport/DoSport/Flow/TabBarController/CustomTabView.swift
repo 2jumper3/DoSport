@@ -11,6 +11,7 @@ final class CustomTabView: UIView {
     // MARK: - Properties
     
     var itemTapped: ((_ tab: Int) -> Void)?
+    var onActiveItemTapped: (() -> Swift.Void)?
     var activeItem: Int = 0
 
     // MARK: - Init
@@ -51,7 +52,13 @@ final class CustomTabView: UIView {
     func createTabItem(item: TabBarItem) -> UIView {
         let tabBarItem = UIView()
         let itemIconView = UIImageView()
-
+        let tabBarIconYOffset: CGFloat
+        
+        switch UIDevice.hasBang {
+        case true: tabBarIconYOffset = 11
+        case false: tabBarIconYOffset = 0
+        }
+        
         itemIconView.tag = 11
         itemIconView.image = item.icon
         itemIconView.contentMode = .scaleAspectFit
@@ -59,12 +66,12 @@ final class CustomTabView: UIView {
         itemIconView.clipsToBounds = true
 
         tabBarItem.addSubview(itemIconView)
-
         
         itemIconView.snp.makeConstraints { (make) in
             make.height.equalTo(24)
             make.width.equalTo(24)
-            make.centerX.centerY.equalTo(tabBarItem)
+            make.centerX.equalTo(tabBarItem)
+            make.centerY.equalTo(tabBarItem.snp.centerY).offset(-tabBarIconYOffset)
         }
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -75,6 +82,11 @@ final class CustomTabView: UIView {
     // MARK: - Actions
     
     @objc func handleTap(_ sender: UIGestureRecognizer) {
+        if activeItem == sender.view!.tag {
+            onActiveItemTapped?()
+            return
+        }
+        
         switchTab(from: activeItem, too: sender.view!.tag)
     }
 

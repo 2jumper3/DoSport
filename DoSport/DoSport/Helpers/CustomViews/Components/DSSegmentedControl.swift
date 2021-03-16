@@ -113,7 +113,6 @@ extension DSSegmentedControl {
     
     func handleButton(_ button: UIButton) {
         moveSeletectedItem(to: button.tag)
-        delegate?.didSelectItem(at: button.tag)
     }
 }
 
@@ -153,5 +152,7 @@ private extension DSSegmentedControl {
                 button.setTitleColor(Colors.mainBlue, for: .normal)
             }
         }
+        
+        delegate?.didSelectItem(at: index)
     }
 }

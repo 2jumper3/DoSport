@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import SnapKit
 
-class OnBoardingViewCell: UICollectionViewCell {
+final class OnBoardingViewCell: UICollectionViewCell {
 
     // MARK: - Outlets
     static let reuseId = "PageViewCell"

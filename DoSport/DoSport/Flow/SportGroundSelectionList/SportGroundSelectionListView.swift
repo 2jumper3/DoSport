@@ -9,14 +9,18 @@ import UIKit
 
 final class SportGroundSelectionListView: UIView {
 
-    private lazy var tableView: UITableView = {
-        $0.registerClass(SportGroundSelectionTableCell.self)
-        $0.separatorColor = Colors.dirtyBlue
-        $0.backgroundColor = Colors.darkBlue
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.showsVerticalScrollIndicator = false
-        return $0
-    }(UITableView(frame: .zero, style: .plain))
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = UIDevice.hasBang ? 11 : 9
+        layout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.registerClass(SportGroundSelectionCollectionCell.self)
+        collectionView.backgroundColor = Colors.darkBlue
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
 
     //MARK: Init
     
@@ -24,7 +28,7 @@ final class SportGroundSelectionListView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(tableView)
+        addSubviews(collectionView)
     }
     
     required init?(coder: NSCoder) {
@@ -34,9 +38,9 @@ final class SportGroundSelectionListView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        tableView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(safeAreaInsets.top).offset(10)
-            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-20)
+            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-35)
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.centerX.equalToSuperview()
         }
@@ -47,10 +51,10 @@ final class SportGroundSelectionListView: UIView {
 
 extension SportGroundSelectionListView {
     
-    func udpateTableDataSource(dataSource: (UITableViewDataSource & UITableViewDelegate)) {
-        tableView.delegate = dataSource
-        tableView.dataSource = dataSource
-        tableView.reloadData()
+    func udpateTableDataSource(dataSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
+        collectionView.delegate = dataSource
+        collectionView.dataSource = dataSource
+        collectionView.reloadData()
         layoutIfNeeded()
     }
 }

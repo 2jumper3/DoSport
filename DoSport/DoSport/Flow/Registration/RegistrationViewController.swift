@@ -47,6 +47,7 @@ final class RegistrationViewController: UIViewController {
         ]
         
         imagePicker.delegate = self
+        registrationView.setDelegates(textField: self, datePicker: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +71,15 @@ final class RegistrationViewController: UIViewController {
 
 extension RegistrationViewController: RegistrationViewDelegate {
     
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?) {
+    func datePickerValueChanged(_ datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd / MM / yyyy"
+        
+        let text = dateFormatter.string(from: datePicker.date)
+        registrationView.setDateOfBirth(text)
+    }
+    
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?) {
         //создать модель с этими данными или передать данные в vm и создать модель там
         viewModel.createUser() { [weak self] in
             self?.coordinator?.goToSportTypeListModule()
@@ -79,14 +88,6 @@ extension RegistrationViewController: RegistrationViewDelegate {
     
     func avatarChangeButtonClicked() {
         imagePicker.photoGalleryAsscessRequest()
-    }
-    
-    func datePickerValueChanged(_ datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd / MM / yyyy"
-        
-        let text = dateFormatter.string(from: datePicker.date)
-        registrationView.setDateOfBirth(text)
     }
 }
 
@@ -110,5 +111,34 @@ extension RegistrationViewController: ImagePickerDelegate {
     ) {
         guard grantedAccess else { return }
         imagePicker.present(parent: self, sourceType: sourceType)
+    }
+}
+
+//MARK: - UITextFieldDelegate -
+
+extension RegistrationViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == registrationView.getDobTextField() {
+            datePickerValueChanged(registrationView.getDatePicker())
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == registrationView.getUsernameTextFeild() {
+            registrationView.makeDobTextFieldFirstResponder()
+        }
+        
+        return true
+    }
+}
+
+//MARK: - DSDatePickerDelegate -
+
+extension RegistrationViewController: DSDatePickerDelegate {
+    
+    func doneButtonClicked() {
+        registrationView.removeDobTextFieldFirstResponder()
     }
 }

@@ -117,7 +117,7 @@ final class TableViewCommentCell: UITableViewCell {
         
         memberNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.left.equalTo(memberAvatarImageView.snp.right).offset(16)
+            $0.left.equalTo(memberAvatarImageView.snp.right).offset(12)
             $0.height.equalTo(memberAvatarImageView.snp.height).multipliedBy(0.48)
         }
         
