@@ -18,18 +18,14 @@ extension UIDevice {
         case iPhone_XS_11Pro_Max
         case iPhone_12_Pro
         case iPhone_12_Pro_Max
-        
-        /// Remove later. Need to fix in almost every screen
-        case big
-        case small
     }
     
     static var hasBang: Bool {
         switch UIDevice.deviceSize {
         case .iPhone_X_XS_12mini, .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
-            return false
-        default:
             return true
+        default:
+            return false
         }
     }
     
@@ -55,10 +51,11 @@ extension UIDevice {
     
     static func getDeviceRelatedTabBarHeight() -> Int {
         if UIDevice().userInterfaceIdiom == .phone {
-            switch UIScreen.main.nativeBounds.height {
-            case 1136, 1334, 1920, 2208: return 49
-            case 2436, 2688, 1792: return 83
-            default: break
+            switch deviceSize {
+            case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2, .iPhone_6_6S_7_8_PLUS:
+                return 49
+            case .iPhone_X_XS_12mini, .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
+                return 83
             }
         }
         

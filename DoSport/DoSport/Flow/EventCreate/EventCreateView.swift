@@ -64,7 +64,6 @@ final class EventCreateView: UIView {
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
             buttonsHeight = 49
             buttonBottom += 20
-        default: break
         }
         
         tableView.snp.makeConstraints {

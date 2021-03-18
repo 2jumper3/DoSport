@@ -54,10 +54,9 @@ final class EventCardTableCell: UITableViewCell {
         var buttonsHeight: CGFloat
         
         switch UIDevice.deviceSize {  // FIXME: костыль?
-        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: buttonsHeight = 42
-        case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: buttonsHeight = 45
-        case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max: buttonsHeight = 47
-        default: buttonsHeight = 42
+        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: buttonsHeight = 41
+        case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: buttonsHeight = 43
+        case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max: buttonsHeight = 45
         }
         
         eventCardView.snp.makeConstraints {
