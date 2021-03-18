@@ -150,6 +150,7 @@ extension UserMainController: DSUserMainNavBarDelegate {
 //MARK: - EventInviteViewControllerDelegate -
 
 extension UserMainController: EventInviteViewControllerDelegate {
+    func shareButtonClicked() { }
     
     func cancelButtonClicked() {
         dismiss(eventInviteContainerController, from: userMainView)
