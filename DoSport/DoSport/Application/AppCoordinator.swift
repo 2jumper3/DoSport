@@ -24,9 +24,10 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let coordinator: Coordinator
-        
+      //  navigationController?.viewControllers
         if isAuthorised {
             coordinator = MainTabBarCoordinator(navController: navigationController)
+            
             self.store(coordinator: coordinator)
             coordinator.start()
         } else {

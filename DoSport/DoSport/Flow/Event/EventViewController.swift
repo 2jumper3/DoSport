@@ -139,6 +139,61 @@ private extension EventViewController {
             object: nil
         )
     }
+    
+    func setupInviteFriendsChildViewController() {
+        inviteFriendsChildViewController = InviteFriendsViewController(
+            nibName: "InviteFriendChildViewController",
+            bundle: nil
+        )
+        inviteFriendsChildViewController.delegate = self
+        
+        inviteFriendsChildViewController.view.frame = tabBarController!.view.frame
+        inviteFriendsChildViewController.view.frame.origin.y = tabBarController!.view.frame.maxY
+    }
+    
+    func presentInviteFriendsChildViewController() {
+        removeKeyboardNotification()
+        
+        tabBarController?.view.addSubview(inviteFriendsChildViewController.view)
+        tabBarController?.addChild(inviteFriendsChildViewController)
+        inviteFriendsChildViewController.didMove(toParent: tabBarController)
+        
+        let inviteFriendsViewHeight: CGFloat = inviteFriendsChildViewController.view.frame.height
+        let y: CGFloat = view.frame.maxY - inviteFriendsViewHeight - 10
+        
+        UIView.animate(withDuration: 0.3) { [self] in
+            inviteFriendsChildViewController.view.frame.origin.y = y
+        } completion: { value in
+            UIView.animate(withDuration: 0.3) { [self] in
+                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            }
+        }
+    }
+    
+    func dismissInviteFriendsChildViewController() {
+        setupKeyboardNotification()
+        
+        UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3) { [self] in
+                inviteFriendsChildViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+            } completion: { value in
+                UIView.animate(withDuration: 0.3) { [self] in
+                    inviteFriendsChildViewController.view.frame.origin.y = eventView.frame.maxY
+                } completion: { [self] value in
+                    inviteFriendsChildViewController.willMove(toParent: nil)
+                    inviteFriendsChildViewController.removeFromParent()
+                    inviteFriendsChildViewController.view.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    func presentUIActivityController() {
+        guard let eventId = event.eventID else { return }
+        let url = "dosport://share-event-view-controller/eventId=" + String(eventId)
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(activityController, animated: true)
+    }
 }
 
 //MARK: Actions
@@ -230,6 +285,11 @@ extension EventViewController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
         dismiss(eventInviteContainer, from: eventView)
+    }
+    
+    func shareButtonClicked() {
+        print("shareButtonClicked")
+        presentUIActivityController()
     }
 }
 
