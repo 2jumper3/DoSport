@@ -18,7 +18,7 @@ final class EventViewController: UIViewController {
     
     private var userToReplyName: String = ""
     
-    private var inviteFriendsChildViewController: InviteFriendsViewController!
+    private var eventInviteContainer: EventInviteViewController?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -67,7 +67,8 @@ final class EventViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupInviteFriendsChildViewController()
+        setup(&eventInviteContainer)
+        eventInviteContainer?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -230,8 +231,8 @@ extension EventViewController: EventViewDelegate {
 extension EventViewController: EventDataSourceDelegate {
     
     func tableViewInviteButtonClicked() {
-        inviteFriendsChildViewController.setupKeyboardNotification()
-        presentInviteFriendsChildViewController()
+        eventInviteContainer?.setupKeyboardNotification()
+        present(eventInviteContainer)
     }
     
     func tableViewParicipateButtonClicked() {
@@ -252,12 +253,12 @@ extension EventViewController: EventDataSourceDelegate {
     }
 }
 
-//MARK: - InviteFriendsViewControllerDelegate -
+//MARK: - EventInviteViewControllerDelegate -
 
-extension EventViewController: InviteFriendsViewControllerDelegate {
+extension EventViewController: EventInviteViewControllerDelegate {
     
     func cancelButtonClicked() {
-        dismissInviteFriendsChildViewController()
+        dismiss(eventInviteContainer, from: eventView)
     }
     
     func shareButtonClicked() {

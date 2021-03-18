@@ -11,15 +11,21 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
     
     var onSegmentedControlChanged: ((Int) -> Void)?
     
-    var messagesCount: Int = 0 {
+    var firstIndexText: String = "" {
         didSet {
-            segmentedControl.setTitle("\(self.messagesCount) Комментариев", forItemAt: 0)
+            segmentedControl.setTitle(self.firstIndexText, forItemAt: 0)
         }
     }
     
-    var membersCount: Int = 0 {
+    var secondIndexText: String = "" {
         didSet {
-            segmentedControl.setTitle( "\(self.membersCount) Участников", forItemAt: 1)
+            segmentedControl.setTitle( self.secondIndexText, forItemAt: 1)
+        }
+    }
+    
+    var selectedItemIndex: Int = 0 {
+        didSet {
+            segmentedControl.setSelectedItemIndex(selectedItemIndex)
         }
     }
     
@@ -28,11 +34,8 @@ final class EventTableChatHeaderView: UITableViewHeaderFooterView {
     private lazy var segmentedControl: DSSegmentedControl = {
         let items = ["", ""]
         let segmentedControl = DSSegmentedControl(titles: items)
-        segmentedControl.setSelectedItemIndex(0)
-        
-        let size: CGFloat = UIDevice.deviceSize == .small ? 14.5 : 16.5
-            
-        segmentedControl.setTitleStyle(fontSize: size)
+        segmentedControl.setSelectedItemIndex(self.selectedItemIndex)
+        segmentedControl.setTitleStyle(fontSize: 16)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
     }()
@@ -68,6 +71,10 @@ extension EventTableChatHeaderView {
     
     func getSegmentedControl() -> DSSegmentedControl {
         return segmentedControl
+    }
+    
+    func setSegmentedControl(text: String, for index: Int) {
+        segmentedControl.setTitle(text, forItemAt: index)
     }
 }
 

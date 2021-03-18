@@ -18,6 +18,7 @@ final class DateSelectionView: UIView {
     weak var delegate: DateSelectionViewDelegate?
     private var selectedDate: Date?
     private var calendarWidth: CGFloat = 375
+    private var calendarHeight: CGFloat = 250
     
     //MARK: Outlets
     
@@ -66,11 +67,12 @@ final class DateSelectionView: UIView {
         case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini:
             buttonBottom = 20
             calendarWidth = 400
+            calendarHeight = 300
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
             buttonBottom = 40
             calendarWidth = 420
+            calendarHeight = 320
             saveButtonsHeight = 50
-        default: break
         }
         
         setupCalendarView()
@@ -116,7 +118,6 @@ extension DateSelectionView {
 private extension DateSelectionView {
     
     func setupCalendarView() {
-        let calendarHeight: CGFloat = UIDevice.deviceSize == .small ? 250 : 320
         let xOffset = (bounds.width - calendarWidth) / 2
         
         calendarView.frame = CGRect(
