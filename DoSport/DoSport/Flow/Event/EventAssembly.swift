@@ -16,8 +16,12 @@ final class EventAssembly: Assembly {
     }
     
     func makeModule() -> EventViewController {
-        let viewModel = EventViewModel()
-        let viewController = EventViewController(viewModel: viewModel, event: event)
+        let viewModel = EventViewModel(event: event)
+        let viewController = EventViewController(
+            viewModel: viewModel,
+            event: event,
+            isCurrentUserOrganisedEvent: viewModel.isCurrentUserOrganisedEvent
+        )
         return viewController
     }
 }

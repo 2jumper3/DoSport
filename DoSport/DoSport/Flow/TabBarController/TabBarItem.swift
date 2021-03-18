@@ -21,9 +21,11 @@ enum TabBarItem: String, CaseIterable {
         case .home:
             return FeedAssembly().makeModule()
         case .map:
-            return MainViewController()
+            let viewModel = MainSportTypeSelectionViewModel()
+            return MainSportTypeSelectionController(viewModel: viewModel)
         case .chat:
-            return MainViewController()
+            let viewModel = MainSportTypeSelectionViewModel()
+            return MainSportTypeSelectionController(viewModel: viewModel)
         case .user:
             return UserMainAssembly(user: nil).makeModule()
         }

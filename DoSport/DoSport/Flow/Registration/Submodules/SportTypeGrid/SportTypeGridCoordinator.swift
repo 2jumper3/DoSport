@@ -31,7 +31,7 @@ final class SportTypeGridCoordinator: Coordinator {
     
     func goToFeedModule() {
         let coordinator = MainTabBarCoordinator(navController: navigationController)
-        coordinator.store(coordinator: coordinator)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
 }

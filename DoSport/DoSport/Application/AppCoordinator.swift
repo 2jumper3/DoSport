@@ -36,6 +36,6 @@ final class AppCoordinator: Coordinator {
             coordinator.start()
         }
         
-        window.rootViewController = coordinator.navigationController
+        self.window.rootViewController = coordinator.navigationController
     }
 }

@@ -21,6 +21,7 @@ final class FeedCoordinator: Coordinator {
     }
     
     func start() {
+        
         rootViewController.coordinator = self
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
@@ -35,5 +36,9 @@ final class FeedCoordinator: Coordinator {
         let coordinator = EventCreateCoordinator(navController: self.navigationController)
         self.store(coordinator: coordinator)
         coordinator.start()
+    }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

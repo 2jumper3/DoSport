@@ -8,14 +8,23 @@
 import UIKit
 
 protocol AppLanguageListDataSourceDelegate: class {
+    
+    /// Called when user selects app sound setting from the list of sounds
+    /// - Parameters:
+    ///     - language: The language `string` name inside tableCell that user can select
     func tableView(didSelect language: String)
 }
 
+/// Describes AppLanguage screen's table data souce object
 final class AppLanguageListDataSource: NSObject {
     
+    /// Delegates AppLanguage table methods to AppLanguageListController class
     weak var delegate: AppLanguageListDataSourceDelegate?
     
+    /// Languages in `String` type used to display in table cell
     private let viewModels: [String]
+    
+    /// Number used to store selected cell row value
     private var selectedRow: Int = 0
     
     override init() {
@@ -36,7 +45,7 @@ extension AppLanguageListDataSource:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sound: String = viewModels[indexPath.row]
         let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
-        cell.titleText = sound
+        cell.textLabel?.text = sound
         cell.bind(state: .notSelected)
         
         if selectedRow == 0 && indexPath.row == 0 {
@@ -63,7 +72,7 @@ extension AppLanguageListDataSource:  UITableViewDataSource {
 extension AppLanguageListDataSource: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sound = viewModels[indexPath.row]
+        let language = viewModels[indexPath.row]
         let selectedIndexPath = IndexPath(row: selectedRow, section: 0)
         let selectedCell: SportTypeListTableCell
         let newCell: SportTypeListTableCell
@@ -87,7 +96,7 @@ extension AppLanguageListDataSource: UITableViewDelegate {
             selectedRow = indexPath.row
         }
         
-        delegate?.tableView(didSelect: sound)
+        delegate?.tableView(didSelect: language)
         tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .none)
     }
     

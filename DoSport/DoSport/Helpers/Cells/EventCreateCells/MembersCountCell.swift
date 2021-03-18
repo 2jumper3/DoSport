@@ -19,14 +19,6 @@ final class MembersCountCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    private let minValueTextField: DSTextField = {
-        $0.isUserInteractionEnabled = false
-        $0.backgroundColor = Colors.darkBlue
-        $0.isUserInteractionEnabled = false
-        $0.font = Fonts.sfProRegular(size: 18)
-        return $0
-    }(DSTextField())
-    
     private let maxValueTextField: DSTextField = {
         $0.backgroundColor = Colors.darkBlue
         $0.isUserInteractionEnabled = false
@@ -34,7 +26,15 @@ final class MembersCountCell: UITableViewCell {
         return $0
     }(DSTextField())
     
-    private lazy var rangeSlide = DSRangeSlider(state: .enabled)
+    private lazy var maxMembersCountSlider: UISlider = {
+        $0.addTarget(self, action: #selector(handleSliderValueChanged), for: .allEvents)
+        $0.minimumTrackTintColor = Colors.lightBlue
+        $0.maximumTrackTintColor = .white
+        $0.maximumValue = 100
+        $0.minimumValue = 1
+        $0.value = 10
+        return $0
+    }(UISlider())
     
     private lazy var checkboxButton = DSCheckboxButton()
 
@@ -53,13 +53,10 @@ final class MembersCountCell: UITableViewCell {
         
         checkboxButton.addTarget(self, action: #selector(handleCheckbocButton))
         
-        setupSliderBinding()
-        
         contentView.addSubviews(
             titleLabel,
-            minValueTextField,
             maxValueTextField,
-            rangeSlide,
+            maxMembersCountSlider,
             checkboxButton,
             checkboxInfoLabel
         )
@@ -72,8 +69,7 @@ final class MembersCountCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        minValueTextField.text = "от \(Int(rangeSlide.selectedMinValue))"
-        maxValueTextField.text = "до \(Int(rangeSlide.selectedMaxValue))"
+        maxValueTextField.text = "до \(Int(maxMembersCountSlider.value))"
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
@@ -81,31 +77,22 @@ final class MembersCountCell: UITableViewCell {
             $0.height.equalTo(25)
         }
         
-        minValueTextField.snp.makeConstraints {
-            $0.left.equalTo(titleLabel.snp.left)
-        }
-        
         maxValueTextField.snp.makeConstraints {
+            $0.left.equalTo(titleLabel.snp.left)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+            $0.height.equalToSuperview().multipliedBy(0.23)
             $0.right.equalToSuperview().offset(-16)
         }
         
-        [minValueTextField, maxValueTextField].forEach {
-            $0.snp.makeConstraints {
-                $0.top.equalTo(titleLabel.snp.bottom).offset(12)
-                $0.height.equalToSuperview().multipliedBy(0.23)
-                $0.width.equalToSuperview().multipliedBy(0.43)
-            }
-        }
-        
-        rangeSlide.snp.makeConstraints {
-            $0.top.equalTo(minValueTextField.snp.bottom).offset(16)
+        maxMembersCountSlider.snp.makeConstraints {
+            $0.top.equalTo(maxValueTextField.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.122)
+            $0.height.equalToSuperview().multipliedBy(0.1)
             $0.width.equalToSuperview().multipliedBy(0.9)
         }
         
         checkboxButton.snp.makeConstraints {
-            $0.top.equalTo(rangeSlide.snp.bottom).offset(18)
+            $0.top.equalTo(maxMembersCountSlider.snp.bottom).offset(18)
             $0.left.equalToSuperview().offset(16)
             $0.height.equalToSuperview().multipliedBy(0.156)
             $0.width.equalTo(checkboxButton.snp.height)
@@ -119,32 +106,32 @@ final class MembersCountCell: UITableViewCell {
     }
 }
 
-//MARK: Private API
-
-private extension MembersCountCell {
-    
-    func setupSliderBinding() {
-        rangeSlide.onDidChangeValues = { [unowned self] minValue, maxValue in
-            self.minValueTextField.text = "от \(Int(minValue))"
-            self.maxValueTextField.text = "до \(Int(maxValue))"
-        }
-    }
-}
-
 //MARK: Actions
 
 @objc private extension MembersCountCell {
+    
+    func handleSliderValueChanged(_ slider: UISlider) {
+        let step: Float = 1
+        let roundedValue = round(slider.value / step) * step
+        self.maxValueTextField.text = "до \(Int(roundedValue))"
+    }
     
     func handleCheckbocButton() {
         checkboxButton.bind()
         
         switch checkboxButton.getState() {
         case .notSelected:
-            rangeSlide.bind(state: .enabled)
-            [maxValueTextField, minValueTextField].forEach { $0.bind(state: .enable) }
+            maxMembersCountSlider.minimumTrackTintColor = Colors.lightBlue
+            maxMembersCountSlider.maximumTrackTintColor = .white
+            maxMembersCountSlider.thumbTintColor = .white
+            maxMembersCountSlider.isUserInteractionEnabled = true
+            maxValueTextField.bind(state: .enable)
         case .selected:
-            rangeSlide.bind(state: .disabled)
-            [maxValueTextField, minValueTextField].forEach { $0.bind(state: .disabled) }
+            maxMembersCountSlider.isUserInteractionEnabled = false
+            maxMembersCountSlider.thumbTintColor = Colors.dirtyBlue
+            maxMembersCountSlider.minimumTrackTintColor = Colors.dirtyBlue
+            maxMembersCountSlider.maximumTrackTintColor = Colors.dirtyBlue
+            maxValueTextField.bind(state: .disabled)
         }
     }
 }

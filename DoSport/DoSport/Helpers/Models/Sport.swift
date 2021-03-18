@@ -20,36 +20,52 @@ struct Sport: Codable {
         switch type {
         case .football:
             title = type.rawValue
+            icon = "\(type)"
         case .basketball:
             title = type.rawValue
+            icon = "\(type)"
         case .hockey:
             title = type.rawValue
+            icon = "\(type)"
         case .volleyball:
             title = type.rawValue
+            icon = "\(type)"
         case .tennis:
             title = type.rawValue
+            icon = "\(type)"
         case .workout:
             title = type.rawValue
+            icon = "\(type)"
         case .run:
             title = type.rawValue
+            icon = "\(type)"
         case .gym:
             title = type.rawValue
+            icon = "\(type)"
         case .yoga:
             title = type.rawValue
+            icon = "\(type)"
         case .box:
             title = type.rawValue
+            icon = "\(type)"
         case .group:
             title = type.rawValue
+            icon = "\(type)"
         case .dance:
             title = type.rawValue
-        case .tablettennis:
+            icon = "\(type)"
+        case .tabletennis:
             title = type.rawValue
+            icon = "\(type)"
         case .skateboard:
             title = type.rawValue
+            icon = "\(type)"
         case .badminton:
             title = type.rawValue
+            icon = "\(type)"
         case .other:
             title = type.rawValue
+            icon = "\(type)"
         }
     }
     
@@ -61,12 +77,12 @@ struct Sport: Codable {
         case tennis = "Теннис"
         case workout = "Воркаут"
         case run = "Бег"
-        case gym = "Треножерный зал"
+        case gym = "Тренажерный зал"
         case yoga = "Йога"
         case box = "Бокс"
-        case group = "Групповое трени"
+        case group = "Групповые тренировки"
         case dance = "Танцы"
-        case tablettennis = "Настольный теннис"
+        case tabletennis = "Настольный теннис"
         case skateboard = "Скейтборд"
         case badminton = "Бадминтон"
         case other = "Другое"
@@ -75,7 +91,7 @@ struct Sport: Codable {
 
 extension Sport.SportType: Codable { }
 
-//MARK: - Equatable
+//MARK: - Equatable -
 
 extension Sport: Equatable {
     

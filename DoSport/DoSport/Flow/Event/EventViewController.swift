@@ -12,13 +12,17 @@ final class EventViewController: UIViewController {
     weak var coordinator: EventCoordinator?
     private let viewModel: EventViewModel
     private lazy var eventView = view as! EventView
-    private let eventCollectionManager = EventDataSource()
+    private lazy var eventCollectionManager = EventDataSource(isCurrentUserOrganisedEvent: self.isCurrentUserOrganisedEvent)
     
     private let event: Event
+    
+    private var isEventVisibilityPopupShown: Bool = false
     
     private var userToReplyName: String = ""
     
     private var eventInviteContainer: EventInviteViewController?
+    
+    private let isCurrentUserOrganisedEvent: Bool
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -26,9 +30,10 @@ final class EventViewController: UIViewController {
 
     // MARK: Init
     
-    init(viewModel: EventViewModel, event: Event) {
+    init(viewModel: EventViewModel, event: Event, isCurrentUserOrganisedEvent: Bool) {
         self.viewModel = viewModel
         self.event = event
+        self.isCurrentUserOrganisedEvent = isCurrentUserOrganisedEvent
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,10 +56,11 @@ final class EventViewController: UIViewController {
         title = ""
         navigationController?.navigationBar.tintColor = Colors.mainBlue
         
-        setupViewModelBindings()
         setupKeyboardNotification()
         
-        viewModel.prepareEventData(event: self.event)
+        self.eventCollectionManager.viewModel = event
+        self.updateView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,23 +88,28 @@ final class EventViewController: UIViewController {
         
         coordinator?.removeDependency(coordinator)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        if isEventVisibilityPopupShown {
+            eventView.hideEventVisibilityChangePopupView()
+        }
+    }
+    
+    deinit {
+        self.removeKeyboardNotification()
+    }
 }
 
 //MARK: Private API
 
 private extension EventViewController {
     
-    func setupViewModelBindings() {
-        viewModel.onDidPrepareEventData = { [weak self] event in
-            self?.eventCollectionManager.viewModel = event
-            self?.updateView()
-        }
-    }
-    
     func updateView() {
         eventView.updateCollectionDataSource(dateSource: self.eventCollectionManager)
     }
-    
+    // TODO: move it to extension
     func setupKeyboardNotification() {
         NotificationCenter.default.addObserver(
             self,
@@ -114,7 +125,7 @@ private extension EventViewController {
             object: nil
         )
     }
-    
+    // TODO: move it to extension
     func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(
             self,
@@ -128,7 +139,7 @@ private extension EventViewController {
             object: nil
         )
     }
-
+    
     func presentUIActivityController() {
         guard let eventId = event.eventID else { return }
         let url = "dosport://share-event-view-controller/eventId=" + String(eventId)
@@ -189,6 +200,21 @@ extension EventViewController: EventDataSourceDelegate {
     
     func tableViewParicipateButtonClicked() {
         
+    }
+    
+    func tableViewEventVisibilityChangeButtonClicked() {
+        if isEventVisibilityPopupShown {
+            eventView.showEventVisibilityChangePopupView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [unowned self] in
+                eventView.hideEventVisibilityChangePopupView()
+            }
+            
+            isEventVisibilityPopupShown = !isEventVisibilityPopupShown
+            return
+        }
+        
+        isEventVisibilityPopupShown = !isEventVisibilityPopupShown
     }
     
     func commentReplyButtonClicked(to userName: String?) {

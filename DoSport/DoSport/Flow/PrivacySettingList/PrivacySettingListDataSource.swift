@@ -48,7 +48,7 @@ extension PrivacySettingListDataSource:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let privacyMode: PrivacySettingType = viewModels[indexPath.row]
         let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
-        cell.titleText = privacyMode.title
+        cell.textLabel?.text = privacyMode.title
         cell.bind(state: .notSelected)
         
         if selectedRow == 0 && indexPath.row == 0 {

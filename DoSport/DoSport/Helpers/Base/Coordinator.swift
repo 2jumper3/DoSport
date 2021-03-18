@@ -8,9 +8,13 @@
 import UIKit
 
 protocol Coordinator: AnyObject {
+    
+    /// Used to add strong reference to appended Coordingator object in order to avoid memory issues
     var childCoordinators: [Coordinator] { get set }
+    
     var navigationController: UINavigationController? { get set }
     
+    /// Shows `rootViewController`  with animation by `push` method.
     func start()
     
     // extension implemented
@@ -19,6 +23,10 @@ protocol Coordinator: AnyObject {
 }
 
 extension Coordinator {
+    
+    /// Removes strong reference of removed Coordingator object in order to avoid memory issues
+    /// - Parameters:
+    ///     - coordinator: coordinator object that is removed from array
     func removeDependency(_ coordinator: Coordinator?) {
         guard
             childCoordinators.isEmpty == false,
@@ -31,6 +39,9 @@ extension Coordinator {
         }
     }
 
+    /// Adds strong reference for appended Coordingator object in order to avoid memory issues
+    /// - Parameters:
+    ///     - coordinator: coordinator object that is added into array
     func store(coordinator: Coordinator) {
         childCoordinators.append(coordinator)
     }
