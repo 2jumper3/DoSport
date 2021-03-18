@@ -257,7 +257,7 @@ extension InvitesFriendView {
     }
     
     func handleShareButton() {
-        
+        delegate?.shareButtonClicked()
     }
     
     func handleStateChange() {

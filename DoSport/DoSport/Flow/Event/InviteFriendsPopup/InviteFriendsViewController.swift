@@ -9,6 +9,7 @@ import UIKit
 
 protocol InviteFriendsViewControllerDelegate: class {
     func cancelButtonClicked()
+    func shareButtonClicked()
 }
 
 final class InviteFriendsViewController: UIViewController {
@@ -138,7 +139,7 @@ extension InviteFriendsViewController: InviteFriendsViewDelegate {
     }
     
     func shareButtonClicked() {
-        
+        delegate?.shareButtonClicked()
     }
     
     func sendButtonClicked() {

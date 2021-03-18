@@ -175,6 +175,13 @@ private extension EventViewController {
             }
         }
     }
+    
+    func presentUIActivityController() {
+        guard let eventId = event.eventID else { return }
+        let url = "dosport://share-event-view-controller/eventId=" + String(eventId)
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(activityController, animated: true)
+    }
 }
 
 //MARK: Actions
@@ -251,6 +258,11 @@ extension EventViewController: InviteFriendsViewControllerDelegate {
     
     func cancelButtonClicked() {
         dismissInviteFriendsChildViewController()
+    }
+    
+    func shareButtonClicked() {
+        print("shareButtonClicked")
+        presentUIActivityController()
     }
 }
 
