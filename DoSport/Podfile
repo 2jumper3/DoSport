@@ -6,7 +6,6 @@ target 'DoSport' do
   use_frameworks!
 
   # Pods for DoSport
-  pod 'Alamofire', '~> 5.2'
   pod 'YandexMapsMobile', ’4.0.0-full’
   pod 'SwiftLint'
   pod 'SnapKit', '~> 5.0.0'

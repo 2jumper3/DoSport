@@ -52,7 +52,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print(#function)
         window?.endEditing(true)
     }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         deepLinkManager.handleURL(url, self.appCoordinator)
         return true

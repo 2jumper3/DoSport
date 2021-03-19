@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.4.1)
   - Firebase/Analytics (7.8.1):
     - Firebase/Core
   - Firebase/Core (7.8.1):
@@ -87,7 +86,6 @@ PODS:
   - YandexMapsMobile (4.0.0-full)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
   - Firebase/Analytics
   - Firebase/Messaging
   - FSCalendar
@@ -98,7 +96,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -118,7 +115,6 @@ SPEC REPOS:
     - YandexMapsMobile
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Firebase: d59ad4129167f9f0d2a4f6c1f0c462254b6002c8
   FirebaseAnalytics: 3b98b563d7d64c07900511198b4805cfd9f9f61c
   FirebaseCore: 049029df3096e5c118917029be7da75ee16f3b1b
@@ -137,6 +133,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   YandexMapsMobile: 0f3d8c92fad685dc33d07f83eed4eb0166089743
 
-PODFILE CHECKSUM: 32b4f0ac2d463681471fce6e0280ff1d36199d9f
+PODFILE CHECKSUM: 5c74f9b5d09da19824abce8491d9ec026a78cd8a
 
 COCOAPODS: 1.10.0
