@@ -979,6 +979,7 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+
 		65A2DC6A26011A1D003B9ECA /* DSApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,6 +1009,7 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+    
 		65A62A1F25E70395000AA184 /* InviteFriendsPopupCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1450,7 +1452,6 @@
 		CEDEB887258CE793007B2BCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				65A2DC6A26011A1D003B9ECA /* DSApi */,
 				65A2DC6926011A19003B9ECA /* Data */,
 				CEDEB83C258CE0FE007B2BCA /* Network */,
 				CEDEB83B258CE0EF007B2BCA /* Service */,

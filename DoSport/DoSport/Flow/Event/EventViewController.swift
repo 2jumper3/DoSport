@@ -139,6 +139,13 @@ private extension EventViewController {
             object: nil
         )
     }
+
+    func presentUIActivityController() {
+        guard let eventId = event.eventID else { return }
+        let url = "dosport://feed/event/" + String(eventId)
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(activityController, animated: true)
+    }
 }
 
 //MARK: Actions
