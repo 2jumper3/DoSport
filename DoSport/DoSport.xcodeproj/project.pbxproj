@@ -10,7 +10,7 @@
 		0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */; };
 		0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */; };
 		0401A14125EFA50E00A1659E /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A14025EFA50E00A1659E /* CustomSearchBar.swift */; };
-		555F212A0537C324F808BB95 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2A5BED711FCC45AEA85546 /* Pods_DoSport.framework */; };
+		4FDB6F1393C544172AE7D016 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B2C80E4358F104D909040B /* Pods_DoSport.framework */; };
 		65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */; };
 		6503F4E325B5CDD60002BC27 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4E225B5CDD60002BC27 /* Event.swift */; };
 		6503F4E825B5D56A0002BC27 /* LocalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4E725B5D56A0002BC27 /* LocalTime.swift */; };
@@ -308,7 +308,8 @@
 		0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionViewModel.swift; sourceTree = "<group>"; };
 		0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionTableCell.swift; sourceTree = "<group>"; };
 		0401A14025EFA50E00A1659E /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
-		2D2A5BED711FCC45AEA85546 /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1151A62AC4A4EBF596484855 /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
+		12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
 		65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPasswordTextView.swift; sourceTree = "<group>"; };
 		6503F4E225B5CDD60002BC27 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6503F4E725B5D56A0002BC27 /* LocalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTime.swift; sourceTree = "<group>"; };
@@ -530,8 +531,6 @@
 		65EEB95F25EA023400821F8F /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		65EEE91325B622A90023168D /* GetEventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsRequest.swift; sourceTree = "<group>"; };
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
-		71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -570,6 +569,7 @@
 		CEDEB901258D371D007B2BCA /* OnBoardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewCell.swift; sourceTree = "<group>"; };
 		CEDEB909258D37D9007B2BCA /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		CEDEB913258D4C75007B2BCA /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		D4B2C80E4358F104D909040B /* Pods_DoSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,7 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65993B8225FBE57500CC7E49 /* DoSportSwiftUI.framework in Frameworks */,
-				555F212A0537C324F808BB95 /* Pods_DoSport.framework in Frameworks */,
+				4FDB6F1393C544172AE7D016 /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,8 +609,8 @@
 		1B575704A7CC7F421F6A9B8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */,
-				7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */,
+				1151A62AC4A4EBF596484855 /* Pods-DoSport.debug.xcconfig */,
+				12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1214,10 +1214,10 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		86FDF7AEC152A8EDA7FFAD16 /* Frameworks */ = {
+		ADF7D3308F59CB7E81C5F884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D2A5BED711FCC45AEA85546 /* Pods_DoSport.framework */,
+				D4B2C80E4358F104D909040B /* Pods_DoSport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1253,9 +1253,9 @@
 				CEDEB792258CB40B007B2BCA /* DoSportTests */,
 				CEDEB79D258CB40B007B2BCA /* DoSportUITests */,
 				65993B1B25FBD73C00CC7E49 /* DoSportSwiftUI */,
-				86FDF7AEC152A8EDA7FFAD16 /* Frameworks */,
 				1B575704A7CC7F421F6A9B8A /* Pods */,
 				CEDEB77A258CB404007B2BCA /* Products */,
+				ADF7D3308F59CB7E81C5F884 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1505,13 +1505,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDEB7A3258CB40B007B2BCA /* Build configuration list for PBXNativeTarget "DoSport" */;
 			buildPhases = (
-				EEF80AE13DA15D5A0E3C16E8 /* [CP] Check Pods Manifest.lock */,
+				1ADFB484E889E0264A8B0DC0 /* [CP] Check Pods Manifest.lock */,
 				CEDEB775258CB404007B2BCA /* Sources */,
 				CEDEB776258CB404007B2BCA /* Frameworks */,
 				CEDEB777258CB404007B2BCA /* Resources */,
-				743943CA1C8BD961B78568BB /* [CP] Embed Pods Frameworks */,
-				3CC80F753240E0A0302143EE /* [CP] Copy Pods Resources */,
 				65993B8625FBE57500CC7E49 /* Embed Frameworks */,
+				C316C335614A8F0E1B48CC8B /* [CP] Embed Pods Frameworks */,
+				8974BF4199D02531345EA05A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1648,41 +1648,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CC80F753240E0A0302143EE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		743943CA1C8BD961B78568BB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EEF80AE13DA15D5A0E3C16E8 /* [CP] Check Pods Manifest.lock */ = {
+		1ADFB484E889E0264A8B0DC0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1702,6 +1668,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8974BF4199D02531345EA05A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C316C335614A8F0E1B48CC8B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoSport/Pods-DoSport-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2191,7 +2191,7 @@
 		};
 		CEDEB7A4258CB40B007B2BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */;
+			baseConfigurationReference = 1151A62AC4A4EBF596484855 /* Pods-DoSport.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2215,7 +2215,7 @@
 		};
 		CEDEB7A5258CB40B007B2BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */;
+			baseConfigurationReference = 12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

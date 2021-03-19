@@ -17,15 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-//        if let windowScene = scene as? UIWindowScene {
-//                        self.window = UIWindow(windowScene: windowScene)
-//                        let vc = MainMenuTabController()
-//                        self.window!.rootViewController = vc
-//                        self.window!.makeKeyAndVisible()
-//                        self.window!.backgroundColor = .red
-//                    }
         if let windowScene = scene as? UIWindowScene {
             window = UIWindow(windowScene: windowScene)
+            
             let appCoordinator = AppCoordinator(window: window!)
             self.appCoordinator = appCoordinator
             self.appCoordinator?.start()
