@@ -139,7 +139,7 @@ private extension EventViewController {
             object: nil
         )
     }
-    
+
     func presentUIActivityController() {
         guard let eventId = event.eventID else { return }
         let url = "dosport://feed/event/" + String(eventId)
@@ -241,7 +241,6 @@ extension EventViewController: EventInviteViewControllerDelegate {
     
     func shareButtonClicked() {
         print("shareButtonClicked")
-        presentUIActivityController()
     }
 }
 
