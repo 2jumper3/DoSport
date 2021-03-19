@@ -10,5 +10,5 @@ import Foundation
 enum AppConfiguration {
     
     static let apiKey = ""
-    static let serverURL: URL = URL(string: "https://dosport-ru.herokuapp.com/")!
+    static let serverURL: URL = URL(string: "https://dosport-ru.herokuapp.com/api/v1/")!
 }
