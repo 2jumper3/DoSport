@@ -10,6 +10,7 @@
 		0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */; };
 		0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */; };
 		0401A14125EFA50E00A1659E /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A14025EFA50E00A1659E /* CustomSearchBar.swift */; };
+		2A8F72BA26054E3A002FC6D4 /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F72B926054E3A002FC6D4 /* DeepLinkManager.swift */; };
 		4FDB6F1393C544172AE7D016 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B2C80E4358F104D909040B /* Pods_DoSport.framework */; };
 		65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */; };
 		6503F4E325B5CDD60002BC27 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4E225B5CDD60002BC27 /* Event.swift */; };
@@ -310,6 +311,7 @@
 		0401A14025EFA50E00A1659E /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		1151A62AC4A4EBF596484855 /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
+		2A8F72B926054E3A002FC6D4 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPasswordTextView.swift; sourceTree = "<group>"; };
 		6503F4E225B5CDD60002BC27 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6503F4E725B5D56A0002BC27 /* LocalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTime.swift; sourceTree = "<group>"; };
@@ -1284,6 +1286,7 @@
 				CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */,
 				6587054B25924C3200EFF7C7 /* AppCoordinator.swift */,
 				65EEE91825B626290023168D /* AppConfiguration.swift */,
+				2A8F72B926054E3A002FC6D4 /* DeepLinkManager.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1894,6 +1897,7 @@
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
 				659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */,
+				2A8F72BA26054E3A002FC6D4 /* DeepLinkManager.swift in Sources */,
 				6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */,
 				653179A825D11212001DBA4B /* RegionListAssembly.swift in Sources */,
 				65993B2A25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */,
