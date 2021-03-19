@@ -51,11 +51,4 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print(#function)
         window?.endEditing(true)
     }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print(url)
-        print(url.host)
-        print(url.path)
-        return true
-    }
 }
