@@ -9,6 +9,7 @@ import UIKit
 
 protocol EventInviteViewControllerDelegate: class {
     func cancelButtonClicked()
+    func shareButtonClicked()
 }
 
 final class EventInviteViewController: UIViewController {
@@ -138,7 +139,7 @@ extension EventInviteViewController: EventInviteViewDelegate {
     }
     
     func shareButtonClicked() {
-        
+        delegate?.shareButtonClicked()
     }
     
     func sendButtonClicked() {

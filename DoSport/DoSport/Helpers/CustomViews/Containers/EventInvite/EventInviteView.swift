@@ -257,7 +257,7 @@ extension EventInviteView {
     }
     
     func handleShareButton() {
-        
+        delegate?.shareButtonClicked()
     }
     
     func handleStateChange() {

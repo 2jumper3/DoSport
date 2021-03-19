@@ -231,5 +231,9 @@ extension EventViewController: EventInviteViewControllerDelegate {
     func cancelButtonClicked() {
         dismiss(eventInviteContainer, from: eventView)
     }
+    
+    func shareButtonClicked() {
+        print("shareButtonClicked")
+    }
 }
 
