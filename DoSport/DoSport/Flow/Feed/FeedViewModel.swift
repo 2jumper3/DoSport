@@ -9,7 +9,7 @@ import Foundation
 
 final class FeedViewModel {
     
-    private let requestFactory: RequestFactory
+    private let requestFactory: RequestsManager
     
     var onDidPrepareEventsData: (([Event]) -> Void)?
     
@@ -20,17 +20,19 @@ final class FeedViewModel {
         }
     }
     
-    init(requestFactory: RequestFactory) {
+    init(requestFactory: RequestsManager) {
         self.requestFactory = requestFactory
     }
     
     func prepareEventsData() {
-//        let eventsRequest = requestFactory.makeGetEventsRequest()
-//
-//        eventsRequest.getEvents(token: "") { events in
-//            print(events)
-//        }
-        
+        requestFactory.eventsGet { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let models):
+                print(models)
+            }
+        }
         
         var membersArray: [Member] = []
         for i in 1...11 {
