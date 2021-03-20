@@ -12,10 +12,10 @@ extension RequestsManager {
     //MARK: - Events -
     
     func eventsGet(
-        completion: @escaping (Result<DSModels.Api.Event.GetEventsResponse, NetworkErrorType>) -> Void
+        completion: @escaping (DataHandler<DSModels.Api.Event.GetEventsResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.GetEvents()
-        httpNetworkManager.request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, compilation: completion)
     }
     
     func eventGetBy() {
