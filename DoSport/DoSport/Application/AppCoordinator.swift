@@ -15,7 +15,7 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     // temprorary variable to immitate auth logic
-    var isAuthorised = true
+    var isAuthorised = false
     
     init(window: UIWindow) {
         self.window = window

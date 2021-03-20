@@ -12,39 +12,55 @@ extension RequestsManager {
     //MARK: - Events -
     
     func eventsGet(
-        completion: @escaping (Result<DSModels.Api.Event.GetEventsResponse, NetworkErrorType>) -> Void
+        completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
     ) {
-        let endpoint = DSEndpoints.Event.GetEvents()
-        httpNetworkManager.request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.Event.getEvents
+        request(endpoint: endpoint, compilation: completion)
     }
     
-    func eventGetBy() {
-        
+    func eventCreate(
+        params: DSModels.Event.CreateEventRequest,
+        completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.createEvent(params)
+        request(endpoint: endpoint, compilation: completion)
     }
     
-    func eventsGetBy() {
-        
+    func eventGetByParameters(
+        params: DSModels.Event.GetEventsByParameters,
+        completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
+    ) {
+        let endpoints = DSEndpoints.Event.getEventsByParams(params)
+        request(endpoint: endpoints, compilation: completion)
     }
     
-    func eventsGetIfCreatedByCurrentUser() {
-        
+    func eventsGetIfCreatedByCurrentUser(
+        completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.getEventsOfCurrentUser
+        request(endpoint: endpoint, compilation: completion)
     }
     
-    func eventCreate() {
-        
+    func eventEditBy(
+        eventID id: Int,
+        params: DSModels.Event.EditEventRequest,
+        completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.editEvent(eventID: id, params)
+        request(endpoint: endpoint, compilation: completion)
     }
     
-    func eventEditBy() {
-        
-    }
-    
-    func eventDeleteBy() {
-        
+    func eventDeleteBy(
+        params: DSModels.Event.DeleteEventRequest,
+        completion: @escaping (DataHandler<DSModels.Event.DeleteEventResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.deleteEvent(eventID: params.id)
+        request(endpoint: endpoint, compilation: completion)
     }
     
     //MARK: - Event Members -
     
-    func eventGetMembersBy() {
+    func eventGetMembers() {
         
     }
     

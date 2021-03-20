@@ -9,7 +9,7 @@ import Foundation
 
 /// Models with `CodingKeys` that used as params for requests
 
-extension DSModels.Api {
+extension DSModels {
     enum Auth {
         
         //MARK: -  Login -

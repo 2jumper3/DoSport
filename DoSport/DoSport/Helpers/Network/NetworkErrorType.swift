@@ -11,5 +11,7 @@ enum NetworkErrorType: Error {
     case serverError
     case clientError
     case failData
+    case encodingError
+    case decodingError
     case unknownError
 }
