@@ -375,21 +375,6 @@
 		654210CF25AF8533004078C4 /* CodeLabelStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLabelStackView.swift; sourceTree = "<group>"; };
 		654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		654210DA25AF8837004078C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+Auth.swift"; sourceTree = "<group>"; };
-		65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+Event.swift"; sourceTree = "<group>"; };
-		65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportGround.swift"; sourceTree = "<group>"; };
-		65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportType.swift"; sourceTree = "<group>"; };
-		65429ED92601F07C000874C3 /* DSModels+Api+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+User.swift"; sourceTree = "<group>"; };
-		65429EE32601F0F8000874C3 /* DSModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSModels.swift; sourceTree = "<group>"; };
-		65429EF42601F176000874C3 /* DSEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEndpoints.swift; sourceTree = "<group>"; };
-		65429EFC2601F188000874C3 /* DSEndpoints+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+User.swift"; sourceTree = "<group>"; };
-		65429F012601F196000874C3 /* DSEndpoints+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+Event.swift"; sourceTree = "<group>"; };
-		65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+Auth.swift"; sourceTree = "<group>"; };
-		65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+SportGround.swift"; sourceTree = "<group>"; };
-		65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+SportType.swift"; sourceTree = "<group>"; };
-		65429F152601F227000874C3 /* DSEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEnums.swift; sourceTree = "<group>"; };
-		65429F222601F294000874C3 /* DSEnums+MainContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+MainContentType.swift"; sourceTree = "<group>"; };
-		65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+FeedFilterType.swift"; sourceTree = "<group>"; };
 		65429F322601F51D000874C3 /* EventRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRequests.swift; sourceTree = "<group>"; };
 		65429F3A2601F572000874C3 /* AuthRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequests.swift; sourceTree = "<group>"; };
 		65429F3F2601F5B0000874C3 /* UserRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
@@ -982,28 +967,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		65B6D91A260604270099BC08 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */,
-				65429EFC2601F188000874C3 /* DSEndpoints+User.swift */,
-				65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */,
-				65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */,
-				65429F222601F294000874C3 /* DSEnums+MainContentType.swift */,
-				65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */,
-				65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */,
-				65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */,
-				65429ED92601F07C000874C3 /* DSModels+Api+User.swift */,
-				65429EE32601F0F8000874C3 /* DSModels.swift */,
-				65429F012601F196000874C3 /* DSEndpoints+Event.swift */,
-				65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */,
-				65429F152601F227000874C3 /* DSEnums.swift */,
-				65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */,
-				65429EF42601F176000874C3 /* DSEndpoints.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		65B6D91E260607750099BC08 /* DSApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,7 +1334,6 @@
 				1B575704A7CC7F421F6A9B8A /* Pods */,
 				CEDEB77A258CB404007B2BCA /* Products */,
 				ADF7D3308F59CB7E81C5F884 /* Frameworks */,
-				65B6D91A260604270099BC08 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
