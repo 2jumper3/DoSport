@@ -63,7 +63,6 @@
 		654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210CF25AF8533004078C4 /* CodeLabelStackView.swift */; };
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
-		65429F2E2601F3BD000874C3 /* DSEnums+FeedFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */; };
 		65429F332601F51D000874C3 /* EventRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F322601F51D000874C3 /* EventRequests.swift */; };
 		65429F3B2601F572000874C3 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3A2601F572000874C3 /* AuthRequests.swift */; };
 		65429F402601F5B0000874C3 /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3F2601F5B0000874C3 /* UserRequests.swift */; };
@@ -162,7 +161,7 @@
 		65B6D98226060B7C0099BC08 /* DSModels+Api+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */; };
 		65B6D98726060B870099BC08 /* DSModels+Api+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */; };
 		65B6D98C26060B980099BC08 /* DSModels+Api+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */; };
-		65B6D99126060BAC0099BC08 /* DSModels+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D99026060BAC0099BC08 /* DSModels+Api.swift */; };
+		65B6D9F326067A290099BC08 /* EventsByParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D9F226067A290099BC08 /* EventsByParameter.swift */; };
 		65B7131D25FCE85C0013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */; };
 		65B7132925FCE9210013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7132825FCE9210013A082 /* GoogleService-Info.plist */; };
 		65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */; };
@@ -489,6 +488,7 @@
 		65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportType.swift"; sourceTree = "<group>"; };
 		65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+User.swift"; sourceTree = "<group>"; };
 		65B6D99026060BAC0099BC08 /* DSModels+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api.swift"; sourceTree = "<group>"; };
+		65B6D9F226067A290099BC08 /* EventsByParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsByParameter.swift; sourceTree = "<group>"; };
 		65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B7132825FCE9210013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSBarBackButton.swift; sourceTree = "<group>"; };
@@ -1057,6 +1057,7 @@
 		65B6D923260607960099BC08 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				65B6D9F226067A290099BC08 /* EventsByParameter.swift */,
 				65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */,
 				65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */,
 			);
@@ -1834,7 +1835,6 @@
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
-				65429F2E2601F3BD000874C3 /* DSEnums+FeedFilterType.swift in Sources */,
 				65C67E5525D550F000ABC58B /* DSMessageInputView.swift in Sources */,
 				65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
@@ -1925,7 +1925,6 @@
 				6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */,
 				65CD774425EB3ECE00D042FD /* SoundListDataSource.swift in Sources */,
 				65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */,
-				65B6D99126060BAC0099BC08 /* DSModels+Api.swift in Sources */,
 				6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */,
 				65DC546525E9A99700712EC7 /* EventManageContanerViewController.swift in Sources */,
 				65B6D98C26060B980099BC08 /* DSModels+Api+User.swift in Sources */,
@@ -2063,6 +2062,7 @@
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
 				653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */,
 				653179D825D112C0001DBA4B /* DateSelectionView.swift in Sources */,
+				65B6D9F326067A290099BC08 /* EventsByParameter.swift in Sources */,
 				65C8B4C425E8C66900BBCF77 /* UserMainCoordinator.swift in Sources */,
 				653179B625D11247001DBA4B /* SubwayListView.swift in Sources */,
 				0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */,
