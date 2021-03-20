@@ -63,20 +63,6 @@
 		654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210CF25AF8533004078C4 /* CodeLabelStackView.swift */; };
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
-		65429EC32601F050000874C3 /* DSModels+Api+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */; };
-		65429ECB2601F060000874C3 /* DSModels+Api+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */; };
-		65429ED02601F06B000874C3 /* DSModels+Api+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */; };
-		65429ED52601F073000874C3 /* DSModels+Api+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */; };
-		65429EDA2601F07C000874C3 /* DSModels+Api+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ED92601F07C000874C3 /* DSModels+Api+User.swift */; };
-		65429EE42601F0F8000874C3 /* DSModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EE32601F0F8000874C3 /* DSModels.swift */; };
-		65429EF52601F176000874C3 /* DSEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EF42601F176000874C3 /* DSEndpoints.swift */; };
-		65429EFD2601F188000874C3 /* DSEndpoints+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EFC2601F188000874C3 /* DSEndpoints+User.swift */; };
-		65429F022601F196000874C3 /* DSEndpoints+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F012601F196000874C3 /* DSEndpoints+Event.swift */; };
-		65429F072601F1AC000874C3 /* DSEndpoints+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */; };
-		65429F0C2601F1B6000874C3 /* DSEndpoints+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */; };
-		65429F112601F1BF000874C3 /* DSEndpoints+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */; };
-		65429F162601F227000874C3 /* DSEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F152601F227000874C3 /* DSEnums.swift */; };
-		65429F232601F294000874C3 /* DSEnums+MainContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F222601F294000874C3 /* DSEnums+MainContentType.swift */; };
 		65429F2E2601F3BD000874C3 /* DSEnums+FeedFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */; };
 		65429F332601F51D000874C3 /* EventRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F322601F51D000874C3 /* EventRequests.swift */; };
 		65429F3B2601F572000874C3 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3A2601F572000874C3 /* AuthRequests.swift */; };
@@ -170,7 +156,6 @@
 		65B6D95F26060B0A0099BC08 /* DSEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D95E26060B0A0099BC08 /* DSEnums.swift */; };
 		65B6D96426060B1D0099BC08 /* DSEnums+FeedFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */; };
 		65B6D96926060B290099BC08 /* DSEnums+MainContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */; };
-		65B6D96E26060B4E0099BC08 /* DSModels+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D96D26060B4E0099BC08 /* DSModels+Views.swift */; };
 		65B6D97326060B590099BC08 /* DSModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D97226060B590099BC08 /* DSModels.swift */; };
 		65B6D97826060B660099BC08 /* DSModels+Api+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D97726060B660099BC08 /* DSModels+Api+Auth.swift */; };
 		65B6D97D26060B700099BC08 /* DSModels+Api+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D97C26060B700099BC08 /* DSModels+Api+Event.swift */; };
@@ -489,7 +474,7 @@
 		65B150E725DEAB8300720015 /* EventInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteView.swift; sourceTree = "<group>"; };
 		65B150F525DEBC5F00720015 /* EventInviteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteDataSource.swift; sourceTree = "<group>"; };
 		65B6D93D260607F80099BC08 /* DSEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEndpoints.swift; sourceTree = "<group>"; };
-		65B6D945260608070099BC08 /* DSEndpoints+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DSEndpoints+Auth.swift"; path = "DoSport/Helpers/DSApi/endpoints/DSEndpoints+Auth.swift"; sourceTree = SOURCE_ROOT; };
+		65B6D945260608070099BC08 /* DSEndpoints+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DSEndpoints+Auth.swift"; path = "DoSport/Helpers/DSApi/endpoints/api/DSEndpoints+Auth.swift"; sourceTree = SOURCE_ROOT; };
 		65B6D94A26060AC80099BC08 /* DSEndpoints+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+Event.swift"; sourceTree = "<group>"; };
 		65B6D94F26060AD90099BC08 /* DSEndpoints+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+SportGround.swift"; sourceTree = "<group>"; };
 		65B6D95426060AE70099BC08 /* DSEndpoints+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+SportType.swift"; sourceTree = "<group>"; };
@@ -497,7 +482,6 @@
 		65B6D95E26060B0A0099BC08 /* DSEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEnums.swift; sourceTree = "<group>"; };
 		65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+FeedFilterType.swift"; sourceTree = "<group>"; };
 		65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+MainContentType.swift"; sourceTree = "<group>"; };
-		65B6D96D26060B4E0099BC08 /* DSModels+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Views.swift"; sourceTree = "<group>"; };
 		65B6D97226060B590099BC08 /* DSModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSModels.swift; sourceTree = "<group>"; };
 		65B6D97726060B660099BC08 /* DSModels+Api+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+Auth.swift"; sourceTree = "<group>"; };
 		65B6D97C26060B700099BC08 /* DSModels+Api+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+Event.swift"; sourceTree = "<group>"; };
@@ -768,49 +752,6 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		65429EC12601F03F000874C3 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */,
-				65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */,
-				65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */,
-				65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */,
-				65429ED92601F07C000874C3 /* DSModels+Api+User.swift */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
-		65429EE82601F11D000874C3 /* enums */ = {
-			isa = PBXGroup;
-			children = (
-				65429F152601F227000874C3 /* DSEnums.swift */,
-				65429F212601F24D000874C3 /* api */,
-			);
-			path = enums;
-			sourceTree = "<group>";
-		};
-		65429F1A2601F242000874C3 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */,
-				65429F012601F196000874C3 /* DSEndpoints+Event.swift */,
-				65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */,
-				65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */,
-				65429EFC2601F188000874C3 /* DSEndpoints+User.swift */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
-		65429F212601F24D000874C3 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				65429F222601F294000874C3 /* DSEnums+MainContentType.swift */,
-				65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */,
-				65B6D9D8260651D90099BC08 /* EventsByParameter.swift */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
 		654D707D25E89EA700B37AD3 /* EventCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1055,9 +996,7 @@
 				65429ED92601F07C000874C3 /* DSModels+Api+User.swift */,
 				65429EE32601F0F8000874C3 /* DSModels.swift */,
 				65429F012601F196000874C3 /* DSEndpoints+Event.swift */,
-				65429EDE2601F085000874C3 /* DSModels+Api.swift */,
 				65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */,
-				65429EE92601F12E000874C3 /* DSModels+Views.swift */,
 				65429F152601F227000874C3 /* DSEnums.swift */,
 				65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */,
 				65429EF42601F176000874C3 /* DSEndpoints.swift */,
@@ -1097,7 +1036,6 @@
 			isa = PBXGroup;
 			children = (
 				65B6D922260607920099BC08 /* api */,
-				65B6D96D26060B4E0099BC08 /* DSModels+Views.swift */,
 				65B6D97226060B590099BC08 /* DSModels.swift */,
 			);
 			path = models;
@@ -1547,14 +1485,10 @@
 			isa = PBXGroup;
 			children = (
 				65B6D91E260607750099BC08 /* DSApi */,
-				65A2DC6926011A19003B9ECA /* Data */,
-				CEDEB83C258CE0FE007B2BCA /* Network */,
-				CEDEB83B258CE0EF007B2BCA /* Service */,
 				658705332592169D00EFF7C7 /* Base */,
 				65ECB2BD259BAC7100BF8CEE /* Cells */,
 				6587052925920D9800EFF7C7 /* CustomViews */,
 				65A2DC6926011A19003B9ECA /* Data */,
-				65A2DC6A26011A1D003B9ECA /* DSApi */,
 				CEDEB895258CEC2F007B2BCA /* Extensions */,
 				6587052825920D0A00EFF7C7 /* Models */,
 				CEDEB83C258CE0FE007B2BCA /* Network */,
@@ -1892,7 +1826,6 @@
 			files = (
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
 				654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */,
-				65B6D96E26060B4E0099BC08 /* DSModels+Views.swift in Sources */,
 				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
 				654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */,
 				654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */,
@@ -1901,7 +1834,6 @@
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
-				65B6D9D9260651D90099BC08 /* EventsByParameter.swift in Sources */,
 				65429F2E2601F3BD000874C3 /* DSEnums+FeedFilterType.swift in Sources */,
 				65C67E5525D550F000ABC58B /* DSMessageInputView.swift in Sources */,
 				65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */,
