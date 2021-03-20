@@ -26,19 +26,13 @@ extension DSEndpoints {
             }
         }
         
-        var parameters: Parameters? {
+        var parameters: ParameterObject? {
             switch self {
             case .getSportTypes: return nil
             case .getSportTypeById: return nil
-            case .createSportType(let title):
-                return [
-                    "": title
-                ]
+            case .createSportType(let title): return title
             case .deleteSportType: return nil
-            case .putSportType(let title, _):
-                return [
-                    "title": title
-                ]
+            case .putSportType(let title, _): return title
             }
         }
         

@@ -7,7 +7,8 @@
 
 import Foundation
 
-typealias Parameters = [String: Any]
+typealias ParameterObject = Any
+typealias QueryItems = [String: Any]
 
 enum ParameterEncoding {
     case urlEndoding, jsonEncoding
@@ -18,7 +19,8 @@ protocol Endpoint {
     var fullURL: URL { get }
     var method: HTTPMethod { get }
     var path: String { get }
-    var parameters: Parameters? { get }
+    var parameters: ParameterObject? { get }
+    var queryItems: QueryItems? { get }
     var headers: [String: Any] { get }
     var parameterEncoding: ParameterEncoding { get }
 }
@@ -39,7 +41,11 @@ extension Endpoint {
         ]
     }
     
-    var parameters: Parameters? {
+    var parameters: ParameterObject? {
+        return nil
+    }
+    
+    var queryItems: QueryItems? {
         return [:]
     }
     
