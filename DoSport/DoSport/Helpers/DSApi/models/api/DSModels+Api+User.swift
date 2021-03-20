@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DSModels.Api {
+extension DSModels {
     enum User {
         
         //MARK: - GET UserProfile -

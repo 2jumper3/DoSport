@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DSModels.Api {
+extension DSModels {
     enum Event {
         
         // MARK: - Events -
@@ -20,7 +20,7 @@ extension DSModels.Api {
             let creationDateTime: String?
             let eventID: Int?
             let startDateTime, endDateTime: String?
-            let sportType: DSModels.Api.SportType.SportTypeResponse?
+            let sportType: DSSportTypeResponses.SportTypeResponse?
             let sportGroundID, organizerID: Int?
             let members: [Member]?
             let description: String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DSModels.Api {
+extension DSModels {
     enum SportGround {
         
         //MARK: - GET SportGroundsByCity -

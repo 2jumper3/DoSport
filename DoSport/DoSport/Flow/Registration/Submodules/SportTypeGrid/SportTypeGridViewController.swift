@@ -104,7 +104,7 @@ extension SportTypeGridViewController: SportTypeGridViewDelegate {
 
 extension SportTypeGridViewController: SportTypeGridDataSourceDelegate {
  
-    func collectionView(didSelect sport: DSModels.Api.SportType.SportTypeResponse) {
+    func collectionView(didSelect sport: DSSportTypeResponses.SportTypeResponse) {
         viewModel.handleDataSelection(sport)
     }
 }

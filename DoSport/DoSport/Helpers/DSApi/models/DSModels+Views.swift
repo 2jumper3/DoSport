@@ -9,6 +9,10 @@ import Foundation
 
 extension DSModels {
     enum Views {
-        
+     
+        struct SportTypeView: Codable {
+            let sportTypeID: Int
+            let title: String
+        }
     }
 }

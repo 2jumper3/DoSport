@@ -12,7 +12,7 @@ extension RequestsManager {
     //MARK: - Events -
     
     func eventsGet(
-        completion: @escaping (DataHandler<DSModels.Api.Event.GetEventsResponse>) -> Void
+        completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.GetEvents()
         request(endpoint: endpoint, compilation: completion)

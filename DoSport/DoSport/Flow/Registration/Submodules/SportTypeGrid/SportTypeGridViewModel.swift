@@ -9,16 +9,16 @@ import Foundation
 
 final class SportTypeGridViewModel {
     
-    var onDataDidPrepare: (([DSModels.Api.SportType.SportTypeResponse]) -> Void)?
+    var onDataDidPrepare: (([DSSportTypeResponses.SportTypeResponse]) -> Void)?
     private let requestManager: RequestsManager
     
-    private var sports: [DSModels.Api.SportType.SportTypeResponse] = [] {
+    private var sports: [DSSportTypeResponses.SportTypeResponse] = [] {
         didSet {
             onDataDidPrepare?(sports)
         }
     }
     
-    private var selectedSports: [DSModels.Api.SportType.SportTypeResponse] = []
+    private var selectedSports: [DSSportTypeResponses.SportTypeResponse] = []
     
     init(requestManager: RequestsManager) {
         self.requestManager = requestManager
@@ -31,14 +31,14 @@ final class SportTypeGridViewModel {
                 print(error.localizedDescription)
             case .success(let sportTypes):
                 
-                self?.sports = sportTypes.compactMap({ sportType -> DSModels.Api.SportType.SportTypeResponse? in
+                self?.sports = sportTypes.compactMap({ sportType -> DSSportTypeResponses.SportTypeResponse? in
                     return sportType
                 })
             }
         }
     }
     
-    func handleDataSelection(_ sport: DSModels.Api.SportType.SportTypeResponse) {
+    func handleDataSelection(_ sport: DSSportTypeResponses.SportTypeResponse) {
         guard selectedSports.count > 0 else {
             selectedSports.append(sport)
             return
