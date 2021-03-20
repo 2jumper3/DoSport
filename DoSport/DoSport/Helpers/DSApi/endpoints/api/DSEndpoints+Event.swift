@@ -13,7 +13,6 @@ extension DSEndpoints {
         struct GetEvents: Endpoint {
             var method: HTTPMethod = .get
             var path: String = "events"
-            var parameters: Parameters?
         }
     }
 }

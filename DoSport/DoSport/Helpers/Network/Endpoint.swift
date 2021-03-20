@@ -33,11 +33,22 @@ extension Endpoint {
     }
     
     var headers: [String: Any] {
+        return [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+    }
+    
+    var parameters: Parameters? {
         return [:]
     }
     
     var parameterEncoding: ParameterEncoding {
-        return .jsonEncoding
+        return .urlEndoding
+    }
+    
+    var method: HTTPMethod {
+        return .get
     }
 }
 
@@ -45,4 +56,6 @@ enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
     case patch = "PATCH"
+    case delete = "DELETE"
+    case put = "PUT"
 }
