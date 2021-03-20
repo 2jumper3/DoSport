@@ -8,60 +8,57 @@
 import Foundation
 
 extension DSEndpoints {
-    enum SportType {
+    
+    enum SportType: Endpoint {
+        case getSportTypes
+        case getSportTypeById(Int)
+        case createSportType(title: String)
+        case deleteSportType(usingID: Int)
+        case putSportType(usingTitle: String, andID: Int)
         
-        struct GetSportTypes: Endpoint {
-            var path: String = "sporttype"
+        var path: String {
+            switch self {
+            case .getSportTypes: return "sporttype"
+            case .getSportTypeById(let ID): return "sporttype/\(ID)"
+            case .createSportType: return "sporttype"
+            case .deleteSportType(usingID: let ID): return "sporttype/\(ID)"
+            case .putSportType(_, let ID): return "sporttype/\(ID)"
+            }
         }
         
-        struct GetSportTypeById: Endpoint {
-            var path: String = "sporttype"
-            var modelParams: DSModels.Api.SportType.SportTypeIDRequest
-            
-            var parameters: Parameters? {
+        var parameters: Parameters? {
+            switch self {
+            case .getSportTypes: return nil
+            case .getSportTypeById: return nil
+            case .createSportType(let title):
                 return [
-                    "sportTitle": modelParams.id
+                    "": title
+                ]
+            case .deleteSportType: return nil
+            case .putSportType(let title, _):
+                return [
+                    "title": title
                 ]
             }
         }
         
-        struct CreateSportType: Endpoint {
-            var method: HTTPMethod = .post
-            var path: String = "sporttype"
-            var modelParams: DSModels.Api.SportType.SportTypeCreateRequest
-            var parameterEncoding: ParameterEncoding = .jsonEncoding
-            
-            var parameters: Parameters? {
-                return [
-                    "title": modelParams.sportTitle
-                ]
+        var parameterEncoding: ParameterEncoding {
+            switch self {
+            case .getSportTypes: return .urlEndoding
+            case .getSportTypeById: return .urlEndoding
+            case .createSportType: return .jsonEncoding
+            case .deleteSportType: return .jsonEncoding
+            case .putSportType: return .jsonEncoding
             }
         }
         
-        struct DeleteSportType: Endpoint {
-            var method: HTTPMethod = .delete
-            var path: String = "sporttype"
-            var modelParams: DSModels.Api.SportType.SportTypeIDRequest
-            var parameterEncoding: ParameterEncoding = .jsonEncoding
-            
-            var parameters: Parameters? {
-                return [
-                    "id": modelParams.id
-                ]
-            }
-        }
-        
-        struct PutSportType: Endpoint {
-            var method: HTTPMethod = .put
-            var path: String = "sporttype"
-            var modelParams: DSModels.Api.SportType.SportTypePutRequest
-            var parameterEncoding: ParameterEncoding = .jsonEncoding
-            
-            var parameters: Parameters? {
-                return [
-                    "id": modelParams.sportTypeID,
-                    "title": modelParams.title
-                ]
+        var method: HTTPMethod {
+            switch self {
+            case .getSportTypes: return .get
+            case .getSportTypeById: return .get
+            case .createSportType: return .post
+            case .putSportType: return .put
+            case .deleteSportType: return .delete
             }
         }
     }

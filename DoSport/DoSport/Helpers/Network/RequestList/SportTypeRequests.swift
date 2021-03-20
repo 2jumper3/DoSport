@@ -15,7 +15,7 @@ extension RequestsManager {
         params: DSModels.Api.SportType.SportTypeRequest,
         compilation: @escaping (DataHandler<[DSModels.Api.SportType.SportTypeResponse]>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.GetSportTypes()
+        let endpoint = DSEndpoints.SportType.getSportTypes
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -23,7 +23,7 @@ extension RequestsManager {
         params: DSModels.Api.SportType.SportTypeIDRequest,
         compilation: @escaping (DataHandler<DSModels.Api.SportType.SportTypeResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.GetSportTypeById(modelParams: params)
+        let endpoint = DSEndpoints.SportType.getSportTypeById(params.id)
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -33,7 +33,7 @@ extension RequestsManager {
         params: DSModels.Api.SportType.SportTypeCreateRequest,
         compilation: @escaping (DataHandler<DSModels.Api.SportType.SportTypeEmptyResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.CreateSportType(modelParams: params)
+        let endpoint = DSEndpoints.SportType.createSportType(title: params.sportTitle)
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -43,7 +43,7 @@ extension RequestsManager {
         params: DSModels.Api.SportType.SportTypeIDRequest,
         compilation: @escaping (DataHandler<DSModels.Api.SportType.SportTypeEmptyResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.DeleteSportType(modelParams: params)
+        let endpoint = DSEndpoints.SportType.deleteSportType(usingID: params.id)
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -53,7 +53,7 @@ extension RequestsManager {
         params: DSModels.Api.SportType.SportTypePutRequest,
         compilation: @escaping (DataHandler<DSModels.Api.SportType.SportTypeResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.PutSportType(modelParams: params)
+        let endpoint = DSEndpoints.SportType.putSportType(usingTitle: params.title, andID: params.sportTypeID)
         request(endpoint: endpoint, compilation: compilation)
     }
 }
