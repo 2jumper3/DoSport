@@ -68,6 +68,16 @@ extension DSModels {
             
             struct SportTypeEmptyResponse: Codable { }
         }
+        
+        struct SportTypePutResponse: Codable, Equatable {
+            let sportTypeID: Int?
+            let title: String?
+
+            enum CodingKeys: String, CodingKey {
+                case sportTypeID = "sportTypeId"
+                case title
+            }
+        }
     }
 }
 
