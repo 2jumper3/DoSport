@@ -26,7 +26,7 @@ final class RequestsManager {
                 endpoint: endpoint,
                 compilation: compilation
             )
-        case .urlEndoding:
+        case .urlEncoding:
             task = httpNetworkManager.urlEncodingRequest(
                 endpoint: endpoint,
                 compilation: compilation

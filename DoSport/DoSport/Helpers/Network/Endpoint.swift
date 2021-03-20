@@ -11,7 +11,7 @@ typealias ParameterObject = Any
 typealias QueryItems = [String: Any]
 
 enum ParameterEncoding {
-    case urlEndoding, jsonEncoding
+    case urlEncoding, jsonEncoding
 }
 
 protocol Endpoint {
@@ -50,7 +50,7 @@ extension Endpoint {
     }
     
     var parameterEncoding: ParameterEncoding {
-        return .urlEndoding
+        return .urlEncoding
     }
     
     var method: HTTPMethod {

@@ -69,7 +69,6 @@
 		65429ED52601F073000874C3 /* DSModels+Api+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */; };
 		65429EDA2601F07C000874C3 /* DSModels+Api+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ED92601F07C000874C3 /* DSModels+Api+User.swift */; };
 		65429EE42601F0F8000874C3 /* DSModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EE32601F0F8000874C3 /* DSModels.swift */; };
-		65429EEA2601F12E000874C3 /* DSModels+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EE92601F12E000874C3 /* DSModels+Views.swift */; };
 		65429EF52601F176000874C3 /* DSEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EF42601F176000874C3 /* DSEndpoints.swift */; };
 		65429EFD2601F188000874C3 /* DSEndpoints+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EFC2601F188000874C3 /* DSEndpoints+User.swift */; };
 		65429F022601F196000874C3 /* DSEndpoints+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F012601F196000874C3 /* DSEndpoints+Event.swift */; };
@@ -382,7 +381,6 @@
 		65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportType.swift"; sourceTree = "<group>"; };
 		65429ED92601F07C000874C3 /* DSModels+Api+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+User.swift"; sourceTree = "<group>"; };
 		65429EE32601F0F8000874C3 /* DSModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSModels.swift; sourceTree = "<group>"; };
-		65429EE92601F12E000874C3 /* DSModels+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Views.swift"; sourceTree = "<group>"; };
 		65429EF42601F176000874C3 /* DSEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEndpoints.swift; sourceTree = "<group>"; };
 		65429EFC2601F188000874C3 /* DSEndpoints+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+User.swift"; sourceTree = "<group>"; };
 		65429F012601F196000874C3 /* DSEndpoints+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+Event.swift"; sourceTree = "<group>"; };
@@ -1000,7 +998,6 @@
 			isa = PBXGroup;
 			children = (
 				65429EE32601F0F8000874C3 /* DSModels.swift */,
-				65429EE92601F12E000874C3 /* DSModels+Views.swift */,
 				65429EC12601F03F000874C3 /* api */,
 			);
 			path = models;
@@ -2020,7 +2017,6 @@
 				65429EC32601F050000874C3 /* DSModels+Api+Auth.swift in Sources */,
 				65CC2CE725DA898B009D6B4B /* DSEventParticipateButton.swift in Sources */,
 				65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */,
-				65429EEA2601F12E000874C3 /* DSModels+Views.swift in Sources */,
 				65782D7225EAFF770063A52A /* UserAccountEditingAssembly.swift in Sources */,
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
 				65429F162601F227000874C3 /* DSEnums.swift in Sources */,

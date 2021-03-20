@@ -16,43 +16,45 @@ extension DSEndpoints {
         case deleteSportType(usingID: Int)
         case putSportType(usingTitle: String, andID: Int)
         
+        //MARK: - Path -
+        
         var path: String {
             switch self {
-            case .getSportTypes: return "sporttype"
-            case .getSportTypeById(let ID): return "sporttype/\(ID)"
-            case .createSportType: return "sporttype"
+            case .getSportTypeById(let ID):         return "sporttype/\(ID)"
             case .deleteSportType(usingID: let ID): return "sporttype/\(ID)"
-            case .putSportType(_, let ID): return "sporttype/\(ID)"
+            case .putSportType(_, let ID):          return "sporttype/\(ID)"
+            default:                                return "sporttype"
             }
         }
+        
+        //MARK: - ParameterObject -
         
         var parameters: ParameterObject? {
             switch self {
-            case .getSportTypes: return nil
-            case .getSportTypeById: return nil
             case .createSportType(let title): return title
-            case .deleteSportType: return nil
             case .putSportType(let title, _): return title
+            default:                          return nil
             }
         }
+        
+        //MARK: - ParameterEncoding -
         
         var parameterEncoding: ParameterEncoding {
             switch self {
-            case .getSportTypes: return .urlEndoding
-            case .getSportTypeById: return .urlEndoding
-            case .createSportType: return .jsonEncoding
-            case .deleteSportType: return .jsonEncoding
-            case .putSportType: return .jsonEncoding
+            case .getSportTypes:    return .urlEncoding
+            case .getSportTypeById: return .urlEncoding
+            default:                return .jsonEncoding
             }
         }
         
+        //MARK: - HTTPMethod -
+        
         var method: HTTPMethod {
             switch self {
-            case .getSportTypes: return .get
-            case .getSportTypeById: return .get
             case .createSportType: return .post
-            case .putSportType: return .put
+            case .putSportType:    return .put
             case .deleteSportType: return .delete
+            default:               return .get
             }
         }
     }

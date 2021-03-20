@@ -136,7 +136,7 @@ private extension NetworkManagerImplementation {
     func buildResultURL(using endpoint: Endpoint) -> URL? {
         let url = endpoint.fullURL
         
-        let queryItems = endpoint.parameters?.compactMap { (name, value) -> URLQueryItem? in
+        let queryItems = endpoint.queryItems?.compactMap { (name, value) -> URLQueryItem? in
             return URLQueryItem(name: name, value: value as? String)
         }
         
@@ -153,7 +153,7 @@ private extension NetworkManagerImplementation {
     func buildRequstFromURL(using endpoint: Endpoint) -> URLRequest? {
         let url = endpoint.fullURL
         
-        let queryItems = endpoint.parameters?.compactMap { (name, value) -> URLQueryItem? in
+        let queryItems = endpoint.queryItems?.compactMap { (name, value) -> URLQueryItem? in
             return URLQueryItem(name: name, value: value as? String)
         }
         
