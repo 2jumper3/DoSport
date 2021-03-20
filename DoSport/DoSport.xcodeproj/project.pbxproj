@@ -63,23 +63,6 @@
 		654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210CF25AF8533004078C4 /* CodeLabelStackView.swift */; };
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
-		65429EC32601F050000874C3 /* DSModels+Api+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */; };
-		65429ECB2601F060000874C3 /* DSModels+Api+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */; };
-		65429ED02601F06B000874C3 /* DSModels+Api+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */; };
-		65429ED52601F073000874C3 /* DSModels+Api+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */; };
-		65429EDA2601F07C000874C3 /* DSModels+Api+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429ED92601F07C000874C3 /* DSModels+Api+User.swift */; };
-		65429EDF2601F085000874C3 /* DSModels+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EDE2601F085000874C3 /* DSModels+Api.swift */; };
-		65429EE42601F0F8000874C3 /* DSModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EE32601F0F8000874C3 /* DSModels.swift */; };
-		65429EEA2601F12E000874C3 /* DSModels+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EE92601F12E000874C3 /* DSModels+Views.swift */; };
-		65429EF52601F176000874C3 /* DSEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EF42601F176000874C3 /* DSEndpoints.swift */; };
-		65429EFD2601F188000874C3 /* DSEndpoints+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429EFC2601F188000874C3 /* DSEndpoints+User.swift */; };
-		65429F022601F196000874C3 /* DSEndpoints+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F012601F196000874C3 /* DSEndpoints+Event.swift */; };
-		65429F072601F1AC000874C3 /* DSEndpoints+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */; };
-		65429F0C2601F1B6000874C3 /* DSEndpoints+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */; };
-		65429F112601F1BF000874C3 /* DSEndpoints+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */; };
-		65429F162601F227000874C3 /* DSEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F152601F227000874C3 /* DSEnums.swift */; };
-		65429F232601F294000874C3 /* DSEnums+MainContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F222601F294000874C3 /* DSEnums+MainContentType.swift */; };
-		65429F2E2601F3BD000874C3 /* DSEnums+FeedFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */; };
 		65429F332601F51D000874C3 /* EventRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F322601F51D000874C3 /* EventRequests.swift */; };
 		65429F3B2601F572000874C3 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3A2601F572000874C3 /* AuthRequests.swift */; };
 		65429F402601F5B0000874C3 /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3F2601F5B0000874C3 /* UserRequests.swift */; };
@@ -163,6 +146,23 @@
 		65B150E025DEA82F00720015 /* EventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B150DF25DEA82F00720015 /* EventInviteViewController.swift */; };
 		65B150E825DEAB8300720015 /* EventInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B150E725DEAB8300720015 /* EventInviteView.swift */; };
 		65B150F625DEBC5F00720015 /* EventInviteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B150F525DEBC5F00720015 /* EventInviteDataSource.swift */; };
+		65B6D93E260607F80099BC08 /* DSEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D93D260607F80099BC08 /* DSEndpoints.swift */; };
+		65B6D946260608070099BC08 /* DSEndpoints+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D945260608070099BC08 /* DSEndpoints+Auth.swift */; };
+		65B6D94B26060AC80099BC08 /* DSEndpoints+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D94A26060AC80099BC08 /* DSEndpoints+Event.swift */; };
+		65B6D95026060AD90099BC08 /* DSEndpoints+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D94F26060AD90099BC08 /* DSEndpoints+SportGround.swift */; };
+		65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D95426060AE70099BC08 /* DSEndpoints+SportType.swift */; };
+		65B6D95A26060AF30099BC08 /* DSEndpoints+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D95926060AF30099BC08 /* DSEndpoints+User.swift */; };
+		65B6D95F26060B0A0099BC08 /* DSEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D95E26060B0A0099BC08 /* DSEnums.swift */; };
+		65B6D96426060B1D0099BC08 /* DSEnums+FeedFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */; };
+		65B6D96926060B290099BC08 /* DSEnums+MainContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */; };
+		65B6D96E26060B4E0099BC08 /* DSModels+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D96D26060B4E0099BC08 /* DSModels+Views.swift */; };
+		65B6D97326060B590099BC08 /* DSModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D97226060B590099BC08 /* DSModels.swift */; };
+		65B6D97826060B660099BC08 /* DSModels+Api+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D97726060B660099BC08 /* DSModels+Api+Auth.swift */; };
+		65B6D97D26060B700099BC08 /* DSModels+Api+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D97C26060B700099BC08 /* DSModels+Api+Event.swift */; };
+		65B6D98226060B7C0099BC08 /* DSModels+Api+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */; };
+		65B6D98726060B870099BC08 /* DSModels+Api+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */; };
+		65B6D98C26060B980099BC08 /* DSModels+Api+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */; };
+		65B6D99126060BAC0099BC08 /* DSModels+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D99026060BAC0099BC08 /* DSModels+Api.swift */; };
 		65B7131D25FCE85C0013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */; };
 		65B7132925FCE9210013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7132825FCE9210013A082 /* GoogleService-Info.plist */; };
 		65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */; };
@@ -475,6 +475,23 @@
 		65B150DF25DEA82F00720015 /* EventInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteViewController.swift; sourceTree = "<group>"; };
 		65B150E725DEAB8300720015 /* EventInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteView.swift; sourceTree = "<group>"; };
 		65B150F525DEBC5F00720015 /* EventInviteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInviteDataSource.swift; sourceTree = "<group>"; };
+		65B6D93D260607F80099BC08 /* DSEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEndpoints.swift; sourceTree = "<group>"; };
+		65B6D945260608070099BC08 /* DSEndpoints+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DSEndpoints+Auth.swift"; path = "DoSport/Helpers/DSApi/endpoints/DSEndpoints+Auth.swift"; sourceTree = SOURCE_ROOT; };
+		65B6D94A26060AC80099BC08 /* DSEndpoints+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+Event.swift"; sourceTree = "<group>"; };
+		65B6D94F26060AD90099BC08 /* DSEndpoints+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+SportGround.swift"; sourceTree = "<group>"; };
+		65B6D95426060AE70099BC08 /* DSEndpoints+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+SportType.swift"; sourceTree = "<group>"; };
+		65B6D95926060AF30099BC08 /* DSEndpoints+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+User.swift"; sourceTree = "<group>"; };
+		65B6D95E26060B0A0099BC08 /* DSEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSEnums.swift; sourceTree = "<group>"; };
+		65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+FeedFilterType.swift"; sourceTree = "<group>"; };
+		65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+MainContentType.swift"; sourceTree = "<group>"; };
+		65B6D96D26060B4E0099BC08 /* DSModels+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Views.swift"; sourceTree = "<group>"; };
+		65B6D97226060B590099BC08 /* DSModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSModels.swift; sourceTree = "<group>"; };
+		65B6D97726060B660099BC08 /* DSModels+Api+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+Auth.swift"; sourceTree = "<group>"; };
+		65B6D97C26060B700099BC08 /* DSModels+Api+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+Event.swift"; sourceTree = "<group>"; };
+		65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportGround.swift"; sourceTree = "<group>"; };
+		65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportType.swift"; sourceTree = "<group>"; };
+		65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+User.swift"; sourceTree = "<group>"; };
+		65B6D99026060BAC0099BC08 /* DSModels+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api.swift"; sourceTree = "<group>"; };
 		65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B7132825FCE9210013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSBarBackButton.swift; sourceTree = "<group>"; };
@@ -570,8 +587,6 @@
 		65EEB95F25EA023400821F8F /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		65FFFD622604AFB400CD1CB5 /* NetworkErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorType.swift; sourceTree = "<group>"; };
-		7066A077A23E1B3572654206 /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
-		71C857FDDA794E6BFBDF9B3E /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -738,49 +753,6 @@
 				654210DA25AF8837004078C4 /* TextField.swift */,
 			);
 			path = Factory;
-			sourceTree = "<group>";
-		};
-		65429EC12601F03F000874C3 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				65429EDE2601F085000874C3 /* DSModels+Api.swift */,
-				65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */,
-				65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */,
-				65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */,
-				65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */,
-				65429ED92601F07C000874C3 /* DSModels+Api+User.swift */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
-		65429EE82601F11D000874C3 /* enums */ = {
-			isa = PBXGroup;
-			children = (
-				65429F152601F227000874C3 /* DSEnums.swift */,
-				65429F212601F24D000874C3 /* api */,
-			);
-			path = enums;
-			sourceTree = "<group>";
-		};
-		65429F1A2601F242000874C3 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */,
-				65429F012601F196000874C3 /* DSEndpoints+Event.swift */,
-				65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */,
-				65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */,
-				65429EFC2601F188000874C3 /* DSEndpoints+User.swift */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
-		65429F212601F24D000874C3 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				65429F222601F294000874C3 /* DSEnums+MainContentType.swift */,
-				65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */,
-			);
-			path = api;
 			sourceTree = "<group>";
 		};
 		654D707D25E89EA700B37AD3 /* EventCard */ = {
@@ -979,37 +951,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-
-		65A2DC6A26011A1D003B9ECA /* DSApi */ = {
-			isa = PBXGroup;
-			children = (
-				65A2DC7826011A5F003B9ECA /* endpoints */,
-				65429EE82601F11D000874C3 /* enums */,
-				65A2DC7926011A6A003B9ECA /* models */,
-			);
-			path = DSApi;
-			sourceTree = "<group>";
-		};
-		65A2DC7826011A5F003B9ECA /* endpoints */ = {
-			isa = PBXGroup;
-			children = (
-				65429EF42601F176000874C3 /* DSEndpoints.swift */,
-				65429F1A2601F242000874C3 /* api */,
-			);
-			path = endpoints;
-			sourceTree = "<group>";
-		};
-		65A2DC7926011A6A003B9ECA /* models */ = {
-			isa = PBXGroup;
-			children = (
-				65429EE32601F0F8000874C3 /* DSModels.swift */,
-				65429EE92601F12E000874C3 /* DSModels+Views.swift */,
-				65429EC12601F03F000874C3 /* api */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-    
 		65A62A1F25E70395000AA184 /* InviteFriendsPopupCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,6 +983,102 @@
 				CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		65B6D91A260604270099BC08 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				65429F2D2601F3BD000874C3 /* DSEnums+FeedFilterType.swift */,
+				65429EFC2601F188000874C3 /* DSEndpoints+User.swift */,
+				65429ED42601F073000874C3 /* DSModels+Api+SportType.swift */,
+				65429ECA2601F060000874C3 /* DSModels+Api+Event.swift */,
+				65429F222601F294000874C3 /* DSEnums+MainContentType.swift */,
+				65429ECF2601F06B000874C3 /* DSModels+Api+SportGround.swift */,
+				65429F0B2601F1B6000874C3 /* DSEndpoints+SportGround.swift */,
+				65429F102601F1BF000874C3 /* DSEndpoints+SportType.swift */,
+				65429ED92601F07C000874C3 /* DSModels+Api+User.swift */,
+				65429EE32601F0F8000874C3 /* DSModels.swift */,
+				65429F012601F196000874C3 /* DSEndpoints+Event.swift */,
+				65429EDE2601F085000874C3 /* DSModels+Api.swift */,
+				65429EC22601F050000874C3 /* DSModels+Api+Auth.swift */,
+				65429EE92601F12E000874C3 /* DSModels+Views.swift */,
+				65429F152601F227000874C3 /* DSEnums.swift */,
+				65429F062601F1AC000874C3 /* DSEndpoints+Auth.swift */,
+				65429EF42601F176000874C3 /* DSEndpoints.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		65B6D91E260607750099BC08 /* DSApi */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D9212606078D0099BC08 /* models */,
+				65B6D920260607870099BC08 /* enums */,
+				65B6D91F2606077E0099BC08 /* endpoints */,
+			);
+			path = DSApi;
+			sourceTree = "<group>";
+		};
+		65B6D91F2606077E0099BC08 /* endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D9242606079A0099BC08 /* api */,
+				65B6D93D260607F80099BC08 /* DSEndpoints.swift */,
+			);
+			path = endpoints;
+			sourceTree = "<group>";
+		};
+		65B6D920260607870099BC08 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D923260607960099BC08 /* api */,
+				65B6D95E26060B0A0099BC08 /* DSEnums.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		65B6D9212606078D0099BC08 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D922260607920099BC08 /* api */,
+				65B6D96D26060B4E0099BC08 /* DSModels+Views.swift */,
+				65B6D97226060B590099BC08 /* DSModels.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		65B6D922260607920099BC08 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D97726060B660099BC08 /* DSModels+Api+Auth.swift */,
+				65B6D97C26060B700099BC08 /* DSModels+Api+Event.swift */,
+				65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */,
+				65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */,
+				65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */,
+				65B6D99026060BAC0099BC08 /* DSModels+Api.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		65B6D923260607960099BC08 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */,
+				65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		65B6D9242606079A0099BC08 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				65B6D945260608070099BC08 /* DSEndpoints+Auth.swift */,
+				65B6D94A26060AC80099BC08 /* DSEndpoints+Event.swift */,
+				65B6D94F26060AD90099BC08 /* DSEndpoints+SportGround.swift */,
+				65B6D95426060AE70099BC08 /* DSEndpoints+SportType.swift */,
+				65B6D95926060AF30099BC08 /* DSEndpoints+User.swift */,
+			);
+			path = api;
 			sourceTree = "<group>";
 		};
 		65BBC37025DB5E65003DEF53 /* EventCreate */ = {
@@ -1339,6 +1376,7 @@
 				1B575704A7CC7F421F6A9B8A /* Pods */,
 				CEDEB77A258CB404007B2BCA /* Products */,
 				ADF7D3308F59CB7E81C5F884 /* Frameworks */,
+				65B6D91A260604270099BC08 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1452,6 +1490,7 @@
 		CEDEB887258CE793007B2BCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				65B6D91E260607750099BC08 /* DSApi */,
 				65A2DC6926011A19003B9ECA /* Data */,
 				CEDEB83C258CE0FE007B2BCA /* Network */,
 				CEDEB83B258CE0EF007B2BCA /* Service */,
@@ -1793,6 +1832,8 @@
 			files = (
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
 				654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */,
+				65B6D96E26060B4E0099BC08 /* DSModels+Views.swift in Sources */,
+				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
 				654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */,
 				654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */,
 				654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */,
@@ -1800,16 +1841,13 @@
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
 				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
-				65429F2E2601F3BD000874C3 /* DSEnums+FeedFilterType.swift in Sources */,
 				65C67E5525D550F000ABC58B /* DSMessageInputView.swift in Sources */,
 				65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
 				65CD777825EB4A9E00D042FD /* PrivacySettingListDataSource.swift in Sources */,
-				65429EFD2601F188000874C3 /* DSEndpoints+User.swift in Sources */,
 				65EC680125FD1EDB00103B0A /* DSPushNotificationManager.swift in Sources */,
 				653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */,
 				6534089B259A77280072542D /* UIImage.swift in Sources */,
-				65429ED52601F073000874C3 /* DSModels+Api+SportType.swift in Sources */,
 				65CDF8A925DB12320049F711 /* SportGroundSelectionListViewModel.swift in Sources */,
 				CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */,
 				65C8B4B225E8C65100BBCF77 /* UserMainAssembly.swift in Sources */,
@@ -1837,7 +1875,6 @@
 				65B150F625DEBC5F00720015 /* EventInviteDataSource.swift in Sources */,
 				65ECB2C4259BACBE00BF8CEE /* UITableView+cellForRow.swift in Sources */,
 				65CD779A25EB535A00D042FD /* AppLanguageListController.swift in Sources */,
-				65429ECB2601F060000874C3 /* DSModels+Api+Event.swift in Sources */,
 				6568F8E825B4F97D00225043 /* FeedViewModel.swift in Sources */,
 				65ECB2C9259BAD1300BF8CEE /* Reusable.swift in Sources */,
 				6503F4E325B5CDD60002BC27 /* Event.swift in Sources */,
@@ -1850,18 +1887,16 @@
 				659C619B2593DB2700C33D05 /* RegistrationViewController.swift in Sources */,
 				65D9740525B4732400769653 /* SportTypeGridViewModel.swift in Sources */,
 				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
+				65B6D946260608070099BC08 /* DSEndpoints+Auth.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65A2DC6C26011A3B003B9ECA /* DSSharedData.swift in Sources */,
 				65CD77EA25EB58A000D042FD /* UserReportMessageAssembly.swift in Sources */,
 				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				65429F4D2601F5CE000874C3 /* SportTypeRequests.swift in Sources */,
 				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
-				65429F232601F294000874C3 /* DSEnums+MainContentType.swift in Sources */,
 				65CD77B325EB581200D042FD /* UserSupportSettingsController.swift in Sources */,
 				65DC54A225E9CE7400712EC7 /* UIViewController.swift in Sources */,
 				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
-				65429ED02601F06B000874C3 /* DSModels+Api+SportGround.swift in Sources */,
-				65429F0C2601F1B6000874C3 /* DSEndpoints+SportGround.swift in Sources */,
 				65674DED25DACF7200950FC7 /* DSRangeSlider.swift in Sources */,
 				65782D9525EB18C70063A52A /* NotificationSettingsView.swift in Sources */,
 				65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */,
@@ -1870,6 +1905,7 @@
 				653DA7D825B36455000263C9 /* DSAvatartImageView.swift in Sources */,
 				65CD772525EB3ABC00D042FD /* RegularTableCellWithPointer.swift in Sources */,
 				65EAAA9625CD59CE005E0131 /* EventViewController.swift in Sources */,
+				65B6D97826060B660099BC08 /* DSModels+Api+Auth.swift in Sources */,
 				65CD779525EB535600D042FD /* AppLanguageListView.swift in Sources */,
 				0401A14125EFA50E00A1659E /* CustomSearchBar.swift in Sources */,
 				CEBA62F12593F3FB006A7F80 /* MainSportTypeSelectionController.swift in Sources */,
@@ -1883,27 +1919,33 @@
 				656CC26A259A521000DEC84C /* LoadJson.swift in Sources */,
 				6531795725D10F9F001DBA4B /* SportTypeListView.swift in Sources */,
 				6568F8DE25B4F97100225043 /* FeedAssembly.swift in Sources */,
+				65B6D95026060AD90099BC08 /* DSEndpoints+SportGround.swift in Sources */,
 				CEDEB849258CE182007B2BCA /* RequestsManager.swift in Sources */,
+				65B6D95A26060AF30099BC08 /* DSEndpoints+User.swift in Sources */,
 				6568F8ED25B4F98200225043 /* FeedView.swift in Sources */,
-				65429F112601F1BF000874C3 /* DSEndpoints+SportType.swift in Sources */,
 				CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */,
+				65B6D96926060B290099BC08 /* DSEnums+MainContentType.swift in Sources */,
 				65FFFD632604AFB400CD1CB5 /* NetworkErrorType.swift in Sources */,
 				65A62A0925E70109000AA184 /* DSEventCardView.swift in Sources */,
 				653DA7D025B3590A000263C9 /* ImagePicker.swift in Sources */,
 				6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */,
 				65CD774425EB3ECE00D042FD /* SoundListDataSource.swift in Sources */,
 				65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */,
+				65B6D99126060BAC0099BC08 /* DSModels+Api.swift in Sources */,
 				6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */,
 				65DC546525E9A99700712EC7 /* EventManageContanerViewController.swift in Sources */,
+				65B6D98C26060B980099BC08 /* DSModels+Api+User.swift in Sources */,
 				65782D9A25EB18CD0063A52A /* NotificationSettingsController.swift in Sources */,
 				6503F4ED25B5D67C0002BC27 /* Member.swift in Sources */,
 				658E0AA825D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift in Sources */,
+				65B6D98726060B870099BC08 /* DSModels+Api+SportType.swift in Sources */,
 				655B514225D5C007004FE90F /* SelectionCell.swift in Sources */,
 				6531799925D111FE001DBA4B /* RegionListViewModel.swift in Sources */,
 				65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */,
 				653179BB25D1124C001DBA4B /* SubwayListViewController.swift in Sources */,
 				65429F402601F5B0000874C3 /* UserRequests.swift in Sources */,
 				CEDEB902258D371D007B2BCA /* OnBoardingViewCell.swift in Sources */,
+				65B6D94B26060AC80099BC08 /* DSEndpoints+Event.swift in Sources */,
 				6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */,
 				659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */,
 				653179CA25D11261001DBA4B /* SubwayListAssembly.swift in Sources */,
@@ -1921,7 +1963,6 @@
 				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
 				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
 				653DA7DE25B364DB000263C9 /* Button.swift in Sources */,
-				65429EDA2601F07C000874C3 /* DSModels+Api+User.swift in Sources */,
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				65429F3B2601F572000874C3 /* AuthRequests.swift in Sources */,
 				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
@@ -1930,6 +1971,7 @@
 				654D706725E8903D00B37AD3 /* EventCardTableCell.swift in Sources */,
 				651FBF2925FE01070018C6B1 /* MainSportTypeSelectionCoordinator.swift in Sources */,
 				65C67E5A25D5510800ABC58B /* DSMessageSendButton.swift in Sources */,
+				65B6D96426060B1D0099BC08 /* DSEnums+FeedFilterType.swift in Sources */,
 				6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */,
 				653179E725D112D4001DBA4B /* DateSelectionAssembly.swift in Sources */,
 				653179EC25D112DA001DBA4B /* DateSelectionCoordinator.swift in Sources */,
@@ -1958,6 +2000,7 @@
 				65CD77C525EB582400D042FD /* UserSupportSettingsView.swift in Sources */,
 				65EEB95B25EA022E00821F8F /* SettingsController.swift in Sources */,
 				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
+				65B6D97D26060B700099BC08 /* DSModels+Api+Event.swift in Sources */,
 				65782D6D25EAFF490063A52A /* UserAccountEditingController.swift in Sources */,
 				6552CF2E25EAC06D00E51524 /* SettingsTableCell.swift in Sources */,
 				65429F6B26020540000874C3 /* Endpoint.swift in Sources */,
@@ -1974,6 +2017,7 @@
 				6568F8E325B4F97800225043 /* FeedViewController.swift in Sources */,
 				659C61BC2593DF4C00C33D05 /* UIView+addSubviews.swift in Sources */,
 				65DC543325E9889200712EC7 /* DSUserMainNavBar.swift in Sources */,
+				65B6D93E260607F80099BC08 /* DSEndpoints.swift in Sources */,
 				6531792925D10E19001DBA4B /* EventCreateViewModel.swift in Sources */,
 				65CDF8B625DB13F10049F711 /* SportGround.swift in Sources */,
 				65D9740A25B4733D00769653 /* SportTypeGridCoordinator.swift in Sources */,
@@ -1981,8 +2025,8 @@
 				6531791F25D10E09001DBA4B /* EventCreateView.swift in Sources */,
 				658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */,
 				65EEB93225E9E35D00821F8F /* UserSubscriberListView.swift in Sources */,
+				65B6D98226060B7C0099BC08 /* DSModels+Api+SportGround.swift in Sources */,
 				65CD778F25EB527400D042FD /* DSAppLanguage.swift in Sources */,
-				65429EE42601F0F8000874C3 /* DSModels.swift in Sources */,
 				65C6C7AF25E8F83D00109EE2 /* ReusableCollectionSegmentedView.swift in Sources */,
 				65CD77DB25EB588600D042FD /* UserReportMessageCoordinator.swift in Sources */,
 				CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */,
@@ -1993,7 +2037,6 @@
 				65DC543B25E992E800712EC7 /* EventManageControlsView.swift in Sources */,
 				65CD77CD25EB582F00D042FD /* UserSupportSettingsCoordinator.swift in Sources */,
 				65EEB93C25E9E36B00821F8F /* UserSubscriberListCoordinator.swift in Sources */,
-				65429F022601F196000874C3 /* DSEndpoints+Event.swift in Sources */,
 				65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */,
 				65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */,
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,
@@ -2004,10 +2047,10 @@
 				653179A825D11212001DBA4B /* RegionListAssembly.swift in Sources */,
 				65993B2A25FBD78D00CC7E49 /* AuthViewSUI.swift in Sources */,
 				65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */,
-				65429EDF2601F085000874C3 /* DSModels+Api.swift in Sources */,
 				65CDF89225DB11FF0049F711 /* SportGroundSelectionListView.swift in Sources */,
 				6531793325D10E26001DBA4B /* EventCreateAssembly.swift in Sources */,
 				CEDEB90A258D37D9007B2BCA /* OnBoardingModel.swift in Sources */,
+				65B6D97326060B590099BC08 /* DSModels.swift in Sources */,
 				6552CF3625EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
 				65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */,
@@ -2020,20 +2063,15 @@
 				65EEE91925B626290023168D /* AppConfiguration.swift in Sources */,
 				65EEB94E25EA022300821F8F /* SettingsCoordinator.swift in Sources */,
 				6531795C25D10FA5001DBA4B /* SportTypeListViewController.swift in Sources */,
-				65429EC32601F050000874C3 /* DSModels+Api+Auth.swift in Sources */,
 				65CC2CE725DA898B009D6B4B /* DSEventParticipateButton.swift in Sources */,
 				65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */,
-				65429EEA2601F12E000874C3 /* DSModels+Views.swift in Sources */,
 				65782D7225EAFF770063A52A /* UserAccountEditingAssembly.swift in Sources */,
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
-				65429F162601F227000874C3 /* DSEnums.swift in Sources */,
 				653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */,
-				65429F072601F1AC000874C3 /* DSEndpoints+Auth.swift in Sources */,
 				653179D825D112C0001DBA4B /* DateSelectionView.swift in Sources */,
 				65C8B4C425E8C66900BBCF77 /* UserMainCoordinator.swift in Sources */,
 				653179B625D11247001DBA4B /* SubwayListView.swift in Sources */,
 				0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */,
-				65429EF52601F176000874C3 /* DSEndpoints.swift in Sources */,
 				6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */,
 				6531799E25D11204001DBA4B /* RegionListCoordinator.swift in Sources */,
 				65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */,
@@ -2044,6 +2082,7 @@
 				6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */,
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65BBC37225DB5E78003DEF53 /* DSCheckboxButton.swift in Sources */,
+				65B6D95F26060B0A0099BC08 /* DSEnums.swift in Sources */,
 				6531792E25D10E20001DBA4B /* EventCreateCoordinator.swift in Sources */,
 				65EAAAC525CD6024005E0131 /* FeedFilterButton.swift in Sources */,
 			);

@@ -2,7 +2,13 @@
 //  DSModels+Views.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 20/03/2021.
+//  Created by Komolbek Ibragimov on 17/03/2021.
 //
 
 import Foundation
+
+extension DSModels {
+    enum Views {
+        
+    }
+}
