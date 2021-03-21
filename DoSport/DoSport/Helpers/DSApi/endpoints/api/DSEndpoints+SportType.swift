@@ -11,19 +11,19 @@ extension DSEndpoints {
     
     enum SportType: Endpoint {
         case getSportTypes
-        case getSportTypeById(Int)
-        case createSportType(title: String)
-        case deleteSportType(usingID: Int)
-        case putSportType(usingTitle: String, andID: Int)
+        case getSportTypeById(DSSportTypeRequests.SportTypeByIDRequest)
+        case createSportType(DSSportTypeRequests.SportTypeCreateRequest)
+        case deleteSportType(DSSportTypeRequests.SportTypeDeleteRequest)
+        case putSportType(DSSportTypeRequests.SportTypePutRequest)
         
         //MARK: - Path -
         
         var path: String {
             switch self {
-            case .getSportTypeById(let ID):         return "sporttype/\(ID)"
-            case .deleteSportType(usingID: let ID): return "sporttype/\(ID)"
-            case .putSportType(_, let ID):          return "sporttype/\(ID)"
-            default:                                return "sporttype"
+            case .getSportTypeById(let sportType): return "sporttype/\(sportType.id)"
+            case .deleteSportType(let sportType):  return "sporttype/\(sportType.id)"
+            case .putSportType(let sportType):     return "sporttype/\(sportType.id)"
+            default:                               return "sporttype"
             }
         }
         
@@ -31,9 +31,9 @@ extension DSEndpoints {
         
         var parameters: ParameterObject? {
             switch self {
-            case .createSportType(let title): return title
-            case .putSportType(let title, _): return title
-            default:                          return nil
+            case .createSportType(let sportType): return sportType.sportTitle
+            case .putSportType(let sportType):    return sportType.title
+            default:                              return nil
             }
         }
         

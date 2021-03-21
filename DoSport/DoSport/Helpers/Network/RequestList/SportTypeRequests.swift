@@ -23,7 +23,7 @@ extension RequestsManager {
         params: DSSportTypeRequests.SportTypeByIDRequest,
         compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.getSportTypeById(params.id)
+        let endpoint = DSEndpoints.SportType.getSportTypeById(params)
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -33,7 +33,7 @@ extension RequestsManager {
         params: DSSportTypeRequests.SportTypeCreateRequest,
         compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.createSportType(title: params.sportTitle)
+        let endpoint = DSEndpoints.SportType.createSportType(params)
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -43,7 +43,7 @@ extension RequestsManager {
         params: DSSportTypeRequests.SportTypeDeleteRequest,
         compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.deleteSportType(usingID: params.sportTypeID)
+        let endpoint = DSEndpoints.SportType.deleteSportType(params)
         request(endpoint: endpoint, compilation: compilation)
     }
     
@@ -53,7 +53,7 @@ extension RequestsManager {
         params: DSSportTypeRequests.SportTypePutRequest,
         compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.putSportType(usingTitle: params.title, andID: params.sportTypeID)
+        let endpoint = DSEndpoints.SportType.putSportType(params)
         request(endpoint: endpoint, compilation: compilation)
     }
 }

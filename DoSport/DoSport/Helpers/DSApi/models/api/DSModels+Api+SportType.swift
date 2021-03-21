@@ -35,21 +35,21 @@ extension DSModels {
             //MARK: - Delete
             
             struct SportTypeDeleteRequest: Codable {
-                let sportTypeID: Int
+                let id: Int
                 
                 enum CodingKeys: String, CodingKey {
-                    case sportTypeID = "sportTypeId"
+                    case id = "sportTypeId"
                 }
             }
             
             //MARK: - Put
             
             struct SportTypePutRequest: Codable {
-                let sportTypeID: Int
+                let id: Int
                 let title: String
 
                 enum CodingKeys: String, CodingKey {
-                    case sportTypeID = "sportTypeId"
+                    case id = "sportTypeId"
                     case title
                 }
             }
