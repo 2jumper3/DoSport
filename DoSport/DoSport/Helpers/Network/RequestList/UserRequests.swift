@@ -9,25 +9,12 @@ import Foundation
 
 extension RequestsManager {
     
+    //MARK: - GET UserProfile -
+    
     func userProfileGet(
         completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getProfile
-        request(endpoint: endpoint, compilation: completion)
-    }
-    
-    func userProfileEdit(
-        params: DSUserProfileRequests.UserProfileEdit,
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileResponse>) -> Void
-    ) {
-        let endpoint = DSEndpoints.User.editProfile(params)
-        request(endpoint: endpoint, compilation: completion)
-    }
-    
-    func userProfileDelete(
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileEmptyResponse>) -> Void
-    ) {
-        let endpoint = DSEndpoints.User.deleteProfile
         request(endpoint: endpoint, compilation: completion)
     }
     
@@ -39,12 +26,35 @@ extension RequestsManager {
         request(endpoint: endpoint, compilation: completion)
     }
     
+    //MARK: - EDIT UserProfile -
+    
+    func userProfileEdit(
+        params: DSUserProfileRequests.UserProfileEdit,
+        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.User.editProfile(params)
+        request(endpoint: endpoint, compilation: completion)
+    }
+    
+    //MARK: - DELETE UserProfile -
+    
+    func userProfileDelete(
+        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileEmptyResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.User.deleteProfile
+        request(endpoint: endpoint, compilation: completion)
+    }
+    
+    //MARK: - GET User sportTypes -
+    
     func userPreferredSportTypesGet(
         completion: @escaping (DataHandler<[DSSportTypeResponses.SportTypeResponse]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getPreferredSportTypes
         request(endpoint: endpoint, compilation: completion)
     }
+    
+    //MARK: - EDIT User sportTypes -
     
     func userPreferredSportTypesEdit(
         params: [DSSportTypeRequests.SportTypePutRequest],
@@ -54,6 +64,8 @@ extension RequestsManager {
         request(endpoint: endpoint, compilation: completion)
     }
     
+    //MARK: - ADD User sportType -
+    
     func userAddPreferredSportType(
         params: DSSportTypeRequests.SportTypeByIDRequest,
         completion: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Void
@@ -62,6 +74,8 @@ extension RequestsManager {
         request(endpoint: endpoint, compilation: completion)
     }
     
+    //MARK: - DELETE User sportType -
+    
     func userDeletePreferredSportType(
         params: DSSportTypeRequests.SportTypeByIDRequest,
         completion: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Void
@@ -69,6 +83,8 @@ extension RequestsManager {
         let endpoint = DSEndpoints.User.deletePreferredSportTypeByID(params)
         request(endpoint: endpoint, compilation: completion)
     }
+    
+    //MARK: - GET User subscribers & subscriptions -
     
     func userGetSubscribers(
         completion: @escaping (DataHandler<[DSUserProfileResponses.UserProfileResponse]>) -> Void
@@ -84,6 +100,8 @@ extension RequestsManager {
         request(endpoint: endpoint, compilation: completion)
     }
     
+    //MARK: - ADD User subscription -
+    
     func userAddSubscription(
         params: DSUserProfileRequests.UserProfileById,
         completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileEmptyResponse>) -> Void
@@ -91,6 +109,8 @@ extension RequestsManager {
         let endpoint = DSEndpoints.User.addSubscriptionByID(params)
         request(endpoint: endpoint, compilation: completion)
     }
+    
+    //MARK: - DELETE User subscription -
     
     func userDeleteSubscription(
         params: DSUserProfileRequests.UserProfileById,
