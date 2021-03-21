@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum DataHandler<Success> where Success: Encodable & Decodable {
-    case success(Success)
-    case failure(NetworkErrorType)
+enum DataHandler<ResponseType> where ResponseType: Encodable & Decodable {
+    case success(NetworkSuccessResponseType<ResponseType>)
+    case failure(NetworkErrorResponseType)
 }
 
 protocol NetworkManager: class {
@@ -73,7 +73,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             do {
                 let result: ResponseType = try self.dencoder.decode(ResponseType.self, from: data)
                 OperationQueue.main.addOperation {
-                    compilation(.success(result))
+                    compilation(.success(.object(result)))
                 }
             } catch let error {
                 debugPrint(error.localizedDescription)
@@ -100,6 +100,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode != 200 {
                 debugPrint(httpResponse.statusCode, #file, #line)
+                compilation(.failure(.serverError))
                 return
             }
             
@@ -107,7 +108,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             
             do {
                 let result: ResponseType = try JSONDecoder().decode(ResponseType.self, from: data)
-                compilation(.success(result))
+                compilation(.success(.object(result)))
             } catch let error {
                 debugPrint(error.localizedDescription, #file, #line)
                 compilation(.failure(.decodingError))

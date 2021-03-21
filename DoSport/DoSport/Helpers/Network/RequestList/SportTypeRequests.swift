@@ -20,10 +20,10 @@ extension RequestsManager {
     }
     
     func sportTypeGetById(
-        params: DSSportTypeRequests.SportTypeGetByIDRequest,
+        params: DSSportTypeRequests.SportTypeByIDRequest,
         compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.getSportTypeById(params.sportTypeID)
+        let endpoint = DSEndpoints.SportType.getSportTypeById(params.id)
         request(endpoint: endpoint, compilation: compilation)
     }
     
