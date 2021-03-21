@@ -10,7 +10,8 @@ import Foundation
 final class SportTypeGridAssembly: Assembly {
     
     func makeModule() -> SportTypeGridViewController {
-        let viewModel = SportTypeGridViewModel()
+        let requestManager = RequestsManager.shared
+        let viewModel = SportTypeGridViewModel(requestManager: requestManager)
         let vc = SportTypeGridViewController(viewModel: viewModel)
         return vc
     }

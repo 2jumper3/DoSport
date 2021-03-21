@@ -7,73 +7,62 @@
 
 import Foundation
 
-extension DSModels.Api {
+typealias DSUserProfileRequests = DSModels.User.requests
+typealias DSUserProfileResponses = DSModels.User.responses
+
+extension DSModels {
     enum User {
         
-        //MARK: - GET UserProfile -
-        
-        struct UserProfileRequest: Codable { }
-        
-        struct UserProfileResponse: Codable, Identifiable {
-            let id: Int
-            let username: String
-            let avatarPhoto: String
-            let birthdayDate: String
-            let gender: String
-            let isBirthdayDateHidden: Bool
+        enum requests {
             
-            enum CodingKeys: String, CodingKey {
-                case id, username
-                case avatarPhoto = "photoLink"
-                case birthdayDate, gender
-                case isBirthdayDateHidden = "hideBirthdayDate"
+            //MARK: - GET UserProfile -
+            
+            struct UserProfile: Codable { }
+            
+            struct UserProfileById: Codable {
+                let id: Int
+            }
+            
+            //MARK: - EDIT UserProfile -
+            
+            struct UserProfileEdit: Codable, Identifiable {
+                let id: Int?
+                let username: String
+                let avatarPhoto: Data
+                let birthdayDate: String
+                let gender: String
+                let info: String? // TODO: this feature will be required after MVP0. 
+                
+                enum CodingKeys: String, CodingKey {
+                    case id, username
+                    case avatarPhoto = "photoLink"
+                    case birthdayDate, gender, info
+                }
+            }
+            
+            struct UserProfileDelete: Codable {
+                let id: Int
             }
         }
         
-        //MARK: - GET UserProfileById -
-        
-        struct GetUserProfileById: Codable {
-            let id: Int
-        }
-        
-        //MARK: - EDIT UserPassword -
-        
-        struct EditUserPasswordRequest: Codable {
-            let newPassword: String
-            let newPasswordConfirm: String
-            let oldPassword: String
-        }
-        
-        struct EditUserPasswordResponse: Codable { }
-        
-        //MARK: - EDIT UserProfile -
-        
-        struct EditUserProfile: Codable, Identifiable {
-            let id: Int
-            let username: String
-            let avatarPhoto: String
-            let birthdayDate: String
-            let gender: String
-            let isBirthdayDateHidden: Bool
+        enum responses {
             
-            enum CodingKeys: String, CodingKey {
-                case id, username
-                case avatarPhoto = "photoLink"
-                case birthdayDate, gender
-                case isBirthdayDateHidden = "hideBirthdayDate"
+            struct UserProfileResponse: Codable, Identifiable {
+                let id: Int?
+                let username: String?
+                let avatarPhoto: String?
+                let birthdayDate: String?
+                let gender: String?
+                let info: String?
+                
+                enum CodingKeys: String, CodingKey {
+                    case id, username
+                    case avatarPhoto = "photoLink"
+                    case birthdayDate, gender, info
+                }
             }
+            
+            struct UserProfileEmptyResponse: Codable { }
         }
-        
-//        struct UserSportGroundResponse: Codable {
-//            let sportGroundId: Int
-//            let userId: Int
-//        }
-//
-//        struct UserSportTypeResponse: Codable {
-//            let userId: Int
-//            let firstname: String
-//            let level: Int
-//            let sportType: String
-//        }
     }
 }

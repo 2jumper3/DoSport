@@ -9,7 +9,7 @@ import UIKit
 
 protocol UserAccountEditingViewDelegate: class {
     func signOutButtonCliked()
-    func saveButtonClicked(with username: String?, dob: String?, gender: String?)
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
@@ -36,7 +36,7 @@ final class UserAccountEditingView: UIView {
     
     private lazy var maleButton = DSButton(title: Texts.Registration.Gender.male)
     private lazy var femaleButton = DSButton(title: Texts.Registration.Gender.female)
-    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal, isHidden: true)
+    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal, isHidden: false)
     private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
                                                            titleColor: Colors.mainBlue)
     
@@ -108,6 +108,7 @@ final class UserAccountEditingView: UIView {
         }
         
         saveButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-UIDevice.getDeviceRelatedTabBarHeight()-10)
             $0.height.equalTo(buttonsHeight)
             $0.width.equalToSuperview().multipliedBy(0.87)
@@ -147,6 +148,15 @@ final class UserAccountEditingView: UIView {
     }
 }
 
+//MARK: Public API
+
+extension UserAccountEditingView {
+    
+    func setDateOfBirth(_ text: String?) {
+        self.dobTextField.text = text
+    }
+}
+
 //MARK: Private API
 
 private extension UserAccountEditingView {
@@ -183,7 +193,8 @@ private extension UserAccountEditingView {
         delegate?.saveButtonClicked(
             with: userNameTextField.text,
             dob: dobTextField.text,
-            gender: gender
+            gender: gender,
+            avatarImage: avatarImage
         )
     }
     

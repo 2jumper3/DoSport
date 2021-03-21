@@ -7,9 +7,11 @@
 
 import Foundation
 
-enum NetworkErrorType: Error {
+enum NetworkErrorResponseType: Error {
     case serverError
     case clientError
     case failData
+    case encodingError
+    case decodingError
     case unknownError
 }
