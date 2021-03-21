@@ -100,9 +100,28 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
     func signOutButtonCliked() {
         
     }
-    
-    func saveButtonClicked(with username: String?, dob: String?, gender: String?) {
+
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?) {
+        guard let username = username,
+              let dob = dob,
+              let gender = gender,
+              let avatarImage = avatarImage
+        else {
+            return
+        }
         
+        guard let avatarImageInJPEG = avatarImage.jpegData(compressionQuality: 0.5) else { return }
+        
+        let userData = DSUserProfileRequests.UserProfileEdit(
+            id: nil, // no need to change ID of current user
+            username: username,
+            avatarPhoto: avatarImageInJPEG,
+            birthdayDate: dob,
+            gender: gender,
+            info: nil // TODO: this feature will be required after MVP0.
+        )
+        
+        viewModel.userDidEditProfile(userData)
     }
     
     func avatarChangeButtonClicked() {
@@ -110,6 +129,10 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
     }
     
     func datePickerValueChanged(_ datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd / MM / yyyy"
         
+        let text = dateFormatter.string(from: datePicker.date)
+        userAccountEditingView.setDateOfBirth(text)
     }
 }
