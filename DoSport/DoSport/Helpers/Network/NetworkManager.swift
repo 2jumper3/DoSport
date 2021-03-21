@@ -100,6 +100,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode != 200 {
                 debugPrint(httpResponse.statusCode, #file, #line)
+                compilation(.failure(.serverError))
                 return
             }
             

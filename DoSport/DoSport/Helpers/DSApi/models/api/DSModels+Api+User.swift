@@ -26,12 +26,12 @@ extension DSModels {
             //MARK: - EDIT UserProfile -
             
             struct UserProfileEdit: Codable, Identifiable {
-                let id: Int
+                let id: Int?
                 let username: String
-                let avatarPhoto: String
+                let avatarPhoto: Data
                 let birthdayDate: String
                 let gender: String
-                let info: String
+                let info: String? // TODO: this feature will be required after MVP0. 
                 
                 enum CodingKeys: String, CodingKey {
                     case id, username
