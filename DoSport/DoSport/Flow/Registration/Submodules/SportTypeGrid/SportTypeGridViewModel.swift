@@ -25,15 +25,20 @@ final class SportTypeGridViewModel {
     }
     
     func prepareData() {
-        self.requestManager.sportTypesGet(params: .init()) { [weak self] sportTypesResult in
-            switch sportTypesResult{
+        self.requestManager.sportTypesGet(params: .init()) { [weak self] response in
+            switch response {
             case .failure(let error):
                 print(error.localizedDescription)
-            case .success(let sportTypes):
+            case .success(let result):
                 
-                self?.sports = sportTypes.compactMap({ sportType -> DSSportTypeResponses.SportTypeResponse? in
-                    return sportType
-                })
+                switch result {
+                case .object(let sportTypes):
+                    self?.sports = sportTypes.compactMap({ sportType -> DSSportTypeResponses.SportTypeResponse? in
+                        return sportType
+                    })
+                case .emptyObject:
+                    print(#function, #file, #line, " need to finish handling empty object")
+                }
             }
         }
     }
