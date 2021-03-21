@@ -57,6 +57,7 @@
 		653179F125D112E1001DBA4B /* DateSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179F025D112E1001DBA4B /* DateSelectionDataSource.swift */; };
 		6534089B259A77280072542D /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB913258D4C75007B2BCA /* UIImage.swift */; };
 		653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653408AE259A86D40072542D /* DSCountryListNavBar.swift */; };
+		6537082526074B440075581E /* NetworkSuccessResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6537082426074B440075581E /* NetworkSuccessResponseType.swift */; };
 		653DA7D025B3590A000263C9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7CF25B3590A000263C9 /* ImagePicker.swift */; };
 		653DA7D825B36455000263C9 /* DSAvatartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7D725B36455000263C9 /* DSAvatartImageView.swift */; };
 		653DA7DE25B364DB000263C9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7DD25B364DB000263C9 /* Button.swift */; };
@@ -257,7 +258,7 @@
 		65EEB95B25EA022E00821F8F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEB95A25EA022E00821F8F /* SettingsController.swift */; };
 		65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEB95F25EA023400821F8F /* SettingsDataSource.swift */; };
 		65EEE91925B626290023168D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EEE91825B626290023168D /* AppConfiguration.swift */; };
-		65FFFD632604AFB400CD1CB5 /* NetworkErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFD622604AFB400CD1CB5 /* NetworkErrorType.swift */; };
+		65FFFD632604AFB400CD1CB5 /* NetworkErrorResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFD622604AFB400CD1CB5 /* NetworkErrorResponseType.swift */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
@@ -369,6 +370,7 @@
 		653179EB25D112DA001DBA4B /* DateSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionCoordinator.swift; sourceTree = "<group>"; };
 		653179F025D112E1001DBA4B /* DateSelectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionDataSource.swift; sourceTree = "<group>"; };
 		653408AE259A86D40072542D /* DSCountryListNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSCountryListNavBar.swift; sourceTree = "<group>"; };
+		6537082426074B440075581E /* NetworkSuccessResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSuccessResponseType.swift; sourceTree = "<group>"; };
 		653DA7CF25B3590A000263C9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		653DA7D725B36455000263C9 /* DSAvatartImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSAvatartImageView.swift; sourceTree = "<group>"; };
 		653DA7DD25B364DB000263C9 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -472,7 +474,6 @@
 		65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportGround.swift"; sourceTree = "<group>"; };
 		65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportType.swift"; sourceTree = "<group>"; };
 		65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+User.swift"; sourceTree = "<group>"; };
-		65B6D99026060BAC0099BC08 /* DSModels+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api.swift"; sourceTree = "<group>"; };
 		65B6D9F226067A290099BC08 /* EventsByParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsByParameter.swift; sourceTree = "<group>"; };
 		65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B7132825FCE9210013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -568,7 +569,7 @@
 		65EEB95A25EA022E00821F8F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		65EEB95F25EA023400821F8F /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		65FFFD622604AFB400CD1CB5 /* NetworkErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorType.swift; sourceTree = "<group>"; };
+		65FFFD622604AFB400CD1CB5 /* NetworkErrorResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponseType.swift; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -1012,7 +1013,6 @@
 				65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */,
 				65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */,
 				65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */,
-				65B6D99026060BAC0099BC08 /* DSModels+Api.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1401,8 +1401,9 @@
 			isa = PBXGroup;
 			children = (
 				65429F6A26020540000874C3 /* Endpoint.swift */,
-				65FFFD622604AFB400CD1CB5 /* NetworkErrorType.swift */,
+				65FFFD622604AFB400CD1CB5 /* NetworkErrorResponseType.swift */,
 				65429F7226020B27000874C3 /* NetworkManager.swift */,
+				6537082426074B440075581E /* NetworkSuccessResponseType.swift */,
 				CEDEB848258CE182007B2BCA /* RequestsManager.swift */,
 				CEDEB85A258CE1BD007B2BCA /* RequestList */,
 			);
@@ -1881,7 +1882,7 @@
 				6568F8ED25B4F98200225043 /* FeedView.swift in Sources */,
 				CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */,
 				65B6D96926060B290099BC08 /* DSEnums+MainContentType.swift in Sources */,
-				65FFFD632604AFB400CD1CB5 /* NetworkErrorType.swift in Sources */,
+				65FFFD632604AFB400CD1CB5 /* NetworkErrorResponseType.swift in Sources */,
 				65A62A0925E70109000AA184 /* DSEventCardView.swift in Sources */,
 				653DA7D025B3590A000263C9 /* ImagePicker.swift in Sources */,
 				6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */,
@@ -2010,6 +2011,7 @@
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
 				65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
+				6537082526074B440075581E /* NetworkSuccessResponseType.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
 				650B75B12600C6A400625332 /* EventVisibilityChangePopupView.swift in Sources */,
 				65CD77E525EB589B00D042FD /* UserReportMessageViewModel.swift in Sources */,

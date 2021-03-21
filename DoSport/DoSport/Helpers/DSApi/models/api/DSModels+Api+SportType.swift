@@ -18,11 +18,11 @@ extension DSModels {
             
             struct SportTypeRequest: Codable { }
             
-            struct SportTypeGetByIDRequest: Codable {
-                let sportTypeID: Int
+            struct SportTypeByIDRequest: Codable {
+                let id: Int
                 
                 enum CodingKeys: String, CodingKey {
-                    case sportTypeID = "sportTypeId"
+                    case id = "sportTypeId"
                 }
             }
             

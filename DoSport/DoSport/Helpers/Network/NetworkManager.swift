@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum DataHandler<Success> where Success: Encodable & Decodable {
-    case success(Success)
-    case failure(NetworkErrorType)
+enum DataHandler<ResponseType> where ResponseType: Encodable & Decodable {
+    case success(NetworkSuccessResponseType)
+    case failure(NetworkErrorResponseType)
 }
 
 protocol NetworkManager: class {
@@ -73,7 +73,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             do {
                 let result: ResponseType = try self.dencoder.decode(ResponseType.self, from: data)
                 OperationQueue.main.addOperation {
-                    compilation(.success(result))
+                    compilation(.success(.object(result))
                 }
             } catch let error {
                 debugPrint(error.localizedDescription)
