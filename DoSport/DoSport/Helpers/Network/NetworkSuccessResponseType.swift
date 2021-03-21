@@ -10,5 +10,4 @@ import Foundation
 enum NetworkSuccessResponseType {
     case object(Codable)
     case emptyObject
-    case boolean(Bool)
 }

@@ -7,54 +7,62 @@
 
 import Foundation
 
+typealias DSUserProfileRequests = DSModels.User.requests
+typealias DSUserProfileResponses = DSModels.User.responses
+
 extension DSModels {
     enum User {
         
-        //MARK: - GET UserProfile -
-        
-        struct UserProfileRequest: Codable { }
-        
-        struct UserProfileResponse: Codable, Identifiable {
-            let id: Int?
-            let username: String?
-            let avatarPhoto: String?
-            let birthdayDate: String?
-            let gender: String?
-            let info: String?
+        enum requests {
             
-            enum CodingKeys: String, CodingKey {
-                case id, username
-                case avatarPhoto = "photoLink"
-                case birthdayDate, gender, info
+            //MARK: - GET UserProfile -
+            
+            struct UserProfile: Codable { }
+            
+            struct UserProfileById: Codable {
+                let id: Int
+            }
+            
+            //MARK: - EDIT UserProfile -
+            
+            struct UserProfileEdit: Codable, Identifiable {
+                let id: Int
+                let username: String
+                let avatarPhoto: String
+                let birthdayDate: String
+                let gender: String
+                let info: String
+                
+                enum CodingKeys: String, CodingKey {
+                    case id, username
+                    case avatarPhoto = "photoLink"
+                    case birthdayDate, gender, info
+                }
+            }
+            
+            struct UserProfileDelete: Codable {
+                let id: Int
             }
         }
         
-        struct GetUserProfileById: Codable {
-            let id: Int
-        }
-        
-        //MARK: - EDIT UserProfile -
-        
-        struct EditUserProfile: Codable, Identifiable {
-            let id: Int
-            let username: String
-            let avatarPhoto: String
-            let birthdayDate: String
-            let gender: String
-            let info: String
+        enum responses {
             
-            enum CodingKeys: String, CodingKey {
-                case id, username
-                case avatarPhoto = "photoLink"
-                case birthdayDate, gender, info
+            struct UserProfileResponse: Codable, Identifiable {
+                let id: Int?
+                let username: String?
+                let avatarPhoto: String?
+                let birthdayDate: String?
+                let gender: String?
+                let info: String?
+                
+                enum CodingKeys: String, CodingKey {
+                    case id, username
+                    case avatarPhoto = "photoLink"
+                    case birthdayDate, gender, info
+                }
             }
+            
+            struct UserProfileEmptyResponse: Codable { }
         }
-        
-        //MARK: - DELETE UserProfile -
-        
-        struct UserDeleteProfileResponse: Codable { }
-        
-        //MARK: 
-        
     }
 }
