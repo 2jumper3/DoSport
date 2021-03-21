@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkSuccessResponseType {
-    case object(Codable)
+enum NetworkSuccessResponseType<ResponseObject> where ResponseObject: Codable {
+    case object(ResponseObject)
     case emptyObject
 }
