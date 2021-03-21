@@ -20,7 +20,7 @@ extension DSModels {
             let creationDateTime: String?
             let eventID: Int?
             let startDateTime, endDateTime: String?
-            let sportType: DSSportTypeResponses.SportTypeResponse?
+            let sportType: DSModels.SportType.SportTypeView?
             let sportGroundID, organizerID: Int?
             let members: [Member]?
             let description: String?

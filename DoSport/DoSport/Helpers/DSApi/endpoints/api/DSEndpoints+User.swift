@@ -11,13 +11,13 @@ extension DSEndpoints {
     
     enum User: Endpoint {
         case getProfile
-        case editProfile(DSUserProfileRequests.UserProfileEdit)
+        case editProfile
         case deleteProfile
         case getProfileByID(DSUserProfileRequests.UserProfileById)
         case getPreferredSportTypes
-        case editPreferredSportTypes([DSSportTypeRequests.SportTypePutRequest])
-        case addPreferredSportTypeByID(DSSportTypeRequests.SportTypeByIDRequest)
-        case deletePreferredSportTypeByID(DSSportTypeRequests.SportTypeByIDRequest)
+        case editPreferredSportTypes
+        case addPreferredSportTypeByID(DSModels.SportType.SportTypeByIDRequest)
+        case deletePreferredSportTypeByID(DSModels.SportType.SportTypeByIDRequest)
         case getSubscribers
         case getSubscriptions
         case addSubscriptionByID(DSUserProfileRequests.UserProfileById)
@@ -37,16 +37,6 @@ extension DSEndpoints {
             case .addSubscriptionByID(let user):               return "profiles/subscriptions/\(user.id)"
             case .deleteSubscriptionByID(let user):            return "profiles/subscriptions/\(user.id)"
             default:                                           return "profiles"
-            }
-        }
-        
-        //MARK: - ParameterObject -
-
-        var parameters: ParameterObject? {
-            switch self {
-            case .editProfile(let user): return user
-            case .editPreferredSportTypes(let sportTypes): return sportTypes
-            default: return nil
             }
         }
         
