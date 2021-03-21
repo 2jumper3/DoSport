@@ -12,48 +12,49 @@ extension RequestsManager {
     //MARK: GET
     
     func sportTypesGet(
-        params: DSSportTypeRequests.SportTypeRequest,
-        compilation: @escaping (DataHandler<[DSSportTypeResponses.SportTypeResponse]>) -> Swift.Void
+        compilation: @escaping (DataHandler<[DSModels.SportType.SportTypeView]>) -> Swift.Void
     ) {
         let endpoint = DSEndpoints.SportType.getSportTypes
-        request(endpoint: endpoint, compilation: compilation)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: compilation)
     }
     
     func sportTypeGetById(
-        params: DSSportTypeRequests.SportTypeByIDRequest,
-        compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeResponse>) -> Swift.Void
+        params: DSModels.SportType.SportTypeByIDRequest,
+        compilation: @escaping (DataHandler<DSModels.SportType.SportTypeView>) -> Swift.Void
     ) {
         let endpoint = DSEndpoints.SportType.getSportTypeById(params.id)
-        request(endpoint: endpoint, compilation: compilation)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: compilation)
     }
     
     //MARK: CREATE
     
     func sportTypeCreate(
-        params: DSSportTypeRequests.SportTypeCreateRequest,
-        compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Swift.Void
+        params: DSModels.SportType.SportTypeCreateRequest,
+        compilation: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Swift.Void
     ) {
         let endpoint = DSEndpoints.SportType.createSportType(title: params.sportTitle)
-        request(endpoint: endpoint, compilation: compilation)
+        request(endpoint: endpoint, bodyObject: params.sportTitle, completion: compilation)
     }
     
     //MARK: DELETE
     
     func sportTypeDelete(
-        params: DSSportTypeRequests.SportTypeDeleteRequest,
-        compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Swift.Void
+        params: DSModels.SportType.SportTypeByIDRequest,
+        compilation: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.deleteSportType(usingID: params.sportTypeID)
-        request(endpoint: endpoint, compilation: compilation)
+        let endpoint = DSEndpoints.SportType.deleteSportType(usingID: params.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: compilation)
     }
     
     //MARK: PUT
     
     func sportTypePut(
-        params: DSSportTypeRequests.SportTypePutRequest,
-        compilation: @escaping (DataHandler<DSSportTypeResponses.SportTypeResponse>) -> Swift.Void
+        params: DSModels.SportType.SportTypeView,
+        compilation: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Swift.Void
     ) {
-        let endpoint = DSEndpoints.SportType.putSportType(usingTitle: params.title, andID: params.sportTypeID)
-        request(endpoint: endpoint, compilation: compilation)
+        guard let title = params.title, let id = params.id else { return }
+        
+        let endpoint = DSEndpoints.SportType.putSportTypeByID(id)
+        request(endpoint: endpoint, bodyObject: title, completion: compilation)
     }
 }

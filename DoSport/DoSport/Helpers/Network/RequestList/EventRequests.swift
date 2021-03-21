@@ -15,7 +15,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getEvents
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func eventCreate(
@@ -23,22 +23,22 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.createEvent(params)
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func eventGetByParameters(
         params: DSModels.Event.GetEventsByParameters,
         completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
     ) {
-        let endpoints = DSEndpoints.Event.getEventsByParams(params)
-        request(endpoint: endpoints, compilation: completion)
+        let endpoint = DSEndpoints.Event.getEventsByParams(params)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func eventsGetIfCreatedByCurrentUser(
         completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getEventsOfCurrentUser
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func eventEditBy(
@@ -47,7 +47,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.editEvent(eventID: id, params)
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func eventDeleteBy(
@@ -55,7 +55,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.DeleteEventResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.deleteEvent(eventID: params.id)
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - Event Members -
