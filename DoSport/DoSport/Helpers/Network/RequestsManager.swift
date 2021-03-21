@@ -7,31 +7,25 @@
 
 import Foundation
 
+struct DSEmptyRequest: Codable { }
+
 final class RequestsManager {
     
     static let shared = RequestsManager()
     
     let httpNetworkManager: NetworkManager = NetworkManagerImplementation()
     
-    func request<ResponseType: Codable>(
+    func request<RequestBody, ResponseType>(
         endpoint: Endpoint,
-        compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) {
+        bodyObject: RequestBody? = nil,
+                completion: @escaping (DataHandler<ResponseType>) -> Void
+    ) where RequestBody: Codable, ResponseType: Codable {
         
-        let task: URLSessionTask?
-        
-        switch endpoint.parameterEncoding{
-        case .jsonEncoding:
-            task = httpNetworkManager.jsonEncodingRequest(
-                endpoint: endpoint,
-                compilation: compilation
-            )
-        case .urlEncoding:
-            task = httpNetworkManager.urlEncodingRequest(
-                endpoint: endpoint,
-                compilation: compilation
-            )
-        }
+        let task: URLSessionTask? = httpNetworkManager.makeRequest(
+            endpoint: endpoint,
+            bodyObject: bodyObject,
+            compilation: completion
+        )
         
         task?.resume()
     }
