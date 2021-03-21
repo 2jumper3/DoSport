@@ -23,6 +23,8 @@ extension DSEndpoints {
         case addSubscriptionByID(DSUserProfileRequests.UserProfileById)
         case deleteSubscriptionByID(DSUserProfileRequests.UserProfileById)
         
+        //MARK: - Path -
+        
         var path: String {
             switch self {
             case .getProfileByID(let userProfile):             return "profiles/\(userProfile.id)"
@@ -35,6 +37,41 @@ extension DSEndpoints {
             case .addSubscriptionByID(let user):               return "profiles/subscriptions/\(user.id)"
             case .deleteSubscriptionByID(let user):            return "profiles/subscriptions/\(user.id)"
             default:                                           return "profiles"
+            }
+        }
+        
+        //MARK: - ParameterObject -
+
+        var parameters: ParameterObject? {
+            switch self {
+            case .editProfile(let user): return user
+            case .editPreferredSportTypes(let sportTypes): return sportTypes
+            default: return nil
+            }
+        }
+        
+        //MARK: - ParameterEncoding -
+
+        var parameterEncoding: ParameterEncoding {
+            switch self {
+            case .editProfile:             return .jsonEncoding
+            case .editPreferredSportTypes: return .jsonEncoding
+            default:                       return .urlEncoding
+            }
+        }
+        
+        //MARK: - HTTPMethod -
+
+        var method: HTTPMethod {
+            switch self {
+            case .editProfile:                  return .put
+            case .deleteProfile:                return .delete
+            case .editPreferredSportTypes:      return .put
+            case .addPreferredSportTypeByID:    return .put
+            case .deletePreferredSportTypeByID: return .delete
+            case .addSubscriptionByID:          return .put
+            case .deleteSubscriptionByID:       return .delete
+            default:                            return .get
             }
         }
     }
