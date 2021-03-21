@@ -11,12 +11,12 @@ extension DSEndpoints {
     
     enum User: Endpoint {
         case getProfile
-        case editProfile
+        case editProfile(DSModels.User.EditUserProfile)
         case deleteProfile
         case getProfileByID(Int)
         case getPreferredSportTypes
-        case editPreferredSportTypes
-        case editPreferredSportTypeByID(Int)
+        case editPreferredSportTypes([DSSportTypeRequests.SportTypePutRequest])
+        case addPreferredSportTypeByID(Int)
         case deletePreferredSportTypeByID(Int)
         case getSubscribers
         case getSubscriptions
@@ -25,18 +25,16 @@ extension DSEndpoints {
         
         var path: String {
             switch self {
-            case .getProfile: return "profiles"
-            case .editProfile: return "profiles"
-            case .deleteProfile: return "profiles"
-            case .getProfileByID(let id): return "profiles/\(id)"
-            case .getPreferredSportTypes: return "profiles/sports"
-            case .editPreferredSportTypes: return "profiles/sports"
-            case .editPreferredSportTypeByID(let id): return "profiles/sports/\(id)"
+            case .getProfileByID(let id):               return "profiles/\(id)"
+            case .getPreferredSportTypes:               return "profiles/sports"
+            case .editPreferredSportTypes:              return "profiles/sports"
+            case .addPreferredSportTypeByID(let id):    return "profiles/sports/\(id)"
             case .deletePreferredSportTypeByID(let id): return "profiles/sports/\(id)"
-            case .getSubscribers: return "profiles/subscribers"
-            case .getSubscriptions: return "profiles/subscriptions"
-            case .addSubscriptionByID(_): return "profiles/subscriptions"
-            case .deleteSubscriptionByID(_): return "profiles/subscriptions"
+            case .getSubscribers:                       return "profiles/subscribers"
+            case .getSubscriptions:                     return "profiles/subscriptions"
+            case .addSubscriptionByID(_):               return "profiles/subscriptions"
+            case .deleteSubscriptionByID(_):            return "profiles/subscriptions"
+            default:                                    return "profiles"
             }
         }
     }
