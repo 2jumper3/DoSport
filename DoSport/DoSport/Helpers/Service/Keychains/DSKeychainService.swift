@@ -101,8 +101,6 @@ final class DSKeychainService {
     
     /// Retrieves the data from the keychain that corresponds to the given key
     func getData(_ key: String, asReference: Bool = false) -> Data? {
-        // The lock prevents the code to be run simultaneously
-        // from multiple threads which may result in crashing
         lock.lock()
         defer { lock.unlock() }
         
