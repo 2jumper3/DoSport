@@ -10,53 +10,48 @@ import Foundation
 extension DSEndpoints {
     
     enum Event: Endpoint {
-        case getEvents
-        case createEvent(DSModels.Event.CreateEventRequest)
-        case getEventsByParams(DSModels.Event.GetEventsByParameters)
-        case getMembersOfEvent(eventID: Int)
-        case addMemberToEvent(eventID: Int)
-        case getMemberOfEvent(eventID: Int, userID: Int)
-        case deleteMemberFromEvent(eventID: Int, userID: Int)
+        // Events
+        case getEvents(DSModels.Event.EventByParametersRequest?)
+        case createEvent
+        case getEventByID(eventID: Int)
+        case editEventByID(eventID: Int)
+        case deleteEventByID(eventID: Int)
+        
+        // Event comments
         case getEventComments(eventID: Int)
-        case addEventComment(eventID: Int, eventComment: DSModels.Event.CreateEventCommentRequest)
-        case editEventComment(eventID: Int, commentID: Int, comment: DSModels.Event.EditEventCommentRequest)
+        case addEventComment(eventID: Int)
+        case editEventComment(eventID: Int, commentID: Int)
         case deleteEventComment(eventID: Int, commentID: Int)
-        case getEventById(eventID: Int)
-        case editEvent(eventID: Int, DSModels.Event.EditEventRequest)
-        case deleteEvent(eventID: Int)
-        case getEventsOfCurrentUser
-        case getEventsWhereCurrentUserIsMember(userID: Int)
+        
+        // Event members
+        case getMembersByEventID(eventID: Int)
+        case addMemberByEventID(eventID: Int)
+        case deleteMemberByEventID(eventID: Int)
+        case deleteMemberByEventAndMemberID(eventID: Int, userID: Int)
         
         //MARK: - Path -
 
         var path: String {
             switch self {
-            case .getMembersOfEvent(let eventID):                  return "events/\(eventID)/members"
-            case .addMemberToEvent(let eventID):                   return "events/\(eventID)/members"
-            case .getMemberOfEvent(let eventID, let userID):       return "events/\(eventID)/members/\(userID)"
-            case .deleteMemberFromEvent(let eventID, let userID):  return "events/\(eventID)/members/\(userID)"
-            case .getEventComments(let eventID):                   return "events/\(eventID)/messages"
-            case .addEventComment(let eventID, _):                 return "events/\(eventID)/messages"
-            case .editEventComment(let eventID, let commentID, _): return "events/\(eventID)/messages/\(commentID)"
-            case .deleteEventComment(let eventID, let commentID):  return "events/\(eventID)/messages/\(commentID)"
-            case .getEventById(let eventID):                       return "events/\(eventID)"
-            case .editEvent(let eventID, _):                       return "events/\(eventID)"
-            case .deleteEvent(let eventID):                        return "events/\(eventID)"
-            case .getEventsOfCurrentUser:                          return "events/calendar"
-            case .getEventsWhereCurrentUserIsMember(let userID):   return "events/members/\(userID)"
-            default:                                               return "events"
-            }
-        }
-        
-        //MARK: - ParameterObject -
-
-        var parameters: ParameterObject? {
-            switch self {
-            case .createEvent(let event):             return event
-            case .addEventComment(_, let comment):    return comment
-            case .editEventComment(_,_, let comment): return comment
-            case .editEvent(_, let event):            return event
-            default:                                  return nil
+            // Events
+            case .getEventByID(let eventID):    return "events/\(eventID)"
+            case .editEventByID(let eventID):   return "events/\(eventID)"
+            case .deleteEventByID(let eventID): return "events/\(eventID)"
+                
+            // Event comments
+            case .getEventComments(let eventID):                  return "events/\(eventID)/messages"
+            case .addEventComment(let eventID):                   return "events/\(eventID)/messages"
+            case .editEventComment(let eventID, let commentID):   return "events/\(eventID)/messages/\(commentID)"
+            case .deleteEventComment(let eventID, let commentID): return "events/\(eventID)/messages/\(commentID)"
+                
+            // Event members
+            case .getMembersByEventID(let eventID):   return "events/\(eventID)/participants"
+            case .addMemberByEventID(let eventID):    return "events/\(eventID)/participants"
+            case .deleteMemberByEventID(let eventID): return "events/\(eventID)/participants"
+            case .deleteMemberByEventAndMemberID(let eventID, let userID):
+                return "events/\(eventID)/participants/\(userID)"
+            
+            default: return "events"
             }
         }
         
@@ -64,31 +59,19 @@ extension DSEndpoints {
         
         var queryItems: QueryItems? {
             switch self {
-            case .getEventsByParams(let params):
-                return [
-                    "fromDate": params.fromDate ?? "",
-                    "organiserId": params.organiserID ?? "",
-                    "sportTypeId": params.sportTypeID ?? "",
-                    "sportTypeId": params.sportTypeID ?? "",
-                    "toDate": params.toDate ?? ""
-                ]
+            case .getEvents(let params):
+                if let params = params {
+                    return [
+                        "fromDate": params.fromDate ?? "",
+                        "organizerId": "\(params.organiserID ?? 0)",
+                        "sportGroundId": "\(params.sportGroundID ?? 0)",
+                        "sportTypeId": "\(params.sportTypeID ?? 0)",
+                        "toDate": params.toDate ?? ""
+                    ]
+                } else {
+                    return nil
+                }
             default: return nil
-            }
-        }
-        
-        //MARK: - ParameterEncoding -
-
-        var parameterEncoding: ParameterEncoding {
-            switch self {
-            case .createEvent:           return .jsonEncoding
-            case .addMemberToEvent:      return .jsonEncoding
-            case .deleteMemberFromEvent: return .jsonEncoding
-            case .addEventComment:       return .jsonEncoding
-            case .editEventComment:      return .jsonEncoding
-            case .deleteEventComment:    return .jsonEncoding
-            case .editEvent:             return .jsonEncoding
-            case .deleteEvent:           return .jsonEncoding
-            default:                     return .urlEncoding
             }
         }
         
@@ -96,15 +79,22 @@ extension DSEndpoints {
 
         var method: HTTPMethod {
             switch self {
-            case .createEvent:           return .post
-            case .addMemberToEvent:      return .post
-            case .deleteMemberFromEvent: return .delete
-            case .addEventComment:       return .post
-            case .editEventComment:      return .delete
-            case .deleteEventComment:    return .delete
-            case .editEvent:             return .put
-            case .deleteEvent:           return .delete
-            default:                     return .get
+            // Event
+            case .createEvent:     return .post
+            case .editEventByID:   return .put
+            case .deleteEventByID: return .delete
+                
+            // Event members
+            case .addMemberByEventID:             return .post
+            case .deleteMemberByEventID:          return .delete
+            case .deleteMemberByEventAndMemberID: return .delete
+                
+            // Event comments
+            case .addEventComment:    return .post
+            case .editEventComment:   return .put
+            case .deleteEventComment: return .delete
+                
+            default: return .get
             }
         }
     }

@@ -102,7 +102,7 @@ extension UserSubscriberListDataSource:  UITableViewDataSource {
 extension UserSubscriberListDataSource: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user: User? = .init(name: "Lincoln")
+        let user: User? = .init(id: 1, name: "Lincoln")
         
 //        switch userSubscriberListDataSourceState {
 //        case .subscribers: user = subscribers?[indexPath.row]

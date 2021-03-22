@@ -6,16 +6,10 @@
 //
 
 import UIKit
-
-protocol UserMainViewDelegate: class {
-
-}
     
 final class UserMainView: UIView {
     
-    weak var delegate: UserMainViewDelegate?
-    
-    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
+    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()// TODO: not good practice
     
     //MARK: Outlets
     
@@ -34,6 +28,14 @@ final class UserMainView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        $0.style = .white
+        $0.hidesWhenStopped = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isHidden = true
+        return $0
+    }(UIActivityIndicatorView())
 
     //MARK: Init
     
@@ -41,7 +43,7 @@ final class UserMainView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubview(collectionView)
+        addSubviews(collectionView, loadingIndicator)
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +58,8 @@ final class UserMainView: UIView {
             $0.bottom.equalToSuperview().offset(-tabBarHeight-10)
             $0.width.equalToSuperview().multipliedBy(0.9)
         }
+        
+        loadingIndicator.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }
 
@@ -68,5 +72,29 @@ extension UserMainView {
         collectionView.dataSource = dateSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func updateViewToState<T>(_ state: UserMainDataFlow.ViewControllerState<T>) where T: Codable {
+        if case .success = state {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+            self.collectionView.isHidden = false
+        }
+        
+        if case .loading = state {
+            self.loadingIndicator.isHidden = false
+            self.loadingIndicator.startAnimating()
+            
+            self.collectionView.isHidden = true
+        }
+        
+        if case .failed = state {
+            // TODO: implement data fail handler view
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+            self.collectionView.isHidden = false
+        }
     }
 }

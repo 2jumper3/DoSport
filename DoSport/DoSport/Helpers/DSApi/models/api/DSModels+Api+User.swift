@@ -7,62 +7,32 @@
 
 import Foundation
 
-typealias DSUserProfileRequests = DSModels.User.requests
-typealias DSUserProfileResponses = DSModels.User.responses
-
 extension DSModels {
+    
     enum User {
         
-        enum requests {
+        /// This struct is used as response object in `User` requests if needed. Also this struct must be used in UI layer
+        struct UserView: Codable, Identifiable {
+            let id: Int?
+            let username: String?
+            let avatarPhoto: Data?
+            let birthdayDate: String?
+            let gender: String?
+            let info: String?
             
-            //MARK: - GET UserProfile -
-            
-            struct UserProfile: Codable { }
-            
-            struct UserProfileById: Codable {
-                let id: Int
-            }
-            
-            //MARK: - EDIT UserProfile -
-            
-            struct UserProfileEdit: Codable, Identifiable {
-                let id: Int?
-                let username: String
-                let avatarPhoto: Data
-                let birthdayDate: String
-                let gender: String
-                let info: String? // TODO: this feature will be required after MVP0. 
-                
-                enum CodingKeys: String, CodingKey {
-                    case id, username
-                    case avatarPhoto = "photoLink"
-                    case birthdayDate, gender, info
-                }
-            }
-            
-            struct UserProfileDelete: Codable {
-                let id: Int
+            enum CodingKeys: String, CodingKey {
+                case id, username
+                case avatarPhoto = "photoLink"
+                case birthdayDate, gender, info
             }
         }
         
-        enum responses {
-            
-            struct UserProfileResponse: Codable, Identifiable {
-                let id: Int?
-                let username: String?
-                let avatarPhoto: String?
-                let birthdayDate: String?
-                let gender: String?
-                let info: String?
-                
-                enum CodingKeys: String, CodingKey {
-                    case id, username
-                    case avatarPhoto = "photoLink"
-                    case birthdayDate, gender, info
-                }
-            }
-            
-            struct UserProfileEmptyResponse: Codable { }
+        /// This struct is used to provide User object's `id` property is required as path in url
+        struct UserByIdRequest: Codable {
+            let id: Int
         }
+        
+        /// This struct is used for empty object response if needed
+        struct UserEmptyResponse: Codable { }
     }
 }

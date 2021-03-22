@@ -58,7 +58,7 @@ final class SportTypeGridViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
         
         if case .loading = self.viewState {
-            sportTypeListView.updateViewToLoading()
+            sportTypeListView.updateViewToState(self.viewState)
         }
         
         viewModel.doLoadSportTypes(request: .init())
@@ -126,16 +126,16 @@ extension SportTypeGridViewController: SportTypeGridViewControllerProtocol {
     func displaySportTypes(viewModel: SportTypeGridDataFlow.LoadSportTypes.ViewModel) {
         if case .success(let data) = viewModel.state, let viewModels = data {
             self.collectionManager.viewModels = viewModels
-            self.sportTypeListView.updateViewToSuccess()
+            self.sportTypeListView.updateViewToState(viewModel.state)
             self.sportTypeListView.updateCollectionDataSource(dateSource: self.collectionManager)
         }
         
         if case .loading = viewModel.state {
-            self.sportTypeListView.updateViewToLoading()
+            self.sportTypeListView.updateViewToState(viewModel.state)
         }
         
         if case .failed = viewModel.state {
-            
+            // TODO: implement data fail handler view
         }
     }
 }

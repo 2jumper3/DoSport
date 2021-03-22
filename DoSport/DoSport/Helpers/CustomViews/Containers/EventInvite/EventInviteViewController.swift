@@ -78,7 +78,7 @@ private extension EventInviteViewController {
     func prepareCollectionData() { // test
         
         for i in 1...25 {
-            let user = User(name: "\(i) - Kamol")
+            let user = User(id: 1, name: "\(i) - Kamol")
             users.append(user)
         }
         inveteFriendCollectionManager.viewModels = users
