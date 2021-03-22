@@ -89,20 +89,26 @@ extension SportTypeGridView {
         layoutIfNeeded()
     }
     
-    func updateViewToLoading() {
-        self.loadingIndicator.isHidden = false
-        self.loadingIndicator.startAnimating()
+    func updateViewToState(_ state: SportTypeGridDataFlow.ViewControllerState) {
+        if case .success = state {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+            self.collectionView.isHidden = false
+            self.saveButton.isHidden = false
+        }
         
-        self.collectionView.isHidden = true
-        self.saveButton.isHidden = true
-    }
-    
-    func updateViewToSuccess() {
-        self.loadingIndicator.stopAnimating()
-        self.loadingIndicator.isHidden = true
+        if case .loading = state {
+            self.loadingIndicator.isHidden = false
+            self.loadingIndicator.startAnimating()
+            
+            self.collectionView.isHidden = true
+            self.saveButton.isHidden = true
+        }
         
-        self.collectionView.isHidden = false
-        self.saveButton.isHidden = false
+        if case .failed = state {
+            // TODO: implement data fail handler view
+        }
     }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 
 extension RequestsManager {
     
-    //MARK: - GET UserProfile -
+    //MARK: - User Profile -
     
     func userProfileGet(
         completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
@@ -26,8 +26,6 @@ extension RequestsManager {
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - EDIT UserProfile -
-    
     func userProfileEdit(
         params: DSModels.User.UserView,
         completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
@@ -40,8 +38,6 @@ extension RequestsManager {
         )
     }
     
-    //MARK: - DELETE UserProfile -
-    
     func userProfileDelete(
         completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
@@ -49,7 +45,7 @@ extension RequestsManager {
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - GET User sportTypes -
+    //MARK: - User SportTypes -
     
     func userPreferredSportTypesGet(
         completion: @escaping (DataHandler<[DSModels.SportType.SportTypeView]>) -> Void
@@ -57,8 +53,6 @@ extension RequestsManager {
         let endpoint = DSEndpoints.User.getPreferredSportTypes
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
-    
-    //MARK: - EDIT User sportTypes -
     
     func userPreferredSportTypesEdit(
         params: [DSModels.SportType.SportTypeView],
@@ -72,8 +66,6 @@ extension RequestsManager {
         )
     }
     
-    //MARK: - ADD User sportType -
-    
     func userAddPreferredSportType(
         params: DSModels.SportType.SportTypeByIDRequest,
         completion: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Void
@@ -81,8 +73,6 @@ extension RequestsManager {
         let endpoint = DSEndpoints.User.addPreferredSportTypeByID(params)
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
-    
-    //MARK: - DELETE User sportType -
     
     func userDeletePreferredSportType(
         params: DSModels.SportType.SportTypeByIDRequest,
@@ -92,7 +82,7 @@ extension RequestsManager {
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - GET User subscribers & subscriptions -
+    //MARK: - User subscribers & subscriptions -
     
     func userGetSubscribers(
         completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
@@ -108,7 +98,6 @@ extension RequestsManager {
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - ADD User subscription -
     
     func userAddSubscription(
         params: DSModels.User.UserByIdRequest,
@@ -118,13 +107,38 @@ extension RequestsManager {
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - DELETE User subscription -
     
     func userDeleteSubscription(
         params: DSModels.User.UserByIdRequest,
         completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.deleteSubscriptionByID(params.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    //MARK: - User events -
+    
+    /// Gets events created by current user using his/her id
+    ///
+    /// - Parameters:
+    ///     - queryItems:
+    ///     - completion:
+    func userGetOwnedEvents(
+        queryItems: DSModels.User.UserByIdRequest,
+        completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.User.getUserOwnedEvents(byUserID: queryItems.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    /// Gets events where current user is participating
+    ///
+    /// - Parameters:
+    ///     - completion:
+    func userGetParticipatingEvents(
+        completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.User.getUserParticipatingEvents
         request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
 }

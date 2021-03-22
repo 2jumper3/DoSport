@@ -25,7 +25,11 @@ final class FeedViewModel {
     }
     
     func prepareEventsData() {
-        requestFactory.eventsGet { result in
+        requestFactory.eventsGet(queryComponents: .init(fromDate: nil,
+                                                        organiserID: nil,
+                                                        sportGroundID: nil,
+                                                        sportTypeID: nil,
+                                                        toDate: nil)) { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

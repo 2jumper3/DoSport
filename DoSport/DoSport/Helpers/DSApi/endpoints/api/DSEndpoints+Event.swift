@@ -64,7 +64,7 @@ extension DSEndpoints {
                     return [
                         "fromDate":    params.fromDate ?? "",
                         "organiserId": params.organiserID ?? "",
-                        "sportTypeId": params.sportTypeID ?? "",
+                        "sportGroundId": params.sportGroundID ?? "",
                         "sportTypeId": params.sportTypeID ?? "",
                         "toDate":      params.toDate ?? ""
                     ]
