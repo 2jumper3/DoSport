@@ -28,4 +28,8 @@ final class MainSportTypeSelectionCoordinator: Coordinator {
     func goToMainSportGroundListModule() {
         
     }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
