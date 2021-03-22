@@ -41,10 +41,10 @@ extension DSEndpoints {
         
         var method: HTTPMethod {
             switch self {
-            case .createSportType: return .post
-            case .putSportTypeByID:    return .put
-            case .deleteSportType: return .delete
-            default:               return .get
+            case .createSportType:  return .post
+            case .putSportTypeByID: return .put
+            case .deleteSportType:  return .delete
+            default:                return .get
             }
         }
     }

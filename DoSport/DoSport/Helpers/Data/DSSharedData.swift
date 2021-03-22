@@ -8,30 +8,55 @@
 import Foundation
 
 // works after Auth
-//class DSSharedData {
-//
-//    static let shared = DSSharedData()
-//
-//    let loginData = LoginData.shared
-//
-//    enum Constants {
-//        static let dsToken = "dsToken"
-//        static let userID = "userID"
-//        static let userdata = "userdata"
-//    }
-//
-//    let userDefaults = UserDefaults.appShared
-//
-//    var userData: DSModels.Api.User? {
-//        get { return nil }
-//        set { }
-//    }
-//
-//    var dsToken: String? {
-//        loginData.dsToken
-//    }
-//
-//    var isLoggedIn: Bool {
-//        return dsToken != nil
-//    }
-//}
+final class DSSharedData {
+    
+    static let shared = DSSharedData()
+    
+    enum Key {
+        static let jwt = "jwt"
+        static let userId = "userId"
+        static let userdata = "userdata"
+    }
+
+    let loginData = DSLoginData.shared
+    
+    let userDefaults = UserDefaults.appShared
+
+    var userData: DSModels.User.UserView? {
+        get { self.getUserData() }
+        set { self.setUserData(newValue) }
+    }
+
+    var jwtToken: String? {
+        get { loginData.jwtToken }
+        set { loginData.jwtToken = newValue }
+    }
+
+    var isLoggedIn: Bool {
+        return jwtToken != nil
+    }
+}
+
+//MARK: Private API
+
+private extension DSSharedData {
+    
+    func getUserData() -> DSModels.User.UserView? {
+        guard let data = userDefaults.data(forKey: Key.userdata) else { return nil }
+        
+        return try? JSONDecoder().decode(DSModels.User.UserView.self, from: data)
+    }
+    
+    func setUserData(_ data: DSModels.User.UserView?) {
+        let encoder = JSONEncoder()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Date.DS_DateFormat
+        dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
+        
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        
+        let data = try? encoder.encode(data)
+        userDefaults.set(data, forKey: Key.userdata)
+    }
+}
