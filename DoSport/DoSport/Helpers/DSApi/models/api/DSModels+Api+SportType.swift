@@ -7,77 +7,33 @@
 
 import Foundation
 
-typealias DSSportTypeRequests = DSModels.SportType.requests
-typealias DSSportTypeResponses = DSModels.SportType.responses
-
 extension DSModels {
     
     enum SportType {
-        enum requests {
-            //MARK: - GET
-            
-            struct SportTypeRequest: Codable { }
-            
-            struct SportTypeByIDRequest: Codable {
-                let id: Int
-                
-                enum CodingKeys: String, CodingKey {
-                    case id = "sportTypeId"
-                }
-            }
-            
-            //MARK: - Create
-            
-            struct SportTypeCreateRequest: Codable {
-                let sportTitle: String
-            }
-            
-            //MARK: - Delete
-            
-            struct SportTypeDeleteRequest: Codable {
-                let id: Int
-                
-                enum CodingKeys: String, CodingKey {
-                    case id = "sportTypeId"
-                }
-            }
-            
-            //MARK: - Put
-            
-            struct SportTypePutRequest: Codable {
-                let id: Int
-                let title: String
-
-                enum CodingKeys: String, CodingKey {
-                    case id = "sportTypeId"
-                    case title
-                }
-            }
-        }
         
-        enum responses {
-            struct SportTypeResponse: Codable, Equatable {
-                let sportTypeID: Int?
-                let title: String?
-
-                enum CodingKeys: String, CodingKey {
-                    case sportTypeID = "sportTypeId"
-                    case title
-                }
-            }
-            
-            struct SportTypeEmptyResponse: Codable { }
-        }
-        
-        struct SportTypePutResponse: Codable, Equatable {
-            let sportTypeID: Int?
+        struct SportTypeView: Codable, Equatable {
+            let id: Int?
             let title: String?
 
             enum CodingKeys: String, CodingKey {
-                case sportTypeID = "sportTypeId"
+                case id = "sportTypeId"
                 case title
             }
         }
+        
+        struct SportTypeByIDRequest: Codable {
+            let id: Int
+            
+            enum CodingKeys: String, CodingKey {
+                case id = "sportTypeId"
+            }
+        }
+        
+        struct SportTypeCreateRequest: Codable {
+            let sportTitle: String
+        }
+
+        struct SportTypeEmptyResponse: Codable { }
     }
 }
 

@@ -11,29 +11,19 @@ extension DSEndpoints {
     
     enum SportType: Endpoint {
         case getSportTypes
-        case getSportTypeById(DSSportTypeRequests.SportTypeByIDRequest)
-        case createSportType(DSSportTypeRequests.SportTypeCreateRequest)
-        case deleteSportType(DSSportTypeRequests.SportTypeDeleteRequest)
-        case putSportType(DSSportTypeRequests.SportTypePutRequest)
+        case getSportTypeById(Int)
+        case createSportType(title: String)
+        case deleteSportType(usingID: Int)
+        case putSportTypeByID(Int)
         
         //MARK: - Path -
         
         var path: String {
             switch self {
-            case .getSportTypeById(let sportType): return "sporttype/\(sportType.id)"
-            case .deleteSportType(let sportType):  return "sporttype/\(sportType.id)"
-            case .putSportType(let sportType):     return "sporttype/\(sportType.id)"
-            default:                               return "sporttype"
-            }
-        }
-        
-        //MARK: - ParameterObject -
-        
-        var parameters: ParameterObject? {
-            switch self {
-            case .createSportType(let sportType): return sportType.sportTitle
-            case .putSportType(let sportType):    return sportType.title
-            default:                              return nil
+            case .getSportTypeById(let ID):         return "sporttype/\(ID)"
+            case .deleteSportType(usingID: let ID): return "sporttype/\(ID)"
+            case .putSportTypeByID(let ID):         return "sporttype/\(ID)"
+            default:                                return "sporttype"
             }
         }
         
@@ -51,10 +41,10 @@ extension DSEndpoints {
         
         var method: HTTPMethod {
             switch self {
-            case .createSportType: return .post
-            case .putSportType:    return .put
-            case .deleteSportType: return .delete
-            default:               return .get
+            case .createSportType:  return .post
+            case .putSportTypeByID: return .put
+            case .deleteSportType:  return .delete
+            default:                return .get
             }
         }
     }

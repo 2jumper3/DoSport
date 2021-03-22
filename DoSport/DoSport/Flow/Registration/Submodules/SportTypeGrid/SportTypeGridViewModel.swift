@@ -7,25 +7,26 @@
 
 import Foundation
 
-final class SportTypeGridViewModel {
+protocol SportTypeGridViewModel: class {
+    func doLoadSportTypes(request: SportTypeGridDataFlow.LoadSportTypes.Request)
+    func doSaveSportTypes(request: SportTypeGridDataFlow.SaveSelectedSportTypes.Request)
+}
+
+final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewModel {
     
-    var onDataDidPrepare: (([DSSportTypeResponses.SportTypeResponse]) -> Void)?
+    weak var viewController: SportTypeGridViewControllerProtocol?
+    
     private let requestManager: RequestsManager
-    
-    private var sports: [DSSportTypeResponses.SportTypeResponse] = [] {
-        didSet {
-            onDataDidPrepare?(sports)
-        }
-    }
-    
-    private var selectedSports: [DSSportTypeResponses.SportTypeResponse] = []
     
     init(requestManager: RequestsManager) {
         self.requestManager = requestManager
+        super.init()
     }
     
-    func prepareData() {
-        self.requestManager.sportTypesGet(params: .init()) { [weak self] response in
+    func doLoadSportTypes(request: SportTypeGridDataFlow.LoadSportTypes.Request) {
+        self.viewController?.displaySportTypes(viewModel: .init(state: .loading))
+        
+        self.requestManager.sportTypesGet { [weak self] response in
             switch response {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -33,9 +34,7 @@ final class SportTypeGridViewModel {
                 
                 switch result {
                 case .object(let sportTypes):
-                    self?.sports = sportTypes.compactMap({ sportType -> DSSportTypeResponses.SportTypeResponse? in
-                        return sportType
-                    })
+                    self?.viewController?.displaySportTypes(viewModel: .init(state: .success(sportTypes)))
                 case .emptyObject:
                     print(#function, #file, #line, " need to finish handling empty object")
                 }
@@ -43,64 +42,46 @@ final class SportTypeGridViewModel {
         }
     }
     
-    func handleDataSelection(_ sport: DSSportTypeResponses.SportTypeResponse) {
-        guard selectedSports.count > 0 else {
-            selectedSports.append(sport)
-            return
-        }
+    func doSaveSportTypes(request: SportTypeGridDataFlow.SaveSelectedSportTypes.Request) {
+        self.viewController?.displaySaveSportTypesResult(viewModel: .init(state: .loading))
         
-        for (i, existedSport) in selectedSports.enumerated() {
-            if existedSport == sport {
-                selectedSports.remove(at: i)
-            } else {
-                selectedSports.append(sport)
+        requestManager.userPreferredSportTypesEdit(params: request.sportTypes) { response in
+            switch response {
+            case .success:
+                self.viewController?.displaySaveSportTypesResult(viewModel: .init(state: .success(nil)))
+            case .failure:
+                DispatchQueue.main.async {
+                    self.viewController?.displaySaveSportTypesResult(viewModel: .init(state: .success(nil)))
+                }
             }
-            return
+        }
+    }
+}
+
+//MARK: - DataFow -
+
+enum SportTypeGridDataFlow {
+    enum LoadSportTypes {
+        struct Request { }
+        
+        struct ViewModel {
+            let state: ViewControllerState
         }
     }
     
-    func saveData(compilation: () -> Void) {
-//        requestManager.sportTypeGetById(params: .init(id: 4)) { result in
-//            switch result{
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            case .success(let result):
-//                print(result)
-//            }
-//        }
-        
-        requestManager.sportTypePut(
-            params: .init(
-                sportTypeID: 34,
-                title: "%7B%22sportTitle%22%3A%22Box%22%7D="
-            )
-        ) { result in
-            switch result{
-            case .failure(let error):
-                print(error)
-            case .success(let result):
-                print(result)
-            }
+    enum SaveSelectedSportTypes {
+        struct Request {
+            let sportTypes: [DSModels.SportType.SportTypeView]
         }
         
-//        requestManager.sportTypeCreate(params: .init(sportTitle: "KickBoxing")) { result in
-//            switch result{
-//            case .failure(let error):
-//                print(error)
-//            case .success(let result):
-//                print(result)
-//            }
-//        }
-        
-//        requestManager.sportTypeDelete(params: .init(id: 34)) { result in
-//            switch result{
-//            case .failure(let error):
-//                print(error)
-//            case .success(let models):
-//                print(models)
-//
-//            }
-//        }
-        compilation()
+        struct ViewModel {
+            let state: ViewControllerState
+        }
+    }
+    
+    enum ViewControllerState {
+        case loading
+        case failed
+        case success([DSModels.SportType.SportTypeView]?)
     }
 }

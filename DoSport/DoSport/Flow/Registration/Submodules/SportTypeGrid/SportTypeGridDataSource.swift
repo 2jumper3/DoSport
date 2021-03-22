@@ -8,16 +8,16 @@
 import UIKit
 
 protocol SportTypeGridDataSourceDelegate: class {
-    func collectionView(didSelect sport: DSSportTypeResponses.SportTypeResponse)
+    func collectionView(didSelect sport: DSModels.SportType.SportTypeView)
 }
 
 final class SportTypeGridDataSource: NSObject {
     
     weak var delegate: SportTypeGridDataSourceDelegate?
     
-    var viewModels: [DSSportTypeResponses.SportTypeResponse]
+    var viewModels: [DSModels.SportType.SportTypeView]
     
-    init(viewModels: [DSSportTypeResponses.SportTypeResponse] = []) {
+    init(viewModels: [DSModels.SportType.SportTypeView] = []) {
         self.viewModels = viewModels
         super.init()
     }
