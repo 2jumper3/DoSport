@@ -11,7 +11,7 @@ protocol UserAccountEditingViewModel {
     var onUserProfileEditSuccess: (() -> Swift.Void)? { get set }
     var onUserProfileEditError: (() -> Swift.Void)? { get set }
      
-    func userDidEditProfile(_ userData: DSUserProfileRequests.UserProfileEdit)
+    func userDidEditProfile(_ userData: DSModels.User.UserView)
 }
 
 final class UserAccountEditingViewModelImplementation: UserAccountEditingViewModel {
@@ -25,7 +25,7 @@ final class UserAccountEditingViewModelImplementation: UserAccountEditingViewMod
         self.requestsManager = requestsManager
     }
     
-    func userDidEditProfile(_ userData: DSUserProfileRequests.UserProfileEdit) {
+    func userDidEditProfile(_ userData: DSModels.User.UserView) {
         requestsManager.userProfileEdit(params: userData) { [weak self] response in
             switch response {
             case .success(let result):

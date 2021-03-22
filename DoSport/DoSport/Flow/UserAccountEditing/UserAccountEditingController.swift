@@ -112,7 +112,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
         
         guard let avatarImageInJPEG = avatarImage.jpegData(compressionQuality: 0.5) else { return }
         
-        let userData = DSUserProfileRequests.UserProfileEdit(
+        let userData = DSModels.User.UserView(
             id: nil, // no need to change ID of current user
             username: username,
             avatarPhoto: avatarImageInJPEG,

@@ -971,9 +971,9 @@
 		65B6D91E260607750099BC08 /* DSApi */ = {
 			isa = PBXGroup;
 			children = (
-				65B6D9212606078D0099BC08 /* models */,
-				65B6D920260607870099BC08 /* enums */,
 				65B6D91F2606077E0099BC08 /* endpoints */,
+				65B6D920260607870099BC08 /* enums */,
+				65B6D9212606078D0099BC08 /* models */,
 			);
 			path = DSApi;
 			sourceTree = "<group>";
