@@ -61,7 +61,11 @@ extension DSEndpoints {
             switch self {
             case .getUserOwnedEvents(byUserID: let id):
                 return [
-                    "organizerId": id
+                    "fromDate": "",
+                    "organizerId": "\(id)",
+                    "sportGroundId": "",
+                    "sportTypeId": "",
+                    "toDate": ""
                 ]
             default: return nil
             }

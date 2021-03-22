@@ -62,11 +62,11 @@ extension DSEndpoints {
             case .getEvents(let params):
                 if let params = params {
                     return [
-                        "fromDate":    params.fromDate ?? "",
-                        "organiserId": params.organiserID ?? "",
-                        "sportGroundId": params.sportGroundID ?? "",
-                        "sportTypeId": params.sportTypeID ?? "",
-                        "toDate":      params.toDate ?? ""
+                        "fromDate": params.fromDate ?? "",
+                        "organizerId": "\(params.organiserID ?? 0)",
+                        "sportGroundId": "\(params.sportGroundID ?? 0)",
+                        "sportTypeId": "\(params.sportTypeID ?? 0)",
+                        "toDate": params.toDate ?? ""
                     ]
                 } else {
                     return nil

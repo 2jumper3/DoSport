@@ -37,6 +37,7 @@ final class UserMainViewModel: NSObject, UserMainViewModelProtocol {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                self?.viewController?.displayEvents(viewModel: .init(state: .failed))
             }
         }
     }

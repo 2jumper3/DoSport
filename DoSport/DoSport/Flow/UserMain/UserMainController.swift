@@ -105,7 +105,7 @@ private extension UserMainController {
         case .loading:
             self.userMainView.updateViewToState(state)
         case .failed:
-            break // TODO: implement handling this state
+            self.userMainView.updateViewToState(state)
         case .success(let data):
             
             if let viewModels = data as? [DSModels.Event.EventView] {

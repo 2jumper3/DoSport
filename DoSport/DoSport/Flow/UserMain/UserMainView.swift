@@ -91,6 +91,10 @@ extension UserMainView {
         
         if case .failed = state {
             // TODO: implement data fail handler view
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+            self.collectionView.isHidden = false
         }
     }
 }
