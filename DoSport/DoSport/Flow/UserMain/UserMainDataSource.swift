@@ -28,12 +28,12 @@ final class UserMainDataSource: NSObject {
     
     weak var delegate: UserMainDataSourceDelegate?
     
-    var events: [Event]?
-    var sportGrounds: [SportGround]?
+    var events: [DSModels.Event.EventView]?
+    var sportGrounds: [DSModels.SportGround.SportGroundResponse]?
 
     private var toogleSegmentedControl: DSSegmentedControl?
     
-    init(viewModels: [Event]? = []) {
+    init(viewModels: [DSModels.Event.EventView]? = []) {
         self.events = viewModels
         super.init()
 

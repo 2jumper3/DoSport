@@ -27,16 +27,6 @@ extension DSEndpoints {
             }
         }
         
-        //MARK: - ParameterEncoding -
-        
-        var parameterEncoding: ParameterEncoding {
-            switch self {
-            case .getSportTypes:    return .urlEncoding
-            case .getSportTypeById: return .urlEncoding
-            default:                return .jsonEncoding
-            }
-        }
-        
         //MARK: - HTTPMethod -
         
         var method: HTTPMethod {

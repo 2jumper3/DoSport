@@ -75,7 +75,7 @@ extension MainMenuTabController {
         
         self.tabBarItems.forEach { tabBarItem in
             
-            if tabBarItem.viewController is FeedViewController {
+            if tabBarItem.viewController == TabBarItem.home.rawValue {
                 let navigationController = DSNavigationController()
                 let feedCoordinator = FeedCoordinator(navController: navigationController)
                 
@@ -86,7 +86,7 @@ extension MainMenuTabController {
                 
                 tabViewControllers?.append(navigationController)
                 
-            } else if tabBarItem.viewController is UserMainController {
+            } else if tabBarItem.viewController == TabBarItem.user.rawValue {
                 let navigationController = DSNavigationController()
                 let userMainCoordinator = UserMainCoordinator(navController: navigationController)
                 
@@ -98,7 +98,7 @@ extension MainMenuTabController {
                 tabViewControllers?.append(navigationController)
                 
             } else {
-                tabViewControllers?.append(tabBarItem.viewController)
+                tabViewControllers?.append(UIViewController())
             }
         }
         

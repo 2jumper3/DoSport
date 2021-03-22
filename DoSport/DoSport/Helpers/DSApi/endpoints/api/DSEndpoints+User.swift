@@ -10,14 +10,23 @@ import Foundation
 extension DSEndpoints {
     
     enum User: Endpoint {
+        // User profile
         case getProfile
         case editProfile
         case deleteProfile
         case getProfileByID(Int)
+        
+        // User events
+        case getUserOwnedEvents(byUserID: Int)
+        case getUserParticipatingEvents
+        
+        // User preferred sport types
         case getPreferredSportTypes
         case editPreferredSportTypes
         case addPreferredSportTypeByID(DSModels.SportType.SportTypeByIDRequest)
         case deletePreferredSportTypeByID(DSModels.SportType.SportTypeByIDRequest)
+        
+        // User subscribers and subscriptions
         case getSubscribers
         case getSubscriptions
         case addSubscriptionByID(Int)
@@ -27,26 +36,38 @@ extension DSEndpoints {
         
         var path: String {
             switch self {
-            case .getProfileByID(let id):                      return "profiles/\(id)"
+            case .getProfileByID(let id): return "profiles/\(id)"
+                
+            case .getUserOwnedEvents:         return "events"
+            case .getUserParticipatingEvents: return "profiles/events"
+                
             case .getPreferredSportTypes:                      return "profiles/sports"
             case .editPreferredSportTypes:                     return "profiles/sports"
             case .addPreferredSportTypeByID(let sportType):    return "profiles/sports/\(sportType.id)"
             case .deletePreferredSportTypeByID(let sportType): return "profiles/sports/\(sportType.id)"
-            case .getSubscribers:                              return "profiles/subscribers"
-            case .getSubscriptions:                            return "profiles/subscriptions"
-            case .addSubscriptionByID(let id):                 return "profiles/subscriptions/\(id)"
-            case .deleteSubscriptionByID(let id):              return "profiles/subscriptions/\(id)"
-            default:                                           return "profiles"
+                
+            case .getSubscribers:                 return "profiles/subscribers"
+            case .getSubscriptions:               return "profiles/subscriptions"
+            case .addSubscriptionByID(let id):    return "profiles/subscriptions/\(id)"
+            case .deleteSubscriptionByID(let id): return "profiles/subscriptions/\(id)"
+                
+            default: return "profiles"
             }
         }
         
-        //MARK: - ParameterEncoding -
-
-        var parameterEncoding: ParameterEncoding {
+        //MARK: - QueryItems -
+        
+        var queryItems: QueryItems? {
             switch self {
-            case .editProfile:             return .jsonEncoding
-            case .editPreferredSportTypes: return .jsonEncoding
-            default:                       return .urlEncoding
+            case .getUserOwnedEvents(byUserID: let id):
+                return [
+                    "fromDate": "",
+                    "organizerId": "\(id)",
+                    "sportGroundId": "",
+                    "sportTypeId": "",
+                    "toDate": ""
+                ]
+            default: return nil
             }
         }
         
