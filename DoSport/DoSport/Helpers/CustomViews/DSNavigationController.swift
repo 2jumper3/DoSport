@@ -70,22 +70,12 @@ extension DSNavigationController {
 private extension DSNavigationController {
     
     func setStatusBar() {
-        if #available(iOS 13.0, *) {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: Colors.mainBlue]
-            navBarAppearance.backgroundColor = Colors.darkBlue
-            navigationBar.standardAppearance = navBarAppearance
-            navigationBar.scrollEdgeAppearance = navBarAppearance
-            navigationBar.isTranslucent = false
-        } else {
-            navigationBar.isTranslucent = false
-            navigationBar.barTintColor = Colors.darkBlue
-            navigationBar.tintColor = Colors.mainBlue
-            navigationBar.titleTextAttributes = [
-                NSAttributedString.Key.font: Fonts.sfProRegular(size: 18),
-                NSAttributedString.Key.foregroundColor: Colors.mainBlue
-            ]
-        }
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: Colors.mainBlue]
+        navBarAppearance.backgroundColor = Colors.darkBlue
+        navigationBar.standardAppearance = navBarAppearance
+        navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationBar.isTranslucent = false
     }
 }
