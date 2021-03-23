@@ -25,6 +25,12 @@ final class RegistrationCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
+    func goToFeedModule() {
+        let coordinator = MainTabBarCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
+        coordinator.start()
+    }
+    
     func goToSportTypeListModule() {
         let coordinator = SportTypeGridCoordinator(navController: self.navigationController)
         self.store(coordinator: coordinator)
