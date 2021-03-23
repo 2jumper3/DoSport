@@ -9,7 +9,7 @@ import Foundation
 
 enum DeepLink {
     enum Destination {
-        case FeedCoordinator
+        case EventModule
     }
     
     enum Url {
@@ -34,7 +34,7 @@ final class DeepLinkManager: DeepLinkManagerProtocol {
             guard let id = idFromUrl else { return }
             let chat = Chat(ID: Int(id), messages: [], userID: nil, userName: nil)
             let event = Event(eventID: Int(id), eventDate: nil, eventEndTime: nil, eventStartTime: nil, organiserID: 1, chatID: chat, members: [], sportGroundID: 1, sportType: nil)
-            addChildCoordinator(destination: .FeedCoordinator, coordinator: appCoordinator)
+            addChildCoordinator(destination: .EventModule, coordinator: appCoordinator)
             feedCoordinator?.goToEventModule(withSelected: event)
         default: break
         }
@@ -46,7 +46,7 @@ final class DeepLinkManager: DeepLinkManagerProtocol {
             if let mainTabBarCoordinator = coordinator as? MainTabBarCoordinator {
                 mainTabBarCoordinator.childCoordinators.forEach { coordinator in
                     switch destination {
-                    case .FeedCoordinator:
+                    case .EventModule:
                         if let feedCoordinator = coordinator as? FeedCoordinator {
                             self.feedCoordinator = feedCoordinator
                         }
@@ -63,7 +63,7 @@ final class DeepLinkManager: DeepLinkManagerProtocol {
                                     if let mainTabBarCoordinator = coordinator as? MainTabBarCoordinator {
                                         mainTabBarCoordinator.childCoordinators.forEach { (coordinator) in
                                             switch destination {
-                                            case .FeedCoordinator:
+                                            case .EventModule:
                                                 if let feedCoordinator = coordinator as? FeedCoordinator {
                                                     self.feedCoordinator = feedCoordinator
                                                 }
