@@ -242,6 +242,7 @@ extension Texts {
     enum UserAccountEditing {
         static let title = Common.account
         static let signOut = "Выйти из аккунта"
+        static let deleteProfile = "Удалить аккаунт"
     }
 }
 

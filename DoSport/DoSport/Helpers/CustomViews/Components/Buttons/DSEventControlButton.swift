@@ -15,18 +15,21 @@ final class DSEventControlButton: UIView {
         return $0
     }(UILabel())
 
-    private lazy var imageView: UIImageView = {
-        $0.image = UIImage()
-    return $0
-    }(UIImageView())
+    private lazy var imageView: UIImageView = UIImageView()
     
     //MARK: Init
     
-    init(img icon: UIImage, txt text: String) {
+    init(img icon: UIImage,
+         txt text: String,
+         textColor: UIColor = .white,
+         imageColor: UIColor = .white
+    ) {
         super.init(frame: .zero)
         
         label.text = text
-        imageView.image = icon
+        label.textColor = textColor
+        imageView.image = icon.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = imageColor
         
         addSubviews(label, imageView)
     }
