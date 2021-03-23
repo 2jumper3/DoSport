@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol UserMainControllerProtocol: class {
-    func displayEvents(viewModel: UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.ViewModel)
-    func displySportGrounds(viewModel: UserMainDataFlow.LoadEvents<DSModels.SportGround.SportGroundResponse>.ViewModel)
-}
-
 final class UserMainController: UIViewController {
     
     weak var coordinator: UserMainCoordinator?
@@ -65,7 +60,8 @@ final class UserMainController: UIViewController {
             userMainView.updateViewToState(self.viewState)
         }
         
-        viewModel.doLoadEvents(request: .init(userID: self.user?.id ?? 0))
+        self.setupViewModelBindings()
+        self.viewModel.doLoadEvents(request: .init(userID: self.user?.id ?? 0))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +96,16 @@ final class UserMainController: UIViewController {
 
 private extension UserMainController {
     
+    func setupViewModelBindings() {
+        viewModel.didLoadEvents = { [unowned self] data in
+            self.updateState(data.state)
+        }
+        
+        viewModel.didLoadSportGrounds = { [unowned self] data in
+            self.updateState(data.state)
+        }
+    }
+    
     func updateState<T>(_ state: UserMainDataFlow.ViewControllerState<T>) where T: Codable {
         switch state {
         case .loading:
@@ -119,25 +125,6 @@ private extension UserMainController {
             self.userMainView.updateViewToState(state)
         }
     }
-}
-
-//MARK: - UserMainControllerProtocol -
-
-extension UserMainController: UserMainControllerProtocol {
-    
-    func displayEvents(
-        viewModel: UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.ViewModel
-    ) {
-        self.updateState(viewModel.state)
-    }
-    
-    func displySportGrounds(
-        viewModel: UserMainDataFlow.LoadEvents<DSModels.SportGround.SportGroundResponse>.ViewModel
-    ) {
-        self.updateState(viewModel.state)
-    }
-    
-    
 }
 
 //MARK: - UserMainDataSourceDelegate -
@@ -203,9 +190,9 @@ extension UserMainController: EventManageContanerViewControllerDelegate {
         }
     }
     
-    func closeButtonClicked() {
-        
-    }
+//    func closeButtonClicked() {
+//        
+//    }
     
     func editButtonClicked() {
         

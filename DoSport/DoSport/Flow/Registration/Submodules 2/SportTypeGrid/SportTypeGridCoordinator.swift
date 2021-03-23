@@ -1,21 +1,21 @@
 //
-//  RegistrationCoordinator.swift
+//  SportTypeGridCoordinator.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 23/12/2020.
+//  Created by Komolbek Ibragimov on 17/01/2021.
 //
 
 import UIKit
 
-final class RegistrationCoordinator: Coordinator {
+final class SportTypeGridCoordinator: Coordinator {
     
-    var rootViewController: RegistrationViewController
+    var rootViewController: SportTypeGridViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = RegistrationAssembly()
+        let assembly = SportTypeGridAssembly()
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
     }
@@ -25,16 +25,13 @@ final class RegistrationCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
+    func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func goToFeedModule() {
         let coordinator = MainTabBarCoordinator(navController: navigationController)
         self.store(coordinator: coordinator)
         coordinator.start()
     }
-    
-    func goToSportTypeListModule() {
-        let coordinator = SportTypeGridCoordinator(navController: self.navigationController)
-        self.store(coordinator: coordinator)
-        coordinator.start()
-    }
 }
-

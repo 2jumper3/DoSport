@@ -11,7 +11,7 @@ protocol EventManageContanerViewControllerDelegate: class {
     func eventManageCancelButtonClicked()
     func touchBegan()
     func inviteButtonClicked()
-    func closeButtonClicked()
+//    func closeButtonClicked()
     func editButtonClicked()
     func deleteButtonClicked()
 }
@@ -42,28 +42,12 @@ final class EventManageContanerViewController: UIViewController {
     }
 }
 
-//MARK: Public API
-
-extension EventManageContanerViewController { }
-
-//MARK: Private API
-
-private extension EventManageContanerViewController { }
-
-//MARK: Actions
-
-@objc private extension EventManageContanerViewController { }
-
 //MARK: - EventControlsViewDelegate -
 
 extension EventManageContanerViewController: EventControlsViewDelegate {
     
     func inviteButtonClicked() {
         delegate?.inviteButtonClicked()
-    }
-    
-    func closeButtonClicked() {
-        delegate?.closeButtonClicked()
     }
     
     func editButtonClicked() {

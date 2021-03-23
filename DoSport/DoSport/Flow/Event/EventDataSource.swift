@@ -10,7 +10,7 @@ import UIKit
 protocol EventDataSourceDelegate: class {
     func tableViewInviteButtonClicked()
     func tableViewParicipateButtonClicked()
-    func tableViewEventVisibilityChangeButtonClicked()
+//    func tableViewEventVisibilityChangeButtonClicked()
     func commentReplyButtonClicked(to userName: String?)
     func tableViewNeedsReloadData()
 }
@@ -77,9 +77,9 @@ extension EventDataSource: UITableViewDataSource {
                 delegate?.tableViewParicipateButtonClicked()
             }
             
-            eventCardCell.onEventVisibilityChangeButtonClicked = { [unowned self] in
-                delegate?.tableViewEventVisibilityChangeButtonClicked()
-            }
+//            eventCardCell.onEventVisibilityChangeButtonClicked = { [unowned self] in
+//                delegate?.tableViewEventVisibilityChangeButtonClicked()
+//            }
             cell = eventCardCell
         } else {
             switch eventDataSourceState {

@@ -9,8 +9,8 @@ import UIKit
 
 protocol FeedViewDelegate: class {
     func allFilterButtonClicked()
-    func subscribesFilterButtonClicked()
-    func subscribersFilterButtonClicked()
+    func mySubscribesFilterButtonClicked()
+    func mySportGroundsFilterButtonClicked()
 }
 
 final class FeedView: UIView {
@@ -105,10 +105,10 @@ extension FeedView: FeedFilterButtonsViewDelegate {
     }
     
     func subscribesButtonClicked() {
-        delegate?.subscribesFilterButtonClicked()
+        delegate?.mySubscribesFilterButtonClicked()
     }
     
     func subscribersButtonClicked() {
-        delegate?.subscribersFilterButtonClicked()
+        delegate?.mySportGroundsFilterButtonClicked()
     }
 }

@@ -26,15 +26,9 @@ extension UISearchBar {
         }
     }
     
+    // FIXME: remove all below code. WTF is it ? 
     public var textField: UITextField? {
-        if #available(iOS 13, *) {
-            return searchTextField
-        }
-        let subViews = subviews.flatMap { $0.subviews }
-        guard let textField = (subViews.filter { $0 is UITextField }).first as? UITextField else {
-            return nil
-        }
-        return textField
+        return searchTextField
     }
 
     func clearBackgroundColor() {
@@ -57,7 +51,7 @@ extension UISearchBar {
         } set {
             if newValue {
                 if activityIndicator == nil {
-                    let newActivityIndicator = UIActivityIndicatorView(style: .gray)
+                    let newActivityIndicator = UIActivityIndicatorView(style: .medium)
                     newActivityIndicator.color = UIColor.gray
                     newActivityIndicator.startAnimating()
                     newActivityIndicator.backgroundColor = textField?.backgroundColor ?? UIColor.white

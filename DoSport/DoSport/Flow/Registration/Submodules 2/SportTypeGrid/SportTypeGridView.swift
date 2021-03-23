@@ -32,7 +32,7 @@ final class SportTypeGridView: UIView {
     }()
     
     private let loadingIndicator: UIActivityIndicatorView = {
-        $0.style = .medium
+        $0.style = .white
         $0.hidesWhenStopped = true
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isHidden = true
@@ -89,26 +89,20 @@ extension SportTypeGridView {
         layoutIfNeeded()
     }
     
-    func updateViewToState(_ state: SportTypeGridDataFlow.ViewControllerState) {
-        if case .success = state {
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.isHidden = true
-            
-            self.collectionView.isHidden = false
-            self.saveButton.isHidden = false
-        }
+    func updateViewToLoading() {
+        self.loadingIndicator.isHidden = false
+        self.loadingIndicator.startAnimating()
         
-        if case .loading = state {
-            self.loadingIndicator.isHidden = false
-            self.loadingIndicator.startAnimating()
-            
-            self.collectionView.isHidden = true
-            self.saveButton.isHidden = true
-        }
+        self.collectionView.isHidden = true
+        self.saveButton.isHidden = true
+    }
+    
+    func updateViewToSuccess() {
+        self.loadingIndicator.stopAnimating()
+        self.loadingIndicator.isHidden = true
         
-        if case .failed = state {
-            // TODO: implement data fail handler view
-        }
+        self.collectionView.isHidden = false
+        self.saveButton.isHidden = false
     }
 }
 
