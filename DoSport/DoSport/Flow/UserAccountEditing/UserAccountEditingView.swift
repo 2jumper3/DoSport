@@ -40,8 +40,19 @@ final class UserAccountEditingView: UIView {
     private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
                                                            titleColor: Colors.mainBlue)
     
-    private lazy var signOutButton = UIButton.makeButton(title: Texts.UserAccountEditing.signOut,
-                                                                titleColor: Colors.mainBlue)
+    private lazy var signOutButton: DSEventControlButton = .init(
+        img: Icons.UserProfileEdit.logout,
+        txt: Texts.UserAccountEditing.signOut,
+        textColor: Colors.mainBlue,
+        imageColor: Colors.mainBlue)
+    
+    private lazy var signoutBottomSeparatorView: DSSeparatorView = DSSeparatorView()
+    
+    private lazy var deleteProfileButton: DSEventControlButton = .init(
+        img: Icons.UserProfileEdit.delete,
+        txt: Texts.UserAccountEditing.deleteProfile,
+        textColor: Colors.mainBlue,
+        imageColor: Colors.mainBlue)
 
     //MARK: Init
     
@@ -63,7 +74,9 @@ final class UserAccountEditingView: UIView {
             saveButton,
             maleButton,
             femaleButton,
-            signOutButton
+            signOutButton,
+            signoutBottomSeparatorView,
+            deleteProfileButton
         )
     }
     
@@ -127,8 +140,20 @@ final class UserAccountEditingView: UIView {
         }
         
         signOutButton.snp.makeConstraints {
-            $0.top.equalTo(femaleButton.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(femaleButton.snp.bottom).offset(25)
+            $0.left.equalTo(maleButton.snp.left)
+        }
+        
+        signoutBottomSeparatorView.snp.makeConstraints {
+            $0.top.equalTo(signOutButton.snp.bottom).offset(4)
+            $0.height.equalTo(1)
+            $0.right.equalToSuperview()
+            $0.left.equalTo(signOutButton.snp.left).offset(15)
+        }
+        
+        deleteProfileButton.snp.makeConstraints {
+            $0.top.equalTo(signoutBottomSeparatorView.snp.bottom).offset(4)
+            $0.left.equalTo(signOutButton.snp.left)
         }
         
         [dobTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {

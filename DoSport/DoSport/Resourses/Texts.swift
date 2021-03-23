@@ -144,7 +144,7 @@ extension Texts {
         
         static let all = "Все"
         static let subscribes = "Подписки"
-        static let subscribers = "Подписчики"
+        static let mySportGrounds = "Мои площадки"
         
         static let free = "Бесплатно"
         static let km3 = "3 км"
@@ -242,6 +242,7 @@ extension Texts {
     enum UserAccountEditing {
         static let title = Common.account
         static let signOut = "Выйти из аккунта"
+        static let deleteProfile = "Удалить аккаунт"
     }
 }
 

@@ -14,7 +14,8 @@ protocol UserMainViewModelProtocol: class {
 
 final class UserMainViewModel: NSObject, UserMainViewModelProtocol {
     
-    weak var viewController: UserMainControllerProtocol?
+    var didLoadEvents: ((UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.ViewModel) -> Swift.Void)?
+    var didLoadSportGrounds: ((UserMainDataFlow.LoadEvents<DSModels.SportGround.SportGroundResponse>.ViewModel) -> Swift.Void)?
     
     private let requestsManager: RequestsManager
     
@@ -24,20 +25,18 @@ final class UserMainViewModel: NSObject, UserMainViewModelProtocol {
     }
     
     func doLoadEvents(request: UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.Request) {
-        viewController?.displayEvents(viewModel: .init(state: .loading))
-        
-        requestsManager.userGetOwnedEvents(queryItems: .init(id: request.userID)) { [weak self] response in
+        requestsManager.userGetOwnedEvents(queryItems: .init(id: request.userID)) { [unowned self] response in
             switch response {
             case .success(let result):
                 switch result {
                 case .object(let events):
-                    self?.viewController?.displayEvents(viewModel: .init(state: .success(events)))
+                    self.didLoadEvents?(.init(state: .success(events)))
                 case .emptyObject:
                     break
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                self?.viewController?.displayEvents(viewModel: .init(state: .failed))
+                self.didLoadEvents?(.init(state: .failed))
             }
         }
     }
@@ -45,7 +44,6 @@ final class UserMainViewModel: NSObject, UserMainViewModelProtocol {
     func doLoadSportGrounds(
         request: UserMainDataFlow.LoadSportGrounds<DSModels.SportGround.SportGroundResponse>.Request
     ) {
-        viewController?.displayEvents(viewModel: .init(state: .loading))
         
     }
 }

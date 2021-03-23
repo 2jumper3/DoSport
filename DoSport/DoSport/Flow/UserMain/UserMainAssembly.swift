@@ -19,7 +19,6 @@ final class UserMainAssembly: Assembly {
         let requestManager = RequestsManager.shared
         let viewModel = UserMainViewModel(requestsManager: requestManager)
         let viewController = UserMainController(viewModel: viewModel, user: user)
-        viewModel.viewController = viewController
         return viewController
     }
 }

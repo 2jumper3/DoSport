@@ -39,11 +39,7 @@ final class EventView: UIView {
     
     private let visualEffect: UIVisualEffectView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 13.0, *) {
-            $0.effect = UIBlurEffect(style: .systemMaterialDark)
-        } else {
-            $0.effect = UIBlurEffect(style: .dark)
-        }
+        $0.effect = UIBlurEffect(style: .systemMaterialDark)
         $0.alpha  = 0.0
         return $0
     }(UIVisualEffectView())
