@@ -14,8 +14,8 @@ import Alamofire
 class WKWebViewController: UIViewController, WKNavigationDelegate {
 
     weak var webView: WKWebView?
-    weak var coordinator: MainCoordinator?
-
+    
+//    let coordinator = AuthCoordinator(navController: navigationController)
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
@@ -41,10 +41,10 @@ class WKWebViewController: UIViewController, WKNavigationDelegate {
             urlComponents.host = "oauth.vk.com"
             urlComponents.path = "/authorize"
             urlComponents.queryItems = [
-                URLQueryItem(name: "client_id", value: Session.shared.client_id),
+                URLQueryItem(name: "client_id", value: VKSession.shared.client_id),
                 URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
                 URLQueryItem(name: "display", value: "mobile"),
-                URLQueryItem(name: "scope", value: "8195"),
+                URLQueryItem(name: "scope", value: "8195,4194304"),
                 URLQueryItem(name: "response_type", value: "token"),
                 URLQueryItem(name: "v", value: "5.103"),
                 URLQueryItem(name: "state", value: "test"),
@@ -67,54 +67,32 @@ class WKWebViewController: UIViewController, WKNavigationDelegate {
                         for item: URLQueryItem in items {
                             if item.name == "access_token" {
                                 if item.value != nil {
-                                    Session.shared.tokenID = item.value
+                                    VKSession.shared.tokenID = item.value
                                 }
-                                print("TOKEN IS \(Session.shared.tokenID!)")
+                                print("TOKEN IS \(VKSession.shared.tokenID!)")
 
                             }
                             if item.name == "user_id" {
                                 if item.value != nil {
-                                    Session.shared.userName = item.value
-                                    print("user_id is \( String(describing: Session.shared.userName!))")
+                                    VKSession.shared.userName = item.value
+                                    print("user_id is \( String(describing: VKSession.shared.userName!))")
+                                }
+                            }
+                            if item.name == "email" {
+                                if item.value != nil {
+                                    VKSession.shared.email = item.value
+                                    print("email is \( String(describing: VKSession.shared.email!))")
                                 }
                             }
                         }
                     }
-                    self.navigationController?.popViewController(animated: true)
-
                     self.webView?.removeFromSuperview()
-                    
-                    getInfo()
                 }
                 decisionHandler(.allow)
             }
     
     //MARK: - запрос на имя, фамилию и id пользователя
         func getInfo() {
-            let urlString = "https://api.vk.com/method/users.get?user_id=\(String(Session.shared.userName!))&v=5.52&access_token=\(String(describing: Session.shared.tokenID!))"
-            Alamofire.request(urlString, method: .get).validate().responseJSON { (response) in
-                print("response is \(response)")
-                switch response.result {
-                case .success (let value):
-                    let json = JSON(value)
-                    let first_name = json["response"][0]["first_name"].stringValue
-                    let last_name = json["response"][0]["last_name"].stringValue
-                    let id = json["response"][0]["id"].intValue
-                    let test = RealmDataModel()
-                    test.first_name = first_name
-                    test.last_name = last_name
-                    test.id = id
-                    test.email = ""
-                    
-                    try! self.realm.write {
-                        self.realm.add(test)
-                    }
-    //                print("realmmm !!!!! \(self.realm.configuration.fileURL)")
-                case .failure (let error):
-                    print(error)
-                }
-            }
+            
         }
-
-    }
-
+}

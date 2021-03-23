@@ -5,7 +5,7 @@
 //  Created by Sergey on 12.03.2021.
 //
 
-mport UIKit
+import UIKit
 
 class WKWebViewView: UIView {
 

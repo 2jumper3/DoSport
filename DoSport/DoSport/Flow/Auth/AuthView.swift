@@ -8,17 +8,18 @@
 import UIKit
 import SnapKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 protocol AuthViewDelegate: AnyObject {
     func submitButtonTapped(with text: String)
     func regionSelectionButtonTapped()
     func fbAuthPassed()
     func fbAuthClicked()
+    func vkAuthButtonClicked()
 }
 
 final class AuthView: UIView,LoginButtonDelegate {
 
-    
     weak var delegate: AuthViewDelegate?
     
     private lazy var fbLoginBtn: CustomAuthButton = {
@@ -31,6 +32,8 @@ final class AuthView: UIView,LoginButtonDelegate {
     }(CustomAuthButton(title: Texts.Auth.AuthButtons.apple, state: .normal, image: Icons.Auth.appleAuth, isHidden: false))
     
     private lazy var googleLoginBtn: CustomAuthButton = {
+        $0.addTarget(self, action: #selector(googleAuthButtonTapped), for: .touchUpInside)
+
         return $0
     }(CustomAuthButton(title: Texts.Auth.AuthButtons.google, state: .normal, image: Icons.Auth.googleAuth, isHidden: false))
     
@@ -102,7 +105,7 @@ final class AuthView: UIView,LoginButtonDelegate {
             object: nil
         )
         
-        addSubviews(logoImageView,titleLabel,regulationsLabel,//descriptionLabel,phoneNumberAddView,,submitButton,
+        addSubviews(logoImageView,titleLabel,regulationsLabel,
                     appleLoginBtn,googleLoginBtn,vkLoginBtn,fbLoginBtn)
     }
     
@@ -132,29 +135,6 @@ final class AuthView: UIView,LoginButtonDelegate {
             $0.centerX.equalToSuperview()
         }
         
-//        descriptionLabel.snp.makeConstraints {
-//            $0.bottom.equalTo(phoneNumberAddView.snp.top).offset(-12)
-//            $0.height.equalTo(phoneNumberAddView.snp.height).multipliedBy(0.7)
-//            $0.width.centerX.equalTo(phoneNumberAddView)
-//        }
-//
-//        phoneNumberAddView.snp.makeConstraints {
-//            $0.centerX.equalToSuperview()
-//            $0.centerY.equalToSuperview().offset(-40)
-//            $0.width.equalToSuperview().multipliedBy(0.87)
-//            $0.height.equalTo(48)
-//        }
-//
-//        submitButton.snp.makeConstraints {
-//            if #available(iOS 11.0, *) {
-//                $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
-//                $0.width.centerX.height.equalTo(phoneNumberAddView)
-//            } else {
-//                $0.bottom.equalToSuperview().offset(-16)
-//                $0.width.centerX.height.equalTo(phoneNumberAddView)
-//            }
-//        }
-
         appleLoginBtn.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
                 $0.centerY.equalToSuperview().offset(-40)
@@ -220,7 +200,11 @@ final class AuthView: UIView,LoginButtonDelegate {
     }
     
     @objc private func vkAuthButtonTapped() {
-        
+        delegate?.vkAuthButtonClicked()
+    }
+    
+    @objc private func googleAuthButtonTapped () {
+        GIDSignIn.sharedInstance()?.signIn()
     }
 }
 
@@ -249,4 +233,28 @@ extension AuthView {
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         return
     }
+}
+
+//MARK: - GoogleAuth Methods
+extension AuthView: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+                if let error = error {
+                    if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                      print("The user has not signed in before or they have since signed out.")
+                    } else {
+                      print("\(error.localizedDescription)")
+                    }
+                    return
+                  }
+                  // Perform any operations on signed in user here.
+                  let userId = user.userID                  // For client-side use only!
+                  let idToken = user.authentication.idToken // Safe to send to the server
+                  let fullName = user.profile.name
+                  let givenName = user.profile.givenName
+                  let familyName = user.profile.familyName
+                  let email = user.profile.email
+        print (userId,idToken,email)
+    }
+    
+    
 }

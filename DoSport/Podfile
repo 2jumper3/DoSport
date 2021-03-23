@@ -13,4 +13,5 @@ target 'DoSport' do
   pod 'SDWebImage', '~> 5.0'
   pod 'RangeSeekSlider'
   pod 'FSCalendar'	
+  pod 'GoogleSignIn'
 end

@@ -247,8 +247,6 @@
 		CE2B5DC025FBB55D007E5EEA /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */; };
 		CE2B5DC525FBB626007E5EEA /* WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B5DC425FBB626007E5EEA /* WKWebView.swift */; };
 		CE2B5DCA25FBB648007E5EEA /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */; };
-		CE2B5DCF25FBB71F007E5EEA /* VKLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B5DCE25FBB71F007E5EEA /* VKLoginView.swift */; };
-		CE2B5DD425FBBACB007E5EEA /* VKCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B5DD325FBBACB007E5EEA /* VKCoordinator.swift */; };
 		CE83ACFC25F74DE100A2C6E1 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CE83ACFB25F74DE100A2C6E1 /* FacebookLogin */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
@@ -528,8 +526,6 @@
 		CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		CE2B5DC425FBB626007E5EEA /* WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
 		CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
-		CE2B5DCE25FBB71F007E5EEA /* VKLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginView.swift; sourceTree = "<group>"; };
-		CE2B5DD325FBBACB007E5EEA /* VKCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCoordinator.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTabController.swift; sourceTree = "<group>"; };
@@ -1226,8 +1222,6 @@
 				CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */,
 				CE2B5DC425FBB626007E5EEA /* WKWebView.swift */,
 				CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */,
-				CE2B5DD325FBBACB007E5EEA /* VKCoordinator.swift */,
-				CE2B5DCE25FBB71F007E5EEA /* VKLoginView.swift */,
 			);
 			path = VKLogin;
 			sourceTree = "<group>";
@@ -1704,7 +1698,6 @@
 				656418F725CE3CE2008DFAE0 /* Chat.swift in Sources */,
 				65CD773F25EB3EC700D042FD /* SoundListController.swift in Sources */,
 				6531792425D10E10001DBA4B /* EventCreateViewController.swift in Sources */,
-				CE2B5DCF25FBB71F007E5EEA /* VKLoginView.swift in Sources */,
 				65782DA425EB18E00063A52A /* NotificationSettingsDataSource.swift in Sources */,
 				65782D6825EAFF400063A52A /* UserAccountEditingCoordinator.swift in Sources */,
 				654210DB25AF8837004078C4 /* TextField.swift in Sources */,
@@ -1828,7 +1821,6 @@
 				65D9741225B4760F00769653 /* Sport.swift in Sources */,
 				65782D9F25EB18D40063A52A /* NotificationSettingsCoordinator.swift in Sources */,
 				65782D7A25EAFF7E0063A52A /* UserAccountEditingViewModel.swift in Sources */,
-				CE2B5DD425FBBACB007E5EEA /* VKCoordinator.swift in Sources */,
 				656CC23B259A4F7100DEC84C /* CountryCodeListViewController.swift in Sources */,
 				65D9387425DF2454009D1CDD /* ShareMemberCollectionCell.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,

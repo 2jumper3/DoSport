@@ -7,6 +7,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 final class AuthViewController: UIViewController {
     
@@ -40,7 +41,9 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Google methods
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
     /// Hide navigation bar before this ViewController will appear
@@ -72,6 +75,9 @@ final class AuthViewController: UIViewController {
 }
 
 extension AuthViewController: AuthViewDelegate {
+    func vkAuthButtonClicked() {
+        coordinator?.openVkAuthView()
+    }
     func fbAuthClicked() {
         let login = LoginManager()
         login.logIn(
@@ -86,7 +92,6 @@ extension AuthViewController: AuthViewDelegate {
                     print("Logged in")
                 }
             })
-
     }
     
     func regionSelectionButtonTapped() {

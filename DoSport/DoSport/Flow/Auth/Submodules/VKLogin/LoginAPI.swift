@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Session {
+class VKSession {
     
-    static let shared = Session()
+    static let shared = VKSession()
     
     private init () {}
     
@@ -18,4 +18,5 @@ class Session {
     let client_id = "6895964"
     var userName: String?
     var tokenID: String?
+    var email: String?
 }
