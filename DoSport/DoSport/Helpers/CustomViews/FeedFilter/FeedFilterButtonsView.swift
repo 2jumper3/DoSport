@@ -20,8 +20,8 @@ final class FeedFilterButtonsView: UIView {
     // MARK: Outlets
     
     private lazy var allButton = FeedFilterButton(title: Texts.Feed.all, state: .selected)
-    private lazy var subscribesButton = FeedFilterButton(title: Texts.Feed.subscribes, state: .notSelected)
-    private lazy var subscribersButton = FeedFilterButton(title: Texts.Feed.subscribers, state: .notSelected)
+    private lazy var mySubscribesButton = FeedFilterButton(title: Texts.Feed.subscribes, state: .notSelected)
+    private lazy var mySportGroundsButton = FeedFilterButton(title: Texts.Feed.mySportGrounds, state: .notSelected)
     
     // MARK: Init
     
@@ -32,7 +32,7 @@ final class FeedFilterButtonsView: UIView {
         
         setupButtonTargets()
         
-        addSubviews(allButton, subscribesButton, subscribersButton)
+        addSubviews(allButton, mySubscribesButton, mySportGroundsButton)
     }
     
     required init?(coder: NSCoder) {
@@ -48,16 +48,16 @@ final class FeedFilterButtonsView: UIView {
             $0.left.equalToSuperview()
         }
         
-        subscribesButton.snp.makeConstraints {
+        mySubscribesButton.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.3)
             $0.height.centerY.equalToSuperview()
             $0.left.equalTo(allButton.snp.right).offset(12)
         }
         
-        subscribersButton.snp.makeConstraints {
+        mySportGroundsButton.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.35)
             $0.height.centerY.equalToSuperview()
-            $0.left.equalTo(subscribesButton.snp.right).offset(12)
+            $0.left.equalTo(mySubscribesButton.snp.right).offset(12)
         }
     }
 }
@@ -68,8 +68,8 @@ private extension FeedFilterButtonsView {
     
     func setupButtonTargets() {
         allButton.addTarget(self, action: #selector(handleAllButton))
-        subscribersButton.addTarget(self, action: #selector(handleSubscribersButton))
-        subscribesButton.addTarget(self, action: #selector(handleSubscribesButton))
+        mySportGroundsButton.addTarget(self, action: #selector(handleSubscribersButton))
+        mySubscribesButton.addTarget(self, action: #selector(handleSubscribesButton))
     }
 }
 
@@ -79,12 +79,12 @@ private extension FeedFilterButtonsView {
     
     func handleAllButton(_ button: FeedFilterButton) {
         if button.getState() == .notSelected
-            && (subscribersButton.getState() == .selected
-            && subscribesButton.getState() == .selected) {
+            && (mySportGroundsButton.getState() == .selected
+            && mySubscribesButton.getState() == .selected) {
             
             button.bind()
-            subscribersButton.bind(state: .notSelected)
-            subscribesButton.bind(state: .notSelected)
+            mySportGroundsButton.bind(state: .notSelected)
+            mySubscribesButton.bind(state: .notSelected)
         } else {
             button.bind()
         }
@@ -93,7 +93,7 @@ private extension FeedFilterButtonsView {
     }
     
     func handleSubscribesButton(_ button: FeedFilterButton) {
-        if subscribersButton.getState() == .selected && allButton.getState() == .selected {
+        if mySportGroundsButton.getState() == .selected && allButton.getState() == .selected {
             allButton.bind()
             button.bind()
         } else {
@@ -104,7 +104,7 @@ private extension FeedFilterButtonsView {
     }
     
     func handleSubscribersButton(_ button: FeedFilterButton) {
-        if subscribesButton.getState() == .selected && allButton.getState() == .selected {
+        if mySubscribesButton.getState() == .selected && allButton.getState() == .selected {
             allButton.bind()
             button.bind()
         } else {

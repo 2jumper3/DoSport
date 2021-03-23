@@ -190,9 +190,9 @@ extension UserMainController: EventManageContanerViewControllerDelegate {
         }
     }
     
-    func closeButtonClicked() {
-        
-    }
+//    func closeButtonClicked() {
+//        
+//    }
     
     func editButtonClicked() {
         
