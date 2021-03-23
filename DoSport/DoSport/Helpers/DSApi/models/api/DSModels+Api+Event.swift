@@ -8,19 +8,15 @@
 import Foundation
 
 extension DSModels {
+    
     enum Event {
         
-        // MARK: - Get events
-        
-        struct GetEventsRequest: Codable {
-            
-        }
-        
-        struct GetEventsResponse: Codable {
+        /// This struct is used as response object in `Event` requests if needed. Also this struct must be used in UI layer
+        struct EventView: Codable {
             let creationDateTime: String?
             let eventID: Int?
             let startDateTime, endDateTime: String?
-            let sportType: DSSportTypeResponses.SportTypeResponse?
+            let sportType: DSModels.SportType.SportTypeView?
             let sportGroundID, organizerID: Int?
             let members: [Member]?
             let description: String?
@@ -37,7 +33,8 @@ extension DSModels {
             }
         }
         
-        struct GetEventsByParameters: Codable {
+        /// This struct is used for GET by parameters for query items of url
+        struct EventByParametersRequest: Codable {
             let fromDate: String?
             let organiserID: Int?
             let sportGroundID: Int?
@@ -53,9 +50,8 @@ extension DSModels {
             }
         }
         
-        //MARK: - Create event
-        
-        struct CreateEventRequest: Codable {
+        /// This struct is used for POST and PUT method requests as body object
+        struct EventRequest: Codable {
             let startDateTime, endDateTime, sportTypeTitle: String?
             let sportGroundID: Int?
             let description: String?
@@ -69,43 +65,16 @@ extension DSModels {
             }
         }
         
-        //MARK: - Edit event
-        
-        struct EditEventRequest: Codable {
-            let startDateTime, endDateTime, sportTypeTitle: String?
-            let sportGroundID: Int?
-            let description: String?
-            let isPrivate: Bool?
-            let price, maximumMembers: Int?
-            
-            enum CodingKeys: String, CodingKey {
-                case startDateTime, endDateTime, sportTypeTitle
-                case sportGroundID = "sportGroundId"
-                case description, isPrivate, price, maximumMembers
-            }
-        }
-        
-        //MARK: Delete event
-        
-        struct DeleteEventRequest: Codable {
+        /// This struct is used to provide Event object's `id` property as path of url
+        struct EventByIDRequest: Codable {
             let id: Int
         }
         
-        struct DeleteEventResponse: Codable { }
+        /// This struct is used for empty object response if needed
+        struct EventEmptyResponse: Codable { }
         
-        //MARK: - Create comment
-        
-        struct CreateEventCommentRequest: Codable {
-            let text: String
-        }
-        
-        //MARK: - Edit comment
-        
-        struct EditEventCommentRequest: Codable {
-            let text: String
-        }
-        
-        struct EventCommentResponse: Codable {
+        /// This struct is used as response object for `EventComment` requests if needed. Also this struct must be used in UI layer
+        struct EventCommentView: Codable {
             let messageID: Int?
             let eventID: Int?
             let userID: Int?
@@ -122,6 +91,20 @@ extension DSModels {
                 case text
             }
         }
+        
+        /// This struct is used to provide both Event and EventComment objects `id` property as path of url
+        struct EventAndCommentByIDRequest: Codable {
+            let commentID: Int
+            let eventID: Int
+        }
+        
+        /// This struct is used for PUT and POST methods of `EventComment` requests as body object
+        struct EventCommentRequest: Codable {
+            let text: String
+        }
+        
+        /// This struct is used for empty object response if needed
+        struct EventCommentEmptyResponse: Codable { }
     }
 }
 

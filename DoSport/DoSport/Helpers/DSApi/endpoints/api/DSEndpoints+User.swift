@@ -10,53 +10,64 @@ import Foundation
 extension DSEndpoints {
     
     enum User: Endpoint {
+        // User profile
         case getProfile
-        case editProfile(DSUserProfileRequests.UserProfileEdit)
+        case editProfile
         case deleteProfile
-        case getProfileByID(DSUserProfileRequests.UserProfileById)
+        case getProfileByID(Int)
+        
+        // User events
+        case getUserOwnedEvents(byUserID: Int)
+        case getUserParticipatingEvents
+        
+        // User preferred sport types
         case getPreferredSportTypes
-        case editPreferredSportTypes([DSSportTypeRequests.SportTypePutRequest])
-        case addPreferredSportTypeByID(DSSportTypeRequests.SportTypeByIDRequest)
-        case deletePreferredSportTypeByID(DSSportTypeRequests.SportTypeByIDRequest)
+        case editPreferredSportTypes
+        case addPreferredSportTypeByID(DSModels.SportType.SportTypeByIDRequest)
+        case deletePreferredSportTypeByID(DSModels.SportType.SportTypeByIDRequest)
+        
+        // User subscribers and subscriptions
         case getSubscribers
         case getSubscriptions
-        case addSubscriptionByID(DSUserProfileRequests.UserProfileById)
-        case deleteSubscriptionByID(DSUserProfileRequests.UserProfileById)
+        case addSubscriptionByID(Int)
+        case deleteSubscriptionByID(Int)
         
         //MARK: - Path -
         
         var path: String {
             switch self {
-            case .getProfileByID(let userProfile):             return "profiles/\(userProfile.id)"
+            case .getProfileByID(let id): return "profiles/\(id)"
+                
+            case .getUserOwnedEvents:         return "events"
+            case .getUserParticipatingEvents: return "profiles/events"
+                
             case .getPreferredSportTypes:                      return "profiles/sports"
             case .editPreferredSportTypes:                     return "profiles/sports"
             case .addPreferredSportTypeByID(let sportType):    return "profiles/sports/\(sportType.id)"
             case .deletePreferredSportTypeByID(let sportType): return "profiles/sports/\(sportType.id)"
-            case .getSubscribers:                              return "profiles/subscribers"
-            case .getSubscriptions:                            return "profiles/subscriptions"
-            case .addSubscriptionByID(let user):               return "profiles/subscriptions/\(user.id)"
-            case .deleteSubscriptionByID(let user):            return "profiles/subscriptions/\(user.id)"
-            default:                                           return "profiles"
+                
+            case .getSubscribers:                 return "profiles/subscribers"
+            case .getSubscriptions:               return "profiles/subscriptions"
+            case .addSubscriptionByID(let id):    return "profiles/subscriptions/\(id)"
+            case .deleteSubscriptionByID(let id): return "profiles/subscriptions/\(id)"
+                
+            default: return "profiles"
             }
         }
         
-        //MARK: - ParameterObject -
-
-        var parameters: ParameterObject? {
+        //MARK: - QueryItems -
+        
+        var queryItems: QueryItems? {
             switch self {
-            case .editProfile(let user): return user
-            case .editPreferredSportTypes(let sportTypes): return sportTypes
+            case .getUserOwnedEvents(byUserID: let id):
+                return [
+                    "fromDate": "",
+                    "organizerId": "\(id)",
+                    "sportGroundId": "",
+                    "sportTypeId": "",
+                    "toDate": ""
+                ]
             default: return nil
-            }
-        }
-        
-        //MARK: - ParameterEncoding -
-
-        var parameterEncoding: ParameterEncoding {
-            switch self {
-            case .editProfile:             return .jsonEncoding
-            case .editPreferredSportTypes: return .jsonEncoding
-            default:                       return .urlEncoding
             }
         }
         

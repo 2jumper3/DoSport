@@ -11,90 +11,195 @@ extension RequestsManager {
     
     //MARK: - Events -
     
+    /// Gets all events or events filtred by optional `queryComponents`
+    ///
+    /// - Parameters:
+    ///     - queryComponents:
+    ///     - completion:
     func eventsGet(
-        completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
+        queryComponents: DSModels.Event.EventByParametersRequest,
+        completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
     ) {
-        let endpoint = DSEndpoints.Event.getEvents
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.Event.getEvents(queryComponents)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
+    /// Creates event and sends to the server
+    ///
+    /// - Parameters:
+    ///     - body:
+    ///     - completion:
     func eventCreate(
-        params: DSModels.Event.CreateEventRequest,
-        completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
+        body: DSModels.Event.EventRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
-        let endpoint = DSEndpoints.Event.createEvent(params)
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.Event.createEvent
+        request(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
-    func eventGetByParameters(
-        params: DSModels.Event.GetEventsByParameters,
-        completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
+    /// Gets event from server by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventGetByID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
-        let endpoints = DSEndpoints.Event.getEventsByParams(params)
-        request(endpoint: endpoints, compilation: completion)
+        let endpoint = DSEndpoints.Event.getEventByID(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    func eventsGetIfCreatedByCurrentUser(
-        completion: @escaping (DataHandler<[DSModels.Event.GetEventsResponse]>) -> Void
+    /// Edits event in server by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - body:
+    ///     - completion:
+    func eventEditByID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        body: DSModels.Event.EventRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
-        let endpoint = DSEndpoints.Event.getEventsOfCurrentUser
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.Event.editEventByID(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
-    func eventEditBy(
-        eventID id: Int,
-        params: DSModels.Event.EditEventRequest,
-        completion: @escaping (DataHandler<DSModels.Event.GetEventsResponse>) -> Void
+    /// Deletes event from server by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventDeleteByID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
-        let endpoint = DSEndpoints.Event.editEvent(eventID: id, params)
-        request(endpoint: endpoint, compilation: completion)
-    }
-    
-    func eventDeleteBy(
-        params: DSModels.Event.DeleteEventRequest,
-        completion: @escaping (DataHandler<DSModels.Event.DeleteEventResponse>) -> Void
-    ) {
-        let endpoint = DSEndpoints.Event.deleteEvent(eventID: params.id)
-        request(endpoint: endpoint, compilation: completion)
-    }
-    
-    //MARK: - Event Members -
-    
-    func eventGetMembers() {
-        
-    }
-    
-    func eventAddMember() {
-        
-    }
-    
-    func eventGetMemberBy() {
-        
-    }
-    
-    func eventDeleteMemberBy() {
-        
-    }
-    
-    func eventsGetIfCurrentUserIsMember() {
-        
+        let endpoint = DSEndpoints.Event.deleteEventByID(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - Event Comments -
     
-    func eventGetComments() {
-        
+    /// Gets comments from event by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventGetCommentsByEventID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        completion: @escaping (DataHandler<[DSModels.Event.EventCommentView]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.getEventComments(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    func eventAddComment() {
-        
+    /// Adds comment to some event by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - body:
+    ///     - completion:
+    func eventAddCommentByEventID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        body: DSModels.Event.EventCommentRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventCommentView>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.addEventComment(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
-    func eventEditCommentBy() {
+    /// Edits comment in event by event id and comment id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - body:
+    ///     - completion:
+    func eventEditCommentByID(
+        pathComponent: DSModels.Event.EventAndCommentByIDRequest,
+        body: DSModels.Event.EventCommentRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.editEventComment(
+            eventID: pathComponent.eventID,
+            commentID: pathComponent.commentID
+        )
         
+        request(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
-    func eventDeleteCommentBy() {
+    /// Deletes comment from event by event id and comment id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventDeleteCommentByEventID(
+        pathComponent: DSModels.Event.EventAndCommentByIDRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.deleteEventComment(
+            eventID: pathComponent.eventID,
+            commentID: pathComponent.commentID
+        )
         
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    //MARK: - Event Members -
+    
+    /// Gets all users who participate in event by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventGetMembersByEventID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.getMembersByEventID(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    /// Adds current user as participant to event by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventAddMemberByEventID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.addMemberByEventID(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    /// Deletes current user as participant from event by event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventDeleteMemberByEventID(
+        pathComponent: DSModels.Event.EventByIDRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.deleteMemberByEventID(eventID: pathComponent.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    /// Deletes some user as participant from event by his id and event id
+    ///
+    /// - Parameters:
+    ///     - pathComponent:
+    ///     - completion:
+    func eventDeleleMemberByEventAndMemberID(
+        pathComponent: DSModels.Event.EventAndCommentByIDRequest,
+        completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
+    ) {
+        let endpoint = DSEndpoints.Event.deleteMemberByEventAndMemberID(
+            eventID: pathComponent.eventID,
+            userID: pathComponent.commentID
+        )
+        
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
 }
+

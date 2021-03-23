@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol SportTypeGridViewControllerProtocol: class {
+    func displaySportTypes(viewModel: SportTypeGridDataFlow.LoadSportTypes.ViewModel)
+    func displaySaveSportTypesResult(viewModel: SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel)
+}
+
 final class SportTypeGridViewController: UIViewController {
     
     weak var coordinator: SportTypeGridCoordinator?
@@ -14,7 +19,11 @@ final class SportTypeGridViewController: UIViewController {
     private lazy var sportTypeListView = self.view as! SportTypeGridView
     private lazy var collectionManager = SportTypeGridDataSource()
     
+    private var viewState: SportTypeGridDataFlow.ViewControllerState = .loading
+    
     private lazy var backBarButton = DSBarBackButton()
+    
+    private var selectedSports: [DSModels.SportType.SportTypeView] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -48,9 +57,11 @@ final class SportTypeGridViewController: UIViewController {
         backBarButton.addTarget(self, action: #selector(handleBackButton))
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
         
-        setupViewModelBiding()
+        if case .loading = self.viewState {
+            sportTypeListView.updateViewToState(self.viewState)
+        }
         
-        viewModel.prepareData()
+        viewModel.doLoadSportTypes(request: .init())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,15 +80,20 @@ final class SportTypeGridViewController: UIViewController {
 
 private extension SportTypeGridViewController {
     
-    func setupViewModelBiding() {
-        viewModel.onDataDidPrepare = { [weak self] sports in
-            self?.collectionManager.viewModels = sports
-            self?.updateView()
+    func addPreferredSportType(_ sportType: DSModels.SportType.SportTypeView) {
+        guard selectedSports.count > 0 else {
+            selectedSports.append(sportType)
+            return
         }
-    }
-    
-    func updateView() {
-        self.sportTypeListView.updateCollectionDataSource(dateSource: self.collectionManager)
+        
+        for (i, existedSport) in selectedSports.enumerated() {
+            if existedSport == sportType {
+                selectedSports.remove(at: i)
+            } else {
+                selectedSports.append(sportType)
+            }
+            return
+        }
     }
 }
 
@@ -89,14 +105,47 @@ private extension SportTypeGridViewController {
     }
 }
 
+//MARK: - SportTypeGridViewControllerProtocol -
+
+extension SportTypeGridViewController: SportTypeGridViewControllerProtocol {
+    
+    func displaySaveSportTypesResult(viewModel: SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel) {
+        if case .success = viewModel.state {
+            coordinator?.goToFeedModule()
+        }
+        
+        if case .loading = viewModel.state {
+            
+        }
+        
+        if case .failed = viewModel.state {
+            
+        }
+    }
+    
+    func displaySportTypes(viewModel: SportTypeGridDataFlow.LoadSportTypes.ViewModel) {
+        if case .success(let data) = viewModel.state, let viewModels = data {
+            self.collectionManager.viewModels = viewModels
+            self.sportTypeListView.updateViewToState(viewModel.state)
+            self.sportTypeListView.updateCollectionDataSource(dateSource: self.collectionManager)
+        }
+        
+        if case .loading = viewModel.state {
+            self.sportTypeListView.updateViewToState(viewModel.state)
+        }
+        
+        if case .failed = viewModel.state {
+            // TODO: implement data fail handler view
+        }
+    }
+}
+
 //MARK: - SportTypeGridViewDelegate -
 
 extension SportTypeGridViewController: SportTypeGridViewDelegate {
     
     func didTapSaveButton() {
-        viewModel.saveData() { [weak self] in
-            self?.coordinator?.goToFeedModule()
-        }
+        viewModel.doSaveSportTypes(request: .init(sportTypes: selectedSports))
     }
 }
 
@@ -104,9 +153,8 @@ extension SportTypeGridViewController: SportTypeGridViewDelegate {
 
 extension SportTypeGridViewController: SportTypeGridDataSourceDelegate {
  
-    func collectionView(didSelect sport: DSSportTypeResponses.SportTypeResponse) {
-        viewModel.handleDataSelection(sport)
+    func collectionView(didSelect sport: DSModels.SportType.SportTypeView) {
+        self.addPreferredSportType(sport)
     }
 }
-
 

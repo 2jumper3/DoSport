@@ -11,8 +11,9 @@ final class SportTypeGridAssembly: Assembly {
     
     func makeModule() -> SportTypeGridViewController {
         let requestManager = RequestsManager.shared
-        let viewModel = SportTypeGridViewModel(requestManager: requestManager)
+        let viewModel = SportTypeGridViewModelImplementation(requestManager: requestManager)
         let vc = SportTypeGridViewController(viewModel: viewModel)
+        viewModel.viewController = vc
         return vc
     }
 }

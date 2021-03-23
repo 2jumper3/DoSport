@@ -9,114 +9,136 @@ import Foundation
 
 extension RequestsManager {
     
-    //MARK: - GET UserProfile -
+    //MARK: - User Profile -
     
     func userProfileGet(
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileResponse>) -> Void
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getProfile
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userProfileGetByID(
-        params: DSUserProfileRequests.UserProfileById,
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileResponse>) -> Void
+        params: DSModels.User.UserByIdRequest,
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
     ) {
-        let endpoint = DSEndpoints.User.getProfileByID(params)
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.User.getProfileByID(params.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
-    
-    //MARK: - EDIT UserProfile -
     
     func userProfileEdit(
-        params: DSUserProfileRequests.UserProfileEdit,
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileResponse>) -> Void
+        params: DSModels.User.UserView,
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
     ) {
-        let endpoint = DSEndpoints.User.editProfile(params)
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.User.editProfile
+        request(
+            endpoint: endpoint,
+            bodyObject: params,
+            completion: completion
+        )
     }
-    
-    //MARK: - DELETE UserProfile -
     
     func userProfileDelete(
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileEmptyResponse>) -> Void
+        completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.deleteProfile
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - GET User sportTypes -
+    //MARK: - User SportTypes -
     
     func userPreferredSportTypesGet(
-        completion: @escaping (DataHandler<[DSSportTypeResponses.SportTypeResponse]>) -> Void
+        completion: @escaping (DataHandler<[DSModels.SportType.SportTypeView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getPreferredSportTypes
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
-    
-    //MARK: - EDIT User sportTypes -
     
     func userPreferredSportTypesEdit(
-        params: [DSSportTypeRequests.SportTypePutRequest],
-        completion: @escaping (DataHandler<[DSSportTypeResponses.SportTypeResponse]>) -> Void
+        params: [DSModels.SportType.SportTypeView],
+        completion: @escaping (DataHandler<[DSModels.SportType.SportTypeView]>) -> Void
     ) {
-        let endpoint = DSEndpoints.User.editPreferredSportTypes(params)
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.User.editPreferredSportTypes
+        request(
+            endpoint: endpoint,
+            bodyObject: params,
+            completion: completion
+        )
     }
-    
-    //MARK: - ADD User sportType -
     
     func userAddPreferredSportType(
-        params: DSSportTypeRequests.SportTypeByIDRequest,
-        completion: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Void
+        params: DSModels.SportType.SportTypeByIDRequest,
+        completion: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.addPreferredSportTypeByID(params)
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
-    
-    //MARK: - DELETE User sportType -
     
     func userDeletePreferredSportType(
-        params: DSSportTypeRequests.SportTypeByIDRequest,
-        completion: @escaping (DataHandler<DSSportTypeResponses.SportTypeEmptyResponse>) -> Void
+        params: DSModels.SportType.SportTypeByIDRequest,
+        completion: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.deletePreferredSportTypeByID(params)
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - GET User subscribers & subscriptions -
+    //MARK: - User subscribers & subscriptions -
     
     func userGetSubscribers(
-        completion: @escaping (DataHandler<[DSUserProfileResponses.UserProfileResponse]>) -> Void
+        completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getSubscribers
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userGetSubscriptions(
-        completion: @escaping (DataHandler<[DSUserProfileResponses.UserProfileResponse]>) -> Void
+        completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getSubscriptions
-        request(endpoint: endpoint, compilation: completion)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - ADD User subscription -
     
     func userAddSubscription(
-        params: DSUserProfileRequests.UserProfileById,
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileEmptyResponse>) -> Void
+        params: DSModels.User.UserByIdRequest,
+        completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
-        let endpoint = DSEndpoints.User.addSubscriptionByID(params)
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.User.addSubscriptionByID(params.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
-    //MARK: - DELETE User subscription -
     
     func userDeleteSubscription(
-        params: DSUserProfileRequests.UserProfileById,
-        completion: @escaping (DataHandler<DSUserProfileResponses.UserProfileEmptyResponse>) -> Void
+        params: DSModels.User.UserByIdRequest,
+        completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
-        let endpoint = DSEndpoints.User.deleteSubscriptionByID(params)
-        request(endpoint: endpoint, compilation: completion)
+        let endpoint = DSEndpoints.User.deleteSubscriptionByID(params.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    //MARK: - User events -
+    
+    /// Gets events created by current user using his/her id
+    ///
+    /// - Parameters:
+    ///     - queryItems:
+    ///     - completion:
+    func userGetOwnedEvents(
+        queryItems: DSModels.User.UserByIdRequest,
+        completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.User.getUserOwnedEvents(byUserID: queryItems.id)
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+    }
+    
+    /// Gets events where current user is participating
+    ///
+    /// - Parameters:
+    ///     - completion:
+    func userGetParticipatingEvents(
+        completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
+    ) {
+        let endpoint = DSEndpoints.User.getUserParticipatingEvents
+        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
 }

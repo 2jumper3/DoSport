@@ -13,15 +13,11 @@ enum DataHandler<ResponseType> where ResponseType: Encodable & Decodable {
 }
 
 protocol NetworkManager: class {
-    func urlEncodingRequest<ResponseType: Codable>(
+    func makeRequest<RequestBody, ResponseType>(
         endpoint: Endpoint,
+        bodyObject: RequestBody?,
         compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) ->  URLSessionTask?
-    
-    func jsonEncodingRequest<ResponseType: Codable>(
-        endpoint: Endpoint,
-        compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) ->  URLSessionTask?
+    ) ->  URLSessionTask? where RequestBody: Codable, ResponseType: Codable
 }
 
 final class NetworkManagerImplementation: NSObject, NetworkManager {
@@ -44,50 +40,16 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
         )
     }()
     
-    fileprivate var encoder: JSONEncoder?
+    fileprivate var encoder = JSONEncoder()
     private var dencoder = JSONDecoder()
     
-    func urlEncodingRequest<ResponseType>(
+    func makeRequest<RequestBody, ResponseType>(
         endpoint: Endpoint,
+        bodyObject: RequestBody?,
         compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) -> URLSessionTask? where ResponseType: Codable {
+    ) ->  URLSessionTask? where RequestBody: Codable, ResponseType: Codable {
         
-        guard let resultURL = self.buildResultURL(using: endpoint) else {
-            return nil
-        }
-        
-        return self.session.dataTask(with: resultURL) { data, response, error in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-                compilation(.failure(.clientError))
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse,
-               httpResponse.statusCode != 200 {
-                debugPrint(httpResponse.statusCode)
-                return
-            }
-            
-            guard let data = data else { return }
-            
-            do {
-                let result: ResponseType = try self.dencoder.decode(ResponseType.self, from: data)
-                OperationQueue.main.addOperation {
-                    compilation(.success(.object(result)))
-                }
-            } catch let error {
-                debugPrint(error.localizedDescription)
-                compilation(.failure(.decodingError))
-            }
-        }
-    }
-    
-    func jsonEncodingRequest<ResponseType>(
-        endpoint: Endpoint,
-        compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) ->  URLSessionTask? where ResponseType: Codable {
-        
-        guard let resultRequest = self.buildRequstFromURL(using: endpoint) else {
+        guard let resultRequest = self.buildRequest(using: endpoint, bodyObject: bodyObject) else {
             return nil
         }
         
@@ -99,8 +61,10 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode != 200 {
-                debugPrint(httpResponse.statusCode, #file, #line)
-                compilation(.failure(.serverError))
+                debugPrint("## - Status code: \(httpResponse.statusCode)", #line)
+                DispatchQueue.main.async {
+                    compilation(.failure(.serverError))
+                }
                 return
             }
             
@@ -108,7 +72,9 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             
             do {
                 let result: ResponseType = try JSONDecoder().decode(ResponseType.self, from: data)
-                compilation(.success(.object(result)))
+                DispatchQueue.main.async {
+                    compilation(.success(.object(result)))
+                }
             } catch let error {
                 debugPrint(error.localizedDescription, #file, #line)
                 compilation(.failure(.decodingError))
@@ -119,63 +85,53 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
 
 //MARK: - URLSessionDelegate -
 
-extension NetworkManagerImplementation: URLSessionDelegate {
-    
-    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        debugPrint(#function)
-    }
-    
-    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        debugPrint(#function, error?.localizedDescription ?? "", #file, #line)
-    }
-}
+extension NetworkManagerImplementation: URLSessionDelegate { }
 
 //MARK: Private API
 
 private extension NetworkManagerImplementation {
     
-    func buildResultURL(using endpoint: Endpoint) -> URL? {
+    func buildRequest<T>(
+        using endpoint: Endpoint,
+        bodyObject: T? = nil
+    ) -> URLRequest? where T: Codable {
         let url = endpoint.fullURL
-        
-        let queryItems = endpoint.queryItems?.compactMap { (name, value) -> URLQueryItem? in
-            return URLQueryItem(name: name, value: value as? String)
-        }
+        var request: URLRequest?
         
         var urlComponents = URLComponents(string: url.absoluteString)
-        urlComponents?.queryItems = queryItems
+        urlComponents?.queryItems = self.setupQueryItems(endpoint.queryItems)
         
-        guard let resultURL = urlComponents?.url else {
-            return nil
-        }
+        guard let resultURL = urlComponents?.url else { return nil }
         
-        return resultURL
-    }
-    
-    func buildRequstFromURL(using endpoint: Endpoint) -> URLRequest? {
-        let url = endpoint.fullURL
-        
-        let queryItems = endpoint.queryItems?.compactMap { (name, value) -> URLQueryItem? in
-            return URLQueryItem(name: name, value: value as? String)
-        }
-        
-        var urlComponents = URLComponents(string: url.absoluteString)
-        urlComponents?.queryItems = queryItems
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = endpoint.method.rawValue
+        request = URLRequest(url: resultURL)
+        request?.httpMethod = endpoint.method.rawValue
         
         endpoint.headers.forEach { (key, value) in
             if let value = value as? String {
-                request.addValue(value, forHTTPHeaderField: key)
+                request?.addValue(value, forHTTPHeaderField: key)
             }
         }
         
-        guard let query = urlComponents?.url?.query else {
-            return nil
+        if endpoint.method != .get {
+            do {
+                let httpBody = try JSONEncoder().encode(bodyObject)
+                
+                if let jsonString = String(data: httpBody, encoding: .utf8) {
+                    print(jsonString)
+                }
+                
+                request?.httpBody = httpBody
+            } catch let err {
+                debugPrint(err.localizedDescription)
+            }
         }
         
-        request.httpBody = Data(query.utf8)
-        
         return request
+    }
+    
+    func setupQueryItems(_ items: [String: Any]?) -> [URLQueryItem]? {
+        return items?.compactMap { (name, value) -> URLQueryItem? in
+            return URLQueryItem(name: name, value: value as? String)
+        }
     }
 }
