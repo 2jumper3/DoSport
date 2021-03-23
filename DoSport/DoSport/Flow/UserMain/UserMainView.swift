@@ -30,7 +30,7 @@ final class UserMainView: UIView {
     }()
     
     private let loadingIndicator: UIActivityIndicatorView = {
-        $0.style = .white
+        $0.style = .medium
         $0.hidesWhenStopped = true
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isHidden = true

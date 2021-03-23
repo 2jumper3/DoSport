@@ -30,7 +30,7 @@ final class EventCreateDataSource: NSObject {
     weak var delegate: EventCreateDataSourceDelegate?
     
     private enum CellType: String, CaseIterable {
-        case textView, sportTypeSelection, sportGroundSelection, dateSelection, membersCount, eventType
+        case textView, sportTypeSelection, sportGroundSelection, dateSelection/*, membersCount, eventType*/
     }
     
     private var cells: [CellType] = CellType.allCases
@@ -79,13 +79,13 @@ extension EventCreateDataSource: UITableViewDataSource {
             }
             
             cell = dateSelectionCell
-        case .membersCount:
-            let membersCountCell: MembersCountCell = tableView.cell(forRowAt: indexPath)
-            cell = membersCountCell
-            
-        case .eventType:
-            let eventTypeCell: EventTypeCell = tableView.cell(forRowAt: indexPath)
-            cell = eventTypeCell
+//        case .membersCount:
+//            let membersCountCell: MembersCountCell = tableView.cell(forRowAt: indexPath)
+//            cell = membersCountCell
+//
+//        case .eventType:
+//            let eventTypeCell: EventTypeCell = tableView.cell(forRowAt: indexPath)
+//            cell = eventTypeCell
         }
         
         cell.backgroundColor = Colors.darkBlue
@@ -129,15 +129,17 @@ extension EventCreateDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height: CGFloat = tableView.frame.height * 0.26
         var selectionHeight: CGFloat = 50
-        var membersCountHeight: CGFloat = 208
+//        var membersCountHeight: CGFloat = 208
         let cellType: CellType = cells[indexPath.row]
         
         switch UIDevice.deviceSize {
-        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2: membersCountHeight = 200
+        case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2:
+            break
+        /*membersCountHeight = 200*/
         case .iPhone_6_6S_7_8_PLUS, .iPhone_X_XS_12mini: selectionHeight = 55
         case .iPhone_XR_11, .iPhone_XS_11Pro_Max, .iPhone_12_Pro, .iPhone_12_Pro_Max:
             selectionHeight = 60
-            membersCountHeight = 220
+//            membersCountHeight = 220
         }
         
         switch cellType {
@@ -145,8 +147,8 @@ extension EventCreateDataSource: UITableViewDelegate {
         case .sportTypeSelection: return selectionHeight
         case .sportGroundSelection: return selectionHeight
         case .dateSelection: return selectionHeight
-        case .membersCount: return membersCountHeight
-        case .eventType: return selectionHeight
+//        case .membersCount: return membersCountHeight
+//        case .eventType: return selectionHeight
         }
     }
     
@@ -154,12 +156,12 @@ extension EventCreateDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 0 }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = EventTypeTableCellFooter()
-        return footerView
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = EventTypeTableCellFooter()
+//        return footerView
+//    }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 55
-    }
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 55
+//    }
 }
