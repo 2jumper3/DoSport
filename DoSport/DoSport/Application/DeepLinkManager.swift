@@ -60,16 +60,12 @@ final class DeepLinkManager: DeepLinkManagerProtocol {
                         authCoordinator.childCoordinators.forEach { (coordinator) in
                             if let registrationCoordinator = coordinator as? RegistrationCoordinator {
                                 registrationCoordinator.childCoordinators.forEach { (coordinator) in
-                                    if let sportTypeGridCoordinator = coordinator as? SportTypeGridCoordinator {
-                                        sportTypeGridCoordinator.childCoordinators.forEach { (coordinator) in
-                                            if let mainTabBarCoordinator = coordinator as? MainTabBarCoordinator {
-                                                mainTabBarCoordinator.childCoordinators.forEach { (coordinator) in
-                                                    switch destination {
-                                                    case .FeedCoordinator:
-                                                        if let feedCoordinator = coordinator as? FeedCoordinator {
-                                                            self.feedCoordinator = feedCoordinator
-                                                        }
-                                                    }
+                                    if let mainTabBarCoordinator = coordinator as? MainTabBarCoordinator {
+                                        mainTabBarCoordinator.childCoordinators.forEach { (coordinator) in
+                                            switch destination {
+                                            case .FeedCoordinator:
+                                                if let feedCoordinator = coordinator as? FeedCoordinator {
+                                                    self.feedCoordinator = feedCoordinator
                                                 }
                                             }
                                         }
