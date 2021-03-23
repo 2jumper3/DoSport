@@ -142,7 +142,7 @@ private extension EventViewController {
 
     func presentUIActivityController() {
         guard let eventId = event.eventID else { return }
-        let url = "dosport://feed/event/" + String(eventId)
+        let url = DeepLink.Url.event + String(eventId)
         let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         present(activityController, animated: true)
     }
@@ -240,7 +240,7 @@ extension EventViewController: EventInviteViewControllerDelegate {
     }
     
     func shareButtonClicked() {
-        print("shareButtonClicked")
+        presentUIActivityController()
     }
 }
 

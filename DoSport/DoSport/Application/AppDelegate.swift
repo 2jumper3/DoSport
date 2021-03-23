@@ -10,10 +10,9 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
-    
     var window : UIWindow?
     var appCoordinator: AppCoordinator?
-    var deepLinkManager = DeepLinkManager()
+    weak var deeplink: DeepLinkManagerProtocol?
     
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions
@@ -33,7 +32,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        deepLinkManager.handleURL(url, self.appCoordinator)
+        let deeplink = DeepLinkManager()
+        self.deeplink = deeplink
+        self.deeplink?.handleURL(url: url, appCoordinator: self.appCoordinator)
         return true
     }
 }
