@@ -9,7 +9,7 @@ import UIKit
 
 protocol UserAccountEditingViewDelegate: class {
     func signOutButtonCliked()
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?)
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
@@ -30,19 +30,29 @@ final class UserAccountEditingView: UIView {
     private let avatarImageView: DSAvatartImageView = DSAvatartImageView()
     
     private lazy var userNameTextField = FormTextFieldView(type: .userName)
-    private lazy var passwordTextField = FormTextFieldView(type: .password)
     private lazy var dobTextField = FormTextFieldView(type: .dob)
     
     private lazy var datePicker = DSDatePicker()
     
     private lazy var maleButton = DSButton(title: Texts.Registration.Gender.male)
     private lazy var femaleButton = DSButton(title: Texts.Registration.Gender.female)
-    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal, isHidden: true)
+    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal, isHidden: false)
     private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
                                                            titleColor: Colors.mainBlue)
     
-    private lazy var signOutButton = UIButton.makeButton(title: Texts.UserAccountEditing.signOut,
-                                                                titleColor: Colors.mainBlue)
+    private lazy var signOutButton: DSEventControlButton = .init(
+        img: Icons.UserProfileEdit.logout,
+        txt: Texts.UserAccountEditing.signOut,
+        textColor: Colors.mainBlue,
+        imageColor: Colors.mainBlue)
+    
+    private lazy var signoutBottomSeparatorView: DSSeparatorView = DSSeparatorView()
+    
+    private lazy var deleteProfileButton: DSEventControlButton = .init(
+        img: Icons.UserProfileEdit.delete,
+        txt: Texts.UserAccountEditing.deleteProfile,
+        textColor: Colors.mainBlue,
+        imageColor: Colors.mainBlue)
 
     //MARK: Init
     
@@ -60,12 +70,13 @@ final class UserAccountEditingView: UIView {
             avatarImageView,
             addAvatarButton,
             userNameTextField,
-            passwordTextField,
             dobTextField,
             saveButton,
             maleButton,
             femaleButton,
-            signOutButton
+            signOutButton,
+            signoutBottomSeparatorView,
+            deleteProfileButton
         )
     }
     
@@ -91,11 +102,11 @@ final class UserAccountEditingView: UIView {
             buttonsHeight = 48
         }
         
-        passwordTextField.snp.makeConstraints {
+        dobTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview()
         }
         
-        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(passwordTextField.snp.top).offset(10) }
+        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(dobTextField.snp.top).offset(10) }
         
         addAvatarButton.snp.makeConstraints {
             $0.bottom.equalTo(userNameTextField.snp.top).offset(-20)
@@ -109,9 +120,8 @@ final class UserAccountEditingView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.28)
         }
         
-        dobTextField.snp.makeConstraints { $0.top.equalTo(passwordTextField.snp.bottom).offset(-10) }
-        
         saveButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-UIDevice.getDeviceRelatedTabBarHeight()-10)
             $0.height.equalTo(buttonsHeight)
             $0.width.equalToSuperview().multipliedBy(0.87)
@@ -130,20 +140,45 @@ final class UserAccountEditingView: UIView {
         }
         
         signOutButton.snp.makeConstraints {
-            $0.top.equalTo(femaleButton.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(femaleButton.snp.bottom).offset(25)
+            $0.left.equalTo(maleButton.snp.left)
         }
         
-        [passwordTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
+        signoutBottomSeparatorView.snp.makeConstraints {
+            $0.top.equalTo(signOutButton.snp.bottom).offset(4)
+            $0.height.equalTo(1)
+            $0.right.equalToSuperview()
+            $0.left.equalTo(signOutButton.snp.left).offset(15)
+        }
+        
+        deleteProfileButton.snp.makeConstraints {
+            $0.top.equalTo(signoutBottomSeparatorView.snp.bottom).offset(4)
+            $0.left.equalTo(signOutButton.snp.left)
+        }
+        
+        [dobTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
             $0.snp.makeConstraints { $0.centerX.equalToSuperview() }
         }
         
-        [passwordTextField, userNameTextField, dobTextField].forEach {
+        [dobTextField, userNameTextField, dobTextField].forEach {
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().multipliedBy(0.87)
                 $0.height.equalTo(textFieldsHeight)
             }
         }
+    }
+    
+    deinit {
+        removeObserver()
+    }
+}
+
+//MARK: Public API
+
+extension UserAccountEditingView {
+    
+    func setDateOfBirth(_ text: String?) {
+        self.dobTextField.text = text
     }
 }
 
@@ -153,7 +188,6 @@ private extension UserAccountEditingView {
     
     func setupDelegates() {
         userNameTextField.getTextField().delegate = self
-        passwordTextField.getTextField().delegate = self
         dobTextField.getTextField().delegate = self
         datePicker.delegate = self
     }
@@ -167,19 +201,8 @@ private extension UserAccountEditingView {
     }
     
     func setupKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        addObserver(selector: #selector(handleKeybordWillShow), for: UIResponder.keyboardWillShowNotification)
+        addObserver(selector: #selector(handleKeybordWillHide), for: UIResponder.keyboardWillHideNotification)
     }
 }
 
@@ -194,9 +217,9 @@ private extension UserAccountEditingView {
     func handleSaveButton() {
         delegate?.saveButtonClicked(
             with: userNameTextField.text,
-            password: passwordTextField.text,
             dob: dobTextField.text,
-            gender: gender
+            gender: gender,
+            avatarImage: avatarImage
         )
     }
     
@@ -247,10 +270,9 @@ extension UserAccountEditingView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userNameTextField.getTextField() {
-            passwordTextField.makeTextFieldFirstResponder()
-        } else if textField == passwordTextField.getTextField() {
             dobTextField.makeTextFieldFirstResponder()
         }
+        
         return true
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol EventInviteViewControllerDelegate: class {
     func cancelButtonClicked()
+    func shareButtonClicked()
 }
 
 final class EventInviteViewController: UIViewController {
@@ -77,7 +78,7 @@ private extension EventInviteViewController {
     func prepareCollectionData() { // test
         
         for i in 1...25 {
-            let user = User(name: "\(i) - Kamol")
+            let user = User(id: 1, name: "\(i) - Kamol")
             users.append(user)
         }
         inveteFriendCollectionManager.viewModels = users
@@ -138,7 +139,7 @@ extension EventInviteViewController: EventInviteViewDelegate {
     }
     
     func shareButtonClicked() {
-        
+        delegate?.shareButtonClicked()
     }
     
     func sendButtonClicked() {

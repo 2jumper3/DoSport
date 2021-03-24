@@ -101,11 +101,11 @@ extension FeedViewController: FeedViewDelegate {
         /// viewModel method should be called to filter the feed
     }
     
-    func subscribesFilterButtonClicked() {
+    func mySubscribesFilterButtonClicked() {
         /// viewModel method should be called to filter the feed
     }
     
-    func subscribersFilterButtonClicked() {
+    func mySportGroundsFilterButtonClicked() {
         /// viewModel method should be called to filter the feed
     }
 }

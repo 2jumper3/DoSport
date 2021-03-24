@@ -66,44 +66,25 @@ final class AuthView: UIView,LoginButtonDelegate {
         return $0
     }(UILabel())
     
-    private lazy var phoneNumberAddView: PhoneNumberAddView = {
-        $0.addButtonTarget(self, action: #selector(handleRegionSelectionButton))
-        return $0
-    }(PhoneNumberAddView())
-    
     private let regulationsLabel: UILabel = {
         $0.makeAttributedText(with: Texts.Auth.Regulations.upper, and: Texts.Auth.Regulations.bottom)
+        $0.font = UIFont.preferredFont(forTextStyle: .footnote)
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.numberOfLines = 3
+        $0.numberOfLines = 2
         $0.textAlignment = .center
-        $0.font = Fonts.sfProRegular(size: 14)
         return $0
     }(UILabel())
     
-    private lazy var submitButton: CommonButton = {
-        $0.addTarget(self, action: #selector(handleSubmitButton), for: .touchUpInside)
-        return $0
-    }(CommonButton(title: Texts.Auth.submit, state: .normal))
+    private lazy var skipButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
+                                                           titleColor: Colors.mainBlue)
     
-    //MARK: - Init
+    //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        skipButton.addTarget(self, action: #selector(handleSkipButton), for: .touchUpInside)
         
         addSubviews(logoImageView,titleLabel,regulationsLabel,
                     appleLoginBtn,googleLoginBtn,vkLoginBtn,fbLoginBtn)
@@ -112,14 +93,7 @@ final class AuthView: UIView,LoginButtonDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-        phoneNumberAddView.removeFirstResponder()
-        perform(#selector(handleKeybordWillHide), with: nil, afterDelay: 0.1)
-    }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -208,21 +182,12 @@ final class AuthView: UIView,LoginButtonDelegate {
     }
 }
 
-//MARK: - Public Methods
+//MARK: Actions
 
-extension AuthView {
-    func bind(callingCode: String) {
-        phoneNumberAddView.bind(callingCode: callingCode)
-        submitButton.bind(state: .normal) // for test purposes, can be removed
-        layoutIfNeeded()
-    }
+@objc private extension AuthView {
     
-    func becomeTextFieldResponder() {
-        phoneNumberAddView.becomeResponder()
-    }
-    
-    func removeTextFieldResponder() {
-        phoneNumberAddView.removeFirstResponder()
+    func handleSkipButton() {
+        delegate?.skipButtonClicked()
     }
     
     //MARK: - FaceBookDelegate Methods

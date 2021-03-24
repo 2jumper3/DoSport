@@ -31,6 +31,14 @@ final class SportTypeGridView: UIView {
         return collectionView
     }()
     
+    private let loadingIndicator: UIActivityIndicatorView = {
+        $0.style = .medium
+        $0.hidesWhenStopped = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isHidden = true
+        return $0
+    }(UIActivityIndicatorView())
+    
     private lazy var saveButton: CommonButton = {
         $0.addTarget(self, action: #selector(handleSaveButton), for:.touchUpInside)
         return $0
@@ -42,7 +50,7 @@ final class SportTypeGridView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(collectionView, saveButton)
+        addSubviews(collectionView, saveButton, loadingIndicator)
     }
     
     required init?(coder: NSCoder) {
@@ -65,6 +73,8 @@ final class SportTypeGridView: UIView {
             $0.height.equalTo(48)
             $0.centerX.equalToSuperview()
         }
+        
+        loadingIndicator.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }
 
@@ -77,6 +87,28 @@ extension SportTypeGridView {
         collectionView.dataSource = dateSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func updateViewToState(_ state: SportTypeGridDataFlow.ViewControllerState) {
+        if case .success = state {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+            self.collectionView.isHidden = false
+            self.saveButton.isHidden = false
+        }
+        
+        if case .loading = state {
+            self.loadingIndicator.isHidden = false
+            self.loadingIndicator.startAnimating()
+            
+            self.collectionView.isHidden = true
+            self.saveButton.isHidden = true
+        }
+        
+        if case .failed = state {
+            // TODO: implement data fail handler view
+        }
     }
 }
 

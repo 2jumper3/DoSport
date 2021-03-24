@@ -101,9 +101,16 @@ public enum Icons {
     enum UserMain {
         static let settings = Icons.image(named: "settings")
         static let edit = Icons.image(named: "edit")
-        static let delete = Icons.image(named: "delete")
+        static let delete = Common.delete
         static let unlock = Icons.image(named: "unlock")
         static let share: UIImage = Common.share
+    }
+    
+    //MARK: - UserProfileEdit screen
+    
+    enum UserProfileEdit {
+        static let logout = Icons.image(named: "logout")
+        static let delete = Common.delete
     }
     
     //MARK: - Settings screen
@@ -127,6 +134,7 @@ extension Icons {
         static let share: UIImage = Icons.image(named: "share")
         static let user: UIImage = Icons.image(named: "user")
         static let next: UIImage = Icons.image(named: "next")
+        static let delete = Icons.image(named: "delete")
     }
     
     static func image(named name: String) -> UIImage {

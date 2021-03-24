@@ -7,13 +7,23 @@
 
 import UIKit
 
+/// Describes handling view events and user interactions in App Language selection screen.
 final class AppLanguageListController: UIViewController, UIGestureRecognizerDelegate {
     
+    /// Coordinator object that's used to call nagication methods
     weak var coordinator: AppLanguageListCoordinator?
+    
+    /// Custom view containing all UI elements and their layouts
     private lazy var appLanguageListView = view as! AppLanguageListView
+    
+    /// Manager object  handles all tableView's dataSource & delegate methods
     private let appLanguageListManager = AppLanguageListDataSource()
     
-    private let compilation: (String) -> Swift.Void
+    /// Compilation that returns app language to the previous screen when user selects.
+    ///
+    /// - Parameters:
+    ///     - language: the app language that is `String` which user can select when clicking cell
+    private let compilation: (_ language: String) -> Swift.Void
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -44,7 +54,7 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
         super.viewDidLoad()
         
         setupNavBar()
-        appLanguageListView.updateCollectionDataSource(dateSource: appLanguageListManager)
+        appLanguageListView.updateCollectionDataSource(dataSource: appLanguageListManager)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +75,7 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
 
 private extension AppLanguageListController {
     
+    /// Sets navigation bar title text, back bar button and gesture recogniser to go back by swipe
     func setupNavBar() {
         title = Texts.Common.language
         
@@ -93,7 +104,10 @@ extension AppLanguageListController: AppLanguageListViewDelegate { }
 
 extension AppLanguageListController: AppLanguageListDataSourceDelegate {
     
-    func tableView(didSelect sound: String) {
-        compilation(sound)
+    /// Called when user selects app sound setting from the list of sounds
+    /// - Parameters:
+    ///     - language: The language `string` name inside tableCell that user can select
+    func tableView(didSelect language: String) {
+        compilation(language)
     }
 }

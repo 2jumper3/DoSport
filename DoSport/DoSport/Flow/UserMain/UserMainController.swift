@@ -14,7 +14,9 @@ final class UserMainController: UIViewController {
     private lazy var userMainView = view as! UserMainView
     private let userMainCollectionManager = UserMainDataSource()
     
-    let user: User?
+    private let user: User?
+    
+    private var viewState: UserMainDataFlow.ViewControllerState<DSEmptyRequest> = .loading
     
     private lazy var navBar = DSUserMainNavBar(userName: self.user?.name)
     
@@ -41,7 +43,6 @@ final class UserMainController: UIViewController {
     
     override func loadView() {
         let view = UserMainView()
-        view.delegate = self
         userMainCollectionManager.delegate = self
         navBar.delegate = self
         
@@ -55,10 +56,12 @@ final class UserMainController: UIViewController {
         guard let navController = self.navigationController as? DSNavigationController else { return }
         navController.hasSeparator(false)
         
-        setupViewModelBindings()
+        if case .loading = self.viewState {
+            userMainView.updateViewToState(self.viewState)
+        }
         
-        viewModel.prepareEventData()
-        userMainView.updateCollectionDataSource(dateSource: userMainCollectionManager)
+        self.setupViewModelBindings()
+        self.viewModel.doLoadEvents(request: .init(userID: self.user?.id ?? 0))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,24 +97,35 @@ final class UserMainController: UIViewController {
 private extension UserMainController {
     
     func setupViewModelBindings() {
-        viewModel.onDidPrepareEventsData = { [weak self] events in
-            self?.userMainCollectionManager.events = events
-            self?.updateView()
+        viewModel.didLoadEvents = { [unowned self] data in
+            self.updateState(data.state)
+        }
+        
+        viewModel.didLoadSportGrounds = { [unowned self] data in
+            self.updateState(data.state)
         }
     }
     
-    func updateView() {
-        userMainView.updateCollectionDataSource(dateSource: self.userMainCollectionManager)
+    func updateState<T>(_ state: UserMainDataFlow.ViewControllerState<T>) where T: Codable {
+        switch state {
+        case .loading:
+            self.userMainView.updateViewToState(state)
+        case .failed:
+            self.userMainView.updateViewToState(state)
+        case .success(let data):
+            
+            if let viewModels = data as? [DSModels.Event.EventView] {
+                self.userMainCollectionManager.events = viewModels
+                
+            } else if let viewModels = data as? [DSModels.SportGround.SportGroundResponse] {
+                self.userMainCollectionManager.sportGrounds = viewModels
+            }
+            
+            self.userMainView.updateCollectionDataSource(dateSource: userMainCollectionManager)
+            self.userMainView.updateViewToState(state)
+        }
     }
 }
-
-//MARK: Actions
-
-@objc private extension UserMainController { }
-
-//MARK: - UserMainViewDelegate -
-
-extension UserMainController: UserMainViewDelegate { }
 
 //MARK: - UserMainDataSourceDelegate -
 
@@ -150,6 +164,7 @@ extension UserMainController: DSUserMainNavBarDelegate {
 //MARK: - EventInviteViewControllerDelegate -
 
 extension UserMainController: EventInviteViewControllerDelegate {
+    func shareButtonClicked() { }
     
     func cancelButtonClicked() {
         dismiss(eventInviteContainerController, from: userMainView)
@@ -175,9 +190,9 @@ extension UserMainController: EventManageContanerViewControllerDelegate {
         }
     }
     
-    func closeButtonClicked() {
-        
-    }
+//    func closeButtonClicked() {
+//        
+//    }
     
     func editButtonClicked() {
         

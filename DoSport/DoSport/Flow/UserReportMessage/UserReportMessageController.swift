@@ -41,6 +41,8 @@ final class UserReportMessageController: UIViewController, UIGestureRecognizerDe
         super.viewDidLoad()
         
         setupNavBar()
+        
+        self.userReportMessageView.setDelegates(textField: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +89,33 @@ extension UserReportMessageController: UserReportMessageViewDelegate {
     
     func sendButtonClicked() {
         
+    }
+}
+
+//MARK: - UITextViewDelegate -
+
+extension UserReportMessageController: UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textView.text = ""
+        
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.text = Texts.Common.reportAProblem
+        
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        guard let text = textView.text else { return }
+        
+        if text != Texts.Common.reportAProblem, !text.isEmpty {
+            userReportMessageView.bindButtonState(.normal)
+        } else if text.isEmpty, text == "" {
+            userReportMessageView.bindButtonState(.disabled)
+        }
     }
 }
 

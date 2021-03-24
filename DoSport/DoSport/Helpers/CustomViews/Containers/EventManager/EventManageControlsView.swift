@@ -9,7 +9,7 @@ import UIKit
 
 protocol EventControlsViewDelegate: class {
     func inviteButtonClicked()
-    func closeButtonClicked()
+//    func closeButtonClicked()
     func editButtonClicked()
     func deleteButtonClicked()
     func cancelButtonClicked()
@@ -36,7 +36,7 @@ final class EventManageControlsView: UIView {
     private lazy var inviteButton = DSEventControlButton(img: Icons.UserMain.share, txt: Texts.UserMain.invite)
     private lazy var deleteButton = DSEventControlButton(img: Icons.UserMain.delete, txt: Texts.UserMain.delete)
     private lazy var editButton = DSEventControlButton(img: Icons.UserMain.edit, txt: Texts.UserMain.edit)
-    private lazy var closeButton = DSEventControlButton(img: Icons.UserMain.unlock, txt: Texts.UserMain.close)
+//    private lazy var closeButton = DSEventControlButton(img: Icons.UserMain.unlock, txt: Texts.UserMain.close)
     
     private lazy var cancelButton: UIButton = {
         $0.backgroundColor = Colors.mainBlue
@@ -57,21 +57,21 @@ final class EventManageControlsView: UIView {
         let inviteTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleInviteButton))
         let deleteTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDeleteButton))
         let editTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleEditButton))
-        let closeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCloseButton))
+//        let closeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCloseButton))
         
         inviteButton.addGestureRecognizer(inviteTapGesture)
         deleteButton.addGestureRecognizer(deleteTapGesture)
         editButton.addGestureRecognizer(editTapGesture)
-        closeButton.addGestureRecognizer(closeTapGesture)
+//        closeButton.addGestureRecognizer(closeTapGesture)
         
         containerView.addSubviews(
             inviteButton,
             inviteSeparator,
             deleteButton,
             editButton,
-            closeButton,
-            editSeparator,
-            closeSeparator
+//            closeButton,
+            editSeparator
+//            closeSeparator
         )
         
         addSubviews(containerView, cancelButton)
@@ -87,7 +87,7 @@ final class EventManageControlsView: UIView {
         containerView.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.92)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(200)
+            $0.height.equalTo(150)
             $0.bottom.equalTo(cancelButton.snp.top).offset(-12)
         }
         
@@ -118,22 +118,22 @@ final class EventManageControlsView: UIView {
             $0.width.equalToSuperview()
         }
         
-        closeButton.snp.makeConstraints {
-            $0.top.equalTo(editButton.snp.bottom)
-            $0.centerX.width.equalTo(containerView)
-            $0.height.equalTo(containerView.snp.height).multipliedBy(0.24)
-            $0.width.equalTo(containerView.snp.width).multipliedBy(0.9)
-        }
-        
-        closeSeparator.snp.makeConstraints {
-            $0.top.equalTo(closeButton.snp.bottom)
-            $0.centerX.width.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.width.equalToSuperview()
-        }
+//        closeButton.snp.makeConstraints {
+//            $0.top.equalTo(editButton.snp.bottom)
+//            $0.centerX.width.equalTo(containerView)
+//            $0.height.equalTo(containerView.snp.height).multipliedBy(0.24)
+//            $0.width.equalTo(containerView.snp.width).multipliedBy(0.9)
+//        }
+//
+//        closeSeparator.snp.makeConstraints {
+//            $0.top.equalTo(closeButton.snp.bottom)
+//            $0.centerX.width.equalToSuperview()
+//            $0.height.equalTo(1)
+//            $0.width.equalToSuperview()
+//        }
         
         deleteButton.snp.makeConstraints {
-            $0.top.equalTo(closeButton.snp.bottom)
+            $0.top.equalTo(editButton.snp.bottom)
             $0.centerX.width.equalTo(containerView)
             $0.height.equalTo(containerView.snp.height).multipliedBy(0.24)
             $0.width.equalTo(containerView.snp.width).multipliedBy(0.9)
@@ -165,9 +165,9 @@ final class EventManageControlsView: UIView {
         delegate?.deleteButtonClicked()
     }
     
-    func handleCloseButton() {
-        delegate?.closeButtonClicked()
-    }
+//    func handleCloseButton() {
+//        delegate?.closeButtonClicked()
+//    }
     
     func handleCancelButton() {
         delegate?.cancelButtonClicked()

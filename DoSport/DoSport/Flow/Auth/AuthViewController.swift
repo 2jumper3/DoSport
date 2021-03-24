@@ -20,7 +20,7 @@ final class AuthViewController: UIViewController {
         return .lightContent
     }
 
-    // MARK: - Init
+    // MARK: Init
     
     init(viewModel: AuthViewModel) {
         self.viewModel = viewModel
@@ -31,7 +31,7 @@ final class AuthViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func loadView() {
         let view = AuthView()
@@ -46,33 +46,22 @@ final class AuthViewController: UIViewController {
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
-    /// Hide navigation bar before this ViewController will appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    /// Show navigation bar after this ViewController did disappear
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         coordinator?.removeDependency(coordinator)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        authView.becomeTextFieldResponder()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        authView.removeTextFieldResponder()
-    }
-    
 }
+
+//MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
     func vkAuthButtonClicked() {

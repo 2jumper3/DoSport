@@ -19,13 +19,20 @@ final class DSEventParticipateButton: UIButton {
         }
     }
     
+    private let isParticipatingType: Bool
+    
     //MARK: - Init
     
-    init(title: String = "", state: State) {
+    init(title: String = "", state: State, isParticipatingType: Bool = true) {
+        self.isParticipatingType = isParticipatingType
         super.init(frame: .zero)
         
         layer.cornerRadius = 8
-        setTitle(Texts.Event.participate, for: .normal)
+        if isParticipatingType {
+            setTitle(Texts.Event.participate, for: .normal)
+        } else {
+            setTitle(Texts.Event.open, for: .normal)
+        }
         backgroundColor = Colors.lightBlue
         setTitleColor(.white, for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
@@ -60,13 +67,26 @@ private extension DSEventParticipateButton {
         switch buttonState {
         case .notSeleted:
             UIView.animate(withDuration: 0.25) { [self] in
-                setTitle(Texts.Event.participate, for: .normal)
+                if isParticipatingType {
+                    setTitle(Texts.Event.participate, for: .normal)
+                } else {
+                    setTitle(Texts.Event.open, for: .normal)
+                    layer.borderWidth = 0
+                }
+                
                 backgroundColor = Colors.lightBlue
             }
         case .selected:
             UIView.animate(withDuration: 0.25) { [self] in
-                setTitle(Texts.Event.participating, for: .normal)
-                backgroundColor = Colors.lightBlue_02
+                if isParticipatingType {
+                    setTitle(Texts.Event.participating, for: .normal)
+                    backgroundColor = Colors.lightBlue_02
+                } else {
+                    setTitle(Texts.Event.close, for: .normal)
+                    backgroundColor = .clear
+                    layer.borderWidth = 1
+                    layer.borderColor = UIColor.white.cgColor
+                }
             }
         }
     }

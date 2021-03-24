@@ -38,7 +38,7 @@ extension SportTypeListDataSource: UITableViewDataSource {
         let viewModel = viewModels[indexPath.row]
         
         let cell: SportTypeListTableCell = tableView.cell(forRowAt: indexPath)
-        cell.titleText = viewModel.title
+        cell.textLabel?.text = viewModel.title
         
         if selectedRow == 0 && indexPath.row == 0 {
             cell.bind(state: .selected)
@@ -50,8 +50,8 @@ extension SportTypeListDataSource: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
     }
 }
 
@@ -65,7 +65,7 @@ extension SportTypeListDataSource: UITableViewDelegate {
         let selectedCell: SportTypeListTableCell
         let newCell: SportTypeListTableCell
         
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && selectedRow != 0 {
             selectedCell = tableView.cell(forRowAt: selectedIndexPath)
             selectedCell.bind(state: .notSelected)
             
@@ -73,6 +73,7 @@ extension SportTypeListDataSource: UITableViewDelegate {
             newCell.bind(state: .selected)
             
             selectedRow = indexPath.row
+            tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .none)
             
         } else if indexPath.row != selectedRow && indexPath.row > 0 {
             selectedCell = tableView.cell(forRowAt: selectedIndexPath)
@@ -84,12 +85,15 @@ extension SportTypeListDataSource: UITableViewDelegate {
             selectedRow = indexPath.row
             
             delegate?.tableView(didSelectSport: viewModel)
+            tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .none)
         }
-        
-        tableView.reloadRows(at: [indexPath, selectedIndexPath], with: .none)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(0.0)
     }
 }

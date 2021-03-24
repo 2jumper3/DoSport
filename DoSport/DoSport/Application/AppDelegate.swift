@@ -32,7 +32,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
     
     
     var window : UIWindow?
-    var appCoordinator: AppCoordinator?
     
     
     func application(
@@ -52,8 +51,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
     
     
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions
-                        launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        didFinishLaunchingWithOptions
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        
+        let pushManager = DSPushNotificationManager(userID: "currently_logged_in_user_id") // TODO: finish UN setup
+        pushManager.registerForPushNotifications()
+        
+        FirebaseApp.configure()
+
         if #available(iOS 13, *) {
             // do only pure app launch stuff, not interface stuff
         } else {
@@ -74,8 +80,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
         return true
     }
     
+    /// Handle when app enters background when user leaves app
     func applicationDidEnterBackground(_ application: UIApplication) {
-        print(#function)
         window?.endEditing(true)
     }
 }

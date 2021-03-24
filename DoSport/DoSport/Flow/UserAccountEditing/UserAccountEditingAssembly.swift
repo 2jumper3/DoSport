@@ -10,7 +10,8 @@ import Foundation
 final class UserAccountEditingAssembly: Assembly {
     
     func makeModule() -> UserAccountEditingController {
-        let viewModel = UserAccountEditingViewModel()
+        let requestsManager = RequestsManager.shared
+        let viewModel = UserAccountEditingViewModelImplementation(requestsManager: requestsManager)
         let viewController = UserAccountEditingController(viewModel: viewModel)
         return viewController
     }

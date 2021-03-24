@@ -52,7 +52,6 @@ final class UserReportMessageView: UIView {
         backgroundColor = Colors.darkBlue
         
         sendButton.addTarget(self, action: #selector(handleSendButton))
-        reportTextView.delegate = self
         
         addSubviews(avatarImageView, userNameLabel, reportTextView, sendButton)
         
@@ -112,6 +111,14 @@ extension UserReportMessageView {
         avatarImageView.image = data.avatar
         userNameLabel.text = data.name
     }
+    
+    func bindButtonState(_ state: CommonButtonState) {
+        self.sendButton.bind(state: state)
+    }
+    
+    func setDelegates(textField delegate: UITextViewDelegate?) {
+        self.reportTextView.delegate = delegate
+    }
 }
 
 //MARK: Actions
@@ -120,32 +127,5 @@ extension UserReportMessageView {
     
     func handleSendButton() {
         reportTextView.resignFirstResponder()
-    }
-}
-
-//MARK: - UITextViewDelegate -
-
-extension UserReportMessageView: UITextViewDelegate {
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        textView.text = ""
-        
-        return true
-    }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        textView.text = Texts.Common.reportAProblem
-        
-        return true
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        guard let text = textView.text else { return }
-        
-        if text != Texts.Common.reportAProblem, !text.isEmpty {
-            sendButton.bind(state: .normal)
-        } else if text.isEmpty, text == "" {
-            sendButton.bind(state: .disabled)
-        }
     }
 }

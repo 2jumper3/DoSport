@@ -10,6 +10,8 @@ import UIKit
 final class MainMenuTabController: UITabBarController, UINavigationControllerDelegate {
     
     weak var coordinator: MainTabBarCoordinator?
+    unowned var feedCoordinator: FeedCoordinator?
+    unowned var userMainCoordinator: UserMainCoordinator?
     
     private let tabBarHeight: CGFloat = CGFloat(UIDevice.getDeviceRelatedTabBarHeight())
     private let tabBarItems: [TabBarItem] = [.home, .map, .chat, .user]
@@ -73,24 +75,30 @@ extension MainMenuTabController {
         
         self.tabBarItems.forEach { tabBarItem in
             
-            if tabBarItem.viewController is FeedViewController {
+            if tabBarItem.viewController == TabBarItem.home.rawValue {
                 let navigationController = DSNavigationController()
                 let feedCoordinator = FeedCoordinator(navController: navigationController)
+                
+                self.feedCoordinator = feedCoordinator
+                
                 self.coordinator?.store(coordinator: feedCoordinator)
                 feedCoordinator.start()
                 
                 tabViewControllers?.append(navigationController)
                 
-            } else if tabBarItem.viewController is UserMainController {
+            } else if tabBarItem.viewController == TabBarItem.user.rawValue {
                 let navigationController = DSNavigationController()
                 let userMainCoordinator = UserMainCoordinator(navController: navigationController)
+                
+                self.userMainCoordinator = userMainCoordinator
+                
                 self.coordinator?.store(coordinator: userMainCoordinator)
                 userMainCoordinator.start()
                 
                 tabViewControllers?.append(navigationController)
                 
             } else {
-                tabViewControllers?.append(tabBarItem.viewController)
+                tabViewControllers?.append(UIViewController())
             }
         }
         
@@ -115,6 +123,7 @@ private extension MainMenuTabController {
         customTabBar = CustomTabView(menuItems: self.tabBarItems, frame: frame)
         customTabBar.translatesAutoresizingMaskIntoConstraints = false
         customTabBar.itemTapped = changeTab
+        customTabBar.onActiveItemTapped = popToRootController
         view.addSubview(customTabBar)
         customTabBar.addSubview(topSeparatorView)
         
@@ -123,6 +132,14 @@ private extension MainMenuTabController {
     
     func changeTab(tab: Int) {
         self.selectedIndex = tab
+    }
+    
+    func popToRootController() {
+        if self.viewControllers?[self.selectedIndex] == self.feedCoordinator?.navigationController {
+            feedCoordinator?.popToRoot()
+        } else if self.viewControllers?[self.selectedIndex] == self.userMainCoordinator?.navigationController {
+            userMainCoordinator?.popToRoot()
+        }
     }
 }
 

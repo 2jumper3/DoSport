@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RegistrationViewDelegate: class {
-    func saveButtonClicked(with username: String?, password: String?, dob: String?, gender: String?)
+    func saveButtonClicked(with username: String?, dob: String?, gender: String?)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
@@ -29,7 +29,6 @@ final class RegistrationView: UIView {
     private let avatarImageView: DSAvatartImageView = DSAvatartImageView()
     
     private lazy var userNameTextField = FormTextFieldView(type: .userName)
-    private lazy var passwordTextField = FormTextFieldView(type: .password)
     private lazy var dobTextField = FormTextFieldView(type: .dob)
     
     private lazy var datePicker = DSDatePicker()
@@ -46,11 +45,6 @@ final class RegistrationView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        userNameTextField.getTextField().delegate = self
-        passwordTextField.getTextField().delegate = self
-        dobTextField.getTextField().delegate = self
-        datePicker.delegate = self
-        
         datePicker.setTextField(dobTextField.getTextField())
         
         setupOutletTargets()
@@ -60,7 +54,6 @@ final class RegistrationView: UIView {
             avatarImageView,
             addAvatarButton,
             userNameTextField,
-            passwordTextField,
             dobTextField,
             saveButton,
             maleButton,
@@ -75,9 +68,9 @@ final class RegistrationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        passwordTextField.snp.makeConstraints { $0.centerY.equalToSuperview() }
+        dobTextField.snp.makeConstraints { $0.centerY.equalToSuperview() }
         
-        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(passwordTextField.snp.top).offset(10) }
+        userNameTextField.snp.makeConstraints { $0.bottom.equalTo(dobTextField.snp.top).offset(10) }
         
         addAvatarButton.snp.makeConstraints {
             $0.bottom.equalTo(userNameTextField.snp.top).offset(-20)
@@ -90,8 +83,6 @@ final class RegistrationView: UIView {
             $0.height.equalTo(avatarImageView.snp.width)
             $0.width.equalToSuperview().multipliedBy(0.28)
         }
-        
-        dobTextField.snp.makeConstraints { $0.top.equalTo(passwordTextField.snp.bottom).offset(-10) }
         
         saveButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaInsets.bottom).offset(-10)
@@ -111,16 +102,20 @@ final class RegistrationView: UIView {
             $0.height.width.centerY.equalTo(maleButton)
         }
         
-        [passwordTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
+        [dobTextField, userNameTextField, dobTextField, avatarImageView, addAvatarButton, saveButton].forEach {
             $0.snp.makeConstraints { $0.centerX.equalToSuperview() }
         }
         
-        [passwordTextField, userNameTextField, dobTextField].forEach {
+        [dobTextField, userNameTextField, dobTextField].forEach {
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().multipliedBy(0.87)
                 $0.height.equalTo(73)
             }
         }
+    }
+    
+    deinit {
+        removeObserver()
     }
 }
 
@@ -140,6 +135,32 @@ extension RegistrationView {
     func setDateOfBirth(_ text: String) {
         dobTextField.text = text
     }
+    
+    func setDelegates(textField TFDelegate: UITextFieldDelegate?, datePicker DPDelegate: DSDatePickerDelegate?) {
+        userNameTextField.getTextField().delegate = TFDelegate
+        dobTextField.getTextField().delegate = TFDelegate
+        datePicker.delegate = DPDelegate
+    }
+    
+    func getDobTextField() -> UITextField {
+        return dobTextField.getTextField()
+    }
+    
+    func makeDobTextFieldFirstResponder() {
+        dobTextField.makeTextFieldFirstResponder()
+    }
+    
+    func removeDobTextFieldFirstResponder() {
+        dobTextField.removeTextFieldFirstResponder()
+    }
+    
+    func getUsernameTextFeild() -> UITextField {
+        return userNameTextField.getTextField()
+    }
+    
+    func getDatePicker() -> DSDatePicker {
+        return datePicker
+    }
 }
 
 //MARK: Private API
@@ -155,24 +176,13 @@ private extension RegistrationView {
     }
     
     func setupKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeybordWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        addObserver(selector: #selector(handleKeybordWillShow), for: UIResponder.keyboardWillShowNotification)
+        addObserver(selector: #selector(handleKeybordWillHide), for: UIResponder.keyboardWillHideNotification)
     }
     
     func animateToError() {
         UIView.animate(withDuration: 0.3) { [self] in
-            [passwordTextField, dobTextField, maleButton, femaleButton].forEach {
+            [dobTextField, maleButton, femaleButton].forEach {
                 $0.transform = CGAffineTransform(translationX: 0, y: 16)
             }
             layoutIfNeeded()
@@ -181,7 +191,7 @@ private extension RegistrationView {
     
     func animateToIdentity() {
         UIView.animate(withDuration: 0.3) { [self] in
-            [passwordTextField, dobTextField, maleButton, femaleButton].forEach {
+            [dobTextField, maleButton, femaleButton].forEach {
                 $0.transform = .identity
             }
             layoutIfNeeded()
@@ -200,7 +210,6 @@ private extension RegistrationView {
     func handleSaveButton() {
         delegate?.saveButtonClicked(
             with: userNameTextField.text,
-            password: passwordTextField.text,
             dob: dobTextField.text,
             gender: gender
         )
@@ -237,35 +246,5 @@ private extension RegistrationView {
     
     func handleKeybordWillHide() {
         UIView.animate(withDuration: 0.3) { self.transform = .identity }
-    }
-}
-
-//MARK: - UITextFieldDelegate -
-
-extension RegistrationView: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == dobTextField.getTextField() {
-            delegate?.datePickerValueChanged(datePicker)
-        }
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userNameTextField.getTextField() {
-            passwordTextField.makeTextFieldFirstResponder()
-        } else if textField == passwordTextField.getTextField() {
-            dobTextField.makeTextFieldFirstResponder()
-        }
-        return true
-    }
-}
-
-//MARK: - DSDatePickerDelegate -
-
-extension RegistrationView: DSDatePickerDelegate {
-    
-    func doneButtonClicked() {
-        dobTextField.removeTextFieldFirstResponder()
     }
 }

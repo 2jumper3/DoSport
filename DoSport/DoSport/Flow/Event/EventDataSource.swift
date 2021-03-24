@@ -10,6 +10,7 @@ import UIKit
 protocol EventDataSourceDelegate: class {
     func tableViewInviteButtonClicked()
     func tableViewParicipateButtonClicked()
+//    func tableViewEventVisibilityChangeButtonClicked()
     func commentReplyButtonClicked(to userName: String?)
     func tableViewNeedsReloadData()
 }
@@ -32,7 +33,10 @@ final class EventDataSource: NSObject {
 
     private var toogleSegmentedControl: DSSegmentedControl?
     
-    init(viewModel: Event? = nil) {
+    private let isCurrentUserOrganisedEvent: Bool
+    
+    init(viewModel: Event? = nil, isCurrentUserOrganisedEvent: Bool) {
+        self.isCurrentUserOrganisedEvent = isCurrentUserOrganisedEvent
         self.viewModel = viewModel
         super.init()
 
@@ -64,6 +68,7 @@ extension EventDataSource: UITableViewDataSource {
         
         if indexPath.section == 0 {
             let eventCardCell: EventCardTableCell = tableView.cell(forRowAt: indexPath)
+            eventCardCell.isCurrentUserOrganisedEvent = self.isCurrentUserOrganisedEvent
             eventCardCell.onInviteButtonClicked = { [unowned self] in
                 delegate?.tableViewInviteButtonClicked()
             }
@@ -72,6 +77,9 @@ extension EventDataSource: UITableViewDataSource {
                 delegate?.tableViewParicipateButtonClicked()
             }
             
+//            eventCardCell.onEventVisibilityChangeButtonClicked = { [unowned self] in
+//                delegate?.tableViewEventVisibilityChangeButtonClicked()
+//            }
             cell = eventCardCell
         } else {
             switch eventDataSourceState {

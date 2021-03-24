@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// Describes navigation & coordination of class that controlls Authentification screen.
 final class AuthCoordinator: Coordinator {
     
+    /// NavigationController's root viewController object .
     let rootViewController: AuthViewController
     
     var childCoordinators: [Coordinator] = []
@@ -25,21 +27,15 @@ final class AuthCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
-    func goToCodeEntryModule(_ phoneNumber: String) {
-        let coordiator = CodeEntryCoordinator(navController: navigationController, phoneNumber)
-        self.store(coordinator: coordiator)
-        coordiator.start()
-    }
-    
-    func goToCountryListModule(compilation: @escaping (String) -> Swift.Void) {
-        let coordinator = CountryCodeListCoordinator(navController: navigationController, compilation: compilation)
+    func goToRegistrationModule() {
+        let coordinator = RegistrationCoordinator(navController: navigationController)
         self.store(coordinator: coordinator)
         coordinator.start()
     }
     
-    func goToPasswordEntryModule() {
-        let coordinator = PasswordEntryCoordinator(navController: self.navigationController)
-        store(coordinator: coordinator)
+    func goToFeedModule() {
+        let coordinator = MainTabBarCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     func goToMainTabBar() {
