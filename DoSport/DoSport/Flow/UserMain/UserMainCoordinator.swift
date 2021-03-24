@@ -25,11 +25,11 @@ final class UserMainCoordinator: Coordinator {
         navigationController?.pushViewController(rootViewController, animated: true)
     }
     
-    func goToUserSubscribtionListModule(_ index: Int, with user: User?) {
+    func goToUserSubscribtionListModule(_ contentType: DSEnums.UserSubscribersContentType, with user: User?) {
         let coodinator = UserSubscriberListCoordinator(
             navController: navigationController,
             user: user,
-            index: index
+            contentType: contentType
         )
         store(coordinator: coodinator)
         coodinator.start()

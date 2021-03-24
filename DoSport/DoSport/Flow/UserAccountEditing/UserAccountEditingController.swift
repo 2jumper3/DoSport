@@ -11,7 +11,7 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
     
     weak var coordinator: UserAccountEditingCoordinator?
     private lazy var userAccountEditingView = view as! UserAccountEditingView
-    private let viewModel: UserAccountEditingViewModel
+    private var viewModel: UserAccountEditingViewModel
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -41,6 +41,7 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
         super.viewDidLoad()
         
         setupNavBar()
+        setupViewModelBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +61,16 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
 //MARK: Private API
 
 private extension UserAccountEditingController {
+    
+    func setupViewModelBindings() {
+        viewModel.onDidDeleteUserProfile = { [unowned self] data in
+            
+        }
+
+        viewModel.onDidEditUserProfile = { [unowned self] data in
+            
+        }
+    }
     
     func setupNavBar() {
         title = Texts.UserAccountEditing.title
@@ -100,6 +111,10 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
     func signOutButtonCliked() {
         
     }
+    
+    func deleteProfileButtonClicked() {
+        viewModel.doDeleteUserProfile(request: .init())
+    }
 
     func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?) {
         guard let username = username,
@@ -121,7 +136,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
             info: nil // TODO: this feature will be required after MVP0.
         )
         
-        viewModel.userDidEditProfile(userData)
+        viewModel.doEditUserProfile(request: .init(user: userData))
     }
     
     func avatarChangeButtonClicked() {

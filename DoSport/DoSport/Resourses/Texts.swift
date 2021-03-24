@@ -65,13 +65,20 @@ extension Texts {
 //MARK: - Auth Screen
 extension Texts {
     enum Auth {
-        static let submit = "Отправить SMS"
+        static let skip = "Пропустить"
         static let phoneNumberPlaceholder = "Номер телефона"
         static let enter = "Вход"
         static let description = "Ваш номер телефона будет использоваться для входа в приложение"
         
+        enum AuthButtons {
+            static let vkontakte = "Продолжить с VK"
+            static let facebook = "Продолжить с Facebook"
+            static let apple = "Продолжить с Apple"
+            static let google = "Продолжить с Google"
+        }
+        
         enum Regulations {
-            static let upper = "Нажимая «Отправить SMS», ты принимаешь "
+            static let upper = "Продолжая, ты принимаешь "
             static let bottom = "Правила пользования и Защиты информации"
         }
     }

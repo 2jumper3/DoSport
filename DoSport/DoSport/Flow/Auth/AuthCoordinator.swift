@@ -38,4 +38,14 @@ final class AuthCoordinator: Coordinator {
         self.store(coordinator: coordinator)
         coordinator.start()
     }
+    func goToMainTabBar() {
+        let coordinator = MainTabBarCoordinator(navController: self.navigationController)
+        store(coordinator: coordinator)
+        coordinator.start()
+    }
+    func openVkAuthView() {
+        let vc = WKWebViewController()
+        navigationController?.present(vc, animated: true, completion: nil)
+        
+    }
 }

@@ -12,9 +12,10 @@ final class UserSubscriberListController: UIViewController, UIGestureRecognizerD
     weak var coordinator: UserSubscriberListCoordinator?
     private lazy var userSubscriberListView = view as! UserSubscriberListView
     private let userSubscriberListCollectionManager = UserSubscriberListDataSource()
+    private let viewModel: UserSubscriberListViewModel
     
     private let user: User?
-    private let selectedSegmentedControlIndex: Int
+    private let contentType: DSEnums.UserSubscribersContentType
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -22,9 +23,14 @@ final class UserSubscriberListController: UIViewController, UIGestureRecognizerD
 
     // MARK: Init
     
-    init(user: User?, segmentedControlIndex index: Int) {
+    init(
+        user: User?,
+        contentType: DSEnums.UserSubscribersContentType,
+        viewModel: UserSubscriberListViewModel
+    ) {
         self.user = user
-        self.selectedSegmentedControlIndex = index
+        self.viewModel = viewModel
+        self.contentType = contentType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,8 +55,11 @@ final class UserSubscriberListController: UIViewController, UIGestureRecognizerD
         navController.hasSeparator(false)
         
         setupNavBar()
-        
-        prepareTableData()
+
+        switch self.contentType {
+        case .subscribers: viewModel.doLoadSubscribers(request: .init())
+        case .subscriptions: viewModel.doLoadSubscriptions(request: .init())
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +72,7 @@ final class UserSubscriberListController: UIViewController, UIGestureRecognizerD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        userSubscriberListCollectionManager.updateSegmentedControl(index: selectedSegmentedControlIndex)
+        userSubscriberListCollectionManager.updateSegmentedControl(index: self.contentType.index)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -77,17 +86,14 @@ final class UserSubscriberListController: UIViewController, UIGestureRecognizerD
 
 private extension UserSubscriberListController {
     
-    func prepareTableData() {
-//        guard let user = user, let name = user.name else { return }
+    func setupViewModelBindings() {
+        viewModel.onDidLoadSubscribes = { [unowned self] data in
+            self.updateState(data.state)
+        }
         
-        /// as we get user, we need to take his array of subsribers and subscribed users and prepare this data for dataSource
-        
-        userSubscriberListView.updateCollectionDataSource(dateSource: userSubscriberListCollectionManager)
-        updateView()
-    }
-    
-    func updateView() {
-        userSubscriberListView.updateCollectionDataSource(dateSource: userSubscriberListCollectionManager)
+        viewModel.onDidLoadSubscriptions = { [unowned self] data in
+            self.updateState(data.state)
+        }
     }
     
     func setupNavBar() {
@@ -102,6 +108,18 @@ private extension UserSubscriberListController {
         ]
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: DSBarBackButton())
+    }
+    
+    func updateState(_ state: UserSubscriberListDataFlow.ViewControllerState) {
+        switch state {
+        case .loading:
+            break
+        case .failed:
+            break
+        case .success(let data):
+            debugPrint(data)
+            break
+        }
     }
 }
 
@@ -118,7 +136,7 @@ extension UserSubscriberListController: UserSubscriberListViewDelegate { }
 extension UserSubscriberListController: UserSubscriberListDataSourceDelegate {
     
     func collectionViewNeedsReloadData() {
-        updateView()
+        
     }
     
     func collectionView(didSelect user: User?) {

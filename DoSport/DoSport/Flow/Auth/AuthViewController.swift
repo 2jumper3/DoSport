@@ -11,7 +11,6 @@ final class AuthViewController: UIViewController {
     
     weak var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
-    
     private lazy var authView = self.view as! AuthView
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -40,6 +39,7 @@ final class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViewModelBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +54,52 @@ final class AuthViewController: UIViewController {
         
         coordinator?.removeDependency(coordinator)
     }
+    
+}
+
+//MARK: Private API
+
+private extension AuthViewController {
+    
+    func setupViewModelBindings() {
+        viewModel.onDidSignUpWithSocialMedia = { /*[unowned self]*/ data in
+            switch data.state {
+            case .loading:
+                break
+            case .failed:
+                break
+            case .success:
+                break
+            }
+        }
+        
+        viewModel.onDidSendSignUpDataToServer = { data in
+            
+        }
+    }
 }
 
 //MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
     
-    func skipButtonClicked() {
-        coordinator?.goToRegistrationModule()
+    func skipButtonTapped() {
+        coordinator?.goToMainTabBar()
+    }
+    
+    func fbAuthClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .facebook, viewController: self))
+    }
+    
+    func vkAuthButtonClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .vkontakte, viewController: nil))
+    }
+    
+    func googleAuthButtonClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .google, viewController: nil))
+    }
+    
+    func appleAuthButtonClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .apple, viewController: nil))
     }
 }
