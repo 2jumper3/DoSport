@@ -33,9 +33,9 @@ final class EventManageControlsView: UIView {
     private let editSeparator = DSSeparatorView(color: Colors.dirtyBlue)
     private let closeSeparator = DSSeparatorView(color: Colors.dirtyBlue)
     
-    private lazy var inviteButton = DSEventControlButton(img: Icons.UserMain.share, txt: Texts.UserMain.invite)
-    private lazy var deleteButton = DSEventControlButton(img: Icons.UserMain.delete, txt: Texts.UserMain.delete)
-    private lazy var editButton = DSEventControlButton(img: Icons.UserMain.edit, txt: Texts.UserMain.edit)
+    private lazy var inviteButton = DSButtonWithIcon(img: Icons.UserMain.share, txt: Texts.UserMain.invite)
+    private lazy var deleteButton = DSButtonWithIcon(img: Icons.UserMain.delete, txt: Texts.UserMain.delete)
+    private lazy var editButton = DSButtonWithIcon(img: Icons.UserMain.edit, txt: Texts.UserMain.edit)
 //    private lazy var closeButton = DSEventControlButton(img: Icons.UserMain.unlock, txt: Texts.UserMain.close)
     
     private lazy var cancelButton: UIButton = {

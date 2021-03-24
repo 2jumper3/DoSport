@@ -6,14 +6,11 @@
 //
 
 import UIKit
-import FBSDKLoginKit
-import GoogleSignIn
 
 final class AuthViewController: UIViewController {
     
     weak var coordinator: AuthCoordinator?
     private let viewModel: AuthViewModel
-    
     private lazy var authView = self.view as! AuthView
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -41,9 +38,8 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Google methods
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        setupViewModelBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,40 +57,49 @@ final class AuthViewController: UIViewController {
     
 }
 
+//MARK: Private API
+
+private extension AuthViewController {
+    
+    func setupViewModelBindings() {
+        viewModel.onDidSignUpWithSocialMedia = { /*[unowned self]*/ data in
+            switch data.state {
+            case .loading:
+                break
+            case .failed:
+                break
+            case .success:
+                break
+            }
+        }
+        
+        viewModel.onDidSendSignUpDataToServer = { data in
+            
+        }
+    }
+}
+
 //MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
     
-    func vkAuthButtonClicked() {
-        coordinator?.openVkAuthView()
+    func skipButtonTapped() {
+        coordinator?.goToMainTabBar()
     }
     
     func fbAuthClicked() {
-        let login = LoginManager()
-        login.logIn(
-            permissions: [],
-            from: self
-        ) { result, error in
-            
-            if error != nil {
-                print("Process error")
-            } else if ((result?.isCancelled) != nil) {
-                print("Cancelled")
-            } else {
-                print("Logged in")
-            }
-        }
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .facebook, viewController: self))
     }
     
-    func fbAuthPassed() {
-        coordinator?.goToMainTabBar()
+    func vkAuthButtonClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .vkontakte, viewController: nil))
     }
     
-    func vkAuthPassed() {
-        coordinator?.goToMainTabBar()
+    func googleAuthButtonClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .google, viewController: nil))
     }
     
-    func skipButtonTapped() {
-        coordinator?.goToMainTabBar()
+    func appleAuthButtonClicked() {
+        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .apple, viewController: nil))
     }
 }

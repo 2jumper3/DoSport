@@ -135,16 +135,16 @@ extension UserMainController: UserMainDataSourceDelegate {
         userMainView.updateCollectionDataSource(dateSource: userMainCollectionManager)
     }
     
-    func collectionDidClickSubscribes() {
+    func collectionDidClickSubscribers() {
         /// Zero here means that when user clicks `Subscribes` it is gonna open next screen that has segmentedControl,
         /// which shows user's subscribed members at `0` and subscribers at `1`, passing index we let VC to know what to show
-        coordinator?.goToUserSubscribtionListModule(0, with: user)
+        coordinator?.goToUserSubscribtionListModule(.subscribers, with: user)
     }
     
-    func collectionDidClickSubscribers() {
-        /// Zero here means that when user clicks `Subscribers` it is gonna open next screen that has segmentedControl,
-        /// which shows user's subscribed members at `0` and subscribers at `1`, passing index we let VC to know what to show
-        coordinator?.goToUserSubscribtionListModule(1, with: user)
+    func collectionDidClickSubscriptions() {
+            /// Zero here means that when user clicks `Subscriptions` it is gonna open next screen that has segmentedControl,
+            /// which shows user's subscribed members at `0` and subscribers at `1`, passing index we let VC to know what to show
+            coordinator?.goToUserSubscribtionListModule(.subscriptions, with: user)
     }
     
     func collectionDidClickOptions(for event: Event?) {
