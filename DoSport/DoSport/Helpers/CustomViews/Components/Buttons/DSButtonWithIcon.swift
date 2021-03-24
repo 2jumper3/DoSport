@@ -18,6 +18,7 @@ final class DSButtonWithIcon: UIView {
     private lazy var imageView: UIImageView = UIImageView()
     
     private let isTextInCenter: Bool
+    private let isBindable: Bool
     
     //MARK: Init
     
@@ -25,9 +26,11 @@ final class DSButtonWithIcon: UIView {
          txt text: String,
          textColor: UIColor = .white,
          imageColor: UIColor = .white,
-         isTextInCenter: Bool = false
+         isTextInCenter: Bool = false,
+         isBindable: Bool = true
     ) {
         self.isTextInCenter = isTextInCenter
+        self.isBindable = isBindable
         super.init(frame: .zero)
         
         label.text = text
@@ -68,19 +71,26 @@ final class DSButtonWithIcon: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
-        bind(didTapped: true)
+        if isBindable {
+            bind(didTapped: true)
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         
-        bind(didTapped: false)
+        if isBindable {
+            bind(didTapped: false)
+        }
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         
-        bind(didTapped: false)
+        if isBindable {
+            bind(didTapped: false)
+        }
     }
 }
 
@@ -102,7 +112,7 @@ extension DSButtonWithIcon {
         }
     }
     
-    func addTarget(_ target: UIView?, action: Selector?) {
+    func addTarget(_ target: Any?, action: Selector?) {
         let gesture = UITapGestureRecognizer(target: target, action: action)
         self.addGestureRecognizer(gesture)
     }

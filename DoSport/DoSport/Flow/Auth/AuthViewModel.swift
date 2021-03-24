@@ -23,7 +23,7 @@ protocol AuthViewModelProtocol: class {
 
 final class AuthViewModel: NSObject, AuthViewModelProtocol {
     
-    var onDidSignUpWithSocialMedia: ((AuthDataFlow.SignUpSocialMedia.ViewModel) -> Void)?
+    var onDidSignUpWithSocialMedia: ((AuthDataFlow.SignUpSocialMedia.ViewModel) -> Swift.Void)?
     var onDidSendSignUpDataToServer: ((AuthDataFlow.SendSignUpDataToServer.ViewModel) -> Swift.Void)?
     
     private let requestsManager: RequestsManager

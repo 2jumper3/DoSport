@@ -119,31 +119,31 @@ class AuthView: UIView {
         }
         
         appleAuthButton.snp.makeConstraints {
-                $0.centerX.equalToSuperview()
-                $0.centerY.equalToSuperview().offset(-40)
-                $0.width.equalToSuperview().multipliedBy(0.87)
-                $0.height.equalTo(48)
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-40)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+            $0.height.equalTo(48)
         }
         
         googleAuthButton.snp.makeConstraints {
-                $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(appleAuthButton.snp.bottom).offset(12)
-                $0.width.equalToSuperview().multipliedBy(0.87)
-                $0.height.equalTo(48)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+            $0.height.equalTo(48)
         }
         
         vkAuthButton.snp.makeConstraints {
-                $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(googleAuthButton.snp.bottom).offset(12)
-                $0.width.equalToSuperview().multipliedBy(0.87)
-                $0.height.equalTo(48)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+            $0.height.equalTo(48)
         }
         
         fbAuthButton.snp.makeConstraints {
-                $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(vkAuthButton.snp.bottom).offset(12)
-                $0.width.equalToSuperview().multipliedBy(0.87)
-                $0.height.equalTo(48)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+            $0.height.equalTo(48)
         }
         
         regulationsLabel.snp.makeConstraints {
