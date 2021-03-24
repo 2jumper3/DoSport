@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VKSession {
+final class VKSession {
     
     static let shared = VKSession()
     
