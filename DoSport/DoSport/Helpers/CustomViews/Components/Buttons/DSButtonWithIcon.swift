@@ -101,5 +101,10 @@ extension DSButtonWithIcon {
             }.startAnimation()
         }
     }
+    
+    func addTarget(_ target: UIView?, action: Selector?) {
+        let gesture = UITapGestureRecognizer(target: target, action: action)
+        self.addGestureRecognizer(gesture)
+    }
 }
 

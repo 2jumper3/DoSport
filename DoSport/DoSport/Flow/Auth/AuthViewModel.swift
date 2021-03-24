@@ -69,16 +69,19 @@ private extension AuthViewModel {
     }
     
     func signUpWithFacebook(from viewController: AuthViewController?) {
-        let login = LoginManager()
+        let fbLoginManager = LoginManager()
         
-        login.logIn(permissions: [], from: viewController) { result, error in
+        fbLoginManager.logIn(permissions: [], from: viewController) { [unowned self] result, error in
             
             if error != nil {
-                print("Process error")
+                /// login error occured
+                self.onDidSignUpWithSocialMedia?(.init(state: .failed))
             } else if ((result?.isCancelled) != nil) {
-                print("Cancelled")
+                /// login cancelled
+                self.onDidSignUpWithSocialMedia?(.init(state: .failed))
             } else {
-                print("Logged in")
+                /// login successfully
+                self.onDidSignUpWithSocialMedia?(.init(state: .success))
             }
         }
     }
@@ -130,6 +133,10 @@ extension AuthViewModel: LoginButtonDelegate {
 }
 
 enum AuthDataFlow {
+    
+    enum FetchUserProfile {
+        
+    }
     
     enum SignUpSocialMedia {
         struct Request {

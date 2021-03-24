@@ -89,21 +89,17 @@ extension AuthViewController: AuthViewDelegate {
     
     func fbAuthClicked() {
         viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .facebook, viewController: self))
-        coordinator?.goToMainTabBar()
     }
     
     func vkAuthButtonClicked() {
         viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .vkontakte, viewController: nil))
-        coordinator?.openVkAuthView()
     }
     
     func googleAuthButtonClicked() {
         viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .google, viewController: nil))
-        coordinator?.goToMainTabBar()
     }
     
     func appleAuthButtonClicked() {
         viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .apple, viewController: nil))
-        coordinator?.goToMainTabBar()
     }
 }

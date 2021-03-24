@@ -72,7 +72,7 @@ class AuthView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var skipButton = UIButton.makeButton(title: Texts.Auth.submit,
+    private lazy var skipButton = UIButton.makeButton(title: Texts.Auth.skip,
                                                       titleColor: Colors.mainBlue)
     
     //MARK: Init
@@ -82,10 +82,10 @@ class AuthView: UIView {
         backgroundColor = Colors.darkBlue
         
         skipButton.addTarget(self, action: #selector(handleSkipButton))
-//        appleAuthButton.addTarget(self, action: #selector(handleSkipButton))
-//        googleAuthButton.addTarget(self, action: #selector(handleSkipButton))
-//        vkAuthButton.addTarget(self, action: #selector(handleSkipButton))
-//        fbAuthButton.addTarget(self, action: #selector(handleSkipButton))
+        appleAuthButton.addTarget(self, action: #selector(handleAppleAuthButton))
+        googleAuthButton.addTarget(self, action: #selector(handleGoogleAuthButton))
+        vkAuthButton.addTarget(self, action: #selector(handleVKAuthButton))
+        fbAuthButton.addTarget(self, action: #selector(handleFBAuthButton))
         
         addSubviews(
             logoImageView,
@@ -177,5 +177,9 @@ class AuthView: UIView {
     
     func handleGoogleAuthButton() {
         delegate?.googleAuthButtonClicked()
+    }
+    
+    func handleAppleAuthButton() {
+        delegate?.appleAuthButtonClicked()
     }
 }
