@@ -40,7 +40,7 @@ final class UserAccountEditingView: UIView {
     private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
                                                            titleColor: Colors.mainBlue)
     
-    private lazy var signOutButton: DSEventControlButton = .init(
+    private lazy var signOutButton: DSButtonWithIcon = .init(
         img: Icons.UserProfileEdit.logout,
         txt: Texts.UserAccountEditing.signOut,
         textColor: Colors.mainBlue,
@@ -48,7 +48,7 @@ final class UserAccountEditingView: UIView {
     
     private lazy var signoutBottomSeparatorView: DSSeparatorView = DSSeparatorView()
     
-    private lazy var deleteProfileButton: DSEventControlButton = .init(
+    private lazy var deleteProfileButton: DSButtonWithIcon = .init(
         img: Icons.UserProfileEdit.delete,
         txt: Texts.UserAccountEditing.deleteProfile,
         textColor: Colors.mainBlue,
