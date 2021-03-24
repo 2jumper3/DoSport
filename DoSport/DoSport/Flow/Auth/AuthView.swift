@@ -6,14 +6,40 @@
 //
 
 import UIKit
+import SnapKit
+import FBSDKLoginKit
+import GoogleSignIn
 
-protocol AuthViewDelegate: AnyObject {
-    func skipButtonClicked()
+protocol AuthViewDelegate: class {
+    func skipButtonTapped()
+    func fbAuthPassed()
+    func fbAuthClicked()
+    func vkAuthButtonClicked()
 }
 
-final class AuthView: UIView {
-    
+class AuthView: UIView, LoginButtonDelegate {
+
     weak var delegate: AuthViewDelegate?
+    
+    private lazy var fbLoginBtn: CustomAuthButton = {
+        $0.addTarget(self, action: #selector(fbAuthButtonTapped), for: .touchUpInside)
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.facebook, state: .normal, image: Icons.Auth.fbAuth, isHidden: false))
+    
+    private lazy var appleLoginBtn: CustomAuthButton = {
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.apple, state: .normal, image: Icons.Auth.appleAuth, isHidden: false))
+    
+    private lazy var googleLoginBtn: CustomAuthButton = {
+        $0.addTarget(self, action: #selector(googleAuthButtonTapped), for: .touchUpInside)
+
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.google, state: .normal, image: Icons.Auth.googleAuth, isHidden: false))
+    
+    private lazy var vkLoginBtn: CustomAuthButton = {
+        $0.addTarget(self, action: #selector(vkAuthButtonTapped), for: .touchUpInside)
+        return $0
+    }(CustomAuthButton(title: Texts.Auth.AuthButtons.vkontakte, state: .normal, image: Icons.Auth.vkAuth, isHidden: false))
     
     private let logoImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +75,7 @@ final class AuthView: UIView {
     }(UILabel())
     
     private lazy var skipButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
-                                                           titleColor: Colors.mainBlue)
+                                                      titleColor: Colors.mainBlue)
     
     //MARK: Init
     
@@ -59,7 +85,8 @@ final class AuthView: UIView {
         
         skipButton.addTarget(self, action: #selector(handleSkipButton), for: .touchUpInside)
         
-        addSubviews(logoImageView,titleLabel,descriptionLabel,regulationsLabel,skipButton)
+        addSubviews(logoImageView,titleLabel,regulationsLabel,
+                    appleLoginBtn,googleLoginBtn,vkLoginBtn,fbLoginBtn)
     }
     
     required init?(coder: NSCoder) {
@@ -73,40 +100,105 @@ final class AuthView: UIView {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.15)
             $0.height.equalTo(logoImageView.snp.width)
-            $0.bottom.equalTo(titleLabel.snp.top).offset(-67)
+            $0.centerY.equalToSuperview().multipliedBy(0.4)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.bottom.equalTo(descriptionLabel.snp.top).offset(-24)
+            $0.top.equalTo(logoImageView.snp.bottom).offset(self.frame.size.height / 10)
             $0.centerX.equalToSuperview()
         }
         
-        descriptionLabel.snp.makeConstraints {
-            $0.bottom.equalTo(skipButton.snp.top).offset(-12)
-            $0.height.equalTo(skipButton.snp.height).multipliedBy(0.7)
-            $0.width.centerX.equalTo(skipButton)
+        appleLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.centerY.equalToSuperview().offset(-40)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
         }
-        
-        skipButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-40)
-            $0.width.equalToSuperview().multipliedBy(0.87)
-            $0.height.equalTo(48)
+        googleLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+            $0.top.equalTo(appleLoginBtn.snp.bottom).offset(12)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
         }
-        
+        vkLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+            $0.top.equalTo(googleLoginBtn.snp.bottom).offset(12)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
+        }
+        fbLoginBtn.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+            $0.top.equalTo(vkLoginBtn.snp.bottom).offset(12)
+                $0.width.equalToSuperview().multipliedBy(0.87)
+                $0.height.equalTo(48)
+        }
         regulationsLabel.snp.makeConstraints {
-            $0.top.equalTo(skipButton.snp.bottom).offset(16)
-            $0.width.centerX.equalTo(skipButton)
-            $0.height.equalTo(descriptionLabel)
+            $0.top.equalTo(fbLoginBtn.snp.bottom).offset(16)
+            $0.width.centerX.equalTo(fbLoginBtn)
+            $0.height.equalTo(fbLoginBtn)
         }
+    }
+    
+    //MARK: - Actions
+    
+    @objc private func fbAuthButtonTapped() {
+        delegate?.fbAuthClicked()
+    }
+    
+    @objc private func vkAuthButtonTapped() {
+        delegate?.vkAuthButtonClicked()
+    }
+    
+    @objc private func googleAuthButtonTapped () {
+        GIDSignIn.sharedInstance()?.signIn()
     }
 }
 
 //MARK: Actions
 
-@objc private extension AuthView {
+@objc extension AuthView {
     
     func handleSkipButton() {
-        delegate?.skipButtonClicked()
+        self.delegate?.skipButtonTapped()
+    }
+    
+    func loginButton(
+        _ loginButton: FBLoginButton,
+        didCompleteWith result: LoginManagerLoginResult?,
+        error: Error?
+    ) {
+        delegate?.fbAuthPassed()
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        return
+    }
+}
+
+//MARK: - GIDSignInDelegate -
+
+extension AuthView: GIDSignInDelegate {
+    
+    func sign(
+        _ signIn: GIDSignIn!,
+        didSignInFor user: GIDGoogleUser!,
+        withError error: Error!
+    ) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        
+        let _ = user.userID
+        let _ = user.authentication.idToken
+        let _ = user.profile.name
+        let _ = user.profile.givenName
+        let _ = user.profile.familyName
+        let _ = user.profile.email
+//        print (userId,idToken,email)
     }
 }

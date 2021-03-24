@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import GoogleSignIn
 
 final class AuthViewController: UIViewController {
     
@@ -39,7 +41,9 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Google methods
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +58,43 @@ final class AuthViewController: UIViewController {
         
         coordinator?.removeDependency(coordinator)
     }
+    
 }
 
 //MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
     
-    func skipButtonClicked() {
-        coordinator?.goToRegistrationModule()
+    func vkAuthButtonClicked() {
+        coordinator?.openVkAuthView()
+    }
+    
+    func fbAuthClicked() {
+        let login = LoginManager()
+        login.logIn(
+            permissions: [],
+            from: self
+        ) { result, error in
+            
+            if error != nil {
+                print("Process error")
+            } else if ((result?.isCancelled) != nil) {
+                print("Cancelled")
+            } else {
+                print("Logged in")
+            }
+        }
+    }
+    
+    func fbAuthPassed() {
+        coordinator?.goToMainTabBar()
+    }
+    
+    func vkAuthPassed() {
+        coordinator?.goToMainTabBar()
+    }
+    
+    func skipButtonTapped() {
+        coordinator?.goToMainTabBar()
     }
 }
