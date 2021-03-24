@@ -115,6 +115,9 @@
 		6581531D260B5C6600436BCB /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581531A260B5C6600436BCB /* LoginAPI.swift */; };
 		6581531E260B5C6600436BCB /* WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581531B260B5C6600436BCB /* WKWebView.swift */; };
 		6581531F260B5C6600436BCB /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581531C260B5C6600436BCB /* WKWebViewController.swift */; };
+		658153F3260BA38700436BCB /* UserSubscriberListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658153F2260BA38700436BCB /* UserSubscriberListViewModel.swift */; };
+		658153F9260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658153F8260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift */; };
+		65815401260BB7A400436BCB /* DSEnums+UserMainContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65815400260BB7A400436BCB /* DSEnums+UserMainContentType.swift */; };
 		65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870507259209ED00EFF7C7 /* AuthViewController.swift */; };
 		65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870512259209F700EFF7C7 /* AuthViewModel.swift */; };
 		6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051725920A0100EFF7C7 /* AuthCoordinator.swift */; };
@@ -165,7 +168,7 @@
 		65B6D98226060B7C0099BC08 /* DSModels+Api+SportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */; };
 		65B6D98726060B870099BC08 /* DSModels+Api+SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */; };
 		65B6D98C26060B980099BC08 /* DSModels+Api+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */; };
-		65B6D9F326067A290099BC08 /* EventsByParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D9F226067A290099BC08 /* EventsByParameter.swift */; };
+		65B6D9F326067A290099BC08 /* DSEnums+EventsByParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6D9F226067A290099BC08 /* DSEnums+EventsByParameter.swift */; };
 		65B7131D25FCE85C0013A082 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */; };
 		65B803F2259B62D0009D9DB3 /* DSBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */; };
 		65BBC37225DB5E78003DEF53 /* DSCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BBC37125DB5E78003DEF53 /* DSCheckboxButton.swift */; };
@@ -418,6 +421,9 @@
 		6581531A260B5C6600436BCB /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		6581531B260B5C6600436BCB /* WKWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
 		6581531C260B5C6600436BCB /* WKWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
+		658153F2260BA38700436BCB /* UserSubscriberListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriberListViewModel.swift; sourceTree = "<group>"; };
+		658153F8260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+UserSubscribersContentType.swift"; sourceTree = "<group>"; };
+		65815400260BB7A400436BCB /* DSEnums+UserMainContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+UserMainContentType.swift"; sourceTree = "<group>"; };
 		65870507259209ED00EFF7C7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		65870512259209F700EFF7C7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		6587051725920A0100EFF7C7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -471,7 +477,7 @@
 		65B6D98126060B7C0099BC08 /* DSModels+Api+SportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportGround.swift"; sourceTree = "<group>"; };
 		65B6D98626060B870099BC08 /* DSModels+Api+SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+SportType.swift"; sourceTree = "<group>"; };
 		65B6D98B26060B980099BC08 /* DSModels+Api+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSModels+Api+User.swift"; sourceTree = "<group>"; };
-		65B6D9F226067A290099BC08 /* EventsByParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsByParameter.swift; sourceTree = "<group>"; };
+		65B6D9F226067A290099BC08 /* DSEnums+EventsByParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DSEnums+EventsByParameter.swift"; sourceTree = "<group>"; };
 		65B7131C25FCE85C0013A082 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65B803F1259B62D0009D9DB3 /* DSBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSBarBackButton.swift; sourceTree = "<group>"; };
 		65BBC37125DB5E78003DEF53 /* DSCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSCheckboxButton.swift; sourceTree = "<group>"; };
@@ -1027,9 +1033,11 @@
 		65B6D923260607960099BC08 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				65B6D9F226067A290099BC08 /* EventsByParameter.swift */,
+				65B6D9F226067A290099BC08 /* DSEnums+EventsByParameter.swift */,
 				65B6D96326060B1D0099BC08 /* DSEnums+FeedFilterType.swift */,
 				65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */,
+				65815400260BB7A400436BCB /* DSEnums+UserMainContentType.swift */,
+				658153F8260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1276,6 +1284,7 @@
 				65EEB93B25E9E36B00821F8F /* UserSubscriberListCoordinator.swift */,
 				65EEB93625E9E36300821F8F /* UserSubscriberListDataSource.swift */,
 				65EEB93125E9E35D00821F8F /* UserSubscriberListView.swift */,
+				658153F2260BA38700436BCB /* UserSubscriberListViewModel.swift */,
 			);
 			path = UserSubscriberList;
 			sourceTree = "<group>";
@@ -1755,6 +1764,7 @@
 				65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
 				65CD777825EB4A9E00D042FD /* PrivacySettingListDataSource.swift in Sources */,
+				658153F9260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift in Sources */,
 				653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */,
 				6534089B259A77280072542D /* UIImage.swift in Sources */,
 				65CDF8A925DB12320049F711 /* SportGroundSelectionListViewModel.swift in Sources */,
@@ -1971,6 +1981,7 @@
 				654309B02608C02200F76765 /* DSKeychainAccessOptions.swift in Sources */,
 				6537082526074B440075581E /* NetworkSuccessResponseType.swift in Sources */,
 				CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */,
+				65815401260BB7A400436BCB /* DSEnums+UserMainContentType.swift in Sources */,
 				650B75B12600C6A400625332 /* EventVisibilityChangePopupView.swift in Sources */,
 				65CD77E525EB589B00D042FD /* UserReportMessageViewModel.swift in Sources */,
 				65A2DC7426011A4E003B9ECA /* DSLoginData.swift in Sources */,
@@ -1984,11 +1995,12 @@
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
 				653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */,
 				653179D825D112C0001DBA4B /* DateSelectionView.swift in Sources */,
-				65B6D9F326067A290099BC08 /* EventsByParameter.swift in Sources */,
+				65B6D9F326067A290099BC08 /* DSEnums+EventsByParameter.swift in Sources */,
 				65C8B4C425E8C66900BBCF77 /* UserMainCoordinator.swift in Sources */,
 				653179B625D11247001DBA4B /* SubwayListView.swift in Sources */,
 				0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */,
 				6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */,
+				658153F3260BA38700436BCB /* UserSubscriberListViewModel.swift in Sources */,
 				6531799E25D11204001DBA4B /* RegionListCoordinator.swift in Sources */,
 				65294D9A25B38311003E7ED2 /* DatePicker.swift in Sources */,
 				CEDEB87F258CE2EA007B2BCA /* Security.swift in Sources */,
