@@ -9,7 +9,6 @@ import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
 
-
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
 //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -33,7 +32,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
     
     var window : UIWindow?
     
-    
     func application(
         _ app: UIApplication,
         open url: URL,
@@ -46,37 +44,21 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
             sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
-        
     }
-    
     
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         
-        let pushManager = DSPushNotificationManager(userID: "currently_logged_in_user_id") // TODO: finish UN setup
-        pushManager.registerForPushNotifications()
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         
-        FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = "dosport-307319"
+        //            GIDSignIn.sharedInstance().delegate = self
 
-        if #available(iOS 13, *) {
-            // do only pure app launch stuff, not interface stuff
-        } else {
-            ApplicationDelegate.shared.application(
-                application,
-                didFinishLaunchingWithOptions: launchOptions
-            )
-            GIDSignIn.sharedInstance().clientID = "dosport-307319"
-//            GIDSignIn.sharedInstance().delegate = self
-            
-            window = UIWindow(frame: UIScreen.main.bounds)
-            let appCoordinator = AppCoordinator(window: window!)
-            self.appCoordinator = appCoordinator
-            self.appCoordinator?.start()
-            
-            window!.makeKeyAndVisible()
-        }
         return true
     }
     

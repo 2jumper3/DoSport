@@ -64,39 +64,24 @@ final class AuthViewController: UIViewController {
 //MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
+    
     func vkAuthButtonClicked() {
         coordinator?.openVkAuthView()
     }
+    
     func fbAuthClicked() {
         let login = LoginManager()
         login.logIn(
             permissions: [],
-            from: self,
-            handler: { result, error in
-                if error != nil {
-                    print("Process error")
-                } else if ((result?.isCancelled) != nil) {
-                    print("Cancelled")
-                } else {
-                    print("Logged in")
-                }
-            })
-    }
-    
-    func regionSelectionButtonTapped() {
-        coordinator?.goToCountryListModule { callingCode in
-            self.authView.bind(callingCode: callingCode)
-        }
-    }
-   
-    func submitButtonTapped(with text: String) {
-        viewModel.checkIfNumberExists { [weak self] authResult in
-            switch authResult {
-            case .registred:
-                // TODO: when back-end is ready, provide registred `User` here for further use
-                self?.coordinator?.goToPasswordEntryModule()
-            case .notRegistred:
-                self?.coordinator?.goToCodeEntryModule(text)
+            from: self
+        ) { result, error in
+            
+            if error != nil {
+                print("Process error")
+            } else if ((result?.isCancelled) != nil) {
+                print("Cancelled")
+            } else {
+                print("Logged in")
             }
         }
     }
@@ -109,5 +94,7 @@ extension AuthViewController: AuthViewDelegate {
         coordinator?.goToMainTabBar()
     }
     
-    
+    func skipButtonTapped() {
+        coordinator?.goToMainTabBar()
+    }
 }

@@ -10,15 +10,14 @@ import SnapKit
 import FBSDKLoginKit
 import GoogleSignIn
 
-protocol AuthViewDelegate: AnyObject {
-    func submitButtonTapped(with text: String)
-    func regionSelectionButtonTapped()
+protocol AuthViewDelegate: class {
+    func skipButtonTapped()
     func fbAuthPassed()
     func fbAuthClicked()
     func vkAuthButtonClicked()
 }
 
-final class AuthView: UIView,LoginButtonDelegate {
+class AuthView: UIView, LoginButtonDelegate {
 
     weak var delegate: AuthViewDelegate?
     
@@ -76,7 +75,7 @@ final class AuthView: UIView,LoginButtonDelegate {
     }(UILabel())
     
     private lazy var skipButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
-                                                           titleColor: Colors.mainBlue)
+                                                      titleColor: Colors.mainBlue)
     
     //MARK: Init
     
@@ -141,34 +140,7 @@ final class AuthView: UIView,LoginButtonDelegate {
     }
     
     //MARK: - Actions
-
-    @objc private func handleSubmitButton() {
-        let text = phoneNumberAddView.text
-        delegate?.submitButtonTapped(with: text)
-    }
     
-    @objc private func handleRegionSelectionButton() {
-        delegate?.regionSelectionButtonTapped()
-    }
-    
-    @objc private func handleKeybordWillShow(_ notification: Notification) {
-        guard
-            let userInfo = notification.userInfo,
-            let keyboardFrame = (
-                userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-            )?.cgRectValue
-        else { return }
-        
-        UIView.animate(withDuration: 0.3) {
-            self.submitButton.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
-        }
-    }
-    
-    @objc private func handleKeybordWillHide() {
-        UIView.animate(withDuration: 0.3) {
-            self.submitButton.transform = .identity
-        }
-    }
     @objc private func fbAuthButtonTapped() {
         delegate?.fbAuthClicked()
     }
@@ -184,14 +156,17 @@ final class AuthView: UIView,LoginButtonDelegate {
 
 //MARK: Actions
 
-@objc private extension AuthView {
+@objc extension AuthView {
     
     func handleSkipButton() {
-        delegate?.skipButtonClicked()
+        self.delegate?.skipButtonTapped()
     }
     
-    //MARK: - FaceBookDelegate Methods
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+    func loginButton(
+        _ loginButton: FBLoginButton,
+        didCompleteWith result: LoginManagerLoginResult?,
+        error: Error?
+    ) {
         delegate?.fbAuthPassed()
     }
     
@@ -200,26 +175,30 @@ final class AuthView: UIView,LoginButtonDelegate {
     }
 }
 
-//MARK: - GoogleAuth Methods
+//MARK: - GIDSignInDelegate -
+
 extension AuthView: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-                if let error = error {
-                    if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                      print("The user has not signed in before or they have since signed out.")
-                    } else {
-                      print("\(error.localizedDescription)")
-                    }
-                    return
-                  }
-                  // Perform any operations on signed in user here.
-                  let userId = user.userID                  // For client-side use only!
-                  let idToken = user.authentication.idToken // Safe to send to the server
-                  let fullName = user.profile.name
-                  let givenName = user.profile.givenName
-                  let familyName = user.profile.familyName
-                  let email = user.profile.email
-        print (userId,idToken,email)
+    
+    func sign(
+        _ signIn: GIDSignIn!,
+        didSignInFor user: GIDGoogleUser!,
+        withError error: Error!
+    ) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        
+        let _ = user.userID
+        let _ = user.authentication.idToken
+        let _ = user.profile.name
+        let _ = user.profile.givenName
+        let _ = user.profile.familyName
+        let _ = user.profile.email
+//        print (userId,idToken,email)
     }
-    
-    
 }

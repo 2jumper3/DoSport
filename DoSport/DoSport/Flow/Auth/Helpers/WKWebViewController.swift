@@ -7,11 +7,8 @@
 
 import UIKit
 import WebKit
-import Alamofire
 
-//MARK: - WebView для авторизации пользователя
-
-class WKWebViewController: UIViewController, WKNavigationDelegate {
+final class WKWebViewController: UIViewController, WKNavigationDelegate {
 
     weak var webView: WKWebView?
     
