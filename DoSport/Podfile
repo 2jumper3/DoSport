@@ -9,8 +9,6 @@ target 'DoSport' do
   pod 'YandexMapsMobile', ’4.0.0-full’
   pod 'SwiftLint'
   pod 'SnapKit', '~> 5.0.0'
-  pod 'RangeSeekSlider'
+  pod 'GoogleSignIn'
   pod 'FSCalendar'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Messaging'
 end
