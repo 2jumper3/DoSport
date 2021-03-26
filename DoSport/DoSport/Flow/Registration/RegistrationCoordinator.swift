@@ -31,10 +31,21 @@ final class RegistrationCoordinator: Coordinator {
         coordinator.start()
     }
     
-    func goToSportTypeListModule() {
-        let coordinator = SportTypeGridCoordinator(navController: self.navigationController)
-        self.store(coordinator: coordinator)
-        coordinator.start()
+    func goToSportTypeListModule(completion: @escaping () -> Swift.Void) {
+        let requestManager = RequestsManager.shared
+        let viewModel = SportTypeGridViewModelImplementation(requestManager: requestManager)
+        let vc = SportTypeGridViewController(
+            viewModel: viewModel,
+            goBackCompletion: completion
+        )
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func closeSportTypeGridModule() {
+        self.navigationController?.dismiss(animated: true) {
+            self.goToFeedModule()
+        }
     }
 }
 

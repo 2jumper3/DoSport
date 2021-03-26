@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol SportTypeGridViewControllerProtocol: class {
-    func displaySportTypes(viewModel: SportTypeGridDataFlow.LoadSportTypes.ViewModel)
-    func displaySaveSportTypesResult(viewModel: SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel)
-}
-
 final class SportTypeGridViewController: UIViewController {
     
-    weak var coordinator: SportTypeGridCoordinator?
+    private let goBackCompletion: (() -> Swift.Void)
     private let viewModel: SportTypeGridViewModel
     private lazy var sportTypeListView = self.view as! SportTypeGridView
     private lazy var collectionManager = SportTypeGridDataSource()
@@ -31,8 +26,12 @@ final class SportTypeGridViewController: UIViewController {
     
     //MARK: Init
     
-    init(viewModel: SportTypeGridViewModel) {
+    init(
+        viewModel: SportTypeGridViewModel,
+        goBackCompletion: @escaping (() -> Swift.Void)
+    ) {
         self.viewModel = viewModel
+        self.goBackCompletion = goBackCompletion
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,6 +60,8 @@ final class SportTypeGridViewController: UIViewController {
             sportTypeListView.updateViewToState(self.viewState)
         }
         
+        self.setupViewModelBindings()
+        
         viewModel.doLoadSportTypes(request: .init())
     }
     
@@ -68,17 +69,43 @@ final class SportTypeGridViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        coordinator?.removeDependency(coordinator)
-    }
 }
 
 //MARK: Private API
 
 private extension SportTypeGridViewController {
+    
+    func setupViewModelBindings() {
+        viewModel.onDidLoadSportTypes = { [unowned self] data in
+            if case .success(let viewModels) = data.state, let newViewModels = viewModels {
+                self.collectionManager.viewModels = newViewModels
+                self.sportTypeListView.updateViewToState(data.state)
+                self.sportTypeListView.updateCollectionDataSource(dateSource: self.collectionManager)
+            }
+            
+            if case .loading = data.state {
+                self.sportTypeListView.updateViewToState(data.state)
+            }
+            
+            if case .failed = data.state {
+                // TODO: implement data fail handler view
+            }
+        }
+        
+        viewModel.onDidSaveSportTypes = { [unowned self] data in
+            if case .success = data.state {
+                self.goBackCompletion()
+            }
+            
+            if case .loading = data.state {
+                
+            }
+            
+            if case .failed = data.state {
+                
+            }
+        }
+    }
     
     func addPreferredSportType(_ sportType: DSModels.SportType.SportTypeView) {
         guard selectedSports.count > 0 else {
@@ -101,42 +128,7 @@ private extension SportTypeGridViewController {
 
 @objc private extension SportTypeGridViewController {
     func handleBackButton() {
-        coordinator?.goBack()
-    }
-}
-
-//MARK: - SportTypeGridViewControllerProtocol -
-
-extension SportTypeGridViewController: SportTypeGridViewControllerProtocol {
-    
-    func displaySaveSportTypesResult(viewModel: SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel) {
-        if case .success = viewModel.state {
-            coordinator?.goToFeedModule()
-        }
         
-        if case .loading = viewModel.state {
-            
-        }
-        
-        if case .failed = viewModel.state {
-            
-        }
-    }
-    
-    func displaySportTypes(viewModel: SportTypeGridDataFlow.LoadSportTypes.ViewModel) {
-        if case .success(let data) = viewModel.state, let viewModels = data {
-            self.collectionManager.viewModels = viewModels
-            self.sportTypeListView.updateViewToState(viewModel.state)
-            self.sportTypeListView.updateCollectionDataSource(dateSource: self.collectionManager)
-        }
-        
-        if case .loading = viewModel.state {
-            self.sportTypeListView.updateViewToState(viewModel.state)
-        }
-        
-        if case .failed = viewModel.state {
-            // TODO: implement data fail handler view
-        }
     }
 }
 

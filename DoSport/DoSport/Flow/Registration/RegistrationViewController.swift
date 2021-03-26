@@ -80,9 +80,10 @@ extension RegistrationViewController: RegistrationViewDelegate {
     }
     
     func saveButtonClicked(with username: String?, dob: String?, gender: String?) {
-        //создать модель с этими данными или передать данные в vm и создать модель там
         viewModel.createUser() { [weak self] in
-            self?.coordinator?.goToFeedModule()
+            self?.coordinator?.goToSportTypeListModule {
+                self?.coordinator?.closeSportTypeGridModule()
+            }
         }
     }
     

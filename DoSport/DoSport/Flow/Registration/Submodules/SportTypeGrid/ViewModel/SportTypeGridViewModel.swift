@@ -8,13 +8,17 @@
 import Foundation
 
 protocol SportTypeGridViewModel: class {
+    var onDidLoadSportTypes: ((SportTypeGridDataFlow.LoadSportTypes.ViewModel) -> Swift.Void)? { get set }
+    var onDidSaveSportTypes: ((SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel) -> Swift.Void)? { get set } 
+    
     func doLoadSportTypes(request: SportTypeGridDataFlow.LoadSportTypes.Request)
     func doSaveSportTypes(request: SportTypeGridDataFlow.SaveSelectedSportTypes.Request)
 }
 
 final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewModel {
     
-    weak var viewController: SportTypeGridViewControllerProtocol?
+    var onDidLoadSportTypes: ((SportTypeGridDataFlow.LoadSportTypes.ViewModel) -> Swift.Void)?
+    var onDidSaveSportTypes: ((SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel) -> Swift.Void)?
     
     private let requestManager: RequestsManager
     
@@ -24,7 +28,7 @@ final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewMod
     }
     
     func doLoadSportTypes(request: SportTypeGridDataFlow.LoadSportTypes.Request) {
-        self.viewController?.displaySportTypes(viewModel: .init(state: .loading))
+        self.onDidLoadSportTypes?(.init(state: .loading))
         
         self.requestManager.sportTypesGet { [weak self] response in
             switch response {
@@ -34,7 +38,7 @@ final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewMod
                 
                 switch result {
                 case .object(let sportTypes):
-                    self?.viewController?.displaySportTypes(viewModel: .init(state: .success(sportTypes)))
+                    self?.onDidLoadSportTypes?(.init(state: .success(sportTypes)))
                 case .emptyObject:
                     print(#function, #file, #line, " need to finish handling empty object")
                 }
@@ -43,15 +47,15 @@ final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewMod
     }
     
     func doSaveSportTypes(request: SportTypeGridDataFlow.SaveSelectedSportTypes.Request) {
-        self.viewController?.displaySaveSportTypesResult(viewModel: .init(state: .loading))
+        self.onDidSaveSportTypes?(.init(state: .loading))
         
         requestManager.userPreferredSportTypesEdit(params: request.sportTypes) { response in
             switch response {
             case .success:
-                self.viewController?.displaySaveSportTypesResult(viewModel: .init(state: .success(nil)))
+                self.onDidSaveSportTypes?(.init(state: .success(nil)))
             case .failure:
                 DispatchQueue.main.async {
-                    self.viewController?.displaySaveSportTypesResult(viewModel: .init(state: .success(nil)))
+                    self.onDidSaveSportTypes?(.init(state: .success(nil)))
                 }
             }
         }

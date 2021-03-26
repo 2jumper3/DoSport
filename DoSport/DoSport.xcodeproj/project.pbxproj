@@ -100,6 +100,7 @@
 		6568F8F725B4F99000225043 /* FeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568F8F625B4F99000225043 /* FeedDataSource.swift */; };
 		656B727E260E42C300E02221 /* AppLanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B727D260E42C300E02221 /* AppLanguageModel.swift */; };
 		656B7282260E440B00E02221 /* AppLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B7281260E440B00E02221 /* AppLanguageViewModel.swift */; };
+		656B72D1260E865C00E02221 /* SportTypeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B72D0260E865C00E02221 /* SportTypeGrid.swift */; };
 		656CC26A259A521000DEC84C /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CC269259A521000DEC84C /* LoadJson.swift */; };
 		6572954025D953FD00996440 /* TableViewCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572953F25D953FD00996440 /* TableViewCommentCell.swift */; };
 		6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572954725D9540500996440 /* TableViewMemberCell.swift */; };
@@ -226,11 +227,9 @@
 		65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2971725DD4222005AC413 /* MainTabBarCoordinator.swift */; };
 		65D2972025DD644C005AC413 /* Date+currentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2971F25DD644C005AC413 /* Date+currentDate.swift */; };
 		65D9387425DF2454009D1CDD /* ShareMemberCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9387325DF2454009D1CDD /* ShareMemberCollectionCell.swift */; };
-		65D973F325B4730E00769653 /* SportTypeGridAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */; };
 		65D973FB25B4731800769653 /* SportTypeGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FA25B4731800769653 /* SportTypeGridViewController.swift */; };
 		65D9740025B4731D00769653 /* SportTypeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FF25B4731D00769653 /* SportTypeGridView.swift */; };
 		65D9740525B4732400769653 /* SportTypeGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9740425B4732400769653 /* SportTypeGridViewModel.swift */; };
-		65D9740A25B4733D00769653 /* SportTypeGridCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9740925B4733D00769653 /* SportTypeGridCoordinator.swift */; };
 		65D9741225B4760F00769653 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741125B4760F00769653 /* Sport.swift */; };
 		65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */; };
 		65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */; };
@@ -407,6 +406,7 @@
 		6568F8F625B4F99000225043 /* FeedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataSource.swift; sourceTree = "<group>"; };
 		656B727D260E42C300E02221 /* AppLanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageModel.swift; sourceTree = "<group>"; };
 		656B7281260E440B00E02221 /* AppLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageViewModel.swift; sourceTree = "<group>"; };
+		656B72D0260E865C00E02221 /* SportTypeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGrid.swift; sourceTree = "<group>"; };
 		656CC24C259A50A200DEC84C /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
 		656CC269259A521000DEC84C /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
 		6572953F25D953FD00996440 /* TableViewCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCommentCell.swift; sourceTree = "<group>"; };
@@ -537,11 +537,9 @@
 		65D2971725DD4222005AC413 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		65D2971F25DD644C005AC413 /* Date+currentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+currentDate.swift"; sourceTree = "<group>"; };
 		65D9387325DF2454009D1CDD /* ShareMemberCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMemberCollectionCell.swift; sourceTree = "<group>"; };
-		65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridAssembly.swift; sourceTree = "<group>"; };
 		65D973FA25B4731800769653 /* SportTypeGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridViewController.swift; sourceTree = "<group>"; };
 		65D973FF25B4731D00769653 /* SportTypeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridView.swift; sourceTree = "<group>"; };
 		65D9740425B4732400769653 /* SportTypeGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridViewModel.swift; sourceTree = "<group>"; };
-		65D9740925B4733D00769653 /* SportTypeGridCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridCoordinator.swift; sourceTree = "<group>"; };
 		65D9741125B4760F00769653 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeGridDataSource.swift; sourceTree = "<group>"; };
 		65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSportTypeCell.swift; sourceTree = "<group>"; };
@@ -826,6 +824,39 @@
 				656B727D260E42C300E02221 /* AppLanguageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		656B72CA260E85CE00E02221 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				65D9740425B4732400769653 /* SportTypeGridViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		656B72CB260E85D200E02221 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65D973FF25B4731D00769653 /* SportTypeGridView.swift */,
+				65D973FA25B4731800769653 /* SportTypeGridViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		656B72CC260E85D600E02221 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				656B72D0260E865C00E02221 /* SportTypeGrid.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		656B72CD260E85D900E02221 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		656CC268259A51FB00DEC84C /* Utils */ = {
@@ -1213,12 +1244,10 @@
 		65D973F125B472C800769653 /* SportTypeGrid */ = {
 			isa = PBXGroup;
 			children = (
-				65D973F225B4730E00769653 /* SportTypeGridAssembly.swift */,
-				65D9740925B4733D00769653 /* SportTypeGridCoordinator.swift */,
-				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
-				65D973FF25B4731D00769653 /* SportTypeGridView.swift */,
-				65D973FA25B4731800769653 /* SportTypeGridViewController.swift */,
-				65D9740425B4732400769653 /* SportTypeGridViewModel.swift */,
+				656B72CD260E85D900E02221 /* Helpers */,
+				656B72CC260E85D600E02221 /* Model */,
+				656B72CB260E85D200E02221 /* View */,
+				656B72CA260E85CE00E02221 /* ViewModel */,
 			);
 			path = SportTypeGrid;
 			sourceTree = "<group>";
@@ -1818,6 +1847,7 @@
 				65782DA425EB18E00063A52A /* NotificationSettingsDataSource.swift in Sources */,
 				65782D6825EAFF400063A52A /* UserAccountEditingCoordinator.swift in Sources */,
 				654210DB25AF8837004078C4 /* TextField.swift in Sources */,
+				656B72D1260E865C00E02221 /* SportTypeGrid.swift in Sources */,
 				655D52B925D864AF001DC13C /* CollectionViewHoursCell.swift in Sources */,
 				65C8B4C925E8C66E00BBCF77 /* UserMainViewModel.swift in Sources */,
 				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
@@ -1947,7 +1977,6 @@
 				65DDC09F25B6503B00228FC7 /* EventCardCollectioCell.swift in Sources */,
 				65429F7326020B27000874C3 /* NetworkManager.swift in Sources */,
 				65B150E025DEA82F00720015 /* EventInviteViewController.swift in Sources */,
-				65D973F325B4730E00769653 /* SportTypeGridAssembly.swift in Sources */,
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				65D9741225B4760F00769653 /* Sport.swift in Sources */,
 				65782D9F25EB18D40063A52A /* NotificationSettingsCoordinator.swift in Sources */,
@@ -1983,7 +2012,6 @@
 				6531792925D10E19001DBA4B /* EventCreateViewModel.swift in Sources */,
 				656B727E260E42C300E02221 /* AppLanguageModel.swift in Sources */,
 				65CDF8B625DB13F10049F711 /* SportGround.swift in Sources */,
-				65D9740A25B4733D00769653 /* SportTypeGridCoordinator.swift in Sources */,
 				65782D6325EAFF380063A52A /* UserAccountEditingView.swift in Sources */,
 				6531791F25D10E09001DBA4B /* EventCreateView.swift in Sources */,
 				658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */,
