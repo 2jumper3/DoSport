@@ -7,13 +7,8 @@
 
 import UIKit
 
-protocol AppLanguageListViewDelegate: class { }
-    
 final class AppLanguageListView: UIView {
     
-    weak var delegate: AppLanguageListViewDelegate?
-    
-    ///
     private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()
     
     //MARK: Outlets

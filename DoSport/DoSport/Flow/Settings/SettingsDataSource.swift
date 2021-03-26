@@ -15,7 +15,7 @@ enum SettingCellType {
     case account(icon: UIImage?, title: String?)
     case alerts(icon: UIImage?, title: String?)
     case privacy(icon: UIImage?, title: String?)
-//    case language(icon: UIImage?, title: String?)
+    case language(icon: UIImage?, title: String?)
     case help(icon: UIImage?, title: String?)
 }
 
@@ -27,7 +27,7 @@ final class SettingsDataSource: NSObject {
         .account(icon: Icons.Settings.user, title: Texts.Settings.account),
         .alerts(icon: Icons.Settings.alertBell, title: Texts.Settings.alerts),
         .privacy(icon: Icons.Settings.lock, title: Texts.Settings.privacy),
-//        .language(icon: Icons.Settings.globe, title: Texts.Settings.language),
+        .language(icon: Icons.Settings.globe, title: Texts.Settings.language),
         .help(icon: Icons.Settings.helpCircle, title: Texts.Settings.help)
     ]
     
@@ -62,10 +62,10 @@ extension SettingsDataSource:  UITableViewDataSource {
             let privacyCell: SettingsTableCell = tableView.cell(forRowAt: indexPath)
             privacyCell.bind(with: .init(icon: icon, title: title))
             cell = privacyCell
-//        case .language(let icon, let title):
-//            let languageCell: SettingsTableCell = tableView.cell(forRowAt: indexPath)
-//            languageCell.bind(with: .init(icon: icon, title: title))
-//            cell = languageCell
+        case .language(let icon, let title):
+            let languageCell: SettingsTableCell = tableView.cell(forRowAt: indexPath)
+            languageCell.bind(with: .init(icon: icon, title: title))
+            cell = languageCell
         case .help(let icon, let title):
             let helpCell: SettingsTableCell = tableView.cell(forRowAt: indexPath)
             helpCell.bind(with: .init(icon: icon, title: title))
@@ -91,7 +91,7 @@ extension SettingsDataSource: UITableViewDelegate {
         case .account: delegate?.tableView(didSelect: .account(icon: nil, title: Texts.Settings.account))
         case .alerts: delegate?.tableView(didSelect: .alerts(icon: nil, title: Texts.Settings.alerts))
         case .privacy: delegate?.tableView(didSelect: .privacy(icon: nil, title: Texts.Settings.privacy))
-//        case .language: delegate?.tableView(didSelect: .language(icon: nil, title: Texts.Settings.language))
+        case .language: delegate?.tableView(didSelect: .language(icon: nil, title: Texts.Settings.language))
         case .help: delegate?.tableView(didSelect: .help(icon: nil, title: Texts.Settings.help))
         }
     }
