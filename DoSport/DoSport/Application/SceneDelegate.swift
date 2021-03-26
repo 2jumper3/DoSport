@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
-    weak var deeplink: DeepLinkManagerProtocol?
+    weak var deepLinkServiceProtocol: DeepLinkServiceProtocol?
     
     func scene(
         _ scene: UIScene,
@@ -29,9 +29,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let urlToOpen = URLContexts.first?.url else { return }
-        let deeplink = DeepLinkManager()
-        self.deeplink = deeplink
-        self.deeplink?.handleURL(url: urlToOpen, appCoordinator: self.appCoordinator)
+        guard let urlToOpen = URLContexts.first?.url,
+              let appCoordinator = self.appCoordinator else { return }
+        
+        let components = DeepLinkComponents(url: urlToOpen, coordinator: appCoordinator)
+        let goToEventModule = GoToEventModule()
+        let deepLinkService = DeepLinkService(destinations: [goToEventModule])
+        self.deepLinkServiceProtocol = deepLinkService
+        self.deepLinkServiceProtocol?.handleURL(with: components)
     }
 }

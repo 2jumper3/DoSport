@@ -318,7 +318,8 @@
 		0401A14025EFA50E00A1659E /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		1151A62AC4A4EBF596484855 /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
-		2A8F72B926054E3A002FC6D4 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
+		2A61D567260C703D00600FD8 /* GoToEventModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToEventModule.swift; sourceTree = "<group>"; };
+		2A8F72B926054E3A002FC6D4 /* DeepLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkService.swift; sourceTree = "<group>"; };
 		2A8F742326061B10002FC6D4 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPasswordTextView.swift; sourceTree = "<group>"; };
 		6503F4E225B5CDD60002BC27 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -635,6 +636,23 @@
 				12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2A1C3F29260B8EE200E3AFE8 /* DeepLinks */ = {
+			isa = PBXGroup;
+			children = (
+				2A8F72B926054E3A002FC6D4 /* DeepLinkService.swift */,
+				2A61D5A2260C874600600FD8 /* DestinationModules */,
+			);
+			path = DeepLinks;
+			sourceTree = "<group>";
+		};
+		2A61D5A2260C874600600FD8 /* DestinationModules */ = {
+			isa = PBXGroup;
+			children = (
+				2A61D567260C703D00600FD8 /* GoToEventModule.swift */,
+			);
+			path = DestinationModules;
 			sourceTree = "<group>";
 		};
 		650B75AF2600C68600625332 /* Views */ = {
@@ -1390,7 +1408,6 @@
 				CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */,
 				6587054B25924C3200EFF7C7 /* AppCoordinator.swift */,
 				65EEE91825B626290023168D /* AppConfiguration.swift */,
-				2A8F72B926054E3A002FC6D4 /* DeepLinkManager.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1455,6 +1472,7 @@
 		CEDEB887258CE793007B2BCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2A1C3F29260B8EE200E3AFE8 /* DeepLinks */,
 				65B6D91E260607750099BC08 /* DSApi */,
 				658705332592169D00EFF7C7 /* Base */,
 				65ECB2BD259BAC7100BF8CEE /* Cells */,
@@ -1963,7 +1981,7 @@
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
 				659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */,
-				2A8F72BA26054E3A002FC6D4 /* DeepLinkManager.swift in Sources */,
+				2A8F72BA26054E3A002FC6D4 /* DeepLinkService.swift in Sources */,
 				6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */,
 				653179A825D11212001DBA4B /* RegionListAssembly.swift in Sources */,
 				65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */,
@@ -2009,6 +2027,7 @@
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65BBC37225DB5E78003DEF53 /* DSCheckboxButton.swift in Sources */,
 				65B6D95F26060B0A0099BC08 /* DSEnums.swift in Sources */,
+				2A61D568260C703D00600FD8 /* GoToEventModule.swift in Sources */,
 				6531792E25D10E20001DBA4B /* EventCreateCoordinator.swift in Sources */,
 				65EAAAC525CD6024005E0131 /* FeedFilterButton.swift in Sources */,
 			);

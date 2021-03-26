@@ -24,16 +24,22 @@ protocol DeepLinkManagerProtocol: class {
 final class DeepLinkManager: DeepLinkManagerProtocol {
     var feedCoordinator: FeedCoordinator?
     
+    init() {
+        print("DeepLinkManager was inited")
+    }
+    
+    deinit {
+        print("DeepLinkManager was deinited")
+    }
+    
     func handleURL(url: URL, appCoordinator: AppCoordinator?) {
         guard url.pathComponents.count >= 3 else { return }
         
-        let idFromUrl = url.pathComponents.last
-        
         switch url.host {
         case "feed":
-            guard let id = idFromUrl else { return }
-            let chat = Chat(ID: Int(id), messages: [], userID: nil, userName: nil)
-            let event = Event(eventID: Int(id), eventDate: nil, eventEndTime: nil, eventStartTime: nil, organiserID: 1, chatID: chat, members: [], sportGroundID: 1, sportType: nil)
+            guard let eventID = url.pathComponents.last else { return }
+            let chat = Chat(ID: Int(eventID), messages: [], userID: nil, userName: nil)
+            let event = Event(eventID: Int(eventID), eventDate: nil, eventEndTime: nil, eventStartTime: nil, organiserID: 1, chatID: chat, members: [], sportGroundID: 1, sportType: nil)
             addChildCoordinator(destination: .EventModule, coordinator: appCoordinator)
             feedCoordinator?.goToEventModule(withSelected: event)
         default: break

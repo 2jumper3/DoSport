@@ -30,9 +30,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
 //    }
     
     
+
     var window : UIWindow?
     var appCoordinator: AppCoordinator?
-    weak var deeplink: DeepLinkManagerProtocol?
+    weak var deepLinkServiceProtocol: DeepLinkServiceProtocol?
     
     func application(
         _ app: UIApplication,
@@ -70,9 +71,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let deeplink = DeepLinkManager()
-        self.deeplink = deeplink
-        self.deeplink?.handleURL(url: url, appCoordinator: self.appCoordinator)
+        if let appCoordinator = self.appCoordinator {
+            let components = DeepLinkComponents(url: url, coordinator: appCoordinator)
+            let goToEventModule = GoToEventModule()
+            let deepLinkService = DeepLinkService(destinations: [goToEventModule])
+            self.deepLinkServiceProtocol = deepLinkService
+            self.deepLinkServiceProtocol?.handleURL(with: components)
+        }
+        
         return true
     }
 }
