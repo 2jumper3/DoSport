@@ -64,9 +64,21 @@ final class AuthViewController: UIViewController {
 //MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
+    func submitButtonTapped(with text: String) {
+        
+    }
+    
+    func regionSelectionButtonTapped() {
+        
+    }
+    
     
     func vkAuthButtonClicked() {
-        coordinator?.openVkAuthView()
+        coordinator?.openVkAuthView(completion: {
+            self.coordinator?.dismissWKWebView()
+            self.coordinator?.goToMainTabBar()
+        })
+        
     }
     
     func fbAuthClicked() {
