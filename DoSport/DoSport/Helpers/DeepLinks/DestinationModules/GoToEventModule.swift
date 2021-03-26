@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GoToEventModule: DeepLinkDestinationModule {
+class GoToEventModule: DeepLinkDestinationProtocol {
     
     var feedCoordinator: FeedCoordinator?
     

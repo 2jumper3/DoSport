@@ -23,7 +23,7 @@ final class DeepLinkComponents {
     }
 }
 
-protocol DeepLinkDestinationModule {
+protocol DeepLinkDestinationProtocol {
     func getDestination(components: DeepLinkComponents)
 }
 
@@ -33,9 +33,9 @@ protocol DeepLinkServiceProtocol: class {
 
 class DeepLinkService: DeepLinkServiceProtocol {
     
-    var destinations: [DeepLinkDestinationModule]
+    var destinations: [DeepLinkDestinationProtocol]
     
-    init(destinations: [DeepLinkDestinationModule]) {
+    init(destinations: [DeepLinkDestinationProtocol]) {
         self.destinations = destinations
     }
     
