@@ -271,6 +271,10 @@
 		CECEE234260E363900B9AF16 /* SubwayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22E260E363900B9AF16 /* SubwayListViewModel.swift */; };
 		CECEE235260E363900B9AF16 /* SubwayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22F260E363900B9AF16 /* SubwayListView.swift */; };
 		CECEE236260E363900B9AF16 /* SubwayListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE230260E363900B9AF16 /* SubwayListCoordinator.swift */; };
+		CECEE239260E36F300B9AF16 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F742326061B10002FC6D4 /* OnBoardingCoordinator.swift */; };
+		CECEE23C260E36FA00B9AF16 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F72B926054E3A002FC6D4 /* DeepLinkService.swift */; };
+		CECEE23F260E373D00B9AF16 /* GoToEventModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A61D567260C703D00600FD8 /* GoToEventModule.swift */; };
+		CECEE242260E374200B9AF16 /* EventRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F322601F51D000874C3 /* EventRequests.swift */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
 		CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */; };
 		CEDEB789258CB40A007B2BCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */; };
@@ -1778,6 +1782,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECEE242260E374200B9AF16 /* EventRequests.swift in Sources */,
+				CECEE23F260E373D00B9AF16 /* GoToEventModule.swift in Sources */,
+				CECEE23C260E36FA00B9AF16 /* DeepLinkService.swift in Sources */,
+				CECEE239260E36F300B9AF16 /* OnBoardingCoordinator.swift in Sources */,
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
 				654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */,
 				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
