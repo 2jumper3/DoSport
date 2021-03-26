@@ -9,6 +9,7 @@ import UIKit
 
 protocol UserAccountEditingViewDelegate: class {
     func signOutButtonCliked()
+    func deleteProfileButtonClicked()
     func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
@@ -40,19 +41,21 @@ final class UserAccountEditingView: UIView {
     private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
                                                            titleColor: Colors.mainBlue)
     
-    private lazy var signOutButton: DSEventControlButton = .init(
+    private lazy var signOutButton: DSButtonWithIcon = .init(
         img: Icons.UserProfileEdit.logout,
         txt: Texts.UserAccountEditing.signOut,
         textColor: Colors.mainBlue,
-        imageColor: Colors.mainBlue)
+        imageColor: Colors.mainBlue,
+        isBindable: false)
     
     private lazy var signoutBottomSeparatorView: DSSeparatorView = DSSeparatorView()
     
-    private lazy var deleteProfileButton: DSEventControlButton = .init(
+    private lazy var deleteProfileButton: DSButtonWithIcon = .init(
         img: Icons.UserProfileEdit.delete,
         txt: Texts.UserAccountEditing.deleteProfile,
         textColor: Colors.mainBlue,
-        imageColor: Colors.mainBlue)
+        imageColor: Colors.mainBlue,
+        isBindable: false)
 
     //MARK: Init
     
@@ -142,6 +145,8 @@ final class UserAccountEditingView: UIView {
         signOutButton.snp.makeConstraints {
             $0.top.equalTo(femaleButton.snp.bottom).offset(25)
             $0.left.equalTo(maleButton.snp.left)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+            $0.height.equalTo(buttonsHeight)
         }
         
         signoutBottomSeparatorView.snp.makeConstraints {
@@ -153,6 +158,8 @@ final class UserAccountEditingView: UIView {
         
         deleteProfileButton.snp.makeConstraints {
             $0.top.equalTo(signoutBottomSeparatorView.snp.bottom).offset(4)
+            $0.width.equalToSuperview().multipliedBy(0.87)
+            $0.height.equalTo(buttonsHeight)
             $0.left.equalTo(signOutButton.snp.left)
         }
         
@@ -196,8 +203,10 @@ private extension UserAccountEditingView {
         addAvatarButton.addTarget(self, action: #selector(handleAddAvatarButton))
         datePicker.addTarget(self, action: #selector(dateValueChanged), for: .valueChanged)
         maleButton.addTarget(self, action: #selector(handleMaleButton))
-        femaleButton.addTarget(self, action: #selector(handleFemaleButton), for: .touchUpInside)
-        saveButton.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
+        femaleButton.addTarget(self, action: #selector(handleFemaleButton))
+        saveButton.addTarget(self, action: #selector(handleSaveButton))
+        signOutButton.addTarget(self, action: #selector(handleSignOutButton))
+        deleteProfileButton.addTarget(self, action: #selector(handleDeleteProfileButton))
     }
     
     func setupKeyboardNotifications() {
@@ -209,6 +218,14 @@ private extension UserAccountEditingView {
 //MARK: Actions
 
 @objc private extension UserAccountEditingView {
+    
+    func handleDeleteProfileButton() {
+        delegate?.deleteProfileButtonClicked()
+    }
+    
+    func handleSignOutButton() {
+        delegate?.signOutButtonCliked()
+    }
     
     func handleAddAvatarButton() {
         delegate?.avatarChangeButtonClicked()

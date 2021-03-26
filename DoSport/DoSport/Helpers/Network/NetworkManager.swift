@@ -49,7 +49,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
         compilation: @escaping (DataHandler<ResponseType>) -> Void
     ) ->  URLSessionTask? where RequestBody: Codable, ResponseType: Codable {
         
-        guard let resultRequest = self.buildRequest(using: endpoint, bodyObject: bodyObject) else {
+        guard let resultRequest = self.buildRequest(using: endpoint, and: bodyObject) else {
             return nil
         }
         
@@ -93,24 +93,20 @@ private extension NetworkManagerImplementation {
     
     func buildRequest<T>(
         using endpoint: Endpoint,
-        bodyObject: T? = nil
+        and bodyObject: T? = nil
     ) -> URLRequest? where T: Codable {
         let url = endpoint.fullURL
         var request: URLRequest?
         
         var urlComponents = URLComponents(string: url.absoluteString)
-        urlComponents?.queryItems = self.setupQueryItems(endpoint.queryItems)
+        urlComponents?.queryItems = endpoint.queryItems?.compactMap { URLQueryItem(name: $0, value: $1 as? String) }
         
         guard let resultURL = urlComponents?.url else { return nil }
         
         request = URLRequest(url: resultURL)
         request?.httpMethod = endpoint.method.rawValue
         
-        endpoint.headers.forEach { (key, value) in
-            if let value = value as? String {
-                request?.addValue(value, forHTTPHeaderField: key)
-            }
-        }
+        endpoint.headers.forEach { request?.addValue($1 as? String ?? "", forHTTPHeaderField: $0) }
         
         if endpoint.method != .get {
             do {
@@ -127,11 +123,5 @@ private extension NetworkManagerImplementation {
         }
         
         return request
-    }
-    
-    func setupQueryItems(_ items: [String: Any]?) -> [URLQueryItem]? {
-        return items?.compactMap { (name, value) -> URLQueryItem? in
-            return URLQueryItem(name: name, value: value as? String)
-        }
     }
 }

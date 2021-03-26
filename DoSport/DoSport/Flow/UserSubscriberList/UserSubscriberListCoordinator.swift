@@ -14,11 +14,20 @@ final class UserSubscriberListCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?, user: User?, index: Int) {
+    init(
+        navController: UINavigationController?,
+        user: User?,
+        contentType: DSEnums.UserSubscribersContentType
+    ) {
+        let requestsManager = RequestsManager.shared
+        let viewModel = UserSubscriberListViewModel(requestsManager: requestsManager)
+        
         self.rootViewController = UserSubscriberListController(
             user: user,
-            segmentedControlIndex: index
+            contentType: contentType,
+            viewModel: viewModel
         )
+        
         self.navigationController = navController
     }
     

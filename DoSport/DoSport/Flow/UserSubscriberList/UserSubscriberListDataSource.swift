@@ -12,15 +12,11 @@ protocol UserSubscriberListDataSourceDelegate: class {
     func collectionView(didSelect user: User?)
 }
 
-enum UserSubscriberListDataSourceState {
-    case subscribes, subscribers
-}
-
 final class UserSubscriberListDataSource: NSObject {
     
     weak var delegate: UserSubscriberListDataSourceDelegate?
     
-    var userSubscriberListDataSourceState: UserSubscriberListDataSourceState = .subscribes {
+    var userSubscriberListDataSourceState: DSEnums.UserSubscribersContentType = .subscribers {
         didSet {
             delegate?.collectionViewNeedsReloadData()
         }
@@ -53,7 +49,7 @@ extension UserSubscriberListDataSource:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch userSubscriberListDataSourceState {
-        case .subscribes: return  14
+        case .subscriptions: return  14
         case .subscribers: return  5
         }
     }
@@ -64,7 +60,7 @@ extension UserSubscriberListDataSource:  UITableViewDataSource {
 //        let subscriber = subscribers?[indexPath.row]
         
         switch userSubscriberListDataSourceState {
-        case .subscribes:
+        case .subscriptions:
             let subscribeCell: TableViewMemberCell = tableView.cell(forRowAt: indexPath)
 //            subscribeCell.memberNameLabel.text = subscribe?.name
        
@@ -87,8 +83,8 @@ extension UserSubscriberListDataSource:  UITableViewDataSource {
         
         eventTableHeaderView.onSegmentedControlChanged = { [unowned self] index in
             switch index {
-            case 0: userSubscriberListDataSourceState = .subscribes
-            case 1: userSubscriberListDataSourceState = .subscribers
+            case 0: userSubscriberListDataSourceState = .subscribers
+            case 1: userSubscriberListDataSourceState = .subscriptions
             default: break
             }
         }
