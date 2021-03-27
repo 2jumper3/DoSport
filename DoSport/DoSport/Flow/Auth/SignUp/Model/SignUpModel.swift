@@ -9,17 +9,6 @@ import Foundation
 
 final class SignUpModel {
     
-    enum SaveButtonState {
-        case disabled
-        case enabled
-    }
-    
-    var createButtonState: SignUpModel.SaveButtonState = .disabled
-    
-    func changeCreateButtonState(_ state: SignUpModel.SaveButtonState) {
-        self.createButtonState = state
-    }
-    
     struct User {
         let userPhoto: Data
         let userName: String
