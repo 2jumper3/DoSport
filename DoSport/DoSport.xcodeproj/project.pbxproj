@@ -78,7 +78,7 @@
 		65430C2F260FE52E0044F57C /* AuthNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430C2E260FE52E0044F57C /* AuthNetworkService.swift */; };
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
 		654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */; };
-		654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
+		654D705525E88D6B00B37AD3 /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* SignInAssembly.swift */; };
 		654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */; };
 		654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
 		654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
@@ -121,13 +121,13 @@
 		658153F3260BA38700436BCB /* UserSubscriberListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658153F2260BA38700436BCB /* UserSubscriberListViewModel.swift */; };
 		658153F9260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658153F8260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift */; };
 		65815401260BB7A400436BCB /* DSEnums+UserMainContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65815400260BB7A400436BCB /* DSEnums+UserMainContentType.swift */; };
-		65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870507259209ED00EFF7C7 /* AuthViewController.swift */; };
-		65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870512259209F700EFF7C7 /* AuthViewModel.swift */; };
-		6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051725920A0100EFF7C7 /* AuthCoordinator.swift */; };
+		65870508259209ED00EFF7C7 /* SingInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870507259209ED00EFF7C7 /* SingInViewController.swift */; };
+		65870513259209F700EFF7C7 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870512259209F700EFF7C7 /* SignInViewModel.swift */; };
+		6587051825920A0100EFF7C7 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051725920A0100EFF7C7 /* SignInCoordinator.swift */; };
 		65870536259216AA00EFF7C7 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65870535259216AA00EFF7C7 /* Assembly.swift */; };
 		6587053E2592493400EFF7C7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587053D2592493400EFF7C7 /* Coordinator.swift */; };
 		6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587054B25924C3200EFF7C7 /* AppCoordinator.swift */; };
-		658705512592540D00EFF7C7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* AuthView.swift */; };
+		658705512592540D00EFF7C7 /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658705502592540D00EFF7C7 /* SingInView.swift */; };
 		658E0AA825D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0AA725D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift */; };
 		658E0AB625D828BB0013DFF5 /* SportTypeListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0AB525D828BB0013DFF5 /* SportTypeListTableCell.swift */; };
 		658E0ABE25D82B7B0013DFF5 /* SportTypeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658E0ABD25D82B7B0013DFF5 /* SportTypeListDataSource.swift */; };
@@ -420,14 +420,14 @@
 		658153F2260BA38700436BCB /* UserSubscriberListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriberListViewModel.swift; sourceTree = "<group>"; };
 		658153F8260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+UserSubscribersContentType.swift"; sourceTree = "<group>"; };
 		65815400260BB7A400436BCB /* DSEnums+UserMainContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+UserMainContentType.swift"; sourceTree = "<group>"; };
-		65870507259209ED00EFF7C7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		65870512259209F700EFF7C7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		6587051725920A0100EFF7C7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
-		6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
+		65870507259209ED00EFF7C7 /* SingInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInViewController.swift; sourceTree = "<group>"; };
+		65870512259209F700EFF7C7 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		6587051725920A0100EFF7C7 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		6587051C25920A0B00EFF7C7 /* SignInAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAssembly.swift; sourceTree = "<group>"; };
 		65870535259216AA00EFF7C7 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		6587053D2592493400EFF7C7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6587054B25924C3200EFF7C7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		658705502592540D00EFF7C7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		658705502592540D00EFF7C7 /* SingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
 		658E0AA725D7DDEA0013DFF5 /* UIDevide+getDeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevide+getDeviceModel.swift"; sourceTree = "<group>"; };
 		658E0AB525D828BB0013DFF5 /* SportTypeListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListTableCell.swift; sourceTree = "<group>"; };
 		658E0ABD25D82B7B0013DFF5 /* SportTypeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeListDataSource.swift; sourceTree = "<group>"; };
@@ -721,8 +721,8 @@
 		65430B35260F51BD0044F57C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				658705502592540D00EFF7C7 /* AuthView.swift */,
-				65870507259209ED00EFF7C7 /* AuthViewController.swift */,
+				658705502592540D00EFF7C7 /* SingInView.swift */,
+				65870507259209ED00EFF7C7 /* SingInViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,7 +730,7 @@
 		65430B37260F51C70044F57C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				65870512259209F700EFF7C7 /* AuthViewModel.swift */,
+				65870512259209F700EFF7C7 /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -738,8 +738,8 @@
 		65430B3F260F54AE0044F57C /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */,
-				6587051725920A0100EFF7C7 /* AuthCoordinator.swift */,
+				6587051C25920A0B00EFF7C7 /* SignInAssembly.swift */,
+				6587051725920A0100EFF7C7 /* SignInCoordinator.swift */,
 				65815319260B5C2D00436BCB /* Helpers */,
 				65430B35260F51BD0044F57C /* View */,
 				65430B37260F51C70044F57C /* ViewModel */,
@@ -1834,7 +1834,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
-				654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */,
+				654D705525E88D6B00B37AD3 /* SignInAssembly.swift in Sources */,
 				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
 				654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */,
 				654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */,
@@ -1863,7 +1863,7 @@
 				656B72D1260E865C00E02221 /* SportTypeGrid.swift in Sources */,
 				655D52B925D864AF001DC13C /* CollectionViewHoursCell.swift in Sources */,
 				65C8B4C925E8C66E00BBCF77 /* UserMainViewModel.swift in Sources */,
-				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
+				65870513259209F700EFF7C7 /* SignInViewModel.swift in Sources */,
 				65B150E825DEAB8300720015 /* EventInviteView.swift in Sources */,
 				65EEB92D25E9E34900821F8F /* UserSubscriberListController.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
@@ -1886,7 +1886,7 @@
 				65CD773A25EB3EB700D042FD /* SoundListView.swift in Sources */,
 				659C619B2593DB2700C33D05 /* SignUpViewController.swift in Sources */,
 				65D9740525B4732400769653 /* SportTypeGridViewModel.swift in Sources */,
-				658705512592540D00EFF7C7 /* AuthView.swift in Sources */,
+				658705512592540D00EFF7C7 /* SingInView.swift in Sources */,
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65A2DC6C26011A3B003B9ECA /* DSSharedData.swift in Sources */,
 				65CD77EA25EB58A000D042FD /* UserReportMessageAssembly.swift in Sources */,
@@ -1965,8 +1965,8 @@
 				65C080A425E1AFB200BF353B /* UISearchBar+textField.swift in Sources */,
 				65EEB93725E9E36300821F8F /* UserSubscriberListDataSource.swift in Sources */,
 				65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */,
-				6587051825920A0100EFF7C7 /* AuthCoordinator.swift in Sources */,
-				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
+				6587051825920A0100EFF7C7 /* SignInCoordinator.swift in Sources */,
+				65870508259209ED00EFF7C7 /* SingInViewController.swift in Sources */,
 				65430BF7260FB8390044F57C /* EventNetworkService.swift in Sources */,
 				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,

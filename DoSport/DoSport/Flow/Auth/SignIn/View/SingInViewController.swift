@@ -1,5 +1,5 @@
 //
-//  AuthViewController.swift
+//  SingInViewController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class AuthViewController: UIViewController {
+final class SingInViewController: UIViewController {
     
-    weak var coordinator: AuthCoordinator?
-    private let viewModel: AuthViewModel
-    private lazy var authView = self.view as! AuthView
+    weak var coordinator: SignInCoordinator?
+    private let viewModel: SignInViewModel
+    private lazy var authView = self.view as! SingInView
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -19,7 +19,7 @@ final class AuthViewController: UIViewController {
 
     // MARK: Init
     
-    init(viewModel: AuthViewModel) {
+    init(viewModel: SignInViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,7 +31,7 @@ final class AuthViewController: UIViewController {
     // MARK: Life Cycle
     
     override func loadView() {
-        let view = AuthView()
+        let view = SingInView()
         view.delegate = self
         self.view = view
     }
@@ -59,7 +59,7 @@ final class AuthViewController: UIViewController {
 
 //MARK: Private API
 
-private extension AuthViewController {
+private extension SingInViewController {
     
     func setupViewModelBindings() {
         viewModel.onDidSignUpWithSocialMedia = { /*[unowned self]*/ state in
@@ -90,9 +90,9 @@ private extension AuthViewController {
     }
 }
 
-//MARK: - AuthViewDelegate -
+//MARK: - SingInViewDelegate -
 
-extension AuthViewController: AuthViewDelegate {
+extension SingInViewController: SingInViewDelegate {
     
     func skipButtonTapped() {
 //        coordinator?.goToMainTabBar()

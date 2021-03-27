@@ -47,7 +47,8 @@ final class SportTypeGridViewModel: SportTypeGridViewModelProtocol {
     init(
         sportTypeNetworkService: SportTypeNetworkService,
         userNetworkService: UserNetworkService,
-        model: SportTypeGrid) {
+        model: SportTypeGrid
+    ) {
         self.sportTypeNetworkService = sportTypeNetworkService
         self.userNetworkService = userNetworkService
         self.model = model
@@ -58,29 +59,22 @@ final class SportTypeGridViewModel: SportTypeGridViewModelProtocol {
         
         sportTypeNetworkService.sportTypesGet { [unowned self] response in
             switch response {
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure:
+                break
                 
-            case .success(let result):
-                
-                switch result {
-                case .object(let responseSportTypes):
-                    let sportTypes = responseSportTypes.map {
-                        responseSportType -> SportTypeGrid.SportType in
-                        
-                        return SportTypeGrid.SportType(
-                            name: responseSportType.title ?? "",
-                            isSelected: false,
-                            id: responseSportType.id ?? 0
-                        )
-                    }
+            case .success(let responseData):
+                let sportTypes = responseData.map {
+                    responseSportType -> SportTypeGrid.SportType in
                     
-                    self.model.sportTypes = sportTypes
-                    self.onDidLoadSportTypes?(.success(model.sportTypes))
-                    
-                case .emptyObject:
-                    print(#function, #file, #line, " need to finish handling empty object")
+                    return SportTypeGrid.SportType(
+                        name: responseSportType.title ?? "",
+                        isSelected: false,
+                        id: responseSportType.id ?? 0
+                    )
                 }
+                
+                self.model.sportTypes = sportTypes
+                self.onDidLoadSportTypes?(.success(model.sportTypes))
             }
         }
     }

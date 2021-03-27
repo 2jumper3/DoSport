@@ -1,5 +1,5 @@
 //
-//  AuthCoordinator.swift
+//  SignInCoordinator.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
@@ -8,16 +8,16 @@
 import UIKit
 
 /// Describes navigation & coordination of class that controlls Authentification screen.
-final class AuthCoordinator: Coordinator {
+final class SignInCoordinator: Coordinator {
     
     /// NavigationController's root viewController object .
-    let rootViewController: AuthViewController
+    let rootViewController: SingInViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = AuthAssembly()
+        let assembly = SignInAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
     }

@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol HasUserNetworkService: class {
+    var userNetworkService: UserNetworkServiceProtocol { get }
+}
+
 protocol UserNetworkServiceProtocol: class {
     func userProfileGet(
         completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
