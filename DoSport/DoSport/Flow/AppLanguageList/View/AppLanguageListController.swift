@@ -10,20 +10,19 @@ import UIKit
 /// Describes handling view events and user interactions in App Language selection screen.
 final class AppLanguageListController: UIViewController, UIGestureRecognizerDelegate {
     
-    /// Coordinator object that's used to call nagication methods
     weak var coordinator: AppLanguageListCoordinator?
     
-    /// Custom view containing all UI elements and their layouts
+    private var viewModel: AppLanguageViewModel
+    
     private lazy var appLanguageListView = view as! AppLanguageListView
     
-    /// Manager object  handles all tableView's dataSource & delegate methods
     private let appLanguageListManager = AppLanguageListDataSource()
     
     /// Compilation that returns app language to the previous screen when user selects.
     ///
     /// - Parameters:
-    ///     - language: the app language that is `String` which user can select when clicking cell
-    private let compilation: (_ language: String) -> Swift.Void
+    ///     - language: the app language that is `AppLanguageModel.Language` which user can select when clicking cell
+    private let compilation: (_ language: AppLanguageModel.Language) -> Swift.Void
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -31,7 +30,11 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
 
     // MARK: Init
     
-    init(compilation: @escaping (String) -> Swift.Void) {
+    init(
+        viewModel: AppLanguageViewModel,
+        compilation: @escaping (AppLanguageModel.Language) -> Swift.Void
+    ) {
+        self.viewModel = viewModel
         self.compilation = compilation
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,7 +47,6 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
     
     override func loadView() {
         let view = AppLanguageListView()
-        view.delegate = self
         appLanguageListManager.delegate = self
         
         self.view = view
@@ -53,8 +55,10 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavBar()
-        appLanguageListView.updateCollectionDataSource(dataSource: appLanguageListManager)
+        self.setupNavBar()
+        self.updateView()
+        self.compilation(viewModel.languages[viewModel.choosenLanguageIndex])
+        self.setupViewModelBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,13 +71,31 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        coordinator?.removeDependency(coordinator)
+        self.coordinator?.removeDependency(coordinator)
     }
 }
 
 //MARK: Private API
 
 private extension AppLanguageListController {
+    
+    func updateView() {
+        self.appLanguageListManager.viewModels = viewModel.languages
+        self.appLanguageListView.updateCollectionDataSource(dataSource: appLanguageListManager)
+    }
+    
+    func setupViewModelBindings() {
+        viewModel.onDidSelectLanaguage = { [unowned self] data in
+            switch data {
+            case .loading:
+                break
+            case .failed:
+                break
+            case .success:
+                self.updateView()
+            }
+        }
+    }
     
     /// Sets navigation bar title text, back bar button and gesture recogniser to go back by swipe
     func setupNavBar() {
@@ -96,18 +118,16 @@ private extension AppLanguageListController {
     }
 }
 
-//MARK: - AppLanguageListViewDelegate -
-
-extension AppLanguageListController: AppLanguageListViewDelegate { }
-
 //MARK: - AppLanguageListDataSourceDelegate -
 
 extension AppLanguageListController: AppLanguageListDataSourceDelegate {
     
-    /// Called when user selects app sound setting from the list of sounds
+    /// Called when user selects app sound setting from the list of languages
+    ///
     /// - Parameters:
-    ///     - language: The language `string` name inside tableCell that user can select
-    func tableView(didSelect language: String) {
-        compilation(language)
+    ///     - language: The language `AppLanguageModel.Language` name inside tableCell that user can select
+    func tableView(didSelect language: AppLanguageModel.Language) {
+        self.viewModel.chooseLanguage(language)
+        self.compilation(language)
     }
 }

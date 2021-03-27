@@ -10,7 +10,9 @@ import FBSDKCoreKit
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
+class AppDelegate : UIResponder, UIApplicationDelegate {
+
+    //, GIDSignInDelegate {
 //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 //        if let error = error {
 //            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
@@ -56,8 +58,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
             didFinishLaunchingWithOptions: launchOptions
         )
         
-        GIDSignIn.sharedInstance().clientID = "dosport-307319"
-        //            GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().clientID = "984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll.apps.googleusercontent.com"
 
         return true
     }

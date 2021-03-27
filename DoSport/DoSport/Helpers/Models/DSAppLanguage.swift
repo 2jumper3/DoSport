@@ -30,5 +30,24 @@ struct DSAppLanguage {
             case .uzb: return "Узбекский"
             }
         }
+        
+        var index: Int {
+            switch self {
+            case .rus: return 0
+            case .eng: return 1
+            case .arab: return 2
+            case .belarus: return 3
+            case .french: return 4
+            case .german: return 5
+            case .indo: return 6
+            case .italian: return 7
+            case .kor: return 8
+            case .pol: return 9
+            case .portu: return 10
+            case .turk: return 11
+            case .ukr: return 12
+            case .uzb: return 13 
+            }
+        }
     }
 }

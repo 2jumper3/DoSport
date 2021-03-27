@@ -10,17 +10,13 @@ import UIKit
 protocol UserMainDataSourceDelegate: class {
     func collectionViewNeedsReloadData()
     func collectionDidClickSubscribers()
-    func collectionDidClickSubscribes()
+    func collectionDidClickSubscriptions()
     func collectionDidClickOptions(for event: Event?)
-}
-
-enum UserMainDataSourceState {
-    case events, sportGrounds
 }
 
 final class UserMainDataSource: NSObject {
     
-    var userMainDataSourceState: UserMainDataSourceState = .events {
+    var userMainDataSourceState: DSEnums.UserMainContentType = .events {
         didSet {
             delegate?.collectionViewNeedsReloadData()
         }
@@ -43,7 +39,6 @@ final class UserMainDataSource: NSObject {
 //MARK: - UICollectionViewDataSource -
 
 extension UserMainDataSource: UICollectionViewDataSource {
-    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -77,7 +72,7 @@ extension UserMainDataSource: UICollectionViewDataSource {
             }
 
             userInfoCell.onSubscribesButtonClicked = { [unowned self] in
-                delegate?.collectionDidClickSubscribes()
+                delegate?.collectionDidClickSubscriptions()
             }
 
             cell = userInfoCell

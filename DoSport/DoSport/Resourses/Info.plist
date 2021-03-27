@@ -19,6 +19,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb903989686814631</string>
@@ -26,10 +28,18 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1052802305460-f1d2gr3uns3240eqsvvpa8qpifo1aihi</string>
+				<string>984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll.apps.googleusercontent.com</string>
 			</array>
 		</dict>
 	</array>

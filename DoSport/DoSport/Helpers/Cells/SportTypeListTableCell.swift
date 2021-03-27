@@ -72,11 +72,31 @@ extension SportTypeListTableCell {
     func bind(state: CellState) {
         cellState = state
     }
+    
+    func bind(isChoosen: Bool) {
+        handleCellStateChange(isChoosen)
+    }
 }
 
 //MARK: Private API
 
 private extension SportTypeListTableCell {
+    
+    func handleCellStateChange(_ isChoosen: Bool) {
+        guard let label = textLabel else { return }
+        
+        if isChoosen {
+            UIView.animate(withDuration: 0.15) { [self] in
+                label.textColor = .white
+                checkmarkImageView.isHidden = false
+            }
+        } else {
+            UIView.animate(withDuration: 0.15) { [self] in
+                label.textColor = Colors.mainBlue
+                checkmarkImageView.isHidden = true
+            }
+        }
+    }
  
     func handleCellStateChange() {
         guard let label = textLabel else { return }
