@@ -14,21 +14,11 @@ final class DSLoginData {
     private let keychain = DSKeychainService()
     
     var jwtToken: String? {
-        get { keychain.get(DSSharedData.Key.jwt) }
-        set { keychain.set(newValue!, forKey: DSSharedData.Key.jwt) }
-    }
-    
-    var isLoggedIn: Bool {
-        return self.jwtToken != nil && self.userID != nil
-    }
-    
-    var userID: DSModels.User.UserView.ID? {
         get {
-            userDefaults.integer(forKey: DSSharedData.Key.userId)
+            keychain.get(DSSharedData.Key.jwt)
         }
         set {
-            guard let value = newValue else { return }
-            userDefaults.set(value, forKey: DSSharedData.Key.userId)
+            keychain.set(newValue!, forKey: DSSharedData.Key.jwt)
         }
     }
 }

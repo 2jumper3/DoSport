@@ -16,8 +16,8 @@ final class UserMainAssembly: Assembly {
     }
     
     func makeModule() -> UserMainController {
-        let requestManager = RequestsManager.shared
-        let viewModel = UserMainViewModel(requestsManager: requestManager)
+        let userNetworkService = UserNetworkService()
+        let viewModel = UserMainViewModel(userNetworkService: userNetworkService)
         let viewController = UserMainController(viewModel: viewModel, user: user)
         return viewController
     }

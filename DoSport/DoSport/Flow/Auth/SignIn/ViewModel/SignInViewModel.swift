@@ -1,5 +1,5 @@
 //
-//  AuthViewModel.swift
+//  SignInViewModel.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
@@ -13,15 +13,19 @@ enum SocialMediaType {
     case google, vkontakte, facebook, apple
 }
 
-protocol AuthViewModelProtocol: class {
-    var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
-    var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
+protocol SignInViewModelProtocol: class {
+    var onDidSignUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
     
-    func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?)
+    func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?)
+    func doLogin(with data: DSModels.Auth.SignInRequest)
     func doSendSignUpDataToServer()
 }
 
-final class AuthViewModel: NSObject, AuthViewModelProtocol {
+final class SignInViewModel: NSObject, SignInViewModelProtocol {
+    
+    typealias Dependencies = SignInServices
     
     enum ViewState {
         case loading
@@ -29,18 +33,56 @@ final class AuthViewModel: NSObject, AuthViewModelProtocol {
         case success
     }
     
-    var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)?
-    var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)?
+    var onDidSignUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)?
     
-    private let requestsManager: RequestsManager
+    private let dependencies: Dependencies
     
-    init(requestsManager: RequestsManager) {
-        self.requestsManager = requestsManager
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
         super.init()
-        
     }
-
-    func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?) {
+    
+    func doLogin(with data:  DSModels.Auth.SignInRequest) {
+        self.onDidLogin?(.loading)
+        
+        self.dependencies.authNetworkService.authSignIn(bodyObject: data) { [unowned self] response in
+            
+            switch response {
+            case .success(let responseData):
+                self.doLoadUser(using: responseData.token) { [unowned self] user in
+                    self.dependencies.userAccountService.currentUser = user
+                    
+                    self.onDidLogin?(.success)
+                }
+                
+            case .failure:
+                self.onDidLogin?(.failed)
+            }
+        }
+    }
+    
+    private func doLoadUser(
+        using token: String?,
+        completion: @escaping (DSModels.User.UserView) -> Swift.Void
+    ) {
+        if let jwtToken = token {
+            dependencies.userAccountService.jwtToken = jwtToken
+        }
+        
+        self.dependencies.userNetworkService.userProfileGet { response in
+            switch response {
+            case .success(let responseData):
+                completion(responseData)
+                
+            case .failure:
+                self.onDidLogin?(.failed)
+            }
+        }
+    }
+    
+    func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?) {
         onDidSignUpWithSocialMedia?( .loading)
         
         switch type {
@@ -68,13 +110,13 @@ final class AuthViewModel: NSObject, AuthViewModelProtocol {
 
 //MARK: Private API
 
-private extension AuthViewModel {
+private extension SignInViewModel {
     
     func signUpWithGoogle () {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
-    func signUpWithFacebook(from viewController: AuthViewController?) {
+    func signUpWithFacebook(from viewController: SingInViewController?) {
         let fbLoginManager = LoginManager()
         
         fbLoginManager.logIn(permissions: [], from: viewController) { [unowned self] result, error in
@@ -95,7 +137,7 @@ private extension AuthViewModel {
 
 //MARK: - Google SignUp Delegate -
 
-extension AuthViewModel: GIDSignInDelegate {
+extension SignInViewModel: GIDSignInDelegate {
     
     func sign(
         _ signIn: GIDSignIn!,
@@ -123,7 +165,7 @@ extension AuthViewModel: GIDSignInDelegate {
 
 //MARK: - Facebook SignUp Delegate -
 
-extension AuthViewModel: LoginButtonDelegate {
+extension SignInViewModel: LoginButtonDelegate {
     
     func loginButton(
         _ loginButton: FBLoginButton,

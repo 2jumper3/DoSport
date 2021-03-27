@@ -1,13 +1,15 @@
 //
-//  EventRequests.swift
+//  EventNetworkService.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 17/03/2021.
+//  Created by Komolbek Ibragimov on 27/03/2021.
 //
 
 import Foundation
 
-extension RequestsManager {
+final class EventNetworkService {
+    
+    private let networkManager: NetworkManager = NetworkManagerImplementation.shared
     
     //MARK: - Events -
     
@@ -21,7 +23,11 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getEvents(queryComponents)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(
+            endpoint: endpoint,
+            bodyObject: DSEmptyRequest?.none,
+            completion: completion
+        )
     }
     
     /// Creates event and sends to the server
@@ -34,7 +40,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.createEvent
-        request(endpoint: endpoint, bodyObject: body, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
     /// Gets event from server by event id
@@ -47,7 +53,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getEventByID(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     /// Edits event in server by event id
@@ -62,7 +68,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.editEventByID(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: body, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
     /// Deletes event from server by event id
@@ -75,7 +81,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventView>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.deleteEventByID(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - Event Comments -
@@ -90,7 +96,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.Event.EventCommentView]>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getEventComments(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     /// Adds comment to some event by event id
@@ -105,7 +111,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventCommentView>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.addEventComment(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: body, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
     /// Edits comment in event by event id and comment id
@@ -124,7 +130,7 @@ extension RequestsManager {
             commentID: pathComponent.commentID
         )
         
-        request(endpoint: endpoint, bodyObject: body, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: body, completion: completion)
     }
     
     /// Deletes comment from event by event id and comment id
@@ -141,7 +147,7 @@ extension RequestsManager {
             commentID: pathComponent.commentID
         )
         
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - Event Members -
@@ -156,7 +162,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getMembersByEventID(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     /// Adds current user as participant to event by event id
@@ -169,7 +175,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.addMemberByEventID(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     /// Deletes current user as participant from event by event id
@@ -182,7 +188,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.Event.EventCommentEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.deleteMemberByEventID(eventID: pathComponent.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     /// Deletes some user as participant from event by his id and event id
@@ -199,7 +205,7 @@ extension RequestsManager {
             userID: pathComponent.commentID
         )
         
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
 }
-
+ 

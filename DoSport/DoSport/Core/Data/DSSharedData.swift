@@ -14,7 +14,6 @@ final class DSSharedData {
     
     enum Key {
         static let jwt = "jwt"
-        static let userId = "userId"
         static let userdata = "userdata"
     }
 
@@ -33,7 +32,7 @@ final class DSSharedData {
     }
 
     var isLoggedIn: Bool {
-        return jwtToken != nil
+        self.userData != nil && self.jwtToken != nil
     }
 }
 

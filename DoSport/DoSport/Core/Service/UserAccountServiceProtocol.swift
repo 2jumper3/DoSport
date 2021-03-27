@@ -7,7 +7,11 @@
 
 import Foundation
 
-protocol UserAccountService: class {
+protocol HasUserAccountService: class {
+    var userAccountService: UserAccountServiceProtocol { get }
+}
+
+protocol UserAccountServiceProtocol: class {
     var currentUser: DSModels.User.UserView? { get set }
     var currentUserID: DSModels.User.UserView.ID? { get }
     
@@ -17,7 +21,7 @@ protocol UserAccountService: class {
     func logOut()
 }
 
-final class UserAccountServiceImplementation: UserAccountService {
+final class UserAccountService: UserAccountServiceProtocol {
     
     var currentUser: DSModels.User.UserView? {
         get { DSSharedData.shared.userData }

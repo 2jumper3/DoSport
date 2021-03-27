@@ -1,5 +1,5 @@
 //
-//  AuthView.swift
+//  SingInView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AuthViewDelegate: class {
+protocol SingInViewDelegate: class {
     func skipButtonTapped()
     func fbAuthClicked()
     func vkAuthButtonClicked()
@@ -15,9 +15,9 @@ protocol AuthViewDelegate: class {
     func appleAuthButtonClicked()
 }
 
-class AuthView: UIView {
+final class SingInView: UIView {
 
-    weak var delegate: AuthViewDelegate?
+    weak var delegate: SingInViewDelegate?
     
     private let titleLabel: UILabel = { // TODO: Make bold. Task at: https://trello.com/b/B0RlPzN6/dosport-ios
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -161,7 +161,7 @@ class AuthView: UIView {
 
 //MARK: Actions
 
-@objc extension AuthView {
+@objc extension SingInView {
     
     func handleSkipButton() {
         self.delegate?.skipButtonTapped()
