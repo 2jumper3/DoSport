@@ -14,17 +14,23 @@ enum SocialMediaType {
 }
 
 protocol AuthViewModelProtocol: class {
-    var onDidSignUpWithSocialMedia: ((AuthDataFlow.SignUpSocialMedia.ViewModel) -> Swift.Void)? { get set }
-    var onDidSendSignUpDataToServer: ((AuthDataFlow.SendSignUpDataToServer.ViewModel) -> Swift.Void)? { get set }
+    var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
     
-    func doSignUpWithSocialMedia(request: AuthDataFlow.SignUpSocialMedia.Request)
+    func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?)
     func doSendSignUpDataToServer()
 }
 
 final class AuthViewModel: NSObject, AuthViewModelProtocol {
     
-    var onDidSignUpWithSocialMedia: ((AuthDataFlow.SignUpSocialMedia.ViewModel) -> Swift.Void)?
-    var onDidSendSignUpDataToServer: ((AuthDataFlow.SendSignUpDataToServer.ViewModel) -> Swift.Void)?
+    enum ViewState {
+        case loading
+        case failed
+        case success
+    }
+    
+    var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)?
+    var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)?
     
     private let requestsManager: RequestsManager
     
@@ -34,12 +40,12 @@ final class AuthViewModel: NSObject, AuthViewModelProtocol {
         
     }
 
-    func doSignUpWithSocialMedia(request: AuthDataFlow.SignUpSocialMedia.Request) {
-        onDidSignUpWithSocialMedia?(.init(state: .loading))
+    func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?) {
+        onDidSignUpWithSocialMedia?( .loading)
         
-        switch request.socialmediaType {
+        switch type {
         case .google:
-            GIDSignIn.sharedInstance()?.presentingViewController = request.viewController
+            GIDSignIn.sharedInstance()?.presentingViewController = viewController
             GIDSignIn.sharedInstance()?.restorePreviousSignIn()
             
             self.signUpWithGoogle()
@@ -48,7 +54,7 @@ final class AuthViewModel: NSObject, AuthViewModelProtocol {
             break
             
         case .facebook:
-            self.signUpWithFacebook(from: request.viewController)
+            self.signUpWithFacebook(from: viewController)
             
         case .apple:
             break
@@ -75,13 +81,13 @@ private extension AuthViewModel {
             
             if error != nil {
                 /// login error occured
-                self.onDidSignUpWithSocialMedia?(.init(state: .failed))
+                self.onDidSignUpWithSocialMedia?(.failed)
             } else if ((result?.isCancelled) != nil) {
                 /// login cancelled
-                self.onDidSignUpWithSocialMedia?(.init(state: .failed))
+                self.onDidSignUpWithSocialMedia?(.failed)
             } else {
                 /// login successfully
-                self.onDidSignUpWithSocialMedia?(.init(state: .success))
+                self.onDidSignUpWithSocialMedia?(.success)
             }
         }
     }
@@ -129,40 +135,6 @@ extension AuthViewModel: LoginButtonDelegate {
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         
-    }
-}
-
-enum AuthDataFlow {
-    
-    enum FetchUserProfile {
-        
-    }
-    
-    enum SignUpSocialMedia {
-        struct Request {
-            let socialmediaType: SocialMediaType
-            let viewController: AuthViewController?
-        }
-        
-        struct ViewModel {
-            let state: ViewContollerState
-        }
-    }
-    
-    enum SendSignUpDataToServer {
-        struct Request {
-            
-        }
-        
-        struct ViewModel {
-            let state: ViewContollerState
-        }
-    }
-    
-    enum ViewContollerState {
-        case loading
-        case failed
-        case success
     }
 }
 

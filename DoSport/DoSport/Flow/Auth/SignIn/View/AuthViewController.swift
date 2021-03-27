@@ -62,8 +62,8 @@ final class AuthViewController: UIViewController {
 private extension AuthViewController {
     
     func setupViewModelBindings() {
-        viewModel.onDidSignUpWithSocialMedia = { /*[unowned self]*/ data in
-            switch data.state {
+        viewModel.onDidSignUpWithSocialMedia = { /*[unowned self]*/ state in
+            switch state {
             case .loading:
                 break
             case .failed:
@@ -73,7 +73,7 @@ private extension AuthViewController {
             }
         }
         
-        viewModel.onDidSendSignUpDataToServer = { data in
+        viewModel.onDidSendSignUpDataToServer = { state in
             
         }
     }
@@ -89,18 +89,18 @@ extension AuthViewController: AuthViewDelegate {
     }
     
     func fbAuthClicked() {
-        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .facebook, viewController: self))
+        viewModel.doSignUpWithSocialMedia(.facebook, viewController: self)
     }
     
     func vkAuthButtonClicked() {
-        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .vkontakte, viewController: nil))
+        viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: self)
     }
     
     func googleAuthButtonClicked() {
-        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .google, viewController: nil))
+        viewModel.doSignUpWithSocialMedia(.google, viewController: self)
     }
     
     func appleAuthButtonClicked() {
-        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .apple, viewController: nil))
+        viewModel.doSignUpWithSocialMedia(.apple, viewController: self)
     }
 }

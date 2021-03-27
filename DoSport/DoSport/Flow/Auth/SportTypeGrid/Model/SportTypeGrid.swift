@@ -10,6 +10,7 @@ import Foundation
 /// This class describes `SportTypeGrid` screen's basic use cases and model.
 final class SportTypeGrid {
     
+    /// This struct is used as model for UI layer
     struct SportType: Identifiable {
         let name: String
         var isSelected: Bool

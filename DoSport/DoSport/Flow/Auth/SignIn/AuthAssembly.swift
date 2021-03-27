@@ -11,7 +11,8 @@ import Foundation
 final class AuthAssembly: Assembly {
     
     /// Creates AuthViewController object with injected dependencies
-    /// - Returns: created  object of AuthViewController class
+    ///
+    /// - Returns: created  object of AuthViewController class with all injected dependencies
     func makeModule() -> AuthViewController {
         let requestsManager: RequestsManager = RequestsManager.shared
         let viewModel = AuthViewModel(requestsManager: requestsManager)

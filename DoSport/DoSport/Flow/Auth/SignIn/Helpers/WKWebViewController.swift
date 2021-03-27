@@ -8,6 +8,8 @@
 import UIKit
 import WebKit
 
+// TODO: create SocialMediaService class, and move this code from UI layer
+// TODO: need to remove Helpers folder from this module
 final class WKWebViewController: UIViewController, WKNavigationDelegate {
 
     weak var webView: WKWebView?
