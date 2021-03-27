@@ -20,16 +20,16 @@ final class UserAccountEditingViewModelImplementation: UserAccountEditingViewMod
     var onDidEditUserProfile: ((UserEditDataFlow.EditUserProfile.ViewModel) -> Swift.Void)?
     var onDidDeleteUserProfile: ((UserEditDataFlow.DeleteUserProfile.ViewModel) -> Swift.Void)?
     
-    private let requestsManager: RequestsManager
+    private let userNetworkService: UserNetworkService
     
-    init(requestsManager: RequestsManager) {
-        self.requestsManager = requestsManager
+    init(userNetworkService: UserNetworkService) {
+        self.userNetworkService = userNetworkService
     }
     
     func doEditUserProfile(request: UserEditDataFlow.EditUserProfile.Request) {
         self.onDidEditUserProfile?(.init(state: .loading))
         
-        requestsManager.userProfileEdit(params: request.user) { [unowned self] response in
+        userNetworkService.userProfileEdit(params: request.user) { [unowned self] response in
             switch response {
             case .success(let result):
                 switch result {
@@ -49,7 +49,7 @@ final class UserAccountEditingViewModelImplementation: UserAccountEditingViewMod
     func doDeleteUserProfile(request: UserEditDataFlow.DeleteUserProfile.Request) {
         self.onDidDeleteUserProfile?(.init(state: .loading))
         
-        requestsManager.userProfileDelete { [unowned self] response in
+        userNetworkService.userProfileDelete { [unowned self] response in
             switch response {
             case .success(let result):
                 switch result {

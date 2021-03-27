@@ -14,8 +14,7 @@ final class AuthAssembly: Assembly {
     ///
     /// - Returns: created  object of AuthViewController class with all injected dependencies
     func makeModule() -> AuthViewController {
-        let requestsManager: RequestsManager = RequestsManager.shared
-        let viewModel = AuthViewModel(requestsManager: requestsManager)
+        let viewModel = AuthViewModel()
         let viewController = AuthViewController(viewModel: viewModel)
         return viewController
     }

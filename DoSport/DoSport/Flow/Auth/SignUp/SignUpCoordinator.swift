@@ -32,10 +32,12 @@ final class SignUpCoordinator: Coordinator {
     }
     
     func goToSportTypeListModule(completion: @escaping () -> Swift.Void) {
-        let requestManager = RequestsManager.shared
+        let sportTypeNetworkService = SportTypeNetworkService()
+        let userNetworkService = UserNetworkService()
         let model = SportTypeGrid()
         let viewModel = SportTypeGridViewModel(
-            requestsManager: requestManager,
+            sportTypeNetworkService: sportTypeNetworkService,
+            userNetworkService: userNetworkService,
             model: model
         )
         

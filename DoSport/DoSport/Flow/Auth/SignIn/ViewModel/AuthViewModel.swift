@@ -32,13 +32,10 @@ final class AuthViewModel: NSObject, AuthViewModelProtocol {
     var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)?
     var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)?
     
-    private let requestsManager: RequestsManager
-    
-    init(requestsManager: RequestsManager) {
-        self.requestsManager = requestsManager
-        super.init()
-        
-    }
+//    init() {
+//        super.init()
+//        
+//    }
 
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?) {
         onDidSignUpWithSocialMedia?( .loading)

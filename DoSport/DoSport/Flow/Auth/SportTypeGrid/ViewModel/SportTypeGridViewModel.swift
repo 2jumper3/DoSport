@@ -32,7 +32,8 @@ final class SportTypeGridViewModel: SportTypeGridViewModelProtocol {
     var onDidSaveSportTypes: ((SportTypeGridViewModel.ViewState) -> Swift.Void)?
     var onDidSelectSportType: (() -> Swift.Void)?
     
-    private let requestsManager: RequestsManager
+    private let sportTypeNetworkService: SportTypeNetworkService
+    private let userNetworkService: UserNetworkService
     private var model: SportTypeGrid
     
     var sportTypes: Array<SportTypeGrid.SportType> {
@@ -43,15 +44,19 @@ final class SportTypeGridViewModel: SportTypeGridViewModelProtocol {
         return model.selectedSportTypes
     }
     
-    init(requestsManager: RequestsManager, model: SportTypeGrid) {
-        self.requestsManager = requestsManager
+    init(
+        sportTypeNetworkService: SportTypeNetworkService,
+        userNetworkService: UserNetworkService,
+        model: SportTypeGrid) {
+        self.sportTypeNetworkService = sportTypeNetworkService
+        self.userNetworkService = userNetworkService
         self.model = model
     }
     
     func doLoadSportTypes() {
         self.onDidLoadSportTypes?(.loading)
         
-        requestsManager.sportTypesGet { [unowned self] response in
+        sportTypeNetworkService.sportTypesGet { [unowned self] response in
             switch response {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -92,7 +97,7 @@ final class SportTypeGridViewModel: SportTypeGridViewModelProtocol {
             )
         }
         
-        requestsManager.userPreferredSportTypesEdit(params: requestSportTypes) { response in
+        userNetworkService.userPreferredSportTypesEdit(params: requestSportTypes) { response in
             switch response {
             case .success:
                 break

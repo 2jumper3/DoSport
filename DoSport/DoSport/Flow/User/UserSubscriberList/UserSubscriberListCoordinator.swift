@@ -19,8 +19,8 @@ final class UserSubscriberListCoordinator: Coordinator {
         user: User?,
         contentType: DSEnums.UserSubscribersContentType
     ) {
-        let requestsManager = RequestsManager.shared
-        let viewModel = UserSubscriberListViewModel(requestsManager: requestsManager)
+        let userNetworkService = UserNetworkService()
+        let viewModel = UserSubscriberListViewModel(userNetworkService: userNetworkService)
         
         self.rootViewController = UserSubscriberListController(
             user: user,
