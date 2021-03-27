@@ -16,13 +16,18 @@ enum SocialMediaType {
 protocol AuthViewModelProtocol: class {
     var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
     var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidLogin: ((AuthViewModel.ViewState) -> Swift.Void)? { get set }
     
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?)
+    func doLogin(with data: DSModels.Auth.SignInRequest)
     func doSendSignUpDataToServer()
 }
 
 final class AuthViewModel: NSObject, AuthViewModelProtocol {
     
+    typealias Dependencies = (UserNetworkServiceProtocol &
+                              AuthNetworkServiceProtocol &
+                              UserAccountServiceProtocol)
     enum ViewState {
         case loading
         case failed
@@ -31,12 +36,53 @@ final class AuthViewModel: NSObject, AuthViewModelProtocol {
     
     var onDidSignUpWithSocialMedia: ((AuthViewModel.ViewState) -> Swift.Void)?
     var onDidSendSignUpDataToServer: ((AuthViewModel.ViewState) -> Swift.Void)?
+    var onDidLogin: ((AuthViewModel.ViewState) -> Swift.Void)?
     
-//    init() {
-//        super.init()
-//        
-//    }
-
+    private let dependencies: Dependencies
+    
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+        super.init()
+    }
+    
+    func doLogin(with data:  DSModels.Auth.SignInRequest) {
+        self.onDidLogin?(.loading)
+        
+        self.dependencies.authSignIn(bodyObject: data) { [unowned self] response in
+            
+            switch response {
+            case .success(let responseData):
+                self.doLoadUser(using: responseData.token) { [unowned self] user in
+                    self.dependencies.currentUser = user
+                    
+                    self.onDidLogin?(.success)
+                }
+                
+            case .failure:
+                self.onDidLogin?(.failed)
+            }
+        }
+    }
+    
+    private func doLoadUser(
+        using token: String?,
+        completion: @escaping (DSModels.User.UserView) -> Swift.Void
+    ) {
+        if let jwtToken = token {
+            dependencies.jwtToken = jwtToken
+        }
+        
+        self.dependencies.userProfileGet { response in
+            switch response {
+            case .success(let responseData):
+                completion(responseData)
+                
+            case .failure:
+                self.onDidLogin?(.failed)
+            }
+        }
+    }
+    
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: AuthViewController?) {
         onDidSignUpWithSocialMedia?( .loading)
         

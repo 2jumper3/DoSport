@@ -76,6 +76,17 @@ private extension AuthViewController {
         viewModel.onDidSendSignUpDataToServer = { state in
             
         }
+        
+        viewModel.onDidLogin = { /*[unowned self]*/ state in
+            switch state {
+            case .loading:
+                break
+            case .failed:
+                break
+            case .success:
+                break
+            }
+        }
     }
 }
 
@@ -85,7 +96,15 @@ extension AuthViewController: AuthViewDelegate {
     
     func skipButtonTapped() {
 //        coordinator?.goToMainTabBar()
-        coordinator?.goToRegistrationModule()
+//        coordinator?.goToRegistrationModule()
+        
+        // will be replaced by social media auth
+        viewModel.doLogin(
+            with: .init(
+                email: "admin",
+                password: "admin"
+            )
+        )
     }
     
     func fbAuthClicked() {

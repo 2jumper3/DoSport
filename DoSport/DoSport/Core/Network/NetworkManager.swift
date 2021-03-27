@@ -10,7 +10,7 @@ import Foundation
 struct DSEmptyRequest: Codable { }
 
 enum DataHandler<ResponseType> where ResponseType: Encodable & Decodable {
-    case success(NetworkSuccessResponseType<ResponseType>)
+    case success(ResponseType)
     case failure(NetworkErrorResponseType)
 }
 
@@ -66,9 +66,6 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode != 200 {
                 debugPrint("## - Status code: \(httpResponse.statusCode)", #line)
-                DispatchQueue.main.async {
-                    completion(.failure(.serverError))
-                }
                 return
             }
             
@@ -77,7 +74,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             do {
                 let result: ResponseType = try JSONDecoder().decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(.object(result)))
+                    completion(.success(result))
                 }
             } catch let error {
                 debugPrint(error.localizedDescription, #file, #line)

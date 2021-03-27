@@ -14,7 +14,8 @@ final class AuthAssembly: Assembly {
     ///
     /// - Returns: created  object of AuthViewController class with all injected dependencies
     func makeModule() -> AuthViewController {
-        let viewModel = AuthViewModel()
+        let dependencies = (UserAccountService() & UserNetworkService() & AuthNetworkService())
+        let viewModel = AuthViewModel(dependencies: dependencies)
         let viewController = AuthViewController(viewModel: viewModel)
         return viewController
     }

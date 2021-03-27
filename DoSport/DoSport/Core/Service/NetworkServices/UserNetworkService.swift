@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class UserNetworkService {
+protocol UserNetworkServiceProtocol: class {
+    func userProfileGet(
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
+    )
+}
+
+final class UserNetworkService: UserNetworkServiceProtocol {
     
     private let networkManager: NetworkManager = NetworkManagerImplementation.shared
     
