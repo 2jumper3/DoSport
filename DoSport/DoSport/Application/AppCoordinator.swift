@@ -14,7 +14,7 @@ final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    private let userAccountService: UserAccountService = UserAccountServiceImplementation()
+    private let userAccountService: UserAccountServiceProtocol = UserAccountService()
     
     init(window: UIWindow) {
         self.window = window

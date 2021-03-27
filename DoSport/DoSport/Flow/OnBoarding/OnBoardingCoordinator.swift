@@ -28,7 +28,7 @@ final class OnBoardingCoordinator: Coordinator {
     }
     
     func goToAuthView() {
-        let coordiator = AuthCoordinator(navController: navigationController)
+        let coordiator = SignInCoordinator(navController: navigationController)
         store(coordinator: coordiator)
         coordiator.start()
     }

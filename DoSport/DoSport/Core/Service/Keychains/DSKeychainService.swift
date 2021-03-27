@@ -37,7 +37,8 @@ final class DSKeychainService {
         withAccess access: DSKeychainAccessOptions? = nil
     ) -> Bool {
         
-        if let value = value.data(using: String.Encoding.utf8) {
+        let protectedValue = "Bearer_\(value)"
+        if let value = protectedValue.data(using: String.Encoding.utf8) {
             return set(value, forKey: key, withAccess: access)
         }
         

@@ -10,8 +10,7 @@ import UIKit
 final class SignUpAssembly: Assembly {
     
     func makeModule() -> SignUpViewController {
-        let requestsManager = RequestsManager.shared
-        let viewModel = SignUpViewModel(requestsManager: requestsManager)
+        let viewModel = SignUpViewModel()
         let vc = SignUpViewController(viewModel: viewModel)
         return vc
     }
