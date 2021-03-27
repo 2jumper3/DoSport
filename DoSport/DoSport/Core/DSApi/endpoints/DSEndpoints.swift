@@ -7,4 +7,5 @@
 
 import Foundation
 
+/// Endpoints used to build networking final request with all components
 enum DSEndpoints { }
