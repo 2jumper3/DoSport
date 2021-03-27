@@ -36,7 +36,7 @@ final class MembersCountCell: UITableViewCell {
         return $0
     }(UISlider())
     
-    private lazy var checkboxButton = DSCheckboxButton()
+    private lazy var checkboxButton = UIButton.makeCheckboxButton()
 
     private let checkboxInfoLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -117,9 +117,9 @@ final class MembersCountCell: UITableViewCell {
     }
     
     func handleCheckbocButton() {
-        checkboxButton.bind()
+        checkboxButton.bindCheckboxButtonState()
         
-        switch checkboxButton.getState() {
+        switch checkboxButton.checkboxButtonState {
         case .notSelected:
             maxMembersCountSlider.minimumTrackTintColor = Colors.lightBlue
             maxMembersCountSlider.maximumTrackTintColor = .white

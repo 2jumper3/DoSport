@@ -28,7 +28,7 @@ final class AuthCoordinator: Coordinator {
     }
     
     func goToRegistrationModule() {
-        let coordinator = RegistrationCoordinator(navController: navigationController)
+        let coordinator = SignUpCoordinator(navController: navigationController)
         self.store(coordinator: coordinator)
         coordinator.start()
     }

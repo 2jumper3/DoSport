@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// This class deiscribes DoSport application's custom navigationController object.
 final class DSNavigationController: UINavigationController {
     
     private let navBarSeparatorView = DSSeparatorView()

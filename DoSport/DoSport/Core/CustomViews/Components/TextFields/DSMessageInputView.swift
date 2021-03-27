@@ -26,7 +26,7 @@ final class DSMessageInputView: UIView {
     
     //MARK: Outlets
     
-    private lazy var messageSendButton = DSMessageSendButton()
+    private lazy var messageSendButton = UIButton.makeSendMessageButton()
     private lazy var textField = DSTextField(
         type: .custom(placeholder: Texts.Event.messages),
         placeholderColor: placeholderColor

@@ -1,5 +1,5 @@
 //
-//  FormTextFieldView.swift
+//  DSFormTextFieldView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 14/01/2021.
@@ -16,7 +16,7 @@ enum FormTextFieldViewType: Equatable { // FIXME able to combine this
     case userName, password, dob, custom(placeholder: String)
 }
 
-final class FormTextFieldView: UIView {
+final class DSFormTextFieldView: UIView {
     
     var text: String? {
         get { textField.text }
@@ -80,7 +80,7 @@ final class FormTextFieldView: UIView {
 
 //MARK: Public API
 
-extension FormTextFieldView {
+extension DSFormTextFieldView {
     
     func bind(compilation: (FormTextFieldViewState) -> ()) {
         switch state {
@@ -107,7 +107,7 @@ extension FormTextFieldView {
 
 //MARK: Private API
 
-private extension FormTextFieldView {
+private extension DSFormTextFieldView {
     
     func handleDidSetState() {
         switch state {

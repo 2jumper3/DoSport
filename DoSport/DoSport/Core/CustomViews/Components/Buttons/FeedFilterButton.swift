@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// TODO: this button is same with gender selection button. Reuse. Refactor.
 final class FeedFilterButton: UIButton {
     
     enum State {

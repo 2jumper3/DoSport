@@ -130,7 +130,7 @@ private extension SportGroundSelectionListViewController {
         navigationItem.rightBarButtonItems = [mapBarBtn, filterBarBtn]
         
         /// left back button setup
-        let backBtn = DSBarBackButton()
+        let backBtn = UIButton.makeBarButton()
         backBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
     }

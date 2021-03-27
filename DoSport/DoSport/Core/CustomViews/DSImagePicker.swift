@@ -1,5 +1,5 @@
 //
-//  ImagePicker.swift
+//  DSImagePicker.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 16/01/2021.
@@ -10,24 +10,31 @@ import AVFoundation
 import Photos
 
 protocol ImagePickerDelegate: class {
-    func imagePicker(_ imagePicker: ImagePicker, didSelect image: UIImage)
-    func cancelButtonDidClick(on imageView: ImagePicker)
+    func imagePicker(_ imagePicker: DSImagePicker, didSelect image: UIImage)
+    func cancelButtonDidClick(on imageView: DSImagePicker)
     func imagePicker(
-        _ imagePicker: ImagePicker,
+        _ imagePicker: DSImagePicker,
         grantedAccess: Bool,
         to sourceType: UIImagePickerController.SourceType
     )
 }
 
-final class ImagePicker: NSObject {
+/// This class describes object that manages all image pickings functionality from device gallery
+///
+/// Object of this class is used by `VC` to:
+/// 1) show to user access alert to enable app read from device gallety;
+/// 2) get photo from user's device gallery;
+final class DSImagePicker: NSObject {
 
     private weak var controller: UIImagePickerController?
     weak var delegate: ImagePickerDelegate? = nil
 
+    /// Closes and dismissed user's gallery application
     func dismiss() {
         controller?.dismiss(animated: true, completion: nil)
     }
     
+    /// Opens and presents user's gallery application in modal screen(not fullscreen)
     func present(
         parent viewController: UIViewController,
         sourceType: UIImagePickerController.SourceType
@@ -44,7 +51,7 @@ final class ImagePicker: NSObject {
 
 // MARK: - Get access to camera or photo library -
 
-extension ImagePicker {
+extension DSImagePicker {
     
     private func showAlert(targetName: String, completion: ((Bool) -> Void)?) {
         DispatchQueue.main.async { [weak self] in
@@ -133,11 +140,11 @@ extension ImagePicker {
 
 // MARK: - UINavigationControllerDelegate -
 
-extension ImagePicker: UINavigationControllerDelegate { }
+extension DSImagePicker: UINavigationControllerDelegate { }
 
 // MARK: - UIImagePickerControllerDelegate -
 
-extension ImagePicker: UIImagePickerControllerDelegate {
+extension DSImagePicker: UIImagePickerControllerDelegate {
     
     func imagePickerController(
         _ picker: UIImagePickerController,

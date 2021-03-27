@@ -34,7 +34,7 @@ final class DateSelectionView: UIView {
         return collectionView
     }()
     
-    private lazy var saveButton = CommonButton(title: Texts.DateSelection.save, state: .disabled)
+    private lazy var saveButton = DSCommonButton(title: Texts.DateSelection.save, state: .disabled)
 
     //MARK: Init
     
@@ -100,11 +100,11 @@ extension DateSelectionView {
         layoutIfNeeded()
     }
     
-    func bindSaveButton(state: CommonButtonState) {
+    func bindSaveButton(state: DSCommonButtonState) {
         saveButton.bind(state: state)
     }
     
-    func getSaveButtonState() -> CommonButtonState {
+    func getSaveButtonState() -> DSCommonButtonState {
         return saveButton.getState()
     }
     

@@ -34,10 +34,11 @@ final class DSCountryListNavBar: UIView {
     
     private var leftConstraint: NSLayoutConstraint?
     
-    private lazy var backButton: DSBarBackButton = {
-        $0.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        return $0
-    }(DSBarBackButton())
+    private lazy var backButton: UIButton = {
+        let button = UIButton.makeBarButton()
+        button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        return button
+    }()
 
     
     private let titleLabel: UILabel = { // ToDo: Make text bold 500

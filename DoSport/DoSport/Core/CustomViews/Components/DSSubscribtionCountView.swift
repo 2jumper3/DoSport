@@ -7,6 +7,10 @@
 
 import UIKit
 
+/// This class describes a view that shows number of user's subscriptions/subscribers.
+///
+/// - it uses `int` number which is the number of subscriptions/subscribers, provided by owner while initialising;
+/// - and it uses `String` as a name for label for either subscriptions/subscribers, provided by owner while initialising;
 final class DSSubscribtionCountView: UIView {
     
     private let countLabel: UILabel = {

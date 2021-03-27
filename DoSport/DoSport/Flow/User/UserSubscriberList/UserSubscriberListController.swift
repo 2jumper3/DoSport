@@ -107,7 +107,7 @@ private extension UserSubscriberListController {
             NSAttributedString.Key.foregroundColor: Colors.mainBlue
         ]
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: DSBarBackButton())
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton.makeBarButton())
     }
     
     func updateState(_ state: UserSubscriberListDataFlow.ViewControllerState) {

@@ -108,7 +108,7 @@ private extension DateSelectionViewController {
             NSAttributedString.Key.foregroundColor: Colors.mainBlue
         ]
         
-        let button = DSBarBackButton()
+        let button = UIButton.makeBarButton()
         button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }

@@ -1,5 +1,5 @@
 //
-//  RegistrationViewController.swift
+//  SignUpViewController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 23/12/2020.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class RegistrationViewController: UIViewController {
+final class SignUpViewController: UIViewController {
     
-    weak var coordinator: RegistrationCoordinator?
-    private let viewModel: RegistrationViewModel
-    private lazy var registrationView = self.view as! RegistrationView
+    weak var coordinator: SignUpCoordinator?
+    private let viewModel: SignUpViewModel
+    private lazy var registrationView = self.view as! SignUpView
     
-    private lazy var imagePicker = ImagePicker()
+    private lazy var imagePicker = DSImagePicker()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -21,7 +21,7 @@ final class RegistrationViewController: UIViewController {
     
     //MARK:  Init
     
-    init(viewModel: RegistrationViewModel) {
+    init(viewModel: SignUpViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,20 +33,18 @@ final class RegistrationViewController: UIViewController {
     //MARK: Life cycle
     
     override func loadView() {
-        let view = RegistrationView()
+        let view = SignUpView()
         view.delegate = self
+        imagePicker.delegate = self
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = Texts.Registration.navTitle
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ]
+        self.setupNavBar()
+        self.setupViewModelBindings()
         
-        imagePicker.delegate = self
         registrationView.setDelegates(textField: self, datePicker: self)
     }
     
@@ -67,9 +65,31 @@ final class RegistrationViewController: UIViewController {
     }
 }
 
-//MARK: - RegistrationViewDelegate -
+//MARK: Private API
 
-extension RegistrationViewController: RegistrationViewDelegate {
+private extension SignUpViewController {
+    
+    func setupViewModelBindings() {
+        self.viewModel.onDidChangeButtonState = {  /*[unowned self] in */
+            
+        }
+        
+        self.viewModel.onDidUploadSignUpDataToServer = { /*[unowned self]*/ state in
+            
+        }
+    }
+    
+    func setupNavBar() {
+        self.title = Texts.Registration.navTitle
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+    }
+}
+
+//MARK: - SignUpViewDelegate -
+
+extension SignUpViewController: SignUpViewDelegate {
     
     func datePickerValueChanged(_ datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
@@ -80,11 +100,7 @@ extension RegistrationViewController: RegistrationViewDelegate {
     }
     
     func saveButtonClicked(with username: String?, dob: String?, gender: String?) {
-        viewModel.createUser() { [weak self] in
-            self?.coordinator?.goToSportTypeListModule {
-                self?.coordinator?.closeSportTypeGridModule()
-            }
-        }
+        viewModel.doUploadSignUpDataToServer()
     }
     
     func avatarChangeButtonClicked() {
@@ -94,19 +110,19 @@ extension RegistrationViewController: RegistrationViewDelegate {
 
 //MARK: - ImagePickerDelegate -
 
-extension RegistrationViewController: ImagePickerDelegate {
+extension SignUpViewController: ImagePickerDelegate {
     
-    func imagePicker(_ imagePicker: ImagePicker, didSelect image: UIImage) {
+    func imagePicker(_ imagePicker: DSImagePicker, didSelect image: UIImage) {
         registrationView.avatarImage = image
         imagePicker.dismiss()
     }
     
-    func cancelButtonDidClick(on imageView: ImagePicker) {
+    func cancelButtonDidClick(on imageView: DSImagePicker) {
         imagePicker.dismiss()
     }
     
     func imagePicker(
-        _ imagePicker: ImagePicker,
+        _ imagePicker: DSImagePicker,
         grantedAccess: Bool,
         to sourceType: UIImagePickerController.SourceType
     ) {
@@ -117,7 +133,7 @@ extension RegistrationViewController: ImagePickerDelegate {
 
 //MARK: - UITextFieldDelegate -
 
-extension RegistrationViewController: UITextFieldDelegate {
+extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == registrationView.getDobTextField() {
@@ -137,7 +153,7 @@ extension RegistrationViewController: UITextFieldDelegate {
 
 //MARK: - DSDatePickerDelegate -
 
-extension RegistrationViewController: DSDatePickerDelegate {
+extension SignUpViewController: DSDatePickerDelegate {
     
     func doneButtonClicked() {
         registrationView.removeDobTextFieldFirstResponder()

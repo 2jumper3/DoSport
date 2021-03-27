@@ -72,8 +72,8 @@ class AuthView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var skipButton = UIButton.makeButton(title: Texts.Auth.skip,
-                                                      titleColor: Colors.mainBlue)
+    private lazy var skipButton = UIButton.makeSimpleButton(title: Texts.Auth.skip,
+                                                            titleColor: Colors.mainBlue)
     
     //MARK: Init
     

@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// Simple separatorView class
+// TODO: avoid using entire UIView object for just drawing a line.
 final class DSSeparatorView: UIView {
     
     init(color: UIColor = Colors.dirtyBlue) {

@@ -1,5 +1,5 @@
 //
-//  RegistrationCoordinator.swift
+//  SignUpCoordinator.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 23/12/2020.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class RegistrationCoordinator: Coordinator {
+final class SignUpCoordinator: Coordinator {
     
-    var rootViewController: RegistrationViewController
+    var rootViewController: SignUpViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = RegistrationAssembly()
+        let assembly = SignUpAssembly()
         self.navigationController = navController
         self.rootViewController = assembly.makeModule()
     }

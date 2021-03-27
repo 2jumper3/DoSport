@@ -1,12 +1,12 @@
 //
-//  Auth.swift
+//  Labels.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 27/03/2021.
 //
 
-import Foundation
+import UIKit.UILabel
 
-//final class Auth {
-//    
-//}
+extension UILabel {
+    
+}

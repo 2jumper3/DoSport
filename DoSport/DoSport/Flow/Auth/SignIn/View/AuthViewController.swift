@@ -93,7 +93,7 @@ extension AuthViewController: AuthViewDelegate {
     }
     
     func vkAuthButtonClicked() {
-        viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: self)
+        viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: nil)
     }
     
     func googleAuthButtonClicked() {
@@ -101,6 +101,6 @@ extension AuthViewController: AuthViewDelegate {
     }
     
     func appleAuthButtonClicked() {
-        viewModel.doSignUpWithSocialMedia(.apple, viewController: self)
+        viewModel.doSignUpWithSocialMedia(.apple, viewController: nil)
     }
 }

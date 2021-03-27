@@ -31,7 +31,7 @@ final class EventCreateView: UIView {
         return tableView
     }()
 
-    private lazy var createButton = CommonButton(title: Texts.EventCreate.create, state: .disabled)
+    private lazy var createButton = DSCommonButton(title: Texts.EventCreate.create, state: .disabled)
 
     //MARK: Init
     
@@ -92,8 +92,9 @@ extension EventCreateView {
         layoutIfNeeded()
     }
     
-    func bindCreateButton(state: CommonButtonState) {
-        createButton.bind(state: state)
+    func bindCreateButton(state: DSCommonButtonState) {
+        // TODO: Common button state need to be finished
+//        createButton.bind(state: state)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  RegistrationView.swift
+//  SignUpView.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 23/12/2020.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol RegistrationViewDelegate: class {
+protocol SignUpViewDelegate: class {
     func saveButtonClicked(with username: String?, dob: String?, gender: String?)
     func avatarChangeButtonClicked()
     func datePickerValueChanged(_ datePicker: UIDatePicker)
 }
 
-final class RegistrationView: UIView {
+final class SignUpView: UIView {
     
-    weak var delegate: RegistrationViewDelegate?
+    weak var delegate: SignUpViewDelegate?
     
     private var gender: String?
     
@@ -28,16 +28,16 @@ final class RegistrationView: UIView {
     
     private let avatarImageView: DSAvatartImageView = DSAvatartImageView()
     
-    private lazy var userNameTextField = FormTextFieldView(type: .userName)
-    private lazy var dobTextField = FormTextFieldView(type: .dob)
+    private lazy var userNameTextField = DSFormTextFieldView(type: .userName)
+    private lazy var dobTextField = DSFormTextFieldView(type: .dob)
     
     private lazy var datePicker = DSDatePicker()
     
-    private lazy var maleButton = DSButton(title: Texts.Registration.Gender.male)
-    private lazy var femaleButton = DSButton(title: Texts.Registration.Gender.female)
-    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal)
-    private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
-                                                           titleColor: Colors.mainBlue)
+    private lazy var maleButton = UIButton.makeGenderButton(with: Texts.Registration.Gender.male)
+    private lazy var femaleButton = UIButton.makeGenderButton(with: Texts.Registration.Gender.female)
+    private lazy var saveButton = DSCommonButton(title: Texts.Registration.save, state: .normal)
+    private lazy var addAvatarButton = UIButton.makeSimpleButton(title: Texts.Registration.addAvatar,
+                                                                 titleColor: Colors.mainBlue)
 
     //MARK: Init
     
@@ -121,7 +121,7 @@ final class RegistrationView: UIView {
 
 //MARK: Public API
 
-extension RegistrationView {
+extension SignUpView {
     
     func updateView() {
         userNameTextField.bind() { state in
@@ -130,6 +130,10 @@ extension RegistrationView {
             case .error: animateToError()
             }
         }
+    }
+    
+    func setSaveButtonState() {
+        self.setNeedsDisplay()
     }
     
     func setDateOfBirth(_ text: String) {
@@ -165,7 +169,7 @@ extension RegistrationView {
 
 //MARK: Private API
 
-private extension RegistrationView {
+private extension SignUpView {
     
     func setupOutletTargets() {
         addAvatarButton.addTarget(self, action: #selector(handleAddAvatarButton))
@@ -201,7 +205,7 @@ private extension RegistrationView {
 
 //MARK: Actions
 
-@objc private extension RegistrationView {
+@objc private extension SignUpView {
     
     func handleAddAvatarButton() {
         delegate?.avatarChangeButtonClicked()
@@ -216,14 +220,14 @@ private extension RegistrationView {
     }
     
     func handleMaleButton() {
-        maleButton.bind(state: .seleted)
-        femaleButton.bind(state: .normal)
+        maleButton.bindGenderButtonState(state: .selected)
+        femaleButton.bindGenderButtonState(state: .notSelected)
         self.gender = maleButton.titleLabel?.text
     }
     
     func handleFemaleButton() {
-        maleButton.bind(state: .normal)
-        femaleButton.bind(state: .seleted)
+        maleButton.bindGenderButtonState(state: .notSelected)
+        femaleButton.bindGenderButtonState(state: .selected)
         self.gender = maleButton.titleLabel?.text
     }
     

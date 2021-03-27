@@ -30,16 +30,19 @@ final class UserAccountEditingView: UIView {
     
     private let avatarImageView: DSAvatartImageView = DSAvatartImageView()
     
-    private lazy var userNameTextField = FormTextFieldView(type: .userName)
-    private lazy var dobTextField = FormTextFieldView(type: .dob)
+    private lazy var userNameTextField = DSFormTextFieldView(type: .userName)
+    private lazy var dobTextField = DSFormTextFieldView(type: .dob)
     
     private lazy var datePicker = DSDatePicker()
     
-    private lazy var maleButton = DSButton(title: Texts.Registration.Gender.male)
-    private lazy var femaleButton = DSButton(title: Texts.Registration.Gender.female)
-    private lazy var saveButton = CommonButton(title: Texts.Registration.save, state: .normal, isHidden: false)
-    private lazy var addAvatarButton = UIButton.makeButton(title: Texts.Registration.addAvatar,
-                                                           titleColor: Colors.mainBlue)
+    private lazy var maleButton = UIButton.makeGenderButton(with: Texts.Registration.Gender.male)
+    private lazy var femaleButton = UIButton.makeGenderButton(with: Texts.Registration.Gender.female)
+    private lazy var saveButton = DSCommonButton(title: Texts.Registration.save,
+                                                 state: .normal,
+                                                 isHidden: false)
+    
+    private lazy var addAvatarButton = UIButton.makeSimpleButton(title: Texts.Registration.addAvatar,
+                                                                 titleColor: Colors.mainBlue)
     
     private lazy var signOutButton: DSButtonWithIcon = .init(
         img: Icons.UserProfileEdit.logout,
@@ -241,14 +244,14 @@ private extension UserAccountEditingView {
     }
     
     func handleMaleButton() {
-        maleButton.bind(state: .seleted)
-        femaleButton.bind(state: .normal)
+        maleButton.bindGenderButtonState(state: .selected)
+        femaleButton.bindGenderButtonState(state: .notSelected)
         self.gender = maleButton.titleLabel?.text
     }
     
     func handleFemaleButton() {
-        maleButton.bind(state: .normal)
-        femaleButton.bind(state: .seleted)
+        maleButton.bindGenderButtonState(state: .notSelected)
+        femaleButton.bindGenderButtonState(state: .selected)
         self.gender = maleButton.titleLabel?.text
     }
     

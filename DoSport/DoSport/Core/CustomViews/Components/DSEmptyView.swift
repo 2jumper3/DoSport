@@ -6,8 +6,8 @@
 //
 
 import UIKit.UIView
-import SnapKit
 
+/// This class describes an emptyView object that is used to show some provide text to the user when screen's content can not be loaded.
 final class DSEmptyView: UIView {
     
     private lazy var label: UILabel = {

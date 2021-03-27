@@ -42,7 +42,7 @@ final class UserReportMessageView: UIView {
         return $0
     }(UITextView())
 
-    private lazy var sendButton = CommonButton(title: Texts.Common.send, state: .disabled)
+    private lazy var sendButton = DSCommonButton(title: Texts.Common.send, state: .disabled)
 
     //MARK: Init
     
@@ -112,8 +112,9 @@ extension UserReportMessageView {
         userNameLabel.text = data.name
     }
     
-    func bindButtonState(_ state: CommonButtonState) {
-        self.sendButton.bind(state: state)
+    func bindButtonState(_ state: DSCommonButtonState) {
+        // TODO: Common button state need to be finished
+//        self.sendButton.bind(state: state)
     }
     
     func setDelegates(textField delegate: UITextViewDelegate?) {

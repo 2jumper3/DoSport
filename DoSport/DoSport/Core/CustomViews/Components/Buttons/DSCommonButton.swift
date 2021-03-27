@@ -1,19 +1,18 @@
 //
-//  CommonButton.swift
+//  DSCommonButton.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
 //
-
 import UIKit
 
-enum CommonButtonState {
+enum DSCommonButtonState {
     case disabled, normal
 }
 
-final class CommonButton: UIButton {
+final class DSCommonButton: UIButton {
     
-    private var buttonState: CommonButtonState = .normal {
+    private var buttonState: DSCommonButtonState = .normal {
         didSet {
             handleStateChange()
         }
@@ -23,7 +22,7 @@ final class CommonButton: UIButton {
     
     init(
         title: String = "",
-        state: CommonButtonState = .normal,
+        state: DSCommonButtonState = .normal,
         isHidden: Bool = false
     ) {
         super.init(frame: .zero)
@@ -44,10 +43,9 @@ final class CommonButton: UIButton {
 }
 
 //MARK: Public API
-
-extension CommonButton {
+extension DSCommonButton {
     
-    func bind(state: CommonButtonState) {
+    func bind(state: DSCommonButtonState) {
         buttonState = state
     }
     
@@ -55,14 +53,13 @@ extension CommonButton {
         self.isHidden = value
     }
     
-    func getState() -> CommonButtonState {
+    func getState() -> DSCommonButtonState {
         return buttonState
     }
 }
 
 //MARK: Private API
-
-private extension CommonButton {
+private extension DSCommonButton {
     
     func handleStateChange() {
         switch buttonState {

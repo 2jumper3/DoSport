@@ -103,7 +103,7 @@ private extension AppLanguageListController {
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        let backBarButton = DSBarBackButton()
+        let backBarButton = UIButton.makeBarButton()
         backBarButton.addTarget(self, action: #selector(handleGoBackButton))
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
     }

@@ -79,7 +79,7 @@ private extension UserAccountEditingController {
         navController.hasSeparator(true)
         navController.interactivePopGestureRecognizer?.delegate = self
         
-        let backBarButton = DSBarBackButton()
+        let backBarButton = UIButton.makeBarButton()
         backBarButton.addTarget(self, action: #selector(handleGoBackButton))
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBarButton)
         

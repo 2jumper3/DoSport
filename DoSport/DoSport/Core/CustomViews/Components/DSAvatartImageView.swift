@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// This class describes view object that has UIImageView inside.
+///
+/// Basically it  provides space between rounded border and UIImage, adding UIImageView as subview and making its frame smaller that parentView's.
 final class DSAvatartImageView: UIView {
     
     var image: UIImage? {

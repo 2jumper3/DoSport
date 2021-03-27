@@ -11,6 +11,12 @@ protocol DSDatePickerDelegate: class {
     func doneButtonClicked()
 }
 
+/// This class describes custom datePicker control with additional functionality.
+///
+/// Mainly this class implements some logic to move out from View or ViewController:
+/// - datePicker setup into the textField
+/// - `done` button setup into the textField that showing datePicker.
+/// - handling `done` button and calling delegate.
 final class DSDatePicker: UIDatePicker {
     
     weak var delegate: DSDatePickerDelegate?

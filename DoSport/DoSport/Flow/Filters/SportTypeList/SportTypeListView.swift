@@ -25,7 +25,7 @@ final class SportTypeListView: UIView {
         return $0
     }(UITableView(frame: .zero, style: .grouped))
     
-    private lazy var selectButton = CommonButton(title: Texts.SportTypeList.select, state: .disabled)
+    private lazy var selectButton = DSCommonButton(title: Texts.SportTypeList.select, state: .disabled)
 
     //MARK: Init
     
@@ -72,8 +72,9 @@ extension SportTypeListView {
         layoutIfNeeded()
     }
     
-    func bindSelectButton(state: CommonButtonState) {
-        selectButton.bind(state: state)
+    func bindSelectButton(state: DSCommonButtonState) {
+        // TODO: Common button state
+//        selectButton.bind(state: state)
     }
 }
 

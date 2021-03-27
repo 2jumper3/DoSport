@@ -25,11 +25,12 @@ final class OnBoardingViewController: UIViewController {
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var pageControl = FlexiblePageControl()
     
-    private lazy var confirmButton: CommonButton = {
-        $0.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
-        $0.backgroundColor = Colors.darkBlue
-        return $0
-    }(CommonButton(title: "OK", state: .normal))
+    private lazy var confirmButton: UIButton = {
+        let button = DSCommonButton(title: "Ok", state: .normal)
+        button.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        button.backgroundColor = Colors.darkBlue
+        return button
+    }()
 
     // MARK: Life Cycle
     
