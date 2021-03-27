@@ -31,14 +31,8 @@ final class UserAccountEditingViewModelImplementation: UserAccountEditingViewMod
         
         userNetworkService.userProfileEdit(params: request.user) { [unowned self] response in
             switch response {
-            case .success(let result):
-                switch result {
-                case .object(let user):
-                    debugPrint(user)
-                    self.onDidEditUserProfile?(.init(state: .success))
-                case .emptyObject:
-                    break
-                }
+            case .success:
+                self.onDidEditUserProfile?(.init(state: .success))
                 
             case .failure(let error):
                 debugPrint(error.localizedDescription)
@@ -51,15 +45,8 @@ final class UserAccountEditingViewModelImplementation: UserAccountEditingViewMod
         
         userNetworkService.userProfileDelete { [unowned self] response in
             switch response {
-            case .success(let result):
-                switch result {
-                case .object:
-                    break
-                    
-                case .emptyObject:
-                    self.onDidDeleteUserProfile?(.init(state: .success))
-                    break
-                }
+            case .success:
+                self.onDidDeleteUserProfile?(.init(state: .success))
                 
             case .failure(let error):
                 debugPrint(error.localizedDescription)

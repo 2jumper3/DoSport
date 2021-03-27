@@ -61,37 +61,32 @@ final class SignUpViewModel: SignUpViewModelProtocol {
             network.signUpRequests { response in
                 switch response {
                 
-                case .success(let result):
-                    switch result {
-                    case .object(let responseData):
-                        let userData = DSModels.User.UserView(
-                            id: responseData.id,
-                            username: responseData.username,
-                            avatarPhoto: nil,
-                            birthdayDate: responseData.birthdayDate,
-                            gender: responseData.gender,
-                            info: responseData.gender)
+                case .success(let responseData):
+                    let userData = DSModels.User.UserView(
+                        id: responseData.id,
+                        username: responseData.username,
+                        avatarPhoto: nil,
+                        birthdayDate: responseData.birthdayDate,
+                        gender: responseData.gender,
+                        info: responseData.gender)
+                    
+                    DSSharedData.shared.userData = userData
+                    let network = LoginRequestClass()
+                    network.getTokenRequests { response in
+                        switch response {
                         
-                        DSSharedData.shared.userData = userData
-                        let network = LoginRequestClass()
-                        network.getTokenRequests { response in
-                            switch response {
-                            
-                            case .success(let result):
-                                switch result {
-                                case .object(let responseData):
-                                    if let jwtToken = responseData.token {
-                                        DSLoginData.shared.logIn(jwtToken: jwtToken)
-                                    }
-                                case .emptyObject:
-                                    break
+                        case .success(let result):
+                            switch result {
+                            case .object(let responseData):
+                                if let jwtToken = responseData.token {
+                                    DSLoginData.shared.logIn(jwtToken: jwtToken)
                                 }
-                            case .failure:
+                            case .emptyObject:
                                 break
                             }
+                        case .failure:
+                            break
                         }
-                    case .emptyObject:
-                        break
                     }
                 case .failure:
                     break
