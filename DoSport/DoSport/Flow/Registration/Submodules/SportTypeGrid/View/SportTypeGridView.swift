@@ -89,7 +89,7 @@ extension SportTypeGridView {
         layoutIfNeeded()
     }
     
-    func updateViewToState(_ state: SportTypeGridDataFlow.ViewControllerState) {
+    func updateViewToState(_ state: SportTypeGridViewModel.ViewState) {
         if case .success = state {
             self.loadingIndicator.stopAnimating()
             self.loadingIndicator.isHidden = true

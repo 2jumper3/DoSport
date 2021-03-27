@@ -9,19 +9,9 @@ import UIKit
 
 final class CollectionViewSportTypeCell: UICollectionViewCell {
     
-    enum State {
-        case notSelected, selected
-    }
-    
     var text: String? {
         get { titleLabel.text }
         set { titleLabel.text = newValue }
-    }
-    
-    private var cellState: State = .notSelected {
-        didSet {
-            handleStateChange()
-        }
     }
     
     //MARK: Outlets
@@ -63,26 +53,11 @@ final class CollectionViewSportTypeCell: UICollectionViewCell {
 
 extension CollectionViewSportTypeCell {
     
-    func bind() {
-        switch cellState {
-        case .notSelected:
-            cellState = .selected
-        case .selected:
-            cellState = .notSelected
-        }
-    }
-}
-
-//MARK: Private API
-
-private extension CollectionViewSportTypeCell {
-    
-    func handleStateChange() {
-        switch cellState {
-        case .notSelected:
-            backgroundColor = .clear
-        case .selected:
+    func bind(isSelected: Bool) {
+        if isSelected {
             backgroundColor = Colors.lightBlue
+        } else {
+            backgroundColor = .clear
         }
     }
 }

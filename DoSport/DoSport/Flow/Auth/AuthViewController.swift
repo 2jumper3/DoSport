@@ -84,7 +84,8 @@ private extension AuthViewController {
 extension AuthViewController: AuthViewDelegate {
     
     func skipButtonTapped() {
-        coordinator?.goToMainTabBar()
+//        coordinator?.goToMainTabBar()
+        coordinator?.goToRegistrationModule()
     }
     
     func fbAuthClicked() {

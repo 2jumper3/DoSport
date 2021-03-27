@@ -7,38 +7,72 @@
 
 import Foundation
 
-protocol SportTypeGridViewModel: class {
-    var onDidLoadSportTypes: ((SportTypeGridDataFlow.LoadSportTypes.ViewModel) -> Swift.Void)? { get set }
-    var onDidSaveSportTypes: ((SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel) -> Swift.Void)? { get set } 
+protocol SportTypeGridViewModelProtocol: class {
+    var onDidLoadSportTypes: ((SportTypeGridViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidSaveSportTypes: ((SportTypeGridViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidSelectSportType: (() -> Swift.Void)? { get set }
     
-    func doLoadSportTypes(request: SportTypeGridDataFlow.LoadSportTypes.Request)
-    func doSaveSportTypes(request: SportTypeGridDataFlow.SaveSelectedSportTypes.Request)
+    var sportTypes: Array<SportTypeGrid.SportType> { get }
+    var selectedSportTypes: Array<SportTypeGrid.SportType> { get }
+    
+    func doLoadSportTypes()
+    func doSaveSportTypes()
+    func doSelect(_ sportType: SportTypeGrid.SportType)
 }
 
-final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewModel {
+final class SportTypeGridViewModel: SportTypeGridViewModelProtocol {
     
-    var onDidLoadSportTypes: ((SportTypeGridDataFlow.LoadSportTypes.ViewModel) -> Swift.Void)?
-    var onDidSaveSportTypes: ((SportTypeGridDataFlow.SaveSelectedSportTypes.ViewModel) -> Swift.Void)?
-    
-    private let requestManager: RequestsManager
-    
-    init(requestManager: RequestsManager) {
-        self.requestManager = requestManager
-        super.init()
+    enum ViewState {
+        case loading
+        case failed
+        case success([SportTypeGrid.SportType]?)
     }
     
-    func doLoadSportTypes(request: SportTypeGridDataFlow.LoadSportTypes.Request) {
-        self.onDidLoadSportTypes?(.init(state: .loading))
+    var onDidLoadSportTypes: ((SportTypeGridViewModel.ViewState) -> Swift.Void)?
+    var onDidSaveSportTypes: ((SportTypeGridViewModel.ViewState) -> Swift.Void)?
+    var onDidSelectSportType: (() -> Swift.Void)?
+    
+    private let requestsManager: RequestsManager
+    private var model: SportTypeGrid
+    
+    var sportTypes: Array<SportTypeGrid.SportType> {
+        return model.sportTypes
+    }
+    
+    var selectedSportTypes: Array<SportTypeGrid.SportType> {
+        return model.selectedSportTypes
+    }
+    
+    init(requestsManager: RequestsManager, model: SportTypeGrid) {
+        self.requestsManager = requestsManager
+        self.model = model
+    }
+    
+    func doLoadSportTypes() {
+        self.onDidLoadSportTypes?(.loading)
         
-        self.requestManager.sportTypesGet { [weak self] response in
+        requestsManager.sportTypesGet { [unowned self] response in
             switch response {
             case .failure(let error):
                 print(error.localizedDescription)
+                
             case .success(let result):
                 
                 switch result {
-                case .object(let sportTypes):
-                    self?.onDidLoadSportTypes?(.init(state: .success(sportTypes)))
+                case .object(let responseSportTypes):
+                    let sportTypes = responseSportTypes.map {
+                        responseSportType -> SportTypeGrid.SportType in
+                        
+                        return SportTypeGrid.SportType(
+                            name: responseSportType.title ?? "",
+                            isSelected: false,
+                            id: responseSportType.id ?? 0
+                        )
+                    }
+                    
+                    self.model.sportTypes = sportTypes
+                    self.onDidLoadSportTypes?(.success(model.sportTypes))
+                    
                 case .emptyObject:
                     print(#function, #file, #line, " need to finish handling empty object")
                 }
@@ -46,46 +80,30 @@ final class SportTypeGridViewModelImplementation: NSObject, SportTypeGridViewMod
         }
     }
     
-    func doSaveSportTypes(request: SportTypeGridDataFlow.SaveSelectedSportTypes.Request) {
-        self.onDidSaveSportTypes?(.init(state: .loading))
+    func doSaveSportTypes() {
+        self.onDidSaveSportTypes?(.loading)
         
-        requestManager.userPreferredSportTypesEdit(params: request.sportTypes) { response in
+        let requestSportTypes = self.selectedSportTypes.map {
+            sportType -> DSModels.SportType.SportTypeView in
+            
+            return DSModels.SportType.SportTypeView(
+                id: sportType.id,
+                title: sportType.name
+            )
+        }
+        
+        requestsManager.userPreferredSportTypesEdit(params: requestSportTypes) { response in
             switch response {
             case .success:
-                self.onDidSaveSportTypes?(.init(state: .success(nil)))
+                break
             case .failure:
-                DispatchQueue.main.async {
-                    self.onDidSaveSportTypes?(.init(state: .success(nil)))
-                }
+                break
             }
         }
     }
-}
-
-//MARK: - DataFow -
-
-enum SportTypeGridDataFlow {
-    enum LoadSportTypes {
-        struct Request { }
-        
-        struct ViewModel {
-            let state: ViewControllerState
-        }
-    }
     
-    enum SaveSelectedSportTypes {
-        struct Request {
-            let sportTypes: [DSModels.SportType.SportTypeView]
-        }
-        
-        struct ViewModel {
-            let state: ViewControllerState
-        }
-    }
-    
-    enum ViewControllerState {
-        case loading
-        case failed
-        case success([DSModels.SportType.SportTypeView]?)
+    func doSelect(_ sportType: SportTypeGrid.SportType) {
+        self.model.selectSportType(sportType)
+        self.onDidSelectSportType?()
     }
 }

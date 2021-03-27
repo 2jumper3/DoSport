@@ -7,14 +7,15 @@
 
 import Foundation
 
+/// This class describes some basic use cases of App language selection screen. Also provides Language model used in screen.
 public class AppLanguageModel {
     
     public var languages: [Language]
     
     public struct Language: Identifiable {
-        public var name: String
+        public let name: String
         public var isChoosen: Bool
-        public var id: Int
+        public let id: Int
     }
     
     init(languages: [Language]) {
@@ -23,7 +24,10 @@ public class AppLanguageModel {
     
     public var chosenLanguageIndex: Int = 0
     
-    public func chooseLanguage(_ language: AppLanguageModel.Language, completion: () -> Swift.Void) {
+    public func chooseLanguage(
+        _ language: AppLanguageModel.Language,
+        completion: () -> Swift.Void
+    ) {
         if self.isChosenLanguageMatchesTo(new: language) {
             return
         } else {

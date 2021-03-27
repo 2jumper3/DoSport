@@ -8,16 +8,16 @@
 import UIKit
 
 protocol SportTypeGridDataSourceDelegate: class {
-    func collectionView(didSelect sport: DSModels.SportType.SportTypeView)
+    func collectionView(didSelect sportType: SportTypeGrid.SportType)
 }
 
 final class SportTypeGridDataSource: NSObject {
     
     weak var delegate: SportTypeGridDataSourceDelegate?
     
-    var viewModels: [DSModels.SportType.SportTypeView]
+    var viewModels: [SportTypeGrid.SportType]
     
-    init(viewModels: [DSModels.SportType.SportTypeView] = []) {
+    init(viewModels: [SportTypeGrid.SportType] = []) {
         self.viewModels = viewModels
         super.init()
     }
@@ -35,10 +35,11 @@ extension SportTypeGridDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let viewModel = viewModels[indexPath.row]
+        let viewModel: SportTypeGrid.SportType = viewModels[indexPath.row]
         
         let cell: CollectionViewSportTypeCell = collectionView.cell(forRowAt: indexPath)
-        cell.text = viewModel.title
+        cell.text = viewModel.name
+        cell.bind(isSelected: viewModel.isSelected)
         
         return cell
     }
@@ -50,13 +51,7 @@ extension SportTypeGridDataSource: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModels[indexPath.row]
-        
-        guard
-            let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewSportTypeCell
-        else {
-            return
-        }
-        cell.bind()
+
         delegate?.collectionView(didSelect: viewModel)
     }
 }

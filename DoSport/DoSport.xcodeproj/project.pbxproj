@@ -792,19 +792,11 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		656B7290260E638100E02221 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */,
-				65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		656B7293260E638D00E02221 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				65CD779925EB535A00D042FD /* AppLanguageListController.swift */,
+				65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */,
 				65CD779425EB535600D042FD /* AppLanguageListView.swift */,
 			);
 			path = View;
@@ -837,6 +829,7 @@
 		656B72CB260E85D200E02221 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
 				65D973FF25B4731D00769653 /* SportTypeGridView.swift */,
 				65D973FA25B4731800769653 /* SportTypeGridViewController.swift */,
 			);
@@ -849,14 +842,6 @@
 				656B72D0260E865C00E02221 /* SportTypeGrid.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		656B72CD260E85D900E02221 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		656CC268259A51FB00DEC84C /* Utils */ = {
@@ -1176,7 +1161,7 @@
 		65CD779325EB534700D042FD /* AppLanguageList */ = {
 			isa = PBXGroup;
 			children = (
-				656B7290260E638100E02221 /* Helpers */,
+				651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */,
 				656B7295260E639300E02221 /* Model */,
 				656B7293260E638D00E02221 /* View */,
 				656B7294260E639000E02221 /* ViewModel */,
@@ -1244,7 +1229,6 @@
 		65D973F125B472C800769653 /* SportTypeGrid */ = {
 			isa = PBXGroup;
 			children = (
-				656B72CD260E85D900E02221 /* Helpers */,
 				656B72CC260E85D600E02221 /* Model */,
 				656B72CB260E85D200E02221 /* View */,
 				656B72CA260E85CE00E02221 /* ViewModel */,

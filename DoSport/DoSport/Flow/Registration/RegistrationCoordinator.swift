@@ -33,7 +33,12 @@ final class RegistrationCoordinator: Coordinator {
     
     func goToSportTypeListModule(completion: @escaping () -> Swift.Void) {
         let requestManager = RequestsManager.shared
-        let viewModel = SportTypeGridViewModelImplementation(requestManager: requestManager)
+        let model = SportTypeGrid()
+        let viewModel = SportTypeGridViewModel(
+            requestsManager: requestManager,
+            model: model
+        )
+        
         let vc = SportTypeGridViewController(
             viewModel: viewModel,
             goBackCompletion: completion
