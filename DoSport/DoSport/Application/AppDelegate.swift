@@ -30,7 +30,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
 //    }
     
     
+
     var window : UIWindow?
+    var appCoordinator: AppCoordinator?
+    weak var deepLinkServiceProtocol: DeepLinkServiceProtocol?
     
     func application(
         _ app: UIApplication,
@@ -65,5 +68,17 @@ class AppDelegate : UIResponder, UIApplicationDelegate {//, GIDSignInDelegate {
     /// Handle when app enters background when user leaves app
     func applicationDidEnterBackground(_ application: UIApplication) {
         window?.endEditing(true)
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let appCoordinator = self.appCoordinator {
+            let components = DeepLinkComponents(url: url, coordinator: appCoordinator)
+            let goToEventModule = GoToEventModule()
+            let deepLinkService = DeepLinkService(destinations: [goToEventModule])
+            self.deepLinkServiceProtocol = deepLinkService
+            self.deepLinkServiceProtocol?.handleURL(with: components)
+        }
+        
+        return true
     }
 }

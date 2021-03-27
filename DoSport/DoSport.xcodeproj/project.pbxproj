@@ -42,12 +42,6 @@
 		6531799E25D11204001DBA4B /* RegionListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531799D25D11204001DBA4B /* RegionListCoordinator.swift */; };
 		653179A825D11212001DBA4B /* RegionListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179A725D11212001DBA4B /* RegionListAssembly.swift */; };
 		653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179AC25D11219001DBA4B /* RegionListDataSource.swift */; };
-		653179B625D11247001DBA4B /* SubwayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179B525D11247001DBA4B /* SubwayListView.swift */; };
-		653179BB25D1124C001DBA4B /* SubwayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179BA25D1124C001DBA4B /* SubwayListViewController.swift */; };
-		653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179BF25D11250001DBA4B /* SubwayListViewModel.swift */; };
-		653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179C425D11257001DBA4B /* SubwayListCoordinator.swift */; };
-		653179CA25D11261001DBA4B /* SubwayListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179C925D11261001DBA4B /* SubwayListAssembly.swift */; };
-		653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179CE25D11267001DBA4B /* SubwayListDataSource.swift */; };
 		653179D825D112C0001DBA4B /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179D725D112C0001DBA4B /* DateSelectionView.swift */; };
 		653179DD25D112C7001DBA4B /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179DC25D112C7001DBA4B /* DateSelectionViewController.swift */; };
 		653179E225D112CD001DBA4B /* DateSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653179E125D112CD001DBA4B /* DateSelectionViewModel.swift */; };
@@ -63,7 +57,6 @@
 		654210D025AF8533004078C4 /* CodeLabelStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210CF25AF8533004078C4 /* CodeLabelStackView.swift */; };
 		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		654210DB25AF8837004078C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210DA25AF8837004078C4 /* TextField.swift */; };
-		65429F332601F51D000874C3 /* EventRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F322601F51D000874C3 /* EventRequests.swift */; };
 		65429F3B2601F572000874C3 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3A2601F572000874C3 /* AuthRequests.swift */; };
 		65429F402601F5B0000874C3 /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F3F2601F5B0000874C3 /* UserRequests.swift */; };
 		65429F482601F5BA000874C3 /* SportGroundRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F472601F5BA000874C3 /* SportGroundRequests.swift */; };
@@ -78,7 +71,6 @@
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
 		654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */; };
 		654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* AuthAssembly.swift */; };
-		654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */; };
 		654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
 		654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		654D706725E8903D00B37AD3 /* EventCardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D706625E8903D00B37AD3 /* EventCardTableCell.swift */; };
@@ -275,6 +267,16 @@
 		CEBA62F12593F3FB006A7F80 /* MainSportTypeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62F02593F3FB006A7F80 /* MainSportTypeSelectionController.swift */; };
 		CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61B32593DE0C00C33D05 /* PhoneNumberAddView.swift */; };
 		CECBCA1C25B429C2002EB9BF /* OnBoardingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */; };
+		CECEE231260E363900B9AF16 /* SubwayListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22B260E363900B9AF16 /* SubwayListDataSource.swift */; };
+		CECEE232260E363900B9AF16 /* SubwayListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22C260E363900B9AF16 /* SubwayListAssembly.swift */; };
+		CECEE233260E363900B9AF16 /* SubwayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22D260E363900B9AF16 /* SubwayListViewController.swift */; };
+		CECEE234260E363900B9AF16 /* SubwayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22E260E363900B9AF16 /* SubwayListViewModel.swift */; };
+		CECEE235260E363900B9AF16 /* SubwayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE22F260E363900B9AF16 /* SubwayListView.swift */; };
+		CECEE236260E363900B9AF16 /* SubwayListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEE230260E363900B9AF16 /* SubwayListCoordinator.swift */; };
+		CECEE239260E36F300B9AF16 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F742326061B10002FC6D4 /* OnBoardingCoordinator.swift */; };
+		CECEE23C260E36FA00B9AF16 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F72B926054E3A002FC6D4 /* DeepLinkService.swift */; };
+		CECEE23F260E373D00B9AF16 /* GoToEventModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A61D567260C703D00600FD8 /* GoToEventModule.swift */; };
+		CECEE242260E374200B9AF16 /* EventRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F322601F51D000874C3 /* EventRequests.swift */; };
 		CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77C258CB404007B2BCA /* AppDelegate.swift */; };
 		CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */; };
 		CEDEB789258CB40A007B2BCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB787258CB40A007B2BCA /* LaunchScreen.storyboard */; };
@@ -322,6 +324,9 @@
 		0401A14025EFA50E00A1659E /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		1151A62AC4A4EBF596484855 /* Pods-DoSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.debug.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.debug.xcconfig"; sourceTree = "<group>"; };
 		12CC5F9304F1C51E7C4D392D /* Pods-DoSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoSport.release.xcconfig"; path = "Target Support Files/Pods-DoSport/Pods-DoSport.release.xcconfig"; sourceTree = "<group>"; };
+		2A61D567260C703D00600FD8 /* GoToEventModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToEventModule.swift; sourceTree = "<group>"; };
+		2A8F72B926054E3A002FC6D4 /* DeepLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkService.swift; sourceTree = "<group>"; };
+		2A8F742326061B10002FC6D4 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPasswordTextView.swift; sourceTree = "<group>"; };
 		6503F4E225B5CDD60002BC27 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6503F4E725B5D56A0002BC27 /* LocalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTime.swift; sourceTree = "<group>"; };
@@ -583,9 +588,13 @@
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTabController.swift; sourceTree = "<group>"; };
 		CEBA62F02593F3FB006A7F80 /* MainSportTypeSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSportTypeSelectionController.swift; sourceTree = "<group>"; };
-		CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
-		CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAssembly.swift; sourceTree = "<group>"; };
+		CECEE22B260E363900B9AF16 /* SubwayListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayListDataSource.swift; sourceTree = "<group>"; };
+		CECEE22C260E363900B9AF16 /* SubwayListAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayListAssembly.swift; sourceTree = "<group>"; };
+		CECEE22D260E363900B9AF16 /* SubwayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayListViewController.swift; sourceTree = "<group>"; };
+		CECEE22E260E363900B9AF16 /* SubwayListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayListViewModel.swift; sourceTree = "<group>"; };
+		CECEE22F260E363900B9AF16 /* SubwayListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayListView.swift; sourceTree = "<group>"; };
+		CECEE230260E363900B9AF16 /* SubwayListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayListCoordinator.swift; sourceTree = "<group>"; };
 		CEDEB779258CB404007B2BCA /* DoSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDEB77C258CB404007B2BCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -643,6 +652,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		2A1C3F29260B8EE200E3AFE8 /* DeepLinks */ = {
+			isa = PBXGroup;
+			children = (
+				2A8F72B926054E3A002FC6D4 /* DeepLinkService.swift */,
+				2A61D5A2260C874600600FD8 /* DestinationModules */,
+			);
+			path = DeepLinks;
+			sourceTree = "<group>";
+		};
+		2A61D5A2260C874600600FD8 /* DestinationModules */ = {
+			isa = PBXGroup;
+			children = (
+				2A61D567260C703D00600FD8 /* GoToEventModule.swift */,
+			);
+			path = DestinationModules;
+			sourceTree = "<group>";
+		};
 		650B75AF2600C68600625332 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,19 +713,6 @@
 				6531799825D111FE001DBA4B /* RegionListViewModel.swift */,
 			);
 			path = RegionList;
-			sourceTree = "<group>";
-		};
-		653179B425D11239001DBA4B /* SubwayList */ = {
-			isa = PBXGroup;
-			children = (
-				653179C925D11261001DBA4B /* SubwayListAssembly.swift */,
-				653179C425D11257001DBA4B /* SubwayListCoordinator.swift */,
-				653179CE25D11267001DBA4B /* SubwayListDataSource.swift */,
-				653179B525D11247001DBA4B /* SubwayListView.swift */,
-				653179BA25D1124C001DBA4B /* SubwayListViewController.swift */,
-				653179BF25D11250001DBA4B /* SubwayListViewModel.swift */,
-			);
-			path = SubwayList;
 			sourceTree = "<group>";
 		};
 		653179D625D112B3001DBA4B /* DateSelection */ = {
@@ -862,6 +875,12 @@
 				CE2B5DC425FBB626007E5EEA /* WKWebView.swift */,
 				CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */,
 				CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */,
+				653179CE25D11267001DBA4B /* SubwayListDataSource.swift */,
+				653179BA25D1124C001DBA4B /* SubwayListViewController.swift */,
+				653179C925D11261001DBA4B /* SubwayListAssembly.swift */,
+				653179C425D11257001DBA4B /* SubwayListCoordinator.swift */,
+				653179BF25D11250001DBA4B /* SubwayListViewModel.swift */,
+				653179B525D11247001DBA4B /* SubwayListView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1349,6 +1368,7 @@
 		CEBA62DA2593F278006A7F80 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
+				CECEE22A260E363900B9AF16 /* SubwayList */,
 				65815307260B5A1B00436BCB /* TabBarIcons.xcassets */,
 				CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */,
 				CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */,
@@ -1368,6 +1388,19 @@
 				0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */,
 			);
 			path = MainSportTypeSelection;
+			sourceTree = "<group>";
+		};
+		CECEE22A260E363900B9AF16 /* SubwayList */ = {
+			isa = PBXGroup;
+			children = (
+				CECEE22B260E363900B9AF16 /* SubwayListDataSource.swift */,
+				CECEE22C260E363900B9AF16 /* SubwayListAssembly.swift */,
+				CECEE22D260E363900B9AF16 /* SubwayListViewController.swift */,
+				CECEE22E260E363900B9AF16 /* SubwayListViewModel.swift */,
+				CECEE22F260E363900B9AF16 /* SubwayListView.swift */,
+				CECEE230260E363900B9AF16 /* SubwayListCoordinator.swift */,
+			);
+			path = SubwayList;
 			sourceTree = "<group>";
 		};
 		CEDEB770258CB404007B2BCA = {
@@ -1494,6 +1527,7 @@
 		CEDEB887258CE793007B2BCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2A1C3F29260B8EE200E3AFE8 /* DeepLinks */,
 				65B6D91E260607750099BC08 /* DSApi */,
 				658705332592169D00EFF7C7 /* Base */,
 				65ECB2BD259BAC7100BF8CEE /* Cells */,
@@ -1551,7 +1585,6 @@
 				65CD773825EB3E9300D042FD /* SoundList */,
 				65CDF89025DB11E00049F711 /* SportGroundSelectionList */,
 				6531794C25D10F5D001DBA4B /* SportTypeList */,
-				653179B425D11239001DBA4B /* SubwayList */,
 				CEBA62DA2593F278006A7F80 /* TabBarController */,
 				6552CF4A25EADDD100E51524 /* UserAccountEditing */,
 				65DC548D25E9C41500712EC7 /* UserMain */,
@@ -1565,12 +1598,11 @@
 		CEDEB8F2258D2FE3007B2BCA /* OnBoardViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */,
 				CECBCA1B25B429C1002EB9BF /* OnBoardingAssembly.swift */,
 				CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */,
-				CEBA638C259A68A6006A7F80 /* OnBoardingCoordinator.swift */,
 				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
 				CEDEB900258D370A007B2BCA /* Cell */,
+				2A8F742326061B10002FC6D4 /* OnBoardingCoordinator.swift */,
 			);
 			path = OnBoardViewController;
 			sourceTree = "<group>";
@@ -1788,16 +1820,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECEE242260E374200B9AF16 /* EventRequests.swift in Sources */,
+				CECEE23F260E373D00B9AF16 /* GoToEventModule.swift in Sources */,
+				CECEE23C260E36FA00B9AF16 /* DeepLinkService.swift in Sources */,
+				CECEE239260E36F300B9AF16 /* OnBoardingCoordinator.swift in Sources */,
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
 				654D705525E88D6B00B37AD3 /* AuthAssembly.swift in Sources */,
 				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
-				654D705725E88D6B00B37AD3 /* OnBoardingCoordinator.swift in Sources */,
 				654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */,
 				654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */,
+				CECEE235260E363900B9AF16 /* SubwayListView.swift in Sources */,
 				654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */,
 				65CDF89F25DB120F0049F711 /* SportGroundSelectionListAssembly.swift in Sources */,
 				65AAB2F525ACB16A00A86730 /* CommonButton.swift in Sources */,
-				653179CF25D11267001DBA4B /* SubwayListDataSource.swift in Sources */,
 				65C67E5525D550F000ABC58B /* DSMessageInputView.swift in Sources */,
 				65EEB96025EA023400821F8F /* SettingsDataSource.swift in Sources */,
 				65AAB2DE25ACA40C00A86730 /* DSEmptyView.swift in Sources */,
@@ -1808,6 +1843,7 @@
 				65CDF8A925DB12320049F711 /* SportGroundSelectionListViewModel.swift in Sources */,
 				CEBA6375259884D9006A7F80 /* PhoneNumberAddView.swift in Sources */,
 				65C8B4B225E8C65100BBCF77 /* UserMainAssembly.swift in Sources */,
+				CECEE234260E363900B9AF16 /* SubwayListViewModel.swift in Sources */,
 				6527303425C1B15B00550ED1 /* FeedFilterButtonsView.swift in Sources */,
 				65C8B4BF25E8C66400BBCF77 /* UserMainController.swift in Sources */,
 				65CD77C025EB581F00D042FD /* UserSupportSettingsDataSource.swift in Sources */,
@@ -1821,6 +1857,7 @@
 				655D52B925D864AF001DC13C /* CollectionViewHoursCell.swift in Sources */,
 				65C8B4C925E8C66E00BBCF77 /* UserMainViewModel.swift in Sources */,
 				65870513259209F700EFF7C7 /* AuthViewModel.swift in Sources */,
+				CECEE232260E363900B9AF16 /* SubwayListAssembly.swift in Sources */,
 				65B150E825DEAB8300720015 /* EventInviteView.swift in Sources */,
 				65EEB92D25E9E34900821F8F /* UserSubscriberListController.swift in Sources */,
 				6529500C258D6EE2002AA621 /* UIColor+inits.swift in Sources */,
@@ -1900,7 +1937,6 @@
 				655B514225D5C007004FE90F /* SelectionCell.swift in Sources */,
 				6531799925D111FE001DBA4B /* RegionListViewModel.swift in Sources */,
 				65AAB2D925ACA0D000A86730 /* HideKeyboardWithAction.swift in Sources */,
-				653179BB25D1124C001DBA4B /* SubwayListViewController.swift in Sources */,
 				654309B82608C0A700F76765 /* DSKeychainConstants.swift in Sources */,
 				6581531E260B5C6600436BCB /* WKWebView.swift in Sources */,
 				65429F402601F5B0000874C3 /* UserRequests.swift in Sources */,
@@ -1909,8 +1945,8 @@
 				6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */,
 				659C61A02593DB3100C33D05 /* RegistrationViewModel.swift in Sources */,
 				6543099326089C7100F76765 /* DSKeychainService.swift in Sources */,
-				653179CA25D11261001DBA4B /* SubwayListAssembly.swift in Sources */,
 				6568F8F225B4F98900225043 /* FeedCoordinator.swift in Sources */,
+				CECEE231260E363900B9AF16 /* SubwayListDataSource.swift in Sources */,
 				659C61962593DB1D00C33D05 /* RegistrationAssembly.swift in Sources */,
 				0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */,
 				650B75522600823B00625332 /* Calendar+currnetComponent.swift in Sources */,
@@ -1926,7 +1962,6 @@
 				653DA7DE25B364DB000263C9 /* Button.swift in Sources */,
 				65870508259209ED00EFF7C7 /* AuthViewController.swift in Sources */,
 				65429F3B2601F572000874C3 /* AuthRequests.swift in Sources */,
-				653179C525D11257001DBA4B /* SubwayListCoordinator.swift in Sources */,
 				65870536259216AA00EFF7C7 /* Assembly.swift in Sources */,
 				651FBF5825FE13F00018C6B1 /* AppLanguageListCoordinator.swift in Sources */,
 				654D706725E8903D00B37AD3 /* EventCardTableCell.swift in Sources */,
@@ -1967,6 +2002,7 @@
 				65429F6B26020540000874C3 /* Endpoint.swift in Sources */,
 				655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */,
 				65C8B4CE25E8C67600BBCF77 /* UserMainDataSource.swift in Sources */,
+				CECEE236260E363900B9AF16 /* SubwayListCoordinator.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* RegistrationCoordinator.swift in Sources */,
 				65C8B4D725E8D31700BBCF77 /* UserMainInfoCollectionCell.swift in Sources */,
 				6543098E2608948100F76765 /* UserAccountService.swift in Sources */,
@@ -2005,7 +2041,6 @@
 				65EAAA9E25CD59D3005E0131 /* EventView.swift in Sources */,
 				CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */,
 				659DCA1325D933FA00D56193 /* DSSegmentedControl.swift in Sources */,
-				65429F332601F51D000874C3 /* EventRequests.swift in Sources */,
 				6511D76C25B0CC880063EF76 /* FormTextFieldView.swift in Sources */,
 				653179A825D11212001DBA4B /* RegionListAssembly.swift in Sources */,
 				65C67E6725D557C600ABC58B /* DSSeparatorView.swift in Sources */,
@@ -2032,11 +2067,9 @@
 				65EAAA7D25CD3FF2005E0131 /* CollectionViewEventCardCellHeaderView.swift in Sources */,
 				65782D7225EAFF770063A52A /* UserAccountEditingAssembly.swift in Sources */,
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
-				653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */,
 				653179D825D112C0001DBA4B /* DateSelectionView.swift in Sources */,
 				65B6D9F326067A290099BC08 /* DSEnums+EventsByParameter.swift in Sources */,
 				65C8B4C425E8C66900BBCF77 /* UserMainCoordinator.swift in Sources */,
-				653179B625D11247001DBA4B /* SubwayListView.swift in Sources */,
 				0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */,
 				6511D77125B0DB130063EF76 /* DSTextField.swift in Sources */,
 				658153F3260BA38700436BCB /* UserSubscriberListViewModel.swift in Sources */,
@@ -2046,6 +2079,7 @@
 				CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */,
 				65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */,
 				65CD776925EB4A8C00D042FD /* PrivacySettingListCoordinator.swift in Sources */,
+				CECEE233260E363900B9AF16 /* SubwayListViewController.swift in Sources */,
 				6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */,
 				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65BBC37225DB5E78003DEF53 /* DSCheckboxButton.swift in Sources */,
@@ -2231,7 +2265,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.DoSport.iOS;
+				PRODUCT_BUNDLE_IDENTIFIER = SergeyU.Dosport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -2255,7 +2289,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.DoSport.iOS;
+				PRODUCT_BUNDLE_IDENTIFIER = SergeyU.Dosport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
