@@ -945,7 +945,6 @@
 		656B72CB260E85D200E02221 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
 				65D973FF25B4731D00769653 /* SportTypeGridView.swift */,
 				65D973FA25B4731800769653 /* SportTypeGridViewController.swift */,
 			);
@@ -1298,6 +1297,7 @@
 		65D973F125B472C800769653 /* SportTypeGrid */ = {
 			isa = PBXGroup;
 			children = (
+				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
 				656B72CC260E85D600E02221 /* Model */,
 				656B72CB260E85D200E02221 /* View */,
 				656B72CA260E85CE00E02221 /* ViewModel */,
