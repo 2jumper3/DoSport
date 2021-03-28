@@ -106,6 +106,7 @@
 		6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572954725D9540500996440 /* TableViewMemberCell.swift */; };
 		657543C62611170E0073068E /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
 		657543E1261128DF0073068E /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657543E0261128DF0073068E /* OnBoardingViewModel.swift */; };
+		657543ED261143E10073068E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657543EC261143E10073068E /* SignInView.swift */; };
 		65782D6325EAFF380063A52A /* UserAccountEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6225EAFF380063A52A /* UserAccountEditingView.swift */; };
 		65782D6825EAFF400063A52A /* UserAccountEditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */; };
 		65782D6D25EAFF490063A52A /* UserAccountEditingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */; };
@@ -404,6 +405,7 @@
 		6572953F25D953FD00996440 /* TableViewCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCommentCell.swift; sourceTree = "<group>"; };
 		6572954725D9540500996440 /* TableViewMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMemberCell.swift; sourceTree = "<group>"; };
 		657543E0261128DF0073068E /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		657543EC261143E10073068E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		65782D6225EAFF380063A52A /* UserAccountEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingView.swift; sourceTree = "<group>"; };
 		65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingCoordinator.swift; sourceTree = "<group>"; };
 		65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingController.swift; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				6581531A260B5C6600436BCB /* LoginAPI.swift */,
+				657543EC261143E10073068E /* SignInView.swift */,
 				6581531C260B5C6600436BCB /* WKWebViewController.swift */,
 			);
 			path = Helpers;
@@ -1914,6 +1917,7 @@
 				6503F4E825B5D56A0002BC27 /* LocalTime.swift in Sources */,
 				65A62A0425E700AC000AA184 /* EventTableChatHeaderView.swift in Sources */,
 				65430BFF260FB84C0044F57C /* SportTypeNetworkService.swift in Sources */,
+				657543ED261143E10073068E /* SignInView.swift in Sources */,
 				658F851425E8D79600EBE6A1 /* DSSubscribtionCountView.swift in Sources */,
 				65430BFB260FB8420044F57C /* UserNetworkService.swift in Sources */,
 				65430C2F260FE52E0044F57C /* AuthNetworkService.swift in Sources */,

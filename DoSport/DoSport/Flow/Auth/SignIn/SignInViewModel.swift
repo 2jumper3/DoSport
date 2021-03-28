@@ -14,9 +14,9 @@ enum SocialMediaType {
 }
 
 protocol SignInViewModelProtocol: class {
-    var onDidSignUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
-    var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
-    var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onSigningUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onSendingSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onLogining: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
     
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?)
     func doLogin(with data: DSModels.Auth.SignInRequest)
@@ -35,11 +35,11 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
         case success
     }
     
-    var onDidSignUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)?
-    var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)?
-    var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onSigningUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onSendingSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onLogining: ((SignInViewModel.ViewState) -> Swift.Void)?
     
-    private let coordinator: SignInCoordinator
+    private weak var coordinator: SignInCoordinator?
     private let userAccountService: UserAccountServiceProtocol
     private let userNetworkService: UserNetworkServiceProtocol
     private let authNetworkService: AuthNetworkServiceProtocol
@@ -58,7 +58,7 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
     }
     
     func doLogin(with data:  DSModels.Auth.SignInRequest) {
-        self.onDidLogin?(.loading)
+        self.onLogining?(.loading)
         
         self.authNetworkService.authSignIn(bodyObject: data) { [unowned self] response in
             
@@ -67,11 +67,11 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
                 self.doLoadUser(using: responseData.token) { [unowned self] user in
                     self.userAccountService.currentUser = user
                     
-                    self.onDidLogin?(.success)
+                    self.onLogining?(.success)
                 }
                 
             case .failure:
-                self.onDidLogin?(.failed)
+                self.onLogining?(.failed)
             }
         }
     }
@@ -90,13 +90,13 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
                 completion(responseData)
                 
             case .failure:
-                self.onDidLogin?(.failed)
+                self.onLogining?(.failed)
             }
         }
     }
     
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?) {
-        onDidSignUpWithSocialMedia?( .loading)
+        onSigningUpWithSocialMedia?( .loading)
         
         switch type {
         case .google:
@@ -121,15 +121,15 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
     }
     
     func goToSignUpModuleRequest() {
-        self.coordinator.goToRegistrationModule()
+        self.coordinator?.goToRegistrationModule()
     }
     
     func goToFeedModuleRequest() {
-        self.coordinator.goToFeedModule()
+        self.coordinator?.goToFeedModule()
     }
     
     func openVKAuthViewRequest() {
-        self.coordinator.openVkAuthView()
+        self.coordinator?.openVkAuthView()
     }
 }
 
@@ -148,13 +148,13 @@ private extension SignInViewModel {
             
             if error != nil {
                 /// login error occured
-                self.onDidSignUpWithSocialMedia?(.failed)
+                self.onSigningUpWithSocialMedia?(.failed)
             } else if ((result?.isCancelled) != nil) {
                 /// login cancelled
-                self.onDidSignUpWithSocialMedia?(.failed)
+                self.onSigningUpWithSocialMedia?(.failed)
             } else {
                 /// login successfully
-                self.onDidSignUpWithSocialMedia?(.success)
+                self.onSigningUpWithSocialMedia?(.success)
             }
         }
     }

@@ -13,13 +13,13 @@ protocol OnBoardingViewModelProtocol: class {
 
 final class OnBoardingViewModel: OnBoardingViewModelProtocol {
     
-    private let coordinator: OnBoardingCoordinator
+    private weak var coordinator: OnBoardingCoordinator?
     
     init(coordinator: OnBoardingCoordinator) {
         self.coordinator = coordinator
     }
     
     func goToSignUpModuleRequest() {
-        self.coordinator.goToAuthView()
+        self.coordinator?.goToAuthView()
     }
 }
