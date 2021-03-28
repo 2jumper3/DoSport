@@ -21,11 +21,13 @@ protocol SignInViewModelProtocol: class {
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?)
     func doLogin(with data: DSModels.Auth.SignInRequest)
     func doSendSignUpDataToServer()
+    
+    func goToSignUpModuleRequest()
+    func goToFeedModuleRequest()
+    func openVKAuthViewRequest()
 }
 
 final class SignInViewModel: NSObject, SignInViewModelProtocol {
-    
-    typealias Dependencies = SignInServices
     
     enum ViewState {
         case loading
@@ -37,22 +39,33 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
     var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)?
     var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)?
     
-    private let dependencies: Dependencies
+    private let coordinator: SignInCoordinator
+    private let userAccountService: UserAccountServiceProtocol
+    private let userNetworkService: UserNetworkServiceProtocol
+    private let authNetworkService: AuthNetworkServiceProtocol
     
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    init(
+        coordinator: SignInCoordinator,
+        authNetworkService: AuthNetworkServiceProtocol,
+        userNetworkService: UserNetworkServiceProtocol,
+        userAccountService: UserAccountServiceProtocol
+    ) {
+        self.userNetworkService = userNetworkService
+        self.userAccountService = userAccountService
+        self.authNetworkService = authNetworkService
+        self.coordinator = coordinator
         super.init()
     }
     
     func doLogin(with data:  DSModels.Auth.SignInRequest) {
         self.onDidLogin?(.loading)
         
-        self.dependencies.authNetworkService.authSignIn(bodyObject: data) { [unowned self] response in
+        self.authNetworkService.authSignIn(bodyObject: data) { [unowned self] response in
             
             switch response {
             case .success(let responseData):
                 self.doLoadUser(using: responseData.token) { [unowned self] user in
-                    self.dependencies.userAccountService.currentUser = user
+                    self.userAccountService.currentUser = user
                     
                     self.onDidLogin?(.success)
                 }
@@ -68,10 +81,10 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
         completion: @escaping (DSModels.User.UserView) -> Swift.Void
     ) {
         if let jwtToken = token {
-            dependencies.userAccountService.jwtToken = jwtToken
+            self.userAccountService.jwtToken = jwtToken
         }
         
-        self.dependencies.userNetworkService.userProfileGet { [unowned self] response in
+        self.userNetworkService.userProfileGet { [unowned self] response in
             switch response {
             case .success(let responseData):
                 completion(responseData)
@@ -105,6 +118,18 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
     
     func doSendSignUpDataToServer() {
         
+    }
+    
+    func goToSignUpModuleRequest() {
+        self.coordinator.goToRegistrationModule()
+    }
+    
+    func goToFeedModuleRequest() {
+        self.coordinator.goToFeedModule()
+    }
+    
+    func openVKAuthViewRequest() {
+        self.coordinator.openVkAuthView()
     }
 }
 

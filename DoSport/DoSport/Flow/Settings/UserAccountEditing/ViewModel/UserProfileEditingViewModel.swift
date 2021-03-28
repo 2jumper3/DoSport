@@ -19,8 +19,6 @@ protocol UserProfileEditingViewModelProtocol {
 
 final class UserProfileEditingViewModel: UserProfileEditingViewModelProtocol {
     
-    typealias Dependencies = UserAccountEditingServices
-    
     enum ViewState {
         case loading
         case failed
@@ -31,45 +29,43 @@ final class UserProfileEditingViewModel: UserProfileEditingViewModelProtocol {
     var onDidDeleteUserProfile: ((UserProfileEditingViewModel.ViewState) -> Swift.Void)?
     var onDidSignOut: ((ViewState) -> Void)?
     
-    private let dependencies: Dependencies
-    
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    init() {
+        
     }
     
     func doSignOut() {
         self.onDidSignOut?(.loading)
         
-        self.dependencies.userAccountService.logOut()
+//        self.dependencies.userAccountService.logOut()
         self.onDidSignOut?(.success)
     }
     
     func doEditUserProfile(newUserData user: DSModels.User.UserView) {
         self.onDidEditUserProfile?(.loading)
         
-        dependencies.userNetworkService.userProfileEdit(params: user) { [unowned self] response in
-            switch response {
-            case .success:
-                self.onDidEditUserProfile?(.success)
-                
-            case .failure:
-                self.onDidEditUserProfile?(.failed)
-            }
-        }
+//        dependencies.userNetworkService.userProfileEdit(params: user) { [unowned self] response in
+//            switch response {
+//            case .success:
+//                self.onDidEditUserProfile?(.success)
+//
+//            case .failure:
+//                self.onDidEditUserProfile?(.failed)
+//            }
+//        }
     }
     
     func doDeleteUserProfile() {
         self.onDidDeleteUserProfile?(.loading)
         
-        dependencies.userNetworkService.userProfileDelete { [unowned self] response in
-            switch response {
-            case .success:
-                self.dependencies.userAccountService.logOut()
-                self.onDidDeleteUserProfile?(.success)
-
-            case .failure:
-                self.onDidDeleteUserProfile?(.failed)
-            }
-        }
+//        dependencies.userNetworkService.userProfileDelete { [unowned self] response in
+//            switch response {
+//            case .success:
+//                self.dependencies.userAccountService.logOut()
+//                self.onDidDeleteUserProfile?(.success)
+//
+//            case .failure:
+//                self.onDidDeleteUserProfile?(.failed)
+//            }
+//        }
     }
 }

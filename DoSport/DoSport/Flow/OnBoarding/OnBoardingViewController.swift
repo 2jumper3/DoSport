@@ -9,7 +9,7 @@ import UIKit
 
 final class OnBoardingViewController: UIViewController {
     
-    weak var coordinator: OnBoardingCoordinator?
+    private let viewModel: OnBoardingViewModelProtocol
 
     // MARK: - Properties
     
@@ -34,6 +34,15 @@ final class OnBoardingViewController: UIViewController {
 
     // MARK: Life Cycle
     
+    init(viewModel: OnBoardingViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -49,13 +58,7 @@ final class OnBoardingViewController: UIViewController {
     //MARK: Actions
 
     @objc private func confirmButtonTapped() {
-        coordinator?.goToAuthView()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        coordinator?.removeDependency(coordinator)
+        viewModel.goToSignUpModuleRequest()
     }
 }
 

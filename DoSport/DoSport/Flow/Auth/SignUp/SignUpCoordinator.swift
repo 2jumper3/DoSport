@@ -27,7 +27,6 @@ final class SignUpCoordinator: Coordinator {
     
     func goToFeedModule() {
         let coordinator = MainTabBarCoordinator(navController: navigationController)
-        self.store(coordinator: coordinator)
         coordinator.start()
     }
     

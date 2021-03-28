@@ -68,12 +68,6 @@ final class SportGroundSelectionListViewController: UIViewController {
         
         title = nil
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        coordinator?.removeDependency(coordinator)
-    }
 }
 
 //MARK: Actions

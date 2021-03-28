@@ -1,5 +1,5 @@
 //
-//  SingInView.swift
+//  SingInViewController.swift
 //  DoSport
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
@@ -7,17 +7,25 @@
 
 import UIKit
 
-protocol SingInViewDelegate: class {
-    func skipButtonTapped()
-    func fbAuthClicked()
-    func vkAuthButtonClicked()
-    func googleAuthButtonClicked()
-    func appleAuthButtonClicked()
-}
-
-final class SingInView: UIView {
-
-    weak var delegate: SingInViewDelegate?
+final class SingInViewController: UIViewController {
+    
+    private let viewModel: SignInViewModel
+    
+    init(viewModel: SignInViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupUI()
+        self.setupViewModelBindings()
+    }
     
     private let titleLabel: UILabel = { // TODO: Make bold. Task at: https://trello.com/b/B0RlPzN6/dosport-ios
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -75,19 +83,30 @@ final class SingInView: UIView {
     private lazy var skipButton = UIButton.makeSimpleButton(title: Texts.Auth.skip,
                                                             titleColor: Colors.mainBlue)
     
-    //MARK: Init
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
-    init() {
-        super.init(frame: .zero)
-        backgroundColor = Colors.darkBlue
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        skipButton.addTarget(self, action: #selector(handleSkipButton))
-        appleAuthButton.addTarget(self, action: #selector(handleAppleAuthButton))
-        googleAuthButton.addTarget(self, action: #selector(handleGoogleAuthButton))
-        vkAuthButton.addTarget(self, action: #selector(handleVKAuthButton))
-        fbAuthButton.addTarget(self, action: #selector(handleFBAuthButton))
-        
-        addSubviews(
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+}
+
+//MARK: Setup UI
+
+private extension SingInViewController {
+    
+    func setupUI() {
+        self.addSubviews()
+        self.constratinViews()
+        self.setupButtonTargets()
+    }
+    
+    func addSubviews() {
+        self.view.addSubviews(
             logoImageView,
             titleLabel,
             regulationsLabel,
@@ -95,17 +114,10 @@ final class SingInView: UIView {
             googleAuthButton,
             vkAuthButton,
             fbAuthButton,
-            skipButton
-        )
+            skipButton)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    func constratinViews() {
         logoImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.15)
@@ -114,7 +126,7 @@ final class SingInView: UIView {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(logoImageView.snp.bottom).offset(self.frame.size.height / 10)
+            $0.top.equalTo(logoImageView.snp.bottom).offset(self.view.frame.size.height / 10)
             $0.centerX.equalToSuperview()
         }
         
@@ -154,32 +166,82 @@ final class SingInView: UIView {
         
         skipButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(safeAreaInsets.bottom).offset(-30)
+            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-30)
+        }
+    }
+    
+    func setupButtonTargets() {
+        self.skipButton.addTarget(self, action: #selector(handleSkipButton))
+        self.appleAuthButton.addTarget(self, action: #selector(handleAppleAuthButton))
+        self.googleAuthButton.addTarget(self, action: #selector(handleGoogleAuthButton))
+        self.vkAuthButton.addTarget(self, action: #selector(handleVKAuthButton))
+        self.fbAuthButton.addTarget(self, action: #selector(handleFBAuthButton))
+    }
+}
+
+//MARK: Private API
+
+private extension SingInViewController {
+    
+    func setupViewModelBindings() {
+        viewModel.onDidSignUpWithSocialMedia = { /*[unowned self]*/ state in
+            switch state {
+            case .loading:
+                break
+            case .failed:
+                break
+            case .success:
+                break
+            }
+        }
+        
+        viewModel.onDidSendSignUpDataToServer = { state in
+            
+        }
+        
+        viewModel.onDidLogin = { [unowned self] state in
+            switch state {
+            case .loading:
+                break
+            case .failed:
+                break
+            case .success:
+                self.viewModel.goToFeedModuleRequest()
+            }
         }
     }
 }
 
 //MARK: Actions
 
-@objc extension SingInView {
+@objc private extension SingInViewController {
     
     func handleSkipButton() {
-        self.delegate?.skipButtonTapped()
+        //        coordinator?.goToMainTabBar()
+        //        coordinator?.goToRegistrationModule()
+        
+        // will be replaced by social media auth
+        viewModel.doLogin(
+            with: .init(
+                username: "admin",
+                password: "admin"
+            )
+        )
     }
     
     func handleFBAuthButton() {
-        delegate?.fbAuthClicked()
+        viewModel.doSignUpWithSocialMedia(.facebook, viewController: self)
     }
     
     func handleVKAuthButton() {
-        delegate?.vkAuthButtonClicked()
+        viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: nil)
     }
     
     func handleGoogleAuthButton() {
-        delegate?.googleAuthButtonClicked()
+        viewModel.doSignUpWithSocialMedia(.google, viewController: self)
     }
     
     func handleAppleAuthButton() {
-        delegate?.appleAuthButtonClicked()
+        viewModel.doSignUpWithSocialMedia(.apple, viewController: nil)
     }
 }

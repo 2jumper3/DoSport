@@ -58,12 +58,6 @@ final class FeedViewController: UIViewController {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        coordinator?.removeDependency(coordinator)
-    }
 }
 
 //MARK: Private API

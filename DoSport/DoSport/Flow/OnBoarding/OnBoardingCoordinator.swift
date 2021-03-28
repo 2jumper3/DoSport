@@ -9,27 +9,27 @@ import UIKit
 
 final class OnBoardingCoordinator: Coordinator {
     
-    let rootViewController: OnBoardingViewController
+    private var rootViewController: OnBoardingViewController?
     
-    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = OnBoardingAssembly()
-        self.rootViewController = assembly.makeModule()
         self.navigationController = navController
-        self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
-        self.navigationController?.navigationBar.isTranslucent = false
+//        self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
+//        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     func start() {
-        rootViewController.coordinator = self
-        navigationController?.setViewControllers([rootViewController], animated: true)
+        let viewModel: OnBoardingViewModelProtocol = OnBoardingViewModel(coordinator: self)
+        self.rootViewController = OnBoardingViewController(viewModel: viewModel)
+        
+        if let _ = self.rootViewController {
+            self.navigationController?.setViewControllers([rootViewController!], animated: true)
+        }
     }
     
     func goToAuthView() {
         let coordiator = SignInCoordinator(navController: navigationController)
-        store(coordinator: coordiator)
         coordiator.start()
     }
 }

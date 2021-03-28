@@ -26,13 +26,11 @@ final class SettingsCoordinator: Coordinator {
     
     func goToUserAccountEditingModule() {
         let coordinator = UserAccountEditingCoordinator(navController: navigationController)
-        store(coordinator: coordinator)
         coordinator.start()
     }
     
     func goToNotificationSettingsModule(with title: String?) {
         let coordinator = NotificationSettingsCoordinator(navController: navigationController)
-        store(coordinator: coordinator)
         coordinator.start()
     }
     
@@ -41,7 +39,7 @@ final class SettingsCoordinator: Coordinator {
             navController: navigationController,
             compilation: compilation
         )
-        store(coordinator: coordinator)
+        
         coordinator.start()
     }
     
@@ -50,13 +48,13 @@ final class SettingsCoordinator: Coordinator {
             navController: navigationController,
             compilation: compilation
         )
-        store(coordinator: coordinator)
+        
         coordinator.start()
     }
     
     func goToSupportSettingsModule(with title: String?) {
         let coordinator = UserSupportSettingsCoordinator(navController: navigationController)
-        store(coordinator: coordinator)
+        
         coordinator.start()
     }
 }

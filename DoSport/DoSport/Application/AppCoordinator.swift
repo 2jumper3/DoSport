@@ -9,15 +9,16 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     
-    let window: UIWindow
+    private let window: UIWindow
+    private let windowScene: UIWindowScene
     
-    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     private let userAccountService: UserAccountServiceProtocol = UserAccountService()
     
-    init(window: UIWindow) {
+    init(window: UIWindow, windowScene: UIWindowScene) {
         self.window = window
+        self.windowScene = windowScene
         self.navigationController = DSNavigationController()
     }
     
@@ -25,16 +26,15 @@ final class AppCoordinator: Coordinator {
         let coordinator: Coordinator
       
         if userAccountService.isAuthorised {
-            coordinator = MainTabBarCoordinator(navController: navigationController)
-            
-            self.store(coordinator: coordinator)
+            coordinator = MainTabBarCoordinator(navController: self.navigationController)
             coordinator.start()
         } else {
             coordinator = OnBoardingCoordinator(navController: self.navigationController)
-            self.store(coordinator: coordinator)
             coordinator.start()
         }
         
+        self.window.windowScene = self.windowScene
         self.window.rootViewController = coordinator.navigationController
+        self.window.makeKeyAndVisible()
     }
 }

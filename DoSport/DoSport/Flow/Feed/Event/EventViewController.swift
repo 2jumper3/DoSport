@@ -83,12 +83,6 @@ final class EventViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        coordinator?.removeDependency(coordinator)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         

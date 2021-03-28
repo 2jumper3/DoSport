@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol HasAuthNetworkService: class {
-    var authNetworkService: AuthNetworkServiceProtocol { get }
-}
-
 protocol AuthNetworkServiceProtocol: class {
     func authSignIn(
         bodyObject: DSModels.Auth.SignInRequest,
