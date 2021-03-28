@@ -9,7 +9,6 @@ import UIKit
 
 final class SignUpViewController: UIViewController {
     
-    weak var coordinator: SignUpCoordinator?
     private let viewModel: SignUpViewModel
     private lazy var registrationView = self.view as! SignUpView
     
@@ -64,11 +63,7 @@ final class SignUpViewController: UIViewController {
 private extension SignUpViewController {
     
     func setupViewModelBindings() {
-        self.viewModel.onDidChangeButtonState = {  /*[unowned self] in */
-            
-        }
-        
-        self.viewModel.onDidUploadSignUpDataToServer = { /*[unowned self]*/ state in
+        self.viewModel.onSendingSignUpDataToServer = { /*[unowned self]*/ state in
             
         }
     }
@@ -94,7 +89,7 @@ extension SignUpViewController: SignUpViewDelegate {
     }
     
     func saveButtonClicked(with username: String?, dob: String?, gender: String?) {
-        viewModel.doUploadSignUpDataToServer()
+        viewModel.goToFeedModuleRequest()
     }
     
     func avatarChangeButtonClicked() {
