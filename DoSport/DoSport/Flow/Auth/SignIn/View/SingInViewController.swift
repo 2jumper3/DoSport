@@ -77,14 +77,14 @@ private extension SingInViewController {
             
         }
         
-        viewModel.onDidLogin = { /*[unowned self]*/ state in
+        viewModel.onDidLogin = { [unowned self] state in
             switch state {
             case .loading:
                 break
             case .failed:
                 break
             case .success:
-                break
+                self.coordinator?.goToFeedModule()
             }
         }
     }
@@ -101,7 +101,7 @@ extension SingInViewController: SingInViewDelegate {
         // will be replaced by social media auth
         viewModel.doLogin(
             with: .init(
-                email: "admin",
+                username: "admin",
                 password: "admin"
             )
         )

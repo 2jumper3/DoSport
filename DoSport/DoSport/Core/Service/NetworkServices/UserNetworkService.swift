@@ -13,8 +13,14 @@ protocol HasUserNetworkService: class {
 
 protocol UserNetworkServiceProtocol: class {
     func userProfileGet(
-        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
-    )
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void)
+    
+    func userProfileEdit(
+        params: DSModels.User.UserView,
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void)
+    
+    func userProfileDelete(
+        completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void)
 }
 
 final class UserNetworkService: UserNetworkServiceProtocol {

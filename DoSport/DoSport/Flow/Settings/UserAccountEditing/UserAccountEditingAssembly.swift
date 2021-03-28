@@ -10,9 +10,24 @@ import Foundation
 final class UserAccountEditingAssembly: Assembly {
     
     func makeModule() -> UserAccountEditingController {
-        let userNetworkService = UserNetworkService()
-        let viewModel = UserAccountEditingViewModelImplementation(userNetworkService: userNetworkService)
+        let serviceContainer = UserAccountEditingServiceContainer()
+        let viewModel = UserProfileEditingViewModel(dependencies: serviceContainer)
         let viewController = UserAccountEditingController(viewModel: viewModel)
         return viewController
+    }
+}
+
+/// Sevices used by UserAccountEditing module wrapped into one type
+typealias UserAccountEditingServices = HasUserNetworkService & HasUserAccountService
+
+/// Sevices used by UserAccountEditing module wrapped into one container
+final class UserAccountEditingServiceContainer: UserAccountEditingServices {
+    
+    var userAccountService: UserAccountServiceProtocol {
+        return UserAccountService()
+    }
+    
+    var userNetworkService: UserNetworkServiceProtocol {
+        return UserNetworkService()
     }
 }

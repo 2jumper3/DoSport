@@ -27,6 +27,11 @@ final class SignInCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
+    func startModally() {
+        self.rootViewController.coordinator = self
+        self.navigationController?.present(self.rootViewController, animated: true, completion: nil)
+    }
+    
     func goToRegistrationModule() {
         let coordinator = SignUpCoordinator(navController: navigationController)
         self.store(coordinator: coordinator)

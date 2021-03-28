@@ -24,4 +24,18 @@ final class UserAccountEditingCoordinator: Coordinator {
         rootViewController.coordinator = self
         navigationController?.pushViewController(rootViewController, animated: true)
     }
+    
+    func goToSignInModule() {
+        guard
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate
+                as? SceneDelegate,
+            let appCoodinator = sceneDelegate.appCoordinator
+        else {
+            return
+        }
+        print(appCoodinator.childCoordinators)
+        let coordiator = SignInCoordinator(navController: navigationController)
+        self.store(coordinator: coordiator)
+        coordiator.startModally()
+    }
 }

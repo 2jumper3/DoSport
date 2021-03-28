@@ -71,7 +71,7 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
             dependencies.userAccountService.jwtToken = jwtToken
         }
         
-        self.dependencies.userNetworkService.userProfileGet { response in
+        self.dependencies.userNetworkService.userProfileGet { [unowned self] response in
             switch response {
             case .success(let responseData):
                 completion(responseData)

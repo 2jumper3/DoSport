@@ -109,7 +109,7 @@
 		65782D6825EAFF400063A52A /* UserAccountEditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */; };
 		65782D6D25EAFF490063A52A /* UserAccountEditingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */; };
 		65782D7225EAFF770063A52A /* UserAccountEditingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D7125EAFF770063A52A /* UserAccountEditingAssembly.swift */; };
-		65782D7A25EAFF7E0063A52A /* UserAccountEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D7925EAFF7E0063A52A /* UserAccountEditingViewModel.swift */; };
+		65782D7A25EAFF7E0063A52A /* UserProfileEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D7925EAFF7E0063A52A /* UserProfileEditingViewModel.swift */; };
 		65782D9525EB18C70063A52A /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D9425EB18C70063A52A /* NotificationSettingsView.swift */; };
 		65782D9A25EB18CD0063A52A /* NotificationSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D9925EB18CD0063A52A /* NotificationSettingsController.swift */; };
 		65782D9F25EB18D40063A52A /* NotificationSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D9E25EB18D40063A52A /* NotificationSettingsCoordinator.swift */; };
@@ -408,7 +408,7 @@
 		65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingCoordinator.swift; sourceTree = "<group>"; };
 		65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingController.swift; sourceTree = "<group>"; };
 		65782D7125EAFF770063A52A /* UserAccountEditingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingAssembly.swift; sourceTree = "<group>"; };
-		65782D7925EAFF7E0063A52A /* UserAccountEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingViewModel.swift; sourceTree = "<group>"; };
+		65782D7925EAFF7E0063A52A /* UserProfileEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditingViewModel.swift; sourceTree = "<group>"; };
 		65782D9425EB18C70063A52A /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		65782D9925EB18CD0063A52A /* NotificationSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsController.swift; sourceTree = "<group>"; };
 		65782D9E25EB18D40063A52A /* NotificationSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -891,6 +891,23 @@
 			path = NetworkServices;
 			sourceTree = "<group>";
 		};
+		65430C4E260FFDA10044F57C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */,
+				65782D6225EAFF380063A52A /* UserAccountEditingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		65430C4F260FFDA50044F57C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				65782D7925EAFF7E0063A52A /* UserProfileEditingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		654D707D25E89EA700B37AD3 /* EventCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -906,10 +923,9 @@
 			isa = PBXGroup;
 			children = (
 				65782D7125EAFF770063A52A /* UserAccountEditingAssembly.swift */,
-				65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */,
 				65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */,
-				65782D6225EAFF380063A52A /* UserAccountEditingView.swift */,
-				65782D7925EAFF7E0063A52A /* UserAccountEditingViewModel.swift */,
+				65430C4E260FFDA10044F57C /* View */,
+				65430C4F260FFDA50044F57C /* ViewModel */,
 			);
 			path = UserAccountEditing;
 			sourceTree = "<group>";
@@ -1990,7 +2006,7 @@
 				CEDEB77D258CB404007B2BCA /* AppDelegate.swift in Sources */,
 				65D9741225B4760F00769653 /* Sport.swift in Sources */,
 				65782D9F25EB18D40063A52A /* NotificationSettingsCoordinator.swift in Sources */,
-				65782D7A25EAFF7E0063A52A /* UserAccountEditingViewModel.swift in Sources */,
+				65782D7A25EAFF7E0063A52A /* UserProfileEditingViewModel.swift in Sources */,
 				65D9387425DF2454009D1CDD /* ShareMemberCollectionCell.swift in Sources */,
 				CEDEB77F258CB404007B2BCA /* SceneDelegate.swift in Sources */,
 				65EAAAA825CD59E6005E0131 /* EventCoordinator.swift in Sources */,

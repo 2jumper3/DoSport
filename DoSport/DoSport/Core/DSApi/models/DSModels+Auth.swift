@@ -14,7 +14,7 @@ extension DSModels {
         
         // This struct is used for test sign in request
         struct SignInRequest: Codable {
-            let email: String
+            let username: String
             let password: String
         }
         

@@ -11,7 +11,7 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
     
     weak var coordinator: UserAccountEditingCoordinator?
     private lazy var userAccountEditingView = view as! UserAccountEditingView
-    private var viewModel: UserAccountEditingViewModel
+    private var viewModel: UserProfileEditingViewModelProtocol
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -19,7 +19,7 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
 
     // MARK: Init
     
-    init(viewModel: UserAccountEditingViewModel) {
+    init(viewModel: UserProfileEditingViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -63,12 +63,22 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
 private extension UserAccountEditingController {
     
     func setupViewModelBindings() {
-        viewModel.onDidDeleteUserProfile = { [unowned self] data in
+        viewModel.onDidDeleteUserProfile = { [unowned self] state in
             
         }
 
-        viewModel.onDidEditUserProfile = { [unowned self] data in
+        viewModel.onDidEditUserProfile = { [unowned self] state in
             
+        }
+        
+        viewModel.onDidSignOut = { [unowned self] state in
+            if case .success = state {
+                self.coordinator?.goToSignInModule()
+            }
+            
+            if case .loading = state {
+                
+            }
         }
     }
     
@@ -109,11 +119,11 @@ private extension UserAccountEditingController {
 extension UserAccountEditingController: UserAccountEditingViewDelegate {
     
     func signOutButtonCliked() {
-        
+        viewModel.doSignOut()
     }
     
     func deleteProfileButtonClicked() {
-        viewModel.doDeleteUserProfile(request: .init())
+        viewModel.doDeleteUserProfile()
     }
 
     func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?) {
@@ -136,7 +146,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
             info: nil // TODO: this feature will be required after MVP0.
         )
         
-        viewModel.doEditUserProfile(request: .init(user: userData))
+        viewModel.doEditUserProfile(newUserData: userData)
     }
     
     func avatarChangeButtonClicked() {
