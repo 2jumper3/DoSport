@@ -38,6 +38,7 @@ final class UserSubscriberListCoordinator: Coordinator {
     
     func goToSelectedUserPageModule(with user: User?) {
         let coordinator = UserMainCoordinator(navController: navigationController, user: user)
+        store(coordinator: coordinator)
         coordinator.start()
     }
 }

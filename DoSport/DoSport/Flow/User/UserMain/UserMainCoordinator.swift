@@ -31,12 +31,13 @@ final class UserMainCoordinator: Coordinator {
             user: user,
             contentType: contentType
         )
-        
+        store(coordinator: coodinator)
         coodinator.start()
     }
     
     func goToSettingsMainListModule() {
         let coordinator = SettingsCoordinator(navController: navigationController)
+        store(coordinator: coordinator)
         coordinator.start()
     }
     

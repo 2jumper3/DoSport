@@ -74,6 +74,12 @@ final class UserSubscriberListController: UIViewController, UIGestureRecognizerD
         
         userSubscriberListCollectionManager.updateSegmentedControl(index: self.contentType.index)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
 //MARK: Private API

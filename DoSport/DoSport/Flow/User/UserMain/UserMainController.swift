@@ -84,6 +84,12 @@ final class UserMainController: UIViewController {
         super.viewWillDisappear(animated)
         
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
 //MARK: Private API
@@ -185,7 +191,7 @@ extension UserMainController: EventManageContanerViewControllerDelegate {
     }
     
 //    func closeButtonClicked() {
-//        
+//
 //    }
     
     func editButtonClicked() {
