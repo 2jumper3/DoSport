@@ -8,12 +8,9 @@
 import Foundation
 
 protocol SignUpViewModelProtocol: class {
-    var onSendingSignUpDataToServer: ((SignUpViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidUploadSignUpDataToServer: ((SignUpViewModel.ViewState) -> Swift.Void)? { get set }
     
-    func doSendSignUpDataToServer()
-    
-    func goToFeedModuleRequest()
-    func goBackRequest()
+    func doUploadSignUpDataToServer()
 }
 
 final class SignUpViewModel: SignUpViewModelProtocol {
@@ -24,23 +21,18 @@ final class SignUpViewModel: SignUpViewModelProtocol {
         case success
     }
     
-    var onSendingSignUpDataToServer: ((ViewState) -> Void)?
+    var onDidChangeButtonState: (() -> Void)?
+    var onDidUploadSignUpDataToServer: ((ViewState) -> Void)?
     
-    private weak var coordinator: SignUpCoordinator?
+//    private let model: SignUpModel
+//    private let requestsManager: RequestsManager
     
-    init(coordinator: SignUpCoordinator) {
-        self.coordinator = coordinator
+    init(/*model: SignUpModel, requestsManager: RequestsManager*/) {
+//        self.model = model
+//        self.requestsManager = requestsManager
     }
     
-    func doSendSignUpDataToServer() {
+    func doUploadSignUpDataToServer() {
         
-    }
-    
-    func goToFeedModuleRequest() {
-        
-    }
-    
-    func goBackRequest() {
-    
     }
 }

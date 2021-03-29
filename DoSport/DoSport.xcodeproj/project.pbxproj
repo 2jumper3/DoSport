@@ -70,7 +70,6 @@
 		65430B7F260F5C840044F57C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430B7E260F5C840044F57C /* Buttons.swift */; };
 		65430B87260F62250044F57C /* DSEndpoints+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430B86260F62250044F57C /* DSEndpoints+Auth.swift */; };
 		65430BAD260F7E410044F57C /* DSCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430BAC260F7E410044F57C /* DSCommonButton.swift */; };
-		65430BEE260F98100044F57C /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430BED260F98100044F57C /* FeedModel.swift */; };
 		65430BF7260FB8390044F57C /* EventNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430BF6260FB8390044F57C /* EventNetworkService.swift */; };
 		65430BFB260FB8420044F57C /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430BFA260FB8420044F57C /* UserNetworkService.swift */; };
 		65430BFF260FB84C0044F57C /* SportTypeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430BFE260FB84C0044F57C /* SportTypeNetworkService.swift */; };
@@ -370,7 +369,6 @@
 		65430B7E260F5C840044F57C /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		65430B86260F62250044F57C /* DSEndpoints+Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DSEndpoints+Auth.swift"; sourceTree = "<group>"; };
 		65430BAC260F7E410044F57C /* DSCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSCommonButton.swift; sourceTree = "<group>"; };
-		65430BED260F98100044F57C /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		65430BF6260FB8390044F57C /* EventNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNetworkService.swift; sourceTree = "<group>"; };
 		65430BFA260FB8420044F57C /* UserNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
 		65430BFE260FB84C0044F57C /* SportTypeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTypeNetworkService.swift; sourceTree = "<group>"; };
@@ -720,6 +718,7 @@
 				6587051725920A0100EFF7C7 /* SignInCoordinator.swift */,
 				65870512259209F700EFF7C7 /* SignInViewModel.swift */,
 				65870507259209ED00EFF7C7 /* SingInViewController.swift */,
+				657543EC261143E10073068E /* SignInView.swift */,
 				65815319260B5C2D00436BCB /* Helpers */,
 			);
 			path = SignIn;
@@ -729,27 +728,11 @@
 			isa = PBXGroup;
 			children = (
 				659C61A42593DB3F00C33D05 /* SignUpCoordinator.swift */,
-				65430B47260F55570044F57C /* View */,
-				65430B46260F55530044F57C /* ViewModel */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		65430B46260F55530044F57C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				659C619F2593DB3100C33D05 /* SignUpViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		65430B47260F55570044F57C /* View */ = {
-			isa = PBXGroup;
-			children = (
 				659C61AC2593DB5A00C33D05 /* SignUpView.swift */,
 				659C619A2593DB2700C33D05 /* SignUpViewController.swift */,
+				659C619F2593DB3100C33D05 /* SignUpViewModel.swift */,
 			);
-			path = View;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		65430B49260F56360044F57C /* User */ = {
@@ -778,9 +761,9 @@
 				6568F8DD25B4F97100225043 /* FeedAssembly.swift */,
 				6568F8F125B4F98900225043 /* FeedCoordinator.swift */,
 				6568F8F625B4F99000225043 /* FeedDataSource.swift */,
-				65430BEC260F98020044F57C /* Model */,
-				65430BE9260F97F70044F57C /* View */,
-				65430BEB260F97FF0044F57C /* ViewModel */,
+				6568F8EC25B4F98200225043 /* FeedView.swift */,
+				6568F8E225B4F97800225043 /* FeedViewController.swift */,
+				6568F8E725B4F97D00225043 /* FeedViewModel.swift */,
 			);
 			path = FeedMain;
 			sourceTree = "<group>";
@@ -821,31 +804,6 @@
 				65430B70260F5BC50044F57C /* Labels.swift */,
 			);
 			path = Labels;
-			sourceTree = "<group>";
-		};
-		65430BE9260F97F70044F57C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6568F8EC25B4F98200225043 /* FeedView.swift */,
-				6568F8E225B4F97800225043 /* FeedViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		65430BEB260F97FF0044F57C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6568F8E725B4F97D00225043 /* FeedViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		65430BEC260F98020044F57C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				65430BED260F98100044F57C /* FeedModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		65430BF5260FB7F00044F57C /* NetworkServices */ = {
@@ -948,31 +906,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		656B72CA260E85CE00E02221 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				65D9740425B4732400769653 /* SportTypeGridViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		656B72CB260E85D200E02221 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				65D973FF25B4731D00769653 /* SportTypeGridView.swift */,
-				65D973FA25B4731800769653 /* SportTypeGridViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		656B72CC260E85D600E02221 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				656B72D0260E865C00E02221 /* SportTypeGrid.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		656CC268259A51FB00DEC84C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1015,7 +948,6 @@
 			isa = PBXGroup;
 			children = (
 				6581531A260B5C6600436BCB /* LoginAPI.swift */,
-				657543EC261143E10073068E /* SignInView.swift */,
 				6581531C260B5C6600436BCB /* WKWebViewController.swift */,
 			);
 			path = Helpers;
@@ -1298,9 +1230,10 @@
 			isa = PBXGroup;
 			children = (
 				65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */,
-				656B72CC260E85D600E02221 /* Model */,
-				656B72CB260E85D200E02221 /* View */,
-				656B72CA260E85CE00E02221 /* ViewModel */,
+				656B72D0260E865C00E02221 /* SportTypeGrid.swift */,
+				65D973FF25B4731D00769653 /* SportTypeGridView.swift */,
+				65D973FA25B4731800769653 /* SportTypeGridViewController.swift */,
+				65D9740425B4732400769653 /* SportTypeGridViewModel.swift */,
 			);
 			path = SportTypeGrid;
 			sourceTree = "<group>";
@@ -1872,7 +1805,6 @@
 				65EAAA8A25CD4010005E0131 /* CollectionViewEventCardCellFooterView.swift in Sources */,
 				65CDF89A25DB12080049F711 /* SportGroundSelectionListViewController.swift in Sources */,
 				65D973FB25B4731800769653 /* SportTypeGridViewController.swift in Sources */,
-				65430BEE260F98100044F57C /* FeedModel.swift in Sources */,
 				65CD77A425EB536900D042FD /* AppLanguageListDataSource.swift in Sources */,
 				659C61AD2593DB5A00C33D05 /* SignUpView.swift in Sources */,
 				65CD773A25EB3EB700D042FD /* SoundListView.swift in Sources */,

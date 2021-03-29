@@ -11,48 +11,41 @@ import UIKit
 final class SignInCoordinator: Coordinator {
     
     /// NavigationController's root viewController object .
-    private var rootViewController: SingInViewController?
+    let rootViewController: SingInViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
+        let assembly = SignInAssembly()
+        self.rootViewController = assembly.makeModule()
         self.navigationController = navController
     }
     
     func start() {
-        let assembly = SignInAssembly(coordinator: self)
-        self.rootViewController = assembly.makeModule()
-        
-        guard let _ = self.rootViewController else { return }
-        
-        navigationController?.setViewControllers([self.rootViewController!], animated: true)
-    }
-    
-    func startModally() {
-        let assembly = SignInAssembly(coordinator: self)
-        self.rootViewController = assembly.makeModule()
-        
-        guard let _ = self.rootViewController else { return }
-        
-        self.navigationController?.present(self.rootViewController!, animated: true, completion: nil)
+        rootViewController.coordinator = self
+        navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
     func goToRegistrationModule() {
         let coordinator = SignUpCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
     func goToFeedModule() {
         let coordinator = MainTabBarCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     func goToMainTabBar() {
         let coordinator = MainTabBarCoordinator(navController: self.navigationController)
+        store(coordinator: coordinator)
         coordinator.start()
     }
     func openVkAuthView() {
         let vc = WKWebViewController()
         navigationController?.present(vc, animated: true, completion: nil)
+        
     }
 }

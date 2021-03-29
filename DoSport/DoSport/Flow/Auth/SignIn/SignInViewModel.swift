@@ -14,17 +14,13 @@ enum SocialMediaType {
 }
 
 protocol SignInViewModelProtocol: class {
-    var onSigningUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
-    var onSendingSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
-    var onLogining: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidSignUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
+    var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)? { get set }
     
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?)
     func doLogin(with data: DSModels.Auth.SignInRequest)
     func doSendSignUpDataToServer()
-    
-    func goToSignUpModuleRequest()
-    func goToFeedModuleRequest()
-    func openVKAuthViewRequest()
 }
 
 final class SignInViewModel: NSObject, SignInViewModelProtocol {
@@ -35,17 +31,15 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
         case success
     }
     
-    var onSigningUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)?
-    var onSendingSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)?
-    var onLogining: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onDidSignUpWithSocialMedia: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onDidSendSignUpDataToServer: ((SignInViewModel.ViewState) -> Swift.Void)?
+    var onDidLogin: ((SignInViewModel.ViewState) -> Swift.Void)?
     
-    private weak var coordinator: SignInCoordinator?
     private let userAccountService: UserAccountServiceProtocol
     private let userNetworkService: UserNetworkServiceProtocol
     private let authNetworkService: AuthNetworkServiceProtocol
     
     init(
-        coordinator: SignInCoordinator,
         authNetworkService: AuthNetworkServiceProtocol,
         userNetworkService: UserNetworkServiceProtocol,
         userAccountService: UserAccountServiceProtocol
@@ -53,12 +47,11 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
         self.userNetworkService = userNetworkService
         self.userAccountService = userAccountService
         self.authNetworkService = authNetworkService
-        self.coordinator = coordinator
         super.init()
     }
     
     func doLogin(with data:  DSModels.Auth.SignInRequest) {
-        self.onLogining?(.loading)
+        self.onDidLogin?(.loading)
         
         self.authNetworkService.authSignIn(bodyObject: data) { [unowned self] response in
             
@@ -67,11 +60,11 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
                 self.doLoadUser(using: responseData.token) { [unowned self] user in
                     self.userAccountService.currentUser = user
                     
-                    self.onLogining?(.success)
+                    self.onDidLogin?(.success)
                 }
                 
             case .failure:
-                self.onLogining?(.failed)
+                self.onDidLogin?(.failed)
             }
         }
     }
@@ -84,19 +77,19 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
             self.userAccountService.jwtToken = jwtToken
         }
         
-        self.userNetworkService.userProfileGet { [unowned self] response in
+        self.userNetworkService.userProfileGet { response in
             switch response {
             case .success(let responseData):
                 completion(responseData)
                 
             case .failure:
-                self.onLogining?(.failed)
+                self.onDidLogin?(.failed)
             }
         }
     }
     
     func doSignUpWithSocialMedia(_ type: SocialMediaType, viewController: SingInViewController?) {
-        onSigningUpWithSocialMedia?( .loading)
+        onDidSignUpWithSocialMedia?( .loading)
         
         switch type {
         case .google:
@@ -119,18 +112,6 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
     func doSendSignUpDataToServer() {
         
     }
-    
-    func goToSignUpModuleRequest() {
-        self.coordinator?.goToRegistrationModule()
-    }
-    
-    func goToFeedModuleRequest() {
-        self.coordinator?.goToFeedModule()
-    }
-    
-    func openVKAuthViewRequest() {
-        self.coordinator?.openVkAuthView()
-    }
 }
 
 //MARK: Private API
@@ -148,13 +129,13 @@ private extension SignInViewModel {
             
             if error != nil {
                 /// login error occured
-                self.onSigningUpWithSocialMedia?(.failed)
+                self.onDidSignUpWithSocialMedia?(.failed)
             } else if ((result?.isCancelled) != nil) {
                 /// login cancelled
-                self.onSigningUpWithSocialMedia?(.failed)
+                self.onDidSignUpWithSocialMedia?(.failed)
             } else {
                 /// login successfully
-                self.onSigningUpWithSocialMedia?(.success)
+                self.onDidSignUpWithSocialMedia?(.success)
             }
         }
     }

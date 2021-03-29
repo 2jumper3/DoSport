@@ -4,9 +4,20 @@
 //
 //  Created by Komolbek Ibragimov on 22/12/2020.
 //
+
 import UIKit
 
+protocol SingInViewDelegate: class {
+    func skipButtonTapped()
+    func fbAuthClicked()
+    func vkAuthButtonClicked()
+    func googleAuthButtonClicked()
+    func appleAuthButtonClicked()
+}
+
 final class SingInView: UIView {
+
+    weak var delegate: SingInViewDelegate?
     
     private let titleLabel: UILabel = { // TODO: Make bold. Task at: https://trello.com/b/B0RlPzN6/dosport-ios
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -26,22 +37,22 @@ final class SingInView: UIView {
         return $0
     }(UILabel())
     
-    private(set) lazy var fbAuthButton = DSButtonWithIcon(
+    private lazy var fbAuthButton = DSButtonWithIcon(
         img: Icons.Auth.fbAuth,
         txt: Texts.Auth.AuthButtons.facebook,
         isTextInCenter: true)
     
-    private(set) lazy var appleAuthButton = DSButtonWithIcon(
+    private lazy var appleAuthButton = DSButtonWithIcon(
         img: Icons.Auth.appleAuth,
         txt: Texts.Auth.AuthButtons.apple,
         isTextInCenter: true)
     
-    private(set) lazy var googleAuthButton = DSButtonWithIcon(
+    private lazy var googleAuthButton = DSButtonWithIcon(
         img: Icons.Auth.googleAuth,
         txt: Texts.Auth.AuthButtons.google,
         isTextInCenter: true)
     
-    private(set) lazy var vkAuthButton = DSButtonWithIcon(
+    private lazy var vkAuthButton = DSButtonWithIcon(
         img: Icons.Auth.vkAuth,
         txt: Texts.Auth.AuthButtons.vkontakte,
         isTextInCenter: true)
@@ -61,7 +72,7 @@ final class SingInView: UIView {
         return $0
     }(UILabel())
     
-    private(set) lazy var skipButton = UIButton.makeSimpleButton(title: Texts.Auth.skip,
+    private lazy var skipButton = UIButton.makeSimpleButton(title: Texts.Auth.skip,
                                                             titleColor: Colors.mainBlue)
     
     //MARK: Init
@@ -69,6 +80,12 @@ final class SingInView: UIView {
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
+        
+        skipButton.addTarget(self, action: #selector(handleSkipButton))
+        appleAuthButton.addTarget(self, action: #selector(handleAppleAuthButton))
+        googleAuthButton.addTarget(self, action: #selector(handleGoogleAuthButton))
+        vkAuthButton.addTarget(self, action: #selector(handleVKAuthButton))
+        fbAuthButton.addTarget(self, action: #selector(handleFBAuthButton))
         
         addSubviews(
             logoImageView,
@@ -142,3 +159,27 @@ final class SingInView: UIView {
     }
 }
 
+//MARK: Actions
+
+@objc extension SingInView {
+    
+    func handleSkipButton() {
+        self.delegate?.skipButtonTapped()
+    }
+    
+    func handleFBAuthButton() {
+        delegate?.fbAuthClicked()
+    }
+    
+    func handleVKAuthButton() {
+        delegate?.vkAuthButtonClicked()
+    }
+    
+    func handleGoogleAuthButton() {
+        delegate?.googleAuthButtonClicked()
+    }
+    
+    func handleAppleAuthButton() {
+        delegate?.appleAuthButtonClicked()
+    }
+}

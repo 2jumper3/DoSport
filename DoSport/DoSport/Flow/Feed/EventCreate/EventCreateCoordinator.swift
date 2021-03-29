@@ -45,7 +45,7 @@ final class EventCreateCoordinator: Coordinator {
     func goToSportGroundSelectionListModule(sportTypeTitle: String, completion: @escaping (SportGround) -> Void) {
         let coordinator = SportGroundSelectionListCoordinator(
             navController: eventCreateNavController,
-            sportTypeTitle: sportTypeTitle, 
+            sportTypeTitle: sportTypeTitle,
             completion: completion
         )
         

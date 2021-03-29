@@ -9,26 +9,25 @@ import UIKit
 
 final class SignUpCoordinator: Coordinator {
     
-    private var rootViewController: SignUpViewController?
+    var rootViewController: SignUpViewController
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
+        let viewModel = SignUpViewModel(coordinator: self)
+        self.rootViewController = SignUpViewController(viewModel: viewModel)
         self.navigationController = navController
     }
     
     func start() {
-        let viewModel = SignUpViewModel(coordinator: self)
-        self.rootViewController = SignUpViewController(viewModel: viewModel)
-        
-        guard let _ = self.rootViewController else { return }
-        
-        navigationController?.pushViewController(rootViewController!, animated: true)
+        rootViewController.coordinator = self
+        navigationController?.pushViewController(rootViewController, animated: true)
     }
     
     func goToFeedModule() {
         let coordinator = MainTabBarCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
     }
     
