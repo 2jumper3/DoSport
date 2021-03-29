@@ -59,6 +59,12 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
 //MARK: Public API
@@ -76,6 +82,7 @@ extension MainMenuTabController {
                 
                 self.feedCoordinator = feedCoordinator
                 
+                self.coordinator?.store(coordinator: feedCoordinator)
                 feedCoordinator.start()
                 
                 tabViewControllers?.append(navigationController)
@@ -86,6 +93,7 @@ extension MainMenuTabController {
                 
                 self.userMainCoordinator = userMainCoordinator
                 
+                self.coordinator?.store(coordinator: userMainCoordinator)
                 userMainCoordinator.start()
                 
                 tabViewControllers?.append(navigationController)
@@ -96,6 +104,7 @@ extension MainMenuTabController {
                 
                 self.mainSportTypeSelectionCoordinator = mainSportTypeSelectionCoordinator
                 
+                self.coordinator?.store(coordinator: mainSportTypeSelectionCoordinator)
                 mainSportTypeSelectionCoordinator.start()
                 
                 tabViewControllers?.append(navigationController)
