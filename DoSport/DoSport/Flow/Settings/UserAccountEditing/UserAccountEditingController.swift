@@ -73,7 +73,7 @@ private extension UserAccountEditingController {
         
         viewModel.onDidSignOut = { [unowned self] state in
             if case .success = state {
-                self.coordinator?.goToSignInModule()
+                
             }
             
             if case .loading = state {

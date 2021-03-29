@@ -101,7 +101,7 @@ extension SingInViewController: SingInViewDelegate {
         // will be replaced by social media auth
         viewModel.doLogin(
             with: .init(
-                email: "admin",
+                username: "admin",
                 password: "admin"
             )
         )

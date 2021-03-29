@@ -15,7 +15,7 @@ final class SignUpCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let viewModel = SignUpViewModel(coordinator: self)
+        let viewModel = SignUpViewModel()
         self.rootViewController = SignUpViewController(viewModel: viewModel)
         self.navigationController = navController
     }

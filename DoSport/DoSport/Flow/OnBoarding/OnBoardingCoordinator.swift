@@ -15,8 +15,7 @@ final class OnBoardingCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     init(navController: UINavigationController?) {
-        let assembly = OnBoardingAssembly()
-        self.rootViewController = assembly.makeModule()
+        self.rootViewController = OnBoardingViewController()
         self.navigationController = navController
         self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
         self.navigationController?.navigationBar.isTranslucent = false
