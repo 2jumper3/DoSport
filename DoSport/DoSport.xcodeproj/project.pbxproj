@@ -103,7 +103,6 @@
 		6572954025D953FD00996440 /* TableViewCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572953F25D953FD00996440 /* TableViewCommentCell.swift */; };
 		6572954825D9540500996440 /* TableViewMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572954725D9540500996440 /* TableViewMemberCell.swift */; };
 		657543C62611170E0073068E /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
-		657543E1261128DF0073068E /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657543E0261128DF0073068E /* OnBoardingViewModel.swift */; };
 		657543ED261143E10073068E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657543EC261143E10073068E /* SignInView.swift */; };
 		65782D6325EAFF380063A52A /* UserAccountEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6225EAFF380063A52A /* UserAccountEditingView.swift */; };
 		65782D6825EAFF400063A52A /* UserAccountEditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */; };
@@ -399,7 +398,6 @@
 		656CC269259A521000DEC84C /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
 		6572953F25D953FD00996440 /* TableViewCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCommentCell.swift; sourceTree = "<group>"; };
 		6572954725D9540500996440 /* TableViewMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMemberCell.swift; sourceTree = "<group>"; };
-		657543E0261128DF0073068E /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		657543EC261143E10073068E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		65782D6225EAFF380063A52A /* UserAccountEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingView.swift; sourceTree = "<group>"; };
 		65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountEditingCoordinator.swift; sourceTree = "<group>"; };
@@ -555,9 +553,6 @@
 		65EEE91825B626290023168D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		65FFFD622604AFB400CD1CB5 /* NetworkErrorResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponseType.swift; sourceTree = "<group>"; };
 		CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
-		CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		CE2B5DC425FBB626007E5EEA /* WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
-		CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTabController.swift; sourceTree = "<group>"; };
@@ -932,16 +927,6 @@
 				65782D9425EB18C70063A52A /* NotificationSettingsView.swift */,
 			);
 			path = NotificationSettings;
-			sourceTree = "<group>";
-		};
-		658152C2260B57C000436BCB /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				CE2B5DC425FBB626007E5EEA /* WKWebView.swift */,
-				CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */,
-				CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		65815319260B5C2D00436BCB /* Helpers */ = {
@@ -1390,7 +1375,6 @@
 				1B575704A7CC7F421F6A9B8A /* Pods */,
 				CEDEB77A258CB404007B2BCA /* Products */,
 				ADF7D3308F59CB7E81C5F884 /* Frameworks */,
-				658152C2260B57C000436BCB /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1540,7 +1524,6 @@
 			children = (
 				CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */,
 				CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */,
-				657543E0261128DF0073068E /* OnBoardingViewModel.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -1993,7 +1976,6 @@
 				653179AD25D11219001DBA4B /* RegionListDataSource.swift in Sources */,
 				653179C025D11250001DBA4B /* SubwayListViewModel.swift in Sources */,
 				653179D825D112C0001DBA4B /* DateSelectionView.swift in Sources */,
-				657543E1261128DF0073068E /* OnBoardingViewModel.swift in Sources */,
 				65B6D9F326067A290099BC08 /* DSEnums+EventsByParameter.swift in Sources */,
 				65C8B4C425E8C66900BBCF77 /* UserMainCoordinator.swift in Sources */,
 				653179B625D11247001DBA4B /* SubwayListView.swift in Sources */,

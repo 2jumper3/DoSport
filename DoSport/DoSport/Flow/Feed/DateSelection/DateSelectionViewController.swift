@@ -1,3 +1,10 @@
+//
+//  DateSelectionViewController.swift
+//  DoSport
+//
+//  Created by Komolbek Ibragimov on 08/02/2021.
+//
+
 import UIKit
 import FSCalendar
 
@@ -82,9 +89,16 @@ final class DateSelectionViewController: UIViewController, UIGestureRecognizerDe
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
+    }
 }
 
 //MARK: Private API
+
 private extension DateSelectionViewController {
     
     func setupNavBar() {
@@ -157,6 +171,7 @@ private extension DateSelectionViewController {
 }
 
 //MARK: Actions
+
 @objc private extension DateSelectionViewController {
     
     func handleBackButton() {
@@ -165,6 +180,7 @@ private extension DateSelectionViewController {
 }
 
 //MARK: - DateSelectionViewDelegate -
+
 extension DateSelectionViewController: DateSelectionViewDelegate {
     
     func saveButtonClicked() {
@@ -174,6 +190,7 @@ extension DateSelectionViewController: DateSelectionViewDelegate {
 }
 
 //MARK: - DateSelectionDataSourceDelegate -
+
 extension DateSelectionViewController: DateSelectionDataSourceDelegate {
     
     func collectionView(didSelect hour: String) {
@@ -204,6 +221,7 @@ extension DateSelectionViewController: DateSelectionDataSourceDelegate {
 }
 
 //MARK: - FSCalendarDelegate -
+
 extension DateSelectionViewController: FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -252,6 +270,7 @@ extension DateSelectionViewController: FSCalendarDelegate {
 }
 
 //MARK: - FSCalendarDelegateAppearance -
+
 extension DateSelectionViewController: FSCalendarDelegateAppearance {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -291,3 +310,4 @@ extension DateSelectionViewController: FSCalendarDelegateAppearance {
         }
     }
 }
+
