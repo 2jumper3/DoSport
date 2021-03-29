@@ -14,6 +14,7 @@
 		6503F4E325B5CDD60002BC27 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4E225B5CDD60002BC27 /* Event.swift */; };
 		6503F4E825B5D56A0002BC27 /* LocalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4E725B5D56A0002BC27 /* LocalTime.swift */; };
 		6503F4ED25B5D67C0002BC27 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4EC25B5D67C0002BC27 /* Member.swift */; };
+		65079E3A26129029001FB6CD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65079E3926129029001FB6CD /* MainViewController.swift */; };
 		650B75522600823B00625332 /* Calendar+currnetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B75512600823B00625332 /* Calendar+currnetComponent.swift */; };
 		650B7565260086E300625332 /* UIView+setupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B7564260086E300625332 /* UIView+setupNotification.swift */; };
 		650B75B12600C6A400625332 /* EventVisibilityChangePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B75B02600C6A400625332 /* EventVisibilityChangePopupView.swift */; };
@@ -313,6 +314,7 @@
 		6503F4E225B5CDD60002BC27 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6503F4E725B5D56A0002BC27 /* LocalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTime.swift; sourceTree = "<group>"; };
 		6503F4EC25B5D67C0002BC27 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		65079E3926129029001FB6CD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		650B75512600823B00625332 /* Calendar+currnetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+currnetComponent.swift"; sourceTree = "<group>"; };
 		650B7564260086E300625332 /* UIView+setupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+setupNotification.swift"; sourceTree = "<group>"; };
 		650B75B02600C6A400625332 /* EventVisibilityChangePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVisibilityChangePopupView.swift; sourceTree = "<group>"; };
@@ -1385,6 +1387,7 @@
 				CEDEB77E258CB404007B2BCA /* SceneDelegate.swift */,
 				6587054B25924C3200EFF7C7 /* AppCoordinator.swift */,
 				65EEE91825B626290023168D /* AppConfiguration.swift */,
+				65079E3926129029001FB6CD /* MainViewController.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1702,6 +1705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				657543C62611170E0073068E /* OnBoardingCoordinator.swift in Sources */,
+				65079E3A26129029001FB6CD /* MainViewController.swift in Sources */,
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
 				654D705525E88D6B00B37AD3 /* SignInAssembly.swift in Sources */,
 				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
