@@ -11,11 +11,8 @@ import UIKit
 final class AppLanguageListController: UIViewController, UIGestureRecognizerDelegate {
     
     weak var coordinator: AppLanguageListCoordinator?
-    
     private var viewModel: AppLanguageViewModel
-    
     private lazy var appLanguageListView = view as! AppLanguageListView
-    
     private let appLanguageListManager = AppLanguageListDataSource()
     
     /// Compilation that returns app language to the previous screen when user selects.
@@ -66,6 +63,12 @@ final class AppLanguageListController: UIViewController, UIGestureRecognizerDele
         
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.coordinator?.removeDependency(coordinator)
     }
 }
 

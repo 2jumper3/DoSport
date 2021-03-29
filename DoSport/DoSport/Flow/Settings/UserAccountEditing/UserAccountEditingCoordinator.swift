@@ -24,9 +24,4 @@ final class UserAccountEditingCoordinator: Coordinator {
         rootViewController.coordinator = self
         navigationController?.pushViewController(rootViewController, animated: true)
     }
-    
-    func goToSignInModule() {
-        let coordiator = SignInCoordinator(navController: navigationController)
-        coordiator.startModally()
-    }
 }

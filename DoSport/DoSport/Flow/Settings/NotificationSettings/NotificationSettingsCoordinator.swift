@@ -29,7 +29,7 @@ final class NotificationSettingsCoordinator: Coordinator {
             navController: navigationController,
             compilation: compilation
         )
-        
+        store(coordinator: coordinator)
         coordinator.start()
     }
 }

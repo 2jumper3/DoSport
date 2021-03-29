@@ -12,11 +12,11 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
     weak var coordinator: UserAccountEditingCoordinator?
     private lazy var userAccountEditingView = view as! UserAccountEditingView
     private var viewModel: UserProfileEditingViewModelProtocol
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
     // MARK: Init
     
     init(viewModel: UserProfileEditingViewModelProtocol) {
@@ -43,12 +43,18 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
         setupNavBar()
         setupViewModelBindings()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.removeDependency(coordinator)
     }
 }
 
@@ -60,7 +66,7 @@ private extension UserAccountEditingController {
         viewModel.onDidDeleteUserProfile = { [unowned self] state in
             
         }
-
+        
         viewModel.onDidEditUserProfile = { [unowned self] state in
             
         }
@@ -119,7 +125,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
     func deleteProfileButtonClicked() {
         viewModel.doDeleteUserProfile()
     }
-
+    
     func saveButtonClicked(with username: String?, dob: String?, gender: String?, avatarImage: UIImage?) {
         guard let username = username,
               let dob = dob,
@@ -129,7 +135,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
             return
         }
         
-//        guard let avatarImageInJPEG = avatarImage.jpegData(compressionQuality: 0.5) else { return }
+        //        guard let avatarImageInJPEG = avatarImage.jpegData(compressionQuality: 0.5) else { return }
         
         let userData = DSModels.User.UserView(
             id: nil, // no need to change ID of current user

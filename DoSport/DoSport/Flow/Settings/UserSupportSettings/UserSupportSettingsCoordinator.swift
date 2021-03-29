@@ -26,6 +26,7 @@ final class UserSupportSettingsCoordinator: Coordinator {
     
     func goToProblemReportModule() {
         let coordinator = UserReportMessageCoordinator(navController: navigationController)
+        store(coordinator: coordinator)
         coordinator.start()
     }
     

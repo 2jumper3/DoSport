@@ -812,23 +812,6 @@
 			path = NetworkServices;
 			sourceTree = "<group>";
 		};
-		65430C4E260FFDA10044F57C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */,
-				65782D6225EAFF380063A52A /* UserAccountEditingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		65430C4F260FFDA50044F57C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				65782D7925EAFF7E0063A52A /* UserProfileEditingViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		654D707D25E89EA700B37AD3 /* EventCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,8 +828,9 @@
 			children = (
 				65782D7125EAFF770063A52A /* UserAccountEditingAssembly.swift */,
 				65782D6725EAFF400063A52A /* UserAccountEditingCoordinator.swift */,
-				65430C4E260FFDA10044F57C /* View */,
-				65430C4F260FFDA50044F57C /* ViewModel */,
+				65782D6C25EAFF490063A52A /* UserAccountEditingController.swift */,
+				65782D6225EAFF380063A52A /* UserAccountEditingView.swift */,
+				65782D7925EAFF7E0063A52A /* UserProfileEditingViewModel.swift */,
 			);
 			path = UserAccountEditing;
 			sourceTree = "<group>";
@@ -873,32 +857,6 @@
 				65CDF89025DB11E00049F711 /* SportGroundSelectionList */,
 			);
 			path = Feed;
-			sourceTree = "<group>";
-		};
-		656B7293260E638D00E02221 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				65CD779925EB535A00D042FD /* AppLanguageListController.swift */,
-				65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */,
-				65CD779425EB535600D042FD /* AppLanguageListView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		656B7294260E639000E02221 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				656B7281260E440B00E02221 /* AppLanguageViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		656B7295260E639300E02221 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				656B727D260E42C300E02221 /* AppLanguageModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		656CC268259A51FB00DEC84C /* Utils */ = {
@@ -1156,9 +1114,11 @@
 			isa = PBXGroup;
 			children = (
 				651FBF5725FE13F00018C6B1 /* AppLanguageListCoordinator.swift */,
-				656B7295260E639300E02221 /* Model */,
-				656B7293260E638D00E02221 /* View */,
-				656B7294260E639000E02221 /* ViewModel */,
+				65CD77A325EB536900D042FD /* AppLanguageListDataSource.swift */,
+				65CD779925EB535A00D042FD /* AppLanguageListController.swift */,
+				65CD779425EB535600D042FD /* AppLanguageListView.swift */,
+				656B7281260E440B00E02221 /* AppLanguageViewModel.swift */,
+				656B727D260E42C300E02221 /* AppLanguageModel.swift */,
 			);
 			path = AppLanguageList;
 			sourceTree = "<group>";
