@@ -20,29 +20,22 @@ final class UserSubscriberListViewModel: NSObject, UserSubscriberListViewModelPr
     var onDidLoadSubscribes: ((UserSubscriberListDataFlow.LoadSubscribes.ViewModel) -> Swift.Void)?
     var onDidLoadSubscriptions: ((UserSubscriberListDataFlow.LoadSubscriptions.ViewModel) -> Swift.Void)?
     
-    private let requestsManager: RequestsManager
+    private let userNetworkService: UserNetworkService
     
-    init(requestsManager: RequestsManager) {
-        self.requestsManager = requestsManager
+    init(userNetworkService: UserNetworkService) {
+        self.userNetworkService = userNetworkService
         super.init()
     }
 
     func doLoadSubscribers(request: UserSubscriberListDataFlow.LoadSubscribes.Request) {
         self.onDidLoadSubscribes?(.init(state: .loading))
         
-        requestsManager.userGetSubscribers { response in
+        userNetworkService.userGetSubscribers { [unowned self] response in
             switch response {
-            case .success(let result):
-                switch result {
-                case .object(let data):
-                    debugPrint(data)
-                    self.onDidLoadSubscribes?(.init(state: .success(data)))
-                    break
-                case .emptyObject:
-                    break
-                }
-            case .failure(let error):
-                debugPrint(error)
+            case .success(let responseData):
+                self.onDidLoadSubscribes?(.init(state: .success(responseData)))
+                
+            case .failure:
                 self.onDidLoadSubscribes?(.init(state: .failed))
             }
         }
@@ -51,19 +44,12 @@ final class UserSubscriberListViewModel: NSObject, UserSubscriberListViewModelPr
     func doLoadSubscriptions(request: UserSubscriberListDataFlow.LoadSubscriptions.Request) {
         self.onDidLoadSubscriptions?(.init(state: .loading))
         
-        requestsManager.userGetSubscriptions { response in
+        userNetworkService.userGetSubscriptions { [unowned self] response in
             switch response {
-            case .success(let result):
-                switch result {
-                case .object(let data):
-                    debugPrint(data)
-                    self.onDidLoadSubscriptions?(.init(state: .success(data)))
-                    break
-                case .emptyObject:
-                    break
-                }
-            case .failure(let error):
-                debugPrint(error)
+            case .success(let responseData):
+                self.onDidLoadSubscriptions?(.init(state: .success(responseData)))
+                
+            case .failure:
                 self.onDidLoadSubscribes?(.init(state: .failed))
             }
         }

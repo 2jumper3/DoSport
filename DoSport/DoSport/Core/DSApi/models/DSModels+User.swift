@@ -15,7 +15,7 @@ extension DSModels {
         struct UserView: Codable, Identifiable {
             let id: Int?
             let username: String?
-            let avatarPhoto: Data?
+            let avatarPhoto: String? // TODO: need to send Data type to the server instead of String
             let birthdayDate: String?
             let gender: String?
             let info: String?

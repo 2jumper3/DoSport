@@ -9,7 +9,7 @@ import Foundation
 
 final class FeedViewModel {
     
-    private let requestFactory: RequestsManager
+    private let eventNetworkService: EventNetworkService
     
     var onDidPrepareEventsData: (([Event]) -> Void)?
     
@@ -20,12 +20,12 @@ final class FeedViewModel {
         }
     }
     
-    init(requestFactory: RequestsManager) {
-        self.requestFactory = requestFactory
+    init(eventNetworkService: EventNetworkService) {
+        self.eventNetworkService = eventNetworkService
     }
     
     func prepareEventsData() {
-        requestFactory.eventsGet(queryComponents: .init(fromDate: nil,
+        eventNetworkService.eventsGet(queryComponents: .init(fromDate: nil,
                                                         organiserID: nil,
                                                         sportGroundID: nil,
                                                         sportTypeID: nil,

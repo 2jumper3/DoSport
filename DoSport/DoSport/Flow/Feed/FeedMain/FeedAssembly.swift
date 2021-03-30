@@ -10,8 +10,8 @@ import Foundation
 final class FeedAssembly: Assembly {
     
     func makeModule() -> FeedViewController {
-        let requestFactory = RequestsManager.shared
-        let viewModel = FeedViewModel(requestFactory: requestFactory)
+        let eventNetworkService = EventNetworkService()
+        let viewModel = FeedViewModel(eventNetworkService: eventNetworkService)
         let viewController = FeedViewController(viewModel: viewModel)
         return viewController
     }

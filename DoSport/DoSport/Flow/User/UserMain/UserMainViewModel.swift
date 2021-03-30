@@ -17,23 +17,18 @@ final class UserMainViewModel: NSObject, UserMainViewModelProtocol {
     var didLoadEvents: ((UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.ViewModel) -> Swift.Void)?
     var didLoadSportGrounds: ((UserMainDataFlow.LoadEvents<DSModels.SportGround.SportGroundResponse>.ViewModel) -> Swift.Void)?
     
-    private let requestsManager: RequestsManager
+    private let userNetworkService: UserNetworkService
     
-    init(requestsManager: RequestsManager) {
-        self.requestsManager = requestsManager
+    init(userNetworkService: UserNetworkService) {
+        self.userNetworkService = userNetworkService
         super.init()
     }
     
     func doLoadEvents(request: UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.Request) {
-        requestsManager.userGetOwnedEvents(queryItems: .init(id: request.userID)) { [unowned self] response in
+        userNetworkService.userGetOwnedEvents(queryItems: .init(id: request.userID)) { [unowned self] response in
             switch response {
-            case .success(let result):
-                switch result {
-                case .object(let events):
+            case .success(let events):
                     self.didLoadEvents?(.init(state: .success(events)))
-                case .emptyObject:
-                    break
-                }
             case .failure(let error):
                 print(error.localizedDescription)
                 self.didLoadEvents?(.init(state: .failed))

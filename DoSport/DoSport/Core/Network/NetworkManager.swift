@@ -7,8 +7,10 @@
 
 import Foundation
 
+struct DSEmptyRequest: Codable { }
+
 enum DataHandler<ResponseType> where ResponseType: Encodable & Decodable {
-    case success(NetworkSuccessResponseType<ResponseType>)
+    case success(ResponseType)
     case failure(NetworkErrorResponseType)
 }
 
@@ -16,11 +18,13 @@ protocol NetworkManager: class {
     func makeRequest<RequestBody, ResponseType>(
         endpoint: Endpoint,
         bodyObject: RequestBody?,
-        compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) ->  URLSessionTask? where RequestBody: Codable, ResponseType: Codable
+        completion: @escaping (DataHandler<ResponseType>) -> Void
+    ) where RequestBody: Codable, ResponseType: Codable
 }
 
 final class NetworkManagerImplementation: NSObject, NetworkManager {
+    
+    static let shared: NetworkManager = NetworkManagerImplementation()
     
     private let queue: OperationQueue = {
         $0.qualityOfService = .background
@@ -46,25 +50,22 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
     func makeRequest<RequestBody, ResponseType>(
         endpoint: Endpoint,
         bodyObject: RequestBody?,
-        compilation: @escaping (DataHandler<ResponseType>) -> Void
-    ) ->  URLSessionTask? where RequestBody: Codable, ResponseType: Codable {
+        completion: @escaping (DataHandler<ResponseType>) -> Void
+    ) where RequestBody: Codable, ResponseType: Codable {
         
         guard let resultRequest = self.buildRequest(using: endpoint, and: bodyObject) else {
-            return nil
+            return
         }
         
-        return self.session.dataTask(with: resultRequest) { data, response, error in
+        self.session.dataTask(with: resultRequest) { data, response, error in
             if let error = error {
                 debugPrint(error.localizedDescription, #file, #line)
-                compilation(.failure(.clientError))
+                completion(.failure(.clientError))
             }
             
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode != 200 {
                 debugPrint("## - Status code: \(httpResponse.statusCode)", #line)
-                DispatchQueue.main.async {
-                    compilation(.failure(.serverError))
-                }
                 return
             }
             
@@ -73,13 +74,13 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             do {
                 let result: ResponseType = try JSONDecoder().decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
-                    compilation(.success(.object(result)))
+                    completion(.success(result))
                 }
             } catch let error {
                 debugPrint(error.localizedDescription, #file, #line)
-                compilation(.failure(.decodingError))
+                completion(.failure(.decodingError))
             }
-        }
+        }.resume()
     }
 }
 

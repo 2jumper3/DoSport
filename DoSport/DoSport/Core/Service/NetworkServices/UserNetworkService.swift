@@ -1,13 +1,25 @@
 //
-//  UserRequests.swift
+//  UserNetworkService.swift
 //  DoSport
 //
-//  Created by Komolbek Ibragimov on 17/03/2021.
+//  Created by Komolbek Ibragimov on 27/03/2021.
 //
 
 import Foundation
 
-extension RequestsManager {
+protocol HasUserNetworkService: class {
+    var userNetworkService: UserNetworkServiceProtocol { get }
+}
+
+protocol UserNetworkServiceProtocol: class {
+    func userProfileGet(
+        completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
+    )
+}
+
+final class UserNetworkService: UserNetworkServiceProtocol {
+    
+    private let networkManager: NetworkManager = NetworkManagerImplementation.shared
     
     //MARK: - User Profile -
     
@@ -15,7 +27,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getProfile
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userProfileGetByID(
@@ -23,7 +35,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getProfileByID(params.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userProfileEdit(
@@ -31,7 +43,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.User.UserView>) -> Void
     ) {
         let endpoint = DSEndpoints.User.editProfile
-        request(
+        networkManager.makeRequest(
             endpoint: endpoint,
             bodyObject: params,
             completion: completion
@@ -42,7 +54,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.deleteProfile
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - User SportTypes -
@@ -51,7 +63,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.SportType.SportTypeView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getPreferredSportTypes
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userPreferredSportTypesEdit(
@@ -59,7 +71,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.SportType.SportTypeView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.editPreferredSportTypes
-        request(
+        networkManager.makeRequest(
             endpoint: endpoint,
             bodyObject: params,
             completion: completion
@@ -71,7 +83,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.addPreferredSportTypeByID(params)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userDeletePreferredSportType(
@@ -79,7 +91,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.SportType.SportTypeEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.deletePreferredSportTypeByID(params)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - User subscribers & subscriptions -
@@ -88,14 +100,14 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getSubscribers
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     func userGetSubscriptions(
         completion: @escaping (DataHandler<[DSModels.User.UserView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getSubscriptions
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     
@@ -104,7 +116,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.addSubscriptionByID(params.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     
@@ -113,7 +125,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<DSModels.User.UserEmptyResponse>) -> Void
     ) {
         let endpoint = DSEndpoints.User.deleteSubscriptionByID(params.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     //MARK: - User events -
@@ -128,7 +140,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getUserOwnedEvents(byUserID: queryItems.id)
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
     
     /// Gets events where current user is participating
@@ -139,6 +151,7 @@ extension RequestsManager {
         completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
     ) {
         let endpoint = DSEndpoints.User.getUserParticipatingEvents
-        request(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
+        networkManager.makeRequest(endpoint: endpoint, bodyObject: DSEmptyRequest?.none, completion: completion)
     }
+
 }

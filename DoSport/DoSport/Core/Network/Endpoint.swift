@@ -30,7 +30,8 @@ extension Endpoint {
     var headers: [String: Any] {
         return [
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Authorization": String(describing: DSSharedData.shared.jwtToken ?? "")
         ]
     }
     

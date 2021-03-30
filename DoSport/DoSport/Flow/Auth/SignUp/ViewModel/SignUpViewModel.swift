@@ -25,11 +25,11 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     var onDidUploadSignUpDataToServer: ((ViewState) -> Void)?
     
 //    private let model: SignUpModel
-    private let requestsManager: RequestsManager
+//    private let requestsManager: RequestsManager
     
-    init(/*model: SignUpModel, */requestsManager: RequestsManager) {
+    init(/*model: SignUpModel, requestsManager: RequestsManager*/) {
 //        self.model = model
-        self.requestsManager = requestsManager
+//        self.requestsManager = requestsManager
     }
     
     func doUploadSignUpDataToServer() {
