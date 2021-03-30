@@ -38,7 +38,7 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        notificationsSetup()
         setupViewModelBindings()
     }
     
@@ -77,13 +77,15 @@ private extension AuthViewController {
             
         }
     }
+    func notificationsSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(googleAuthPassed), name: NSNotification.Name(Notifications.googleSignSuccess), object: nil)
+    }
 }
 
 //MARK: - AuthViewDelegate -
 
 extension AuthViewController: AuthViewDelegate {
     func skipButtonTapped() {
-//        coordinator?.goToMainTabBar()
         coordinator?.goToRegistrationModule()
     }
     
@@ -92,24 +94,19 @@ extension AuthViewController: AuthViewDelegate {
     }
     
     func vkAuthButtonClicked() {
-        viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: nil)
-        
-    }
-    
-    func vkAuthButtonClicked() {
         coordinator?.openVkAuthView(completion: {
             self.coordinator?.dismissWKWebView()
             self.coordinator?.goToMainTabBar()
         })
-        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .vkontakte, viewController: nil))
-    }
-    
-    func fbAuthClicked() {
-        viewModel.doSignUpWithSocialMedia(request: .init(socialmediaType: .facebook, viewController: self))
+        viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: nil)
     }
     
     func googleAuthButtonClicked() {
         viewModel.doSignUpWithSocialMedia(.google, viewController: self)
+    }
+    
+    @objc func googleAuthPassed() {
+        coordinator?.goToMainTabBar()
     }
     
     func appleAuthButtonClicked() {
