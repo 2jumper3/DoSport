@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0401A13325EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13225EFA44F00A1659E /* MainSportTypeSelectionViewModel.swift */; };
-		0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */; };
 		0401A14125EFA50E00A1659E /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A14025EFA50E00A1659E /* CustomSearchBar.swift */; };
 		65014F3125B4DD7C000263FA /* DSPasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65014F3025B4DD7C000263FA /* DSPasswordTextView.swift */; };
 		6503F4E325B5CDD60002BC27 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503F4E225B5CDD60002BC27 /* Event.swift */; };
@@ -55,8 +54,6 @@
 		6534089B259A77280072542D /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB913258D4C75007B2BCA /* UIImage.swift */; };
 		653408AF259A86D40072542D /* DSCountryListNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653408AE259A86D40072542D /* DSCountryListNavBar.swift */; };
 		653DA7D025B3590A000263C9 /* DSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7CF25B3590A000263C9 /* DSImagePicker.swift */; };
-		653DA7D825B36455000263C9 /* DSAvatartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7D725B36455000263C9 /* DSAvatartImageView.swift */; };
-		654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
 		65429F6B26020540000874C3 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F6A26020540000874C3 /* Endpoint.swift */; };
 		65429F7326020B27000874C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65429F7226020B27000874C3 /* NetworkManager.swift */; };
 		6543098E2608948100F76765 /* UserAccountServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543098D2608948100F76765 /* UserAccountServiceProtocol.swift */; };
@@ -77,9 +74,7 @@
 		65430C2F260FE52E0044F57C /* AuthNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430C2E260FE52E0044F57C /* AuthNetworkService.swift */; };
 		6545C19525ACDBFC00B8A855 /* UILabel+attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545C19425ACDBFC00B8A855 /* UILabel+attributedString.swift */; };
 		654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D703E25E8822400B37AD3 /* EventTypeTableCellFooter.swift */; };
-		654D705525E88D6B00B37AD3 /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* SignInAssembly.swift */; };
 		654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
-		654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		654D706725E8903D00B37AD3 /* EventCardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D706625E8903D00B37AD3 /* EventCardTableCell.swift */; };
 		6552CF2E25EAC06D00E51524 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6552CF2D25EAC06D00E51524 /* SettingsTableCell.swift */; };
 		6552CF3625EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6552CF3525EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift */; };
@@ -130,7 +125,6 @@
 		658F851425E8D79600EBE6A1 /* DSSubscribtionCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658F851325E8D79600EBE6A1 /* DSSubscribtionCountView.swift */; };
 		6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6595194E25A86D9F00CC15E0 /* DSNavigationController.swift */; };
 		65993B8E25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65993B8D25FBF3C000CC7E49 /* UIViewController+addSwiftUI.swift */; };
-		659C61962593DB1D00C33D05 /* SignUpAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* SignUpAssembly.swift */; };
 		659C619B2593DB2700C33D05 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619A2593DB2700C33D05 /* SignUpViewController.swift */; };
 		659C61A02593DB3100C33D05 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C619F2593DB3100C33D05 /* SignUpViewModel.swift */; };
 		659C61A52593DB3F00C33D05 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61A42593DB3F00C33D05 /* SignUpCoordinator.swift */; };
@@ -217,8 +211,6 @@
 		65D9740025B4731D00769653 /* SportTypeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D973FF25B4731D00769653 /* SportTypeGridView.swift */; };
 		65D9740525B4732400769653 /* SportTypeGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9740425B4732400769653 /* SportTypeGridViewModel.swift */; };
 		65D9741225B4760F00769653 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741125B4760F00769653 /* Sport.swift */; };
-		65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */; };
-		65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */; };
 		65D9742B25B487AF00769653 /* UICollectionView+cellForRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742A25B487AF00769653 /* UICollectionView+cellForRow.swift */; };
 		65DC543325E9889200712EC7 /* DSUserMainNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC543225E9889200712EC7 /* DSUserMainNavBar.swift */; };
 		65DC543B25E992E800712EC7 /* EventManageControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC543A25E992E800712EC7 /* EventManageControlsView.swift */; };
@@ -253,6 +245,20 @@
 		A6A7FD60C795722CE2BC7D68 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B2C80E4358F104D909040B /* Pods_DoSport.framework */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
+		CE4C91B2261390F500A1B6BC /* AppLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AA261390F500A1B6BC /* AppLanguageViewModel.swift */; };
+		CE4C91B3261390F500A1B6BC /* AppLanguageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AB261390F500A1B6BC /* AppLanguageListCoordinator.swift */; };
+		CE4C91B4261390F500A1B6BC /* AppLanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AD261390F500A1B6BC /* AppLanguageModel.swift */; };
+		CE4C91B5261390F500A1B6BC /* AppLanguageListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AF261390F500A1B6BC /* AppLanguageListDataSource.swift */; };
+		CE4C91B6261390F500A1B6BC /* AppLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91B0261390F500A1B6BC /* AppLanguageListView.swift */; };
+		CE4C91B7261390F500A1B6BC /* AppLanguageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91B1261390F500A1B6BC /* AppLanguageListController.swift */; };
+		CE4C91BB2613917800A1B6BC /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91BA2613917800A1B6BC /* FilterButton.swift */; };
+		CE4C91D02613930200A1B6BC /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587051C25920A0B00EFF7C7 /* SignInAssembly.swift */; };
+		CE4C91D32613931100A1B6BC /* SignUpAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61952593DB1D00C33D05 /* SignUpAssembly.swift */; };
+		CE4C91D62613931D00A1B6BC /* SportTypeGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9741D25B47FAF00769653 /* SportTypeGridDataSource.swift */; };
+		CE4C91D92613932C00A1B6BC /* DSAvatartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653DA7D725B36455000263C9 /* DSAvatartImageView.swift */; };
+		CE4C91DC2613933A00A1B6BC /* CollectionViewSportTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9742225B4807F00769653 /* CollectionViewSportTypeCell.swift */; };
+		CE4C91DF2613934500A1B6BC /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654210D425AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift */; };
+		CE4C91E02613934D00A1B6BC /* MainSportTypeSelectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401A13825EFA48300A1659E /* MainSportTypeSelectionTableCell.swift */; };
 		CE83AC6925E59B7000A2C6E1 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */; };
 		CE83AC6A25E59B7000A2C6E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */; };
 		CE83AC6B25E59B7000A2C6E1 /* MapFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC5625E59B4B00A2C6E1 /* MapFilterViewModel.swift */; };
@@ -271,9 +277,7 @@
 		CE83AC7A25E59B7000A2C6E1 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83AC6825E59B4B00A2C6E1 /* MapModel.swift */; };
 		CE83AC8125E59C4B00A2C6E1 /* MapFilter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE83AC5F25E59B4B00A2C6E1 /* MapFilter.xcassets */; };
 		CE83AC8525E59C6800A2C6E1 /* PreviewIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE83AC6625E59B4B00A2C6E1 /* PreviewIcons.xcassets */; };
-		CE83ACA025E5A2F700A2C6E1 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDEB8F3258D311A007B2BCA /* OnBoardingViewController.swift */; };
 		CE83ACA725E5A3E900A2C6E1 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
-		CE83ACAE25E5A43800A2C6E1 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61BB2593DF4C00C33D05 /* UIView+addSubviews.swift */; };
 		CE83ACC325E8132200A2C6E1 /* PlaceTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ACC225E8132100A2C6E1 /* PlaceTypeTableViewCell.swift */; };
 		CE83ACCD25EB6AF000A2C6E1 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
 		CE83ACFC25F74DE100A2C6E1 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CE83ACFB25F74DE100A2C6E1 /* FacebookLogin */; };
@@ -571,6 +575,13 @@
 		CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		CE2B5DC425FBB626007E5EEA /* WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
 		CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
+		CE4C91AA261390F500A1B6BC /* AppLanguageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageViewModel.swift; sourceTree = "<group>"; };
+		CE4C91AB261390F500A1B6BC /* AppLanguageListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListCoordinator.swift; sourceTree = "<group>"; };
+		CE4C91AD261390F500A1B6BC /* AppLanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageModel.swift; sourceTree = "<group>"; };
+		CE4C91AF261390F500A1B6BC /* AppLanguageListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListDataSource.swift; sourceTree = "<group>"; };
+		CE4C91B0261390F500A1B6BC /* AppLanguageListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListView.swift; sourceTree = "<group>"; };
+		CE4C91B1261390F500A1B6BC /* AppLanguageListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListController.swift; sourceTree = "<group>"; };
+		CE4C91BA2613917800A1B6BC /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		CE83AC5325E59B4B00A2C6E1 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		CE83AC5425E59B4B00A2C6E1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CE83AC5625E59B4B00A2C6E1 /* MapFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewModel.swift; sourceTree = "<group>"; };
@@ -1214,6 +1225,7 @@
 		65CC2CEB25DA899A009D6B4B /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C91BA2613917800A1B6BC /* FilterButton.swift */,
 				65430B7E260F5C840044F57C /* Buttons.swift */,
 				65DC543F25E9957200712EC7 /* DSButtonWithIcon.swift */,
 				65430BAC260F7E410044F57C /* DSCommonButton.swift */,
@@ -1403,6 +1415,7 @@
 		65EEB94C25EA01FA00821F8F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C91A8261390F500A1B6BC /* AppLanguageList */,
 				65782D9325EB18B50063A52A /* NotificationSettings */,
 				65CD776725EB4A7700D042FD /* PrivacySettingList */,
 				65430B4C260F56690044F57C /* SettingsMain */,
@@ -1420,6 +1433,43 @@
 				D4B2C80E4358F104D909040B /* Pods_DoSport.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE4C91A8261390F500A1B6BC /* AppLanguageList */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C91A9261390F500A1B6BC /* ViewModel */,
+				CE4C91AB261390F500A1B6BC /* AppLanguageListCoordinator.swift */,
+				CE4C91AC261390F500A1B6BC /* Model */,
+				CE4C91AE261390F500A1B6BC /* View */,
+			);
+			path = AppLanguageList;
+			sourceTree = "<group>";
+		};
+		CE4C91A9261390F500A1B6BC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C91AA261390F500A1B6BC /* AppLanguageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE4C91AC261390F500A1B6BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C91AD261390F500A1B6BC /* AppLanguageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4C91AE261390F500A1B6BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C91AF261390F500A1B6BC /* AppLanguageListDataSource.swift */,
+				CE4C91B0261390F500A1B6BC /* AppLanguageListView.swift */,
+				CE4C91B1261390F500A1B6BC /* AppLanguageListController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CE83AC5225E59B4B00A2C6E1 /* MapViewController */ = {
@@ -1887,17 +1937,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4C91E02613934D00A1B6BC /* MainSportTypeSelectionTableCell.swift in Sources */,
+				CE4C91DF2613934500A1B6BC /* UIStackView+addArrangedSubviews.swift in Sources */,
+				CE4C91DC2613933A00A1B6BC /* CollectionViewSportTypeCell.swift in Sources */,
+				CE4C91D92613932C00A1B6BC /* DSAvatartImageView.swift in Sources */,
+				CE4C91D62613931D00A1B6BC /* SportTypeGridDataSource.swift in Sources */,
+				CE4C91D32613931100A1B6BC /* SignUpAssembly.swift in Sources */,
+				CE4C91D02613930200A1B6BC /* SignInAssembly.swift in Sources */,
 				CE83ACCD25EB6AF000A2C6E1 /* OnBoardingCoordinator.swift in Sources */,
 				65C8B4BA25E8C65D00BBCF77 /* UserMainView.swift in Sources */,
-				654D705525E88D6B00B37AD3 /* SignInAssembly.swift in Sources */,
 				65B6D95526060AE70099BC08 /* DSEndpoints+SportType.swift in Sources */,
-				654D705525E88D6B00B37AD3 /* SignInAssembly.swift in Sources */,
 				654D705825E88D6B00B37AD3 /* OnBoardingViewController.swift in Sources */,
-				654D705B25E88D6B00B37AD3 /* UserCountry.swift in Sources */,
 				654D703F25E8822400B37AD3 /* EventTypeTableCellFooter.swift in Sources */,
-				CE83ACAE25E5A43800A2C6E1 /* UIView+addSubviews.swift in Sources */,
 				CE83ACA725E5A3E900A2C6E1 /* UserCountry.swift in Sources */,
-				CE83ACA025E5A2F700A2C6E1 /* OnBoardingViewController.swift in Sources */,
 				CE83AC6925E59B7000A2C6E1 /* MapCoordinator.swift in Sources */,
 				CE83AC6A25E59B7000A2C6E1 /* MapViewController.swift in Sources */,
 				CE83AC6B25E59B7000A2C6E1 /* MapFilterViewModel.swift in Sources */,
@@ -1962,26 +2014,21 @@
 				65AF25F9258D05020037D2B5 /* Colors.swift in Sources */,
 				65A2DC6C26011A3B003B9ECA /* DSSharedData.swift in Sources */,
 				65CD77EA25EB58A000D042FD /* UserReportMessageAssembly.swift in Sources */,
-				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
 				655B515625D5C02A004FE90F /* EventTypeCell.swift in Sources */,
 				6543099E2608AF0400F76765 /* DSDecoder+decode.swift in Sources */,
 				65CD77B325EB581200D042FD /* UserSupportSettingsController.swift in Sources */,
+				CE4C91B4261390F500A1B6BC /* AppLanguageModel.swift in Sources */,
 				6581531F260B5C6600436BCB /* WKWebViewController.swift in Sources */,
 				65DC54A225E9CE7400712EC7 /* UIViewController.swift in Sources */,
-				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				65782D9525EB18C70063A52A /* NotificationSettingsView.swift in Sources */,
 				65C67E5F25D552D000ABC58B /* DSSearchBar.swift in Sources */,
 				6572954025D953FD00996440 /* TableViewCommentCell.swift in Sources */,
 				65CD774925EB3F3C00D042FD /* SoundListCoordinator.swift in Sources */,
-				653DA7D825B36455000263C9 /* DSAvatartImageView.swift in Sources */,
 				65CD772525EB3ABC00D042FD /* RegularTableCellWithPointer.swift in Sources */,
 				65EAAA9625CD59CE005E0131 /* EventViewController.swift in Sources */,
 				65B6D97826060B660099BC08 /* DSModels+Auth.swift in Sources */,
 				0401A14125EFA50E00A1659E /* CustomSearchBar.swift in Sources */,
 				CEBA62F12593F3FB006A7F80 /* MainSportTypeSelectionController.swift in Sources */,
-				65D9741E25B47FAF00769653 /* SportTypeGridDataSource.swift in Sources */,
-				654210D525AF86F1004078C4 /* UIStackView+addArrangedSubviews.swift in Sources */,
-				653DA7D825B36455000263C9 /* DSAvatartImageView.swift in Sources */,
 				65EAAAA325CD59DA005E0131 /* EventViewModel.swift in Sources */,
 				6503F4E825B5D56A0002BC27 /* LocalTime.swift in Sources */,
 				65A62A0425E700AC000AA184 /* EventTableChatHeaderView.swift in Sources */,
@@ -2027,12 +2074,8 @@
 				6543099326089C7100F76765 /* DSKeychainService.swift in Sources */,
 				653179CA25D11261001DBA4B /* SubwayListAssembly.swift in Sources */,
 				6568F8F225B4F98900225043 /* FeedCoordinator.swift in Sources */,
-				659C61962593DB1D00C33D05 /* SignUpAssembly.swift in Sources */,
 				65430B87260F62250044F57C /* DSEndpoints+Auth.swift in Sources */,
-				0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */,
 				650B75522600823B00625332 /* Calendar+currnetComponent.swift in Sources */,
-				659C61962593DB1D00C33D05 /* SignUpAssembly.swift in Sources */,
-				0401A13925EFA48300A1659E /* MainSportTypeSelectionTableCell.swift in Sources */,
 				65CD775125EB404E00D042FD /* DSNotificationSound.swift in Sources */,
 				653179F125D112E1001DBA4B /* DateSelectionDataSource.swift in Sources */,
 				65EEB95625EA022900821F8F /* SettingsView.swift in Sources */,
@@ -2074,6 +2117,7 @@
 				653179DD25D112C7001DBA4B /* DateSelectionViewController.swift in Sources */,
 				65CD771525EB301B00D042FD /* DSSwitch.swift in Sources */,
 				65CD77C525EB582400D042FD /* UserSupportSettingsView.swift in Sources */,
+				CE4C91B6261390F500A1B6BC /* AppLanguageListView.swift in Sources */,
 				65EEB95B25EA022E00821F8F /* SettingsController.swift in Sources */,
 				6595194F25A86D9F00CC15E0 /* DSNavigationController.swift in Sources */,
 				65B6D97D26060B700099BC08 /* DSModels+Event.swift in Sources */,
@@ -2081,10 +2125,12 @@
 				6552CF2E25EAC06D00E51524 /* SettingsTableCell.swift in Sources */,
 				65429F6B26020540000874C3 /* Endpoint.swift in Sources */,
 				655B513425D5BD9A004FE90F /* EventCreateDataSource.swift in Sources */,
+				CE4C91B3261390F500A1B6BC /* AppLanguageListCoordinator.swift in Sources */,
 				65C8B4CE25E8C67600BBCF77 /* UserMainDataSource.swift in Sources */,
 				659C61A52593DB3F00C33D05 /* SignUpCoordinator.swift in Sources */,
 				65C8B4D725E8D31700BBCF77 /* UserMainInfoCollectionCell.swift in Sources */,
 				6543098E2608948100F76765 /* UserAccountServiceProtocol.swift in Sources */,
+				CE4C91B7261390F500A1B6BC /* AppLanguageListController.swift in Sources */,
 				651FBF2E25FE01150018C6B1 /* MainSportTypeSelectionDataSource.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,
 				65CDF8D225DB1BF50049F711 /* SportGroundSelectionCollectionCell.swift in Sources */,
@@ -2109,10 +2155,12 @@
 				651FBF3325FE01250018C6B1 /* MainSportTypeSelectionView.swift in Sources */,
 				65CEF5E325CD9ED100EB0B34 /* EventDataSource.swift in Sources */,
 				65D2972025DD644C005AC413 /* Date+currentDate.swift in Sources */,
+				CE4C91B2261390F500A1B6BC /* AppLanguageViewModel.swift in Sources */,
 				652E326125DC16D000077344 /* UI+addTargets.swift in Sources */,
 				65DC543B25E992E800712EC7 /* EventManageControlsView.swift in Sources */,
 				65CD77CD25EB582F00D042FD /* UserSupportSettingsCoordinator.swift in Sources */,
 				65EEB93C25E9E36B00821F8F /* UserSubscriberListCoordinator.swift in Sources */,
+				CE4C91BB2613917800A1B6BC /* FilterButton.swift in Sources */,
 				65D2971825DD4222005AC413 /* MainTabBarCoordinator.swift in Sources */,
 				65430B71260F5BC50044F57C /* Labels.swift in Sources */,
 				65CEF65125CDC1ED00EB0B34 /* Message.swift in Sources */,
@@ -2129,6 +2177,7 @@
 				65B6D97326060B590099BC08 /* DSModels.swift in Sources */,
 				6552CF3625EACFE900E51524 /* UITableCell+removeHeaderFooterLine.swift in Sources */,
 				65AF25F4258D04F10037D2B5 /* Fonts.swift in Sources */,
+				CE4C91B5261390F500A1B6BC /* AppLanguageListDataSource.swift in Sources */,
 				65EAAAAD25CD59EE005E0131 /* EventAssembly.swift in Sources */,
 				65AF25F1258D04E60037D2B5 /* Icons.swift in Sources */,
 				654309B02608C02200F76765 /* DSKeychainAccessOptions.swift in Sources */,
@@ -2159,9 +2208,7 @@
 				65DDC0A425B6510500228FC7 /* DSFeedNavBar.swift in Sources */,
 				65CD776925EB4A8C00D042FD /* PrivacySettingListCoordinator.swift in Sources */,
 				6531799425D111F7001DBA4B /* RegionListViewController.swift in Sources */,
-				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				65B6D95F26060B0A0099BC08 /* DSEnums.swift in Sources */,
-				65D9742325B4807F00769653 /* CollectionViewSportTypeCell.swift in Sources */,
 				6531792E25D10E20001DBA4B /* EventCreateCoordinator.swift in Sources */,
 				65EAAAC525CD6024005E0131 /* FeedFilterButton.swift in Sources */,
 			);
