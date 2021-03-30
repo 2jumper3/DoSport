@@ -93,8 +93,10 @@ final class WKWebViewController: UIViewController, WKNavigationDelegate {
                                 }
                             }
                         }
+                        if VKSession.shared.tokenID != nil {
+                            completion()
+                        }
                     }
-                    completion()
                 }
                 decisionHandler(.allow)
             }
