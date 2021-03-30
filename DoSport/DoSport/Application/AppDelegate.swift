@@ -6,33 +6,47 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
+import GoogleSignIn
+
 import YandexMapsMobile
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
-    var appCoordinator: AppCoordinator?
+    
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+    }
     
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions
-        launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+        
+        GIDSignIn.sharedInstance().clientID = "984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll.apps.googleusercontent.com"
         YMKMapKit.setApiKey("5607e97e-f6e8-4965-a467-a2335061e946")
-
-            if #available(iOS 13, *) {
-                // do only pure app launch stuff, not interface stuff
-            } else {
-                window = UIWindow(frame: UIScreen.main.bounds)
-                let appCoordinator = AppCoordinator(window: window!)
-                self.appCoordinator = appCoordinator
-                self.appCoordinator?.start()
-
-                window!.makeKeyAndVisible()
-            }
-            return true
+        return true
     }
     
+    /// Handle when app enters background when user leaves app
     func applicationDidEnterBackground(_ application: UIApplication) {
-        print(#function)
         window?.endEditing(true)
     }
 }

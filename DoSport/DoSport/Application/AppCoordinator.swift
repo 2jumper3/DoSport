@@ -14,8 +14,7 @@ final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    // temprorary variable to immitate auth logic
-    var isAuthorised = true
+    private let userAccountService: UserAccountServiceProtocol = UserAccountService()
     
     init(window: UIWindow) {
         self.window = window
@@ -24,9 +23,10 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let coordinator: Coordinator
-        
-        if isAuthorised {
+      
+        if userAccountService.isAuthorised {
             coordinator = MainTabBarCoordinator(navController: navigationController)
+            
             self.store(coordinator: coordinator)
             coordinator.start()
         } else {
@@ -35,6 +35,6 @@ final class AppCoordinator: Coordinator {
             coordinator.start()
         }
         
-        window.rootViewController = coordinator.navigationController
+        self.window.rootViewController = coordinator.navigationController
     }
 }

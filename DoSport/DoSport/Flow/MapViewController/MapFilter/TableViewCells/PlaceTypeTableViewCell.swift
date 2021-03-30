@@ -13,11 +13,7 @@ class PlaceTypeTableViewCell: UITableViewCell {
     private lazy var groundButton = FeedFilterButton(title: Texts.PlaceTypeTableViewCell.ground, state: .notSelected)
     private lazy var trainingButton = FeedFilterButton(title: Texts.PlaceTypeTableViewCell.training, state: .notSelected)
     private lazy var studioButton = FeedFilterButton(title: Texts.PlaceTypeTableViewCell.studio, state: .notSelected)
-    //MARK: - Will be added in next updates
-//    private lazy var clubsButton = FeedFilterButton(title: Texts.PlaceTypeTableViewCell.clubs, state: .notSelected)
-//    private lazy var challengesButton = FeedFilterButton(title: Texts.PlaceTypeTableViewCell.challenges, state: .notSelected)
-//    private lazy var groupButton = FeedFilterButton(title: Texts.PlaceTypeTableViewCell.group, state: .notSelected)
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -35,13 +31,8 @@ class PlaceTypeTableViewCell: UITableViewCell {
         contentView.backgroundColor = Colors.darkBlue
         groundButton.translatesAutoresizingMaskIntoConstraints = false
         trainingButton.translatesAutoresizingMaskIntoConstraints = false
-        studioButton.translatesAutoresizingMaskIntoConstraints = false
-        //MARK: - Will be added in next updates
-//        clubsButton.translatesAutoresizingMaskIntoConstraints = false
-//        challengesButton.translatesAutoresizingMaskIntoConstraints = false
-//        groupButton.translatesAutoresizingMaskIntoConstraints = false
                 
-        let groupButtons = UIStackView(arrangedSubviews: [groundButton, trainingButton])//,clubsButton,challengesButton,groupButton])
+        let groupButtons = UIStackView(arrangedSubviews: [groundButton, trainingButton])
         contentView.addSubview(groupButtons)
         groundButton.snp.makeConstraints {
             $0.width.equalTo(100)
@@ -51,12 +42,6 @@ class PlaceTypeTableViewCell: UITableViewCell {
         trainingButton.snp.makeConstraints {
             $0.width.equalTo(165)
             $0.height.equalTo(40)
-        }
-    
-        groupButtons.snp.makeConstraints { (make) in
-            make.height.equalTo(40)
-            make.left.equalTo(contentView.snp.left).offset(16)
-            make.top.equalTo(contentView.snp.top).offset(10)
         }
         
         groupButtons.spacing = 10
