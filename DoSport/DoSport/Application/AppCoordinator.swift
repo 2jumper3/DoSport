@@ -23,17 +23,19 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let coordinator: Coordinator
-      
-        if userAccountService.isAuthorised {
-            coordinator = MainTabBarCoordinator(navController: navigationController)
-            
-            self.store(coordinator: coordinator)
-            coordinator.start()
-        } else {
-            coordinator = OnBoardingCoordinator(navController: self.navigationController)
-            self.store(coordinator: coordinator)
-            coordinator.start()
-        }
+        coordinator = MainTabBarCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
+        coordinator.start()
+//        if userAccountService.isAuthorised {
+//            coordinator = MainTabBarCoordinator(navController: navigationController)
+//            
+//            self.store(coordinator: coordinator)
+//            coordinator.start()
+//        } else {
+//            coordinator = OnBoardingCoordinator(navController: self.navigationController)
+//            self.store(coordinator: coordinator)
+//            coordinator.start()
+//        }
         
         self.window.rootViewController = coordinator.navigationController
     }

@@ -12,6 +12,7 @@ final class MainSportTypeSelectionController: UIViewController {
     weak var coordinator: MainSportTypeSelectionCoordinator?
     private let viewModel: MainSportTypeSelectionViewModel
     private let collectionManager: MainSportTypeSelectionDataSource = MainSportTypeSelectionDataSource()
+    weak var delegate: MainSportTypeSelectionDataSourceProtocol?
     private lazy var mainSportTypeSelectionView = self.view as! MainSportTypeSelectionView
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -42,7 +43,7 @@ final class MainSportTypeSelectionController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.navigationBar.isHidden = true
-        
+        collectionManager.delegate = self
         setupViewModelBindings()
         viewModel.prepareSportTypeModels()
     }
@@ -91,5 +92,13 @@ extension MainSportTypeSelectionController: UITextFieldDelegate {
         viewModel.searchSportType(by: text, string: string)
         
         return true
+    }
+}
+//MARK: - UICollectionViewDelegate
+
+extension MainSportTypeSelectionController: MainSportTypeSelectionDataSourceProtocol {
+    
+    func catchSportTitle(sportTitle: String) {
+        coordinator?.goToMainSportGroundListModule(sportTypeTitle: sportTitle)
     }
 }
