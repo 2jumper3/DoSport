@@ -9,8 +9,6 @@ import UIKit
     
 final class UserMainView: UIView {
     
-    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()// TODO: not good practice
-    
     //MARK: Outlets
     
     private lazy var collectionView: UICollectionView = {
@@ -55,7 +53,7 @@ final class UserMainView: UIView {
         
         collectionView.snp.makeConstraints {
             $0.top.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-tabBarHeight-10)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
             $0.width.equalToSuperview().multipliedBy(0.9)
         }
         
@@ -78,23 +76,24 @@ extension UserMainView {
         if case .success = state {
             self.loadingIndicator.stopAnimating()
             self.loadingIndicator.isHidden = true
-            
+
             self.collectionView.isHidden = false
         }
         
         if case .loading = state {
             self.loadingIndicator.isHidden = false
             self.loadingIndicator.startAnimating()
-            
+
             self.collectionView.isHidden = true
         }
         
         if case .failed = state {
             // TODO: implement data fail handler view
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.isHidden = true
-            
-            self.collectionView.isHidden = false
+            DispatchQueue.main.async {
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.collectionView.isHidden = false
+            }
         }
     }
 }

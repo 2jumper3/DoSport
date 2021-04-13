@@ -150,7 +150,7 @@ extension Texts {
         static let feedTitle = "Лента"
         
         static let all = "Все"
-        static let subscribes = "Подписки"
+        static let subscribes = "Мои подписки"
         static let mySportGrounds = "Мои площадки"
         
         static let free = "Бесплатно"

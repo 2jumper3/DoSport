@@ -12,7 +12,7 @@ final class MainSportTypeSelectionController: UIViewController {
     weak var coordinator: MainSportTypeSelectionCoordinator?
     private let viewModel: MainSportTypeSelectionViewModel
     private let collectionManager: MainSportTypeSelectionDataSource = MainSportTypeSelectionDataSource()
-    private lazy var mainSportTypeSelectionView = self.view as! MainSportTypeSelectionView
+    private lazy var mainSportTypeSelectionView = view as! MainSportTypeSelectionView
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
@@ -50,7 +50,7 @@ final class MainSportTypeSelectionController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
-        mainSportTypeSelectionView.bindSearchBarToDefaultStyle()
+        mainSportTypeSelectionView.bindSearchBarToStyle(main: false)
     }
 }
 
@@ -78,7 +78,7 @@ extension MainSportTypeSelectionController: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        mainSportTypeSelectionView.bindSearchBarToColorizedStyle()
+        mainSportTypeSelectionView.bindSearchBarToStyle(main: true)
     }
 
     func textField(
