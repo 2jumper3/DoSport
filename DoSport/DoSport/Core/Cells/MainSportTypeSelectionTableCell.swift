@@ -20,7 +20,9 @@ final class MainSportTypeSelectionTableCell: UICollectionViewCell {
         let label = UILabel()
         label.font = Fonts.sfProRegular(size: 16)
         label.textColor = .white
-        label.minimumScaleFactor = 0.5
+        label.textAlignment = .left
+        label.numberOfLines = 2
+        label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -56,12 +58,12 @@ final class MainSportTypeSelectionTableCell: UICollectionViewCell {
         super.layoutSubviews()
         
         sportTypeNameLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalTo(self).offset(12)
-            make.trailing.equalTo(self).offset(-12)
+            make.top.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().inset(12)
         }
         
         sportTypeImageView.snp.makeConstraints { (make) in
-            make.bottom.trailing.equalTo(self).offset(-12)
+            make.bottom.trailing.equalToSuperview().inset(8)
             make.width.height.equalTo(40)
         }
     }

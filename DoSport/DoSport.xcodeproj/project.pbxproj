@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -280,7 +280,6 @@
 		CE83ACA725E5A3E900A2C6E1 /* UserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C61C82593E15700C33D05 /* UserCountry.swift */; };
 		CE83ACC325E8132200A2C6E1 /* PlaceTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83ACC225E8132100A2C6E1 /* PlaceTypeTableViewCell.swift */; };
 		CE83ACCD25EB6AF000A2C6E1 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBCA1625B4297E002EB9BF /* OnBoardingCoordinator.swift */; };
-		CE83ACFC25F74DE100A2C6E1 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CE83ACFB25F74DE100A2C6E1 /* FacebookLogin */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
 		CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */; };
@@ -647,7 +646,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE83ACFC25F74DE100A2C6E1 /* FacebookLogin in Frameworks */,
 				A6A7FD60C795722CE2BC7D68 /* Pods_DoSport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1747,12 +1745,12 @@
 		CEF10599261AFF2100EE8F88 /* SportGroundMainAfterTypeSelection */ = {
 			isa = PBXGroup;
 			children = (
-				CEF1059A261AFF7D00EE8F88 /* SportGroundMainController.swift */,
-				CEF105A0261AFF8600EE8F88 /* SportGroundMainCoordinator.swift */,
-				CEF105A4261AFF8F00EE8F88 /* SportGroundMainView.swift */,
-				CEF105A8261AFF9700EE8F88 /* SportGroundMainViewModel.swift */,
 				CEF105AC261AFFAB00EE8F88 /* SportGroundMainAssembly.swift */,
+				CEF105A0261AFF8600EE8F88 /* SportGroundMainCoordinator.swift */,
 				CEF105B0261AFFB300EE8F88 /* SportGroundMainDataSource.swift */,
+				CEF105A4261AFF8F00EE8F88 /* SportGroundMainView.swift */,
+				CEF1059A261AFF7D00EE8F88 /* SportGroundMainController.swift */,
+				CEF105A8261AFF9700EE8F88 /* SportGroundMainViewModel.swift */,
 			);
 			path = SportGroundMainAfterTypeSelection;
 			sourceTree = "<group>";
@@ -1778,7 +1776,6 @@
 			);
 			name = DoSport;
 			packageProductDependencies = (
-				CE83ACFB25F74DE100A2C6E1 /* FacebookLogin */,
 			);
 			productName = DoSport;
 			productReference = CEDEB779258CB404007B2BCA /* DoSport.app */;
@@ -1852,7 +1849,6 @@
 			);
 			mainGroup = CEDEB770258CB404007B2BCA;
 			packageReferences = (
-				CE83ACFA25F74DE000A2C6E1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = CEDEB77A258CB404007B2BCA /* Products */;
 			projectDirPath = "";
@@ -2326,6 +2322,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator14.4]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2387,6 +2385,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator14.4]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2425,7 +2425,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2449,7 +2449,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -2577,25 +2577,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CE83ACFA25F74DE000A2C6E1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CE83ACFB25F74DE100A2C6E1 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE83ACFA25F74DE000A2C6E1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEDEB771258CB404007B2BCA /* Project object */;
 }

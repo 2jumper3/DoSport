@@ -4,38 +4,22 @@
 //
 //  Created by Sergey on 05.04.2021.
 //
-
 import UIKit
 
 final class SportGroundMainView: UIView {
 
-    private let tabBarHeight = UIDevice.getDeviceRelatedTabBarHeight()// TODO: not good practice
-    
-    //MARK: Outlets
-    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 12
+        layout.minimumLineSpacing = UIDevice.hasBang ? 11 : 9
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.registerClass(SportGroundSelectionCollectionCell.self)
-        collectionView.registerClass(UserMainInfoCollectionCell.self)
-        collectionView.registerClass(EventCardCollectioCell.self)
-        collectionView.registerReusableView(ReusableCollectionSegmentedView.self)
         collectionView.backgroundColor = Colors.darkBlue
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    private let loadingIndicator: UIActivityIndicatorView = {
-        $0.style = .medium
-        $0.hidesWhenStopped = true
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isHidden = true
-        return $0
-    }(UIActivityIndicatorView())
 
     //MARK: Init
     
@@ -43,7 +27,7 @@ final class SportGroundMainView: UIView {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(collectionView, loadingIndicator)
+        addSubviews(collectionView)
     }
     
     required init?(coder: NSCoder) {
@@ -54,12 +38,11 @@ final class SportGroundMainView: UIView {
         super.layoutSubviews()
         
         collectionView.snp.makeConstraints {
-            $0.top.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-tabBarHeight-10)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(10)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(35)
             $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.centerX.equalToSuperview()
         }
-        
-        loadingIndicator.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }
 
@@ -67,34 +50,11 @@ final class SportGroundMainView: UIView {
 
 extension SportGroundMainView {
     
-    func updateCollectionDataSource(dateSource: (UICollectionViewDelegate & UICollectionViewDataSource)) {
-        collectionView.delegate = dateSource
-        collectionView.dataSource = dateSource
+    func udpateTableDataSource(dataSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
+        collectionView.delegate = dataSource
+        collectionView.dataSource = dataSource
         collectionView.reloadData()
         layoutIfNeeded()
     }
-    
-    func updateViewToState<T>(_ state: UserMainDataFlow.ViewControllerState<T>) where T: Codable {
-        if case .success = state {
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.isHidden = true
-            
-            self.collectionView.isHidden = false
-        }
-        
-        if case .loading = state {
-            self.loadingIndicator.isHidden = false
-            self.loadingIndicator.startAnimating()
-            
-            self.collectionView.isHidden = true
-        }
-        
-        if case .failed = state {
-            // TODO: implement data fail handler view
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.isHidden = true
-            
-            self.collectionView.isHidden = false
-        }
-    }
 }
+

@@ -4,8 +4,6 @@
 //
 //  Created by Sergey on 05.04.2021.
 //
-
-
 import UIKit
 
 final class SportGroundMainController: UIViewController {
@@ -47,22 +45,22 @@ final class SportGroundMainController: UIViewController {
         super.viewDidLoad()
     
         tableManager.delegate = self
-        
         setupViewModelBindings()
         setupNavBar()
-        
+        print(self.sportTypeTitle)
         viewModel.prepareData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        navigationController?.navigationBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        navigationController?.navigationBar.isHidden = true
         title = nil
     }
     
@@ -78,7 +76,7 @@ final class SportGroundMainController: UIViewController {
 @objc private extension SportGroundMainController {
 
     func handleMapButton() {
-        print(#function)
+        coordinator?.goToMap()
     }
     
     func handleFilterButton() {
@@ -104,7 +102,7 @@ private extension SportGroundMainController {
     }
     
     func updateView() {
-        sportGroundListView.updateCollectionDataSource(dateSource: tableManager)
+        sportGroundListView.udpateTableDataSource(dataSource: tableManager)
     }
     
     func setupNavBar() {

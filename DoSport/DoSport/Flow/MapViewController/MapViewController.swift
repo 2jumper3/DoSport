@@ -60,6 +60,10 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
         self.locationManager.requestWhenInUseAuthorization()
         mapSetup()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     override func viewWillLayoutSubviews() {
         navigationController?.navigationBar.isHidden = true
         self.view.addSubview(mapView)

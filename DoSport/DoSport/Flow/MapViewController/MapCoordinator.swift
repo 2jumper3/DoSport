@@ -14,7 +14,7 @@ class MapCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController) {
+    init(navController: UINavigationController?) {
         let assembly = MapAssembly()
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController
