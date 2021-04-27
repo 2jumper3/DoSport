@@ -22,10 +22,16 @@ class MapCoordinator: Coordinator {
     
     func start() {
         rootViewController.coordinator = self
-        navigationController?.viewControllers = [rootViewController]
+        navigationController?.pushViewController(rootViewController, animated: true)
     }
+    
     func goToFilterViewController() {
-        let coordinator = MapFilterCoordinator(navController: self.navigationController)
+        let coordinator = MapFilterCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
+    }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

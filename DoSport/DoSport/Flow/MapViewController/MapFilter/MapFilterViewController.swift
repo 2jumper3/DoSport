@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapFilterViewController: UITableViewController {
+class MapFilterViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     //MARK: - Outlets
     var coordinator: MapFilterCoordinator?
@@ -27,6 +27,7 @@ class MapFilterViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         setupTableView()
+        setupNavBar()
         self.navigationController?.navigationBar.barTintColor = Colors.darkBlue
     }
     
@@ -73,6 +74,8 @@ class MapFilterViewController: UITableViewController {
     func setupTableView()  {
         self.tableView.delegate = self
         self.tableView.dataSource  = self
+        tableView.isScrollEnabled = false
+        tableView.accessibilityElementsHidden = false
         tableView.backgroundColor = Colors.darkBlue
         tableView.separatorColor = Colors.lightBlue
 
@@ -87,5 +90,22 @@ class MapFilterViewController: UITableViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
+    func setupNavBar() {
+        guard let navBarController = navigationController as? DSNavigationController else { return }
+        
+        navBarController.interactivePopGestureRecognizer?.delegate = self
+        /// left back button setup
+        let backBtn = UIButton.makeBarButton()
+        backBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+    }
+    
+    //MARK: - Actions
+    
+    @objc func handleBackButton() {
+        coordinator?.goBack()
+    }
+
 }
 

@@ -13,6 +13,9 @@ final class MainMenuTabController: UITabBarController, UINavigationControllerDel
     unowned var feedCoordinator: FeedCoordinator?
     unowned var userMainCoordinator: UserMainCoordinator?
     unowned var mainSportTypeSelectionCoordinator: MainSportTypeSelectionCoordinator?
+    unowned var mapCoordinator: MapCoordinator?
+    unowned var mapFilterCoordinator: MapFilterCoordinator?
+
     
     private let tabBarHeight: CGFloat = CGFloat(UIDevice.getDeviceRelatedTabBarHeight())
     private let tabBarItems: [TabBarItem] = [.home, .map, .chat, .user]
@@ -153,6 +156,10 @@ private extension MainMenuTabController {
             userMainCoordinator?.popToRoot()
         } else if self.viewControllers?[self.selectedIndex] == self.mainSportTypeSelectionCoordinator?.navigationController {
             mainSportTypeSelectionCoordinator?.popToRoot()
+        } else if self.viewControllers?[self.selectedIndex] == self.mapFilterCoordinator?.navigationController {
+            mapFilterCoordinator?.popToRoot()
+        } else if self.viewControllers?[self.selectedIndex] == self.mapCoordinator?.navigationController {
+                mapCoordinator?.popToRoot()
         }
     }
 }

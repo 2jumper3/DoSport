@@ -115,7 +115,9 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     func onObjectTap(with: YMKGeoObjectTapEvent) -> Bool {
 //        тут мы скрываем наш попап вью, и нам нужно перекрасить обратно иконку в красный. добраться до объектов карты можно через
 //        let mapObjects = mapView.mapWindow.map.mapObjects
-//        но перекрашиваются они в placeMark, а к ней у нас доступа нет. 
+//        но перекрашиваются они в placeMark, а к ней у нас доступа нет.
+        guard let placemark = viewModel.coordinates else {return}
+        pla
         UIView.animate(withDuration: 0.3) {
             self.popUpView.transform = .identity
         }

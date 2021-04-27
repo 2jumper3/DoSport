@@ -21,9 +21,18 @@ class MapFilterCoordinator: Coordinator {
     
     func start() {
         rootViewController.coordinator = self
-        navigationController?.viewControllers = [rootViewController]
+        navigationController?.pushViewController(rootViewController, animated: true)
+
     }
     func goToFilterViewController(navController: UINavigationController) {
         
+    }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }

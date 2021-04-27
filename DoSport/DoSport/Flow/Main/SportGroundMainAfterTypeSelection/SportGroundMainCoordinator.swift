@@ -36,7 +36,12 @@ final class SportGroundMainCoordinator: Coordinator {
         navigationController?.popViewController(animated: true)
     }
     func goToMap() {
-        let coordinator = MapCoordinator(navController: self.navigationController)
+        let coordinator = MapCoordinator(navController: navigationController)
+        self.store(coordinator: coordinator)
         coordinator.start()
+    }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }
