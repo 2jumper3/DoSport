@@ -26,6 +26,7 @@ final class UserMainViewModel: NSObject, UserMainViewModelProtocol {
     
     func doLoadEvents(request: UserMainDataFlow.LoadEvents<[DSModels.Event.EventView]>.Request) {
         userNetworkService.userGetOwnedEvents(queryItems: .init(id: request.userID)) { [unowned self] response in
+            print("request is: \(request.self), userID is \(request.userID)")
             switch response {
             case .success(let events):
                     self.didLoadEvents?(.init(state: .success(events)))

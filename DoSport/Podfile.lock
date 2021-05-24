@@ -4,20 +4,20 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - FBSDKCoreKit (9.2.0):
-    - FBSDKCoreKit/Basics (= 9.2.0)
-    - FBSDKCoreKit/Core (= 9.2.0)
-  - FBSDKCoreKit/Basics (9.2.0)
-  - FBSDKCoreKit/Core (9.2.0):
+  - FBSDKCoreKit (9.3.0):
+    - FBSDKCoreKit/Basics (= 9.3.0)
+    - FBSDKCoreKit/Core (= 9.3.0)
+  - FBSDKCoreKit/Basics (9.3.0)
+  - FBSDKCoreKit/Core (9.3.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (9.2.0):
-    - FBSDKLoginKit/Login (= 9.2.0)
-  - FBSDKLoginKit/Login (9.2.0):
-    - FBSDKCoreKit (~> 9.2.0)
-  - FBSDKShareKit (9.2.0):
-    - FBSDKShareKit/Share (= 9.2.0)
-  - FBSDKShareKit/Share (9.2.0):
-    - FBSDKCoreKit (~> 9.2.0)
+  - FBSDKLoginKit (9.3.0):
+    - FBSDKLoginKit/Login (= 9.3.0)
+  - FBSDKLoginKit/Login (9.3.0):
+    - FBSDKCoreKit (~> 9.3.0)
+  - FBSDKShareKit (9.3.0):
+    - FBSDKShareKit/Share (= 9.3.0)
+  - FBSDKShareKit/Share (9.3.0):
+    - FBSDKCoreKit (~> 9.3.0)
   - FSCalendar (2.8.2)
   - GoogleSignIn (5.0.2):
     - AppAuth (~> 1.2)
@@ -57,9 +57,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  FBSDKCoreKit: dace5abafc2fd9272733e6d027bcf18102712117
-  FBSDKLoginKit: 43f377b451d391f5bc9dd774f51a391db1072029
-  FBSDKShareKit: 1210ece9e8f516ef0bb40ac329929a2874aef274
+  FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
+  FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
+  FBSDKShareKit: 70889c97c62f0c6b3ccb8b999e73a85f19024001
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GTMAppAuth: 5b53231ef6920f149ab84b2969cb0ab572da3077

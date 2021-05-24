@@ -12,3 +12,12 @@ struct Member: Codable {
     var eventID: Int64?
     var userStatus: String?
 }
+
+struct Participants: Codable {
+    var id: Int?
+    var username: String?
+    var birthdayDate: String?
+    var gender: String?
+    var info: String?
+    var photoLink: String?
+}

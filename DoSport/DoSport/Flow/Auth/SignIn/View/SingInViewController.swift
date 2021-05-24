@@ -98,14 +98,14 @@ private extension SingInViewController {
 extension SingInViewController: SingInViewDelegate {
     
     func skipButtonTapped() {
-//        coordinator?.goToMainTabBar()
+        coordinator?.goToMainTabBar()
 //        coordinator?.goToRegistrationModule()
         
         // will be replaced by social media auth
         viewModel.doLogin(
             with: .init(
-                username: "admin",
-                password: "admin"
+                username: "eduard",
+                password: "eduard"
             )
         )
     }

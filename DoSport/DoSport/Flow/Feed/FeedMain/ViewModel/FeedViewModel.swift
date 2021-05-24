@@ -25,11 +25,9 @@ final class FeedViewModel {
     }
     
     func prepareEventsData() {
-        eventNetworkService.eventsGet(queryComponents: .init(fromDate: nil,
-                                                        organiserID: nil,
-                                                        sportGroundID: nil,
-                                                        sportTypeID: nil,
-                                                        toDate: nil)) { result in
+        eventNetworkService.eventsGet(queryComponents: .init(creationDateTime: nil, eventID: nil, startDateTime: nil, endDateTime: nil, sportType: nil, sportGroundID: nil, organizer: nil, members: nil, description: nil, isPrivate: nil, price: nil, maximumUsers: nil, usersAmount: nil, messagesAmount: nil)  )
+//        eventNetworkService.eventsGet(queryComponents: nil  )
+        { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

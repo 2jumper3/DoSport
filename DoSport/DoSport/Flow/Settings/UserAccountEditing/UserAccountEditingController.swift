@@ -109,7 +109,8 @@ private extension UserAccountEditingController {
 extension UserAccountEditingController: UserAccountEditingViewDelegate {
     
     func signOutButtonCliked() {
-        
+        let session = DSLoginData()
+        session.logOut()
     }
     
     func deleteProfileButtonClicked() {

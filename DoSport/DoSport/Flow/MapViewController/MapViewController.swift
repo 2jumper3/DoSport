@@ -11,6 +11,8 @@ import CoreLocation
 
 protocol MapViewControllerDelegate {
     func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String)
+    func clearColor(placemark: YMKPlacemarkMapObject)
+    var tempPlacemark: YMKPlacemarkMapObject { get set }
 }
 
 class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMapInputListener {
@@ -113,11 +115,11 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }
     
     func onObjectTap(with: YMKGeoObjectTapEvent) -> Bool {
+        self.tempPlacemark.setIconWith(Icons.MapIcons.placeMark)
 //        тут мы скрываем наш попап вью, и нам нужно перекрасить обратно иконку в красный. добраться до объектов карты можно через
 //        let mapObjects = mapView.mapWindow.map.mapObjects
 //        но перекрашиваются они в placeMark, а к ней у нас доступа нет.
-        guard let placemark = viewModel.coordinates else {return}
-        pla
+//        guard let placemark = viewModel.coordinates else {return}
         UIView.animate(withDuration: 0.3) {
             self.popUpView.transform = .identity
         }
@@ -134,6 +136,21 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
 }
 
 extension MapViewController: MapViewControllerDelegate {
+    var tempPlacemark: YMKPlacemarkMapObject {
+        get {
+            self.tempPlacemark
+        }
+        set {
+            self.tempPlacemark = newValue
+        }
+    }
+    
+//    var tempPlacemark:
+    
+    func clearColor(placemark: YMKPlacemarkMapObject) {
+        placemark.setIconWith(Icons.MapIcons.placeMark)
+    }
+    
 
     func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String) {
         self.popUpView.textAdding(id: id, name: name, range: range, price: price, location: location)

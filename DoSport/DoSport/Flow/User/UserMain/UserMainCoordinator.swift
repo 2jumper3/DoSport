@@ -14,7 +14,7 @@ final class UserMainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?, user: User? = User(id: 1, name: "Kamol")) {
+    init(navController: UINavigationController?, user: User? = User(id: DSSharedData.shared.userData?.id, name:         DSSharedData.shared.userData?.username)) {
         let assembly = UserMainAssembly(user: user)
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController

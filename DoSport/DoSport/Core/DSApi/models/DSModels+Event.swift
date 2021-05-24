@@ -16,20 +16,25 @@ extension DSModels {
             let creationDateTime: String?
             let eventID: Int?
             let startDateTime, endDateTime: String?
-            let sportType: DSModels.SportType.SportTypeView?
-            let sportGroundID, organizerID: Int?
-            let members: [Member]?
+            let sportType: String? //DSModels.SportType.SportTypeView?
+            let sportGroundID: Int?
+            let organizer: Participants?
+            let members: [Participants]?
             let description: String?
             let isPrivate: Bool?
-            let price, maximumMembers: Int?
+            let price, maximumUsers: Int?
+            let usersAmount: Int?
+            let messagesAmount: Int?
 
             enum CodingKeys: String, CodingKey {
                 case creationDateTime
                 case eventID = "eventId"
                 case startDateTime, endDateTime, sportType
                 case sportGroundID = "sportGroundId"
-                case organizerID = "organizerId"
-                case members, description, isPrivate, price, maximumMembers
+                case organizer
+                case description, isPrivate, price, maximumUsers
+                case usersAmount, messagesAmount
+                case members = "participants"
             }
         }
         

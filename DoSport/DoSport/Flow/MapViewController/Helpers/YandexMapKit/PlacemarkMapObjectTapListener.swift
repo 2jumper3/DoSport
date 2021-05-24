@@ -18,7 +18,7 @@ import YandexMapsMobile
             //после нажатия в 17 строке иконке присваивается оранжевый цвет, последнее действие - скритие иконки, в MapViewController 111 строка
         if let userData = object.userData as? PlaceMarkUserData {
             delegate?.createPopUpView(id: userData.id, name: userData.name, range: userData.range, price: userData.price, location: userData.location)
-            
+            delegate?.tempPlacemark = object
             }
         }
         return true;
