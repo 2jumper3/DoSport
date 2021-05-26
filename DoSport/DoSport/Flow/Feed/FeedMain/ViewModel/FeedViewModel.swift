@@ -11,9 +11,9 @@ final class FeedViewModel {
     
     private let eventNetworkService: EventNetworkService
     
-    var onDidPrepareEventsData: (([Event]) -> Void)?
+    var onDidPrepareEventsData: (([DSModels.Event.EventView]) -> Void)?
     
-    private var events: [Event]? = [] {
+    private var events: [DSModels.Event.EventView]? = [] {
         didSet {
             guard let events = events else { return }
             onDidPrepareEventsData?(events)
@@ -33,6 +33,8 @@ final class FeedViewModel {
                 print(error.localizedDescription)
             case .success(let models):
                 print(models)
+                self.events = models
+//                completion(models)
             }
         }
     }

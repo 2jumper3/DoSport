@@ -14,7 +14,7 @@ final class EventCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController?
     
-    init(navController: UINavigationController?, event: Event) {
+    init(navController: UINavigationController?, event: DSModels.Event.EventView) {
         let assembly = EventAssembly(event: event)
         self.rootViewController = assembly.makeModule()
         self.navigationController = navController

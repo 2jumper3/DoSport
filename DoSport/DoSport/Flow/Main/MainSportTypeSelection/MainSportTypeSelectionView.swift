@@ -49,6 +49,7 @@ final class MainSportTypeSelectionView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
 
         searchBar.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)

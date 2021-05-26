@@ -8,16 +8,16 @@
 import UIKit
 
 protocol FeedDataSourceDelegate: class {
-    func collectionView(didSelect event: Event)
+    func collectionView(didSelect event: DSModels.Event.EventView)
 }
 
 final class FeedDataSource: NSObject {
     
     weak var delegate: FeedDataSourceDelegate?
 
-    var viewModels: [Event]
+    var viewModels: [DSModels.Event.EventView]
     
-    init(viewModels: [Event] = []) {
+    init(viewModels: [DSModels.Event.EventView] = []) {
         self.viewModels = viewModels
         super.init()
     }
@@ -38,9 +38,17 @@ extension FeedDataSource: UICollectionViewDataSource {
         let cell: EventCardCollectioCell = collectionView.cell(forRowAt: indexPath)
 
         let viewModel = viewModels[indexPath.row]
-        cell.footerView.chatMessagesCountLabel.text = String(describing: viewModel.chatID?.messages?.count ?? 0)
+        cell.footerView.chatMessagesCountLabel.text = String(describing: viewModel.messagesAmount ?? 0)
         cell.footerView.userCountLabel.text = String(describing: viewModel.members?.count ?? 0)
+        cell.footerView.eventDateLabel.text = viewModel.startDateTime
         
+        cell.bodyView.addressLabel.text = "Will be added"
+        cell.bodyView.eventShortDescriptionLabel.text = viewModel.description
+        cell.bodyView.priceLabel.text = String(viewModel.price ?? 0)
+        
+        cell.headerView.organiserNameLabel.text = viewModel.organizer?.username
+        cell.headerView.eventCreatedTimeLabel.text = viewModel.creationDateTime
+        cell.headerView.sportTypeLabel.text = viewModel.sportType
         return cell
     }
 }

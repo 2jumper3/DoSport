@@ -12,16 +12,19 @@ import CoreLocation
 protocol MapViewControllerDelegate {
     func createPopUpView(id: Int, name: String, range: Int, price: Int, location: String)
     func clearColor(placemark: YMKPlacemarkMapObject)
-    var tempPlacemark: YMKPlacemarkMapObject { get set }
+    var tempPlacemark: YMKPlacemarkMapObject? { get set }
 }
 
-class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMapInputListener {
+class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMapInputListener, MapViewControllerDelegate {
+    
     
     // MARK: - Outlets
     private let locationManager = CLLocationManager()
     var coordinator: MapCoordinator?
     let viewModel: MapViewModel
+    var tempPlacemark: YMKPlacemarkMapObject?
     private var placemarkMapObjectTapListener: PlacemarkMapObjectTapListener!
+    
     
     private let mapView: YMKMapView = {
         let view = YMKMapView()
@@ -64,7 +67,6 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     override func viewWillLayoutSubviews() {
         navigationController?.navigationBar.isHidden = true
@@ -115,7 +117,7 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     }
     
     func onObjectTap(with: YMKGeoObjectTapEvent) -> Bool {
-        self.tempPlacemark.setIconWith(Icons.MapIcons.placeMark)
+        self.tempPlacemark?.setIconWith(Icons.MapIcons.placeMark)
 //        тут мы скрываем наш попап вью, и нам нужно перекрасить обратно иконку в красный. добраться до объектов карты можно через
 //        let mapObjects = mapView.mapWindow.map.mapObjects
 //        но перекрашиваются они в placeMark, а к ней у нас доступа нет.
@@ -133,19 +135,20 @@ class MapViewController: UIViewController, YMKLayersGeoObjectTapListener, YMKMap
     func onMapLongTap(with map: YMKMap, point: YMKPoint) {
         
     }
-}
 
-extension MapViewController: MapViewControllerDelegate {
-    var tempPlacemark: YMKPlacemarkMapObject {
-        get {
-            self.tempPlacemark
-        }
-        set {
-            self.tempPlacemark = newValue
-        }
-    }
-    
-//    var tempPlacemark:
+//    var tempPlacemark: YMKPlacemarkMapObject {
+//        get {
+//            self.tempPlacemark
+//        }
+//        set {
+//            if newValue != nil {
+//                print("New Value is \(newValue)")
+//                self.newPlacemark = newValue
+//            } else {
+//                print ( "newValue = nil")
+//            }
+//        }
+//    }
     
     func clearColor(placemark: YMKPlacemarkMapObject) {
         placemark.setIconWith(Icons.MapIcons.placeMark)
@@ -160,3 +163,4 @@ extension MapViewController: MapViewControllerDelegate {
     }
 
 }
+

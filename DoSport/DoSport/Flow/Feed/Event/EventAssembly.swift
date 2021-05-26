@@ -9,9 +9,9 @@ import Foundation
 
 final class EventAssembly: Assembly {
     
-    let event: Event
+    let event: DSModels.Event.EventView
     
-    init(event: Event) {
+    init(event: DSModels.Event.EventView) {
         self.event = event
     }
     
