@@ -101,7 +101,7 @@ extension UserMainDataSource: UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             let reusableView: ReusableCollectionSegmentedView = collectionView.dequeReusabeView(
                 of: kind,
                 at: indexPath

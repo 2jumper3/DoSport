@@ -12,9 +12,12 @@ final class SportGroundMainView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = UIDevice.hasBang ? 11 : 9
         layout.scrollDirection = .vertical
+        layout.sectionHeadersPinToVisibleBounds = true
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.registerClass(SportGroundSelectionCollectionCell.self)
+        collectionView.registerClass(EventCardCollectioCell.self)
+        collectionView.registerReusableView(ReusableCollectionSegmentedView.self)
         collectionView.backgroundColor = Colors.darkBlue
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +53,7 @@ final class SportGroundMainView: UIView {
 
 extension SportGroundMainView {
     
-    func udpateTableDataSource(dataSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
+    func updateCollectionDataSource(dataSource: (UICollectionViewDataSource & UICollectionViewDelegate)) {
         collectionView.delegate = dataSource
         collectionView.dataSource = dataSource
         collectionView.reloadData()

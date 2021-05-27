@@ -102,7 +102,7 @@ private extension SportGroundMainController {
     }
     
     func updateView() {
-        sportGroundListView.udpateTableDataSource(dataSource: tableManager)
+        sportGroundListView.updateCollectionDataSource(dataSource: tableManager)
     }
     
     func setupNavBar() {
@@ -137,5 +137,9 @@ extension SportGroundMainController: SportGroundMainDataSourceDelegate {
     
     func collectionView(didSelect sportGround: SportGround) {
         coordinator?.goBack()
+    }
+    
+    func collectionViewNeedsReloadData() {
+        sportGroundListView.updateCollectionDataSource(dataSource: tableManager)
     }
 }
