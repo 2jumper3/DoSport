@@ -94,7 +94,7 @@ extension EventCreateView {
     
     func bindCreateButton(state: DSCommonButtonState) {
         // TODO: Common button state need to be finished
-//        createButton.bind(state: state)
+        createButton.bind(state: state)
     }
 }
 
