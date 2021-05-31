@@ -15,14 +15,16 @@ public enum Texts {
         static let subscribers = "Подписчики"
         static let subscribes = "Подписки"
         static let account = "Аккаунт"
-        static let alerts = "Увядомления"
+        static let alerts = "Уведомления"
         static let sound = "Звук"
         static let language = "Язык"
-        static let privacy = "Конфеденциальность"
+        static let privacy = "Конфиденциальность"
         static let help = "Помощь"
         static let reportAProblem = "Сообщить о проблеме"
         static let send = "Отправить"
         static let userName = "Никнейм"
+        static let subscribe = "Подписаться"
+        static let toBook = "Забронировать"
     }
 }
 

@@ -61,6 +61,8 @@ public enum Icons {
         static let clock: UIImage = Icons.image(named: "clock")
         static let chat: UIImage = Icons.image(named: "chat")
         static let user: UIImage = Common.user
+        static let sportType = image(named: "sportType")
+        static let sportGround = image(named: "field")
     }
     
     //MARK: - Event screen
