@@ -160,3 +160,12 @@ extension Icons {
 
     }
 }
+
+//MARK: - FeedBack
+
+extension Icons {
+    enum FeedBackIcons {
+        static var unscored = image(named: "star")
+        static var scored = image(named: "star.filled")
+    }
+}

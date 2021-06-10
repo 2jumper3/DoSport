@@ -15,7 +15,7 @@ public enum Texts {
         static let subscribers = "Подписчики"
         static let subscribes = "Подписки"
         static let account = "Аккаунт"
-        static let alerts = "Увядомления"
+        static let alerts = "Уведомления"
         static let sound = "Звук"
         static let language = "Язык"
         static let privacy = "Конфеденциальность"
@@ -309,5 +309,15 @@ extension Texts {
         static let clubs = "Тренажерные залы"
         static let challenges = "Соревнования"
         static let group = "Групповые тренировки"
+    }
+}
+
+//MARK: - Feedback screen
+
+extension Texts {
+    enum FeedBack {
+        static let navTitle = "Написать отзыв"
+        static let publish = "Опубликовать"
+        static let placeholder = "Поделись своими впечатлениями о площадке..."
     }
 }

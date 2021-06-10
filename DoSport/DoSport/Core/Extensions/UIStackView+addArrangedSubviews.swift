@@ -12,5 +12,9 @@ extension UIStackView {
     func addArrangedSubviews(_ subviews: UIView...) {
         subviews.forEach(self.addArrangedSubview)
     }
+    
+    func addArrangedSubviews(_ subviews: [UIView]) {
+        subviews.forEach(self.addArrangedSubview)
+    }
 }
 
