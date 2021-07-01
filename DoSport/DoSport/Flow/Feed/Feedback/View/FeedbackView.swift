@@ -17,7 +17,7 @@ final class FeedbackView: UIView {
     
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "User Name"
+        label.text = Texts.Registration.userName
         label.frame.size.height = 24
         label.frame.size.width = 54
         label.font = Fonts.sfProRegular(size: 16)
@@ -142,7 +142,6 @@ extension FeedbackView: UITextViewDelegate {
             textView.text = Texts.FeedBack.placeholder
             textView.textColor = Colors.lightBlue
         }
-        checkForButtonOn()
     }
 }
 
