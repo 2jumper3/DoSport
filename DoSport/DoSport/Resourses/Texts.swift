@@ -315,3 +315,13 @@ extension Texts {
         static let group = "Групповые тренировки"
     }
 }
+
+//MARK: - Feedback screen
+
+extension Texts {
+    enum FeedBack {
+        static let navTitle = "Написать отзыв"
+        static let publish = "Опубликовать"
+        static let placeholder = "Поделись своими впечатлениями о площадке..."
+    }
+}
