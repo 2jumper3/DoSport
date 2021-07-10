@@ -20,7 +20,7 @@ final class SportGroundMainViewModel: NSObject, SportGroundMainViewModelProtocol
     
     var onDidPrepareData: (([DSModels.SportGround.SportGroundResponse]) -> Void)?
     private let sportNetworkService: SportGroundNetworkService
-    private let eventNetwkrService: EventNetworkService
+//    private let eventNetwkrService: EventNetworkService
     
 //    func doLoadEvents(request: SportGroundDataFlow.LoadEvents<[DSModels.Event.EventView]>.Request) {
 //
