@@ -11,7 +11,7 @@ extension DSEndpoints {
     
     enum Event: Endpoint {
         // Events
-        case getEvents(DSModels.Event.EventByParametersRequest?)
+        case getEvents(DSModels.Event.EventView?)
         case createEvent
         case getEventByID(eventID: Int)
         case editEventByID(eventID: Int)
@@ -62,11 +62,11 @@ extension DSEndpoints {
             case .getEvents(let params):
                 if let params = params {
                     return [
-                        "fromDate": params.fromDate ?? "",
-                        "organizerId": "\(params.organiserID ?? 0)",
+                        "startDateTime": params.startDateTime ?? "",
+                        "organizer": "\(params.organizer?.id ?? 0)",
                         "sportGroundId": "\(params.sportGroundID ?? 0)",
-                        "sportTypeId": "\(params.sportTypeID ?? 0)",
-                        "toDate": params.toDate ?? ""
+                        "sportType": "\(params.sportType ?? "")",
+                        "endDateTime": params.endDateTime ?? ""
                     ]
                 } else {
                     return nil

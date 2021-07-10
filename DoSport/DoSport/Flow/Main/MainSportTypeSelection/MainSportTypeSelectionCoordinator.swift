@@ -25,8 +25,10 @@ final class MainSportTypeSelectionCoordinator: Coordinator {
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
-    func goToMainSportGroundListModule() {
-        
+    func goToMainSportGroundListModule(sportTypeTitle: String) {
+        let coordinator = SportGroundMainCoordinator(navController: navigationController, sportTypeTitle: sportTypeTitle)
+        self.store(coordinator: coordinator)
+        coordinator.start()
     }
     
     func popToRoot() {

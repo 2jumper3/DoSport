@@ -8,18 +8,18 @@
 import UIKit
 
 protocol SportGroundSelectionListDataSourceDelegate: class {
-    func collectionView(didSelect sportGround: SportGround)
+    func collectionView(didSelect sportGround: DSModels.SportGround.SportGroundResponse)
 }
 
 final class SportGroundSelectionListDataSource: NSObject {
     
     weak var delegate: SportGroundSelectionListDataSourceDelegate?
     
-    var viewModels: [SportGround]
+    var viewModels: [DSModels.SportGround.SportGroundResponse]
     
     private var selectedCell: SportTypeListTableCell?
     
-    init(viewModels: [SportGround] = []) {
+    init(viewModels: [DSModels.SportGround.SportGroundResponse] = []) {
         self.viewModels = viewModels
         super.init()
         
@@ -38,18 +38,8 @@ extension SportGroundSelectionListDataSource: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let viewModel = viewModels[indexPath.row]
-        
         let cell: SportGroundSelectionCollectionCell = collectionView.cell(forRowAt: indexPath)
-        cell.bind(
-            with: .init(
-                sportGroundTitle: viewModel.title,
-                spogroundBackImage: nil,
-                subwayName: viewModel.address,
-                location: nil,
-                price: nil
-            )
-        )
+        cell.bind(with: viewModels[indexPath.row])
         
         return cell
     }

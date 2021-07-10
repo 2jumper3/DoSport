@@ -21,12 +21,11 @@ final class FeedCoordinator: Coordinator {
     }
     
     func start() {
-        
         rootViewController.coordinator = self
         navigationController?.setViewControllers([rootViewController], animated: true)
     }
     
-    func goToEventModule(withSelected event: Event) {
+    func goToEventModule(withSelected event: DSModels.Event.EventView) {
         let coordinator = EventCoordinator(navController: navigationController, event: event)
         coordinator.start()
     }

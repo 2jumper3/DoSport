@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleSignIn
+import FBSDKCoreKit
 import FBSDKLoginKit
 
 enum SocialMediaType {
@@ -95,7 +96,6 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
         case .google:
             GIDSignIn.sharedInstance()?.presentingViewController = viewController
             GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-            
             self.signUpWithGoogle()
             
         case .vkontakte:
@@ -119,23 +119,44 @@ final class SignInViewModel: NSObject, SignInViewModelProtocol {
 private extension SignInViewModel {
     
     func signUpWithGoogle () {
+        GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.signIn()
     }
     
     func signUpWithFacebook(from viewController: SingInViewController?) {
         let fbLoginManager = LoginManager()
-        
-        fbLoginManager.logIn(permissions: [], from: viewController) { [unowned self] result, error in
+        if let currentAccessToken = AccessToken.current, currentAccessToken.appID != Settings.appID
+            {
+            fbLoginManager.logOut()
+            }
+        fbLoginManager.logIn(permissions: ["public_profile","email","id"], from: viewController) { [unowned self] result, error in
             
             if error != nil {
                 /// login error occured
                 self.onDidSignUpWithSocialMedia?(.failed)
+                print(error)
+                print("Login failed")
             } else if ((result?.isCancelled) != nil) {
-                /// login cancelled
+                /// login cancelled Bug on facebook
                 self.onDidSignUpWithSocialMedia?(.failed)
+                
+                let connection  = GraphRequestConnection()
+                connection.add(GraphRequest(graphPath: "/me", parameters: ["fields" : "id,first_name,last_name,email,name"], tokenString: AccessToken.current?.tokenString, version: Settings.defaultGraphAPIVersion, httpMethod: .get)) { (connection, values, error) in
+                       if let res = values {
+                            if let response = res as? [String:Any] {
+                                let id: [String: Any] = ["id": response["id"]]
+                                let email: [String: Any] = ["email": response["email"]]
+                                print(id,email)
+                            }
+                       }
+                }
+                connection.start()
+                print("Logic cancelled")
+                
             } else {
                 /// login successfully
                 self.onDidSignUpWithSocialMedia?(.success)
+                print("Login success")
             }
         }
     }
@@ -159,13 +180,16 @@ extension SignInViewModel: GIDSignInDelegate {
             return
         }
         
-        let _ = user.userID
+        NotificationCenter.default.post(
+            name: Notification.Name(Notifications.googleSignSuccess), object: nil, userInfo: nil)
+        
+        let userId = user.userID
         let _ = user.authentication.idToken
         let _ = user.profile.name
         let _ = user.profile.givenName
         let _ = user.profile.familyName
-        let _ = user.profile.email
-//        print (userId,idToken,email)
+        let email = user.profile.email
+        print (userId,email)
     }
 }
 
@@ -178,7 +202,7 @@ extension SignInViewModel: LoginButtonDelegate {
         didCompleteWith result: LoginManagerLoginResult?,
         error: Error?
     ) {
-        
+        print("Login button tapped")
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {

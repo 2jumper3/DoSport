@@ -15,7 +15,7 @@ final class EventCardTableCell: UITableViewCell {
     
     //MARK: Outlets
     
-    private let eventCardView = DSEventCardView()
+    lazy var eventCardView = DSEventCardView()
     
     var isCurrentUserOrganisedEvent: Bool = false {
         didSet {
@@ -138,3 +138,4 @@ final class EventCardTableCell: UITableViewCell {
         onInviteButtonClicked?()
     }
 }
+

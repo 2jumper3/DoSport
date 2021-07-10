@@ -24,11 +24,8 @@ final class MainSportTypeSelectionView: UIView {
         label.textColor = .white
         return label
     }()
-    
-    private lazy var searchBar: CustomSearchBar = {
-        let searchBar = CustomSearchBar(frame: .zero)
-        return searchBar
-    }()
+
+    private lazy var searchBar = CustomSearchBar(frame: .zero)
     
     private var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -52,23 +49,24 @@ final class MainSportTypeSelectionView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
 
         searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(self).offset(53)
-            make.leading.equalTo(self).offset(16)
-            make.trailing.equalTo(self).offset(-16)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
 
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom).offset(10)
-            make.leading.equalTo(self).offset(16)
+            make.top.equalTo(searchBar.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(16)
         }
 
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(self).offset(-88)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(35)
         }
     }
 }
@@ -87,13 +85,9 @@ extension MainSportTypeSelectionView {
     func delegateSeachBar(to object: UITextFieldDelegate?) {
         searchBar.textField?.delegate = object
     }
-    
-    func bindSearchBarToDefaultStyle() {
-        searchBar.defaultColorSchemeSearchBar()
-    }
-    
-    func bindSearchBarToColorizedStyle() {
-        searchBar.changeColorSchemeSearchBar()
+
+    func bindSearchBarToStyle(main: Bool) {
+        searchBar.setColorScheme(main: main)
     }
 }
 

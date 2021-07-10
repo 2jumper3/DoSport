@@ -33,6 +33,7 @@ extension UIButton {
     /// - Returns: object of styled UIButton with icon.
     static func makeBarButton(with icon: UIImage? = Icons.CountryList.backButton) -> UIButton {
         let button = UIButton(type: .system)
+        button.frame = CGRect(x: 20, y: 0, width: 40, height: 40)
         button.setImage(icon, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentMode = .scaleToFill

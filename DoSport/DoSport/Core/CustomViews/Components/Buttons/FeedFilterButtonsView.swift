@@ -20,9 +20,17 @@ final class FeedFilterButtonsView: UIView {
     // MARK: Outlets
     
     private lazy var allButton = FeedFilterButton(title: Texts.Feed.all, state: .selected)
-    private lazy var mySubscribesButton = FeedFilterButton(title: Texts.Feed.subscribes, state: .notSelected)
-    private lazy var mySportGroundsButton = FeedFilterButton(title: Texts.Feed.mySportGrounds, state: .notSelected)
-    
+    private lazy var mySubscribesButton: FeedFilterButton = {
+        let button = FeedFilterButton(title: Texts.Feed.subscribes, state: .notSelected)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        return button
+    }()
+    private lazy var mySportGroundsButton: FeedFilterButton = {
+        let button = FeedFilterButton(title: Texts.Feed.mySportGrounds, state: .notSelected)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        return button
+    }()
+
     // MARK: Init
     
     init() {
@@ -49,13 +57,13 @@ final class FeedFilterButtonsView: UIView {
         }
         
         mySubscribesButton.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.3)
+            $0.width.equalToSuperview().multipliedBy(0.4)
             $0.height.centerY.equalToSuperview()
             $0.left.equalTo(allButton.snp.right).offset(12)
         }
         
         mySportGroundsButton.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.35)
+            $0.width.equalToSuperview().multipliedBy(0.4)
             $0.height.centerY.equalToSuperview()
             $0.left.equalTo(mySubscribesButton.snp.right).offset(12)
         }

@@ -13,7 +13,7 @@ import WebKit
 final class WKWebViewController: UIViewController, WKNavigationDelegate {
 
     weak var webView: WKWebView?
-    
+    private let completion: () -> Void
 //    let coordinator = AuthCoordinator(navController: navigationController)
     
     override func viewDidLoad() {
@@ -28,6 +28,15 @@ final class WKWebViewController: UIViewController, WKNavigationDelegate {
         makeLoginRequest()
     }
         
+    init(completion: @escaping() -> Void)  {
+        self.completion = completion
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.webView?.frame = self.view.bounds
@@ -84,8 +93,10 @@ final class WKWebViewController: UIViewController, WKNavigationDelegate {
                                 }
                             }
                         }
+                        if VKSession.shared.tokenID != nil {
+                            completion()
+                        }
                     }
-                    self.webView?.removeFromSuperview()
                 }
                 decisionHandler(.allow)
             }

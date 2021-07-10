@@ -9,11 +9,11 @@ import Foundation
 
 final class EventViewModel {
     
-    var onDidPrepareEventData: ((Event) -> Void)?
+    var onDidPrepareEventData: ((DSModels.Event.EventView) -> Void)?
     
     var isCurrentUserOrganisedEvent: Bool = false
     
-    var event: Event? {
+    var event: DSModels.Event.EventView? {
         didSet {
             guard let event = event else { return }
             
@@ -21,7 +21,7 @@ final class EventViewModel {
         }
     }
     
-    init(event: Event?) {
+    init(event: DSModels.Event.EventView?) {
         self.event = event
         
         checkIfUserOrganised(event: event!)
@@ -32,7 +32,7 @@ final class EventViewModel {
 
 extension EventViewModel {
     
-    func checkIfUserOrganised(event: Event) {
+    func checkIfUserOrganised(event: DSModels.Event.EventView) {
         /// request user by `organiserID` of event. If fetched user equals to current user then return true else false
         self.isCurrentUserOrganisedEvent = true
     }

@@ -15,14 +15,18 @@ public enum Texts {
         static let subscribers = "Подписчики"
         static let subscribes = "Подписки"
         static let account = "Аккаунт"
-        static let alerts = "Увядомления"
+        static let alerts = "Уведомления"
         static let sound = "Звук"
         static let language = "Язык"
-        static let privacy = "Конфеденциальность"
+        static let privacy = "Конфиденциальность"
         static let help = "Помощь"
         static let reportAProblem = "Сообщить о проблеме"
         static let send = "Отправить"
         static let userName = "Никнейм"
+        static let subscribe = "Подписаться"
+        static let toBook = "Забронировать"
+        static let event = "Тренировки"
+        static let sportGround = "Площадки"
     }
 }
 
@@ -150,7 +154,7 @@ extension Texts {
         static let feedTitle = "Лента"
         
         static let all = "Все"
-        static let subscribes = "Подписки"
+        static let subscribes = "Мои подписки"
         static let mySportGrounds = "Мои площадки"
         
         static let free = "Бесплатно"
@@ -298,3 +302,16 @@ extension Texts {
     }
 }
 
+//MARK: - MapFilter screen
+
+
+extension Texts {
+    enum PlaceTypeTableViewCell {
+        static let ground = "Площадки"
+        static let training = "Тренировки"
+        static let studio = "Студии"
+        static let clubs = "Тренажерные залы"
+        static let challenges = "Соревнования"
+        static let group = "Групповые тренировки"
+    }
+}

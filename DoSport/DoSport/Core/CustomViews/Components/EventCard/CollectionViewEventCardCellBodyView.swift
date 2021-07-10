@@ -14,7 +14,6 @@ final class CollectionViewEventCardCellBodyView: UIView {
     
     private(set) var eventShortDescriptionLabel: UILabel = { // TODO: make bold font
         $0.font = Fonts.sfProRegular(size: 16)
-        $0.text = "Побросать во дворе, не хватает 3х парней Есть 2 мяча, майки с номерами разных цветов."
         $0.numberOfLines = 3
         $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +23,6 @@ final class CollectionViewEventCardCellBodyView: UIView {
     private(set) var addressLabel: UILabel = { // TODO: add bold font to fonts
         $0.font = Fonts.sfProRegular(size: 16)
         $0.textColor = .black
-        $0.text = "Oxford Circus"
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
@@ -39,7 +37,6 @@ final class CollectionViewEventCardCellBodyView: UIView {
     private(set) var subwayNameLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textColor = .black
-        $0.text = "Oxford Circus station"
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
@@ -54,7 +51,6 @@ final class CollectionViewEventCardCellBodyView: UIView {
     private(set) var locationLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
         $0.textColor = .black
-        $0.text = Texts.Feed.km3
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
@@ -68,7 +64,6 @@ final class CollectionViewEventCardCellBodyView: UIView {
     
     private(set) var priceLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 14)
-        $0.text = Texts.Feed.free
         $0.textColor = .black
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0

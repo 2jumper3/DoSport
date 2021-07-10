@@ -8,4 +8,4 @@
 import Foundation
 
 /// Models used for network Requests and Responses
-enum DSModels { }
+enum DSModels {}

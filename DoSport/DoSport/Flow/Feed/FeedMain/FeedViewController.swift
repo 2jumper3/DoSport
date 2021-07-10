@@ -114,7 +114,7 @@ extension FeedViewController: FeedViewDelegate {
 
 extension FeedViewController: FeedDataSourceDelegate {
     
-    func collectionView(didSelect event: Event) {
+    func collectionView(didSelect event: DSModels.Event.EventView) {
         coordinator?.goToEventModule(withSelected: event)
     }
 }

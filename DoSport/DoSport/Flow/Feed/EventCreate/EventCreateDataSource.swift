@@ -14,11 +14,11 @@ protocol EventCreateDataSourceDelegate: class {
     
     /// When tapped to date select cell, user goes to `SportGroundSelectionList` screen. When user selects sport ground
     ///  then `SportGroundSelectionList` screen calls completion with selected sport ground string before going back.
-    func tableViewDidSelectSportGroundCell(completion: @escaping (SportGround) -> Void)
+    func tableViewDidSelectSportGroundCell(completion: @escaping (DSModels.SportGround.SportGroundResponse) -> Void)
     
     /// When tapped to date select cell, user goes to `DateSelection` screen. When user selects date and clicks save button
     ///  then `DateSelection` screen calls completion with selected date string before going back.
-    func tableViewDidSelectDateSelectionCell(for sportGround: SportGround?, completion: @escaping (String) -> Void)
+    func tableViewDidSelectDateSelectionCell(for sportGround: DSModels.SportGround.SportGroundResponse?, completion: @escaping (String) -> Void)
     
     func tableViewSportTypeCell(didSetTitle title: String)
     func tableViewSportGroudnCell(didSetTitle title: String)
@@ -35,7 +35,7 @@ final class EventCreateDataSource: NSObject {
     
     private var cells: [CellType] = CellType.allCases
     
-    private var sportGround: SportGround?
+    private var sportGround: DSModels.SportGround.SportGroundResponse?
 }
 
 //MARK: - UITableViewDataSource -

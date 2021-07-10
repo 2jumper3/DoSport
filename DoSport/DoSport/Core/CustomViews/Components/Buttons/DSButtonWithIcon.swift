@@ -33,6 +33,7 @@ final class DSButtonWithIcon: UIView {
         self.isBindable = isBindable
         super.init(frame: .zero)
         
+        layer.cornerRadius = 8
         label.text = text
         label.textColor = textColor
         imageView.image = icon.withRenderingMode(.alwaysTemplate)
@@ -47,12 +48,10 @@ final class DSButtonWithIcon: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        backgroundColor = Colors.lightBlue
         imageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.4)
-            $0.left.equalToSuperview()
-            $0.width.equalTo(imageView.snp.height)
+            $0.centerX.equalTo(self.snp.left).offset(25)
         }
         
         if self.isTextInCenter {

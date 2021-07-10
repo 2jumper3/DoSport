@@ -59,6 +59,25 @@ final class EventCardCollectioCell: UICollectionViewCell {
             $0.height.equalTo(snp.height).multipliedBy(0.11)
         }
     }
+    //MARK: - Bind
+
+    func bind(data: DSModels.Event.EventView) {
+        headerView.eventCreatedTimeLabel.text = data.creationDateTime
+        headerView.organiserNameLabel.text = data.organizer?.username
+        headerView.sportTypeLabel.text = data.sportType
+        
+        bodyView.addressLabel.text = "\(data.sportGroundID ?? 0)"
+        bodyView.eventShortDescriptionLabel.text = data.description
+        if data.price == 0 {
+            let free = Texts.Feed.free
+            bodyView.priceLabel.text = free
+        } else {
+            bodyView.priceLabel.text = "\(data.price ?? 0)"
+        }
+//        bodyView.subwayNameLabel.text = data.
+        
+        footerView.eventDateLabel.text = data.startDateTime
+    }
 }
 
 //MARK: Actions
@@ -68,4 +87,7 @@ final class EventCardCollectioCell: UICollectionViewCell {
     func handleOptionsButton() {
         onOptionButtonClicked?()
     }
+
+
+
 }

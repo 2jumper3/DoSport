@@ -29,13 +29,13 @@ final class EventDataSource: NSObject {
     
     weak var delegate: EventDataSourceDelegate?
     
-    var viewModel: Event?
+    var viewModel: DSModels.Event.EventView?
 
     private var toogleSegmentedControl: DSSegmentedControl?
     
     private let isCurrentUserOrganisedEvent: Bool
     
-    init(viewModel: Event? = nil, isCurrentUserOrganisedEvent: Bool) {
+    init(viewModel: DSModels.Event.EventView? = nil, isCurrentUserOrganisedEvent: Bool) {
         self.isCurrentUserOrganisedEvent = isCurrentUserOrganisedEvent
         self.viewModel = viewModel
         super.init()
@@ -56,7 +56,7 @@ extension EventDataSource: UITableViewDataSource {
             return 1
         } else {
             switch eventDataSourceState {
-            case .comments: return viewModel?.chatID?.messages?.count ?? 0
+            case .comments: return viewModel?.messagesAmount ?? 0
             case .members: return viewModel?.members?.count ?? 0
             }
         }
@@ -72,6 +72,19 @@ extension EventDataSource: UITableViewDataSource {
             eventCardCell.onInviteButtonClicked = { [unowned self] in
                 delegate?.tableViewInviteButtonClicked()
             }
+            eventCardCell.eventCardView.bodyView.eventShortDescriptionLabel.text = viewModel?.description
+            eventCardCell.eventCardView.footerView.chatMessagesCountLabel.text = String(describing: viewModel?.messagesAmount ?? 10)
+            eventCardCell.eventCardView.footerView.userCountLabel.text = String(describing: viewModel?.members?.count ?? 0)
+            eventCardCell.eventCardView.footerView.eventDateLabel.text = viewModel?.startDateTime
+            
+            eventCardCell.eventCardView.bodyView.addressLabel.text = "Will be added"
+            eventCardCell.eventCardView.bodyView.eventShortDescriptionLabel.text = viewModel?.description
+            eventCardCell.eventCardView.bodyView.priceLabel.text = String(viewModel?.price ?? 0)
+            
+            eventCardCell.eventCardView.headerView.organiserNameLabel.text = viewModel?.organizer?.username
+            eventCardCell.eventCardView.headerView.eventCreatedTimeLabel.text = viewModel?.creationDateTime
+            eventCardCell.eventCardView.headerView.sportTypeLabel.text = viewModel?.sportType
+            
             
             eventCardCell.onParticipateButtonClicked = { [unowned self] in
                 delegate?.tableViewParicipateButtonClicked()
@@ -88,10 +101,12 @@ extension EventDataSource: UITableViewDataSource {
                 commentCell.onReplyButtonClicked = { [unowned self] userName in
                     delegate?.commentReplyButtonClicked(to: userName)
                 }
-                
+                commentCell.commentText = "here will be comments"
+                commentCell.commentCreatedTime = "test created time"
                 cell = commentCell
             case .members:
                 let memberCell: TableViewMemberCell = tableView.cell(forRowAt: indexPath)
+                memberCell.memberNameLabel.text = viewModel?.members?[indexPath.row].username
                 cell = memberCell
             }
         }
@@ -103,7 +118,7 @@ extension EventDataSource: UITableViewDataSource {
         if section == 1 {
             let eventTableHeaderView: EventTableChatHeaderView = tableView.dequeHeaderFooter()
             eventTableHeaderView.firstIndexText = "\(viewModel?.members?.count ?? 0)"
-            eventTableHeaderView.secondIndexText = "\(viewModel?.chatID?.messages?.count ?? 0)"
+            eventTableHeaderView.secondIndexText = "\(viewModel?.messagesAmount ?? 0)"
             
             eventTableHeaderView.onSegmentedControlChanged = { [unowned self] index in
                 switch index {

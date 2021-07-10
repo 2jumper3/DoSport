@@ -65,7 +65,7 @@ final class NetworkManagerImplementation: NSObject, NetworkManager {
             
             if let httpResponse = response as? HTTPURLResponse,
                httpResponse.statusCode != 200 {
-                debugPrint("## - Status code: \(httpResponse.statusCode)", #line)
+                debugPrint("## - Status code: \(httpResponse.statusCode)", #line, #file)
                 return
             }
             

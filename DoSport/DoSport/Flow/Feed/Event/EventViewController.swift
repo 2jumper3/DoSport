@@ -14,7 +14,7 @@ final class EventViewController: UIViewController {
     private lazy var eventView = view as! EventView
     private lazy var eventCollectionManager = EventDataSource(isCurrentUserOrganisedEvent: self.isCurrentUserOrganisedEvent)
     
-    private let event: Event
+    private let event: DSModels.Event.EventView
     
     private var isEventVisibilityPopupShown: Bool = false
     
@@ -30,7 +30,7 @@ final class EventViewController: UIViewController {
 
     // MARK: Init
     
-    init(viewModel: EventViewModel, event: Event, isCurrentUserOrganisedEvent: Bool) {
+    init(viewModel: EventViewModel, event: DSModels.Event.EventView, isCurrentUserOrganisedEvent: Bool) {
         self.viewModel = viewModel
         self.event = event
         self.isCurrentUserOrganisedEvent = isCurrentUserOrganisedEvent

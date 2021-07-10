@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainSportTypeSelectionDataSourceProtocol: class {
-    
+    func catchSportTitle(sportTitle: String)
 }
 
 final class MainSportTypeSelectionDataSource: NSObject {
@@ -47,7 +47,10 @@ extension MainSportTypeSelectionDataSource: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate -
 
 extension MainSportTypeSelectionDataSource: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let sportTitle = viewModels[indexPath.row].title else {return}
+        delegate?.catchSportTitle(sportTitle: sportTitle)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout -

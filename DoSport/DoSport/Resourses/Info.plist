@@ -19,9 +19,19 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb903989686814631</string>
+				<string>fb454820405663959</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll</string>
 			</array>
 		</dict>
 		<dict>
@@ -29,24 +39,28 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>909582863650-k5n8rqmmbcrdni67s527mdcl6b7rmh81.apps.googleusercontent.com</string>
+				<string>984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll.apps.googleusercontent.com</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>903989686814631</string>
+	<string>454820405663959</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
 	<key>FacebookDisplayName</key>
-	<string>DoSportDemo</string>
+	<string>DoSport</string>
 	<key>FirebaseMessagingAutoInitEnabled</key>
 	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Kamol 2</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Accept to give Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please accept to give Location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Kamol</string>
 	<key>UIAppFonts</key>
@@ -91,5 +105,24 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fbapi20130214</string>
+      <string>fbapi20130410</string>
+      <string>fbapi20130702</string>
+      <string>fbapi20131010</string>
+      <string>fbapi20131219</string>
+      <string>fbapi20140410</string>
+      <string>fbapi20140116</string>
+      <string>fbapi20150313</string>
+      <string>fbapi20150629</string>
+      <string>fbapi20160328</string>
+      <string>fbauth</string>
+      <string>fb-messenger-share-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1052802305460-f1d2gr3uns3240eqsvvpa8qpifo1aihi.apps.googleusercontent.com</string>
+	<string>984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1052802305460-f1d2gr3uns3240eqsvvpa8qpifo1aihi</string>
+	<string>com.googleusercontent.apps.984564573884-3pkir2a9kpe9g0rei6rmghm99miie9ll</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCZdKISrLAaQ6OJXdQREWOasaym8dzDGDo</string>
+	<string>AIzaSyBagCu7RicDYiUkgIZksKVi5JpkfxU3R8k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1052802305460</string>
+	<string>984564573884</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.apple.DoSport.iOS</string>
+	<string>SergeyU1.Dosport</string>
 	<key>PROJECT_ID</key>
-	<string>dosportios</string>
+	<string>dosport-307319</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dosportios.appspot.com</string>
+	<string>dosport-307319.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1052802305460:ios:dc23b63d99b7f6d003f6e1</string>
+	<string>1:984564573884:ios:d9408a4dedc6d28ac112b9</string>
 </dict>
 </plist>

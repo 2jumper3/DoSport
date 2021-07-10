@@ -74,7 +74,7 @@ extension SportTypeListView {
     
     func bindSelectButton(state: DSCommonButtonState) {
         // TODO: Common button state
-//        selectButton.bind(state: state)
+        selectButton.bind(state: state)
     }
 }
 

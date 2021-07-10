@@ -19,7 +19,7 @@ final class EventNetworkService {
     ///     - queryComponents:
     ///     - completion:
     func eventsGet(
-        queryComponents: DSModels.Event.EventByParametersRequest,
+        queryComponents: DSModels.Event.EventView?,
         completion: @escaping (DataHandler<[DSModels.Event.EventView]>) -> Void
     ) {
         let endpoint = DSEndpoints.Event.getEvents(queryComponents)

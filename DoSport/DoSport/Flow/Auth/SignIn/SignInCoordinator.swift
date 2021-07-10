@@ -43,9 +43,12 @@ final class SignInCoordinator: Coordinator {
         store(coordinator: coordinator)
         coordinator.start()
     }
-    func openVkAuthView() {
-        let vc = WKWebViewController()
+    func openVkAuthView(completion: @escaping() -> Void) {
+        let vc = WKWebViewController(completion: completion)
         navigationController?.present(vc, animated: true, completion: nil)
-        
+    }
+    
+    func dismissWKWebView()  {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }

@@ -45,6 +45,7 @@ final class OnBoardingViewCell: UICollectionViewCell {
         textView.backgroundColor = .clear
         textView.adjustsFontForContentSizeCategory = true
         textView.textAlignment = .center
+        textView.isUserInteractionEnabled = false
         return textView
     }()
 

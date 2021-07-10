@@ -174,12 +174,12 @@ final class SportGroundSelectionCollectionCell: UICollectionViewCell {
 
 extension SportGroundSelectionCollectionCell {
     
-    func bind(with data: ViewData) {
-        sportGroundTitleLabel.text = data.sportGroundTitle
-        backgroundImageView.image = data.spogroundBackImage
-        subwayNameLabel.text = data.subwayName
-        locationLabel.text = data.location
-        priceLabel.text = data.price
+    func bind(with data: DSModels.SportGround.SportGroundResponse) {
+        sportGroundTitleLabel.text = data.title
+//        backgroundImageView.image = data.spogroundBackImage
+        subwayNameLabel.text = data.metroStation
+        locationLabel.text = data.address
+        priceLabel.text = "\(data.rentPrice ?? 12)"
     }
 }
 

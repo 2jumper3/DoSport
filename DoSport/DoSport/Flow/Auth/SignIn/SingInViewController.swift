@@ -38,7 +38,7 @@ final class SingInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        notificationsSetup()
         setupViewModelBindings()
     }
     
@@ -88,6 +88,9 @@ private extension SingInViewController {
             }
         }
     }
+    func notificationsSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(googleAuthPassed), name: NSNotification.Name(Notifications.googleSignSuccess), object: nil)
+    }
 }
 
 //MARK: - SingInViewDelegate -
@@ -95,14 +98,14 @@ private extension SingInViewController {
 extension SingInViewController: SingInViewDelegate {
     
     func skipButtonTapped() {
-//        coordinator?.goToMainTabBar()
+        coordinator?.goToMainTabBar()
 //        coordinator?.goToRegistrationModule()
         
         // will be replaced by social media auth
         viewModel.doLogin(
             with: .init(
-                username: "admin",
-                password: "admin"
+                username: "eduard",
+                password: "eduard"
             )
         )
     }
@@ -112,11 +115,19 @@ extension SingInViewController: SingInViewDelegate {
     }
     
     func vkAuthButtonClicked() {
+        coordinator?.openVkAuthView(completion: {
+            self.coordinator?.dismissWKWebView()
+            self.coordinator?.goToMainTabBar()
+        })
         viewModel.doSignUpWithSocialMedia(.vkontakte, viewController: nil)
     }
     
     func googleAuthButtonClicked() {
         viewModel.doSignUpWithSocialMedia(.google, viewController: self)
+    }
+    
+    @objc func googleAuthPassed() {
+        coordinator?.goToMainTabBar()
     }
     
     func appleAuthButtonClicked() {

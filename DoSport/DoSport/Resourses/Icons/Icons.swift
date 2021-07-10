@@ -61,6 +61,8 @@ public enum Icons {
         static let clock: UIImage = Icons.image(named: "clock")
         static let chat: UIImage = Icons.image(named: "chat")
         static let user: UIImage = Common.user
+        static let sportType = image(named: "sportType")
+        static let sportGround = image(named: "field")
     }
     
     //MARK: - Event screen
@@ -139,5 +141,24 @@ extension Icons {
     
     static func image(named name: String) -> UIImage {
         UIImage(named: name) ?? UIImage()
+    }
+}
+//MARK: - MapIcons & Filter
+extension Icons {
+    enum MapIcons {
+        static var placeMark = image(named: "customPoint")
+        static var tappedPlaceMark = image(named: "tappedPoint")
+    }
+    enum PlacemarkTapped {
+        static var price = image(named: "Rub")
+        static var location = image(named: "Location")
+        static var metro = image(named: "Metro")
+    }
+}
+
+extension Icons {
+    enum FilterIcon {
+        static var filter = image(named: "FilterMap")
+
     }
 }

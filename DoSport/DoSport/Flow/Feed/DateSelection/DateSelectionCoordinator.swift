@@ -16,7 +16,7 @@ final class DateSelectionCoordinator: Coordinator {
     
     init(
         navController: UINavigationController?,
-        sportGround: SportGround,
+        sportGround: DSModels.SportGround.SportGroundResponse,
         completion: @escaping (String) -> Void
     ) {
         let assembly = DateSelectionAssembly(
