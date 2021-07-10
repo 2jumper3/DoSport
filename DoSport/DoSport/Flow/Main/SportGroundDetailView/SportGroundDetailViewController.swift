@@ -10,12 +10,12 @@ import UIKit
 final class SportGroundDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     weak var coordinator: SportGroundDetailCoordinator?
-    private lazy var userSubscriberListView = view as! SportGroundDetailView
-    private let userSubscriberListCollectionManager = SportGroundDetailDataSource()
+    private lazy var sportGroundView = view as! SportGroundDetailView
+    private let sportGroundCollectionManager = SportGroundDetailDataSource()
     private let viewModel: SportGroundDetailViewModel
     
-    private let user: User?
-    private let contentType: DSEnums.UserSubscribersContentType
+    private let sportGround: DSModels.SportGround.SportGroundResponse?
+    private let contentType: DSEnums.DetailSportGround
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -24,13 +24,14 @@ final class SportGroundDetailViewController: UIViewController, UIGestureRecogniz
     // MARK: Init
     
     init(
-        user: User?,
-        contentType: DSEnums.UserSubscribersContentType,
+        sportGround: DSModels.SportGround.SportGroundResponse?,
+        contentType: DSEnums.DetailSportGround,
         viewModel: SportGroundDetailViewModel
     ) {
-        self.user = user
+        self.sportGround = sportGround
         self.viewModel = viewModel
         self.contentType = contentType
+        print( "DetailController inited")
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,8 +43,9 @@ final class SportGroundDetailViewController: UIViewController, UIGestureRecogniz
     
     override func loadView() {
         let view = SportGroundDetailView()
+        view.backgroundColor = .red
         view.delegate = self
-        userSubscriberListCollectionManager.delegate = self
+        sportGroundCollectionManager.delegate = self
         
         self.view = view
     }
@@ -58,7 +60,8 @@ final class SportGroundDetailViewController: UIViewController, UIGestureRecogniz
 
         switch self.contentType {
         case .subscribers: viewModel.doLoadSubscribers(request: .init())
-        case .subscriptions: viewModel.doLoadSubscriptions(request: .init())
+        case .info: viewModel.doLoadSubscribers(request: .init())
+        case .events: viewModel.doLoadSubscribers(request: .init())
         }
     }
 

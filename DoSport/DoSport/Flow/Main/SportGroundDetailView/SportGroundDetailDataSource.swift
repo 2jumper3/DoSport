@@ -17,7 +17,7 @@ protocol SportGroundDetailDataSourceDelegate: class {
 
 final class SportGroundDetailDataSource: NSObject {
     
-    var userMainDataSourceState: DSEnums.UserMainContentType = .events {
+    var userMainDataSourceState: DSEnums.DetailSportGround = .events {
         didSet {
             delegate?.collectionViewNeedsReloadData()
         }
@@ -54,7 +54,8 @@ extension SportGroundDetailDataSource: UICollectionViewDataSource {
         } else {
             switch userMainDataSourceState {
             case .events: return 10
-            case .sportGrounds: return 15
+            case .subscribers: return 15
+            case .info: return 1
             }
         }
     }
@@ -88,14 +89,17 @@ extension SportGroundDetailDataSource: UICollectionViewDataSource {
                 
                 cell = eventCell
                 
-            case .sportGrounds:
+            case .info:
                 let sportGroundCell: SportGroundSelectionCollectionCell = collectionView.cell(forRowAt: indexPath)
                 cell = sportGroundCell
-            }
+            case .subscribers:
+                let sportGroundCell: SportGroundSelectionCollectionCell = collectionView.cell(forRowAt: indexPath)
+                cell = sportGroundCell
         }
-        
+        }
         return cell
-    }
+        }
+    
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -109,20 +113,22 @@ extension SportGroundDetailDataSource: UICollectionViewDataSource {
             )
             reusableView.setSegmentedControl(text: Texts.UserMain.myEvents, for: 0)
             reusableView.setSegmentedControl(text: Texts.UserMain.mySportGrounds, for: 1)
+            reusableView.setSegmentedControl(text: Texts.UserMain.delete, for: 2)
             
             reusableView.onSegmentedControlChanged = { [unowned self] index in
                 switch index {
                 case 0: userMainDataSourceState = .events
-                case 1: userMainDataSourceState = .sportGrounds
+                case 1: userMainDataSourceState = .info
+                case 2: userMainDataSourceState = .subscribers
                 default: break
                 }
             }
             return reusableView
         }
-        
         return UICollectionReusableView()
     }
 }
+
 
 //MARK: - UICollectionViewDelegateFlowLayout -
 
@@ -136,6 +142,7 @@ extension SportGroundDetailDataSource: UICollectionViewDelegateFlowLayout  {
         var sectionZeroCellHeight: CGFloat = collectionView.bounds.height
         var eventsCellsHeight: CGFloat = collectionView.bounds.height
         var sportGroundsCellsHeight: CGFloat = collectionView.frame.height
+        var infoCellHeight: CGFloat = collectionView.frame.height
 
         switch UIDevice.deviceSize {  // FIXME: костыль?
         case .iPhone_5_5S_5C_SE1, .iPhone_6_6S_7_8_SE2:
@@ -157,7 +164,8 @@ extension SportGroundDetailDataSource: UICollectionViewDelegateFlowLayout  {
         } else {
             switch userMainDataSourceState {
             case .events: return CGSize(width: collectionView.bounds.width, height: eventsCellsHeight)
-            case .sportGrounds: return CGSize(width: collectionView.bounds.width, height: sportGroundsCellsHeight)
+            case .info: return CGSize(width: collectionView.bounds.width, height: sportGroundsCellsHeight)
+            case .subscribers: return CGSize(width: collectionView.bounds.width, height: infoCellHeight)
             }
         }
     }

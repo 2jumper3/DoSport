@@ -16,14 +16,14 @@ final class SportGroundDetailCoordinator: Coordinator {
     
     init(
         navController: UINavigationController?,
-        user: User?,
-        contentType: DSEnums.UserSubscribersContentType
+        sportGround: DSModels.SportGround.SportGroundResponse?,
+        contentType: DSEnums.DetailSportGround
     ) {
         let userNetworkService = UserNetworkService()
         let viewModel = SportGroundDetailViewModel(userNetworkService: userNetworkService)
         
         self.rootViewController = SportGroundDetailViewController(
-            user: user,
+            sportGround: sportGround,
             contentType: contentType,
             viewModel: viewModel
         )

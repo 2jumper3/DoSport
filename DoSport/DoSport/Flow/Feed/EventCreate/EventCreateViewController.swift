@@ -119,14 +119,14 @@ extension EventCreateViewController: EventCreateDataSourceDelegate {
         coordinator?.goToSportTypeListModule(completion: completion)
     }
     
-    func tableViewDidSelectSportGroundCell(completion: @escaping (SportGround) -> Void) {
+    func tableViewDidSelectSportGroundCell(completion: @escaping (DSModels.SportGround.SportGroundResponse) -> Void) {
         guard let title = sportTypeTitle else { return }
         
         coordinator?.goToSportGroundSelectionListModule(sportTypeTitle: title, completion: completion)
     }
     
     func tableViewDidSelectDateSelectionCell(
-        for sportGround: SportGround?,
+        for sportGround: DSModels.SportGround.SportGroundResponse?,
         completion: @escaping (String) -> Void
     ) {
         guard  sportGroundTitle != nil, let sportGround = sportGround else { return }

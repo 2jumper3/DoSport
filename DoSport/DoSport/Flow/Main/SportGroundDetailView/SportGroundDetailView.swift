@@ -90,7 +90,7 @@ extension SportGroundDetailView {
             self.loadingIndicator.isHidden = false
             self.loadingIndicator.startAnimating()
 
-            self.collectionView.isHidden = true
+            self.collectionView.isHidden = false
         }
         
         if case .failed = state {

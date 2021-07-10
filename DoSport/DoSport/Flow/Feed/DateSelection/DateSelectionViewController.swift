@@ -16,7 +16,7 @@ final class DateSelectionViewController: UIViewController, UIGestureRecognizerDe
     private let collectionManager = DateSelectionDataSource()
     
     private let completion: (String) -> Void
-    private let sportGround: SportGround
+    private let sportGround: DSModels.SportGround.SportGroundResponse
     
     private var selectedDate: Date?
     private var calendarSelectedDate: Date?
@@ -45,7 +45,7 @@ final class DateSelectionViewController: UIViewController, UIGestureRecognizerDe
     
     init(
         viewModel: DateSelectionViewModel,
-        sportGround: SportGround,
+        sportGround: DSModels.SportGround.SportGroundResponse,
         completion: @escaping (String) -> Void
     ) {
         self.viewModel = viewModel
@@ -136,15 +136,21 @@ private extension DateSelectionViewController {
         updateView()
         
         self.selectedDate = date
-        
+        let dateFormatter = DateFormatter()
         sportGround.events?.forEach { event in
-            guard let eventDate = event.eventDate,
-                  let eventStartDate = event.eventStartTime,
-                  let eventEndDate = event.eventEndTime
+            guard let eventDateString = event.creationDateTime,
+                  let eventStartDateString = event.startDateTime,
+                  let eventEndDateString = event.endDateTime
             else {
                 return
             }
-            
+            guard
+                let eventDate = dateFormatter.date(from: eventDateString),
+                let eventStartDate = dateFormatter.date(from: eventStartDateString),
+                let eventEndDate = dateFormatter.date(from: eventEndDateString)
+            else {
+                return
+            }
             let calendar = Calendar.current
             let selectedDay = calendar.component(.day, from: date)
             let selectedMonth = calendar.component(.month, from: date)

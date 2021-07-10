@@ -245,6 +245,7 @@
 		A6A7FD60C795722CE2BC7D68 /* Pods_DoSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B2C80E4358F104D909040B /* Pods_DoSport.framework */; };
 		CE0A6B39258F89F5007E02CC /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDEB889258CE7F2007B2BCA /* SFProDisplay-Regular.ttf */; };
 		CE0A6B58258FBA26007E02CC /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A6B57258FBA26007E02CC /* CustomPageControl.swift */; };
+		CE2D563D26666D3F005FFB58 /* SportGroundNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D563C26666D3F005FFB58 /* SportGroundNetworkService.swift */; };
 		CE4C91B2261390F500A1B6BC /* AppLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AA261390F500A1B6BC /* AppLanguageViewModel.swift */; };
 		CE4C91B3261390F500A1B6BC /* AppLanguageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AB261390F500A1B6BC /* AppLanguageListCoordinator.swift */; };
 		CE4C91B4261390F500A1B6BC /* AppLanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C91AD261390F500A1B6BC /* AppLanguageModel.swift */; };
@@ -290,6 +291,7 @@
 		CE845AA92664D5830074FC0A /* SportGroindDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE845AA82664D5830074FC0A /* SportGroindDetailHeaderCell.swift */; };
 		CE845AAD2664DBF90074FC0A /* SportGroindDetailCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE845AAC2664DBF90074FC0A /* SportGroindDetailCenterCell.swift */; };
 		CE845AB12664E0B10074FC0A /* SGDInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE845AB02664E0B10074FC0A /* SGDInformationCell.swift */; };
+		CE845ABB26651E200074FC0A /* DSEnums+DetailSportGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE845ABA26651E200074FC0A /* DSEnums+DetailSportGround.swift */; };
 		CEBA62DC2593F2A1006A7F80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */; };
 		CEBA62E12593F2DE006A7F80 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */; };
 		CEBA62E62593F2F0006A7F80 /* MainMenuTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */; };
@@ -590,6 +592,7 @@
 		CE2B5DBF25FBB55B007E5EEA /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		CE2B5DC425FBB626007E5EEA /* WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
 		CE2B5DC925FBB648007E5EEA /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
+		CE2D563C26666D3F005FFB58 /* SportGroundNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroundNetworkService.swift; sourceTree = "<group>"; };
 		CE4C91AA261390F500A1B6BC /* AppLanguageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageViewModel.swift; sourceTree = "<group>"; };
 		CE4C91AB261390F500A1B6BC /* AppLanguageListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageListCoordinator.swift; sourceTree = "<group>"; };
 		CE4C91AD261390F500A1B6BC /* AppLanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageModel.swift; sourceTree = "<group>"; };
@@ -627,6 +630,7 @@
 		CE845AA82664D5830074FC0A /* SportGroindDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroindDetailHeaderCell.swift; sourceTree = "<group>"; };
 		CE845AAC2664DBF90074FC0A /* SportGroindDetailCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportGroindDetailCenterCell.swift; sourceTree = "<group>"; };
 		CE845AB02664E0B10074FC0A /* SGDInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGDInformationCell.swift; sourceTree = "<group>"; };
+		CE845ABA26651E200074FC0A /* DSEnums+DetailSportGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSEnums+DetailSportGround.swift"; sourceTree = "<group>"; };
 		CEBA62DB2593F2A1006A7F80 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CEBA62E02593F2DE006A7F80 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEBA62E52593F2F0006A7F80 /* MainMenuTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTabController.swift; sourceTree = "<group>"; };
@@ -960,6 +964,7 @@
 				65430BF6260FB8390044F57C /* EventNetworkService.swift */,
 				65430BFE260FB84C0044F57C /* SportTypeNetworkService.swift */,
 				65430BFA260FB8420044F57C /* UserNetworkService.swift */,
+				CE2D563C26666D3F005FFB58 /* SportGroundNetworkService.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -1228,6 +1233,7 @@
 				65B6D96826060B290099BC08 /* DSEnums+MainContentType.swift */,
 				65815400260BB7A400436BCB /* DSEnums+UserMainContentType.swift */,
 				658153F8260BB29300436BCB /* DSEnums+UserSubscribersContentType.swift */,
+				CE845ABA26651E200074FC0A /* DSEnums+DetailSportGround.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -2141,6 +2147,7 @@
 				653179BB25D1124C001DBA4B /* SubwayListViewController.swift in Sources */,
 				654309B82608C0A700F76765 /* DSKeychainConstants.swift in Sources */,
 				CEF105A5261AFF8F00EE8F88 /* SportGroundMainView.swift in Sources */,
+				CE2D563D26666D3F005FFB58 /* SportGroundNetworkService.swift in Sources */,
 				CEDEB902258D371D007B2BCA /* OnBoardingViewCell.swift in Sources */,
 				65B6D94B26060AC80099BC08 /* DSEndpoints+Event.swift in Sources */,
 				6587054C25924C3200EFF7C7 /* AppCoordinator.swift in Sources */,
@@ -2211,6 +2218,7 @@
 				659C61A52593DB3F00C33D05 /* SignUpCoordinator.swift in Sources */,
 				65C8B4D725E8D31700BBCF77 /* UserMainInfoCollectionCell.swift in Sources */,
 				6543098E2608948100F76765 /* UserAccountServiceProtocol.swift in Sources */,
+				CE845ABB26651E200074FC0A /* DSEnums+DetailSportGround.swift in Sources */,
 				CE4C91B7261390F500A1B6BC /* AppLanguageListController.swift in Sources */,
 				651FBF2E25FE01150018C6B1 /* MainSportTypeSelectionDataSource.swift in Sources */,
 				65AF25F7258D04FD0037D2B5 /* Texts.swift in Sources */,

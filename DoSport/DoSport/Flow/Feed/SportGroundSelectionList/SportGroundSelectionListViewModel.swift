@@ -9,9 +9,9 @@ import Foundation
 
 final class SportGroundSelectionListViewModel {
     
-    var onDidPrepareData: (([SportGround]) -> Void)?
+    var onDidPrepareData: (([DSModels.SportGround.SportGroundResponse]) -> Void)?
     
-    private var sportGrounds: [SportGround]? {
+    private var sportGrounds: [DSModels.SportGround.SportGroundResponse]? {
         didSet {
             guard let sportGrounds = sportGrounds else { return }
             
@@ -29,8 +29,8 @@ final class SportGroundSelectionListViewModel {
 extension SportGroundSelectionListViewModel {
     
     func prepareData() { //test data
-        var tempSportGrounds: [SportGround] = []
-        var events: [Event] = []
+        var tempSportGrounds: [DSModels.SportGround.SportGroundResponse] = []
+        var events: [DSModels.Event.EventView] = []
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -41,60 +41,85 @@ extension SportGroundSelectionListViewModel {
         let startTimeString1 = "2021-02-17T21:00:00"
         let endTimeString1 = "2021-02-17T22:00:00"
         
-        let date1 = dateFormatter.date(from: dateString1)
-        let startDate1 = dateFormatter.date(from: startTimeString1)
-        let endDate1 = dateFormatter.date(from: endTimeString1)
-        
+//        let date1 = dateFormatter.date(from: dateString1)
+//        let startDate1 = dateFormatter.date(from: startTimeString1)
+//        let endDate1 = dateFormatter.date(from: endTimeString1)
+//
         //event 2 date
         let dateString2 = "2021-02-15T11:00:00"
         let startTimeString2 = "2021-02-15T11:00:00"
         let endTimeString2 = "2021-02-15T12:00:00"
         
-        let date2 = dateFormatter.date(from: dateString2)
-        let startDate2 = dateFormatter.date(from: startTimeString2)
-        let endDate2 = dateFormatter.date(from: endTimeString2)
+//        let date2 = dateFormatter.date(from: dateString2)
+//        let startDate2 = dateFormatter.date(from: startTimeString2)
+//        let endDate2 = dateFormatter.date(from: endTimeString2)
+//
         
         
-        
-        let event = Event(
+        let newEvent = DSModels.Event.EventView (
+            creationDateTime: startTimeString1,
             eventID: 1,
-            eventDate: date1,
-            eventEndTime: endDate1,
-            eventStartTime: startDate1,
-            organiserID: 1,
-            chatID: Chat(ID: 1, messages: [], userID: 1, userName: 1),
+            startDateTime: startTimeString2,
+            endDateTime: endTimeString2,
+            sportType: "Football",
+            sportGroundID: 22,
+            organizer: Participants(id: 1, username: "EDik", birthdayDate: "06-06-06", gender: "Male", info: "Here will be info", photoLink: ""),
             members: [],
-            sportGroundID: 1,
-            sportType: nil
-        )
+            description: "Description",
+            isPrivate: false,
+            price: 100,
+            maximumUsers: 25, usersAmount: 20,
+            messagesAmount: 10)
         
-        let event2 = Event(
-            eventID: 2,
-            eventDate: date2,
-            eventEndTime: endDate2,
-            eventStartTime: startDate2,
-            organiserID: 2,
-            chatID: Chat(ID: 2, messages: [], userID: 2, userName: 2),
+        let newEvent2 = DSModels.Event.EventView (
+            creationDateTime: startTimeString1,
+            eventID: 1,
+            startDateTime: startTimeString2,
+            endDateTime: endTimeString2,
+            sportType: "Basket",
+            sportGroundID: 22,
+            organizer: Participants(id: 1, username: "NeEdik", birthdayDate: "06-06-06", gender: "Male", info: "Here will be info", photoLink: ""),
             members: [],
-            sportGroundID: 2,
-            sportType: nil
-        )
+            description: "SecondDesription",
+            isPrivate: true,
+            price: 100,
+            maximumUsers: 25, usersAmount: 20,
+            messagesAmount: 10)
         
-        events.append(event)
-        events.append(event2)
+        
+        events.append(newEvent)
+        events.append(newEvent2)
         
         for i in 0..<19 {
-            let sportGround = SportGround(
-                sportGroudID: i,
-                title: "SportGround title \(i)",
+//            let sportGround = DSModels.SportGround.SportGroundResponse(
+//                sportGroudID: i,
+//                title: "SportGround title \(i)",
+//                address: "Address \(i)",
+//                city: "City \(i)",
+//                events: events,
+//                lattitude: 0.0,
+//                longitude: 0.0,
+//                sportTypes: []
+//            )
+            let sportGround2 = DSModels.SportGround.SportGroundResponse(
+                sportGroundId: i,
+                city: "City\(1)",
                 address: "Address \(i)",
-                city: "City \(i)",
-                events: events,
-                lattitude: 0.0,
+                title: "SportGround title \(i)",
+                latitude: 0.0,
                 longitude: 0.0,
-                sportTypes: []
-            )
-            tempSportGrounds.append(sportGround)
+                metroStation: "RedSquare",
+                surfaceType: "Boks",
+                rentPrice: 1000,
+                opened: true,
+                infrastructures: [],
+                sportTypes: ["Any"],
+                subscribers: [],
+                reviews: ["Comments"],
+                events: events,
+                openingTime: startTimeString1,
+                closedTime: endTimeString1)
+            tempSportGrounds.append(sportGround2)
         }
         self.sportGrounds = tempSportGrounds
     }

@@ -10,10 +10,10 @@ import Foundation
 final class DateSelectionAssembly: Assembly {
     
     private let completion: (String) -> Void
-    private let sportGround: SportGround
+    private let sportGround: DSModels.SportGround.SportGroundResponse
     
     init(
-        sportGround: SportGround,
+        sportGround: DSModels.SportGround.SportGroundResponse,
         completion: @escaping (String) -> Void
     ) {
         self.completion = completion

@@ -17,7 +17,7 @@ final class SportGroundSelectionListCoordinator: Coordinator {
     init(
         navController: UINavigationController?,
         sportTypeTitle: String,
-        completion: @escaping (SportGround) -> Void
+        completion: @escaping (DSModels.SportGround.SportGroundResponse) -> Void
     ) {
         let assembly = SportGroundSelectionListAssembly(
             sportTypeTitle: sportTypeTitle,

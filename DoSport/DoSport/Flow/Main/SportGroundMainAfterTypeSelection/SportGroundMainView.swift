@@ -23,14 +23,23 @@ final class SportGroundMainView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-
+    
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        $0.style = .medium
+        $0.hidesWhenStopped = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isHidden = true
+        return $0
+    }(UIActivityIndicatorView())
+    
     //MARK: Init
     
     init() {
         super.init(frame: .zero)
         backgroundColor = Colors.darkBlue
         
-        addSubviews(collectionView)
+        addSubviews(collectionView, loadingIndicator)
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +55,8 @@ final class SportGroundMainView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.9)
             $0.centerX.equalToSuperview()
         }
+        
+        loadingIndicator.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }
 
@@ -58,6 +69,31 @@ extension SportGroundMainView {
         collectionView.dataSource = dataSource
         collectionView.reloadData()
         layoutIfNeeded()
+    }
+    
+    func updateViewToState<T>(_ state: SportGroundDataFlow.ViewControllerState<T>) where T: Codable {
+        if case .success = state {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+
+            self.collectionView.isHidden = false
+        }
+        
+        if case .loading = state {
+            self.loadingIndicator.isHidden = false
+            self.loadingIndicator.startAnimating()
+
+            self.collectionView.isHidden = true
+        }
+        
+        if case .failed = state {
+            // TODO: implement data fail handler view
+            DispatchQueue.main.async {
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.collectionView.isHidden = false
+            }
+        }
     }
 }
 

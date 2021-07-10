@@ -47,7 +47,7 @@ final class SportGroindDetailHeaderCell: UICollectionViewCell {
     private let subwayNameLabel: UILabel = {
         $0.font = Fonts.sfProRegular(size: 16)
         $0.textColor = .white
-        $0.text = "Oxford Circus station"
+        $0.text = "Biblioteka Lenina"
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())

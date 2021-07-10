@@ -14,7 +14,7 @@ final class SportGroundSelectionListViewController: UIViewController {
     private lazy var sportGroundListView = view as! SportGroundSelectionListView
     private let tableManager = SportGroundSelectionListDataSource()
     
-    private let completion: (SportGround) -> Void
+    private let completion: (DSModels.SportGround.SportGroundResponse) -> Void
     
     private let sportTypeTitle: String
     
@@ -27,7 +27,7 @@ final class SportGroundSelectionListViewController: UIViewController {
     init(
         viewModel: SportGroundSelectionListViewModel,
         sportTypeTitle: String,
-        completion: @escaping (SportGround) -> Void
+        completion: @escaping (DSModels.SportGround.SportGroundResponse) -> Void
     ) {
         self.viewModel = viewModel
         self.completion = completion
@@ -140,7 +140,7 @@ private extension SportGroundSelectionListViewController {
 
 extension SportGroundSelectionListViewController: SportGroundSelectionListDataSourceDelegate {
     
-    func collectionView(didSelect sportGround: SportGround) {
+    func collectionView(didSelect sportGround: DSModels.SportGround.SportGroundResponse) {
         completion(sportGround)
         coordinator?.goBack()
     }

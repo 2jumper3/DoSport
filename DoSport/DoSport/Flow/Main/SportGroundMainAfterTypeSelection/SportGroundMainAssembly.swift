@@ -16,7 +16,8 @@ final class SportGroundMainAssembly: Assembly {
     }
     
     func makeModule() -> SportGroundMainController {
-        let viewModel = SportGroundMainViewModel()
+        let sportGroundNetworkService = SportGroundNetworkService()
+        let viewModel = SportGroundMainViewModel(sportGroundNetwork: sportGroundNetworkService)
         let viewController = SportGroundMainController(
             viewModel: viewModel,
             sportTypeTitle: sportTypeTitle

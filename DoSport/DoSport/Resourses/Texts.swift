@@ -25,6 +25,8 @@ public enum Texts {
         static let userName = "Никнейм"
         static let subscribe = "Подписаться"
         static let toBook = "Забронировать"
+        static let event = "Тренировки"
+        static let sportGround = "Площадки"
     }
 }
 

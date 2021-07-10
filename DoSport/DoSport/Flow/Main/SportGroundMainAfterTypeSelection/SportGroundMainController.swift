@@ -14,6 +14,7 @@ final class SportGroundMainController: UIViewController {
     private let tableManager = SportGroundMainDataSource()
     
     private let sportTypeTitle: String
+    private var viewState: SportGroundDataFlow.ViewControllerState<DSEmptyRequest> = .loading
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -48,7 +49,10 @@ final class SportGroundMainController: UIViewController {
         setupViewModelBindings()
         setupNavBar()
         print(self.sportTypeTitle)
-        viewModel.prepareData()
+        if case .loading = self.viewState {
+            sportGroundListView.updateViewToState(self.viewState)
+        }
+        self.viewModel.doLoadSportGrounds(request: .init())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,11 +97,28 @@ final class SportGroundMainController: UIViewController {
 private extension SportGroundMainController {
 
     func setupViewModelBindings() {
+        viewModel.didLoadSportGrounds = { [weak self] sportGrounds in
+            self?.updateState(sportGrounds.state)
+        }
         viewModel.onDidPrepareData = { [weak self] sportGrounds in
             guard let self = self else { return }
-            
+
             self.tableManager.viewModels = sportGrounds
             self.updateView()
+        }
+    }
+    func updateState<T>(_ state: SportGroundDataFlow.ViewControllerState<T>) where T: Codable {
+        switch state {
+        case .loading:
+            self.sportGroundListView.updateViewToState(state)
+        case .failed:
+            self.sportGroundListView.updateViewToState(state)
+        case .success(let data):
+            if let viewModels = data as? [DSModels.SportGround.SportGroundResponse] {
+                self.tableManager.viewModels = viewModels
+            }
+            self.sportGroundListView.updateCollectionDataSource(dataSource: tableManager)
+            self.sportGroundListView.updateViewToState(state)
         }
     }
     
@@ -134,9 +155,12 @@ private extension SportGroundMainController {
 //MARK: - SportGroundSelectionListDataSourceDelegate -
 
 extension SportGroundMainController: SportGroundMainDataSourceDelegate {
+    func collectionViewEvent(didSelect event: DSModels.Event.EventView) {
+//        coordinator.go
+    }
     
-    func collectionView(didSelect sportGround: SportGround) {
-        coordinator?.goBack()
+    func collectionView(didSelect sportGround: DSModels.SportGround.SportGroundResponse) {
+        coordinator?.goToSportGround(sportGround: sportGround)
     }
     
     func collectionViewNeedsReloadData() {

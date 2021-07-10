@@ -40,6 +40,14 @@ final class SportGroundMainCoordinator: Coordinator {
         self.store(coordinator: coordinator)
         coordinator.start()
     }
+    func goToSportGround(sportGround: DSModels.SportGround.SportGroundResponse) {
+        let coordinator = SportGroundDetailCoordinator(navController: navigationController, sportGround: sportGround, contentType: .info)
+        self.store(coordinator: coordinator)
+        coordinator.start()
+    }
+    func goToEvent(event: DSModels.Event.EventView) {
+        goBack()
+    }
     
     func popToRoot() {
         navigationController?.popToRootViewController(animated: true)

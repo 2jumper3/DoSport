@@ -10,7 +10,8 @@
 import UIKit
 
 protocol SportGroundMainDataSourceDelegate: class {
-    func collectionView(didSelect sportGround: SportGround)
+    func collectionView(didSelect sportGround: DSModels.SportGround.SportGroundResponse)
+    func collectionViewEvent(didSelect event: DSModels.Event.EventView)
     func collectionViewNeedsReloadData()
 }
 
@@ -18,9 +19,9 @@ final class SportGroundMainDataSource: NSObject {
     
     weak var delegate: SportGroundMainDataSourceDelegate?
     
-    var viewModels: [SportGround]
-    var events: [DSModels.Event.EventView]?
-    var sportGrounds: [DSModels.SportGround.SportGroundResponse]?
+    var viewModels: [DSModels.SportGround.SportGroundResponse]
+    var events: [DSModels.Event.EventView]
+//    var sportGrounds: [DSModels.SportGround.SportGroundResponse]?
     
     private var selectedCell: SportTypeListTableCell?
     
@@ -30,9 +31,9 @@ final class SportGroundMainDataSource: NSObject {
         }
     }
     
-    init(viewModels: [SportGround] = []) {
-
+    init(viewModels: [DSModels.SportGround.SportGroundResponse] = [], events: [DSModels.Event.EventView] = []) {
         self.viewModels = viewModels
+        self.events = events
         super.init()
         
     }
@@ -48,8 +49,8 @@ extension SportGroundMainDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sportGroundSourceState {
-        case .events: return 10
-        case .sportGrounds: return 10
+        case .events: return events.count
+        case .sportGrounds: return viewModels.count
          }
     }
     
@@ -62,10 +63,13 @@ extension SportGroundMainDataSource: UICollectionViewDataSource {
         switch sportGroundSourceState {
         case .events:
             let eventCell: EventCardCollectioCell = collectionView.cell(forRowAt: indexPath)
+            eventCell.bind(data: events[indexPath.row])
             cell = eventCell
 
         case .sportGrounds:
             let sportGroundCell: SportGroundSelectionCollectionCell = collectionView.cell(forRowAt: indexPath)
+            
+            sportGroundCell.bind(with: viewModels[indexPath.row])
             cell = sportGroundCell
         }
         return cell
@@ -77,9 +81,15 @@ extension SportGroundMainDataSource: UICollectionViewDataSource {
 extension SportGroundMainDataSource: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewModel = viewModels[indexPath.row]
-        
-        delegate?.collectionView(didSelect: viewModel)
+//        let event = events[indexPath.row]
+        switch sportGroundSourceState {
+        case .sportGrounds:
+            delegate?.collectionView(didSelect: viewModels[indexPath.row])
+        case .events:
+            print("Events Touched")
+//            delegate?.collectionViewEvent(didSelect: event)
+        }
+//        delegate?.collectionView(didSelect: viewModel)
     }
     
     func collectionView(
@@ -92,8 +102,8 @@ extension SportGroundMainDataSource: UICollectionViewDelegate {
                 of: kind,
                 at: indexPath
             )
-            reusableView.setSegmentedControl(text: Texts.UserMain.myEvents, for: 0)
-            reusableView.setSegmentedControl(text: Texts.UserMain.mySportGrounds, for: 1)
+            reusableView.setSegmentedControl(text: Texts.Common.event, for: 0)
+            reusableView.setSegmentedControl(text: Texts.Common.sportGround, for: 1)
 
             reusableView.onSegmentedControlChanged = { [unowned self] index in
                 switch index {
