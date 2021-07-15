@@ -107,7 +107,7 @@ private extension UserAccountEditingController {
         let sourceDecideAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: Texts.Registration.deleteAvatar, style: .destructive, handler: { _ in
-            print("Deletetion button pressed!") //Need to set default avatar
+            self.showConfirmationAlert()
         })
         sourceDecideAlertController.addAction(deleteAction)
         
@@ -132,6 +132,18 @@ private extension UserAccountEditingController {
         self.present(sourceDecideAlertController, animated: true, completion: nil)
     }
     
+    func showConfirmationAlert() {
+        let confirmationAlert = UIAlertController(title: nil, message: Texts.Registration.confirmMessage, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: Texts.Common.cancel, style: .cancel, handler: nil)
+        confirmationAlert.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: Texts.Common.delete, style: .destructive, handler: { _ in
+            self.userAccountEditingView.avatarImage = Icons.Common.defaultAvatar
+        })
+        confirmationAlert.addAction(deleteAction)
+        
+        self.present(confirmationAlert, animated: true, completion: nil)
+    }
 }
 
 //MARK: Actions
