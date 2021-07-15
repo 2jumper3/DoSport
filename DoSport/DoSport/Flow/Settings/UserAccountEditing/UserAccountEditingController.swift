@@ -13,6 +13,8 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
     private lazy var userAccountEditingView = view as! UserAccountEditingView
     private var viewModel: UserProfileEditingViewModelProtocol
     
+    private let imagePicker = DSImagePicker()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -34,6 +36,7 @@ final class UserAccountEditingController: UIViewController, UIGestureRecognizerD
         let view = UserAccountEditingView()
         view.delegate = self
         
+        imagePicker.delegate = self
         self.view = view
     }
     
@@ -99,6 +102,36 @@ private extension UserAccountEditingController {
         shareBarButton.addTarget(self, action: #selector(handleShareButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: shareBarButton)
     }
+    
+    func showAvatarSourceDecideView() {
+        let sourceDecideAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: Texts.Registration.deleteAvatar, style: .destructive, handler: { _ in
+            print("Deletetion button pressed!") //Need to set default avatar
+        })
+        sourceDecideAlertController.addAction(deleteAction)
+        
+        let cameraAction = UIAlertAction(title: Texts.Registration.AvatarSource.camera, style: .default, handler: { _ in
+            print("Camera button pressed!")
+            self.imagePicker.cameraAsscessRequest()
+        })
+        sourceDecideAlertController.addAction(cameraAction)
+        
+        let albumButton = UIAlertAction(title: Texts.Registration.AvatarSource.album, style: .default, handler: { _ in
+            print("Album button pressed!")
+            self.imagePicker.photoGalleryAsscessRequest()
+        })
+        sourceDecideAlertController.addAction(albumButton)
+        
+        let cancelAction = UIAlertAction(title: Texts.Registration.cancel, style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        sourceDecideAlertController.addAction(cancelAction)
+        
+        
+        self.present(sourceDecideAlertController, animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: Actions
@@ -150,7 +183,7 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
     }
     
     func avatarChangeButtonClicked() {
-        
+        showAvatarSourceDecideView()
     }
     
     func datePickerValueChanged(_ datePicker: UIDatePicker) {
@@ -159,5 +192,28 @@ extension UserAccountEditingController: UserAccountEditingViewDelegate {
         
         let text = dateFormatter.string(from: datePicker.date)
         userAccountEditingView.setDateOfBirth(text)
+    }
+}
+
+//MARK: - ImagePickerDelegate -
+
+extension UserAccountEditingController: ImagePickerDelegate {
+    
+    func imagePicker(_ imagePicker: DSImagePicker, didSelect image: UIImage) {
+        userAccountEditingView.avatarImage = image
+        imagePicker.dismiss()
+    }
+    
+    func cancelButtonDidClick(on imageView: DSImagePicker) {
+        imagePicker.dismiss()
+    }
+    
+    func imagePicker(
+        _ imagePicker: DSImagePicker,
+        grantedAccess: Bool,
+        to sourceType: UIImagePickerController.SourceType
+    ) {
+        guard grantedAccess else { return }
+        imagePicker.present(parent: self, sourceType: sourceType)
     }
 }

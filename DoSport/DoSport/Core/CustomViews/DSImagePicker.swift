@@ -42,6 +42,7 @@ final class DSImagePicker: NSObject {
         let controller = UIImagePickerController()
         controller.delegate = self
         controller.sourceType = sourceType
+        controller.allowsEditing = true
         self.controller = controller
         DispatchQueue.main.async {
             viewController.present(controller, animated: true, completion: nil)
