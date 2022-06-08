@@ -27,6 +27,8 @@ public enum Texts {
         static let toBook = "Забронировать"
         static let event = "Тренировки"
         static let sportGround = "Площадки"
+        static let cancel = "Отмена"
+        static let delete = "Удалить"
     }
 }
 
@@ -111,8 +113,16 @@ extension Texts {
     enum Registration {
         static let navTitle = "Регистрация"
         
-        static let addAvatar = "Загузить фото"
+        static let addAvatar = "Загрузить фото"
         static let save = Common.save
+        
+        enum AvatarSource {
+            static let camera = "Сфотографировать"
+            static let album = "Выбрать из альбома"
+        }
+        static let deleteAvatar = "Удалить фото"
+        static let confirmMessage = "Вы действительно хотите удалить аватар?"
+        static let cancel = Common.cancel
         
         static let userName = Common.userName
         static let userNameError = "Никнейм занят"
@@ -231,7 +241,7 @@ extension Texts {
         static let mySportGrounds = "Мои плошадки"
         
         static let invite = Common.invite
-        static let delete = "Удалить"
+        static let delete = Common.delete
         static let edit = "Изменить"
         static let close = "Закрыть"
     }
